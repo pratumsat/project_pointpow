@@ -89,7 +89,6 @@ class ScannerViewController: BaseViewController ,AVCaptureMetadataOutputObjectsD
             do {
                 videoInput = try AVCaptureDeviceInput(device: videoCaptureDevice)
             } catch {
-                self.cannotAccessCamera()
                 return
             }
             
@@ -471,56 +470,7 @@ class ScannerViewController: BaseViewController ,AVCaptureMetadataOutputObjectsD
         }
     }
     
-    func cannotAccessCamera(){
-        
-        let title =  NSLocalizedString("string-title-access-camera", comment: "")
-        let message = NSLocalizedString("string-message-access-camera", comment: "")
-        let setting = NSLocalizedString("string-button-access-setting", comment: "")
-        let cancel = NSLocalizedString("string-button-access-cancel", comment: "")
-        
-        let ac = UIAlertController(title: title, message:  message, preferredStyle: .alert)
-        let actionSetting = UIAlertAction(title: setting, style: .default) { (action) in
-            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
-                return
-            }
-            if UIApplication.shared.canOpenURL(settingsUrl) {
-                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                    print("Settings opened: \(success)") // Prints true
-                })
-            }
-        }
-        let actionCancel = UIAlertAction(title: cancel, style: .cancel) { (action) in }
-        ac.addAction(actionSetting)
-        ac.addAction(actionCancel)
-        self.present(ac, animated: true, completion: nil)
-        
-        captureSession = nil
-    }
     
-    func cannotAccessPhoto(){
-        let title =  NSLocalizedString("string-title-access-photo", comment: "")
-        let message = NSLocalizedString("string-message-access-photo", comment: "")
-        let setting = NSLocalizedString("string-button-access-setting", comment: "")
-        let cancel = NSLocalizedString("string-button-access-cancel", comment: "")
-        
-        let ac = UIAlertController(title: title, message:  message, preferredStyle: .alert)
-        let actionSetting = UIAlertAction(title: setting, style: .default) { (action) in
-            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
-                return
-            }
-            if UIApplication.shared.canOpenURL(settingsUrl) {
-                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                    print("Settings opened: \(success)") // Prints true
-                })
-            }
-        }
-        let actionCancel = UIAlertAction(title: cancel, style: .cancel) { (action) in }
-        ac.addAction(actionSetting)
-        ac.addAction(actionCancel)
-        self.present(ac, animated: true, completion: nil)
-        
-        
-    }
     func failed() {
         let title = NSLocalizedString("string-title-scan-fail", comment: "")
         let message = NSLocalizedString("string-message-scan-fail", comment: "")

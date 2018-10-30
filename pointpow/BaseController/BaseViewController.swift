@@ -5,7 +5,7 @@
 //  Created by thanawat on 10/9/2561 BE.
 //  Copyright © 2561 abcpoint. All rights reserved.
 //
-
+import AVFoundation
 import UIKit
 import FBSDKLoginKit
 import GoogleSignIn
@@ -188,24 +188,34 @@ class BaseViewController: UIViewController {
     }
     
     func showScanBarcode(resultScan:((_ model:AnyObject,_ barcode:String)->Void)?){
-        if let scanVc:ScannerViewController = self.storyboard?.instantiateViewController(withIdentifier: "ScannerViewController") as? ScannerViewController {
-            
-            scanVc.barcodeCallback = { (result , code) in
-                resultScan?(result , code )
+        if AVCaptureDevice.authorizationStatus(for: .video) !=  .denied {
+            if let scanVc:ScannerViewController = self.storyboard?.instantiateViewController(withIdentifier: "ScannerViewController") as? ScannerViewController {
+                
+                scanVc.barcodeCallback = { (result , code) in
+                    resultScan?(result , code )
+                }
+                
+                self.present(scanVc, animated: true, completion: nil)
             }
-            
-            self.present(scanVc, animated: true, completion: nil)
+        } else {
+            self.cannotAccessCamera()
         }
+        
     }
     func showScanBarcodeForMember(resultScan:((_ model:AnyObject,_ barcode:String)->Void)?){
-        if let scanVc:Scanner2ViewController = self.storyboard?.instantiateViewController(withIdentifier: "Scanner2ViewController") as? Scanner2ViewController {
-            
-            scanVc.barcodeCallback = { (result , code) in
-                resultScan?(result , code )
+        if AVCaptureDevice.authorizationStatus(for: .video) !=  .denied {
+            if let scanVc:Scanner2ViewController = self.storyboard?.instantiateViewController(withIdentifier: "Scanner2ViewController") as? Scanner2ViewController {
+                
+                scanVc.barcodeCallback = { (result , code) in
+                    resultScan?(result , code )
+                }
+                
+                self.present(scanVc, animated: true, completion: nil)
             }
-            
-            self.present(scanVc, animated: true, completion: nil)
+        } else {
+            self.cannotAccessCamera()
         }
+        
     }
     
   /*
@@ -359,6 +369,7 @@ extension BaseViewController {
             self.moreImageView?.alpha = 1
         }
     }
+    
 }
 
 extension BaseViewController {
@@ -368,6 +379,52 @@ extension BaseViewController {
     
     override var shouldAutorotate: Bool {
         return false
+    }
+    func cannotAccessCamera(){
+        
+        let title =  NSLocalizedString("string-title-access-camera", comment: "")
+        let message = NSLocalizedString("string-message-access-camera", comment: "")
+        let setting = NSLocalizedString("string-button-access-setting", comment: "")
+        let cancel = NSLocalizedString("string-button-access-cancel", comment: "")
+        
+        let ac = UIAlertController(title: title, message:  message, preferredStyle: .alert)
+        let actionSetting = UIAlertAction(title: setting, style: .default) { (action) in
+            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                return
+            }
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                    print("Settings opened: \(success)") // Prints true
+                })
+            }
+        }
+        let actionCancel = UIAlertAction(title: cancel, style: .cancel) { (action) in }
+        ac.addAction(actionSetting)
+        ac.addAction(actionCancel)
+        self.present(ac, animated: true, completion: nil)
+    }
+    
+    func cannotAccessPhoto(){
+        let title =  NSLocalizedString("string-title-access-photo", comment: "")
+        let message = NSLocalizedString("string-message-access-photo", comment: "")
+        let setting = NSLocalizedString("string-button-access-setting", comment: "")
+        let cancel = NSLocalizedString("string-button-access-cancel", comment: "")
+        
+        let ac = UIAlertController(title: title, message:  message, preferredStyle: .alert)
+        let actionSetting = UIAlertAction(title: setting, style: .default) { (action) in
+            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                return
+            }
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                    print("Settings opened: \(success)") // Prints true
+                })
+            }
+        }
+        let actionCancel = UIAlertAction(title: cancel, style: .cancel) { (action) in }
+        ac.addAction(actionSetting)
+        ac.addAction(actionCancel)
+        self.present(ac, animated: true, completion: nil)
     }
 }
 extension BaseViewController: UITextFieldDelegate {

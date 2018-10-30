@@ -27,8 +27,6 @@ class ViewController: BaseViewController {
     @IBAction func cameraTapped(_ sender: Any) {
         self.showScanBarcode { (resultCode, code) in
         }
-//        self.showScanBarcodeForMember { (resultCode, code) in
-//        }
     }
     @IBAction func passcodeTapped(_ sender: Any) {
     }

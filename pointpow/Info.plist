@@ -54,23 +54,11 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>&quot;PointPow&quot; Would Like to Access the Camera</string>
-	<key>NSContactsUsageDescription</key>
-	<string>&quot;PointPow&quot; Would Like to Access Yours Contacts</string>
-	<key>NSFaceIDUsageDescription</key>
-	<string>&quot;PointPow&quot; Would Like to Access the Face ID</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>&quot;PointPow&quot; Would Like to Access Yours Locations</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>&quot;PointPow&quot; Would Like to Access Yours Locations</string>
-	<key>NSLocationUsageDescription</key>
-	<string>&quot;PointPow&quot; Would Like to Access Yours Locations</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>&quot;PointPow&quot; Would Like to Access Yours Locations</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>&quot;PointPow&quot; Would Like to Access Yours Photos Library</string>
+	<string>$(PRODUCT_NAME) Would Like to Access the Camera</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>&quot;PointPow&quot; Would Like to Access Yours Photos Library</string>
+	<string>$(PRODUCT_NAME) Would Like to Access the Photos</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>$(PRODUCT_NAME) Would Like to Access the Face ID</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>

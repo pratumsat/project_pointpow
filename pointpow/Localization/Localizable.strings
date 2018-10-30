@@ -1,0 +1,26 @@
+/* 
+  Localizable.strings
+  pointpow
+
+  Created by thanawat on 30/10/2561 BE.
+  Copyright © 2561 abcpoint. All rights reserved.
+*/
+
+/* Alert Invalid QR code*/
+"string-title-invalid-qr" = "Invalid QR code/Barcode";
+"string-message-invalid-qr" = "Please verify that the code is still valid and try again.";
+"string-line-up-qr" = "Place the QR code at\r\nthe center of box for scan";
+"string-line-up-barcode" = "Place the barcode at the center of box for scan";
+"alert-confirm-phone" = "OK";
+
+"string-title-access-camera" = "Camera Don't Allow";
+"string-title-access-photo" = "Photos Don't Allow";
+"string-message-access-camera" = "abcPay does not have access to your camera. To enable access, tap Settings and turn on Camera.";
+"string-message-access-photo" = "abcPay does not have access to your photos. To enable access, tap Settings and turn on Photos.";
+"string-button-access-setting" = "Settings";
+"string-button-access-cancel" = "Cancel";
+
+/* scanning */
+"string-title-scan-fail" = "Scanning not supported";
+"string-message-scan-fail" = "Your device does not support scanning a code from an item. Please use a device with a camera.";
+

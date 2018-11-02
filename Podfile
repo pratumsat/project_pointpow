@@ -7,7 +7,7 @@ target 'pointpow' do
 
   # Pods for pointpow
     pod 'Alamofire', '~> 4.7'
-    pod 'SDWebImage', '~> 4.0'
+    pod 'SDWebImage/WebP'
     pod 'Presentr'
     pod 'Firebase/Core'
     pod 'ZBarSDK', '~>1.3.1'

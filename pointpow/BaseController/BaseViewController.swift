@@ -417,9 +417,11 @@ extension BaseViewController {
                 return
             }
             if UIApplication.shared.canOpenURL(settingsUrl) {
-                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                    print("Settings opened: \(success)") // Prints true
-                })
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
+                } else {
+                    UIApplication.shared.openURL(settingsUrl)
+                }
             }
         }
         let actionCancel = UIAlertAction(title: cancel, style: .cancel) { (action) in }
@@ -440,9 +442,11 @@ extension BaseViewController {
                 return
             }
             if UIApplication.shared.canOpenURL(settingsUrl) {
-                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                    print("Settings opened: \(success)") // Prints true
-                })
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
+                } else {
+                    UIApplication.shared.openURL(settingsUrl)
+                }
             }
         }
         let actionCancel = UIAlertAction(title: cancel, style: .cancel) { (action) in }

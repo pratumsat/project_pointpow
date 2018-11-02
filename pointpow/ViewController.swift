@@ -16,7 +16,7 @@ class ViewController: BaseViewController {
 
         textfield.delegate = self
        
-        
+        self.showIntroduce(false)
     }
     @IBAction func facebookTapped(_ sender: Any) {
         self.loginFacebook()

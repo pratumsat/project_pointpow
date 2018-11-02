@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		16B23D162FFAF9446F2A6DA2 /* Pods_pointpowTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397FA4B92F56CF5C6AC3D5E5 /* Pods_pointpowTests.framework */; };
 		A8335B1A06016D739FCCD24A /* Pods_pointpowUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71C5AF1196142AE070221A8 /* Pods_pointpowUITests.framework */; };
+		C11A93AE218BF67F00627B44 /* IntroNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93AD218BF67F00627B44 /* IntroNav.swift */; };
+		C11A93B1218BF69700627B44 /* MainNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93B0218BF69700627B44 /* MainNav.swift */; };
+		C11A93B3218BF6D200627B44 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93B2218BF6D200627B44 /* IntroViewController.swift */; };
+		C11A93B7218C00C800627B44 /* IntroCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93B5218C00C800627B44 /* IntroCell1.swift */; };
+		C11A93B8218C00C800627B44 /* IntroCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = C11A93B6218C00C800627B44 /* IntroCell1.xib */; };
+		C11A93BC218C20C700627B44 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93BB218C20C700627B44 /* LoginViewController.swift */; };
+		C11A93BE218C20D100627B44 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93BD218C20D100627B44 /* RegisterViewController.swift */; };
+		C11A93C0218C2AD900627B44 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93BF218C2AD900627B44 /* ForgotPasswordViewController.swift */; };
 		C1AD507A2187F45600F74415 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AD50792187F45600F74415 /* AppDelegate.swift */; };
 		C1AD507C2187F45600F74415 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AD507B2187F45600F74415 /* ViewController.swift */; };
 		C1AD507F2187F45600F74415 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1AD507D2187F45600F74415 /* Main.storyboard */; };
@@ -57,6 +65,14 @@
 		397FA4B92F56CF5C6AC3D5E5 /* Pods_pointpowTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pointpowTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E353ACA4AAA10E36B259268 /* Pods-pointpowUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pointpowUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pointpowUITests/Pods-pointpowUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		AB6FAB2B79444F6CC167E5C8 /* Pods-pointpow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pointpow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pointpow/Pods-pointpow.debug.xcconfig"; sourceTree = "<group>"; };
+		C11A93AD218BF67F00627B44 /* IntroNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroNav.swift; sourceTree = "<group>"; };
+		C11A93B0218BF69700627B44 /* MainNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNav.swift; sourceTree = "<group>"; };
+		C11A93B2218BF6D200627B44 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
+		C11A93B5218C00C800627B44 /* IntroCell1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroCell1.swift; sourceTree = "<group>"; };
+		C11A93B6218C00C800627B44 /* IntroCell1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntroCell1.xib; sourceTree = "<group>"; };
+		C11A93BB218C20C700627B44 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C11A93BD218C20D100627B44 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		C11A93BF218C2AD900627B44 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		C1AD50762187F45600F74415 /* pointpow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pointpow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1AD50792187F45600F74415 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1AD507B2187F45600F74415 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +154,42 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C11A93AC218BF64100627B44 /* Introduction */ = {
+			isa = PBXGroup;
+			children = (
+				C11A93AD218BF67F00627B44 /* IntroNav.swift */,
+				C11A93B2218BF6D200627B44 /* IntroViewController.swift */,
+			);
+			path = Introduction;
+			sourceTree = "<group>";
+		};
+		C11A93AF218BF68A00627B44 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				C11A93B0218BF69700627B44 /* MainNav.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		C11A93B4218C00A000627B44 /* CollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				C11A93B5218C00C800627B44 /* IntroCell1.swift */,
+				C11A93B6218C00C800627B44 /* IntroCell1.xib */,
+			);
+			path = CollectionCell;
+			sourceTree = "<group>";
+		};
+		C11A93BA218C20B600627B44 /* Authen */ = {
+			isa = PBXGroup;
+			children = (
+				C11A93BB218C20C700627B44 /* LoginViewController.swift */,
+				C11A93BD218C20D100627B44 /* RegisterViewController.swift */,
+				C11A93BF218C2AD900627B44 /* ForgotPasswordViewController.swift */,
+			);
+			path = Authen;
+			sourceTree = "<group>";
+		};
 		C1AD506D2187F45600F74415 = {
 			isa = PBXGroup;
 			children = (
@@ -163,7 +215,10 @@
 		C1AD50782187F45600F74415 /* pointpow */ = {
 			isa = PBXGroup;
 			children = (
-				C1DEBE9321882A6800CBB95F /* Fonts */,
+				C11A93BA218C20B600627B44 /* Authen */,
+				C11A93B4218C00A000627B44 /* CollectionCell */,
+				C11A93AF218BF68A00627B44 /* Main */,
+				C11A93AC218BF64100627B44 /* Introduction */,
 				C1DEBE8E218828D700CBB95F /* Camera */,
 				C1DEBE8D2188178B00CBB95F /* pointpow.entitlements */,
 				C1DEBE8821880F2800CBB95F /* Localization */,
@@ -171,6 +226,7 @@
 				C1AD50B02187FED900F74415 /* ModelController */,
 				C1AD50AD2187FE7F00F74415 /* Popup */,
 				C1AD50A72187F78700F74415 /* BaseController */,
+				C1DEBE9321882A6800CBB95F /* Fonts */,
 				C1AD50792187F45600F74415 /* AppDelegate.swift */,
 				C1AD507B2187F45600F74415 /* ViewController.swift */,
 				C1AD507D2187F45600F74415 /* Main.storyboard */,
@@ -379,6 +435,7 @@
 				C1AD50842187F45900F74415 /* LaunchScreen.storyboard in Resources */,
 				C1DEBE8A21880F5A00CBB95F /* Localizable.strings in Resources */,
 				C1DEBE982188337500CBB95F /* ThaiSansNeue-Bold.ttf in Resources */,
+				C11A93B8218C00C800627B44 /* IntroCell1.xib in Resources */,
 				C1AD50812187F45900F74415 /* Assets.xcassets in Resources */,
 				C1DEBE992188337500CBB95F /* ThaiSansNeue-Regular.ttf in Resources */,
 				C1AD507F2187F45600F74415 /* Main.storyboard in Resources */,
@@ -522,14 +579,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1AD50B72188000B00F74415 /* Constant.swift in Sources */,
+				C11A93B3218BF6D200627B44 /* IntroViewController.swift in Sources */,
 				C1AD507C2187F45600F74415 /* ViewController.swift in Sources */,
+				C11A93BC218C20C700627B44 /* LoginViewController.swift in Sources */,
 				C1AD50B22187FEE300F74415 /* ModelController.swift in Sources */,
 				C1DEBE9521882F6F00CBB95F /* BaseNavigationViewController.swift in Sources */,
 				C1AD507A2187F45600F74415 /* AppDelegate.swift in Sources */,
 				C1AD50A92187F7B500F74415 /* BaseViewController.swift in Sources */,
+				C11A93B1218BF69700627B44 /* MainNav.swift in Sources */,
 				C1AD50B52187FF4000F74415 /* Loading.swift in Sources */,
 				C1AD50AF2187FE9000F74415 /* PopUpViewController.swift in Sources */,
+				C11A93C0218C2AD900627B44 /* ForgotPasswordViewController.swift in Sources */,
+				C11A93BE218C20D100627B44 /* RegisterViewController.swift in Sources */,
 				C1DEBE92218829D900CBB95F /* Scanner2ViewController.swift in Sources */,
+				C11A93AE218BF67F00627B44 /* IntroNav.swift in Sources */,
+				C11A93B7218C00C800627B44 /* IntroCell1.swift in Sources */,
 				C1DEBE902188297B00CBB95F /* ScannerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

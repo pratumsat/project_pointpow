@@ -217,6 +217,30 @@ class BaseViewController: UIViewController {
         }
         
     }
+   
+    func showIntroduce(_ animated:Bool){
+        if let vc:IntroNav = self.storyboard?.instantiateViewController(withIdentifier: "IntroNav") as? IntroNav {
+            self.present(vc, animated: animated, completion: nil)
+        }
+    }
+    func showLogin(_ animated:Bool){
+        if let vc:LoginViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    func showRegister(_ animated:Bool){
+        if let vc:RegisterViewController = self.storyboard?.instantiateViewController(withIdentifier: "RegisterViewController") as? RegisterViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    func showForgot(_ animated:Bool){
+        if let vc:ForgotPasswordViewController = self.storyboard?.instantiateViewController(withIdentifier: "ForgotPasswordViewController") as? ForgotPasswordViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
     
   /*
     

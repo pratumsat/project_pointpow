@@ -25,6 +25,8 @@ class VerifyViewController: BaseViewController {
     }
     
     func setUp(){
+        self.sendButton.borderRedColorProperties(borderWidth: 1)
+        
         self.verifyButton.borderClearProperties(borderWidth: 1)
         self.verifyButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
         
@@ -45,10 +47,7 @@ class VerifyViewController: BaseViewController {
         self.otpTextField.autocorrectionType = .no
         self.usernameTextField.autocorrectionType = .no
         
-        
-        self.sendButton.borderRedColorProperties(borderWidth: 1)
-        self.verifyButton.borderProperties(borderWidth: 1)
-        
+
         self.clearImageView = self.usernameTextField.addRightButton(UIImage(named: "ic-x")!)
         let tap = UITapGestureRecognizer(target: self, action: #selector(clearUserNameTapped))
         self.clearImageView?.isUserInteractionEnabled = true

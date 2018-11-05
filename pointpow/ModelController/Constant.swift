@@ -344,8 +344,8 @@ struct Constant {
     struct Colors {
         static let PRIMARY_COLOR = UIColor(rgb: 0xFF092E)
         
-        static let GRADIENT_2 = UIColor(rgb: 0xFA001E)
-        static let GRADIENT_1 = UIColor(rgb: 0xFA0041)
+        static let GRADIENT_1 = UIColor(rgb: 0xFF2158) //top
+        static let GRADIENT_2 = UIColor(rgb: 0xFE2222) //bottom
     }
     struct Fonts {
         struct Size {

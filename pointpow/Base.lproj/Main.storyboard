@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lFN-eK-Z52">
-    <device id="retina6_1" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -23,7 +23,7 @@
             <objects>
                 <navigationController storyboardIdentifier="MainNav" id="lFN-eK-Z52" customClass="MainNav" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="R55-sG-UQy">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -39,7 +39,7 @@
             <objects>
                 <navigationController storyboardIdentifier="IntroNav" id="Jyk-yU-5mu" customClass="IntroNav" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lSc-8Y-lmx">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="1" green="0.035294117647058823" blue="0.1803921568627451" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -61,11 +61,11 @@
             <objects>
                 <viewController storyboardIdentifier="IntroViewController" automaticallyAdjustsScrollViewInsets="NO" id="3Ov-1n-4yO" customClass="IntroViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0lg-zN-8fx">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lmh-Zl-EJv">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="812"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="728"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="dbX-Sw-Tts">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -84,7 +84,7 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ipg-6I-om7">
-                                <rect key="frame" x="0.0" y="812" width="207" height="50"/>
+                                <rect key="frame" x="0.0" y="728" width="187.66666666666666" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="eVS-3C-IMa"/>
                                 </constraints>
@@ -95,7 +95,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LY4-Qy-o7X">
-                                <rect key="frame" x="207" y="812" width="207" height="50"/>
+                                <rect key="frame" x="187.66666666666663" y="728" width="187.33333333333337" height="50"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                 <state key="normal" title="ลงชื่อเข้าใช้"/>
                                 <connections>
@@ -103,7 +103,7 @@
                                 </connections>
                             </button>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="cl9-Un-Wfu">
-                                <rect key="frame" x="187.5" y="755" width="39" height="37"/>
+                                <rect key="frame" x="168" y="671" width="39" height="37"/>
                                 <color key="pageIndicatorTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="currentPageIndicatorTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </pageControl>
@@ -144,26 +144,26 @@
             <objects>
                 <viewController storyboardIdentifier="LoginViewController" id="QKj-wM-o6n" customClass="LoginViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="J7W-Su-QR1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mxx-26-BJY">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ลงชื่อเช้าใช้" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7b-Bt-GGP">
-                                        <rect key="frame" x="164.5" y="169" width="85" height="34"/>
+                                        <rect key="frame" x="145" y="162.66666666666666" width="85" height="34"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="26"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-logo" translatesAutoresizingMaskIntoConstraints="NO" id="zvd-jg-DeI">
-                                        <rect key="frame" x="103.5" y="60" width="207" height="69"/>
+                                        <rect key="frame" x="93.666666666666671" y="60" width="187.66666666666663" height="62.666666666666657"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="zvd-jg-DeI" secondAttribute="height" multiplier="3:1" id="ymV-y8-ehw"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5c-kx-zuG">
-                                        <rect key="frame" x="341.5" y="353" width="52" height="21"/>
+                                        <rect key="frame" x="304.33333333333331" y="346.66666666666669" width="52" height="21"/>
                                         <attributedString key="attributedText">
                                             <fragment content="ลืมรหัสผ่าน">
                                                 <attributes>
@@ -177,7 +177,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="อีเมล/เบอร์โทรศัพท์มือถือ" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ljl-gH-9LG">
-                                        <rect key="frame" x="20.5" y="223" width="373" height="40"/>
+                                        <rect key="frame" x="18.666666666666657" y="216.66666666666669" width="337.66666666666674" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="qAR-im-WrZ"/>
                                         </constraints>
@@ -186,13 +186,13 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="รหัสผ่าน" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uOC-98-xMV">
-                                        <rect key="frame" x="20.5" y="293" width="373" height="40"/>
+                                        <rect key="frame" x="18.666666666666657" y="286.66666666666669" width="337.66666666666674" height="40"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FMq-0r-v6c">
-                                        <rect key="frame" x="20.5" y="404" width="373" height="40"/>
+                                        <rect key="frame" x="18.666666666666657" y="397.66666666666669" width="337.66666666666674" height="40"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="yM9-Wc-Tss"/>
@@ -203,13 +203,13 @@
                                         </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="หรือ ลงชื่อเข้าใช้งานผ่าน" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lhj-dB-wAz">
-                                        <rect key="frame" x="133.5" y="464" width="147.5" height="26"/>
+                                        <rect key="frame" x="113.66666666666667" y="457.66666666666669" width="147.66666666666663" height="26"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Wg-Zi-nf0">
-                                        <rect key="frame" x="125.5" y="530" width="60" height="60"/>
+                                        <rect key="frame" x="110.66666666666669" y="523.66666666666663" width="60" height="60"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-facebook" translatesAutoresizingMaskIntoConstraints="NO" id="mJs-uo-NNb">
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
@@ -225,7 +225,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M2H-Bd-O1G">
-                                        <rect key="frame" x="229" y="530" width="60" height="60"/>
+                                        <rect key="frame" x="204.33333333333334" y="523.66666666666663" width="60.000000000000028" height="60"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-google" translatesAutoresizingMaskIntoConstraints="NO" id="qtw-zX-9t6">
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
@@ -239,34 +239,34 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g2s-YS-tk1">
-                                        <rect key="frame" x="20.5" y="262.5" width="373" height="0.5"/>
+                                        <rect key="frame" x="18.666666666666657" y="255.99999999999997" width="337.66666666666674" height="0.66666666666665719"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.5" id="48M-wQ-aZM"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YAr-PL-QtD">
-                                        <rect key="frame" x="20.5" y="332.5" width="373" height="0.5"/>
+                                        <rect key="frame" x="18.666666666666657" y="326" width="337.66666666666674" height="0.66666666666668561"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.5" id="9Fr-ig-J9g"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="อย่างน้อย 6 ตัวอักษรและตัวเลข" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOM-W4-GH3">
-                                        <rect key="frame" x="60.5" y="338" width="134" height="19.5"/>
+                                        <rect key="frame" x="58.666666666666657" y="331.66666666666669" width="134" height="19.333333333333314"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="15"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-username" translatesAutoresizingMaskIntoConstraints="NO" id="qZ3-DW-tHM">
-                                        <rect key="frame" x="30.5" y="233" width="20" height="20"/>
+                                        <rect key="frame" x="28.666666666666671" y="226.66666666666669" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="5Fu-fD-5Gm"/>
                                             <constraint firstAttribute="width" secondItem="qZ3-DW-tHM" secondAttribute="height" multiplier="1:1" id="glZ-m1-5au"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-password" translatesAutoresizingMaskIntoConstraints="NO" id="bBw-jh-4O0">
-                                        <rect key="frame" x="30.5" y="303" width="20" height="20"/>
+                                        <rect key="frame" x="28.666666666666671" y="296.66666666666669" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="bBw-jh-4O0" secondAttribute="height" multiplier="1:1" id="Mag-QL-Od1"/>
                                             <constraint firstAttribute="width" constant="20" id="trd-HC-td7"/>
@@ -343,32 +343,32 @@
             <objects>
                 <viewController storyboardIdentifier="RegisterViewController" id="2pX-TG-qQL" customClass="RegisterViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yij-ag-I4k">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QOT-Li-ANT">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="สร้างบัญชีผู้ใช้" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4un-ap-sRT">
-                                        <rect key="frame" x="150" y="169" width="114" height="34"/>
+                                        <rect key="frame" x="130.66666666666666" y="162.66666666666666" width="114" height="34"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="26"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-logo" translatesAutoresizingMaskIntoConstraints="NO" id="2A2-0g-cR0">
-                                        <rect key="frame" x="103.5" y="60" width="207" height="69"/>
+                                        <rect key="frame" x="93.666666666666671" y="60" width="187.66666666666663" height="62.666666666666657"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="2A2-0g-cR0" secondAttribute="height" multiplier="3:1" id="Ta0-pk-ovn"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="อย่างน้อย 6 ตัวอักษรและตัวเลข" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEi-RV-Ty2">
-                                        <rect key="frame" x="60.5" y="338" width="134" height="19.5"/>
+                                        <rect key="frame" x="58.666666666666657" y="331.66666666666669" width="134" height="19.333333333333314"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="15"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="อีเมล/เบอร์โทรศัพท์มือถือ" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="chK-po-LeA">
-                                        <rect key="frame" x="20.5" y="223" width="373" height="40"/>
+                                        <rect key="frame" x="18.666666666666657" y="216.66666666666669" width="337.66666666666674" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="7vC-Wm-xIn"/>
                                         </constraints>
@@ -377,13 +377,13 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="รหัสผ่าน" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TCr-ac-WmX">
-                                        <rect key="frame" x="20.5" y="293" width="373" height="40"/>
+                                        <rect key="frame" x="18.666666666666657" y="286.66666666666669" width="337.66666666666674" height="40"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YAs-Y8-DI5">
-                                        <rect key="frame" x="20.5" y="457.5" width="373" height="40"/>
+                                        <rect key="frame" x="18.666666666666657" y="451" width="337.66666666666674" height="40"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Awl-6V-uVP"/>
@@ -397,19 +397,19 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="หรือ ลงชื่อเข้าใช้งานผ่าน" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NPv-Or-XUh">
-                                        <rect key="frame" x="133.5" y="517.5" width="147.5" height="26"/>
+                                        <rect key="frame" x="113.66666666666667" y="511" width="147.66666666666663" height="26"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ยืนยันรหัสผ่าน" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bWs-Mt-w12">
-                                        <rect key="frame" x="20.5" y="387.5" width="373" height="40"/>
+                                        <rect key="frame" x="18.666666666666657" y="381" width="337.66666666666674" height="40"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IXM-Ry-gy9">
-                                        <rect key="frame" x="229" y="583.5" width="60" height="60"/>
+                                        <rect key="frame" x="204.33333333333334" y="577" width="60.000000000000028" height="60"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-google" translatesAutoresizingMaskIntoConstraints="NO" id="lmi-h2-bSG">
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
@@ -423,7 +423,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1oy-yr-Vdo">
-                                        <rect key="frame" x="125.5" y="583.5" width="60" height="60"/>
+                                        <rect key="frame" x="110.66666666666669" y="577" width="60" height="60"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-facebook" translatesAutoresizingMaskIntoConstraints="NO" id="47c-fo-VlS">
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
@@ -438,41 +438,41 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cJ0-z8-fdT">
-                                        <rect key="frame" x="20.5" y="262.5" width="373" height="0.5"/>
+                                        <rect key="frame" x="18.666666666666657" y="255.99999999999997" width="337.66666666666674" height="0.66666666666665719"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.5" id="tXy-en-ElT"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tze-2n-SCh">
-                                        <rect key="frame" x="20.5" y="427" width="373" height="0.5"/>
+                                        <rect key="frame" x="18.666666666666657" y="420.33333333333331" width="337.66666666666674" height="0.66666666666668561"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.5" id="szQ-6l-aLm"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mzX-Nk-lKA">
-                                        <rect key="frame" x="20.5" y="332.5" width="373" height="0.5"/>
+                                        <rect key="frame" x="18.666666666666657" y="326" width="337.66666666666674" height="0.66666666666668561"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.5" id="P7L-bs-LcP"/>
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-username" translatesAutoresizingMaskIntoConstraints="NO" id="Rxp-g3-AQr">
-                                        <rect key="frame" x="30.5" y="233" width="20" height="20"/>
+                                        <rect key="frame" x="28.666666666666671" y="226.66666666666669" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="gxb-ui-5ZO"/>
                                             <constraint firstAttribute="width" secondItem="Rxp-g3-AQr" secondAttribute="height" multiplier="1:1" id="zt1-0n-Oag"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-password" translatesAutoresizingMaskIntoConstraints="NO" id="dVZ-0C-ad0">
-                                        <rect key="frame" x="30.5" y="303" width="20" height="20"/>
+                                        <rect key="frame" x="28.666666666666671" y="296.66666666666669" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="jcF-FX-hj0"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-password" translatesAutoresizingMaskIntoConstraints="NO" id="bwe-Kr-S5v">
-                                        <rect key="frame" x="30.5" y="397.5" width="20" height="20"/>
+                                        <rect key="frame" x="28.666666666666671" y="391" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="UdU-o2-J1w"/>
                                         </constraints>
@@ -558,14 +558,14 @@
             <objects>
                 <viewController storyboardIdentifier="ForgotPasswordViewController" id="bNh-MO-bgB" customClass="ForgotPasswordViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ltV-9c-Cuw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SOj-mI-FAg">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="อีเมล/เบอร์โทรศัพท์มือถือ" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zQ4-0W-Pdo">
-                                        <rect key="frame" x="20.5" y="223" width="373" height="40"/>
+                                        <rect key="frame" x="18.666666666666657" y="216.66666666666669" width="337.66666666666674" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="SLl-Sd-1kP"/>
                                         </constraints>
@@ -574,14 +574,14 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-username" translatesAutoresizingMaskIntoConstraints="NO" id="Mai-xo-GyA">
-                                        <rect key="frame" x="30.5" y="233" width="20" height="20"/>
+                                        <rect key="frame" x="28.666666666666671" y="226.66666666666669" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Mai-xo-GyA" secondAttribute="height" multiplier="1:1" id="qXM-fH-guj"/>
                                             <constraint firstAttribute="width" constant="20" id="wxE-KF-d6P"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBc-pZ-dkF">
-                                        <rect key="frame" x="20.5" y="293" width="373" height="40"/>
+                                        <rect key="frame" x="18.666666666666657" y="286.66666666666669" width="337.66666666666674" height="40"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="gWK-le-nQR"/>
@@ -595,16 +595,16 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-logo" translatesAutoresizingMaskIntoConstraints="NO" id="qRO-Pg-e4i">
-                                        <rect key="frame" x="103.5" y="60" width="207" height="69"/>
+                                        <rect key="frame" x="93.666666666666671" y="60" width="187.66666666666663" height="62.666666666666657"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="กรอกอีเมล/เบอร์มือถือ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZ3-Vu-BAu">
-                                        <rect key="frame" x="118.5" y="169" width="177" height="34"/>
+                                        <rect key="frame" x="99" y="162.66666666666666" width="177" height="34"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="26"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AzP-hz-ReP">
-                                        <rect key="frame" x="20.5" y="262.5" width="373" height="0.5"/>
+                                        <rect key="frame" x="18.666666666666657" y="255.99999999999997" width="337.66666666666674" height="0.66666666666665719"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.5" id="VJA-wi-e1x"/>
@@ -657,7 +657,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeA-eT-dMe">
@@ -701,7 +701,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="06S-5S-9wl">
-                                <rect key="frame" x="107" y="756" width="200" height="30"/>
+                                <rect key="frame" x="87.666666666666686" y="672" width="200" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="MdR-ra-a1e"/>
                                 </constraints>
@@ -735,53 +735,53 @@
                         <viewControllerLayoutGuide type="bottom" id="7ee-Y1-WnB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ekl-Pb-NSL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_camera_close" translatesAutoresizingMaskIntoConstraints="NO" id="LyI-UH-Fst">
-                                <rect key="frame" x="363" y="60" width="35" height="35"/>
+                                <rect key="frame" x="324" y="60" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="LyI-UH-Fst" secondAttribute="height" multiplier="1:1" id="9Fi-Gh-BJC"/>
                                     <constraint firstAttribute="width" constant="35" id="ASM-hv-3vn"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_camera_close_flash" translatesAutoresizingMaskIntoConstraints="NO" id="OIH-6Q-S2Q">
-                                <rect key="frame" x="189.5" y="60" width="35" height="35"/>
+                                <rect key="frame" x="170" y="60" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="OIH-6Q-S2Q" secondAttribute="height" multiplier="1:1" id="AfC-ca-J9P"/>
                                     <constraint firstAttribute="width" constant="35" id="i8n-3t-xLy"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3z2-cE-Hqn">
-                                <rect key="frame" x="0.0" y="717" width="414" height="179"/>
+                                <rect key="frame" x="0.0" y="649.66666666666663" width="375" height="162.33333333333337"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fY6-I0-wfd">
-                                        <rect key="frame" x="206.5" y="9" width="1" height="161"/>
+                                        <rect key="frame" x="187" y="8" width="1" height="146.33333333333334"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="1" id="QNH-60-I9b"/>
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_camera_qrcode" translatesAutoresizingMaskIntoConstraints="NO" id="BVu-n3-hMO">
-                                        <rect key="frame" x="274.5" y="48.5" width="72" height="71.5"/>
+                                        <rect key="frame" x="248.66666666666663" y="43.666666666666742" width="65" height="65"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="BVu-n3-hMO" secondAttribute="height" multiplier="1:1" id="NIR-5a-Bmk"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Barcode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="TV3-Km-rYF">
-                                        <rect key="frame" x="77.5" y="120" width="52" height="26"/>
+                                        <rect key="frame" x="67.666666666666671" y="108.66666666666674" width="52" height="26"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QR Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VHb-ya-vbp">
-                                        <rect key="frame" x="280.5" y="120" width="60" height="26"/>
+                                        <rect key="frame" x="251.33333333333337" y="108.66666666666674" width="60" height="26"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_camera_barcode" translatesAutoresizingMaskIntoConstraints="NO" id="rZ6-av-gPJ">
-                                        <rect key="frame" x="67.5" y="48.5" width="72" height="71.5"/>
+                                        <rect key="frame" x="61.333333333333343" y="43.666666666666742" width="65" height="65"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -850,18 +850,18 @@
                         <viewControllerLayoutGuide type="bottom" id="5oo-MO-Bcu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="yqu-aR-84p">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_camera_close" translatesAutoresizingMaskIntoConstraints="NO" id="rqK-Tr-nCu">
-                                <rect key="frame" x="363" y="60" width="35" height="35"/>
+                                <rect key="frame" x="324" y="60" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="XV3-xb-IxH"/>
                                     <constraint firstAttribute="width" secondItem="rqK-Tr-nCu" secondAttribute="height" multiplier="1:1" id="rpm-Ud-yHf"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_camera_close_flash" translatesAutoresizingMaskIntoConstraints="NO" id="zSy-Ve-aHV">
-                                <rect key="frame" x="189.5" y="60" width="35" height="35"/>
+                                <rect key="frame" x="170" y="60" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="zSy-Ve-aHV" secondAttribute="height" multiplier="1:1" id="Fgi-ST-jKo"/>
                                     <constraint firstAttribute="width" constant="35" id="Tvb-sB-Ckc"/>
@@ -901,26 +901,26 @@
             <objects>
                 <viewController storyboardIdentifier="VerifyViewController" id="Vxx-ya-bVl" customClass="VerifyViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1UC-eN-5BO">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lrs-tA-6oT">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ยืนยันตัวตน" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nat-pu-F0s">
-                                        <rect key="frame" x="161" y="169" width="92" height="34"/>
+                                        <rect key="frame" x="141.66666666666666" y="162.66666666666666" width="92" height="34"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="26"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-logo" translatesAutoresizingMaskIntoConstraints="NO" id="p12-D7-JLU">
-                                        <rect key="frame" x="103.5" y="60" width="207" height="69"/>
+                                        <rect key="frame" x="93.666666666666671" y="60" width="187.66666666666663" height="62.666666666666657"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="p12-D7-JLU" secondAttribute="height" multiplier="3:1" id="Ibt-po-7QS"/>
                                         </constraints>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="อีเมล/เบอร์โทรศัพท์มือถือ" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EGD-2n-m1z">
-                                        <rect key="frame" x="20.5" y="223" width="373" height="40"/>
+                                        <rect key="frame" x="18.666666666666657" y="216.66666666666669" width="337.66666666666674" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="aFh-EL-hUb"/>
                                         </constraints>
@@ -929,19 +929,19 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-username" translatesAutoresizingMaskIntoConstraints="NO" id="O7s-qC-Xn3">
-                                        <rect key="frame" x="30.5" y="233" width="20" height="20"/>
+                                        <rect key="frame" x="28.666666666666671" y="226.66666666666669" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="UrO-ic-dGV"/>
                                         </constraints>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="รหัส OTP" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PZt-tb-sph">
-                                        <rect key="frame" x="20.5" y="293" width="224" height="40"/>
+                                        <rect key="frame" x="18.666666666666671" y="286.66666666666669" width="202.66666666666663" height="40"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m79-CZ-tLG">
-                                        <rect key="frame" x="20.5" y="363" width="373" height="40"/>
+                                        <rect key="frame" x="18.666666666666657" y="356.66666666666669" width="337.66666666666674" height="40"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="owG-VD-CLf"/>
@@ -955,35 +955,35 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VxS-R8-0xn">
-                                        <rect key="frame" x="20.5" y="262.5" width="373" height="0.5"/>
+                                        <rect key="frame" x="18.666666666666657" y="255.99999999999997" width="337.66666666666674" height="0.66666666666665719"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.5" id="h48-88-XTJ"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QrC-xQ-6zI">
-                                        <rect key="frame" x="20.5" y="332.5" width="224" height="0.5"/>
+                                        <rect key="frame" x="18.666666666666671" y="326" width="202.66666666666663" height="0.66666666666668561"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.5" id="24U-nC-ptk"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQc-5t-Ppy">
-                                        <rect key="frame" x="313.5" y="303" width="80" height="30"/>
+                                        <rect key="frame" x="276.33333333333331" y="296.66666666666669" width="80" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="fru-yg-0mk"/>
                                             <constraint firstAttribute="width" constant="80" id="hwk-Fa-AyN"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                         <state key="normal" title="ส่ง">
-                                            <color key="titleColor" red="0.82352941180000006" green="0.1215686275" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="titleColor" red="1" green="0.035294117647058823" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="sendTapped:" destination="Vxx-ya-bVl" eventType="touchUpInside" id="7tM-I6-2OO"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-sms" translatesAutoresizingMaskIntoConstraints="NO" id="p6I-Q8-hzV">
-                                        <rect key="frame" x="30.5" y="303" width="20" height="20"/>
+                                        <rect key="frame" x="28.666666666666671" y="296.66666666666669" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="Drg-fe-91W"/>
                                         </constraints>
@@ -1046,16 +1046,16 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic-facebook" width="100" height="103"/>
-        <image name="ic-google" width="100" height="102"/>
+        <image name="ic-facebook" width="150" height="154"/>
+        <image name="ic-google" width="150" height="153"/>
         <image name="ic-logo" width="570" height="166"/>
-        <image name="ic-password" width="60" height="62"/>
-        <image name="ic-sms" width="60" height="62"/>
-        <image name="ic-username" width="60" height="62"/>
-        <image name="ic_camera_barcode" width="80" height="80"/>
-        <image name="ic_camera_browse" width="60" height="60"/>
-        <image name="ic_camera_close" width="60" height="60"/>
-        <image name="ic_camera_close_flash" width="60" height="60"/>
-        <image name="ic_camera_qrcode" width="80" height="80"/>
+        <image name="ic-password" width="90" height="93"/>
+        <image name="ic-sms" width="90" height="93"/>
+        <image name="ic-username" width="90" height="93"/>
+        <image name="ic_camera_barcode" width="120" height="120"/>
+        <image name="ic_camera_browse" width="90" height="90"/>
+        <image name="ic_camera_close" width="90" height="90"/>
+        <image name="ic_camera_close_flash" width="90" height="90"/>
+        <image name="ic_camera_qrcode" width="120" height="120"/>
     </resources>
 </document>

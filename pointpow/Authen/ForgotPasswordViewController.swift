@@ -23,24 +23,10 @@ class ForgotPasswordViewController: BaseViewController {
         
         self.setUp()
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = .clear
-        
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-        self.navigationController?.navigationBar.shadowImage = nil
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = nil
-        
-    }
+   
     func setUp(){
-        self.resetButton.borderDarkGrayColorProperties()
+        self.resetButton.borderClearProperties(borderWidth: 1)
+        self.resetButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
         
         if #available(iOS 10.0, *) {
             self.usernameTextField.textContentType = UITextContentType(rawValue: "")
@@ -48,6 +34,7 @@ class ForgotPasswordViewController: BaseViewController {
         if #available(iOS 12.0, *) {
             self.usernameTextField.textContentType = .oneTimeCode
         }
+        self.usernameTextField.setLeftPaddingPoints(40)
         
         self.usernameTextField.delegate = self
         self.usernameTextField.autocorrectionType = .no

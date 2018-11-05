@@ -25,6 +25,7 @@ class BaseViewController: UIViewController {
     private var cartImageView:UIImageView?
     private var moreImageView:UIImageView?
     
+    var backgroundImage:UIImageView?
     
     private var _fbLoginManager: FBSDKLoginManager?
     var fbLoginManager: FBSDKLoginManager {
@@ -78,6 +79,16 @@ class BaseViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(GoogleSigInSuccess), name: NSNotification.Name(rawValue: Constant.DefaultConstansts.NotificationGoogleSigInSuccess), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(GoogleSigInFailure), name: NSNotification.Name(rawValue: Constant.DefaultConstansts.NotificationGoogleSigInFailure), object: nil)
+        
+        
+        backgroundImage = UIImageView()
+        backgroundImage!.image = UIImage(named: "background_image")
+        backgroundImage!.frame = self.view.frame
+        backgroundImage!.contentMode = .scaleAspectFill
+        backgroundImage!.clipsToBounds = true
+        
+        self.view.addSubview(backgroundImage!)
+        self.view.sendSubviewToBack(backgroundImage!)
         
         
         var v:UIView = self.view
@@ -225,6 +236,12 @@ class BaseViewController: UIViewController {
     }
     func showLogin(_ animated:Bool){
         if let vc:LoginViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    func showVerify(_ animated:Bool){
+        if let vc:VerifyViewController = self.storyboard?.instantiateViewController(withIdentifier: "VerifyViewController") as? VerifyViewController {
             
             self.navigationController?.pushViewController(vc, animated: animated)
         }
@@ -458,15 +475,8 @@ extension BaseViewController {
 extension BaseViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         let y = textField.frame.origin.y + (textField.superview?.frame.origin.y)!;
-        self.positionYTextField = y + 20
+        self.positionYTextField = y + 10
         
-    }
-}
-extension BaseViewController: UITextViewDelegate{
-    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        let y = textView.frame.origin.y + (textView.superview?.frame.origin.y)!;
-        self.positionYTextField = y + 20
-        return true
     }
 }
 extension BaseViewController:GIDSignInUIDelegate {

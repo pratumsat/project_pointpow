@@ -13,7 +13,8 @@ class IntroCell1: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+     
+        
     }
 
 }

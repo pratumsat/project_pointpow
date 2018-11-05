@@ -20,10 +20,6 @@ class IntroViewController: BaseViewController, UICollectionViewDelegate , UIColl
        self.setUp()
     }
     func setUp(){
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = .clear
         
         
         self.pageControl.numberOfPages = 5
@@ -34,11 +30,19 @@ class IntroViewController: BaseViewController, UICollectionViewDelegate , UIColl
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
          (self.navigationController as! IntroNav).hideStatusBar()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-         (self.navigationController as! IntroNav).showStatusBar()
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        self.navigationController?.navigationBar.shadowImage = nil
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = nil
+        (self.navigationController as! IntroNav).showStatusBar()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

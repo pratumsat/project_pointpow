@@ -10,6 +10,8 @@ import UIKit
 
 class LoginViewController: BaseViewController {
 
+    @IBOutlet weak var googleView: UIView!
+    @IBOutlet weak var facebookView: UIView!
     @IBOutlet weak var forgotLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
     
@@ -23,10 +25,13 @@ class LoginViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = NSLocalizedString("string-title-login", comment: "")
         self.setUp()
     }
+   
     func setUp(){
-        self.loginButton.borderDarkGrayColorProperties()
+        self.loginButton.borderClearProperties(borderWidth: 1)
+        self.loginButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
         
         
         let forgot = UITapGestureRecognizer(target: self, action: #selector(forgotTapped))
@@ -42,7 +47,8 @@ class LoginViewController: BaseViewController {
             self.usernameTextField.textContentType = .oneTimeCode
             self.passwordTextField.textContentType = .oneTimeCode
         }
-        
+        self.usernameTextField.setLeftPaddingPoints(40)
+        self.passwordTextField.setLeftPaddingPoints(40)
         
         self.usernameTextField.delegate = self
         self.passwordTextField.delegate = self

@@ -10,6 +10,8 @@ import UIKit
 
 class RegisterViewController: BaseViewController {
 
+    @IBOutlet weak var googleView: UIView!
+    @IBOutlet weak var facebookView: UIView!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
@@ -25,10 +27,13 @@ class RegisterViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       self.setUp()
+        self.title = NSLocalizedString("string-title-register", comment: "")
+        self.setUp()
     }
+    
     func setUp(){
-        self.registerButton.borderDarkGrayColorProperties()
+        self.registerButton.borderClearProperties(borderWidth: 1)
+        self.registerButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
         
         
         if #available(iOS 10.0, *) {
@@ -42,6 +47,9 @@ class RegisterViewController: BaseViewController {
             self.confirmPasswordTextField.textContentType = .oneTimeCode
         }
         
+        self.usernameTextField.setLeftPaddingPoints(40)
+        self.passwordTextField.setLeftPaddingPoints(40)
+        self.confirmPasswordTextField.setLeftPaddingPoints(40)
         
         self.usernameTextField.delegate = self
         self.passwordTextField.delegate = self
@@ -132,6 +140,7 @@ class RegisterViewController: BaseViewController {
     }
     
     @IBAction func registerTapped(_ sender: Any) {
+        self.showVerify(true)
     }
     
 

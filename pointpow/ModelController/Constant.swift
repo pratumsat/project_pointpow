@@ -118,9 +118,26 @@ extension UITextField {
         return imageView
         
     }
+    func setLeftPaddingPoints(_ amount:CGFloat){
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+        self.leftView = paddingView
+        self.leftViewMode = .always
+    }
    
 }
+
 extension UIView {
+    func applyGradient(colours: [UIColor]) -> Void {
+        self.applyGradient(colours, locations: nil)
+    }
+    
+    func applyGradient(_ colours: [UIColor], locations: [NSNumber]?) -> Void {
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = self.bounds
+        gradient.colors = colours.map { $0.cgColor }
+        gradient.locations = locations
+        self.layer.insertSublayer(gradient, at: 0)
+    }
     func clearConstraints() {
         for subview in self.subviews {
             subview.clearConstraints()
@@ -135,9 +152,9 @@ extension UIView {
     }
     
     func borderRedColorProperties(borderWidth:CGFloat = 1.0){
-        self.layer.cornerRadius = 5
+        self.layer.cornerRadius = self.frame.size.height/2;
         self.layer.borderWidth = borderWidth
-        self.layer.borderColor = Constant.Colors.BORDER_RED_COLOR.cgColor
+        self.layer.borderColor = Constant.Colors.PRIMARY_COLOR.cgColor
         self.layer.masksToBounds = true
     }
     func borderLightGrayColorProperties(borderWidth:CGFloat = 1.0){
@@ -159,9 +176,15 @@ extension UIView {
         self.layer.masksToBounds = true
     }
     func borderProperties(borderWidth:CGFloat = 1.0){
-        self.layer.cornerRadius = 5
+        self.layer.cornerRadius = self.frame.size.height/2;
         self.layer.borderWidth = borderWidth
         self.layer.borderColor = self.backgroundColor?.cgColor
+        self.layer.masksToBounds = true
+    }
+    func borderClearProperties(borderWidth:CGFloat = 1.0){
+        self.layer.cornerRadius = self.frame.size.height/2;
+        self.layer.borderWidth = borderWidth
+        self.layer.borderColor = UIColor.clear.cgColor
         self.layer.masksToBounds = true
     }
     func shadowCellProperties() {
@@ -319,16 +342,22 @@ struct Constant {
         static let NotificationGoogleSigInFailure = "NotificationGoogleSigInFailure"
     }
     struct Colors {
-        static let BORDER_RED_COLOR = UIColor(rgb: 0xEB0000)
-        static let FONT_RED_COLOR = UIColor(rgb: 0xEE0032)
+        static let PRIMARY_COLOR = UIColor(rgb: 0xFF092E)
+        
+        static let GRADIENT_2 = UIColor(rgb: 0xFA001E)
+        static let GRADIENT_1 = UIColor(rgb: 0xFA0041)
     }
     struct Fonts {
         struct Size {
+            static let BIG_TITLE = CGFloat(28.0)
             static let TITLE = CGFloat(22.0)
-            static let SEGMENT_CONTROL = CGFloat(20.0)
-            static let ADDRESS = CGFloat(18.0)
-            static let PRODUCT_REACHED = CGFloat(16.0)
+            static let BUTTON = CGFloat(20.0)
+            static let TEXTFIELD = CGFloat(18.0)
+            static let UNDER_TEXTFIELD = CGFloat(15.0)
             static let CONTENT = CGFloat(20.0)
+            
+            
+            
         }
         static let THAI_SANS_BOLD = "ThaiSansNeue-Bold"
         static let THAI_SANS_REGULAR = "ThaiSansNeue-Regular"

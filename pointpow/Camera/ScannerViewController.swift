@@ -53,6 +53,8 @@ class ScannerViewController: BaseViewController ,AVCaptureMetadataOutputObjectsD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.backgroundImage?.image = nil
+
         view.backgroundColor = UIColor.black
         
         let close = UITapGestureRecognizer(target: self, action: #selector(dismissTapped))

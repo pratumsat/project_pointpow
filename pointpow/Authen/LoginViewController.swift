@@ -123,6 +123,9 @@ class LoginViewController: BaseViewController {
         self.showForgot(true)
     }
 
+    @IBAction func loginTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 

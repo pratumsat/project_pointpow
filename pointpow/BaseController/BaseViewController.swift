@@ -21,6 +21,7 @@ class BaseViewController: UIViewController {
     var socialLoginSucces:Bool?
     let modelCtrl:ModelController = ModelController()
     private var popUpViewController:PopUpViewController?  // for dismiss
+    private var personalViewController:PersonalPopupViewController?  // for dismiss
     private var searchImageView:UIImageView?
     private var cartImageView:UIImageView?
     private var moreImageView:UIImageView?
@@ -259,6 +260,64 @@ class BaseViewController: UIViewController {
         }
     }
     
+    func showPointManagement(_ animated:Bool){
+        if let vc:PointManageViewController = self.storyboard?.instantiateViewController(withIdentifier: "PointManageViewController") as? PointManageViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    
+    
+    func showPersonalPopup(_ animated:Bool){
+        let presenter: Presentr = {
+            
+            let w = self.view.frame.width * 0.9
+            let width = ModalSize.custom(size: Float(w))
+            let height = ModalSize.custom(size: Float(w))
+            
+            let center = ModalCenterPosition.center
+            let customType = PresentationType.custom(width: width, height: height, center: center)
+            
+            let customPresenter = Presentr(presentationType: customType)
+            customPresenter.roundCorners = true
+            customPresenter.cornerRadius = 10
+            customPresenter.dismissOnSwipe = true
+            customPresenter.dismissOnSwipeDirection = .top
+            customPresenter.dismissOnTap = false
+            
+            let customview = UIView()
+            customview.frame = self.view.frame
+            
+            
+            let centerPoint = self.view.center
+            let popWidth = self.view.frame.width * 0.8
+            let popHeight = popWidth / 925 * 1105
+            let x = centerPoint.x + popWidth/2
+            let y = centerPoint.y - popHeight/2 - 20
+            let image = UIImageView()
+            image.frame = CGRect(x: x, y: y, width: 20, height: 20)
+            image.image = UIImage(named: "ic-x-white")
+            image.contentMode = .scaleAspectFit
+            customview.addSubview(image)
+
+
+            image.isUserInteractionEnabled = true
+            let dismiss = UITapGestureRecognizer(target: self, action: #selector(dismissPersonalPoPup))
+            image.addGestureRecognizer(dismiss)
+            
+            
+            customPresenter.customBackgroundView = customview
+            
+            return customPresenter
+        }()
+        
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "PersonalPopupViewController") as? PersonalPopupViewController{
+            self.personalViewController = vc
+            customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)
+            
+        }
+    }
+    
   /*
     
     func showPoPup(_ animated:Bool){
@@ -313,10 +372,12 @@ class BaseViewController: UIViewController {
     }
     */
     
+    
     func showMessagePrompt(_ message:String){
         let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
         let ok = UIAlertAction(title: NSLocalizedString("string-button-ok", comment: ""), style: .cancel, handler: nil)
         alert.addAction(ok)
+        
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -329,14 +390,20 @@ class BaseViewController: UIViewController {
             
             deleteCallback?()
         })
-        let cancel = UIAlertAction(title: NSLocalizedString("string-dailog-title-button-cancel", comment: ""), style: .cancel, handler: nil)
-        alert.addAction(delete)
+        let cancel = UIAlertAction(title: NSLocalizedString("string-dailog-title-button-cancel", comment: ""), style: .default, handler: nil)
+        
+        
+        
         alert.addAction(cancel)
+        alert.addAction(delete)
         self.present(alert, animated: true, completion: nil)
     }
     
     @objc func dismissPoPup(){
         self.popUpViewController?.dismiss(animated: true, completion: nil)
+    }
+    @objc func dismissPersonalPoPup(){
+        self.personalViewController?.dismiss(animated: true, completion: nil)
     }
     @objc func dismissKeyboard(){
         view.endEditing(true)
@@ -428,7 +495,7 @@ extension BaseViewController {
         let setting = NSLocalizedString("string-button-access-setting", comment: "")
         let cancel = NSLocalizedString("string-button-access-cancel", comment: "")
         
-        let ac = UIAlertController(title: title, message:  message, preferredStyle: .alert)
+        let alert = UIAlertController(title: title, message:  message, preferredStyle: .alert)
         let actionSetting = UIAlertAction(title: setting, style: .default) { (action) in
             guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
                 return
@@ -442,9 +509,11 @@ extension BaseViewController {
             }
         }
         let actionCancel = UIAlertAction(title: cancel, style: .cancel) { (action) in }
-        ac.addAction(actionSetting)
-        ac.addAction(actionCancel)
-        self.present(ac, animated: true, completion: nil)
+        
+        
+        alert.addAction(actionSetting)
+        alert.addAction(actionCancel)
+        self.present(alert, animated: true, completion: nil)
     }
     
     func cannotAccessPhoto(){
@@ -453,7 +522,7 @@ extension BaseViewController {
         let setting = NSLocalizedString("string-button-access-setting", comment: "")
         let cancel = NSLocalizedString("string-button-access-cancel", comment: "")
         
-        let ac = UIAlertController(title: title, message:  message, preferredStyle: .alert)
+        let alert = UIAlertController(title: title, message:  message, preferredStyle: .alert)
         let actionSetting = UIAlertAction(title: setting, style: .default) { (action) in
             guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
                 return
@@ -467,15 +536,17 @@ extension BaseViewController {
             }
         }
         let actionCancel = UIAlertAction(title: cancel, style: .cancel) { (action) in }
-        ac.addAction(actionSetting)
-        ac.addAction(actionCancel)
-        self.present(ac, animated: true, completion: nil)
+        
+        
+        alert.addAction(actionSetting)
+        alert.addAction(actionCancel)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 extension BaseViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         let y = textField.frame.origin.y + (textField.superview?.frame.origin.y)!;
-        self.positionYTextField = y + 10
+        self.positionYTextField = y
         
     }
 }

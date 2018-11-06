@@ -393,6 +393,7 @@ class ScannerViewController: BaseViewController ,AVCaptureMetadataOutputObjectsD
         let message = NSLocalizedString("string-message-invalid-qr", comment: "")
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("alert-confirm-phone", comment: ""), style: UIAlertAction.Style.default, handler: nil))
+        
         self.present(alert, animated: true, completion: nil)
         
     }
@@ -476,9 +477,10 @@ class ScannerViewController: BaseViewController ,AVCaptureMetadataOutputObjectsD
     func failed() {
         let title = NSLocalizedString("string-title-scan-fail", comment: "")
         let message = NSLocalizedString("string-message-scan-fail", comment: "")
-        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: NSLocalizedString("alert-confirm-phone", comment: ""), style: .default))
-        self.present(ac, animated: true, completion: nil)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("alert-confirm-phone", comment: ""), style: .default))
+        
+        self.present(alert, animated: true, completion: nil)
         captureSession = nil
     }
     override func viewWillAppear(_ animated: Bool) {

@@ -15,6 +15,7 @@
 		C10CA19D21914B1B00316DF3 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA19C21914B1B00316DF3 /* AccountViewController.swift */; };
 		C10CA1A021914B8900316DF3 /* PointManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA19F21914B8900316DF3 /* PointManageViewController.swift */; };
 		C10CA1A221914F2E00316DF3 /* MainTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA1A121914F2E00316DF3 /* MainTabbarViewController.swift */; };
+		C10CA1A42191755C00316DF3 /* PersonalPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA1A32191755C00316DF3 /* PersonalPopupViewController.swift */; };
 		C11A93AE218BF67F00627B44 /* IntroNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93AD218BF67F00627B44 /* IntroNav.swift */; };
 		C11A93B1218BF69700627B44 /* MainNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93B0218BF69700627B44 /* MainNav.swift */; };
 		C11A93B3218BF6D200627B44 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93B2218BF6D200627B44 /* IntroViewController.swift */; };
@@ -78,6 +79,7 @@
 		C10CA19C21914B1B00316DF3 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		C10CA19F21914B8900316DF3 /* PointManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointManageViewController.swift; sourceTree = "<group>"; };
 		C10CA1A121914F2E00316DF3 /* MainTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbarViewController.swift; sourceTree = "<group>"; };
+		C10CA1A32191755C00316DF3 /* PersonalPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPopupViewController.swift; sourceTree = "<group>"; };
 		C11A93AD218BF67F00627B44 /* IntroNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroNav.swift; sourceTree = "<group>"; };
 		C11A93B0218BF69700627B44 /* MainNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNav.swift; sourceTree = "<group>"; };
 		C11A93B2218BF6D200627B44 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				C10CA19F21914B8900316DF3 /* PointManageViewController.swift */,
+				C10CA1A32191755C00316DF3 /* PersonalPopupViewController.swift */,
 			);
 			path = Point;
 			sourceTree = "<group>";
@@ -651,6 +654,7 @@
 				C1AD50B22187FEE300F74415 /* ModelController.swift in Sources */,
 				C10CA19721914AD500316DF3 /* PromotionViewController.swift in Sources */,
 				C10CA1A221914F2E00316DF3 /* MainTabbarViewController.swift in Sources */,
+				C10CA1A42191755C00316DF3 /* PersonalPopupViewController.swift in Sources */,
 				C1DEBE9521882F6F00CBB95F /* BaseNavigationViewController.swift in Sources */,
 				C1AD507A2187F45600F74415 /* AppDelegate.swift in Sources */,
 				C10CA19D21914B1B00316DF3 /* AccountViewController.swift in Sources */,

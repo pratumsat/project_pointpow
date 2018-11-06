@@ -30,11 +30,23 @@ class MainTabbarViewController: UITabBarController {
         image.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         
-        tabBar.addSubview(image)
+        self.view.addSubview(image)
         tabBar.centerXAnchor.constraint(equalTo: image.centerXAnchor).isActive = true
         tabBar.topAnchor.constraint(equalTo: image.centerYAnchor).isActive = true
+        
+        
+        let point = UITapGestureRecognizer(target: self, action: #selector(pointTapped))
+        image.isUserInteractionEnabled = true
+        image.addGestureRecognizer(point)
+        
+        
     }
-    
+    @objc func pointTapped(){
+        if let vc:PointManageViewController = self.storyboard?.instantiateViewController(withIdentifier: "PointManageViewController") as? PointManageViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 
     /*
     // MARK: - Navigation

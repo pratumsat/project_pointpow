@@ -11,7 +11,7 @@ import FBSDKLoginKit
 import GoogleSignIn
 import Presentr
 
-class BaseViewController: UIViewController {
+class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
 
     var positionYTextField:CGFloat = 0
     var isShowKeyBoard = false
@@ -22,6 +22,12 @@ class BaseViewController: UIViewController {
     let modelCtrl:ModelController = ModelController()
     private var popUpViewController:PopUpViewController?  // for dismiss
     private var personalViewController:PersonalPopupViewController?  // for dismiss
+    
+    
+    var handlerDidCancel: (()->Void)?
+    var handlerEnterSuccess: (()->Void)?
+    var hendleSetPasscodeSuccess: ((_ passcode:String)->Void)?
+    
     private var searchImageView:UIImageView?
     private var cartImageView:UIImageView?
     private var moreImageView:UIImageView?
@@ -267,8 +273,91 @@ class BaseViewController: UIViewController {
         }
     }
     
+   
+    func showEnterPassCodeModalView(_ title:String = NSLocalizedString("title-enter-passcode", comment: "")){
+        let enterPasscode = PAPasscodeViewController(for: PasscodeActionEnter )
+        enterPasscode!.delegate = self
+        enterPasscode?.title = title
+        
+        let navController = UINavigationController(rootViewController: enterPasscode!)
+        navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black,
+                                                           NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.TITLE )!]
+        
+        
+        
+        let presenter: Presentr = {
+            let w = self.view.frame.width
+            
+            let width = ModalSize.custom(size: Float(w))
+            let height = ModalSize.custom(size: Float(w / 300 * 360))
+            
+            let center = ModalCenterPosition.bottomCenter
+            let customType = PresentationType.custom(width: width, height: height, center: center)
+            
+            let customPresenter = Presentr(presentationType: customType)
+            customPresenter.dismissOnTap = false
+            
+            return customPresenter
+        }()
+        
+        customPresentViewController(presenter, viewController: navController, animated: true, completion: nil)
+    }
+    func showSettingPassCodeModalView(_ title:String = NSLocalizedString("title-set-passcode", comment: "")){
+        let enterPasscode = PAPasscodeViewController(for: PasscodeActionSet )
+        enterPasscode!.delegate = self
+        enterPasscode?.title = title
+        
+        let navController = UINavigationController(rootViewController: enterPasscode!)
+        navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black,
+                                                           NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.TITLE )!]
+        
+        
+        
+        let presenter: Presentr = {
+            let w = self.view.frame.width
+            
+            let width = ModalSize.custom(size: Float(w))
+            let height = ModalSize.custom(size: Float(w / 300 * 500))
+            
+            let center = ModalCenterPosition.bottomCenter
+            let customType = PresentationType.custom(width: width, height: height, center: center)
+            
+            let customPresenter = Presentr(presentationType: customType)
+            customPresenter.dismissOnTap = false
+            
+            return customPresenter
+        }()
+        
+        customPresentViewController(presenter, viewController: navController, animated: true, completion: nil)
+    }
+    func paPasscodeViewControllerDidCancel(_ controller: PAPasscodeViewController!) {
+        print("paPasscodeViewControllerDidCancel")
+        
+        self.handlerDidCancel?()
+        controller.dismiss(animated: true, completion: nil)
+        
+    }
+    func paPasscodeViewControllerDidEnterPasscodeResult(_ controller: PAPasscodeViewController!, didEnterPassCode passcode: String!) {
+        print("enter passcode: \(passcode ?? "unknow")")
+        
+        controller.dismiss(animated: false, completion: { () in
+            self.handlerEnterSuccess?()
+        })
+        //controller.showFailedMessage("")
+    }
+    func paPasscodeViewControllerDidSetPasscode(_ controller: PAPasscodeViewController!, didSetPassCode passcode: String!) {
+        
+        print("set passcode: \(passcode ?? "unknow")")
     
-    func showPersonalPopup(_ animated:Bool){
+        controller.dismiss(animated: false, completion: { () in
+            self.hendleSetPasscodeSuccess?(passcode)
+        })
+        
+        
+        
+    }
+    
+    func showPersonalPopup(_ animated:Bool , nextStepCallback:(()->Void)? = nil ){
         let presenter: Presentr = {
             
             let w = self.view.frame.width * 0.9
@@ -290,9 +379,9 @@ class BaseViewController: UIViewController {
             
             
             let centerPoint = self.view.center
-            let popWidth = self.view.frame.width * 0.8
-            let popHeight = popWidth / 925 * 1105
-            let x = centerPoint.x + popWidth/2
+            let popWidth = self.view.frame.width * 0.9
+            let popHeight = popWidth
+            let x = centerPoint.x + popWidth/2 - 5
             let y = centerPoint.y - popHeight/2 - 20
             let image = UIImageView()
             image.frame = CGRect(x: x, y: y, width: 20, height: 20)
@@ -312,7 +401,15 @@ class BaseViewController: UIViewController {
         }()
         
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "PersonalPopupViewController") as? PersonalPopupViewController{
+            
+            vc.nextStep =  {
+                nextStepCallback?()
+            }
+            
             self.personalViewController = vc
+            
+            
+            
             customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)
             
         }

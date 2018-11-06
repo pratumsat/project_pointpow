@@ -1020,7 +1020,6 @@
         <!--Main Tabbar View Controller-->
         <scene sceneID="hdo-Pu-Z4W">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="q4L-4d-PtE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController storyboardIdentifier="MainTabbarViewController" id="En2-YO-gRH" customClass="MainTabbarViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="rXU-l9-Q4p"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UJe-NT-jdP">
@@ -1036,6 +1035,7 @@
                         <segue destination="Rg2-8z-TPW" kind="relationship" relationship="viewControllers" id="cIP-T4-kwV"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q4L-4d-PtE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1252" y="545"/>
         </scene>

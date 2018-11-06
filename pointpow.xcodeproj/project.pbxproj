@@ -16,6 +16,8 @@
 		C10CA1A021914B8900316DF3 /* PointManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA19F21914B8900316DF3 /* PointManageViewController.swift */; };
 		C10CA1A221914F2E00316DF3 /* MainTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA1A121914F2E00316DF3 /* MainTabbarViewController.swift */; };
 		C10CA1A42191755C00316DF3 /* PersonalPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA1A32191755C00316DF3 /* PersonalPopupViewController.swift */; };
+		C10CA1A8219185AB00316DF3 /* PAPasscodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C10CA1A7219185AB00316DF3 /* PAPasscodeViewController.m */; };
+		C10CA1AA21918E3C00316DF3 /* PasscodeSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA1A921918E3C00316DF3 /* PasscodeSettingViewController.swift */; };
 		C11A93AE218BF67F00627B44 /* IntroNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93AD218BF67F00627B44 /* IntroNav.swift */; };
 		C11A93B1218BF69700627B44 /* MainNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93B0218BF69700627B44 /* MainNav.swift */; };
 		C11A93B3218BF6D200627B44 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93B2218BF6D200627B44 /* IntroViewController.swift */; };
@@ -80,6 +82,9 @@
 		C10CA19F21914B8900316DF3 /* PointManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointManageViewController.swift; sourceTree = "<group>"; };
 		C10CA1A121914F2E00316DF3 /* MainTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbarViewController.swift; sourceTree = "<group>"; };
 		C10CA1A32191755C00316DF3 /* PersonalPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPopupViewController.swift; sourceTree = "<group>"; };
+		C10CA1A6219185AA00316DF3 /* PAPasscodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAPasscodeViewController.h; sourceTree = "<group>"; };
+		C10CA1A7219185AB00316DF3 /* PAPasscodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAPasscodeViewController.m; sourceTree = "<group>"; };
+		C10CA1A921918E3C00316DF3 /* PasscodeSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeSettingViewController.swift; sourceTree = "<group>"; };
 		C11A93AD218BF67F00627B44 /* IntroNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroNav.swift; sourceTree = "<group>"; };
 		C11A93B0218BF69700627B44 /* MainNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNav.swift; sourceTree = "<group>"; };
 		C11A93B2218BF6D200627B44 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +216,16 @@
 			path = Point;
 			sourceTree = "<group>";
 		};
+		C10CA1A5219185A000316DF3 /* Passcode */ = {
+			isa = PBXGroup;
+			children = (
+				C10CA1A6219185AA00316DF3 /* PAPasscodeViewController.h */,
+				C10CA1A7219185AB00316DF3 /* PAPasscodeViewController.m */,
+				C10CA1A921918E3C00316DF3 /* PasscodeSettingViewController.swift */,
+			);
+			path = Passcode;
+			sourceTree = "<group>";
+		};
 		C11A93AC218BF64100627B44 /* Introduction */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,6 +289,7 @@
 		C1AD50782187F45600F74415 /* pointpow */ = {
 			isa = PBXGroup;
 			children = (
+				C10CA1A5219185A000316DF3 /* Passcode */,
 				C10CA19E21914B7A00316DF3 /* Point */,
 				C10CA19B21914B0700316DF3 /* Account */,
 				C10CA19821914AE300316DF3 /* Transaction */,
@@ -657,6 +673,7 @@
 				C10CA1A42191755C00316DF3 /* PersonalPopupViewController.swift in Sources */,
 				C1DEBE9521882F6F00CBB95F /* BaseNavigationViewController.swift in Sources */,
 				C1AD507A2187F45600F74415 /* AppDelegate.swift in Sources */,
+				C10CA1A8219185AB00316DF3 /* PAPasscodeViewController.m in Sources */,
 				C10CA19D21914B1B00316DF3 /* AccountViewController.swift in Sources */,
 				C1AD50A92187F7B500F74415 /* BaseViewController.swift in Sources */,
 				C11A93B1218BF69700627B44 /* MainNav.swift in Sources */,
@@ -668,6 +685,7 @@
 				C1DEBE92218829D900CBB95F /* Scanner2ViewController.swift in Sources */,
 				C11A93AE218BF67F00627B44 /* IntroNav.swift in Sources */,
 				C11A93B7218C00C800627B44 /* IntroCell1.swift in Sources */,
+				C10CA1AA21918E3C00316DF3 /* PasscodeSettingViewController.swift in Sources */,
 				C1DEBE902188297B00CBB95F /* ScannerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

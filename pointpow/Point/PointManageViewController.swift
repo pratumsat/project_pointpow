@@ -21,6 +21,11 @@ class PointManageViewController: BaseViewController {
     }
     
     func setUp(){
+        self.hendleSetPasscodeSuccess = { (passcode) in
+            print("new passcode= \(passcode)")
+            
+        }
+        
         let friend = UITapGestureRecognizer(target: self, action: #selector(friendTransferTapped))
         self.friendTransfer.isUserInteractionEnabled = true
         self.friendTransfer.addGestureRecognizer(friend)
@@ -37,7 +42,9 @@ class PointManageViewController: BaseViewController {
         let okButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-ok", comment: ""), style: .default, handler: {
             (alert) in
             
-            self.showPersonalPopup(true)
+            self.showPersonalPopup(true) {
+                self.showSettingPassCodeModalView()
+            }
           
         })
         let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: nil)
@@ -57,6 +64,7 @@ class PointManageViewController: BaseViewController {
         let okButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-ok", comment: ""), style: .default, handler: {
             (alert) in
             
+            self.showSettingPassCodeModalView()
             
         })
         let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: nil)

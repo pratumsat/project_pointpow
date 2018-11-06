@@ -18,6 +18,8 @@ class PersonalPopupViewController: BaseViewController {
     var clearImageView:UIImageView?
     var clearImageView2:UIImageView?
     
+    var nextStep:(()->Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -115,6 +117,10 @@ class PersonalPopupViewController: BaseViewController {
         
     }
     @IBAction func nextTapped(_ sender: Any) {
+        self.dismiss(animated: true) {
+            self.nextStep?()
+        }
+        
     }
     
 

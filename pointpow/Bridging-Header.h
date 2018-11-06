@@ -12,5 +12,6 @@
 
 #endif /* Bridging_Header_h */
 
+#import "PAPasscodeViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <ZBarSDK/ZBarSDK.h>

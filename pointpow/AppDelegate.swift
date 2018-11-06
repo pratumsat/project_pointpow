@@ -23,7 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         
+        /* tabbar color */
+        UITabBar.appearance().barTintColor = UIColor.white
+        /* selected tabbar image color*/
+        UITabBar.appearance().tintColor = Constant.Colors.PRIMARY_COLOR
         
+        /* Remove shadow image  change to image color navbar*/
+        //UITabBar.appearance().shadowImage = UIImage.colorForNavBar(color: Constant.Colors.PRIMARY_COLOR)
+        //UITabBar.appearance().backgroundImage = UIImage.colorForNavBar(color: UIColor.white)
         // Override point for customization after application launch.
         return true
     }

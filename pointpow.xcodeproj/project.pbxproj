@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		16B23D162FFAF9446F2A6DA2 /* Pods_pointpowTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397FA4B92F56CF5C6AC3D5E5 /* Pods_pointpowTests.framework */; };
 		A8335B1A06016D739FCCD24A /* Pods_pointpowUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71C5AF1196142AE070221A8 /* Pods_pointpowUITests.framework */; };
+		C10CA19421914A3B00316DF3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA19321914A3B00316DF3 /* HomeViewController.swift */; };
+		C10CA19721914AD500316DF3 /* PromotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA19621914AD500316DF3 /* PromotionViewController.swift */; };
+		C10CA19A21914AF900316DF3 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA19921914AF900316DF3 /* TransactionViewController.swift */; };
+		C10CA19D21914B1B00316DF3 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA19C21914B1B00316DF3 /* AccountViewController.swift */; };
+		C10CA1A021914B8900316DF3 /* PointManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA19F21914B8900316DF3 /* PointManageViewController.swift */; };
+		C10CA1A221914F2E00316DF3 /* MainTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA1A121914F2E00316DF3 /* MainTabbarViewController.swift */; };
 		C11A93AE218BF67F00627B44 /* IntroNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93AD218BF67F00627B44 /* IntroNav.swift */; };
 		C11A93B1218BF69700627B44 /* MainNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93B0218BF69700627B44 /* MainNav.swift */; };
 		C11A93B3218BF6D200627B44 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93B2218BF6D200627B44 /* IntroViewController.swift */; };
@@ -66,6 +72,12 @@
 		397FA4B92F56CF5C6AC3D5E5 /* Pods_pointpowTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pointpowTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E353ACA4AAA10E36B259268 /* Pods-pointpowUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pointpowUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pointpowUITests/Pods-pointpowUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		AB6FAB2B79444F6CC167E5C8 /* Pods-pointpow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pointpow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pointpow/Pods-pointpow.debug.xcconfig"; sourceTree = "<group>"; };
+		C10CA19321914A3B00316DF3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		C10CA19621914AD500316DF3 /* PromotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionViewController.swift; sourceTree = "<group>"; };
+		C10CA19921914AF900316DF3 /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
+		C10CA19C21914B1B00316DF3 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		C10CA19F21914B8900316DF3 /* PointManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointManageViewController.swift; sourceTree = "<group>"; };
+		C10CA1A121914F2E00316DF3 /* MainTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbarViewController.swift; sourceTree = "<group>"; };
 		C11A93AD218BF67F00627B44 /* IntroNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroNav.swift; sourceTree = "<group>"; };
 		C11A93B0218BF69700627B44 /* MainNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNav.swift; sourceTree = "<group>"; };
 		C11A93B2218BF6D200627B44 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +168,46 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C10CA19221914A2800316DF3 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				C10CA19321914A3B00316DF3 /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		C10CA19521914AC600316DF3 /* Promotion */ = {
+			isa = PBXGroup;
+			children = (
+				C10CA19621914AD500316DF3 /* PromotionViewController.swift */,
+			);
+			path = Promotion;
+			sourceTree = "<group>";
+		};
+		C10CA19821914AE300316DF3 /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				C10CA19921914AF900316DF3 /* TransactionViewController.swift */,
+			);
+			path = Transaction;
+			sourceTree = "<group>";
+		};
+		C10CA19B21914B0700316DF3 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				C10CA19C21914B1B00316DF3 /* AccountViewController.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		C10CA19E21914B7A00316DF3 /* Point */ = {
+			isa = PBXGroup;
+			children = (
+				C10CA19F21914B8900316DF3 /* PointManageViewController.swift */,
+			);
+			path = Point;
+			sourceTree = "<group>";
+		};
 		C11A93AC218BF64100627B44 /* Introduction */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				C11A93B0218BF69700627B44 /* MainNav.swift */,
+				C10CA1A121914F2E00316DF3 /* MainTabbarViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -218,6 +271,11 @@
 		C1AD50782187F45600F74415 /* pointpow */ = {
 			isa = PBXGroup;
 			children = (
+				C10CA19E21914B7A00316DF3 /* Point */,
+				C10CA19B21914B0700316DF3 /* Account */,
+				C10CA19821914AE300316DF3 /* Transaction */,
+				C10CA19521914AC600316DF3 /* Promotion */,
+				C10CA19221914A2800316DF3 /* Home */,
 				C11A93BA218C20B600627B44 /* Authen */,
 				C11A93B4218C00A000627B44 /* CollectionCell */,
 				C11A93AF218BF68A00627B44 /* Main */,
@@ -584,12 +642,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1AD50B72188000B00F74415 /* Constant.swift in Sources */,
+				C10CA19A21914AF900316DF3 /* TransactionViewController.swift in Sources */,
 				C11A93B3218BF6D200627B44 /* IntroViewController.swift in Sources */,
+				C10CA19421914A3B00316DF3 /* HomeViewController.swift in Sources */,
+				C10CA1A021914B8900316DF3 /* PointManageViewController.swift in Sources */,
 				C1AD507C2187F45600F74415 /* ViewController.swift in Sources */,
 				C11A93BC218C20C700627B44 /* LoginViewController.swift in Sources */,
 				C1AD50B22187FEE300F74415 /* ModelController.swift in Sources */,
+				C10CA19721914AD500316DF3 /* PromotionViewController.swift in Sources */,
+				C10CA1A221914F2E00316DF3 /* MainTabbarViewController.swift in Sources */,
 				C1DEBE9521882F6F00CBB95F /* BaseNavigationViewController.swift in Sources */,
 				C1AD507A2187F45600F74415 /* AppDelegate.swift in Sources */,
+				C10CA19D21914B1B00316DF3 /* AccountViewController.swift in Sources */,
 				C1AD50A92187F7B500F74415 /* BaseViewController.swift in Sources */,
 				C11A93B1218BF69700627B44 /* MainNav.swift in Sources */,
 				C11A93C4218FF3E200627B44 /* VerifyViewController.swift in Sources */,

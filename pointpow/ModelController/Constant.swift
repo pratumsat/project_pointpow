@@ -342,7 +342,7 @@ struct Constant {
         static let NotificationGoogleSigInFailure = "NotificationGoogleSigInFailure"
     }
     struct Colors {
-        static let PRIMARY_COLOR = UIColor(rgb: 0xFF092E)
+        static let PRIMARY_COLOR = UIColor(rgb: 0xFA002E)
         
         static let GRADIENT_1 = UIColor(rgb: 0xFF2158) //top
         static let GRADIENT_2 = UIColor(rgb: 0xFE2222) //bottom

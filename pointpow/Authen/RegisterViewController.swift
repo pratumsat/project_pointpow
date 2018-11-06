@@ -30,10 +30,15 @@ class RegisterViewController: BaseViewController {
         self.title = NSLocalizedString("string-title-register", comment: "")
         self.setUp()
     }
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.registerButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
+        
+    }
     
     func setUp(){
         self.registerButton.borderClearProperties(borderWidth: 1)
-        self.registerButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
+        
         
         
         if #available(iOS 10.0, *) {

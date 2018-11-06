@@ -350,10 +350,10 @@ struct Constant {
     struct Fonts {
         struct Size {
             static let BIG_TITLE = CGFloat(28.0)
-            static let TITLE = CGFloat(22.0)
-            static let BUTTON = CGFloat(20.0)
-            static let TEXTFIELD = CGFloat(18.0)
-            static let UNDER_TEXTFIELD = CGFloat(15.0)
+            static let TITLE = CGFloat(23.0)
+            static let BUTTON = CGFloat(22.0)
+            static let TEXTFIELD = CGFloat(20.0)
+            static let UNDER_TEXTFIELD = CGFloat(17.0)
             static let CONTENT = CGFloat(20.0)
             
             

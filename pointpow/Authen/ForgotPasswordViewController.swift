@@ -23,10 +23,14 @@ class ForgotPasswordViewController: BaseViewController {
         
         self.setUp()
     }
-   
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.resetButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
+        
+    }
     func setUp(){
         self.resetButton.borderClearProperties(borderWidth: 1)
-        self.resetButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
+        
         
         if #available(iOS 10.0, *) {
             self.usernameTextField.textContentType = UITextContentType(rawValue: "")

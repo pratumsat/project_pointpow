@@ -23,12 +23,15 @@ class VerifyViewController: BaseViewController {
         self.title = NSLocalizedString("string-title-verify", comment: "")
         self.setUp()
     }
-    
-    func setUp(){
-        self.sendButton.borderRedColorProperties(borderWidth: 1)
-        
-        self.verifyButton.borderClearProperties(borderWidth: 1)
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         self.verifyButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
+        
+    }
+    func setUp(){
+        self.sendButton.borderRedColorProperties(borderWidth: 1)  
+        self.verifyButton.borderClearProperties(borderWidth: 1)
+        
         
         if #available(iOS 10.0, *) {
             self.usernameTextField.textContentType = UITextContentType(rawValue: "")

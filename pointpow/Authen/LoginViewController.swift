@@ -28,11 +28,15 @@ class LoginViewController: BaseViewController {
         self.title = NSLocalizedString("string-title-login", comment: "")
         self.setUp()
     }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.loginButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
+        
+    }
    
     func setUp(){
         self.loginButton.borderClearProperties(borderWidth: 1)
-        self.loginButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
-        
         
         let forgot = UITapGestureRecognizer(target: self, action: #selector(forgotTapped))
         self.forgotLabel.isUserInteractionEnabled = true

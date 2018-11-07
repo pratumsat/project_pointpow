@@ -29,8 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         UITabBar.appearance().tintColor = Constant.Colors.PRIMARY_COLOR
         
         /* Remove shadow image  change to image color navbar*/
-        //UITabBar.appearance().shadowImage = UIImage.colorForNavBar(color: Constant.Colors.PRIMARY_COLOR)
-        //UITabBar.appearance().backgroundImage = UIImage.colorForNavBar(color: UIColor.white)
+        UITabBar.appearance().shadowImage = UIImage.colorForNavBar(color: UIColor.white)
+        UITabBar.appearance().backgroundImage = UIImage.colorForNavBar(color: UIColor.white)
         // Override point for customization after application launch.
         return true
     }

@@ -22,25 +22,36 @@ class MainTabbarViewController: UITabBarController , UITabBarControllerDelegate 
         self.setUpImageView()
     }
     
+    
     func setUpImageView(){
         self.delegate = self
         
         let image = UIImageView()
         image.image = UIImage(named: "ic-tab-logo")
+        image.contentMode = .scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.backgroundColor = UIColor.blue
         
+        let clickView = UIView()
+        clickView.translatesAutoresizingMaskIntoConstraints = false
         
+        self.view.addSubview(clickView)
         self.view.addSubview(image)
         tabBar.centerXAnchor.constraint(equalTo: image.centerXAnchor).isActive = true
         tabBar.topAnchor.constraint(equalTo: image.centerYAnchor).isActive = true
         
-        image.heightAnchor.constraint(equalTo: tabBar.heightAnchor, multiplier: 1)
-        image.widthAnchor.constraint(equalTo: image.heightAnchor, multiplier: 1)
+        tabBar.centerXAnchor.constraint(equalTo: clickView.centerXAnchor).isActive = true
+        tabBar.topAnchor.constraint(equalTo: clickView.centerYAnchor).isActive = true
+        
+        image.widthAnchor.constraint(equalToConstant: 130).isActive = true
+        image.heightAnchor.constraint(equalToConstant: 130/444*344).isActive = true
+        
+        clickView.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        clickView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        
         
         let point = UITapGestureRecognizer(target: self, action: #selector(pointTapped))
-        image.isUserInteractionEnabled = true
-        image.addGestureRecognizer(point)
+        clickView.isUserInteractionEnabled = true
+        clickView.addGestureRecognizer(point)
         
         
     }

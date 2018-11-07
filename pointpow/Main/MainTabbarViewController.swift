@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainTabbarViewController: UITabBarController {
+class MainTabbarViewController: UITabBarController , UITabBarControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,23 +23,31 @@ class MainTabbarViewController: UITabBarController {
     }
     
     func setUpImageView(){
+        self.delegate = self
+        
         let image = UIImageView()
+        image.image = UIImage(named: "ic-tab-logo")
         image.translatesAutoresizingMaskIntoConstraints = false
         image.backgroundColor = UIColor.blue
-        image.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        image.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         
         self.view.addSubview(image)
         tabBar.centerXAnchor.constraint(equalTo: image.centerXAnchor).isActive = true
         tabBar.topAnchor.constraint(equalTo: image.centerYAnchor).isActive = true
         
+        image.heightAnchor.constraint(equalTo: tabBar.heightAnchor, multiplier: 1)
+        image.widthAnchor.constraint(equalTo: image.heightAnchor, multiplier: 1)
         
         let point = UITapGestureRecognizer(target: self, action: #selector(pointTapped))
         image.isUserInteractionEnabled = true
         image.addGestureRecognizer(point)
         
         
+    }
+    
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        return !(viewController is EmptyViewController)
     }
     @objc func pointTapped(){
         if let vc:PointManageViewController = self.storyboard?.instantiateViewController(withIdentifier: "PointManageViewController") as? PointManageViewController {

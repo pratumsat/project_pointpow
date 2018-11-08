@@ -194,6 +194,7 @@ extension UIView {
         self.layer.shadowRadius = 1.0
         self.layer.masksToBounds = false
     }
+   
     func ovalColorWhiteProperties(borderWidth:CGFloat = 1.0){
         self.layer.cornerRadius = self.frame.size.width/2;
         self.layer.borderColor =  UIColor.white.cgColor
@@ -342,7 +343,7 @@ struct Constant {
         static let NotificationGoogleSigInFailure = "NotificationGoogleSigInFailure"
     }
     struct Colors {
-        static let PRIMARY_COLOR = UIColor(rgb: 0xFA002E)
+        static let PRIMARY_COLOR = UIColor(rgb: 0xFF002F)
         
         static let GRADIENT_1 = UIColor(rgb: 0xFF2158) //top
         static let GRADIENT_2 = UIColor(rgb: 0xFE2222) //bottom
@@ -354,7 +355,7 @@ struct Constant {
             static let BUTTON = CGFloat(22.0)
             static let TEXTFIELD = CGFloat(20.0)
             static let UNDER_TEXTFIELD = CGFloat(17.0)
-            static let CONTENT = CGFloat(20.0)
+            static let CONTENT = CGFloat(22.0)
             
             
             

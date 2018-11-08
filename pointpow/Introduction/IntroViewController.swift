@@ -81,14 +81,14 @@ class IntroViewController: BaseViewController, UICollectionViewDelegate , UIColl
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var topSafeArea: CGFloat
-        var bottomSafeArea: CGFloat
+       // var bottomSafeArea: CGFloat
         
         if #available(iOS 11.0, *) {
             topSafeArea = view.safeAreaInsets.top
-            bottomSafeArea = view.safeAreaInsets.bottom
+      //      bottomSafeArea = view.safeAreaInsets.bottom
         } else {
             topSafeArea = topLayoutGuide.length
-            bottomSafeArea = bottomLayoutGuide.length
+      //      bottomSafeArea = bottomLayoutGuide.length
         }
         let height = collectionView.frame.height + topSafeArea
         return CGSize(width: collectionView.frame.width, height: height)

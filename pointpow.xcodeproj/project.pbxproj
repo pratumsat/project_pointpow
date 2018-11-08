@@ -19,6 +19,12 @@
 		C10CA1A8219185AB00316DF3 /* PAPasscodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C10CA1A7219185AB00316DF3 /* PAPasscodeViewController.m */; };
 		C10CA1AA21918E3C00316DF3 /* PasscodeSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA1A921918E3C00316DF3 /* PasscodeSettingViewController.swift */; };
 		C10CA1AC219298C500316DF3 /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA1AB219298C500316DF3 /* EmptyViewController.swift */; };
+		C10CA1B12193E01200316DF3 /* ItemServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA1AF2193E01200316DF3 /* ItemServiceCell.swift */; };
+		C10CA1B22193E01200316DF3 /* ItemServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C10CA1B02193E01200316DF3 /* ItemServiceCell.xib */; };
+		C10CA1B92193E1D100316DF3 /* PromotionCampainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA1B72193E1D100316DF3 /* PromotionCampainCell.swift */; };
+		C10CA1BA2193E1D100316DF3 /* PromotionCampainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C10CA1B82193E1D100316DF3 /* PromotionCampainCell.xib */; };
+		C10CA1BE219429D500316DF3 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA1BC219429D500316DF3 /* ImageCell.swift */; };
+		C10CA1BF219429D500316DF3 /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C10CA1BD219429D500316DF3 /* ImageCell.xib */; };
 		C11A93AE218BF67F00627B44 /* IntroNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93AD218BF67F00627B44 /* IntroNav.swift */; };
 		C11A93B1218BF69700627B44 /* MainNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93B0218BF69700627B44 /* MainNav.swift */; };
 		C11A93B3218BF6D200627B44 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93B2218BF6D200627B44 /* IntroViewController.swift */; };
@@ -87,6 +93,12 @@
 		C10CA1A7219185AB00316DF3 /* PAPasscodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAPasscodeViewController.m; sourceTree = "<group>"; };
 		C10CA1A921918E3C00316DF3 /* PasscodeSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeSettingViewController.swift; sourceTree = "<group>"; };
 		C10CA1AB219298C500316DF3 /* EmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewController.swift; sourceTree = "<group>"; };
+		C10CA1AF2193E01200316DF3 /* ItemServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemServiceCell.swift; sourceTree = "<group>"; };
+		C10CA1B02193E01200316DF3 /* ItemServiceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemServiceCell.xib; sourceTree = "<group>"; };
+		C10CA1B72193E1D100316DF3 /* PromotionCampainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionCampainCell.swift; sourceTree = "<group>"; };
+		C10CA1B82193E1D100316DF3 /* PromotionCampainCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromotionCampainCell.xib; sourceTree = "<group>"; };
+		C10CA1BC219429D500316DF3 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		C10CA1BD219429D500316DF3 /* ImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
 		C11A93AD218BF67F00627B44 /* IntroNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroNav.swift; sourceTree = "<group>"; };
 		C11A93B0218BF69700627B44 /* MainNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNav.swift; sourceTree = "<group>"; };
 		C11A93B2218BF6D200627B44 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
@@ -228,6 +240,36 @@
 			path = Passcode;
 			sourceTree = "<group>";
 		};
+		C10CA1AD2193DFD200316DF3 /* HomeCell */ = {
+			isa = PBXGroup;
+			children = (
+				C10CA1BB219429C400316DF3 /* Banner */,
+				C10CA1AF2193E01200316DF3 /* ItemServiceCell.swift */,
+				C10CA1B02193E01200316DF3 /* ItemServiceCell.xib */,
+				C10CA1B72193E1D100316DF3 /* PromotionCampainCell.swift */,
+				C10CA1B82193E1D100316DF3 /* PromotionCampainCell.xib */,
+			);
+			path = HomeCell;
+			sourceTree = "<group>";
+		};
+		C10CA1AE2193DFDD00316DF3 /* IntroCell */ = {
+			isa = PBXGroup;
+			children = (
+				C11A93B5218C00C800627B44 /* IntroCell1.swift */,
+				C11A93B6218C00C800627B44 /* IntroCell1.xib */,
+			);
+			path = IntroCell;
+			sourceTree = "<group>";
+		};
+		C10CA1BB219429C400316DF3 /* Banner */ = {
+			isa = PBXGroup;
+			children = (
+				C10CA1BC219429D500316DF3 /* ImageCell.swift */,
+				C10CA1BD219429D500316DF3 /* ImageCell.xib */,
+			);
+			path = Banner;
+			sourceTree = "<group>";
+		};
 		C11A93AC218BF64100627B44 /* Introduction */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,8 +292,8 @@
 		C11A93B4218C00A000627B44 /* CollectionCell */ = {
 			isa = PBXGroup;
 			children = (
-				C11A93B5218C00C800627B44 /* IntroCell1.swift */,
-				C11A93B6218C00C800627B44 /* IntroCell1.xib */,
+				C10CA1AE2193DFDD00316DF3 /* IntroCell */,
+				C10CA1AD2193DFD200316DF3 /* HomeCell */,
 			);
 			path = CollectionCell;
 			sourceTree = "<group>";
@@ -516,10 +558,13 @@
 			files = (
 				C1DEBE8C2188115D00CBB95F /* GoogleService-Info.plist in Resources */,
 				C1AD50842187F45900F74415 /* LaunchScreen.storyboard in Resources */,
+				C10CA1B22193E01200316DF3 /* ItemServiceCell.xib in Resources */,
 				C1DEBE8A21880F5A00CBB95F /* Localizable.strings in Resources */,
 				C1DEBE982188337500CBB95F /* ThaiSansNeue-Bold.ttf in Resources */,
 				C11A93B8218C00C800627B44 /* IntroCell1.xib in Resources */,
+				C10CA1BF219429D500316DF3 /* ImageCell.xib in Resources */,
 				C1AD50812187F45900F74415 /* Assets.xcassets in Resources */,
+				C10CA1BA2193E1D100316DF3 /* PromotionCampainCell.xib in Resources */,
 				C1DEBE992188337500CBB95F /* ThaiSansNeue-Regular.ttf in Resources */,
 				C1AD507F2187F45600F74415 /* Main.storyboard in Resources */,
 			);
@@ -678,15 +723,18 @@
 				C1AD507A2187F45600F74415 /* AppDelegate.swift in Sources */,
 				C10CA1A8219185AB00316DF3 /* PAPasscodeViewController.m in Sources */,
 				C10CA19D21914B1B00316DF3 /* AccountViewController.swift in Sources */,
+				C10CA1BE219429D500316DF3 /* ImageCell.swift in Sources */,
 				C1AD50A92187F7B500F74415 /* BaseViewController.swift in Sources */,
 				C11A93B1218BF69700627B44 /* MainNav.swift in Sources */,
 				C11A93C4218FF3E200627B44 /* VerifyViewController.swift in Sources */,
 				C1AD50B52187FF4000F74415 /* Loading.swift in Sources */,
+				C10CA1B12193E01200316DF3 /* ItemServiceCell.swift in Sources */,
 				C1AD50AF2187FE9000F74415 /* PopUpViewController.swift in Sources */,
 				C11A93C0218C2AD900627B44 /* ForgotPasswordViewController.swift in Sources */,
 				C11A93BE218C20D100627B44 /* RegisterViewController.swift in Sources */,
 				C1DEBE92218829D900CBB95F /* Scanner2ViewController.swift in Sources */,
 				C11A93AE218BF67F00627B44 /* IntroNav.swift in Sources */,
+				C10CA1B92193E1D100316DF3 /* PromotionCampainCell.swift in Sources */,
 				C11A93B7218C00C800627B44 /* IntroCell1.swift in Sources */,
 				C10CA1AA21918E3C00316DF3 /* PasscodeSettingViewController.swift in Sources */,
 				C10CA1AC219298C500316DF3 /* EmptyViewController.swift in Sources */,

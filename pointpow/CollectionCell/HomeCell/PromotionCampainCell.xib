@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PromotionCampainCell" id="gTV-IL-0wX" customClass="PromotionCampainCell" customModule="pointpow" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="486" height="261"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="486" height="261"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="wB6-5a-zon">
+                        <rect key="frame" x="0.0" y="0.0" width="486" height="261"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="nJJ-Wz-Qb5">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="QOW-FG-Gfe">
+                        <rect key="frame" x="223.5" y="214" width="39" height="37"/>
+                        <color key="pageIndicatorTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="currentPageIndicatorTintColor" red="0.96078431369999995" green="0.25882352939999997" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </pageControl>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="wB6-5a-zon" secondAttribute="trailing" id="28I-SK-iE9"/>
+                <constraint firstAttribute="bottom" secondItem="wB6-5a-zon" secondAttribute="bottom" id="BaQ-kL-brG"/>
+                <constraint firstItem="wB6-5a-zon" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="KRQ-rZ-1BU"/>
+                <constraint firstItem="wB6-5a-zon" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="WE7-Wm-XZX"/>
+                <constraint firstAttribute="bottom" secondItem="QOW-FG-Gfe" secondAttribute="bottom" constant="10" id="gJ6-Yi-4zw"/>
+                <constraint firstItem="QOW-FG-Gfe" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="mjQ-xx-wO6"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="486" height="261"/>
+            <connections>
+                <outlet property="pageControl" destination="QOW-FG-Gfe" id="MHy-ex-Z2Z"/>
+                <outlet property="slideCollectionView" destination="wB6-5a-zon" id="m0I-Dw-fxo"/>
+            </connections>
+            <point key="canvasLocation" x="-96" y="173.16341829085459"/>
+        </collectionViewCell>
+    </objects>
+</document>

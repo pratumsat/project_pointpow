@@ -344,7 +344,7 @@ struct Constant {
     }
     struct Colors {
         static let PRIMARY_COLOR = UIColor(rgb: 0xFF002F)
-        static let LINE_COLOR = UIColor(rgb: 0x7B7B7E)
+        static let LINE_COLOR = UIColor.groupTableViewBackground
         static let GRADIENT_1 = UIColor(rgb: 0xFF2158) //top
         static let GRADIENT_2 = UIColor(rgb: 0xFE2222) //bottom
     }

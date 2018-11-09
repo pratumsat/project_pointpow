@@ -37,7 +37,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         
     }
     func setUp(){
-        
+        self.backgroundImage?.image = nil
     
         self.profileImageView.image = UIImage(named: "bg-profile-image")
         
@@ -125,14 +125,14 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
                     
                 }
                 if  indexPath.row % 3 == 1  {
-                    let right = UIView(frame: CGRect(x: item.frame.width - 0.5, y: 0 ,
-                                                     width: 0.5,
+                    let right = UIView(frame: CGRect(x: item.frame.width - 1, y: 0 ,
+                                                     width: 1,
                                                      height: item.frame.height  ))
                     right.backgroundColor = Constant.Colors.LINE_COLOR
                     item.addSubview(right)
                     
                     let left = UIView(frame: CGRect(x: 0, y: 0 ,
-                                                    width: 0.5,
+                                                    width: 1,
                                                     height: item.frame.height  ))
                     left.backgroundColor = Constant.Colors.LINE_COLOR
                     item.addSubview(left)
@@ -140,7 +140,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
                 }
                 
                 
-                let lineBottom = UIView(frame: CGRect(x: 0, y: item.frame.height - 0.5 , width: collectionView.frame.width, height: 0.5 ))
+                let lineBottom = UIView(frame: CGRect(x: 0, y: item.frame.height - 1 , width: collectionView.frame.width, height: 1 ))
                 lineBottom.backgroundColor = Constant.Colors.LINE_COLOR
                 item.addSubview(lineBottom)
             }

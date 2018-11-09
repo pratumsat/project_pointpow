@@ -48,7 +48,7 @@ class MainTabbarViewController: UITabBarController , UITabBarControllerDelegate 
         self.tabBar.sendSubviewToBack(image)
         
         tabBar.centerXAnchor.constraint(equalTo: image.centerXAnchor).isActive = true
-        tabBar.topAnchor.constraint(equalTo: image.centerYAnchor).isActive = true
+        tabBar.topAnchor.constraint(equalTo: image.centerYAnchor, constant: 2).isActive = true
         
         tabBar.centerXAnchor.constraint(equalTo: clickView.centerXAnchor).isActive = true
         tabBar.topAnchor.constraint(equalTo: clickView.centerYAnchor).isActive = true
@@ -67,12 +67,12 @@ class MainTabbarViewController: UITabBarController , UITabBarControllerDelegate 
         
         
         
-        tabBar.topAnchor.constraint(equalTo: shadowViewLeft.topAnchor).isActive = true
+        tabBar.topAnchor.constraint(equalTo: shadowViewLeft.topAnchor, constant: 3).isActive = true
         shadowViewLeft.heightAnchor.constraint(equalToConstant: 2).isActive = true
         shadowViewLeft.leadingAnchor.constraint(equalTo: tabBar.leadingAnchor, constant: 0).isActive = true
         shadowViewLeft.trailingAnchor.constraint(equalTo: image.leadingAnchor, constant: 8).isActive = true
         
-        tabBar.topAnchor.constraint(equalTo: shadowViewRight.topAnchor).isActive = true
+        tabBar.topAnchor.constraint(equalTo: shadowViewRight.topAnchor, constant: 3).isActive = true
         shadowViewRight.heightAnchor.constraint(equalToConstant: 2).isActive = true
         shadowViewRight.trailingAnchor.constraint(equalTo: tabBar.trailingAnchor, constant: 0).isActive = true
         shadowViewRight.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: -8).isActive = true

@@ -686,27 +686,27 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="115"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100,999.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dM-nj-xml">
-                                        <rect key="frame" x="156" y="57.666666666666657" width="102.33333333333331" height="39"/>
+                                        <rect key="frame" x="156" y="51.666666666666657" width="102.33333333333331" height="39"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9NF-9b-Su5">
-                                        <rect key="frame" x="40" y="54" width="46" height="46"/>
+                                        <rect key="frame" x="40" y="42.666666666666657" width="57.666666666666657" height="57.333333333333343"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="9NF-9b-Su5" secondAttribute="height" multiplier="1:1" id="vhv-Kx-OOh"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lAV-a5-Gek">
-                                        <rect key="frame" x="74.666666666666671" y="56" width="9.3333333333333286" height="9.3333333333333286"/>
-                                        <color key="backgroundColor" red="0.75624129143972585" green="0.25882352939999997" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <rect key="frame" x="79.333333333333329" y="43.666666666666664" width="17.333333333333329" height="17"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="lAV-a5-Gek" secondAttribute="height" multiplier="1:1" id="4no-f5-3ae"/>
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-logo-white" translatesAutoresizingMaskIntoConstraints="NO" id="4uS-aV-DsJ">
-                                        <rect key="frame" x="268.33333333333331" y="64.666666666666671" width="25" height="25"/>
+                                        <rect key="frame" x="268.33333333333331" y="58.666666666666657" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="FvD-Y3-nGZ"/>
                                             <constraint firstAttribute="width" secondItem="4uS-aV-DsJ" secondAttribute="height" multiplier="1:1" id="Yjf-UD-OKz"/>
@@ -717,15 +717,15 @@
                                 <constraints>
                                     <constraint firstItem="5dM-nj-xml" firstAttribute="centerX" secondItem="ZFo-CG-apC" secondAttribute="centerX" id="Dhm-J3-VzX"/>
                                     <constraint firstItem="5dM-nj-xml" firstAttribute="centerY" secondItem="9NF-9b-Su5" secondAttribute="centerY" id="Lc3-WU-maL"/>
-                                    <constraint firstItem="lAV-a5-Gek" firstAttribute="trailing" secondItem="9NF-9b-Su5" secondAttribute="trailing" constant="-2" id="OTq-5r-raA"/>
+                                    <constraint firstItem="lAV-a5-Gek" firstAttribute="trailing" secondItem="9NF-9b-Su5" secondAttribute="trailing" constant="-1" id="OTq-5r-raA"/>
                                     <constraint firstItem="4uS-aV-DsJ" firstAttribute="centerY" secondItem="5dM-nj-xml" secondAttribute="centerY" id="TGI-ET-EJO"/>
                                     <constraint firstAttribute="bottom" secondItem="9NF-9b-Su5" secondAttribute="bottom" constant="15" id="egb-ej-8Gk"/>
-                                    <constraint firstItem="lAV-a5-Gek" firstAttribute="width" secondItem="9NF-9b-Su5" secondAttribute="width" multiplier="0.2" id="esc-SS-h9v"/>
-                                    <constraint firstItem="9NF-9b-Su5" firstAttribute="height" secondItem="ZFo-CG-apC" secondAttribute="height" multiplier="0.4" id="mue-RI-Knj"/>
+                                    <constraint firstItem="lAV-a5-Gek" firstAttribute="width" secondItem="9NF-9b-Su5" secondAttribute="width" multiplier="0.3" id="esc-SS-h9v"/>
+                                    <constraint firstItem="9NF-9b-Su5" firstAttribute="height" secondItem="ZFo-CG-apC" secondAttribute="height" multiplier="0.5" id="mue-RI-Knj"/>
                                     <constraint firstAttribute="height" constant="115" id="rCE-eE-74Z"/>
                                     <constraint firstItem="4uS-aV-DsJ" firstAttribute="leading" secondItem="5dM-nj-xml" secondAttribute="trailing" constant="10" id="rK3-FZ-odr"/>
                                     <constraint firstItem="9NF-9b-Su5" firstAttribute="leading" secondItem="ZFo-CG-apC" secondAttribute="leading" constant="40" id="rSK-UH-mHO"/>
-                                    <constraint firstItem="lAV-a5-Gek" firstAttribute="top" secondItem="9NF-9b-Su5" secondAttribute="top" constant="2" id="yQL-CR-Oh0"/>
+                                    <constraint firstItem="lAV-a5-Gek" firstAttribute="top" secondItem="9NF-9b-Su5" secondAttribute="top" constant="1" id="yQL-CR-Oh0"/>
                                 </constraints>
                             </view>
                         </subviews>

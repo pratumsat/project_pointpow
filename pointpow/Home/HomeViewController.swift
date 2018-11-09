@@ -17,6 +17,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
     @IBOutlet weak var profileImageView: UIImageView!
     
     var shadowImageView:UIImageView?
+    var isSetHeight = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +25,20 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         self.showIntroduce(false)
         self.setUp()
     }
-   
-    func setUp(){
-        let height = self.view.frame.height
-        self.pointBalanceConstraintHeight.constant = height*0.15
-      
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        backgroundImage?.image = nil
+        if !self.isSetHeight {
+            self.isSetHeight = true
+            let height = self.view.frame.height
+            self.pointBalanceConstraintHeight.constant = height*0.15
+            
+        }
+        
+    }
+    func setUp(){
+        
+    
         self.profileImageView.image = UIImage(named: "bg-profile-image")
         
         self.homeCollectionView.delegate = self
@@ -120,20 +128,20 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
                     let right = UIView(frame: CGRect(x: item.frame.width - 0.5, y: 0 ,
                                                      width: 0.5,
                                                      height: item.frame.height  ))
-                    right.backgroundColor = UIColor.lightGray
+                    right.backgroundColor = Constant.Colors.LINE_COLOR
                     item.addSubview(right)
                     
                     let left = UIView(frame: CGRect(x: 0, y: 0 ,
                                                     width: 0.5,
                                                     height: item.frame.height  ))
-                    left.backgroundColor = UIColor.lightGray
+                    left.backgroundColor = Constant.Colors.LINE_COLOR
                     item.addSubview(left)
                     
                 }
                 
                 
                 let lineBottom = UIView(frame: CGRect(x: 0, y: item.frame.height - 0.5 , width: collectionView.frame.width, height: 0.5 ))
-                lineBottom.backgroundColor = UIColor.lightGray
+                lineBottom.backgroundColor = Constant.Colors.LINE_COLOR
                 item.addSubview(lineBottom)
             }
             

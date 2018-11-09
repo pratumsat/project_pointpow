@@ -108,7 +108,7 @@ extension UILabel{
 
 extension UITextField {
     func addRightButton(_ image:UIImage) -> UIImageView {
-        let width = self.frame.height*0.5
+        let width = self.frame.height*0.4
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: width))
         imageView.image = image
         imageView.contentMode = .scaleAspectFit
@@ -344,7 +344,7 @@ struct Constant {
     }
     struct Colors {
         static let PRIMARY_COLOR = UIColor(rgb: 0xFF002F)
-        
+        static let LINE_COLOR = UIColor(rgb: 0x7B7B7E)
         static let GRADIENT_1 = UIColor(rgb: 0xFF2158) //top
         static let GRADIENT_2 = UIColor(rgb: 0xFE2222) //bottom
     }
@@ -356,7 +356,7 @@ struct Constant {
             static let TEXTFIELD = CGFloat(20.0)
             static let UNDER_TEXTFIELD = CGFloat(17.0)
             static let CONTENT = CGFloat(22.0)
-            
+            static let TAB = CGFloat(12.0)
             
             
         }

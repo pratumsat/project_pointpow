@@ -17,7 +17,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
     var isShowKeyBoard = false
     var loadingView:Loading?
    
-    
+    var windowSubview:UIImageView?
     var socialLoginSucces:Bool?
     let modelCtrl:ModelController = ModelController()
     private var popUpViewController:PopUpViewController?  // for dismiss
@@ -174,6 +174,9 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         if self.positionYTextField == 0 {
             return
         }
+        if let _ = self.windowSubview {
+            self.positionYTextField += 100
+        }
         if self.positionYTextField < hH {
             return
         }
@@ -185,6 +188,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
                     //self.view.frame.origin.y -= (keyboardSize.height - self.positionYTextField)
                     print((keyboardSize.height - self.positionYTextField))
                     self.view.frame.origin.y -= (keyboardSize.height)
+                    self.windowSubview?.isHidden = true
                 }
                 //self.view.frame.origin.y -= (keyboardSize.height)
             }
@@ -199,6 +203,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
                     
                     print((keyboardSize.height - self.positionYTextField))
                     self.view.frame.origin.y += (keyboardSize.height)
+                    self.windowSubview?.isHidden = false
                 }
                 //self.view.frame.origin.y += (keyboardSize.height)
             }
@@ -360,9 +365,10 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
     func showPersonalPopup(_ animated:Bool , nextStepCallback:(()->Void)? = nil ){
         let presenter: Presentr = {
             
-            let w = self.view.frame.width * 0.9
+            let w = self.view.frame.width * 0.8
+            let h = w/2*3
             let width = ModalSize.custom(size: Float(w))
-            let height = ModalSize.custom(size: Float(w))
+            let height = ModalSize.custom(size: Float(h))
             
             let center = ModalCenterPosition.center
             let customType = PresentationType.custom(width: width, height: height, center: center)
@@ -370,32 +376,9 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             let customPresenter = Presentr(presentationType: customType)
             customPresenter.roundCorners = true
             customPresenter.cornerRadius = 10
-            customPresenter.dismissOnSwipe = true
-            customPresenter.dismissOnSwipeDirection = .top
+            customPresenter.dismissOnSwipe = false
             customPresenter.dismissOnTap = false
-            
-            let customview = UIView()
-            customview.frame = self.view.frame
-            
-            
-            let centerPoint = self.view.center
-            let popWidth = self.view.frame.width * 0.9
-            let popHeight = popWidth
-            let x = centerPoint.x + popWidth/2 - 5
-            let y = centerPoint.y - popHeight/2 - 20
-            let image = UIImageView()
-            image.frame = CGRect(x: x, y: y, width: 20, height: 20)
-            image.image = UIImage(named: "ic-x-white")
-            image.contentMode = .scaleAspectFit
-            customview.addSubview(image)
-
-
-            image.isUserInteractionEnabled = true
-            let dismiss = UITapGestureRecognizer(target: self, action: #selector(dismissPersonalPoPup))
-            image.addGestureRecognizer(dismiss)
-            
-            
-            customPresenter.customBackgroundView = customview
+ 
             
             return customPresenter
         }()
@@ -446,7 +429,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             
             let image = UIImageView()
             image.frame = CGRect(x: x, y: y, width: 20, height: 20)
-            image.image = UIImage(named: "ic-x-white")
+            image.image = UIImage(named: "ic-x-black")
             image.contentMode = .scaleAspectFit
             customview.addSubview(image)
             
@@ -497,10 +480,13 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
     }
     
     @objc func dismissPoPup(){
-        self.popUpViewController?.dismiss(animated: true, completion: nil)
+        self.windowSubview?.removeFromSuperview()
+        self.windowSubview = nil
     }
     @objc func dismissPersonalPoPup(){
-        self.personalViewController?.dismiss(animated: true, completion: nil)
+        self.windowSubview?.removeFromSuperview()
+        self.windowSubview = nil
+       
     }
     @objc func dismissKeyboard(){
         view.endEditing(true)
@@ -515,7 +501,22 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
 }
 
 extension BaseViewController {
-   
+    
+    func addCloseBlackView(){
+        let x = CGFloat(self.view.frame.maxX) - 15
+        let y = CGFloat(self.view.frame.minY) - 15
+        windowSubview = UIImageView()
+        windowSubview!.frame = CGRect(x: x, y: y, width: 30, height: 30)
+        windowSubview!.image = UIImage(named: "ic-x-red")
+        windowSubview!.contentMode = .scaleAspectFit
+        windowSubview!.isUserInteractionEnabled = true
+        let dismiss = UITapGestureRecognizer(target: self, action: #selector(dismissPersonalPoPup))
+        windowSubview!.addGestureRecognizer(dismiss)
+        
+        let window = UIApplication.shared.keyWindow!
+        window.addSubview(windowSubview!);
+        
+    }
     func romoveNavigationViewProductList(){
         self.searchImageView?.removeFromSuperview()
         self.cartImageView?.removeFromSuperview()
@@ -578,6 +579,19 @@ extension BaseViewController {
 }
 
 extension BaseViewController {
+    func findShadowImage(under view: UIView) -> UIImageView? {
+        if view is UIImageView && view.bounds.size.height <= 1 {
+            return (view as! UIImageView)
+        }
+        
+        for subview in view.subviews {
+            print(subview)
+            if let imageView = findShadowImage(under: subview) {
+                return imageView
+            }
+        }
+        return nil
+    }
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.portrait
     }

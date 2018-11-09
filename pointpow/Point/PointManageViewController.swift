@@ -36,8 +36,8 @@ class PointManageViewController: BaseViewController {
     }
     
     @objc func transferPointTapped(){
-        let alert = UIAlertController(title: "",
-                                      message: NSLocalizedString("string-dailog-title-fill-firstname-lastname", comment: ""), preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("string-dailog-title-fill-firstname-lastname", comment: ""),
+                                      message: "", preferredStyle: .alert)
         
         let okButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-ok", comment: ""), style: .default, handler: {
             (alert) in
@@ -58,8 +58,8 @@ class PointManageViewController: BaseViewController {
     
     
     @objc func friendTransferTapped(){
-        let alert = UIAlertController(title: "",
-                                      message: NSLocalizedString("string-dailog-title-set-passcode", comment: ""), preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("string-dailog-title-set-passcode", comment: ""),
+                                      message: "", preferredStyle: .alert)
         
         let okButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-ok", comment: ""), style: .default, handler: {
             (alert) in

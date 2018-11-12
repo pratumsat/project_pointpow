@@ -30,18 +30,14 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
     }
     
     func setUp(){
+        self.backgroundImage?.image = nil
+        
         if #available(iOS 11.0, *) {
             self.profileCollectionView.contentInsetAdjustmentBehavior = .never
         } else {
             automaticallyAdjustsScrollViewInsets = false
         }
         self.profileCollectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        
-        
-        
-        
-        
-        self.backgroundImage?.image = nil
         
         self.profileCollectionView.dataSource = self
         self.profileCollectionView.delegate = self
@@ -145,6 +141,14 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
         
         return cell!
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 1{
+            if indexPath.row == 3 {
+                self.showProfileView(true)
+            }
+        }
+    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         
         if section == 1 {
@@ -158,7 +162,7 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
         
         if indexPath.section == 0 {
             let width = collectionView.frame.width
-            let height = width/345*280
+            let height = width/370*280
             return CGSize(width: width, height: height)
         }
         

@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="ThaiSansNeue-Bold.ttf">
+            <string>ThaiSansNeue-Bold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -20,23 +25,24 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5WX-2p-r62">
-                        <rect key="frame" x="20" y="21.5" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <rect key="frame" x="20" y="19" width="34" height="26"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tBV-vL-OHd">
-                        <rect key="frame" x="235" y="7" width="50" height="50"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-arrow-right" translatesAutoresizingMaskIntoConstraints="NO" id="tBV-vL-OHd">
+                        <rect key="frame" x="259.5" y="19" width="25.5" height="26"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="tBV-vL-OHd" secondAttribute="height" multiplier="1:1" id="NFc-C5-SUj"/>
-                            <constraint firstAttribute="width" constant="50" id="xur-QO-brI"/>
                         </constraints>
                     </imageView>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="tBV-vL-OHd" secondAttribute="trailing" constant="20" id="QQH-PW-OjZ"/>
                 <constraint firstItem="5WX-2p-r62" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="nT9-BI-OkI"/>
+                <constraint firstItem="tBV-vL-OHd" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.4" id="q8E-2C-D2b"/>
                 <constraint firstItem="tBV-vL-OHd" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="ye2-LP-HB1"/>
                 <constraint firstItem="5WX-2p-r62" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="zFi-pf-FDs"/>
             </constraints>
@@ -48,4 +54,7 @@
             <point key="canvasLocation" x="-12" y="138.53073463268368"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="ic-arrow-right" width="9.6000003814697266" height="22.559999465942383"/>
+    </resources>
 </document>

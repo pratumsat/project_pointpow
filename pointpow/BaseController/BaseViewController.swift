@@ -278,6 +278,22 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         }
     }
     
+    
+    
+    func showProfileView(_ animated:Bool){
+        if let vc:ProfileViewController = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    
+    func showPersonalView(_ animated:Bool){
+        if let vc:PersonalViewController = self.storyboard?.instantiateViewController(withIdentifier: "PersonalViewController") as? PersonalViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    
    
     func showEnterPassCodeModalView(_ title:String = NSLocalizedString("title-enter-passcode", comment: "")){
         let enterPasscode = PAPasscodeViewController(for: PasscodeActionEnter )

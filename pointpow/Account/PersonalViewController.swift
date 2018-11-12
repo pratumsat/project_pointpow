@@ -1,20 +1,22 @@
 //
-//  PersonalPopupViewController.swift
+//  PersonalViewController.swift
 //  pointpow
 //
-//  Created by thanawat on 6/11/2561 BE.
+//  Created by thanawat on 12/11/2561 BE.
 //  Copyright © 2561 abcpoint. All rights reserved.
 //
 
 import UIKit
 
-class PersonalPopupViewController: BaseViewController {
+class PersonalViewController: BaseViewController {
 
     @IBOutlet weak var birthdayTextField: UITextField!
     @IBOutlet weak var parsonalTextField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var mobileTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
     
     
     var clearImageView:UIImageView?
@@ -26,18 +28,11 @@ class PersonalPopupViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.setUp()
         
     }
-    override func dismissPersonalPoPup() {
-        super.dismissPersonalPoPup()
-        self.dismiss(animated: true, completion: nil)
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.addCloseBlackView()
-    }
+   
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         self.nextButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
@@ -54,23 +49,32 @@ class PersonalPopupViewController: BaseViewController {
             self.lastNameTextField.textContentType = UITextContentType(rawValue: "")
             self.parsonalTextField.textContentType = UITextContentType(rawValue: "")
             self.birthdayTextField.textContentType = UITextContentType(rawValue: "")
+            self.mobileTextField.textContentType = UITextContentType(rawValue: "")
+            self.emailTextField.textContentType = UITextContentType(rawValue: "")
         }
         if #available(iOS 12.0, *) {
             self.firstNameTextField.textContentType = .oneTimeCode
             self.lastNameTextField.textContentType = .oneTimeCode
             self.parsonalTextField.textContentType = .oneTimeCode
             self.birthdayTextField.textContentType = .oneTimeCode
+            self.mobileTextField.textContentType = .oneTimeCode
+            self.emailTextField.textContentType = .oneTimeCode
         }
-       
+        
         
         self.firstNameTextField.delegate = self
         self.lastNameTextField.delegate = self
         self.parsonalTextField.delegate = self
         self.birthdayTextField.delegate = self
+        self.mobileTextField.delegate = self
+        self.emailTextField.delegate = self
+        
         self.firstNameTextField.autocorrectionType = .no
         self.lastNameTextField.autocorrectionType = .no
         self.parsonalTextField.autocorrectionType = .no
         self.birthdayTextField.autocorrectionType = .no
+        self.mobileTextField.autocorrectionType = .no
+        self.emailTextField.autocorrectionType = .no
         
         
         self.clearImageView = self.firstNameTextField.addRightButton(UIImage(named: "ic-x")!)
@@ -164,25 +168,6 @@ class PersonalPopupViewController: BaseViewController {
         }
         
     }
-    @IBAction func nextTapped(_ sender: Any) {
-        self.windowSubview?.removeFromSuperview()
-        self.windowSubview = nil
-        
-        self.dismiss(animated: true) {
-            self.nextStep?()
-        }
-        
-    }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

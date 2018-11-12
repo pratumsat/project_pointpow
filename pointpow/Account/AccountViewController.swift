@@ -10,6 +10,8 @@ import UIKit
 
 class AccountViewController: BaseViewController , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
+    let sizeArray = 7
+    
     @IBOutlet weak var profileCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,12 +19,35 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
         self.setUp()
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
     func setUp(){
+        if #available(iOS 11.0, *) {
+            self.profileCollectionView.contentInsetAdjustmentBehavior = .never
+        } else {
+            automaticallyAdjustsScrollViewInsets = false
+        }
+        self.profileCollectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
+        
+        
+        
+        
+        self.backgroundImage?.image = nil
+        
         self.profileCollectionView.dataSource = self
         self.profileCollectionView.delegate = self
         
         self.registerNib(self.profileCollectionView, "ProfileCell")
-        self.registerNib(self.profileCollectionView, "ItemProfileCell")
+        self.registerNib(self.profileCollectionView, "ItemServiceCell")
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
@@ -30,7 +55,7 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 1 {
-            return 2
+            return sizeArray
         }
         return 1
     }
@@ -50,14 +75,66 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
             }
         }
         if indexPath.section == 1 {
-            if let itemName = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemProfileCell", for: indexPath) as? ItemProfileCell{
+            if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemServiceCell", for: indexPath) as? ItemServiceCell {
+                cell = item
+                
+                switch indexPath.row {
+                case 0:
+                    item.itemImageView.image = UIImage(named: "ic-account-ticket")
+                    item.nameLabel.text = NSLocalizedString("string-item-ticket", comment: "")
+                case 1:
+                    item.itemImageView.image = UIImage(named: "ic-account-bill")
+                    item.nameLabel.text = NSLocalizedString("string-item-bill", comment: "")
+                case 2:
+                    item.itemImageView.image = UIImage(named: "ic-account-qr")
+                    item.nameLabel.text = NSLocalizedString("string-item-qr", comment: "")
+                case 3:
+                    item.itemImageView.image = UIImage(named: "ic-account-profile")
+                    item.nameLabel.text = NSLocalizedString("string-item-profile", comment: "")
+                case 4:
+                    item.itemImageView.image = UIImage(named: "ic-account-secue-setting")
+                    item.nameLabel.text = NSLocalizedString("string-item-security-setting", comment: "")
+                case 5:
+                    item.itemImageView.image = UIImage(named: "ic-account-about")
+                    item.nameLabel.text = NSLocalizedString("string-item-about", comment: "")
+                    item.name2Label.text = NSLocalizedString("string-item-about2", comment: "")
+                case 6:
+                    item.itemImageView.image = UIImage(named: "ic-account-setting")
+                    item.nameLabel.text = NSLocalizedString("string-item-setting", comment: "")
+                default:
+                    break
+                    
+                }
+                if  indexPath.row % 3 == 1  {
+                    let right = UIView(frame: CGRect(x: item.frame.width - 1, y: 0 ,
+                                                     width: 1,
+                                                     height: item.frame.height  ))
+                    right.backgroundColor = Constant.Colors.LINE_COLOR
+                    item.addSubview(right)
+                    
+                    let left = UIView(frame: CGRect(x: 0, y: 0 ,
+                                                    width: 1,
+                                                    height: item.frame.height  ))
+                    left.backgroundColor = Constant.Colors.LINE_COLOR
+                    item.addSubview(left)
+                }
                 
                 
-                cell = itemName
+                if indexPath.row ==  sizeArray-1 {
+                    if indexPath.row % 3 == 0 {
+                        let right = UIView(frame: CGRect(x: item.frame.width - 1, y: 0 ,
+                                                         width: 1,
+                                                         height: item.frame.height  ))
+                        right.backgroundColor = Constant.Colors.LINE_COLOR
+                        item.addSubview(right)
+                        
+                    }
+                }
                 
-                let lineBottom = UIView(frame: CGRect(x: 0, y: itemName.frame.height - 0.5 , width: collectionView.frame.width, height: 0.5 ))
+                
+                let lineBottom = UIView(frame: CGRect(x: 0, y: item.frame.height - 1 , width: collectionView.frame.width, height: 1 ))
                 lineBottom.backgroundColor = Constant.Colors.LINE_COLOR
-                itemName.addSubview(lineBottom)
+                item.addSubview(lineBottom)
             }
         }
 
@@ -68,19 +145,25 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
         
         return cell!
     }
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        
+        if section == 1 {
+            return CGSize(width: collectionView.frame.width, height: 50)
+        }
+        return CGSize.zero
+        
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if indexPath.section == 0 {
             let width = collectionView.frame.width
-            let height = width/3*2
+            let height = width/345*280
             return CGSize(width: width, height: height)
         }
-        let width = collectionView.frame.width
-        let height = CGFloat(60)
-       
-        return CGSize(width: width, height: height)
+        
+        let width = collectionView.frame.width / 3
+        return CGSize(width: width, height: width)
     }
 
 

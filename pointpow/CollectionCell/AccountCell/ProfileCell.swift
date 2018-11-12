@@ -10,12 +10,17 @@ import UIKit
 
 class ProfileCell: UICollectionViewCell {
     @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var changeBackgroundButton: UILabel!
     
+    @IBOutlet weak var filterImageView: UIImageView!
     @IBOutlet weak var settingImageView: UIImageView!
     @IBOutlet weak var profileImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        self.filterImageView.image = nil
+        
+        self.filterImageView.blurImage()
     }
 
     override var bounds : CGRect {
@@ -25,8 +30,11 @@ class ProfileCell: UICollectionViewCell {
     }
     override func layoutSubviews() {
         super.layoutSubviews()
-         self.profileImageView.ovalColorWhiteProperties()
-        //  self.backgroundCoverImageView.addBlur(CGFloat(0.5))
+        
+        
+        self.profileImageView.ovalColorWhiteProperties(borderWidth: 2.0)
+        self.settingImageView.ovalColorWhiteProperties(borderWidth: 2.0)
+        self.changeBackgroundButton.borderWhiteProperties()
     }
     
 }

@@ -10,11 +10,13 @@ import UIKit
 
 class ItemServiceCell: UICollectionViewCell {
 
+    @IBOutlet weak var name2Label: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var itemImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        
     }
 
 }

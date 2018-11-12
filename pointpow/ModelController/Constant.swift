@@ -127,6 +127,14 @@ extension UITextField {
 }
 
 extension UIView {
+    func blurImage(){
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = self.bounds
+        
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight] // for supporting device rotation
+        self.addSubview(blurEffectView)
+    }
     func applyGradient(colours: [UIColor]) -> Void {
         self.applyGradient(colours, locations: nil)
     }
@@ -170,7 +178,7 @@ extension UIView {
         self.layer.masksToBounds = true
     }
     func borderWhiteProperties(borderWidth:CGFloat = 1.0){
-        self.layer.cornerRadius = 5
+        self.layer.cornerRadius = self.frame.size.height/2;
         self.layer.borderWidth = borderWidth
         self.layer.borderColor = UIColor.white.cgColor
         self.layer.masksToBounds = true

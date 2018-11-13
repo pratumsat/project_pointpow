@@ -1,36 +1,33 @@
 //
-//  ProfileViewController.swift
+//  SettingViewController.swift
 //  pointpow
 //
-//  Created by thanawat on 12/11/2561 BE.
+//  Created by thanawat on 13/11/2561 BE.
 //  Copyright © 2561 abcpoint. All rights reserved.
 //
 
 import UIKit
 
-class ProfileViewController: BaseViewController , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
-    
-    @IBOutlet weak var profileCollectionView: UICollectionView!
+class SettingViewController: BaseViewController, UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    @IBOutlet weak var settingCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = NSLocalizedString("string-title-profile", comment: "")
+        self.title = NSLocalizedString("string-title-setting", comment: "")
         self.setUp()
     }
     
-    
     func setUp(){
-       
+        
         self.backgroundImage?.image = nil
         
-        self.profileCollectionView.dataSource = self
-        self.profileCollectionView.delegate = self
+        self.settingCollectionView.dataSource = self
+        self.settingCollectionView.delegate = self
         
-        self.registerNib(self.profileCollectionView, "ItemProfileCell")
-        self.registerNib(self.profileCollectionView, "LogoutCell")
-        self.registerHeaderNib(self.profileCollectionView, "HeadCell")
+        self.registerNib(self.settingCollectionView, "ItemProfileCell")
+        self.registerNib(self.settingCollectionView, "LogoutCell")
+        self.registerHeaderNib(self.settingCollectionView, "HeadCell")
         
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -39,7 +36,7 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return 2
+            return 6
         }
         return 1
     }
@@ -52,10 +49,19 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
                 cell = itemCell
                 
                 if indexPath.row == 0 {
-                   itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change", comment: "")
-                }else{
-                   itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change-pwd", comment: "")
+                    itemCell.nameLabel.text = NSLocalizedString("string-item-setting-profile-edit", comment: "")
+                }else if indexPath.row == 1 {
+                    itemCell.nameLabel.text = NSLocalizedString("string-item-setting-change-language", comment: "")
+                }else if indexPath.row == 2 {
+                    itemCell.nameLabel.text = NSLocalizedString("string-item-setting-sms", comment: "")
+                }else if indexPath.row == 3 {
+                    itemCell.nameLabel.text = NSLocalizedString("string-item-setting-email", comment: "")
+                }else if indexPath.row == 4 {
+                    itemCell.nameLabel.text = NSLocalizedString("string-item-setting-noti", comment: "")
+                }else if indexPath.row == 5 {
+                    itemCell.nameLabel.text = NSLocalizedString("string-item-setting-about", comment: "")
                 }
+    
                 let lineBottom = UIView(frame: CGRect(x: 0, y: itemCell.frame.height - 1 , width: collectionView.frame.width, height: 1 ))
                 lineBottom.backgroundColor = Constant.Colors.LINE_PROFILE
                 itemCell.addSubview(lineBottom)
@@ -64,7 +70,7 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
         if indexPath.section == 1 {
             if let logOutCell = collectionView.dequeueReusableCell(withReuseIdentifier: "LogoutCell", for: indexPath) as? LogoutCell {
                 cell = logOutCell
-
+                
                 logOutCell.logoutLabel.text = NSLocalizedString("string-item-profile-logout", comment: "")
                 logOutCell.logoutLabel.textColor = Constant.Colors.PRIMARY_COLOR
                 
@@ -86,20 +92,18 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
         if indexPath.section == 0 {
             if indexPath.row == 0 {
                 self.showPersonalView(true)
-            }else if indexPath.row == 1 {
-                self.showChangePasswordView(true)
             }
             
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-    
+        
         if section == 0 {
             return CGSize.zero
             
         }
-       return CGSize(width: collectionView.frame.width, height: CGFloat(20.0))
+        return CGSize(width: collectionView.frame.width, height: CGFloat(30.0))
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -112,7 +116,7 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
         
         return header
     }
-   
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let width = collectionView.frame.width
@@ -120,6 +124,6 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
         return CGSize(width: width, height: height)
     }
     
-
-
+    
+    
 }

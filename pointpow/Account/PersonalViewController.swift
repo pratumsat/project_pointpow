@@ -28,7 +28,7 @@ class PersonalViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = NSLocalizedString("string-title-profile-edit", comment: "")
         self.setUp()
         
     }

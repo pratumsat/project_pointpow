@@ -91,12 +91,12 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
                     item.itemImageView.image = UIImage(named: "ic-account-secue-setting")
                     item.nameLabel.text = NSLocalizedString("string-item-security-setting", comment: "")
                 case 5:
+                    item.itemImageView.image = UIImage(named: "ic-account-setting")
+                    item.nameLabel.text = NSLocalizedString("string-item-setting", comment: "")
+                case 6:
                     item.itemImageView.image = UIImage(named: "ic-account-about")
                     item.nameLabel.text = NSLocalizedString("string-item-about", comment: "")
                     item.name2Label.text = NSLocalizedString("string-item-about2", comment: "")
-                case 6:
-                    item.itemImageView.image = UIImage(named: "ic-account-setting")
-                    item.nameLabel.text = NSLocalizedString("string-item-setting", comment: "")
                 default:
                     break
                     
@@ -146,6 +146,9 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
         if indexPath.section == 1{
             if indexPath.row == 3 {
                 self.showProfileView(true)
+            }
+            if indexPath.row == 5 {
+                self.showSettingView(true)
             }
         }
     }

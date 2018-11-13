@@ -11,15 +11,11 @@ import UIKit
 class ProfileCell: UICollectionViewCell {
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var changeBackground2Button: UIButton!
-    @IBOutlet weak var filterImageView: UIImageView!
     @IBOutlet weak var settingImageView: UIImageView!
     @IBOutlet weak var profileImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        self.filterImageView.image = nil
-        
-        self.filterImageView.blurImage()
+    
     }
 
     override var bounds : CGRect {

@@ -24,11 +24,9 @@ class PersonalViewController: BaseViewController {
     var clearImageView3:UIImageView?
     
     
-    var nextStep:(()->Void)?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = NSLocalizedString("string-title-profile-edit", comment: "")
         self.setUp()
         
     }

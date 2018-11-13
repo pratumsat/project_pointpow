@@ -10,7 +10,7 @@ import UIKit
 
 class PersonalPopupViewController: BaseViewController {
 
-    @IBOutlet weak var birthdayTextField: UITextField!
+    
     @IBOutlet weak var parsonalTextField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var lastNameTextField: UITextField!
@@ -53,24 +53,24 @@ class PersonalPopupViewController: BaseViewController {
             self.firstNameTextField.textContentType = UITextContentType(rawValue: "")
             self.lastNameTextField.textContentType = UITextContentType(rawValue: "")
             self.parsonalTextField.textContentType = UITextContentType(rawValue: "")
-            self.birthdayTextField.textContentType = UITextContentType(rawValue: "")
+          
         }
         if #available(iOS 12.0, *) {
             self.firstNameTextField.textContentType = .oneTimeCode
             self.lastNameTextField.textContentType = .oneTimeCode
             self.parsonalTextField.textContentType = .oneTimeCode
-            self.birthdayTextField.textContentType = .oneTimeCode
+         
         }
        
         
         self.firstNameTextField.delegate = self
         self.lastNameTextField.delegate = self
         self.parsonalTextField.delegate = self
-        self.birthdayTextField.delegate = self
+        
         self.firstNameTextField.autocorrectionType = .no
         self.lastNameTextField.autocorrectionType = .no
         self.parsonalTextField.autocorrectionType = .no
-        self.birthdayTextField.autocorrectionType = .no
+      
         
         
         self.clearImageView = self.firstNameTextField.addRightButton(UIImage(named: "ic-x")!)

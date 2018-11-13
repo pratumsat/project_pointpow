@@ -56,6 +56,8 @@
 		C1AD50B22187FEE300F74415 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AD50B12187FEE300F74415 /* ModelController.swift */; };
 		C1AD50B52187FF4000F74415 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AD50B42187FF4000F74415 /* Loading.swift */; };
 		C1AD50B72188000B00F74415 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AD50B62188000B00F74415 /* Constant.swift */; };
+		C1B542DB219A85590040DDE6 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B542DA219A85590040DDE6 /* ChangePasswordViewController.swift */; };
+		C1B542DD219ABE9A0040DDE6 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B542DC219ABE9A0040DDE6 /* SettingViewController.swift */; };
 		C1DEBE8A21880F5A00CBB95F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C1DEBE8921880F5A00CBB95F /* Localizable.strings */; };
 		C1DEBE8C2188115D00CBB95F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1DEBE8B2188115D00CBB95F /* GoogleService-Info.plist */; };
 		C1DEBE902188297B00CBB95F /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DEBE8F2188297A00CBB95F /* ScannerViewController.swift */; };
@@ -147,6 +149,8 @@
 		C1AD50B12187FEE300F74415 /* ModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		C1AD50B42187FF4000F74415 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		C1AD50B62188000B00F74415 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		C1B542DA219A85590040DDE6 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		C1B542DC219ABE9A0040DDE6 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		C1DEBE8921880F5A00CBB95F /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		C1DEBE8B2188115D00CBB95F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C1DEBE8D2188178B00CBB95F /* pointpow.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = pointpow.entitlements; sourceTree = "<group>"; };
@@ -239,6 +243,8 @@
 				C10CA19C21914B1B00316DF3 /* AccountViewController.swift */,
 				C13D99812199755B001A4794 /* ProfileViewController.swift */,
 				C13D998C21997EF7001A4794 /* PersonalViewController.swift */,
+				C1B542DA219A85590040DDE6 /* ChangePasswordViewController.swift */,
+				C1B542DC219ABE9A0040DDE6 /* SettingViewController.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -763,6 +769,7 @@
 				C11A93B3218BF6D200627B44 /* IntroViewController.swift in Sources */,
 				C10CA19421914A3B00316DF3 /* HomeViewController.swift in Sources */,
 				C10CA1A021914B8900316DF3 /* PointManageViewController.swift in Sources */,
+				C1B542DB219A85590040DDE6 /* ChangePasswordViewController.swift in Sources */,
 				C1AD507C2187F45600F74415 /* ViewController.swift in Sources */,
 				C11A93BC218C20C700627B44 /* LoginViewController.swift in Sources */,
 				C1AD50B22187FEE300F74415 /* ModelController.swift in Sources */,
@@ -786,6 +793,7 @@
 				C120D7D221955BC900F9EEBB /* ItemProfileCell.swift in Sources */,
 				C1DEBE92218829D900CBB95F /* Scanner2ViewController.swift in Sources */,
 				C11A93AE218BF67F00627B44 /* IntroNav.swift in Sources */,
+				C1B542DD219ABE9A0040DDE6 /* SettingViewController.swift in Sources */,
 				C10CA1B92193E1D100316DF3 /* PromotionCampainCell.swift in Sources */,
 				C11A93B7218C00C800627B44 /* IntroCell1.swift in Sources */,
 				C10CA1AA21918E3C00316DF3 /* PasscodeSettingViewController.swift in Sources */,
@@ -970,6 +978,7 @@
 			baseConfigurationReference = AB6FAB2B79444F6CC167E5C8 /* Pods-pointpow.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W97NPGQL53;
 				INFOPLIST_FILE = pointpow/Info.plist;
@@ -980,6 +989,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pointpower.pointpow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "pointpow/Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -991,6 +1001,7 @@
 			baseConfigurationReference = 2A4306B31D2770752F2C58DA /* Pods-pointpow.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W97NPGQL53;
 				INFOPLIST_FILE = pointpow/Info.plist;
@@ -1001,6 +1012,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pointpower.pointpow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "pointpow/Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

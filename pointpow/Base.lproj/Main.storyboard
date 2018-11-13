@@ -1282,13 +1282,13 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ข้อมูลส่วนตัว" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ceQ-AV-BWN">
-                                        <rect key="frame" x="139" y="30" width="136.33333333333337" height="30.333333333333329"/>
+                                        <rect key="frame" x="156.66666666666666" y="30" width="100.66666666666666" height="34"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="26"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ชื่อ" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dyw-2j-Xu5">
-                                        <rect key="frame" x="20" y="90.333333333333343" width="374" height="40"/>
+                                        <rect key="frame" x="20" y="94" width="374" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="h4E-Ou-HLR"/>
                                         </constraints>
@@ -1297,13 +1297,13 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="นามสกุล" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GAe-Tb-KTX">
-                                        <rect key="frame" x="20" y="160.33333333333334" width="374" height="40"/>
+                                        <rect key="frame" x="20" y="164" width="374" height="40"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPz-4f-hKY">
-                                        <rect key="frame" x="20" y="370.33333333333331" width="374" height="40"/>
+                                        <rect key="frame" x="20" y="304" width="374" height="40"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Iwg-ig-QRP"/>
@@ -1318,51 +1318,35 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="COH-0J-skQ">
-                                        <rect key="frame" x="20" y="130" width="374" height="0.33333333333334281"/>
+                                        <rect key="frame" x="20" y="133.66666666666666" width="374" height="0.33333333333334281"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.5" id="Kie-iS-dSC"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ya-rP-7rW">
-                                        <rect key="frame" x="20" y="200" width="374" height="0.33333333333334281"/>
+                                        <rect key="frame" x="20" y="203.66666666666666" width="374" height="0.33333333333334281"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.5" id="9jW-zN-A09"/>
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="เลขบัตรประชาชน" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7i5-2A-mMn">
-                                        <rect key="frame" x="20" y="230.33333333333331" width="374" height="40"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="วันเกิด" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kFd-uo-dLs">
-                                        <rect key="frame" x="20" y="300.33333333333331" width="374" height="40"/>
+                                        <rect key="frame" x="20" y="234" width="374" height="40"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6EJ-p4-zIE">
-                                        <rect key="frame" x="20" y="270" width="374" height="0.33333333333331439"/>
+                                        <rect key="frame" x="20" y="273.66666666666669" width="374" height="0.33333333333331439"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.5" id="c5h-0a-Hyv"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X2T-EN-LOb">
-                                        <rect key="frame" x="20" y="340" width="374" height="0.33333333333331439"/>
-                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="0.5" id="QqD-aF-gBH"/>
-                                        </constraints>
-                                    </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="kFd-uo-dLs" firstAttribute="top" secondItem="7i5-2A-mMn" secondAttribute="bottom" constant="30" id="0ZI-MS-7A9"/>
-                                    <constraint firstItem="UPz-4f-hKY" firstAttribute="top" secondItem="kFd-uo-dLs" secondAttribute="bottom" constant="30" id="2TI-Sc-5p8"/>
                                     <constraint firstItem="6EJ-p4-zIE" firstAttribute="leading" secondItem="7i5-2A-mMn" secondAttribute="leading" id="3HI-v7-u2Q"/>
-                                    <constraint firstItem="kFd-uo-dLs" firstAttribute="leading" secondItem="dyw-2j-Xu5" secondAttribute="leading" id="6cb-SN-aHh"/>
                                     <constraint firstItem="COH-0J-skQ" firstAttribute="trailing" secondItem="dyw-2j-Xu5" secondAttribute="trailing" id="8Lb-dq-aLv"/>
                                     <constraint firstItem="UPz-4f-hKY" firstAttribute="trailing" secondItem="dyw-2j-Xu5" secondAttribute="trailing" id="8qC-0D-gno"/>
                                     <constraint firstItem="GAe-Tb-KTX" firstAttribute="leading" secondItem="dyw-2j-Xu5" secondAttribute="leading" id="99f-eZ-n78"/>
@@ -1370,27 +1354,23 @@
                                     <constraint firstItem="dyw-2j-Xu5" firstAttribute="centerX" secondItem="pTU-wK-Qp9" secondAttribute="centerX" id="Ckj-jp-xK8"/>
                                     <constraint firstItem="GAe-Tb-KTX" firstAttribute="height" secondItem="dyw-2j-Xu5" secondAttribute="height" id="Dsx-TE-ize"/>
                                     <constraint firstItem="GAe-Tb-KTX" firstAttribute="top" secondItem="dyw-2j-Xu5" secondAttribute="bottom" constant="30" id="EJd-rj-Pkn"/>
-                                    <constraint firstItem="X2T-EN-LOb" firstAttribute="leading" secondItem="kFd-uo-dLs" secondAttribute="leading" id="GTf-pX-Bvt"/>
                                     <constraint firstItem="7i5-2A-mMn" firstAttribute="height" secondItem="dyw-2j-Xu5" secondAttribute="height" id="Gk2-WV-5qe"/>
                                     <constraint firstItem="3Ya-rP-7rW" firstAttribute="bottom" secondItem="GAe-Tb-KTX" secondAttribute="bottom" id="Gzb-7f-8En"/>
                                     <constraint firstItem="6EJ-p4-zIE" firstAttribute="trailing" secondItem="7i5-2A-mMn" secondAttribute="trailing" id="HqO-Hw-Yir"/>
                                     <constraint firstItem="dyw-2j-Xu5" firstAttribute="leading" secondItem="pTU-wK-Qp9" secondAttribute="leading" constant="20" id="IAh-i5-oIV"/>
                                     <constraint firstItem="7i5-2A-mMn" firstAttribute="leading" secondItem="dyw-2j-Xu5" secondAttribute="leading" id="OcX-an-3QD"/>
                                     <constraint firstItem="UPz-4f-hKY" firstAttribute="leading" secondItem="dyw-2j-Xu5" secondAttribute="leading" id="QmA-YV-HDb"/>
+                                    <constraint firstItem="UPz-4f-hKY" firstAttribute="top" secondItem="6EJ-p4-zIE" secondAttribute="bottom" constant="30" id="SAd-g3-zJt"/>
                                     <constraint firstItem="COH-0J-skQ" firstAttribute="leading" secondItem="dyw-2j-Xu5" secondAttribute="leading" id="UZQ-i7-tlI"/>
                                     <constraint firstItem="GAe-Tb-KTX" firstAttribute="trailing" secondItem="dyw-2j-Xu5" secondAttribute="trailing" id="V8z-0f-ltq"/>
                                     <constraint firstItem="ceQ-AV-BWN" firstAttribute="top" secondItem="pTU-wK-Qp9" secondAttribute="top" constant="30" id="Wfy-cO-fD5"/>
                                     <constraint firstItem="ceQ-AV-BWN" firstAttribute="centerX" secondItem="pTU-wK-Qp9" secondAttribute="centerX" id="dZk-4f-ipu"/>
                                     <constraint firstItem="6EJ-p4-zIE" firstAttribute="bottom" secondItem="7i5-2A-mMn" secondAttribute="bottom" id="en8-pJ-pwu"/>
-                                    <constraint firstItem="kFd-uo-dLs" firstAttribute="height" secondItem="dyw-2j-Xu5" secondAttribute="height" id="er2-ld-elH"/>
-                                    <constraint firstItem="X2T-EN-LOb" firstAttribute="bottom" secondItem="kFd-uo-dLs" secondAttribute="bottom" id="fZs-IU-Gx0"/>
                                     <constraint firstItem="COH-0J-skQ" firstAttribute="bottom" secondItem="dyw-2j-Xu5" secondAttribute="bottom" id="iRr-nc-cLP"/>
                                     <constraint firstItem="dyw-2j-Xu5" firstAttribute="top" secondItem="ceQ-AV-BWN" secondAttribute="bottom" constant="30" id="nDv-31-49a"/>
                                     <constraint firstAttribute="bottom" secondItem="UPz-4f-hKY" secondAttribute="bottom" constant="10" id="qWj-Rw-fmd"/>
                                     <constraint firstAttribute="trailing" secondItem="dyw-2j-Xu5" secondAttribute="trailing" id="qdh-qK-eBT"/>
-                                    <constraint firstItem="X2T-EN-LOb" firstAttribute="trailing" secondItem="kFd-uo-dLs" secondAttribute="trailing" id="rkv-Ej-RQT"/>
                                     <constraint firstItem="7i5-2A-mMn" firstAttribute="trailing" secondItem="dyw-2j-Xu5" secondAttribute="trailing" id="rwb-wh-YPT"/>
-                                    <constraint firstItem="kFd-uo-dLs" firstAttribute="trailing" secondItem="dyw-2j-Xu5" secondAttribute="trailing" id="t86-k9-idf"/>
                                     <constraint firstItem="3Ya-rP-7rW" firstAttribute="leading" secondItem="GAe-Tb-KTX" secondAttribute="leading" id="wyV-fc-Kaj"/>
                                     <constraint firstItem="7i5-2A-mMn" firstAttribute="top" secondItem="GAe-Tb-KTX" secondAttribute="bottom" constant="30" id="zKr-EP-2bv"/>
                                 </constraints>
@@ -1406,7 +1386,6 @@
                         <viewLayoutGuide key="safeArea" id="DC0-yu-zss"/>
                     </view>
                     <connections>
-                        <outlet property="birthdayTextField" destination="kFd-uo-dLs" id="YiU-ZL-kwa"/>
                         <outlet property="firstNameTextField" destination="dyw-2j-Xu5" id="d99-Gi-Olf"/>
                         <outlet property="lastNameTextField" destination="GAe-Tb-KTX" id="NnL-tq-7S7"/>
                         <outlet property="nextButton" destination="UPz-4f-hKY" id="1Tu-sy-0bg"/>

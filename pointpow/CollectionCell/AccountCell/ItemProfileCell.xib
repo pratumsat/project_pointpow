@@ -25,9 +25,8 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5WX-2p-r62">
-                        <rect key="frame" x="20" y="19" width="34" height="26"/>
-                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <rect key="frame" x="20" y="20.5" width="30.5" height="23.5"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-arrow-right" translatesAutoresizingMaskIntoConstraints="NO" id="tBV-vL-OHd">
@@ -36,11 +35,19 @@
                             <constraint firstAttribute="width" secondItem="tBV-vL-OHd" secondAttribute="height" multiplier="1:1" id="NFc-C5-SUj"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e36-Th-oAM">
+                        <rect key="frame" x="254.5" y="32" width="0.0" height="0.0"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="tBV-vL-OHd" firstAttribute="leading" secondItem="e36-Th-oAM" secondAttribute="trailing" constant="5" id="Mlg-cm-k9l"/>
                 <constraint firstAttribute="trailing" secondItem="tBV-vL-OHd" secondAttribute="trailing" constant="20" id="QQH-PW-OjZ"/>
+                <constraint firstItem="e36-Th-oAM" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="XGy-b8-LhV"/>
                 <constraint firstItem="5WX-2p-r62" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="nT9-BI-OkI"/>
                 <constraint firstItem="tBV-vL-OHd" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.4" id="q8E-2C-D2b"/>
                 <constraint firstItem="tBV-vL-OHd" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="ye2-LP-HB1"/>
@@ -50,6 +57,7 @@
             <size key="customSize" width="305" height="64"/>
             <connections>
                 <outlet property="nameLabel" destination="5WX-2p-r62" id="3F8-dG-OEw"/>
+                <outlet property="trailLabel" destination="e36-Th-oAM" id="wuq-Ro-8Zt"/>
             </connections>
             <point key="canvasLocation" x="-12" y="138.53073463268368"/>
         </collectionViewCell>

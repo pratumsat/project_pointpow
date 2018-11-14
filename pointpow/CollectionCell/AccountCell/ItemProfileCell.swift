@@ -10,6 +10,7 @@ import UIKit
 
 class ItemProfileCell: UICollectionViewCell {
 
+    @IBOutlet weak var trailLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

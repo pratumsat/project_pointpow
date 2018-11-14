@@ -10,7 +10,7 @@ import UIKit
 
 class AccountViewController: BaseViewController , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    let sizeArray = 7
+    let sizeArray = 8
     
     @IBOutlet weak var profileCollectionView: UICollectionView!
     override func viewDidLoad() {
@@ -76,24 +76,34 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
                 
                 switch indexPath.row {
                 case 0:
-                    item.itemImageView.image = UIImage(named: "ic-account-ticket")
-                    item.nameLabel.text = NSLocalizedString("string-item-ticket", comment: "")
+                    item.itemImageView.image = UIImage(named: "ic-account-history")
+                    item.nameLabel.text = NSLocalizedString("string-item-history", comment: "")
+                    item.name2Label.text = NSLocalizedString("string-item-history2", comment: "")
                 case 1:
                     item.itemImageView.image = UIImage(named: "ic-account-bill")
                     item.nameLabel.text = NSLocalizedString("string-item-bill", comment: "")
+                    item.name2Label.text = ""
                 case 2:
+                    item.itemImageView.image = UIImage(named: "ic-account-ticket")
+                    item.nameLabel.text = NSLocalizedString("string-item-ticket", comment: "")
+                    item.name2Label.text = ""
+                case 3:
                     item.itemImageView.image = UIImage(named: "ic-account-qr")
                     item.nameLabel.text = NSLocalizedString("string-item-qr", comment: "")
-                case 3:
+                    item.name2Label.text = ""
+                case 4:
                     item.itemImageView.image = UIImage(named: "ic-account-profile")
                     item.nameLabel.text = NSLocalizedString("string-item-profile", comment: "")
-                case 4:
+                    item.name2Label.text = ""
+                case 5:
                     item.itemImageView.image = UIImage(named: "ic-account-secue-setting")
                     item.nameLabel.text = NSLocalizedString("string-item-security-setting", comment: "")
-                case 5:
+                    item.name2Label.text = ""
+                case 6:
                     item.itemImageView.image = UIImage(named: "ic-account-setting")
                     item.nameLabel.text = NSLocalizedString("string-item-setting", comment: "")
-                case 6:
+                    item.name2Label.text = ""
+                case 7:
                     item.itemImageView.image = UIImage(named: "ic-account-about")
                     item.nameLabel.text = NSLocalizedString("string-item-about", comment: "")
                     item.name2Label.text = NSLocalizedString("string-item-about2", comment: "")
@@ -144,10 +154,10 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 1{
-            if indexPath.row == 3 {
+            if indexPath.row == 4 {
                 self.showProfileView(true)
             }
-            if indexPath.row == 5 {
+            if indexPath.row == 6 {
                 self.showSettingView(true)
             }
         }

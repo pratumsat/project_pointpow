@@ -52,9 +52,11 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
                 cell = itemCell
                 
                 if indexPath.row == 0 {
-                   itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change", comment: "")
+                    itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change", comment: "")
+                    itemCell.trailLabel.text = ""
                 }else{
-                   itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change-pwd", comment: "")
+                    itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change-pwd", comment: "")
+                    itemCell.trailLabel.text = ""
                 }
                 let lineBottom = UIView(frame: CGRect(x: 0, y: itemCell.frame.height - 1 , width: collectionView.frame.width, height: 1 ))
                 lineBottom.backgroundColor = Constant.Colors.LINE_PROFILE

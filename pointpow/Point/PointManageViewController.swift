@@ -25,7 +25,7 @@ class PointManageViewController: BaseViewController {
         
         self.hendleSetPasscodeSuccess = { (passcode) in
             print("new passcode= \(passcode)")
-            self.showFriendTransferView(true)
+            self.showPointTransferView(true)
         }
         
         let friend = UITapGestureRecognizer(target: self, action: #selector(friendTransferTapped))

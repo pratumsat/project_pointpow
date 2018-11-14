@@ -25,19 +25,19 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-profile-image" translatesAutoresizingMaskIntoConstraints="NO" id="klX-Xt-tDp">
-                        <rect key="frame" x="45" y="22.5" width="60" height="60"/>
+                        <rect key="frame" x="45" y="15" width="60" height="60"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="klX-Xt-tDp" secondAttribute="height" multiplier="1:1" id="zSY-ST-iUv"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="David Beckham" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWm-fK-ybk">
-                        <rect key="frame" x="34.5" y="87.5" width="81.5" height="21"/>
+                        <rect key="frame" x="34.5" y="80" width="81.5" height="21"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PHm-n1-czO">
-                        <rect key="frame" x="45" y="103.5" width="60" height="33"/>
+                        <rect key="frame" x="45" y="96" width="60" height="33"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="60" id="d3x-wK-t2t"/>
                         </constraints>
@@ -52,7 +52,7 @@
                 <constraint firstItem="PHm-n1-czO" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Uzw-fG-9eI"/>
                 <constraint firstItem="PHm-n1-czO" firstAttribute="top" secondItem="jWm-fK-ybk" secondAttribute="bottom" constant="-5" id="iN5-UP-U8W"/>
                 <constraint firstItem="klX-Xt-tDp" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="kGv-hn-Zkd"/>
-                <constraint firstItem="klX-Xt-tDp" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" multiplier="0.7" id="wWa-t6-6ju"/>
+                <constraint firstItem="klX-Xt-tDp" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" multiplier="0.6" id="wWa-t6-6ju"/>
                 <constraint firstItem="jWm-fK-ybk" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="zpt-zT-fOr"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>

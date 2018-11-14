@@ -306,6 +306,18 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
+    func showPointTransferView(_ animated:Bool){
+        if let vc:PointTransferViewController  = self.storyboard?.instantiateViewController(withIdentifier: "PointTransferViewController") as? PointTransferViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    func showFriendTransferView(_ animated:Bool){
+        if let vc:FriendTransferViewController  = self.storyboard?.instantiateViewController(withIdentifier: "FriendTransferViewController") as? FriendTransferViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
     
     func showEnterPassCodeModalView(_ title:String = NSLocalizedString("title-enter-passcode", comment: "")){
         let enterPasscode = PAPasscodeViewController(for: PasscodeActionEnter )
@@ -348,11 +360,14 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         
         let presenter: Presentr = {
             let w = self.view.frame.width
+            //let h = self.view.frame.height
             
             let width = ModalSize.custom(size: Float(w))
             let height = ModalSize.custom(size: Float(w / 300 * 500))
+            //let height = ModalSize.custom(size: Float(h))
             
             let center = ModalCenterPosition.bottomCenter
+            //let center = ModalCenterPosition.center
             let customType = PresentationType.custom(width: width, height: height, center: center)
             
             let customPresenter = Presentr(presentationType: customType)
@@ -394,7 +409,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         let presenter: Presentr = {
             
             let w = self.view.frame.width * 0.8
-            let h = w/2*3
+            let h = w/275*360
             let width = ModalSize.custom(size: Float(w))
             let height = ModalSize.custom(size: Float(h))
             

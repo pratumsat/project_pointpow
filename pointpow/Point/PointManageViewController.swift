@@ -25,7 +25,7 @@ class PointManageViewController: BaseViewController {
         
         self.hendleSetPasscodeSuccess = { (passcode) in
             print("new passcode= \(passcode)")
-            
+            self.showPointTransferView(true)
         }
         
         let friend = UITapGestureRecognizer(target: self, action: #selector(friendTransferTapped))
@@ -66,7 +66,8 @@ class PointManageViewController: BaseViewController {
         let okButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-ok", comment: ""), style: .default, handler: {
             (alert) in
             
-            self.showSettingPassCodeModalView()
+            //self.showSettingPassCodeModalView()
+            self.showFriendTransferView(true)
             
         })
         let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: nil)

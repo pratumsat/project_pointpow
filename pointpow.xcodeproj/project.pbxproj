@@ -44,6 +44,11 @@
 		C13D998A21997AD6001A4794 /* HeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D998821997AD6001A4794 /* HeadCell.swift */; };
 		C13D998B21997AD6001A4794 /* HeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13D998921997AD6001A4794 /* HeadCell.xib */; };
 		C13D998D21997EF7001A4794 /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D998C21997EF7001A4794 /* PersonalViewController.swift */; };
+		C1817D8E219BD32B009507DB /* FriendTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1817D8D219BD32B009507DB /* FriendTransferViewController.swift */; };
+		C1817D92219BF61E009507DB /* ItemFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1817D90219BF61E009507DB /* ItemFriendCell.swift */; };
+		C1817D93219BF61F009507DB /* ItemFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1817D91219BF61E009507DB /* ItemFriendCell.xib */; };
+		C1817D96219BFCDE009507DB /* FriendCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1817D94219BFCDE009507DB /* FriendCollectionCell.swift */; };
+		C1817D97219BFCDE009507DB /* FriendCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1817D95219BFCDE009507DB /* FriendCollectionCell.xib */; };
 		C1AD507A2187F45600F74415 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AD50792187F45600F74415 /* AppDelegate.swift */; };
 		C1AD507C2187F45600F74415 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AD507B2187F45600F74415 /* ViewController.swift */; };
 		C1AD507F2187F45600F74415 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1AD507D2187F45600F74415 /* Main.storyboard */; };
@@ -130,6 +135,11 @@
 		C13D998821997AD6001A4794 /* HeadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadCell.swift; sourceTree = "<group>"; };
 		C13D998921997AD6001A4794 /* HeadCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeadCell.xib; sourceTree = "<group>"; };
 		C13D998C21997EF7001A4794 /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
+		C1817D8D219BD32B009507DB /* FriendTransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTransferViewController.swift; sourceTree = "<group>"; };
+		C1817D90219BF61E009507DB /* ItemFriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFriendCell.swift; sourceTree = "<group>"; };
+		C1817D91219BF61E009507DB /* ItemFriendCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemFriendCell.xib; sourceTree = "<group>"; };
+		C1817D94219BFCDE009507DB /* FriendCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCollectionCell.swift; sourceTree = "<group>"; };
+		C1817D95219BFCDE009507DB /* FriendCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendCollectionCell.xib; sourceTree = "<group>"; };
 		C1AD50762187F45600F74415 /* pointpow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pointpow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1AD50792187F45600F74415 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1AD507B2187F45600F74415 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -254,6 +264,7 @@
 			children = (
 				C10CA19F21914B8900316DF3 /* PointManageViewController.swift */,
 				C10CA1A32191755C00316DF3 /* PersonalPopupViewController.swift */,
+				C1817D8D219BD32B009507DB /* FriendTransferViewController.swift */,
 			);
 			path = Point;
 			sourceTree = "<group>";
@@ -320,6 +331,7 @@
 		C11A93B4218C00A000627B44 /* CollectionCell */ = {
 			isa = PBXGroup;
 			children = (
+				C1817D8F219BF5F3009507DB /* FriendTransferCell */,
 				C13D998721997AC4001A4794 /* HeadCell */,
 				C10CA1AE2193DFDD00316DF3 /* IntroCell */,
 				C120D7CB21955B3000F9EEBB /* AccountCell */,
@@ -359,6 +371,17 @@
 				C13D998921997AD6001A4794 /* HeadCell.xib */,
 			);
 			path = HeadCell;
+			sourceTree = "<group>";
+		};
+		C1817D8F219BF5F3009507DB /* FriendTransferCell */ = {
+			isa = PBXGroup;
+			children = (
+				C1817D90219BF61E009507DB /* ItemFriendCell.swift */,
+				C1817D91219BF61E009507DB /* ItemFriendCell.xib */,
+				C1817D94219BFCDE009507DB /* FriendCollectionCell.swift */,
+				C1817D95219BFCDE009507DB /* FriendCollectionCell.xib */,
+			);
+			path = FriendTransferCell;
 			sourceTree = "<group>";
 		};
 		C1AD506D2187F45600F74415 = {
@@ -609,6 +632,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1DEBE8C2188115D00CBB95F /* GoogleService-Info.plist in Resources */,
+				C1817D97219BFCDE009507DB /* FriendCollectionCell.xib in Resources */,
 				C1AD50842187F45900F74415 /* LaunchScreen.storyboard in Resources */,
 				C10CA1B22193E01200316DF3 /* ItemServiceCell.xib in Resources */,
 				C1DEBE8A21880F5A00CBB95F /* Localizable.strings in Resources */,
@@ -618,6 +642,7 @@
 				C1AD50812187F45900F74415 /* Assets.xcassets in Resources */,
 				C10CA1BA2193E1D100316DF3 /* PromotionCampainCell.xib in Resources */,
 				C120D7CF21955BB500F9EEBB /* ProfileCell.xib in Resources */,
+				C1817D93219BF61F009507DB /* ItemFriendCell.xib in Resources */,
 				C1DEBE992188337500CBB95F /* ThaiSansNeue-Regular.ttf in Resources */,
 				C120D7D321955BC900F9EEBB /* ItemProfileCell.xib in Resources */,
 				C13D998B21997AD6001A4794 /* HeadCell.xib in Resources */,
@@ -769,6 +794,7 @@
 				C11A93B3218BF6D200627B44 /* IntroViewController.swift in Sources */,
 				C10CA19421914A3B00316DF3 /* HomeViewController.swift in Sources */,
 				C10CA1A021914B8900316DF3 /* PointManageViewController.swift in Sources */,
+				C1817D8E219BD32B009507DB /* FriendTransferViewController.swift in Sources */,
 				C1B542DB219A85590040DDE6 /* ChangePasswordViewController.swift in Sources */,
 				C1AD507C2187F45600F74415 /* ViewController.swift in Sources */,
 				C11A93BC218C20C700627B44 /* LoginViewController.swift in Sources */,
@@ -782,6 +808,7 @@
 				C10CA19D21914B1B00316DF3 /* AccountViewController.swift in Sources */,
 				C10CA1BE219429D500316DF3 /* ImageCell.swift in Sources */,
 				C1AD50A92187F7B500F74415 /* BaseViewController.swift in Sources */,
+				C1817D92219BF61E009507DB /* ItemFriendCell.swift in Sources */,
 				C11A93B1218BF69700627B44 /* MainNav.swift in Sources */,
 				C11A93C4218FF3E200627B44 /* VerifyViewController.swift in Sources */,
 				C1AD50B52187FF4000F74415 /* Loading.swift in Sources */,
@@ -791,6 +818,7 @@
 				C11A93BE218C20D100627B44 /* RegisterViewController.swift in Sources */,
 				C13D99822199755B001A4794 /* ProfileViewController.swift in Sources */,
 				C120D7D221955BC900F9EEBB /* ItemProfileCell.swift in Sources */,
+				C1817D96219BFCDE009507DB /* FriendCollectionCell.swift in Sources */,
 				C1DEBE92218829D900CBB95F /* Scanner2ViewController.swift in Sources */,
 				C11A93AE218BF67F00627B44 /* IntroNav.swift in Sources */,
 				C1B542DD219ABE9A0040DDE6 /* SettingViewController.swift in Sources */,

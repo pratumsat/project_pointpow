@@ -306,6 +306,12 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
+    func showFriendTransferView(_ animated:Bool){
+        if let vc:FriendTransferViewController  = self.storyboard?.instantiateViewController(withIdentifier: "FriendTransferViewController") as? FriendTransferViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
     
     func showEnterPassCodeModalView(_ title:String = NSLocalizedString("title-enter-passcode", comment: "")){
         let enterPasscode = PAPasscodeViewController(for: PasscodeActionEnter )
@@ -394,7 +400,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         let presenter: Presentr = {
             
             let w = self.view.frame.width * 0.8
-            let h = w/2*3
+            let h = w/275*360
             let width = ModalSize.custom(size: Float(w))
             let height = ModalSize.custom(size: Float(h))
             

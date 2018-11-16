@@ -19,8 +19,7 @@ class PointTransferViewController: BaseViewController , UICollectionViewDelegate
         
     }
     func setUp(){
-        //self.backgroundImage?.image = nil
-        self.pointCollectionView.backgroundColor = UIColor.clear
+        self.backgroundImage?.image = nil
         
         self.pointCollectionView.dataSource = self
         self.pointCollectionView.delegate = self

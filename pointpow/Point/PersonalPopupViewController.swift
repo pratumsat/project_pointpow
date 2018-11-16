@@ -45,7 +45,7 @@ class PersonalPopupViewController: BaseViewController {
     }
     
     func setUp(){
-        //self.backgroundImage?.image = nil
+        self.backgroundImage?.image = nil
         
         self.nextButton.borderClearProperties(borderWidth: 1)
         

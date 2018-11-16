@@ -42,7 +42,11 @@ class BankPointTransferViewController: BaseViewController , UIPickerViewDelegate
     }
     
     func setUp(){
-        //self.backgroundImage?.image = nil
+        self.handlerEnterSuccess = {
+            self.showResultTransferView(true)
+        }
+        
+        self.backgroundImage?.image = nil
         self.checkBox.isChecked = true
         
         self.transferButton.borderClearProperties(borderWidth: 1)

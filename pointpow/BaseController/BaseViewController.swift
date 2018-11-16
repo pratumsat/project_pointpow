@@ -338,6 +338,13 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         }
     }
     
+    func showResultTransferView(_ animated:Bool){
+        if let vc:ResultTransferViewController  = self.storyboard?.instantiateViewController(withIdentifier: "ResultTransferViewController") as? ResultTransferViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    
     
     func showEnterPassCodeModalView(_ title:String = NSLocalizedString("title-enter-passcode", comment: "")){
         let enterPasscode = PAPasscodeViewController(for: PasscodeActionEnter )

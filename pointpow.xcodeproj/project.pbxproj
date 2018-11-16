@@ -25,6 +25,11 @@
 		C10CA1BA2193E1D100316DF3 /* PromotionCampainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C10CA1B82193E1D100316DF3 /* PromotionCampainCell.xib */; };
 		C10CA1BE219429D500316DF3 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA1BC219429D500316DF3 /* ImageCell.swift */; };
 		C10CA1BF219429D500316DF3 /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C10CA1BD219429D500316DF3 /* ImageCell.xib */; };
+		C115FA4A219EC511008E7844 /* ResultTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C115FA49219EC511008E7844 /* ResultTransferViewController.swift */; };
+		C115FA4E219ECB85008E7844 /* ItemListResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C115FA4C219ECB85008E7844 /* ItemListResultCell.swift */; };
+		C115FA4F219ECB85008E7844 /* ItemListResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C115FA4D219ECB85008E7844 /* ItemListResultCell.xib */; };
+		C115FA52219ECC40008E7844 /* ItemStatusResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C115FA50219ECC40008E7844 /* ItemStatusResultCell.swift */; };
+		C115FA53219ECC40008E7844 /* ItemStatusResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C115FA51219ECC40008E7844 /* ItemStatusResultCell.xib */; };
 		C11A93AE218BF67F00627B44 /* IntroNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93AD218BF67F00627B44 /* IntroNav.swift */; };
 		C11A93B1218BF69700627B44 /* MainNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93B0218BF69700627B44 /* MainNav.swift */; };
 		C11A93B3218BF6D200627B44 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93B2218BF6D200627B44 /* IntroViewController.swift */; };
@@ -125,6 +130,11 @@
 		C10CA1B82193E1D100316DF3 /* PromotionCampainCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromotionCampainCell.xib; sourceTree = "<group>"; };
 		C10CA1BC219429D500316DF3 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		C10CA1BD219429D500316DF3 /* ImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
+		C115FA49219EC511008E7844 /* ResultTransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTransferViewController.swift; sourceTree = "<group>"; };
+		C115FA4C219ECB85008E7844 /* ItemListResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListResultCell.swift; sourceTree = "<group>"; };
+		C115FA4D219ECB85008E7844 /* ItemListResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemListResultCell.xib; sourceTree = "<group>"; };
+		C115FA50219ECC40008E7844 /* ItemStatusResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStatusResultCell.swift; sourceTree = "<group>"; };
+		C115FA51219ECC40008E7844 /* ItemStatusResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemStatusResultCell.xib; sourceTree = "<group>"; };
 		C11A93AD218BF67F00627B44 /* IntroNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroNav.swift; sourceTree = "<group>"; };
 		C11A93B0218BF69700627B44 /* MainNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNav.swift; sourceTree = "<group>"; };
 		C11A93B2218BF6D200627B44 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
@@ -287,6 +297,7 @@
 				C1817D98219C041F009507DB /* PointTransferViewController.swift */,
 				C1817DA3219E6A2E009507DB /* PPWebViewController.swift */,
 				C1817DA9219E7F18009507DB /* BankPointTransferViewController.swift */,
+				C115FA49219EC511008E7844 /* ResultTransferViewController.swift */,
 			);
 			path = Point;
 			sourceTree = "<group>";
@@ -331,6 +342,17 @@
 			path = Banner;
 			sourceTree = "<group>";
 		};
+		C115FA4B219ECB5F008E7844 /* ResultCell */ = {
+			isa = PBXGroup;
+			children = (
+				C115FA4C219ECB85008E7844 /* ItemListResultCell.swift */,
+				C115FA4D219ECB85008E7844 /* ItemListResultCell.xib */,
+				C115FA50219ECC40008E7844 /* ItemStatusResultCell.swift */,
+				C115FA51219ECC40008E7844 /* ItemStatusResultCell.xib */,
+			);
+			path = ResultCell;
+			sourceTree = "<group>";
+		};
 		C11A93AC218BF64100627B44 /* Introduction */ = {
 			isa = PBXGroup;
 			children = (
@@ -353,6 +375,7 @@
 		C11A93B4218C00A000627B44 /* CollectionCell */ = {
 			isa = PBXGroup;
 			children = (
+				C115FA4B219ECB5F008E7844 /* ResultCell */,
 				C1817D9A219C07C3009507DB /* BankCell */,
 				C1817D8F219BF5F3009507DB /* FriendTransferCell */,
 				C13D998721997AC4001A4794 /* HeadCell */,
@@ -678,7 +701,9 @@
 				C1AD50812187F45900F74415 /* Assets.xcassets in Resources */,
 				C10CA1BA2193E1D100316DF3 /* PromotionCampainCell.xib in Resources */,
 				C1817DA2219C1934009507DB /* SwitchCell.xib in Resources */,
+				C115FA53219ECC40008E7844 /* ItemStatusResultCell.xib in Resources */,
 				C120D7CF21955BB500F9EEBB /* ProfileCell.xib in Resources */,
+				C115FA4F219ECB85008E7844 /* ItemListResultCell.xib in Resources */,
 				C1817D93219BF61F009507DB /* ItemFriendCell.xib in Resources */,
 				C1DEBE992188337500CBB95F /* ThaiSansNeue-Regular.ttf in Resources */,
 				C120D7D321955BC900F9EEBB /* ItemProfileCell.xib in Resources */,
@@ -838,6 +863,7 @@
 				C1AD50B22187FEE300F74415 /* ModelController.swift in Sources */,
 				C10CA19721914AD500316DF3 /* PromotionViewController.swift in Sources */,
 				C1817DA6219E6C73009507DB /* DisplayNameViewController.swift in Sources */,
+				C115FA4E219ECB85008E7844 /* ItemListResultCell.swift in Sources */,
 				C1817DAA219E7F18009507DB /* BankPointTransferViewController.swift in Sources */,
 				C10CA1A221914F2E00316DF3 /* MainTabbarViewController.swift in Sources */,
 				C10CA1A42191755C00316DF3 /* PersonalPopupViewController.swift in Sources */,
@@ -846,11 +872,13 @@
 				C1AD507A2187F45600F74415 /* AppDelegate.swift in Sources */,
 				C10CA1A8219185AB00316DF3 /* PAPasscodeViewController.m in Sources */,
 				C10CA19D21914B1B00316DF3 /* AccountViewController.swift in Sources */,
+				C115FA4A219EC511008E7844 /* ResultTransferViewController.swift in Sources */,
 				C10CA1BE219429D500316DF3 /* ImageCell.swift in Sources */,
 				C1AD50A92187F7B500F74415 /* BaseViewController.swift in Sources */,
 				C1817D92219BF61E009507DB /* ItemFriendCell.swift in Sources */,
 				C11A93B1218BF69700627B44 /* MainNav.swift in Sources */,
 				C11A93C4218FF3E200627B44 /* VerifyViewController.swift in Sources */,
+				C115FA52219ECC40008E7844 /* ItemStatusResultCell.swift in Sources */,
 				C1AD50B52187FF4000F74415 /* Loading.swift in Sources */,
 				C1817D9D219C07DF009507DB /* ItemBankCell.swift in Sources */,
 				C10CA1B12193E01200316DF3 /* ItemServiceCell.swift in Sources */,

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="ThaiSansNeue-Bold.ttf">
+            <string>ThaiSansNeue-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemListResultCell" id="hvw-ch-kQU" customClass="ItemListResultCell" customModule="pointpow" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="279" height="85"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="279" height="85"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="key" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="V3o-ff-dLD">
+                        <rect key="frame" x="40" y="29.5" width="148.5" height="26"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
+                        <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="WI2-hX-zvf">
+                        <rect key="frame" x="204.5" y="29.5" width="34.5" height="26"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
+                        <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="V3o-ff-dLD" firstAttribute="leading" secondItem="hvw-ch-kQU" secondAttribute="leading" constant="40" id="9Lk-V6-dP1"/>
+                <constraint firstItem="WI2-hX-zvf" firstAttribute="leading" secondItem="V3o-ff-dLD" secondAttribute="trailing" constant="16" id="V25-8p-I9h"/>
+                <constraint firstAttribute="trailing" secondItem="WI2-hX-zvf" secondAttribute="trailing" constant="40" id="bgJ-3r-nZK"/>
+                <constraint firstItem="WI2-hX-zvf" firstAttribute="baseline" secondItem="V3o-ff-dLD" secondAttribute="baseline" id="klj-Ot-qVl"/>
+                <constraint firstItem="V3o-ff-dLD" firstAttribute="centerY" secondItem="hvw-ch-kQU" secondAttribute="centerY" id="toD-vE-7J4"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="yEq-uV-YRa"/>
+            <size key="customSize" width="279" height="85"/>
+            <connections>
+                <outlet property="keyLabel" destination="V3o-ff-dLD" id="Lea-0U-AZV"/>
+                <outlet property="valueLabel" destination="WI2-hX-zvf" id="Wox-jo-Sse"/>
+            </connections>
+            <point key="canvasLocation" x="2.3999999999999999" y="74.212893553223395"/>
+        </collectionViewCell>
+    </objects>
+</document>

@@ -36,7 +36,7 @@ class ChangePasswordViewController: BaseViewController {
     }
     
     func setUp(){
-        //self.backgroundImage?.image = nil
+        self.backgroundImage?.image = nil
         self.confirmButton.borderClearProperties(borderWidth: 1)
         
         self.passwordTextField.autocorrectionType = .no

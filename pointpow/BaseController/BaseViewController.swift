@@ -306,6 +306,12 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
+    func showDisplayNameView(_ animated:Bool){
+        if let vc:DisplayNameViewController  = self.storyboard?.instantiateViewController(withIdentifier: "DisplayNameViewController") as? DisplayNameViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
     func showPointTransferView(_ animated:Bool){
         if let vc:PointTransferViewController  = self.storyboard?.instantiateViewController(withIdentifier: "PointTransferViewController") as? PointTransferViewController {
             

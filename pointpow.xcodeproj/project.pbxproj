@@ -55,6 +55,7 @@
 		C1817DA1219C1934009507DB /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1817D9F219C1934009507DB /* SwitchCell.swift */; };
 		C1817DA2219C1934009507DB /* SwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1817DA0219C1934009507DB /* SwitchCell.xib */; };
 		C1817DA4219E6A2E009507DB /* PPWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1817DA3219E6A2E009507DB /* PPWebViewController.swift */; };
+		C1817DA6219E6C73009507DB /* DisplayNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1817DA5219E6C73009507DB /* DisplayNameViewController.swift */; };
 		C1AD507A2187F45600F74415 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AD50792187F45600F74415 /* AppDelegate.swift */; };
 		C1AD507C2187F45600F74415 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AD507B2187F45600F74415 /* ViewController.swift */; };
 		C1AD507F2187F45600F74415 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1AD507D2187F45600F74415 /* Main.storyboard */; };
@@ -152,6 +153,7 @@
 		C1817D9F219C1934009507DB /* SwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		C1817DA0219C1934009507DB /* SwitchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwitchCell.xib; sourceTree = "<group>"; };
 		C1817DA3219E6A2E009507DB /* PPWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPWebViewController.swift; sourceTree = "<group>"; };
+		C1817DA5219E6C73009507DB /* DisplayNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayNameViewController.swift; sourceTree = "<group>"; };
 		C1AD50762187F45600F74415 /* pointpow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pointpow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1AD50792187F45600F74415 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1AD507B2187F45600F74415 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				C13D998C21997EF7001A4794 /* PersonalViewController.swift */,
 				C1B542DA219A85590040DDE6 /* ChangePasswordViewController.swift */,
 				C1B542DC219ABE9A0040DDE6 /* SettingViewController.swift */,
+				C1817DA5219E6C73009507DB /* DisplayNameViewController.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -828,6 +831,7 @@
 				C11A93BC218C20C700627B44 /* LoginViewController.swift in Sources */,
 				C1AD50B22187FEE300F74415 /* ModelController.swift in Sources */,
 				C10CA19721914AD500316DF3 /* PromotionViewController.swift in Sources */,
+				C1817DA6219E6C73009507DB /* DisplayNameViewController.swift in Sources */,
 				C10CA1A221914F2E00316DF3 /* MainTabbarViewController.swift in Sources */,
 				C10CA1A42191755C00316DF3 /* PersonalPopupViewController.swift in Sources */,
 				C1817D99219C041F009507DB /* PointTransferViewController.swift in Sources */,

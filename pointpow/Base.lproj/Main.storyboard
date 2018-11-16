@@ -1956,6 +1956,82 @@
             </objects>
             <point key="canvasLocation" x="3377" y="2673"/>
         </scene>
+        <!--Display Name View Controller-->
+        <scene sceneID="TI4-Lk-MTE">
+            <objects>
+                <viewController storyboardIdentifier="DisplayNameViewController" id="7o7-j6-umE" customClass="DisplayNameViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pvJ-6v-Ton">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aJL-Yi-QNa">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ดิสเพลย์เนม" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kkZ-9P-ZdZ">
+                                        <rect key="frame" x="20" y="76" width="374" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="hpR-j3-eBR"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Zc-z0-QeO">
+                                        <rect key="frame" x="20" y="146" width="374" height="40"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="OjY-RT-JGy"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="22"/>
+                                        <state key="normal" title="บันทึก">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="confirmTapped:" destination="7o7-j6-umE" eventType="touchUpInside" id="lrn-Cy-03a"/>
+                                            <action selector="resetTapped:" destination="bNh-MO-bgB" eventType="touchUpInside" id="JyY-EJ-WKI"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mdA-05-78o">
+                                        <rect key="frame" x="20" y="115.66666666666666" width="374" height="0.3333333333333286"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="0.5" id="HUz-DN-6XC"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="kkZ-9P-ZdZ" firstAttribute="leading" secondItem="aJL-Yi-QNa" secondAttribute="leading" constant="20" id="3BU-ao-vfU"/>
+                                    <constraint firstItem="kkZ-9P-ZdZ" firstAttribute="top" secondItem="aJL-Yi-QNa" secondAttribute="top" constant="76" id="7Tc-C3-NQT"/>
+                                    <constraint firstAttribute="trailing" secondItem="kkZ-9P-ZdZ" secondAttribute="trailing" id="941-m1-lJX"/>
+                                    <constraint firstItem="1Zc-z0-QeO" firstAttribute="top" secondItem="kkZ-9P-ZdZ" secondAttribute="bottom" constant="30" id="DDY-fu-oRK"/>
+                                    <constraint firstItem="1Zc-z0-QeO" firstAttribute="trailing" secondItem="kkZ-9P-ZdZ" secondAttribute="trailing" id="Ybe-KV-IQW"/>
+                                    <constraint firstAttribute="bottom" secondItem="1Zc-z0-QeO" secondAttribute="bottom" constant="10" id="aTa-lw-ryv"/>
+                                    <constraint firstItem="mdA-05-78o" firstAttribute="bottom" secondItem="kkZ-9P-ZdZ" secondAttribute="bottom" id="baj-54-aQc"/>
+                                    <constraint firstItem="1Zc-z0-QeO" firstAttribute="leading" secondItem="kkZ-9P-ZdZ" secondAttribute="leading" id="jmw-Qx-o3y"/>
+                                    <constraint firstItem="mdA-05-78o" firstAttribute="leading" secondItem="kkZ-9P-ZdZ" secondAttribute="leading" id="ncg-ek-Epd"/>
+                                    <constraint firstItem="kkZ-9P-ZdZ" firstAttribute="centerX" secondItem="aJL-Yi-QNa" secondAttribute="centerX" id="sGs-56-6pb"/>
+                                    <constraint firstItem="mdA-05-78o" firstAttribute="trailing" secondItem="kkZ-9P-ZdZ" secondAttribute="trailing" id="x8c-IB-NeM"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aJL-Yi-QNa" firstAttribute="leading" secondItem="tyt-6o-3pd" secondAttribute="leading" id="Eyt-1B-ShF"/>
+                            <constraint firstItem="aJL-Yi-QNa" firstAttribute="trailing" secondItem="tyt-6o-3pd" secondAttribute="trailing" id="b9l-BL-3mw"/>
+                            <constraint firstItem="aJL-Yi-QNa" firstAttribute="top" secondItem="tyt-6o-3pd" secondAttribute="top" id="nJK-24-gL4"/>
+                            <constraint firstItem="tyt-6o-3pd" firstAttribute="bottom" secondItem="aJL-Yi-QNa" secondAttribute="bottom" id="uZ3-3e-5N0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tyt-6o-3pd"/>
+                    </view>
+                    <connections>
+                        <outlet property="confirmButton" destination="1Zc-z0-QeO" id="A8V-2E-DDn"/>
+                        <outlet property="displayNameTextField" destination="kkZ-9P-ZdZ" id="cv0-O7-2kC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nx7-0m-YX0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6942" y="2002"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ic-facebook" width="150" height="154"/>

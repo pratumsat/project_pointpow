@@ -83,6 +83,9 @@ class PointTransferViewController: BaseViewController , UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
      
+        if indexPath.row == 0 {
+            self.showPPWebView(true)
+        }
     }
  
     

@@ -39,7 +39,7 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return 2
+            return 3
         }
         return 1
     }
@@ -54,7 +54,10 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
                 if indexPath.row == 0 {
                     itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change", comment: "")
                     itemCell.trailLabel.text = ""
-                }else{
+                }else if indexPath.row == 1{
+                    itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change-displayname", comment: "")
+                    itemCell.trailLabel.text = "Lazy"
+                }else if indexPath.row == 2{
                     itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change-pwd", comment: "")
                     itemCell.trailLabel.text = ""
                 }
@@ -89,6 +92,8 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
             if indexPath.row == 0 {
                 self.showPersonalView(true)
             }else if indexPath.row == 1 {
+                self.showDisplayNameView(true)
+            }else if indexPath.row == 2 {
                 self.showChangePasswordView(true)
             }
             

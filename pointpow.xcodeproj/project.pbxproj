@@ -54,6 +54,7 @@
 		C1817D9E219C07DF009507DB /* ItemBankCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1817D9C219C07DF009507DB /* ItemBankCell.xib */; };
 		C1817DA1219C1934009507DB /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1817D9F219C1934009507DB /* SwitchCell.swift */; };
 		C1817DA2219C1934009507DB /* SwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1817DA0219C1934009507DB /* SwitchCell.xib */; };
+		C1817DA4219E6A2E009507DB /* PPWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1817DA3219E6A2E009507DB /* PPWebViewController.swift */; };
 		C1AD507A2187F45600F74415 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AD50792187F45600F74415 /* AppDelegate.swift */; };
 		C1AD507C2187F45600F74415 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AD507B2187F45600F74415 /* ViewController.swift */; };
 		C1AD507F2187F45600F74415 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1AD507D2187F45600F74415 /* Main.storyboard */; };
@@ -150,6 +151,7 @@
 		C1817D9C219C07DF009507DB /* ItemBankCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemBankCell.xib; sourceTree = "<group>"; };
 		C1817D9F219C1934009507DB /* SwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		C1817DA0219C1934009507DB /* SwitchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwitchCell.xib; sourceTree = "<group>"; };
+		C1817DA3219E6A2E009507DB /* PPWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPWebViewController.swift; sourceTree = "<group>"; };
 		C1AD50762187F45600F74415 /* pointpow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pointpow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1AD50792187F45600F74415 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1AD507B2187F45600F74415 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				C10CA1A32191755C00316DF3 /* PersonalPopupViewController.swift */,
 				C1817D8D219BD32B009507DB /* FriendTransferViewController.swift */,
 				C1817D98219C041F009507DB /* PointTransferViewController.swift */,
+				C1817DA3219E6A2E009507DB /* PPWebViewController.swift */,
 			);
 			path = Point;
 			sourceTree = "<group>";
@@ -857,6 +860,7 @@
 				C10CA1AC219298C500316DF3 /* EmptyViewController.swift in Sources */,
 				C13D998521997938001A4794 /* LogoutCell.swift in Sources */,
 				C1DEBE902188297B00CBB95F /* ScannerViewController.swift in Sources */,
+				C1817DA4219E6A2E009507DB /* PPWebViewController.swift in Sources */,
 				C13D998D21997EF7001A4794 /* PersonalViewController.swift in Sources */,
 				C13D998A21997AD6001A4794 /* HeadCell.swift in Sources */,
 			);

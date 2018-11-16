@@ -85,6 +85,8 @@ class PointTransferViewController: BaseViewController , UICollectionViewDelegate
      
         if indexPath.row == 0 {
             self.showPPWebView(true)
+        }else if indexPath.row == 1 {
+            self.showBankTransferView(true)
         }
     }
  

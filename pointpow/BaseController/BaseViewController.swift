@@ -331,6 +331,14 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         }
     }
     
+    func showBankTransferView(_ animated:Bool){
+        if let vc:BankPointTransferViewController  = self.storyboard?.instantiateViewController(withIdentifier: "BankPointTransferViewController") as? BankPointTransferViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    
+    
     func showEnterPassCodeModalView(_ title:String = NSLocalizedString("title-enter-passcode", comment: "")){
         let enterPasscode = PAPasscodeViewController(for: PasscodeActionEnter )
         enterPasscode!.delegate = self
@@ -344,11 +352,12 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         
         let presenter: Presentr = {
             let w = self.view.frame.width
+            let h = self.view.frame.height
             
             let width = ModalSize.custom(size: Float(w))
-            let height = ModalSize.custom(size: Float(w / 300 * 360))
+            let height = ModalSize.custom(size: Float(h))
             
-            let center = ModalCenterPosition.bottomCenter
+            let center = ModalCenterPosition.center
             let customType = PresentationType.custom(width: width, height: height, center: center)
             
             let customPresenter = Presentr(presentationType: customType)
@@ -359,6 +368,8 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         
         customPresentViewController(presenter, viewController: navController, animated: true, completion: nil)
     }
+    
+    
     func showSettingPassCodeModalView(_ title:String = NSLocalizedString("title-set-passcode", comment: "")){
         let enterPasscode = PAPasscodeViewController(for: PasscodeActionSet )
         enterPasscode!.delegate = self

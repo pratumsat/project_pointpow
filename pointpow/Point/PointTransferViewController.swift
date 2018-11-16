@@ -19,7 +19,8 @@ class PointTransferViewController: BaseViewController , UICollectionViewDelegate
         
     }
     func setUp(){
-        self.backgroundImage?.image = nil
+        //self.backgroundImage?.image = nil
+        self.pointCollectionView.backgroundColor = UIColor.clear
         
         self.pointCollectionView.dataSource = self
         self.pointCollectionView.delegate = self
@@ -32,7 +33,7 @@ class PointTransferViewController: BaseViewController , UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      return 6
+      return 7
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -43,33 +44,34 @@ class PointTransferViewController: BaseViewController , UICollectionViewDelegate
                 cell = item
                 
                 
-//                switch indexPath.row {
-//                case 0:
-//                    item.itemImageView.image = UIImage(named: "ic-account-ticket")
-//                    item.nameLabel.text = NSLocalizedString("string-item-ticket", comment: "")
-//                case 1:
-//                    item.itemImageView.image = UIImage(named: "ic-account-bill")
-//                    item.nameLabel.text = NSLocalizedString("string-item-bill", comment: "")
-//                case 2:
-//                    item.itemImageView.image = UIImage(named: "ic-account-qr")
-//                    item.nameLabel.text = NSLocalizedString("string-item-qr", comment: "")
-//                case 3:
-//                    item.itemImageView.image = UIImage(named: "ic-account-profile")
-//                    item.nameLabel.text = NSLocalizedString("string-item-profile", comment: "")
-//                case 4:
-//                    item.itemImageView.image = UIImage(named: "ic-account-secue-setting")
-//                    item.nameLabel.text = NSLocalizedString("string-item-security-setting", comment: "")
-//                case 5:
-//                    item.itemImageView.image = UIImage(named: "ic-account-setting")
-//                    item.nameLabel.text = NSLocalizedString("string-item-setting", comment: "")
-//                case 6:
-//                    item.itemImageView.image = UIImage(named: "ic-account-about")
-//                    item.nameLabel.text = NSLocalizedString("string-item-about", comment: "")
-//                    item.name2Label.text = NSLocalizedString("string-item-about2", comment: "")
-//                default:
-//                    break
-//
-//                }
+                switch indexPath.row {
+                case 0:
+                    item.coverImageView.image = UIImage(named: "ic-bank-1")
+                    item.providerLabel.text = "BBL Credit Card"
+                case 1:
+                    item.coverImageView.image = UIImage(named: "ic-bank-2")
+                    item.providerLabel.text = "ICBC Credit Card"
+                case 2:
+                    item.coverImageView.image = UIImage(named: "ic-bank-3")
+                    item.providerLabel.text = "Thanachart Credit Card"
+                case 3:
+                    item.coverImageView.image = UIImage(named: "ic-bank-4")
+                    item.providerLabel.text = "KTC Credit Card"
+                case 4:
+                    item.coverImageView.image = UIImage(named: "ic-bank-5")
+                    item.providerLabel.text = "Kbank Credit Card"
+                case 5:
+                    item.coverImageView.image = UIImage(named: "ic-bank-6")
+                    item.providerLabel.text = "GSB Credit Card"
+                case 6:
+                    item.coverImageView.image = UIImage(named: "ic-bank-7")
+                    item.providerLabel.text = "AIS Point"
+                default:
+                    break
+
+                }
+                item.providerLabel.setLineSpacing(lineSpacing: 0, lineHeightMultiple: 0.7)
+                item.providerLabel.textAlignment = .center
         }
 
         
@@ -85,7 +87,7 @@ class PointTransferViewController: BaseViewController , UICollectionViewDelegate
      
         if indexPath.row == 0 {
             self.showPPWebView(true)
-        }else if indexPath.row == 1 {
+        }else if indexPath.row == 6 {
             self.showBankTransferView(true)
         }
     }

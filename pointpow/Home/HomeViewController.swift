@@ -38,6 +38,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
     }
     func setUp(){
         self.backgroundImage?.image = nil
+        self.homeCollectionView.backgroundColor = UIColor.white
     
         self.profileImageView.image = UIImage(named: "bg-profile-image")
         

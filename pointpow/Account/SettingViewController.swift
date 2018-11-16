@@ -19,7 +19,8 @@ class SettingViewController: BaseViewController, UICollectionViewDelegate , UICo
     }
     
     func setUp(){
-        self.backgroundImage?.image = nil
+        //self.backgroundImage?.image = nil
+        self.settingCollectionView.backgroundColor = UIColor.clear
         
         self.settingCollectionView.dataSource = self
         self.settingCollectionView.delegate = self

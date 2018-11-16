@@ -22,8 +22,8 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
     
     
     func setUp(){
-       
-        self.backgroundImage?.image = nil
+        //self.backgroundImage?.image = nil
+        self.profileCollectionView?.backgroundColor = UIColor.clear
         
         self.profileCollectionView.dataSource = self
         self.profileCollectionView.delegate = self

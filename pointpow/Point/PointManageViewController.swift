@@ -21,7 +21,7 @@ class PointManageViewController: BaseViewController {
     }
     
     func setUp(){
-        self.backgroundImage?.image = nil
+        //self.backgroundImage?.image = nil
         
         self.hendleSetPasscodeSuccess = { (passcode) in
             print("new passcode= \(passcode)")

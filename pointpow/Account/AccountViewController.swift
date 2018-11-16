@@ -31,6 +31,7 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
     
     func setUp(){
         self.backgroundImage?.image = nil
+        self.profileCollectionView.backgroundColor = UIColor.white
         
         if #available(iOS 11.0, *) {
             self.profileCollectionView.contentInsetAdjustmentBehavior = .never

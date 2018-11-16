@@ -22,7 +22,8 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
     
 
     func setUp(){
-        self.backgroundImage?.image = nil
+        //self.backgroundImage?.image = nil
+        self.friendCollectionView.backgroundColor = UIColor.clear
         
         self.friendCollectionView.delegate = self
         self.friendCollectionView.dataSource = self

@@ -10,6 +10,8 @@ import UIKit
 
 class BankPointTransferViewController: BaseViewController , UIPickerViewDelegate, UIPickerViewDataSource{
     
+    @IBOutlet weak var moreImageView: UIImageView!
+    @IBOutlet weak var lessImageView: UIImageView!
     
     @IBOutlet weak var checkBox: CheckBox!
     @IBOutlet weak var balancePointLabel: UILabel!
@@ -40,10 +42,15 @@ class BankPointTransferViewController: BaseViewController , UIPickerViewDelegate
     }
     
     func setUp(){
-        self.backgroundImage?.image = nil
+        //self.backgroundImage?.image = nil
         self.checkBox.isChecked = true
         
         self.transferButton.borderClearProperties(borderWidth: 1)
+        
+        self.amountTextField.setRightPaddingPoints(20)
+        
+        self.amountTextField.borderLightGroupTableColorProperties(borderWidth: 1)
+        self.transferFromTextField.borderLightGroupTableColorProperties(borderWidth: 1)
         
         if #available(iOS 10.0, *) {
             self.amountTextField.textContentType = UITextContentType(rawValue: "")

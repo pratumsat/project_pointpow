@@ -123,7 +123,11 @@ extension UITextField {
         self.leftView = paddingView
         self.leftViewMode = .always
     }
-   
+    func setRightPaddingPoints(_ amount:CGFloat){
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+        self.rightView = paddingView
+        self.rightViewMode = .always
+    }
 }
 
 extension UIView {
@@ -164,14 +168,20 @@ extension UIView {
         self.layer.borderColor = Constant.Colors.PRIMARY_COLOR.cgColor
         self.layer.masksToBounds = true
     }
+    func borderLightGroupTableColorProperties(borderWidth:CGFloat = 1.0){
+        self.layer.cornerRadius = self.frame.size.height/2;
+        self.layer.borderWidth = borderWidth
+        self.layer.borderColor = UIColor.groupTableViewBackground.cgColor
+        self.layer.masksToBounds = true
+    }
     func borderLightGrayColorProperties(borderWidth:CGFloat = 1.0){
-        self.layer.cornerRadius = 5
+        self.layer.cornerRadius = self.frame.size.height/2;
         self.layer.borderWidth = borderWidth
         self.layer.borderColor = UIColor.lightGray.cgColor
         self.layer.masksToBounds = true
     }
     func borderDarkGrayColorProperties(borderWidth:CGFloat = 1.0){
-        self.layer.cornerRadius = 5
+        self.layer.cornerRadius = self.frame.size.height/2;
         self.layer.borderWidth = borderWidth
         self.layer.borderColor = UIColor.darkGray.cgColor
         self.layer.masksToBounds = true

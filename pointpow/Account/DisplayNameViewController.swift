@@ -36,7 +36,7 @@ class DisplayNameViewController: BaseViewController {
     func setUp(){
         self.displayNameTextField.text = "Lazy"
         
-        self.backgroundImage?.image = nil
+        //self.backgroundImage?.image = nil
         
         self.confirmButton.borderClearProperties(borderWidth: 1)
         

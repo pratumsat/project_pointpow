@@ -29,7 +29,6 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
         self.friendCollectionView.dataSource = self
         
         self.registerNib(self.friendCollectionView, "ItemFriendCell")
-        self.registerNib(self.friendCollectionView, "FriendCollectionCell")
         self.registerHeaderNib(self.friendCollectionView, "HeadCell")
     }
     
@@ -41,7 +40,7 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
         if section == 0 {
             return 1
         }
-        return 6
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -54,12 +53,8 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
             }
         }
         if indexPath.section == 1 {
-//            if let friendList = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendCollectionCell", for: indexPath) as? FriendCollectionCell{
-//
-//                cell = friendList
-//            }
             if let friendCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemFriendCell", for:  indexPath) as? ItemFriendCell {
-                
+                friendCell.recentMode = true
                 cell = friendCell
             }
         }
@@ -82,13 +77,15 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
             return CGSize.zero
             
         }
-        return CGSize(width: collectionView.frame.width, height: CGFloat(5.0))
+        return CGSize(width: collectionView.frame.width, height: CGFloat(30.0))
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeadCell", for: indexPath) as! HeadCell
-        
+        header.nameLabel.text = NSLocalizedString("string-point-transfer-friend-header-recent", comment: "")
+        header.backgroundColor = UIColor.white
+        header.marginLeftConstrantLabel.constant = 40
 //        let lineBottom = UIView(frame: CGRect(x: 0, y: header.frame.height - 1 , width: collectionView.frame.width, height: 1 ))
 //        lineBottom.backgroundColor = Constant.Colors.LINE_PROFILE
 //        header.addSubview(lineBottom)
@@ -99,18 +96,16 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         
-        
+        if indexPath.section == 0 {
+            let width = collectionView.frame.width
+            let height = width/155*115
+            return CGSize(width: width, height: height)
+        }
         let width = collectionView.frame.width/3
-        let height = width
+        let height = width/110*170
         return CGSize(width: width, height: height)
         
         
-//        else   if indexPath.section == 1 {
-//            let width = collectionView.frame.width
-//            let height = width/3
-//            return CGSize(width: width, height: height)
-//        }
-        return CGSize.zero
     }
     
 }

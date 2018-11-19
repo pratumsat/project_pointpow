@@ -350,6 +350,12 @@ extension String {
     }
 }
 
+extension NSLayoutConstraint {
+    func constraintWithMultiplier(_ multiplier: CGFloat) -> NSLayoutConstraint {
+        return NSLayoutConstraint(item: self.firstItem!, attribute: self.firstAttribute, relatedBy: self.relation, toItem: self.secondItem, attribute: self.secondAttribute, multiplier: multiplier, constant: self.constant)
+    }
+}
+
 struct Constant {
     enum ViewBorder: String {
         case left, right, top, bottom
@@ -375,6 +381,7 @@ struct Constant {
             static let UNDER_TEXTFIELD = CGFloat(17.0)
             static let CONTENT = CGFloat(22.0)
             static let TAB = CGFloat(12.0)
+            static let FREIND_RECENT = CGFloat(15.0)
             
             
         }

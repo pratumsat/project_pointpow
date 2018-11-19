@@ -10,6 +10,7 @@ import UIKit
 
 class HeadCell: UICollectionViewCell {
 
+    @IBOutlet weak var marginLeftConstrantLabel: NSLayoutConstraint!
     @IBOutlet weak var nameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

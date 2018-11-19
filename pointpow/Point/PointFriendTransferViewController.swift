@@ -32,6 +32,8 @@ class PointFriendTransferViewController: BaseViewController {
     }
     
     func setUp(){
+        self.myProfileImageView.image = UIImage(named:"bg-profile-image")
+        self.friendImageView.image = UIImage(named:"bg-4")
        
         self.backgroundImage?.image = nil
         self.toggleCheckbox.isChecked = true

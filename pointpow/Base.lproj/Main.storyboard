@@ -157,7 +157,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ลงชื่อเข้าใช้" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7b-Bt-GGP">
-                                        <rect key="frame" x="161.66666666666666" y="129" width="91" height="36.666666666666657"/>
+                                        <rect key="frame" x="140.33333333333331" y="129" width="133.33333333333331" height="32.666666666666657"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="28"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -169,7 +169,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5c-kx-zuG">
-                                        <rect key="frame" x="329.66666666666669" y="315.66666666666669" width="63.666666666666686" height="23.666666666666686"/>
+                                        <rect key="frame" x="299.66666666666669" y="311.66666666666669" width="93.666666666666686" height="21"/>
                                         <attributedString key="attributedText">
                                             <fragment content="ลืมรหัสผ่าน?">
                                                 <attributes>
@@ -184,7 +184,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="อีเมล/เบอร์โทรศัพท์มือถือ" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ljl-gH-9LG">
-                                        <rect key="frame" x="20.666666666666657" y="185.66666666666666" width="372.66666666666674" height="40"/>
+                                        <rect key="frame" x="20.666666666666657" y="181.66666666666666" width="372.66666666666674" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="qAR-im-WrZ"/>
                                         </constraints>
@@ -193,13 +193,13 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="รหัสผ่าน" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uOC-98-xMV">
-                                        <rect key="frame" x="20.666666666666657" y="255.66666666666669" width="372.66666666666674" height="40"/>
+                                        <rect key="frame" x="20.666666666666657" y="251.66666666666669" width="372.66666666666674" height="40"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FMq-0r-v6c">
-                                        <rect key="frame" x="20.666666666666657" y="369.33333333333331" width="372.66666666666674" height="40"/>
+                                        <rect key="frame" x="20.666666666666657" y="362.66666666666669" width="372.66666666666674" height="40"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="yM9-Wc-Tss"/>
@@ -213,13 +213,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="หรือ ลงชื่อเข้าใช้งานผ่าน" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lhj-dB-wAz">
-                                        <rect key="frame" x="133.33333333333337" y="429.33333333333331" width="147.66666666666663" height="26"/>
+                                        <rect key="frame" x="106.66666666666669" y="422.66666666666669" width="201" height="23.333333333333314"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Wg-Zi-nf0">
-                                        <rect key="frame" x="125.33333333333331" y="475.33333333333337" width="60" height="60"/>
+                                        <rect key="frame" x="125.33333333333331" y="466" width="60" height="60"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-facebook" translatesAutoresizingMaskIntoConstraints="NO" id="mJs-uo-NNb">
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
@@ -235,7 +235,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M2H-Bd-O1G">
-                                        <rect key="frame" x="228.66666666666663" y="475.33333333333337" width="60" height="60"/>
+                                        <rect key="frame" x="228.66666666666663" y="466" width="60" height="60"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-google" translatesAutoresizingMaskIntoConstraints="NO" id="qtw-zX-9t6">
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
@@ -249,28 +249,28 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g2s-YS-tk1">
-                                        <rect key="frame" x="20.666666666666657" y="225.33333333333331" width="372.66666666666674" height="0.33333333333334281"/>
+                                        <rect key="frame" x="20.666666666666657" y="221.33333333333331" width="372.66666666666674" height="0.33333333333334281"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.5" id="48M-wQ-aZM"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YAr-PL-QtD">
-                                        <rect key="frame" x="20.666666666666657" y="295.33333333333331" width="372.66666666666674" height="0.33333333333331439"/>
+                                        <rect key="frame" x="20.666666666666657" y="291.33333333333331" width="372.66666666666674" height="0.33333333333331439"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.5" id="9Fr-ig-J9g"/>
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-username" translatesAutoresizingMaskIntoConstraints="NO" id="qZ3-DW-tHM">
-                                        <rect key="frame" x="30.666666666666671" y="195.66666666666666" width="20" height="20"/>
+                                        <rect key="frame" x="30.666666666666671" y="191.66666666666666" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="5Fu-fD-5Gm"/>
                                             <constraint firstAttribute="width" secondItem="qZ3-DW-tHM" secondAttribute="height" multiplier="1:1" id="glZ-m1-5au"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-password" translatesAutoresizingMaskIntoConstraints="NO" id="bBw-jh-4O0">
-                                        <rect key="frame" x="30.666666666666671" y="265.66666666666669" width="20" height="20"/>
+                                        <rect key="frame" x="30.666666666666671" y="261.66666666666669" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="bBw-jh-4O0" secondAttribute="height" multiplier="1:1" id="Mag-QL-Od1"/>
                                             <constraint firstAttribute="width" constant="20" id="trd-HC-td7"/>
@@ -352,7 +352,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="สร้างบัญชีผู้ใช้" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4un-ap-sRT">
-                                        <rect key="frame" x="146" y="129" width="122.33333333333331" height="36.666666666666657"/>
+                                        <rect key="frame" x="125" y="129" width="164" height="32.666666666666657"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="28"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -364,13 +364,13 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ตัวอักษรและตัวเลขอย่างน้อย 6 ตัวอักษร" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEi-RV-Ty2">
-                                        <rect key="frame" x="60.666666666666657" y="300.66666666666669" width="193" height="22.333333333333314"/>
+                                        <rect key="frame" x="60.666666666666657" y="296.66666666666669" width="275.33333333333337" height="20"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="17"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="อีเมล/เบอร์โทรศัพท์มือถือ" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="chK-po-LeA">
-                                        <rect key="frame" x="20.666666666666657" y="185.66666666666666" width="372.66666666666674" height="40"/>
+                                        <rect key="frame" x="20.666666666666657" y="181.66666666666666" width="372.66666666666674" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="7vC-Wm-xIn"/>
                                         </constraints>
@@ -379,13 +379,13 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="รหัสผ่าน" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TCr-ac-WmX">
-                                        <rect key="frame" x="20.666666666666657" y="255.66666666666669" width="372.66666666666674" height="40"/>
+                                        <rect key="frame" x="20.666666666666657" y="251.66666666666669" width="372.66666666666674" height="40"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YAs-Y8-DI5">
-                                        <rect key="frame" x="20.666666666666657" y="423" width="372.66666666666674" height="40"/>
+                                        <rect key="frame" x="20.666666666666657" y="416.66666666666669" width="372.66666666666674" height="40"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Awl-6V-uVP"/>
@@ -399,19 +399,19 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="หรือ ลงชื่อเข้าใช้งานผ่าน" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NPv-Or-XUh">
-                                        <rect key="frame" x="133.33333333333337" y="483" width="147.66666666666663" height="26"/>
+                                        <rect key="frame" x="106.66666666666669" y="476.66666666666663" width="201" height="23.333333333333314"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ยืนยันรหัสผ่าน" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bWs-Mt-w12">
-                                        <rect key="frame" x="20.666666666666657" y="353" width="372.66666666666674" height="40"/>
+                                        <rect key="frame" x="20.666666666666657" y="346.66666666666669" width="372.66666666666674" height="40"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IXM-Ry-gy9">
-                                        <rect key="frame" x="228.66666666666663" y="529" width="60" height="60"/>
+                                        <rect key="frame" x="228.66666666666663" y="520" width="60" height="60"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-google" translatesAutoresizingMaskIntoConstraints="NO" id="lmi-h2-bSG">
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
@@ -425,7 +425,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1oy-yr-Vdo">
-                                        <rect key="frame" x="125.33333333333331" y="529" width="60" height="60"/>
+                                        <rect key="frame" x="125.33333333333331" y="520" width="60" height="60"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-facebook" translatesAutoresizingMaskIntoConstraints="NO" id="47c-fo-VlS">
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
@@ -440,41 +440,41 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cJ0-z8-fdT">
-                                        <rect key="frame" x="20.666666666666657" y="225.33333333333331" width="372.66666666666674" height="0.33333333333334281"/>
+                                        <rect key="frame" x="20.666666666666657" y="221.33333333333331" width="372.66666666666674" height="0.33333333333334281"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.5" id="tXy-en-ElT"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tze-2n-SCh">
-                                        <rect key="frame" x="20.666666666666657" y="392.66666666666669" width="372.66666666666674" height="0.33333333333331439"/>
+                                        <rect key="frame" x="20.666666666666657" y="386.33333333333331" width="372.66666666666674" height="0.33333333333331439"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.5" id="szQ-6l-aLm"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mzX-Nk-lKA">
-                                        <rect key="frame" x="20.666666666666657" y="295.33333333333331" width="372.66666666666674" height="0.33333333333331439"/>
+                                        <rect key="frame" x="20.666666666666657" y="291.33333333333331" width="372.66666666666674" height="0.33333333333331439"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.5" id="P7L-bs-LcP"/>
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-username" translatesAutoresizingMaskIntoConstraints="NO" id="Rxp-g3-AQr">
-                                        <rect key="frame" x="30.666666666666671" y="195.66666666666666" width="20" height="20"/>
+                                        <rect key="frame" x="30.666666666666671" y="191.66666666666666" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="gxb-ui-5ZO"/>
                                             <constraint firstAttribute="width" secondItem="Rxp-g3-AQr" secondAttribute="height" multiplier="1:1" id="zt1-0n-Oag"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-password" translatesAutoresizingMaskIntoConstraints="NO" id="dVZ-0C-ad0">
-                                        <rect key="frame" x="30.666666666666671" y="265.66666666666669" width="20" height="20"/>
+                                        <rect key="frame" x="30.666666666666671" y="261.66666666666669" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="jcF-FX-hj0"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-password" translatesAutoresizingMaskIntoConstraints="NO" id="bwe-Kr-S5v">
-                                        <rect key="frame" x="30.666666666666671" y="363" width="20" height="20"/>
+                                        <rect key="frame" x="30.666666666666671" y="356.66666666666669" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="UdU-o2-J1w"/>
                                         </constraints>
@@ -567,7 +567,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="อีเมล/เบอร์โทรศัพท์มือถือ" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zQ4-0W-Pdo">
-                                        <rect key="frame" x="20.666666666666657" y="185.66666666666666" width="372.66666666666674" height="40"/>
+                                        <rect key="frame" x="20.666666666666657" y="181.66666666666666" width="372.66666666666674" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="SLl-Sd-1kP"/>
                                         </constraints>
@@ -576,14 +576,14 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-username" translatesAutoresizingMaskIntoConstraints="NO" id="Mai-xo-GyA">
-                                        <rect key="frame" x="30.666666666666671" y="195.66666666666666" width="20" height="20"/>
+                                        <rect key="frame" x="30.666666666666671" y="191.66666666666666" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Mai-xo-GyA" secondAttribute="height" multiplier="1:1" id="qXM-fH-guj"/>
                                             <constraint firstAttribute="width" constant="20" id="wxE-KF-d6P"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBc-pZ-dkF">
-                                        <rect key="frame" x="20.666666666666657" y="255.66666666666669" width="372.66666666666674" height="40"/>
+                                        <rect key="frame" x="20.666666666666657" y="251.66666666666669" width="372.66666666666674" height="40"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="gWK-le-nQR"/>
@@ -600,13 +600,13 @@
                                         <rect key="frame" x="103.66666666666669" y="30" width="207" height="69"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="กรอกอีเมล/เบอร์มือถือ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZ3-Vu-BAu">
-                                        <rect key="frame" x="111.66666666666667" y="129" width="190.66666666666663" height="36.666666666666657"/>
+                                        <rect key="frame" x="79.666666666666686" y="129" width="255" height="32.666666666666657"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="28"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AzP-hz-ReP">
-                                        <rect key="frame" x="20.666666666666657" y="225.33333333333331" width="372.66666666666674" height="0.33333333333334281"/>
+                                        <rect key="frame" x="20.666666666666657" y="221.33333333333331" width="372.66666666666674" height="0.33333333333334281"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.5" id="VJA-wi-e1x"/>
@@ -683,6 +683,65 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xjt-N0-P3z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-9" y="1313"/>
+        </scene>
+        <!--Pop Up Transfer Success View Controller-->
+        <scene sceneID="4Sz-H4-l9X">
+            <objects>
+                <viewController storyboardIdentifier="PopUpTransferSuccessViewController" id="IzQ-o9-JHN" customClass="PopUpTransferSuccessViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oXf-sr-7eH">
+                        <rect key="frame" x="0.0" y="0.0" width="212" height="140"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-status-success" translatesAutoresizingMaskIntoConstraints="NO" id="iWv-wI-b2C">
+                                <rect key="frame" x="78" y="14" width="56" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="iWv-wI-b2C" secondAttribute="height" multiplier="1:1" id="m1a-Nd-xfX"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fXp-yh-drQ">
+                                <rect key="frame" x="0.0" y="102" width="212" height="38"/>
+                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
+                                <state key="normal" title="ตกลง"/>
+                                <connections>
+                                    <action selector="clickTapped:" destination="IzQ-o9-JHN" eventType="touchUpInside" id="rXn-e7-cyH"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="โอนพ้อยท์สำเร็จ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ld3-1H-dnk">
+                                <rect key="frame" x="62.666666666666657" y="70" width="87" height="23.666666666666671"/>
+                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
+                                <color key="textColor" red="0.29481717940000002" green="0.65077251199999997" blue="0.35288745160000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aVN-yL-aMv">
+                                <rect key="frame" x="0.0" y="101.66666666666667" width="212" height="0.3333333333333286"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.5" id="cB7-g5-ZbA"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="fXp-yh-drQ" secondAttribute="trailing" id="FbU-Je-2B4"/>
+                            <constraint firstItem="fXp-yh-drQ" firstAttribute="top" secondItem="aVN-yL-aMv" secondAttribute="bottom" id="NKU-QZ-4DC"/>
+                            <constraint firstItem="fXp-yh-drQ" firstAttribute="leading" secondItem="oXf-sr-7eH" secondAttribute="leading" id="VPb-99-EPx"/>
+                            <constraint firstItem="iWv-wI-b2C" firstAttribute="centerY" secondItem="oXf-sr-7eH" secondAttribute="centerY" multiplier="0.6" id="f4o-DR-QHa"/>
+                            <constraint firstItem="Ld3-1H-dnk" firstAttribute="top" secondItem="iWv-wI-b2C" secondAttribute="bottom" id="fQm-cE-x6R"/>
+                            <constraint firstAttribute="bottom" secondItem="fXp-yh-drQ" secondAttribute="bottom" id="gI5-CL-tex"/>
+                            <constraint firstItem="aVN-yL-aMv" firstAttribute="leading" secondItem="Cdx-XK-rLg" secondAttribute="leading" id="oR4-b9-DrD"/>
+                            <constraint firstItem="Ld3-1H-dnk" firstAttribute="centerX" secondItem="iWv-wI-b2C" secondAttribute="centerX" id="rXz-0a-mrN"/>
+                            <constraint firstItem="Cdx-XK-rLg" firstAttribute="trailing" secondItem="aVN-yL-aMv" secondAttribute="trailing" id="udm-Va-plB"/>
+                            <constraint firstItem="iWv-wI-b2C" firstAttribute="centerX" secondItem="oXf-sr-7eH" secondAttribute="centerX" id="vaL-Ca-gtl"/>
+                            <constraint firstItem="iWv-wI-b2C" firstAttribute="height" secondItem="oXf-sr-7eH" secondAttribute="height" multiplier="0.4" id="yPE-Z2-eX0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Cdx-XK-rLg"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="212" height="140"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FRp-gn-Hs3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1958" y="1748"/>
         </scene>
         <!--หน้าแรก-->
         <scene sceneID="tne-QT-ifu">
@@ -828,13 +887,13 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Barcode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="TV3-Km-rYF">
-                                        <rect key="frame" x="77.666666666666671" y="120.66666666666674" width="52.000000000000014" height="26"/>
+                                        <rect key="frame" x="65.666666666666657" y="120.66666666666673" width="75.666666666666657" height="23.333333333333329"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QR Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VHb-ya-vbp">
-                                        <rect key="frame" x="280.66666666666669" y="120.66666666666674" width="59.666666666666686" height="26"/>
+                                        <rect key="frame" x="269" y="120.66666666666673" width="83" height="23.333333333333329"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -967,7 +1026,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ยืนยันตัวตน" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nat-pu-F0s">
-                                        <rect key="frame" x="159.33333333333334" y="129" width="95.333333333333343" height="35.333333333333343"/>
+                                        <rect key="frame" x="141.66666666666666" y="129" width="130.99999999999997" height="31.666666666666657"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="27"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -979,7 +1038,7 @@
                                         </constraints>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="อีเมล/เบอร์โทรศัพท์มือถือ" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EGD-2n-m1z">
-                                        <rect key="frame" x="20.666666666666657" y="184.33333333333334" width="372.66666666666674" height="40"/>
+                                        <rect key="frame" x="20.666666666666657" y="180.66666666666666" width="372.66666666666674" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="aFh-EL-hUb"/>
                                         </constraints>
@@ -988,19 +1047,19 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-username" translatesAutoresizingMaskIntoConstraints="NO" id="O7s-qC-Xn3">
-                                        <rect key="frame" x="30.666666666666671" y="194.33333333333334" width="20" height="20"/>
+                                        <rect key="frame" x="30.666666666666671" y="190.66666666666666" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="UrO-ic-dGV"/>
                                         </constraints>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="รหัส OTP" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PZt-tb-sph">
-                                        <rect key="frame" x="20.666666666666671" y="254.33333333333331" width="223.66666666666663" height="40"/>
+                                        <rect key="frame" x="20.666666666666671" y="250.66666666666669" width="223.66666666666663" height="40"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m79-CZ-tLG">
-                                        <rect key="frame" x="20.666666666666657" y="324.33333333333331" width="372.66666666666674" height="40"/>
+                                        <rect key="frame" x="20.666666666666657" y="320.66666666666669" width="372.66666666666674" height="40"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="owG-VD-CLf"/>
@@ -1014,21 +1073,21 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VxS-R8-0xn">
-                                        <rect key="frame" x="20.666666666666657" y="224" width="372.66666666666674" height="0.33333333333334281"/>
+                                        <rect key="frame" x="20.666666666666657" y="220.33333333333331" width="372.66666666666674" height="0.33333333333334281"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.5" id="h48-88-XTJ"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QrC-xQ-6zI">
-                                        <rect key="frame" x="20.666666666666671" y="294" width="223.66666666666663" height="0.33333333333331439"/>
+                                        <rect key="frame" x="20.666666666666671" y="290.33333333333331" width="223.66666666666663" height="0.33333333333331439"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.5" id="24U-nC-ptk"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQc-5t-Ppy">
-                                        <rect key="frame" x="323.33333333333331" y="261.33333333333331" width="70" height="26"/>
+                                        <rect key="frame" x="323.33333333333331" y="257.66666666666669" width="70" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="26" id="fru-yg-0mk"/>
                                             <constraint firstAttribute="width" constant="70" id="hwk-Fa-AyN"/>
@@ -1042,7 +1101,7 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-sms" translatesAutoresizingMaskIntoConstraints="NO" id="p6I-Q8-hzV">
-                                        <rect key="frame" x="30.666666666666671" y="264.33333333333331" width="20" height="20"/>
+                                        <rect key="frame" x="30.666666666666671" y="260.66666666666669" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="Drg-fe-91W"/>
                                         </constraints>
@@ -1178,26 +1237,26 @@
                                 <rect key="frame" x="248.33333333333334" y="43.999999999999993" width="124.33333333333334" height="124.33333333333331"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="โอนพ้อยท์" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0T-mz-U9h">
-                                <rect key="frame" x="70" y="153.33333333333334" width="67" height="28.666666666666657"/>
+                                <rect key="frame" x="57.333333333333336" y="153.33333333333334" width="92.666666666666657" height="25.666666666666657"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="22"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="โอนพ้อยท์ให้เพื่อน" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kfe-PC-cOb">
-                                <rect key="frame" x="251" y="153.33333333333334" width="119" height="28.666666666666657"/>
+                                <rect key="frame" x="227.33333333333337" y="153.33333333333334" width="166.66666666666663" height="25.666666666666657"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="22"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7KP-7W-Y7o">
-                                <rect key="frame" x="206.66666666666666" y="44" width="1" height="168"/>
+                                <rect key="frame" x="206.66666666666666" y="44" width="1" height="165"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="1" id="Y2F-B7-wMI"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lCa-G3-4g3">
-                                <rect key="frame" x="0.0" y="212" width="414" height="1"/>
+                                <rect key="frame" x="0.0" y="209" width="414" height="1"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="If2-P3-mMy"/>
@@ -1402,13 +1461,13 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ข้อมูลส่วนตัว" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ceQ-AV-BWN">
-                                        <rect key="frame" x="156.66666666666666" y="30" width="100.66666666666666" height="34"/>
+                                        <rect key="frame" x="139" y="30" width="136.33333333333337" height="30.333333333333329"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="26"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ชื่อ" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dyw-2j-Xu5">
-                                        <rect key="frame" x="20" y="94" width="374" height="40"/>
+                                        <rect key="frame" x="20" y="90.333333333333343" width="374" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="h4E-Ou-HLR"/>
                                         </constraints>
@@ -1417,13 +1476,13 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="นามสกุล" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GAe-Tb-KTX">
-                                        <rect key="frame" x="20" y="164" width="374" height="40"/>
+                                        <rect key="frame" x="20" y="160.33333333333334" width="374" height="40"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPz-4f-hKY">
-                                        <rect key="frame" x="20" y="304" width="374" height="40"/>
+                                        <rect key="frame" x="20" y="300.33333333333331" width="374" height="40"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Iwg-ig-QRP"/>
@@ -1438,27 +1497,27 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="COH-0J-skQ">
-                                        <rect key="frame" x="20" y="133.66666666666666" width="374" height="0.33333333333334281"/>
+                                        <rect key="frame" x="20" y="130" width="374" height="0.33333333333334281"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.5" id="Kie-iS-dSC"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ya-rP-7rW">
-                                        <rect key="frame" x="20" y="203.66666666666666" width="374" height="0.33333333333334281"/>
+                                        <rect key="frame" x="20" y="200" width="374" height="0.33333333333334281"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.5" id="9jW-zN-A09"/>
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="เลขบัตรประชาชน" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7i5-2A-mMn">
-                                        <rect key="frame" x="20" y="234" width="374" height="40"/>
+                                        <rect key="frame" x="20" y="230.33333333333331" width="374" height="40"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6EJ-p4-zIE">
-                                        <rect key="frame" x="20" y="273.66666666666669" width="374" height="0.33333333333331439"/>
+                                        <rect key="frame" x="20" y="270" width="374" height="0.33333333333331439"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.5" id="c5h-0a-Hyv"/>
@@ -1967,77 +2026,77 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="พ้อยท์คงเหลือ :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZkC-Dz-ZOR">
-                                        <rect key="frame" x="39.999999999999993" y="40" width="94.333333333333314" height="26"/>
+                                        <rect key="frame" x="40.000000000000007" y="40" width="125.66666666666669" height="23.333333333333329"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                         <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="โอนจาก" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9iB-FO-1bV">
-                                        <rect key="frame" x="40" y="88" width="48.333333333333343" height="26"/>
+                                        <rect key="frame" x="40" y="84.333333333333343" width="67" height="23.333333333333329"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                         <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100,000.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="74w-zS-gvl">
-                                        <rect key="frame" x="144.33333333333334" y="40" width="73.333333333333343" height="26"/>
+                                        <rect key="frame" x="175.66666666666666" y="40" width="100.33333333333334" height="23.333333333333329"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                         <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Point Pow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9qS-2a-hNS">
-                                        <rect key="frame" x="227.66666666666666" y="40" width="65.333333333333343" height="26"/>
+                                        <rect key="frame" x="286" y="40" width="91.666666666666686" height="23.333333333333329"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                         <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="จำนวน" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="llM-Dt-LZO">
-                                        <rect key="frame" x="40" y="148" width="42.666666666666657" height="26"/>
+                                        <rect key="frame" x="40" y="139.33333333333334" width="56" height="23.333333333333343"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                         <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="พ้อยท์" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9xi-H7-JWA">
-                                        <rect key="frame" x="332.33333333333331" y="146.66666666666666" width="41.666666666666686" height="28.666666666666657"/>
+                                        <rect key="frame" x="319" y="138" width="55" height="25.666666666666657"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="22"/>
                                         <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EUK-PS-FSQ">
-                                        <rect key="frame" x="127.66666666666667" y="141" width="169.66666666666663" height="40"/>
+                                        <rect key="frame" x="141" y="133.33333333333334" width="143" height="35"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="kXi-Q5-Z08"/>
+                                            <constraint firstAttribute="height" constant="35" id="kXi-Q5-Z08"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9eU-of-s0G">
-                                        <rect key="frame" x="108.33333333333331" y="81" width="207" height="40"/>
+                                        <rect key="frame" x="127.00000000000001" y="78.333333333333329" width="188.33333333333337" height="35"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="rvv-6A-z4a"/>
+                                            <constraint firstAttribute="height" constant="35" id="rvv-6A-z4a"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-point-less" translatesAutoresizingMaskIntoConstraints="NO" id="C6T-fs-rL2">
-                                        <rect key="frame" x="102.66666666666667" y="151" width="20" height="20"/>
+                                        <rect key="frame" x="116" y="141" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="fTR-Uo-wQI"/>
                                             <constraint firstAttribute="width" secondItem="C6T-fs-rL2" secondAttribute="height" multiplier="1:1" id="jIa-2t-r8p"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-point-more" translatesAutoresizingMaskIntoConstraints="NO" id="GBc-GI-GeQ">
-                                        <rect key="frame" x="302.33333333333331" y="151" width="20" height="20"/>
+                                        <rect key="frame" x="289" y="141" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="Mx2-3P-b1u"/>
                                             <constraint firstAttribute="width" secondItem="GBc-GI-GeQ" secondAttribute="height" multiplier="1:1" id="X7w-Ex-xuy"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="จำนวนพ้อยท์" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LTW-bC-okw">
-                                        <rect key="frame" x="39.999999999999993" y="197" width="72.333333333333314" height="24"/>
+                                        <rect key="frame" x="39.999999999999993" y="194.66666666666666" width="95.333333333333314" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="9df-Bj-2Iq"/>
                                         </constraints>
@@ -2046,13 +2105,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="AIS Point 500 = 50 Point Pow" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSn-uE-Gjh">
-                                        <rect key="frame" x="122.33333333333334" y="196" width="271.66666666666663" height="26"/>
+                                        <rect key="frame" x="145.33333333333337" y="183.33333333333334" width="248.66666666666663" height="46.666666666666657"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                         <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wed-kj-vVP">
-                                        <rect key="frame" x="65" y="272" width="309" height="23.666666666666686"/>
+                                        <rect key="frame" x="65" y="280" width="309" height="21"/>
                                         <attributedString key="attributedText">
                                             <fragment content="ข้าพเจ้าได้อ่านและยอมรับ ">
                                                 <attributes>
@@ -2091,20 +2150,20 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="การใช้งานแอพพลิเคชั่น" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w40-Tg-6R5">
-                                        <rect key="frame" x="40.000000000000007" y="295.66666666666669" width="124.66666666666669" height="23.666666666666686"/>
+                                        <rect key="frame" x="40" y="301" width="172.33333333333334" height="21"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                         <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dss-eE-OHz" customClass="CheckBox" customModule="pointpow" customModuleProvider="target">
-                                        <rect key="frame" x="40" y="272" width="20" height="20"/>
+                                        <rect key="frame" x="40" y="280" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Dss-eE-OHz" secondAttribute="height" multiplier="1:1" id="1QK-5g-S7s"/>
                                             <constraint firstAttribute="width" constant="20" id="Ffl-xE-fYU"/>
                                         </constraints>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e01-0N-sVb">
-                                        <rect key="frame" x="20" y="349.33333333333331" width="374" height="40"/>
+                                        <rect key="frame" x="20" y="352" width="374" height="40"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="vBj-18-oNW"/>
@@ -2118,7 +2177,7 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-arrow-down" translatesAutoresizingMaskIntoConstraints="NO" id="mmh-3H-MTx">
-                                        <rect key="frame" x="285.33333333333331" y="93.666666666666657" width="15" height="15"/>
+                                        <rect key="frame" x="285.33333333333331" y="88.333333333333343" width="15" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="mmh-3H-MTx" secondAttribute="height" multiplier="1:1" id="N6P-sz-LWu"/>
                                             <constraint firstAttribute="width" constant="15" id="krm-xg-Eqj"/>
@@ -2355,128 +2414,50 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Point Pow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJV-aa-8L8">
-                                        <rect key="frame" x="243.33333333333334" y="129" width="100.66666666666666" height="25.666666666666657"/>
+                                        <rect key="frame" x="243.33333333333334" y="126.33333333333336" width="100.66666666666666" height="25.666666666666671"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="22"/>
                                         <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KWU-uO-u7h">
-                                        <rect key="frame" x="65.000000000000014" y="121.66666666666666" width="143.33333333333337" height="40"/>
+                                        <rect key="frame" x="65.000000000000014" y="121.66666666666666" width="143.33333333333337" height="35"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="Eho-74-0Hc"/>
+                                            <constraint firstAttribute="height" constant="35" id="Eho-74-0Hc"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-point-less" translatesAutoresizingMaskIntoConstraints="NO" id="WP6-YN-BdS">
-                                        <rect key="frame" x="40" y="131.66666666666666" width="20" height="20"/>
+                                        <rect key="frame" x="40" y="129.33333333333334" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="WP6-YN-BdS" secondAttribute="height" multiplier="1:1" id="mCY-pK-n4U"/>
                                             <constraint firstAttribute="width" constant="20" id="pHu-9f-OBQ"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-point-more" translatesAutoresizingMaskIntoConstraints="NO" id="wl4-jg-abE">
-                                        <rect key="frame" x="213.33333333333334" y="131.66666666666666" width="20" height="20"/>
+                                        <rect key="frame" x="213.33333333333334" y="129.33333333333334" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="wl4-jg-abE" secondAttribute="height" multiplier="1:1" id="O1W-yP-JBl"/>
                                             <constraint firstAttribute="width" constant="20" id="yHs-hH-4B6"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X7s-j6-aYe">
-                                        <rect key="frame" x="65" y="361" width="309" height="21"/>
+                                        <rect key="frame" x="65" y="371" width="309" height="21"/>
                                         <attributedString key="attributedText">
                                             <fragment content="ข้าพเจ้าได้อ่านและยอมรับ ">
                                                 <attributes>
                                                     <color key="NSColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     <font key="NSFont" size="18" name="ThaiSansNeue-Bold"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                        <tabStops>
-                                                            <textTab alignment="left" location="28">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="56">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="84">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="112">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="140">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="168">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="196">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="224">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="252">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="280">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="308">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="336">
-                                                                <options/>
-                                                            </textTab>
-                                                        </tabStops>
-                                                    </paragraphStyle>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                 </attributes>
                                             </fragment>
                                             <fragment content="ข้อตกลง">
                                                 <attributes>
                                                     <color key="NSColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     <font key="NSFont" size="18" name="ThaiSansNeue-Bold"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                        <tabStops>
-                                                            <textTab alignment="left" location="28">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="56">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="84">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="112">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="140">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="168">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="196">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="224">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="252">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="280">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="308">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="336">
-                                                                <options/>
-                                                            </textTab>
-                                                        </tabStops>
-                                                    </paragraphStyle>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                     <integer key="NSUnderline" value="1"/>
                                                     <color key="NSUnderlineColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </attributes>
@@ -2485,46 +2466,7 @@
                                                 <attributes>
                                                     <color key="NSColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     <font key="NSFont" size="18" name="ThaiSansNeue-Bold"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                        <tabStops>
-                                                            <textTab alignment="left" location="28">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="56">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="84">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="112">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="140">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="168">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="196">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="224">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="252">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="280">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="308">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="336">
-                                                                <options/>
-                                                            </textTab>
-                                                        </tabStops>
-                                                    </paragraphStyle>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                     <color key="NSUnderlineColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </attributes>
                                             </fragment>
@@ -2532,46 +2474,7 @@
                                                 <attributes>
                                                     <color key="NSColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     <font key="NSFont" size="18" name="ThaiSansNeue-Bold"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                        <tabStops>
-                                                            <textTab alignment="left" location="28">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="56">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="84">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="112">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="140">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="168">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="196">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="224">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="252">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="280">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="308">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="336">
-                                                                <options/>
-                                                            </textTab>
-                                                        </tabStops>
-                                                    </paragraphStyle>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                     <integer key="NSUnderline" value="1"/>
                                                     <color key="NSUnderlineColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </attributes>
@@ -2580,13 +2483,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="การใช้งานแอพพลิเคชั่น" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ow-Mv-LSI">
-                                        <rect key="frame" x="40" y="382" width="172.33333333333334" height="21"/>
+                                        <rect key="frame" x="40" y="392" width="172.33333333333334" height="21"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                         <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ukf-vn-ypY" customClass="CheckBox" customModule="pointpow" customModuleProvider="target">
-                                        <rect key="frame" x="40" y="361" width="20" height="20"/>
+                                        <rect key="frame" x="40" y="371" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="ukf-vn-ypY" secondAttribute="height" multiplier="1:1" id="N5c-XE-2UQ"/>
                                             <constraint firstAttribute="width" constant="20" id="tKL-2d-ivY"/>
@@ -2596,7 +2499,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MC9-Y6-EdG">
-                                        <rect key="frame" x="20" y="433" width="374" height="40"/>
+                                        <rect key="frame" x="20" y="443" width="374" height="40"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="6hV-qD-Vm3"/>
@@ -2609,29 +2512,29 @@
                                             <action selector="transferTapped:" destination="TBZ-6p-pRv" eventType="touchUpInside" id="SRq-rG-Pxj"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-profile-image" translatesAutoresizingMaskIntoConstraints="NO" id="nIG-Zb-mE3">
-                                        <rect key="frame" x="39.999999999999993" y="176.66666666666666" width="124.33333333333331" height="124.33333333333334"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nIG-Zb-mE3">
+                                        <rect key="frame" x="39.999999999999993" y="186.66666666666666" width="124.33333333333331" height="124.33333333333334"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="nIG-Zb-mE3" secondAttribute="height" multiplier="1:1" id="Ynl-Xz-Sck"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-4" translatesAutoresizingMaskIntoConstraints="NO" id="9Xm-7j-1b0">
-                                        <rect key="frame" x="249.66666666666666" y="176.66666666666666" width="124.33333333333334" height="124.33333333333334"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Xm-7j-1b0">
+                                        <rect key="frame" x="249.66666666666666" y="186.66666666666666" width="124.33333333333334" height="124.33333333333334"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lazy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ChZ-Z5-QEn">
-                                        <rect key="frame" x="39.999999999999993" y="301" width="124.33333333333331" height="25.666666666666686"/>
+                                        <rect key="frame" x="39.999999999999993" y="311" width="124.33333333333331" height="25.666666666666686"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="22"/>
                                         <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pinny" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6y-KO-MzZ">
-                                        <rect key="frame" x="249.66666666666666" y="301" width="124.33333333333334" height="25.666666666666686"/>
+                                        <rect key="frame" x="249.66666666666666" y="311" width="124.33333333333334" height="25.666666666666686"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="22"/>
                                         <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-logo-transfer" translatesAutoresizingMaskIntoConstraints="NO" id="exk-eO-bm1">
-                                        <rect key="frame" x="182" y="214" width="50" height="49.666666666666686"/>
+                                        <rect key="frame" x="182" y="224" width="50" height="49.666666666666686"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="exk-eO-bm1" secondAttribute="height" multiplier="1:1" id="7bs-4d-jWy"/>
                                         </constraints>
@@ -2652,7 +2555,7 @@
                                     <constraint firstItem="WP6-YN-BdS" firstAttribute="centerY" secondItem="KWU-uO-u7h" secondAttribute="centerY" id="5xe-Qq-eHf"/>
                                     <constraint firstItem="Flq-4Q-TbD" firstAttribute="leading" secondItem="IpF-yM-t7A" secondAttribute="trailing" constant="10" id="6YZ-c8-aZ4"/>
                                     <constraint firstItem="exk-eO-bm1" firstAttribute="width" secondItem="9Xm-7j-1b0" secondAttribute="width" multiplier="0.4" id="8ET-bG-daS"/>
-                                    <constraint firstItem="nIG-Zb-mE3" firstAttribute="top" secondItem="KWU-uO-u7h" secondAttribute="bottom" constant="15" id="9n5-LC-8W4"/>
+                                    <constraint firstItem="nIG-Zb-mE3" firstAttribute="top" secondItem="KWU-uO-u7h" secondAttribute="bottom" constant="30" id="9n5-LC-8W4"/>
                                     <constraint firstItem="DRx-Y9-4xw" firstAttribute="leading" secondItem="Flq-4Q-TbD" secondAttribute="trailing" constant="10" id="B9P-lg-iUD"/>
                                     <constraint firstItem="MC9-Y6-EdG" firstAttribute="leading" secondItem="6JS-kP-i7v" secondAttribute="leading" constant="20" id="D2S-Ac-RWX"/>
                                     <constraint firstItem="z6y-KO-MzZ" firstAttribute="top" secondItem="9Xm-7j-1b0" secondAttribute="bottom" id="F08-r6-Wbt"/>
@@ -2708,10 +2611,54 @@
             </objects>
             <point key="canvasLocation" x="4113.04347826087" y="3346.875"/>
         </scene>
+        <!--Point Friend Summary View Controller-->
+        <scene sceneID="Gnd-9z-f9D">
+            <objects>
+                <viewController storyboardIdentifier="PointFriendSummaryViewController" id="USA-A1-qD8" customClass="PointFriendSummaryViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4yp-XN-Kcd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="i3g-bK-YK5">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="5rK-n2-kpS">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="NfP-SH-WVZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="i3g-bK-YK5" firstAttribute="trailing" secondItem="vLo-00-d5R" secondAttribute="trailing" id="LCH-Zv-U0H"/>
+                            <constraint firstItem="i3g-bK-YK5" firstAttribute="bottom" secondItem="vLo-00-d5R" secondAttribute="bottom" id="gbR-gt-PU2"/>
+                            <constraint firstItem="i3g-bK-YK5" firstAttribute="top" secondItem="vLo-00-d5R" secondAttribute="top" id="oCt-fX-YEj"/>
+                            <constraint firstItem="i3g-bK-YK5" firstAttribute="leading" secondItem="vLo-00-d5R" secondAttribute="leading" id="pg2-V5-BwR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vLo-00-d5R"/>
+                    </view>
+                    <connections>
+                        <outlet property="resultCollectionView" destination="i3g-bK-YK5" id="Rjx-Dg-vIr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wx9-fG-Aev" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4858" y="3347"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="bg-4" width="1125" height="883"/>
-        <image name="bg-profile-image" width="5184" height="3456"/>
         <image name="ic-arrow-down" width="120" height="120"/>
         <image name="ic-facebook" width="150" height="154"/>
         <image name="ic-google" width="150" height="153"/>
@@ -2725,6 +2672,7 @@
         <image name="ic-point-more" width="120" height="119"/>
         <image name="ic-search" width="120" height="119"/>
         <image name="ic-sms" width="90" height="93"/>
+        <image name="ic-status-success" width="159" height="158"/>
         <image name="ic-tab-account" width="75" height="75"/>
         <image name="ic-tab-account-active" width="75" height="75"/>
         <image name="ic-tab-home" width="75" height="75"/>

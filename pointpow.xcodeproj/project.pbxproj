@@ -41,6 +41,11 @@
 		C11A93BE218C20D100627B44 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93BD218C20D100627B44 /* RegisterViewController.swift */; };
 		C11A93C0218C2AD900627B44 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93BF218C2AD900627B44 /* ForgotPasswordViewController.swift */; };
 		C11A93C4218FF3E200627B44 /* VerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93C3218FF3E200627B44 /* VerifyViewController.swift */; };
+		C11BDFB821A2B95D00443D2D /* ItemFriendSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11BDFB621A2B95D00443D2D /* ItemFriendSummaryCell.swift */; };
+		C11BDFB921A2B95D00443D2D /* ItemFriendSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C11BDFB721A2B95D00443D2D /* ItemFriendSummaryCell.xib */; };
+		C11BDFBC21A2BB3C00443D2D /* ItemConfirmSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11BDFBA21A2BB3C00443D2D /* ItemConfirmSummaryCell.swift */; };
+		C11BDFBD21A2BB3C00443D2D /* ItemConfirmSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C11BDFBB21A2BB3C00443D2D /* ItemConfirmSummaryCell.xib */; };
+		C11BDFBF21A2C17600443D2D /* PopUpTransferSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11BDFBE21A2C17600443D2D /* PopUpTransferSuccessViewController.swift */; };
 		C120D7CE21955BB500F9EEBB /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120D7CC21955BB500F9EEBB /* ProfileCell.swift */; };
 		C120D7CF21955BB500F9EEBB /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C120D7CD21955BB500F9EEBB /* ProfileCell.xib */; };
 		C120D7D221955BC900F9EEBB /* ItemProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120D7D021955BC900F9EEBB /* ItemProfileCell.swift */; };
@@ -148,6 +153,11 @@
 		C11A93BD218C20D100627B44 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		C11A93BF218C2AD900627B44 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		C11A93C3218FF3E200627B44 /* VerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyViewController.swift; sourceTree = "<group>"; };
+		C11BDFB621A2B95D00443D2D /* ItemFriendSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFriendSummaryCell.swift; sourceTree = "<group>"; };
+		C11BDFB721A2B95D00443D2D /* ItemFriendSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemFriendSummaryCell.xib; sourceTree = "<group>"; };
+		C11BDFBA21A2BB3C00443D2D /* ItemConfirmSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemConfirmSummaryCell.swift; sourceTree = "<group>"; };
+		C11BDFBB21A2BB3C00443D2D /* ItemConfirmSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemConfirmSummaryCell.xib; sourceTree = "<group>"; };
+		C11BDFBE21A2C17600443D2D /* PopUpTransferSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpTransferSuccessViewController.swift; sourceTree = "<group>"; };
 		C120D7CC21955BB500F9EEBB /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		C120D7CD21955BB500F9EEBB /* ProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
 		C120D7D021955BC900F9EEBB /* ItemProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemProfileCell.swift; sourceTree = "<group>"; };
@@ -304,6 +314,7 @@
 				C1817DA3219E6A2E009507DB /* PPWebViewController.swift */,
 				C1817DA9219E7F18009507DB /* BankPointTransferViewController.swift */,
 				C115FA49219EC511008E7844 /* ResultTransferViewController.swift */,
+				C11BDFBE21A2C17600443D2D /* PopUpTransferSuccessViewController.swift */,
 			);
 			path = Point;
 			sourceTree = "<group>";
@@ -355,6 +366,10 @@
 				C115FA4D219ECB85008E7844 /* ItemListResultCell.xib */,
 				C115FA50219ECC40008E7844 /* ItemStatusResultCell.swift */,
 				C115FA51219ECC40008E7844 /* ItemStatusResultCell.xib */,
+				C11BDFB621A2B95D00443D2D /* ItemFriendSummaryCell.swift */,
+				C11BDFB721A2B95D00443D2D /* ItemFriendSummaryCell.xib */,
+				C11BDFBA21A2BB3C00443D2D /* ItemConfirmSummaryCell.swift */,
+				C11BDFBB21A2BB3C00443D2D /* ItemConfirmSummaryCell.xib */,
 			);
 			path = ResultCell;
 			sourceTree = "<group>";
@@ -704,8 +719,10 @@
 				C1DEBE982188337500CBB95F /* ThaiSansNeue-Bold.ttf in Resources */,
 				C11A93B8218C00C800627B44 /* IntroCell1.xib in Resources */,
 				C10CA1BF219429D500316DF3 /* ImageCell.xib in Resources */,
+				C11BDFBD21A2BB3C00443D2D /* ItemConfirmSummaryCell.xib in Resources */,
 				C1AD50812187F45900F74415 /* Assets.xcassets in Resources */,
 				C10CA1BA2193E1D100316DF3 /* PromotionCampainCell.xib in Resources */,
+				C11BDFB921A2B95D00443D2D /* ItemFriendSummaryCell.xib in Resources */,
 				C1817DA2219C1934009507DB /* SwitchCell.xib in Resources */,
 				C115FA53219ECC40008E7844 /* ItemStatusResultCell.xib in Resources */,
 				C120D7CF21955BB500F9EEBB /* ProfileCell.xib in Resources */,
@@ -870,6 +887,7 @@
 				C10CA19721914AD500316DF3 /* PromotionViewController.swift in Sources */,
 				C1817DA6219E6C73009507DB /* DisplayNameViewController.swift in Sources */,
 				C115FA4E219ECB85008E7844 /* ItemListResultCell.swift in Sources */,
+				C11BDFBF21A2C17600443D2D /* PopUpTransferSuccessViewController.swift in Sources */,
 				C1817DAA219E7F18009507DB /* BankPointTransferViewController.swift in Sources */,
 				C10CA1A221914F2E00316DF3 /* MainTabbarViewController.swift in Sources */,
 				C10CA1A42191755C00316DF3 /* PersonalPopupViewController.swift in Sources */,
@@ -882,6 +900,7 @@
 				C10CA1BE219429D500316DF3 /* ImageCell.swift in Sources */,
 				C115FA5521A2A40F008E7844 /* PointFriendTransferViewController.swift in Sources */,
 				C1AD50A92187F7B500F74415 /* BaseViewController.swift in Sources */,
+				C11BDFB821A2B95D00443D2D /* ItemFriendSummaryCell.swift in Sources */,
 				C1817D92219BF61E009507DB /* ItemFriendCell.swift in Sources */,
 				C11A93B1218BF69700627B44 /* MainNav.swift in Sources */,
 				C11A93C4218FF3E200627B44 /* VerifyViewController.swift in Sources */,
@@ -898,6 +917,7 @@
 				C120D7D221955BC900F9EEBB /* ItemProfileCell.swift in Sources */,
 				C1817D96219BFCDE009507DB /* FriendCollectionCell.swift in Sources */,
 				C115FA5721A2B3EB008E7844 /* PointFriendSummaryViewController.swift in Sources */,
+				C11BDFBC21A2BB3C00443D2D /* ItemConfirmSummaryCell.swift in Sources */,
 				C1DEBE92218829D900CBB95F /* Scanner2ViewController.swift in Sources */,
 				C11A93AE218BF67F00627B44 /* IntroNav.swift in Sources */,
 				C1B542DD219ABE9A0040DDE6 /* SettingViewController.swift in Sources */,

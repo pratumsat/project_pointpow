@@ -445,6 +445,33 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         
         
     }
+    func showTransferSuccessPopup(_ animated:Bool , nextStepCallback:(()->Void)? = nil ){
+        let presenter: Presentr = {
+            
+//            let w = self.view.frame.width * 0.8
+//            let h = w/212*115
+//            let width = ModalSize.custom(size: Float(w))
+//            let height = ModalSize.custom(size: Float(h))
+//            
+//            let center = ModalCenterPosition.center
+//            let customType = PresentationType.custom(width: width, height: height, center: center)
+            
+            let customPresenter = Presentr(presentationType: PresentationType.alert)
+            customPresenter.roundCorners = true
+            customPresenter.cornerRadius = 10
+            customPresenter.dismissOnSwipe = false
+            customPresenter.dismissOnTap = false
+            
+            
+            return customPresenter
+        }()
+        
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "PopUpTransferSuccessViewController") as? PopUpTransferSuccessViewController{
+            
+            customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)
+            
+        }
+    }
     
     func showPersonalPopup(_ animated:Bool , nextStepCallback:(()->Void)? = nil ){
         let presenter: Presentr = {

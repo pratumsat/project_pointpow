@@ -80,8 +80,7 @@ class BankPointTransferViewController: BaseViewController , UIPickerViewDelegate
         self.transferFromTextField.autocorrectionType = .no
         self.amountTextField.autocorrectionType = .no
         
-        self.transferFromTextField.autocorrectionType = .no
-        self.amountTextField.autocorrectionType = .no
+        
         
     }
 

@@ -10,6 +10,7 @@ import UIKit
 
 class ItemFriendCell: UICollectionViewCell {
 
+    @IBOutlet weak var heightConstraintImageView: NSLayoutConstraint!
     @IBOutlet weak var widthConstraintButton: NSLayoutConstraint!
     @IBOutlet weak var marginTopConstraintButton: NSLayoutConstraint!
     @IBOutlet weak var heightConstraintButton: NSLayoutConstraint!
@@ -23,7 +24,11 @@ class ItemFriendCell: UICollectionViewCell {
             self.heightConstraintButton.constant = 20
             self.marginTopConstraintButton.constant = 4
             
-            let newConstaint = self.widthConstraintButton.constraintWithMultiplier(0.5)
+            let newC = self.heightConstraintImageView.constraintWithMultiplier(0.55)
+            self.removeConstraint(self.heightConstraintButton)
+            self.addConstraint(newC)
+            
+            let newConstaint = self.widthConstraintButton.constraintWithMultiplier(0.6)
             self.removeConstraint(self.widthConstraintButton)
             self.addConstraint(newConstaint)
             
@@ -32,8 +37,9 @@ class ItemFriendCell: UICollectionViewCell {
      
             self.layoutIfNeeded()
         }
-        
     }
+    var tappedCallback:(()->Void)?
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -53,4 +59,7 @@ class ItemFriendCell: UICollectionViewCell {
         
     }
     
+    @IBAction func transferTapped(_ sender: Any) {
+        self.tappedCallback?()
+    }
 }

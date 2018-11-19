@@ -344,7 +344,18 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
-    
+    func showPointFriendTransferView(_ animated:Bool){
+        if let vc:PointFriendTransferViewController  = self.storyboard?.instantiateViewController(withIdentifier: "PointFriendTransferViewController") as? PointFriendTransferViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    func showPointFriendSummaryTransferView(_ animated:Bool){
+        if let vc:PointFriendSummaryViewController  = self.storyboard?.instantiateViewController(withIdentifier: "PointFriendSummaryViewController") as? PointFriendSummaryViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
     
     func showEnterPassCodeModalView(_ title:String = NSLocalizedString("title-enter-passcode", comment: "")){
         let enterPasscode = PAPasscodeViewController(for: PasscodeActionEnter )

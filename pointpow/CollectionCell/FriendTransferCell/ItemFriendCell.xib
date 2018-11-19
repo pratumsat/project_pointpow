@@ -30,8 +30,8 @@
                             <constraint firstAttribute="width" secondItem="klX-Xt-tDp" secondAttribute="height" multiplier="1:1" id="zSY-ST-iUv"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="David Beckham" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWm-fK-ybk">
-                        <rect key="frame" x="109.5" y="148" width="91.5" height="23.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="David Beckham" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWm-fK-ybk">
+                        <rect key="frame" x="0.0" y="148" width="310" height="23.5"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                         <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -46,12 +46,17 @@
                         <state key="normal" title="โอนพ้อยท์">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
+                        <connections>
+                            <action selector="transferTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="nMS-mj-eS5"/>
+                        </connections>
                     </button>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="PHm-n1-czO" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.8" id="3Kp-N4-RMe"/>
+                <constraint firstItem="jWm-fK-ybk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="3zN-9k-BSn"/>
                 <constraint firstItem="jWm-fK-ybk" firstAttribute="top" secondItem="klX-Xt-tDp" secondAttribute="bottom" constant="5" id="4cl-ic-md8"/>
+                <constraint firstAttribute="trailing" secondItem="jWm-fK-ybk" secondAttribute="trailing" id="Ds2-KQ-hlw"/>
                 <constraint firstItem="klX-Xt-tDp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="SGe-X7-jqA"/>
                 <constraint firstItem="PHm-n1-czO" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Uzw-fG-9eI"/>
                 <constraint firstItem="klX-Xt-tDp" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.6" id="ezz-DX-4Ow"/>
@@ -64,6 +69,7 @@
             <connections>
                 <outlet property="coverImageView" destination="klX-Xt-tDp" id="PXZ-KX-p2f"/>
                 <outlet property="heightConstraintButton" destination="sCg-4c-NTU" id="8Ku-ES-9Qx"/>
+                <outlet property="heightConstraintImageView" destination="ezz-DX-4Ow" id="tli-ha-48w"/>
                 <outlet property="marginTopConstraintButton" destination="iN5-UP-U8W" id="5CA-UP-GoC"/>
                 <outlet property="nameLabel" destination="jWm-fK-ybk" id="ciM-IX-Wyo"/>
                 <outlet property="transferButton" destination="PHm-n1-czO" id="gBW-32-ME0"/>

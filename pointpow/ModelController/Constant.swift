@@ -382,7 +382,7 @@ struct Constant {
             static let CONTENT = CGFloat(22.0)
             static let TAB = CGFloat(12.0)
             static let FREIND_RECENT = CGFloat(15.0)
-            
+            static let FRIEND_HEADER_RECENT = CGFloat(20.0)
             
         }
         static let THAI_SANS_BOLD = "ThaiSansNeue-Bold"

@@ -1243,21 +1243,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xQf-Ij-eZn">
-                                <rect key="frame" x="20" y="74" width="318" height="40"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ค้นหาเพื่อนด้วย Point Pow ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xQf-Ij-eZn">
+                                <rect key="frame" x="40" y="64" width="334" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="ydy-nO-wh7"/>
+                                    <constraint firstAttribute="height" constant="30" id="ydy-nO-wh7"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ogk-aB-Qq0">
-                                <rect key="frame" x="348" y="79" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9b5-OT-NP9">
-                                <rect key="frame" x="0.0" y="114" width="414" height="748"/>
+                                <rect key="frame" x="0.0" y="99" width="414" height="763"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="dSY-H3-uRc">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -1275,25 +1271,54 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R7g-gH-Pc9">
+                                <rect key="frame" x="324" y="64" width="50" height="30"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-search" translatesAutoresizingMaskIntoConstraints="NO" id="mOY-mm-nW8">
+                                        <rect key="frame" x="25" y="7.6666666666666714" width="15" height="15"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="mOY-mm-nW8" secondAttribute="height" multiplier="1:1" id="u1P-wM-cMw"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="mOY-mm-nW8" firstAttribute="centerY" secondItem="R7g-gH-Pc9" secondAttribute="centerY" id="6ac-HP-dsD"/>
+                                    <constraint firstAttribute="width" constant="50" id="P49-N2-h3h"/>
+                                    <constraint firstAttribute="trailing" secondItem="mOY-mm-nW8" secondAttribute="trailing" constant="10" id="Qxz-lO-5RY"/>
+                                    <constraint firstItem="mOY-mm-nW8" firstAttribute="height" secondItem="R7g-gH-Pc9" secondAttribute="height" multiplier="0.5" id="pxu-Cb-aYe"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kcy-Nu-VuY">
+                                <rect key="frame" x="319" y="65" width="20" height="28"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="R9E-Ql-Ubf"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Ogk-aB-Qq0" firstAttribute="leading" secondItem="xQf-Ij-eZn" secondAttribute="trailing" constant="10" id="8Wv-EP-QPC"/>
                             <constraint firstItem="r3X-V2-ahG" firstAttribute="trailing" secondItem="9b5-OT-NP9" secondAttribute="trailing" id="9GU-zM-gzA"/>
-                            <constraint firstItem="9b5-OT-NP9" firstAttribute="top" secondItem="xQf-Ij-eZn" secondAttribute="bottom" id="JIO-oz-hLz"/>
-                            <constraint firstItem="Ogk-aB-Qq0" firstAttribute="centerY" secondItem="xQf-Ij-eZn" secondAttribute="centerY" id="Kjn-eU-Cxu"/>
+                            <constraint firstItem="R7g-gH-Pc9" firstAttribute="trailing" secondItem="xQf-Ij-eZn" secondAttribute="trailing" id="Ed4-IN-4KQ"/>
+                            <constraint firstItem="9b5-OT-NP9" firstAttribute="top" secondItem="xQf-Ij-eZn" secondAttribute="bottom" constant="5" id="JIO-oz-hLz"/>
                             <constraint firstItem="9b5-OT-NP9" firstAttribute="leading" secondItem="r3X-V2-ahG" secondAttribute="leading" id="KpT-kH-2QO"/>
-                            <constraint firstItem="xQf-Ij-eZn" firstAttribute="top" secondItem="r3X-V2-ahG" secondAttribute="top" constant="30" id="Xok-tj-6aA"/>
+                            <constraint firstItem="Kcy-Nu-VuY" firstAttribute="bottom" secondItem="xQf-Ij-eZn" secondAttribute="bottom" constant="-1" id="Lml-RJ-vQY"/>
+                            <constraint firstItem="R7g-gH-Pc9" firstAttribute="top" secondItem="xQf-Ij-eZn" secondAttribute="top" id="Pyi-xq-vKm"/>
+                            <constraint firstItem="xQf-Ij-eZn" firstAttribute="top" secondItem="r3X-V2-ahG" secondAttribute="top" constant="20" id="Xok-tj-6aA"/>
+                            <constraint firstItem="R7g-gH-Pc9" firstAttribute="height" secondItem="xQf-Ij-eZn" secondAttribute="height" id="bLK-6z-pBM"/>
                             <constraint firstItem="r3X-V2-ahG" firstAttribute="bottom" secondItem="9b5-OT-NP9" secondAttribute="bottom" id="dpu-On-r3G"/>
-                            <constraint firstItem="r3X-V2-ahG" firstAttribute="trailing" secondItem="Ogk-aB-Qq0" secondAttribute="trailing" constant="20" id="gZy-CS-Jrq"/>
-                            <constraint firstItem="xQf-Ij-eZn" firstAttribute="leading" secondItem="r3X-V2-ahG" secondAttribute="leading" constant="20" id="p7N-QR-qK1"/>
+                            <constraint firstItem="xQf-Ij-eZn" firstAttribute="leading" secondItem="r3X-V2-ahG" secondAttribute="leading" constant="40" id="p7N-QR-qK1"/>
+                            <constraint firstItem="r3X-V2-ahG" firstAttribute="trailing" secondItem="xQf-Ij-eZn" secondAttribute="trailing" constant="40" id="wTO-5a-uXi"/>
+                            <constraint firstItem="xQf-Ij-eZn" firstAttribute="trailing" secondItem="Kcy-Nu-VuY" secondAttribute="trailing" constant="35" id="xE2-At-gRW"/>
+                            <constraint firstItem="Kcy-Nu-VuY" firstAttribute="top" secondItem="xQf-Ij-eZn" secondAttribute="top" constant="1" id="xcD-UX-dB4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="r3X-V2-ahG"/>
                     </view>
                     <connections>
                         <outlet property="friendCollectionView" destination="9b5-OT-NP9" id="W7m-Dz-hIu"/>
-                        <outlet property="searchButton" destination="Ogk-aB-Qq0" id="102-xa-rxO"/>
                         <outlet property="searchTextField" destination="xQf-Ij-eZn" id="UHi-dX-3vd"/>
+                        <outlet property="searchView" destination="R7g-gH-Pc9" id="aPn-eY-8pY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vta-id-Q7z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1985,7 +2010,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9eU-of-s0G">
                                         <rect key="frame" x="108.33333333333331" y="81" width="207" height="40"/>
@@ -2027,7 +2052,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wed-kj-vVP">
-                                        <rect key="frame" x="65" y="272" width="349" height="23.666666666666686"/>
+                                        <rect key="frame" x="65" y="272" width="309" height="23.666666666666686"/>
                                         <attributedString key="attributedText">
                                             <fragment content="ข้าพเจ้าได้อ่านและยอมรับ ">
                                                 <attributes>
@@ -2112,12 +2137,12 @@
                                     <constraint firstItem="ZkC-Dz-ZOR" firstAttribute="top" secondItem="nRU-dA-WYH" secondAttribute="top" constant="40" id="JdO-gE-p6U"/>
                                     <constraint firstItem="Wed-kj-vVP" firstAttribute="leading" secondItem="Dss-eE-OHz" secondAttribute="trailing" constant="5" id="KDk-ig-2Tm"/>
                                     <constraint firstItem="Wed-kj-vVP" firstAttribute="top" secondItem="tSn-uE-Gjh" secondAttribute="bottom" constant="50" id="OK9-Eu-3eQ"/>
+                                    <constraint firstItem="Wed-kj-vVP" firstAttribute="trailing" secondItem="e01-0N-sVb" secondAttribute="trailing" constant="-20" id="Ol6-uK-svR"/>
                                     <constraint firstItem="9eU-of-s0G" firstAttribute="trailing" secondItem="e01-0N-sVb" secondAttribute="trailing" multiplier="0.8" id="Pce-3c-Mso"/>
                                     <constraint firstItem="9xi-H7-JWA" firstAttribute="trailing" secondItem="e01-0N-sVb" secondAttribute="trailing" constant="-20" id="PuI-17-r0r"/>
                                     <constraint firstItem="LTW-bC-okw" firstAttribute="leading" secondItem="llM-Dt-LZO" secondAttribute="leading" id="Q4a-jA-D0k"/>
                                     <constraint firstItem="EUK-PS-FSQ" firstAttribute="leading" secondItem="C6T-fs-rL2" secondAttribute="trailing" constant="5" id="Qsx-g7-1V0"/>
                                     <constraint firstItem="GBc-GI-GeQ" firstAttribute="leading" secondItem="EUK-PS-FSQ" secondAttribute="trailing" constant="5" id="RPu-NT-Nll"/>
-                                    <constraint firstAttribute="trailing" secondItem="Wed-kj-vVP" secondAttribute="trailing" id="UHd-Xf-zzp"/>
                                     <constraint firstItem="C6T-fs-rL2" firstAttribute="leading" secondItem="llM-Dt-LZO" secondAttribute="trailing" constant="20" id="VNw-PP-uj1"/>
                                     <constraint firstItem="9xi-H7-JWA" firstAttribute="centerY" secondItem="llM-Dt-LZO" secondAttribute="centerY" id="XHC-K8-ua5"/>
                                     <constraint firstItem="e01-0N-sVb" firstAttribute="centerX" secondItem="nRU-dA-WYH" secondAttribute="centerX" id="YLg-OM-EV3"/>
@@ -2294,18 +2319,411 @@
             </objects>
             <point key="canvasLocation" x="6942" y="2002"/>
         </scene>
+        <!--Point Friend Transfer View Controller-->
+        <scene sceneID="kq8-9l-jUa">
+            <objects>
+                <viewController storyboardIdentifier="PointFriendTransferViewController" id="TBZ-6p-pRv" customClass="PointFriendTransferViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Nxv-Yi-84F">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6JS-kP-i7v">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="พ้อยท์คงเหลือ :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IpF-yM-t7A">
+                                        <rect key="frame" x="40.000000000000007" y="40" width="125.66666666666669" height="23.333333333333329"/>
+                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
+                                        <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ต้องการโอยพ้อยท์ให้เพื่อนจำนวน" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXm-K4-LK8">
+                                        <rect key="frame" x="40" y="83.333333333333329" width="272.66666666666669" height="23.333333333333329"/>
+                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
+                                        <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100,000.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Flq-4Q-TbD">
+                                        <rect key="frame" x="175.66666666666666" y="40" width="100.33333333333334" height="23.333333333333329"/>
+                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
+                                        <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Point Pow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DRx-Y9-4xw">
+                                        <rect key="frame" x="286" y="40" width="91.666666666666686" height="23.333333333333329"/>
+                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
+                                        <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Point Pow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJV-aa-8L8">
+                                        <rect key="frame" x="243.33333333333334" y="129" width="100.66666666666666" height="25.666666666666657"/>
+                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="22"/>
+                                        <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KWU-uO-u7h">
+                                        <rect key="frame" x="65.000000000000014" y="121.66666666666666" width="143.33333333333337" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Eho-74-0Hc"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                    </textField>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-point-less" translatesAutoresizingMaskIntoConstraints="NO" id="WP6-YN-BdS">
+                                        <rect key="frame" x="40" y="131.66666666666666" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="WP6-YN-BdS" secondAttribute="height" multiplier="1:1" id="mCY-pK-n4U"/>
+                                            <constraint firstAttribute="width" constant="20" id="pHu-9f-OBQ"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-point-more" translatesAutoresizingMaskIntoConstraints="NO" id="wl4-jg-abE">
+                                        <rect key="frame" x="213.33333333333334" y="131.66666666666666" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="wl4-jg-abE" secondAttribute="height" multiplier="1:1" id="O1W-yP-JBl"/>
+                                            <constraint firstAttribute="width" constant="20" id="yHs-hH-4B6"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X7s-j6-aYe">
+                                        <rect key="frame" x="65" y="361" width="309" height="21"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="ข้าพเจ้าได้อ่านและยอมรับ ">
+                                                <attributes>
+                                                    <color key="NSColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                    <font key="NSFont" size="18" name="ThaiSansNeue-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                        <tabStops>
+                                                            <textTab alignment="left" location="28">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="56">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="84">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="112">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="140">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="168">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="196">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="224">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="252">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="280">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="308">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="336">
+                                                                <options/>
+                                                            </textTab>
+                                                        </tabStops>
+                                                    </paragraphStyle>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="ข้อตกลง">
+                                                <attributes>
+                                                    <color key="NSColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                    <font key="NSFont" size="18" name="ThaiSansNeue-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                        <tabStops>
+                                                            <textTab alignment="left" location="28">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="56">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="84">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="112">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="140">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="168">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="196">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="224">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="252">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="280">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="308">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="336">
+                                                                <options/>
+                                                            </textTab>
+                                                        </tabStops>
+                                                    </paragraphStyle>
+                                                    <integer key="NSUnderline" value="1"/>
+                                                    <color key="NSUnderlineColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content=" และ ">
+                                                <attributes>
+                                                    <color key="NSColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                    <font key="NSFont" size="18" name="ThaiSansNeue-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                        <tabStops>
+                                                            <textTab alignment="left" location="28">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="56">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="84">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="112">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="140">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="168">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="196">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="224">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="252">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="280">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="308">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="336">
+                                                                <options/>
+                                                            </textTab>
+                                                        </tabStops>
+                                                    </paragraphStyle>
+                                                    <color key="NSUnderlineColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="เงื่อนไข">
+                                                <attributes>
+                                                    <color key="NSColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                    <font key="NSFont" size="18" name="ThaiSansNeue-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                        <tabStops>
+                                                            <textTab alignment="left" location="28">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="56">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="84">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="112">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="140">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="168">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="196">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="224">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="252">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="280">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="308">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="336">
+                                                                <options/>
+                                                            </textTab>
+                                                        </tabStops>
+                                                    </paragraphStyle>
+                                                    <integer key="NSUnderline" value="1"/>
+                                                    <color key="NSUnderlineColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="การใช้งานแอพพลิเคชั่น" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ow-Mv-LSI">
+                                        <rect key="frame" x="40" y="382" width="172.33333333333334" height="21"/>
+                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
+                                        <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ukf-vn-ypY" customClass="CheckBox" customModule="pointpow" customModuleProvider="target">
+                                        <rect key="frame" x="40" y="361" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="ukf-vn-ypY" secondAttribute="height" multiplier="1:1" id="N5c-XE-2UQ"/>
+                                            <constraint firstAttribute="width" constant="20" id="tKL-2d-ivY"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="toggle:" destination="TBZ-6p-pRv" eventType="touchUpInside" id="Aeo-Xg-F5z"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MC9-Y6-EdG">
+                                        <rect key="frame" x="20" y="433" width="374" height="40"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="6hV-qD-Vm3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="22"/>
+                                        <state key="normal" title="โอนพ้อยท์">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="transferTapped:" destination="TBZ-6p-pRv" eventType="touchUpInside" id="SRq-rG-Pxj"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-profile-image" translatesAutoresizingMaskIntoConstraints="NO" id="nIG-Zb-mE3">
+                                        <rect key="frame" x="39.999999999999993" y="176.66666666666666" width="124.33333333333331" height="124.33333333333334"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="nIG-Zb-mE3" secondAttribute="height" multiplier="1:1" id="Ynl-Xz-Sck"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-4" translatesAutoresizingMaskIntoConstraints="NO" id="9Xm-7j-1b0">
+                                        <rect key="frame" x="249.66666666666666" y="176.66666666666666" width="124.33333333333334" height="124.33333333333334"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lazy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ChZ-Z5-QEn">
+                                        <rect key="frame" x="39.999999999999993" y="301" width="124.33333333333331" height="25.666666666666686"/>
+                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="22"/>
+                                        <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pinny" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6y-KO-MzZ">
+                                        <rect key="frame" x="249.66666666666666" y="301" width="124.33333333333334" height="25.666666666666686"/>
+                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="22"/>
+                                        <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-logo-transfer" translatesAutoresizingMaskIntoConstraints="NO" id="exk-eO-bm1">
+                                        <rect key="frame" x="182" y="214" width="50" height="49.666666666666686"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="exk-eO-bm1" secondAttribute="height" multiplier="1:1" id="7bs-4d-jWy"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="MC9-Y6-EdG" secondAttribute="trailing" constant="20" id="0O3-Yl-Nm2"/>
+                                    <constraint firstItem="X7s-j6-aYe" firstAttribute="top" secondItem="ukf-vn-ypY" secondAttribute="top" id="1Fk-6e-LWQ"/>
+                                    <constraint firstItem="MC9-Y6-EdG" firstAttribute="top" secondItem="0ow-Mv-LSI" secondAttribute="bottom" constant="30" id="2n7-ze-sS5"/>
+                                    <constraint firstItem="9Xm-7j-1b0" firstAttribute="height" secondItem="nIG-Zb-mE3" secondAttribute="height" id="3Kz-3m-jjb"/>
+                                    <constraint firstItem="X7s-j6-aYe" firstAttribute="top" secondItem="nIG-Zb-mE3" secondAttribute="bottom" constant="60" id="3Lb-Oe-GIE"/>
+                                    <constraint firstItem="MC9-Y6-EdG" firstAttribute="leading" secondItem="IpF-yM-t7A" secondAttribute="leading" constant="-20" id="3aM-H6-nnc"/>
+                                    <constraint firstItem="ChZ-Z5-QEn" firstAttribute="top" secondItem="nIG-Zb-mE3" secondAttribute="bottom" id="48k-Re-Ksi"/>
+                                    <constraint firstItem="exk-eO-bm1" firstAttribute="centerX" secondItem="6JS-kP-i7v" secondAttribute="centerX" id="4BB-KE-uUy"/>
+                                    <constraint firstItem="nIG-Zb-mE3" firstAttribute="leading" secondItem="IpF-yM-t7A" secondAttribute="leading" id="4R7-tM-FDB"/>
+                                    <constraint firstItem="0ow-Mv-LSI" firstAttribute="leading" secondItem="ukf-vn-ypY" secondAttribute="leading" id="4sG-eR-Wku"/>
+                                    <constraint firstItem="z6y-KO-MzZ" firstAttribute="centerX" secondItem="9Xm-7j-1b0" secondAttribute="centerX" id="5ge-sW-URy"/>
+                                    <constraint firstItem="WP6-YN-BdS" firstAttribute="centerY" secondItem="KWU-uO-u7h" secondAttribute="centerY" id="5xe-Qq-eHf"/>
+                                    <constraint firstItem="Flq-4Q-TbD" firstAttribute="leading" secondItem="IpF-yM-t7A" secondAttribute="trailing" constant="10" id="6YZ-c8-aZ4"/>
+                                    <constraint firstItem="exk-eO-bm1" firstAttribute="width" secondItem="9Xm-7j-1b0" secondAttribute="width" multiplier="0.4" id="8ET-bG-daS"/>
+                                    <constraint firstItem="nIG-Zb-mE3" firstAttribute="top" secondItem="KWU-uO-u7h" secondAttribute="bottom" constant="15" id="9n5-LC-8W4"/>
+                                    <constraint firstItem="DRx-Y9-4xw" firstAttribute="leading" secondItem="Flq-4Q-TbD" secondAttribute="trailing" constant="10" id="B9P-lg-iUD"/>
+                                    <constraint firstItem="MC9-Y6-EdG" firstAttribute="leading" secondItem="6JS-kP-i7v" secondAttribute="leading" constant="20" id="D2S-Ac-RWX"/>
+                                    <constraint firstItem="z6y-KO-MzZ" firstAttribute="top" secondItem="9Xm-7j-1b0" secondAttribute="bottom" id="F08-r6-Wbt"/>
+                                    <constraint firstItem="gXm-K4-LK8" firstAttribute="leading" secondItem="IpF-yM-t7A" secondAttribute="leading" id="FQn-rJ-cvh"/>
+                                    <constraint firstItem="9Xm-7j-1b0" firstAttribute="width" secondItem="nIG-Zb-mE3" secondAttribute="width" id="Fch-rS-edQ"/>
+                                    <constraint firstItem="9Xm-7j-1b0" firstAttribute="centerY" secondItem="nIG-Zb-mE3" secondAttribute="centerY" id="Mmm-VT-LNS"/>
+                                    <constraint firstItem="QJV-aa-8L8" firstAttribute="centerY" secondItem="KWU-uO-u7h" secondAttribute="centerY" id="QU3-hk-XM7"/>
+                                    <constraint firstItem="WP6-YN-BdS" firstAttribute="leading" secondItem="gXm-K4-LK8" secondAttribute="leading" id="ROm-PH-dvt"/>
+                                    <constraint firstItem="QJV-aa-8L8" firstAttribute="leading" secondItem="wl4-jg-abE" secondAttribute="trailing" constant="10" id="Se2-L1-GKi"/>
+                                    <constraint firstItem="0ow-Mv-LSI" firstAttribute="top" secondItem="X7s-j6-aYe" secondAttribute="bottom" id="TUx-u9-Kit"/>
+                                    <constraint firstItem="wl4-jg-abE" firstAttribute="centerY" secondItem="KWU-uO-u7h" secondAttribute="centerY" id="UZ5-9P-6Ao"/>
+                                    <constraint firstItem="z6y-KO-MzZ" firstAttribute="width" secondItem="9Xm-7j-1b0" secondAttribute="width" id="Ui1-7Y-N81"/>
+                                    <constraint firstItem="nIG-Zb-mE3" firstAttribute="width" secondItem="6JS-kP-i7v" secondAttribute="width" multiplier="0.3" id="YPV-26-fJF"/>
+                                    <constraint firstItem="KWU-uO-u7h" firstAttribute="top" secondItem="gXm-K4-LK8" secondAttribute="bottom" constant="15" id="Z6T-5j-bQT"/>
+                                    <constraint firstItem="gXm-K4-LK8" firstAttribute="top" secondItem="IpF-yM-t7A" secondAttribute="bottom" constant="20" id="bN4-6I-Qrk"/>
+                                    <constraint firstItem="wl4-jg-abE" firstAttribute="leading" secondItem="KWU-uO-u7h" secondAttribute="trailing" constant="5" id="c8i-0D-Yuh"/>
+                                    <constraint firstItem="X7s-j6-aYe" firstAttribute="trailing" secondItem="MC9-Y6-EdG" secondAttribute="trailing" constant="-20" id="cyn-TD-21S"/>
+                                    <constraint firstItem="DRx-Y9-4xw" firstAttribute="centerY" secondItem="Flq-4Q-TbD" secondAttribute="centerY" id="eQO-UB-jkg"/>
+                                    <constraint firstAttribute="bottom" secondItem="MC9-Y6-EdG" secondAttribute="bottom" constant="10" id="iCm-Hk-ea4"/>
+                                    <constraint firstItem="Flq-4Q-TbD" firstAttribute="centerY" secondItem="IpF-yM-t7A" secondAttribute="centerY" id="ia4-Di-fhG"/>
+                                    <constraint firstItem="KWU-uO-u7h" firstAttribute="leading" secondItem="WP6-YN-BdS" secondAttribute="trailing" constant="5" id="l3L-di-BqL"/>
+                                    <constraint firstItem="ukf-vn-ypY" firstAttribute="leading" secondItem="IpF-yM-t7A" secondAttribute="leading" id="l9k-bE-5vv"/>
+                                    <constraint firstItem="QJV-aa-8L8" firstAttribute="trailing" secondItem="MC9-Y6-EdG" secondAttribute="trailing" constant="-50" id="mYO-TD-kBL"/>
+                                    <constraint firstItem="exk-eO-bm1" firstAttribute="centerY" secondItem="nIG-Zb-mE3" secondAttribute="centerY" id="q0w-Kn-SbO"/>
+                                    <constraint firstItem="MC9-Y6-EdG" firstAttribute="centerX" secondItem="6JS-kP-i7v" secondAttribute="centerX" id="rDC-zC-jcd"/>
+                                    <constraint firstItem="9Xm-7j-1b0" firstAttribute="trailing" secondItem="X7s-j6-aYe" secondAttribute="trailing" id="syE-4N-q71"/>
+                                    <constraint firstItem="X7s-j6-aYe" firstAttribute="leading" secondItem="ukf-vn-ypY" secondAttribute="trailing" constant="5" id="wKV-oP-QEM"/>
+                                    <constraint firstItem="IpF-yM-t7A" firstAttribute="top" secondItem="6JS-kP-i7v" secondAttribute="top" constant="40" id="xmi-8v-UeO"/>
+                                    <constraint firstItem="ChZ-Z5-QEn" firstAttribute="width" secondItem="nIG-Zb-mE3" secondAttribute="width" id="ygs-pf-Cym"/>
+                                    <constraint firstItem="ChZ-Z5-QEn" firstAttribute="centerX" secondItem="nIG-Zb-mE3" secondAttribute="centerX" id="zZ2-Eq-SxW"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="t8b-3u-I4z" firstAttribute="trailing" secondItem="6JS-kP-i7v" secondAttribute="trailing" id="5ZT-5J-76D"/>
+                            <constraint firstItem="t8b-3u-I4z" firstAttribute="bottom" secondItem="6JS-kP-i7v" secondAttribute="bottom" id="AmF-xs-SUS"/>
+                            <constraint firstItem="6JS-kP-i7v" firstAttribute="width" secondItem="Nxv-Yi-84F" secondAttribute="width" id="dCP-oY-kua"/>
+                            <constraint firstItem="6JS-kP-i7v" firstAttribute="top" secondItem="t8b-3u-I4z" secondAttribute="top" id="ojF-ZT-Vcx"/>
+                            <constraint firstItem="6JS-kP-i7v" firstAttribute="leading" secondItem="t8b-3u-I4z" secondAttribute="leading" id="sWz-h5-tg4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="t8b-3u-I4z"/>
+                    </view>
+                    <connections>
+                        <outlet property="amountTextField" destination="KWU-uO-u7h" id="ldS-gL-Y1N"/>
+                        <outlet property="friendImageView" destination="9Xm-7j-1b0" id="8Ej-bF-zlY"/>
+                        <outlet property="myProfileImageView" destination="nIG-Zb-mE3" id="nLJ-uO-DXv"/>
+                        <outlet property="toggleCheckbox" destination="ukf-vn-ypY" id="bsn-8h-kfw"/>
+                        <outlet property="transferButton" destination="MC9-Y6-EdG" id="7mQ-CG-bfK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kfd-jT-NVH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4113.04347826087" y="3346.875"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="bg-4" width="1125" height="883"/>
+        <image name="bg-profile-image" width="5184" height="3456"/>
         <image name="ic-arrow-down" width="120" height="120"/>
         <image name="ic-facebook" width="150" height="154"/>
         <image name="ic-google" width="150" height="153"/>
         <image name="ic-home-transfer-friend" width="450" height="450"/>
         <image name="ic-home-transfer-point" width="450" height="450"/>
         <image name="ic-logo" width="570" height="166"/>
+        <image name="ic-logo-transfer" width="300" height="287"/>
         <image name="ic-logo-white" width="28.799999237060547" height="28.799999237060547"/>
         <image name="ic-password" width="90" height="93"/>
         <image name="ic-point-less" width="120" height="119"/>
         <image name="ic-point-more" width="120" height="119"/>
+        <image name="ic-search" width="120" height="119"/>
         <image name="ic-sms" width="90" height="93"/>
         <image name="ic-tab-account" width="75" height="75"/>
         <image name="ic-tab-account-active" width="75" height="75"/>

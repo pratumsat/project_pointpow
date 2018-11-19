@@ -30,6 +30,8 @@
 		C115FA4F219ECB85008E7844 /* ItemListResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C115FA4D219ECB85008E7844 /* ItemListResultCell.xib */; };
 		C115FA52219ECC40008E7844 /* ItemStatusResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C115FA50219ECC40008E7844 /* ItemStatusResultCell.swift */; };
 		C115FA53219ECC40008E7844 /* ItemStatusResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C115FA51219ECC40008E7844 /* ItemStatusResultCell.xib */; };
+		C115FA5521A2A40F008E7844 /* PointFriendTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C115FA5421A2A40F008E7844 /* PointFriendTransferViewController.swift */; };
+		C115FA5721A2B3EB008E7844 /* PointFriendSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C115FA5621A2B3EB008E7844 /* PointFriendSummaryViewController.swift */; };
 		C11A93AE218BF67F00627B44 /* IntroNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93AD218BF67F00627B44 /* IntroNav.swift */; };
 		C11A93B1218BF69700627B44 /* MainNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93B0218BF69700627B44 /* MainNav.swift */; };
 		C11A93B3218BF6D200627B44 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93B2218BF6D200627B44 /* IntroViewController.swift */; };
@@ -135,6 +137,8 @@
 		C115FA4D219ECB85008E7844 /* ItemListResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemListResultCell.xib; sourceTree = "<group>"; };
 		C115FA50219ECC40008E7844 /* ItemStatusResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStatusResultCell.swift; sourceTree = "<group>"; };
 		C115FA51219ECC40008E7844 /* ItemStatusResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemStatusResultCell.xib; sourceTree = "<group>"; };
+		C115FA5421A2A40F008E7844 /* PointFriendTransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointFriendTransferViewController.swift; sourceTree = "<group>"; };
+		C115FA5621A2B3EB008E7844 /* PointFriendSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointFriendSummaryViewController.swift; sourceTree = "<group>"; };
 		C11A93AD218BF67F00627B44 /* IntroNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroNav.swift; sourceTree = "<group>"; };
 		C11A93B0218BF69700627B44 /* MainNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNav.swift; sourceTree = "<group>"; };
 		C11A93B2218BF6D200627B44 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
@@ -294,6 +298,8 @@
 				C10CA19F21914B8900316DF3 /* PointManageViewController.swift */,
 				C10CA1A32191755C00316DF3 /* PersonalPopupViewController.swift */,
 				C1817D8D219BD32B009507DB /* FriendTransferViewController.swift */,
+				C115FA5421A2A40F008E7844 /* PointFriendTransferViewController.swift */,
+				C115FA5621A2B3EB008E7844 /* PointFriendSummaryViewController.swift */,
 				C1817D98219C041F009507DB /* PointTransferViewController.swift */,
 				C1817DA3219E6A2E009507DB /* PPWebViewController.swift */,
 				C1817DA9219E7F18009507DB /* BankPointTransferViewController.swift */,
@@ -874,6 +880,7 @@
 				C10CA19D21914B1B00316DF3 /* AccountViewController.swift in Sources */,
 				C115FA4A219EC511008E7844 /* ResultTransferViewController.swift in Sources */,
 				C10CA1BE219429D500316DF3 /* ImageCell.swift in Sources */,
+				C115FA5521A2A40F008E7844 /* PointFriendTransferViewController.swift in Sources */,
 				C1AD50A92187F7B500F74415 /* BaseViewController.swift in Sources */,
 				C1817D92219BF61E009507DB /* ItemFriendCell.swift in Sources */,
 				C11A93B1218BF69700627B44 /* MainNav.swift in Sources */,
@@ -890,6 +897,7 @@
 				C1817DA8219E7BFE009507DB /* CheckBox.swift in Sources */,
 				C120D7D221955BC900F9EEBB /* ItemProfileCell.swift in Sources */,
 				C1817D96219BFCDE009507DB /* FriendCollectionCell.swift in Sources */,
+				C115FA5721A2B3EB008E7844 /* PointFriendSummaryViewController.swift in Sources */,
 				C1DEBE92218829D900CBB95F /* Scanner2ViewController.swift in Sources */,
 				C11A93AE218BF67F00627B44 /* IntroNav.swift in Sources */,
 				C1B542DD219ABE9A0040DDE6 /* SettingViewController.swift in Sources */,

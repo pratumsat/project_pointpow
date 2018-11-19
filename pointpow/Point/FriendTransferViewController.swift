@@ -10,7 +10,8 @@ import UIKit
 
 class FriendTransferViewController: BaseViewController, UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var searchView: UIView!
+   
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var friendCollectionView: UICollectionView!
     override func viewDidLoad() {
@@ -19,9 +20,20 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
         self.title = NSLocalizedString("string-title-freind-transfer", comment: "")
         self.setUp()
     }
+   
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.searchView.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
+    }
     
 
     func setUp(){
+        self.searchTextField.borderRedColorProperties(borderWidth: 1.0)
+        self.searchTextField.setLeftPaddingPoints(20)
+        self.searchTextField.setRightPaddingPoints(40)
+        
+        self.searchView.borderClearProperties(borderWidth: 1)
+        
         self.backgroundImage?.image = nil
         self.friendCollectionView.backgroundColor = UIColor.white
         
@@ -50,11 +62,24 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
             if let friendCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemFriendCell", for:  indexPath) as? ItemFriendCell {
                 
                 cell = friendCell
+                
+                friendCell.coverImageView.image = UIImage(named: "bg-4")
+                
+                friendCell.tappedCallback = {
+                    self.showPointFriendTransferView(true)
+                }
+                
+                let lineBottom = UIView(frame: CGRect(x: 0, y: friendCell.frame.height - 10 , width: friendCell.frame.width, height: 1 ))
+                lineBottom.backgroundColor = Constant.Colors.LINE_PROFILE
+                friendCell.addSubview(lineBottom)
             }
         }
         if indexPath.section == 1 {
             if let friendCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemFriendCell", for:  indexPath) as? ItemFriendCell {
                 friendCell.recentMode = true
+                
+                friendCell.coverImageView.image = UIImage(named: "bg-\(indexPath.row+1)")
+                
                 cell = friendCell
             }
         }
@@ -84,13 +109,19 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
         
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeadCell", for: indexPath) as! HeadCell
         header.nameLabel.text = NSLocalizedString("string-point-transfer-friend-header-recent", comment: "")
+        header.nameLabel.font = UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.FRIEND_HEADER_RECENT)!
         header.backgroundColor = UIColor.white
-        header.marginLeftConstrantLabel.constant = 40
-//        let lineBottom = UIView(frame: CGRect(x: 0, y: header.frame.height - 1 , width: collectionView.frame.width, height: 1 ))
-//        lineBottom.backgroundColor = Constant.Colors.LINE_PROFILE
-//        header.addSubview(lineBottom)
+        header.marginLeftConstrantLabel.constant = 35
+
         
         return header
+    }
+   
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        if section == 1 {
+            return UIEdgeInsets(top: 0, left: 35, bottom: 0, right: 35)
+        }
+        return UIEdgeInsets.zero
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -101,7 +132,7 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
             let height = width/155*115
             return CGSize(width: width, height: height)
         }
-        let width = collectionView.frame.width/3
+        let width = (collectionView.frame.width-70)/3
         let height = width/110*170
         return CGSize(width: width, height: height)
         

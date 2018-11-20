@@ -62,7 +62,7 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
             if let friendCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemFriendCell", for:  indexPath) as? ItemFriendCell {
                 
                 cell = friendCell
-                
+                friendCell.transferButton.setTitle(NSLocalizedString("string-point-friend-transfer", comment: ""), for: .normal)
                 friendCell.coverImageView.image = UIImage(named: "bg-4")
                 
                 friendCell.tappedCallback = {

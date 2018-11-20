@@ -9,14 +9,13 @@
 import UIKit
 
 class ItemConfirmSummaryCell: UICollectionViewCell {
-    @IBOutlet weak var confirmButton: UIButton!
-    
-    @IBOutlet weak var backButton: UIButton!
-    
+
     
     var backCallback:(()->Void)?
     var confirmCallback:(()->Void)?
     
+    @IBOutlet weak var favoView: UIView!
+    @IBOutlet weak var saveView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,9 +28,10 @@ class ItemConfirmSummaryCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.backButton.borderRedColorProperties()
-        self.confirmButton.borderClearProperties(borderWidth: 1)
-        self.confirmButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
+        self.favoView.borderRedColorProperties()
+       
+        self.saveView.borderRedColorProperties()
+       
         
     }
     

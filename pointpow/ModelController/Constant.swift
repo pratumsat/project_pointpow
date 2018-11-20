@@ -131,6 +131,20 @@ extension UITextField {
 }
 
 extension UIView {
+    public func snapshotImage() -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, isOpaque, 0)
+        drawHierarchy(in: bounds, afterScreenUpdates: false)
+        let snapshotImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return snapshotImage
+    }
+    public func snapshotView() -> UIView? {
+        if let snapshotImage = snapshotImage() {
+            return UIImageView(image: snapshotImage)
+        } else {
+            return nil
+        }
+    }
     func blurImage(){
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
@@ -224,6 +238,23 @@ extension UIView {
     }
     
 }
+
+public extension UIWindow {
+    
+    func capture() -> UIImage? {
+        
+        UIGraphicsBeginImageContextWithOptions(self.frame.size, self.isOpaque, UIScreen.main.scale)
+        self.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+      
+        return image
+    }
+}
+
+
+
 extension UIImage{
     class func colorForNavBar(color: UIColor) -> UIImage {
         let rect = CGRect(x: 0.0, y: 0.0, width: 1.0, height: 1.0)
@@ -357,6 +388,7 @@ extension NSLayoutConstraint {
 }
 
 struct Constant {
+    
     enum ViewBorder: String {
         case left, right, top, bottom
     }

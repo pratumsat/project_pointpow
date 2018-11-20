@@ -10,8 +10,8 @@ import UIKit
 
 class PointFriendTransferViewController: BaseViewController {
 
+    @IBOutlet weak var noteTextField: UITextField!
     @IBOutlet weak var transferButton: UIButton!
-    @IBOutlet weak var toggleCheckbox: CheckBox!
     @IBOutlet weak var friendImageView: UIImageView!
     @IBOutlet weak var myProfileImageView: UIImageView!
     @IBOutlet weak var amountTextField: UITextField!
@@ -36,22 +36,30 @@ class PointFriendTransferViewController: BaseViewController {
         self.friendImageView.image = UIImage(named:"bg-4")
        
         self.backgroundImage?.image = nil
-        self.toggleCheckbox.isChecked = true
         
         self.transferButton.borderClearProperties(borderWidth: 1)
         self.amountTextField.setRightPaddingPoints(20)
-        self.amountTextField.borderLightGroupTableColorProperties(borderWidth: 1)
+        self.noteTextField.setLeftPaddingPoints(20)
+        
+        self.noteTextField.borderLightGrayColorProperties(borderWidth: 0.5)
+        self.amountTextField.borderRedColorProperties(borderWidth: 1)
         
         if #available(iOS 10.0, *) {
             self.amountTextField.textContentType = UITextContentType(rawValue: "")
-          
+            self.noteTextField.textContentType = UITextContentType(rawValue: "")
         }
         if #available(iOS 12.0, *) {
             self.amountTextField.textContentType = .oneTimeCode
+            self.noteTextField.textContentType = .oneTimeCode
         }
         
         self.amountTextField.delegate = self
         self.amountTextField.autocorrectionType = .no
+        
+        
+        self.noteTextField.delegate = self
+        self.noteTextField.autocorrectionType = .no
+        
         
     }
     @IBAction func toggle(_ sender: Any) {

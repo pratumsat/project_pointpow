@@ -10,11 +10,12 @@ import UIKit
 
 class ItemListResultCell: UICollectionViewCell {
 
-    @IBOutlet weak var valueLabel: UILabel!
-    @IBOutlet weak var keyLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+       
+        self.updateLayerCornerRadiusProperties()
+        self.contentView.updateLayerCornerRadiusProperties()
+        self.shadowCellProperties()
     }
 
 }

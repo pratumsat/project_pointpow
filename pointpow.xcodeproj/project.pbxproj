@@ -28,8 +28,6 @@
 		C115FA4A219EC511008E7844 /* ResultTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C115FA49219EC511008E7844 /* ResultTransferViewController.swift */; };
 		C115FA4E219ECB85008E7844 /* ItemListResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C115FA4C219ECB85008E7844 /* ItemListResultCell.swift */; };
 		C115FA4F219ECB85008E7844 /* ItemListResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C115FA4D219ECB85008E7844 /* ItemListResultCell.xib */; };
-		C115FA52219ECC40008E7844 /* ItemStatusResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C115FA50219ECC40008E7844 /* ItemStatusResultCell.swift */; };
-		C115FA53219ECC40008E7844 /* ItemStatusResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C115FA51219ECC40008E7844 /* ItemStatusResultCell.xib */; };
 		C115FA5521A2A40F008E7844 /* PointFriendTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C115FA5421A2A40F008E7844 /* PointFriendTransferViewController.swift */; };
 		C115FA5721A2B3EB008E7844 /* PointFriendSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C115FA5621A2B3EB008E7844 /* PointFriendSummaryViewController.swift */; };
 		C11A93AE218BF67F00627B44 /* IntroNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93AD218BF67F00627B44 /* IntroNav.swift */; };
@@ -57,6 +55,8 @@
 		C13D998B21997AD6001A4794 /* HeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13D998921997AD6001A4794 /* HeadCell.xib */; };
 		C13D998D21997EF7001A4794 /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D998C21997EF7001A4794 /* PersonalViewController.swift */; };
 		C142741721A539F5003CC246 /* PointFriendTransferReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C142741621A539F5003CC246 /* PointFriendTransferReviewViewController.swift */; };
+		C142741A21A553EE003CC246 /* ItemFavorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C142741821A553EE003CC246 /* ItemFavorCell.swift */; };
+		C142741B21A553EE003CC246 /* ItemFavorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C142741921A553EE003CC246 /* ItemFavorCell.xib */; };
 		C1817D8E219BD32B009507DB /* FriendTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1817D8D219BD32B009507DB /* FriendTransferViewController.swift */; };
 		C1817D92219BF61E009507DB /* ItemFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1817D90219BF61E009507DB /* ItemFriendCell.swift */; };
 		C1817D93219BF61F009507DB /* ItemFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1817D91219BF61E009507DB /* ItemFriendCell.xib */; };
@@ -141,8 +141,6 @@
 		C115FA49219EC511008E7844 /* ResultTransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTransferViewController.swift; sourceTree = "<group>"; };
 		C115FA4C219ECB85008E7844 /* ItemListResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListResultCell.swift; sourceTree = "<group>"; };
 		C115FA4D219ECB85008E7844 /* ItemListResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemListResultCell.xib; sourceTree = "<group>"; };
-		C115FA50219ECC40008E7844 /* ItemStatusResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStatusResultCell.swift; sourceTree = "<group>"; };
-		C115FA51219ECC40008E7844 /* ItemStatusResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemStatusResultCell.xib; sourceTree = "<group>"; };
 		C115FA5421A2A40F008E7844 /* PointFriendTransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointFriendTransferViewController.swift; sourceTree = "<group>"; };
 		C115FA5621A2B3EB008E7844 /* PointFriendSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointFriendSummaryViewController.swift; sourceTree = "<group>"; };
 		C11A93AD218BF67F00627B44 /* IntroNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroNav.swift; sourceTree = "<group>"; };
@@ -170,6 +168,8 @@
 		C13D998921997AD6001A4794 /* HeadCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeadCell.xib; sourceTree = "<group>"; };
 		C13D998C21997EF7001A4794 /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
 		C142741621A539F5003CC246 /* PointFriendTransferReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointFriendTransferReviewViewController.swift; sourceTree = "<group>"; };
+		C142741821A553EE003CC246 /* ItemFavorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFavorCell.swift; sourceTree = "<group>"; };
+		C142741921A553EE003CC246 /* ItemFavorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemFavorCell.xib; sourceTree = "<group>"; };
 		C1817D8D219BD32B009507DB /* FriendTransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTransferViewController.swift; sourceTree = "<group>"; };
 		C1817D90219BF61E009507DB /* ItemFriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFriendCell.swift; sourceTree = "<group>"; };
 		C1817D91219BF61E009507DB /* ItemFriendCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemFriendCell.xib; sourceTree = "<group>"; };
@@ -367,12 +367,12 @@
 			children = (
 				C115FA4C219ECB85008E7844 /* ItemListResultCell.swift */,
 				C115FA4D219ECB85008E7844 /* ItemListResultCell.xib */,
-				C115FA50219ECC40008E7844 /* ItemStatusResultCell.swift */,
-				C115FA51219ECC40008E7844 /* ItemStatusResultCell.xib */,
 				C11BDFB621A2B95D00443D2D /* ItemFriendSummaryCell.swift */,
 				C11BDFB721A2B95D00443D2D /* ItemFriendSummaryCell.xib */,
 				C11BDFBA21A2BB3C00443D2D /* ItemConfirmSummaryCell.swift */,
 				C11BDFBB21A2BB3C00443D2D /* ItemConfirmSummaryCell.xib */,
+				C142741821A553EE003CC246 /* ItemFavorCell.swift */,
+				C142741921A553EE003CC246 /* ItemFavorCell.xib */,
 			);
 			path = ResultCell;
 			sourceTree = "<group>";
@@ -726,8 +726,8 @@
 				C1AD50812187F45900F74415 /* Assets.xcassets in Resources */,
 				C10CA1BA2193E1D100316DF3 /* PromotionCampainCell.xib in Resources */,
 				C11BDFB921A2B95D00443D2D /* ItemFriendSummaryCell.xib in Resources */,
+				C142741B21A553EE003CC246 /* ItemFavorCell.xib in Resources */,
 				C1817DA2219C1934009507DB /* SwitchCell.xib in Resources */,
-				C115FA53219ECC40008E7844 /* ItemStatusResultCell.xib in Resources */,
 				C120D7CF21955BB500F9EEBB /* ProfileCell.xib in Resources */,
 				C115FA4F219ECB85008E7844 /* ItemListResultCell.xib in Resources */,
 				C1817D93219BF61F009507DB /* ItemFriendCell.xib in Resources */,
@@ -896,6 +896,7 @@
 				C10CA1A221914F2E00316DF3 /* MainTabbarViewController.swift in Sources */,
 				C10CA1A42191755C00316DF3 /* PersonalPopupViewController.swift in Sources */,
 				C1817D99219C041F009507DB /* PointTransferViewController.swift in Sources */,
+				C142741A21A553EE003CC246 /* ItemFavorCell.swift in Sources */,
 				C1DEBE9521882F6F00CBB95F /* BaseNavigationViewController.swift in Sources */,
 				C1AD507A2187F45600F74415 /* AppDelegate.swift in Sources */,
 				C10CA1A8219185AB00316DF3 /* PAPasscodeViewController.m in Sources */,
@@ -908,7 +909,6 @@
 				C1817D92219BF61E009507DB /* ItemFriendCell.swift in Sources */,
 				C11A93B1218BF69700627B44 /* MainNav.swift in Sources */,
 				C11A93C4218FF3E200627B44 /* VerifyViewController.swift in Sources */,
-				C115FA52219ECC40008E7844 /* ItemStatusResultCell.swift in Sources */,
 				C1AD50B52187FF4000F74415 /* Loading.swift in Sources */,
 				C1817D9D219C07DF009507DB /* ItemBankCell.swift in Sources */,
 				C10CA1B12193E01200316DF3 /* ItemServiceCell.swift in Sources */,

@@ -221,7 +221,7 @@ extension UIView {
     func shadowCellProperties() {
         self.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
         self.layer.shadowOffset = CGSize(width: -1, height: 1)
-        self.layer.shadowOpacity = 0.5
+        self.layer.shadowOpacity = 1
         self.layer.shadowRadius = 3
         self.layer.masksToBounds = false
     }

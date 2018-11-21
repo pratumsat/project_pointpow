@@ -18,7 +18,8 @@ class ItemConfirmSummaryCell: UICollectionViewCell {
     @IBOutlet weak var saveView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        
     }
     override var bounds : CGRect {
         didSet {

@@ -220,12 +220,17 @@ extension UIView {
     }
     func shadowCellProperties() {
         self.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
-        self.layer.shadowOffset = CGSize(width: 3.0, height: 3.0)
-        self.layer.shadowOpacity = 0.7
-        self.layer.shadowRadius = 1.0
+        self.layer.shadowOffset = CGSize(width: -1, height: 1)
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowRadius = 3
         self.layer.masksToBounds = false
     }
-   
+    func updateLayerCornerRadiusProperties(){
+        self.layer.cornerRadius = 10
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor.clear.cgColor
+        self.layer.masksToBounds = true
+    }
     func ovalColorWhiteProperties(borderWidth:CGFloat = 1.0){
         self.layer.cornerRadius = self.frame.size.width/2;
         self.layer.borderColor =  UIColor.white.cgColor

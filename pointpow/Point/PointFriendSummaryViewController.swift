@@ -45,8 +45,9 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
         if indexPath.section == 0 {
             if let statusCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemFriendSummaryCell", for: indexPath) as? ItemFriendSummaryCell {
                 
-                statusCell.roundCorners(corners: [.topLeft, .topRight , .bottomLeft , .bottomRight], radius: 10)
+               
                 cell = statusCell
+                
                 
             }
         }
@@ -55,13 +56,6 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
             if let confirmCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemConfirmSummaryCell", for: indexPath) as? ItemConfirmSummaryCell {
                 
                 
-                confirmCell.backCallback = {
-                    self.navigationController?.popViewController(animated: true)
-                }
-                confirmCell.confirmCallback = {
-                     self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
-                    
-                }
                 
                 cell = confirmCell
             }
@@ -86,7 +80,7 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
             return CGSize(width: collectionView.frame.width, height: 30)
         }
         if section == 1 {
-            return CGSize(width: collectionView.frame.width, height: 10)
+            return CGSize(width: collectionView.frame.width, height: 20)
         }
        
         
@@ -106,7 +100,7 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
         
         if indexPath.section == 0 {
             let width = collectionView.frame.width - 40
-            let height = width/360*400
+            let height = width/360*420
             return CGSize(width: width, height: height)
             
         }else if indexPath.section == 1 {

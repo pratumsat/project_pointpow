@@ -12,7 +12,10 @@ class ItemFriendSummaryCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        self.updateLayerCornerRadiusProperties()
+        self.contentView.updateLayerCornerRadiusProperties()
+        self.shadowCellProperties()
     }
 
 }

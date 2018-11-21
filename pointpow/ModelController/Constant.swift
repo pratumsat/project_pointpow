@@ -212,8 +212,8 @@ extension UIView {
         self.layer.borderColor = self.backgroundColor?.cgColor
         self.layer.masksToBounds = true
     }
-    func borderClearProperties(borderWidth:CGFloat = 1.0){
-        self.layer.cornerRadius = self.frame.size.height/2;
+    func borderClearProperties(borderWidth:CGFloat = 1.0 , radius:CGFloat? = nil){
+        self.layer.cornerRadius = radius ?? self.frame.size.height/2;
         self.layer.borderWidth = borderWidth
         self.layer.borderColor = UIColor.clear.cgColor
         self.layer.masksToBounds = true

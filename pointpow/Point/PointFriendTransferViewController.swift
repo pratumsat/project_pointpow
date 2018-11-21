@@ -66,6 +66,6 @@ class PointFriendTransferViewController: BaseViewController {
     }
     
     @IBAction func transferTapped(_ sender: Any) {
-       self.showPointFriendSummaryTransferView(true)
+       self.showPointFriendTransferReviewView(true)
     }
 }

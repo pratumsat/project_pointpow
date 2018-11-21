@@ -356,6 +356,12 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
+    func showPointFriendTransferReviewView(_ animated:Bool){
+        if let vc:PointFriendTransferReviewViewController  = self.storyboard?.instantiateViewController(withIdentifier: "PointFriendTransferReviewViewController") as? PointFriendTransferReviewViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
     
     func showEnterPassCodeModalView(_ title:String = NSLocalizedString("title-enter-passcode", comment: "")){
         let enterPasscode = PAPasscodeViewController(for: PasscodeActionEnter )

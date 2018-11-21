@@ -168,18 +168,30 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
     @objc func keyboardWillShow(notification: NSNotification) {
         let hH =  UIScreen.main.bounds.height / 2
         
-        print("positionTextField y \(self.positionYTextField)")
-        print("half height \(hH)")
-        
+
         if self.positionYTextField == 0 {
             return
         }
         if let _ = self.windowSubview {
             self.positionYTextField += 100
         }
+        var bottomSafeArea: CGFloat
+        
+        if #available(iOS 11.0, *) {
+            bottomSafeArea = view.safeAreaInsets.bottom
+        } else {
+            bottomSafeArea = bottomLayoutGuide.length
+        }
+        self.positionYTextField -= bottomSafeArea
+        
+        print("positionTextField y \(self.positionYTextField)")
+        print("half height \(hH)")
+        
         if self.positionYTextField < hH {
             return
         }
+        
+        
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             
             if self.view.bounds.origin.y == 0 {

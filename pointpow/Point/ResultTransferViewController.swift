@@ -14,8 +14,21 @@ class ResultTransferViewController: BaseViewController  , UICollectionViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = NSLocalizedString("string-title-point-detail", comment: "")
+        self.title = NSLocalizedString("string-title-point-transfer", comment: "")
+        let finishButton = UIBarButtonItem(title: NSLocalizedString("string-title-finish-transfer", comment: ""), style: .plain, target: self, action: #selector(dismissTapped))
+        finishButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white,
+                                             NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.ITEM_TITLE )!]
+            , for: .normal)
+
+        
+        self.navigationItem.rightBarButtonItem = finishButton
+        
         self.setUp()
+    }
+    @objc func dismissTapped(){
+        
+        self.navigationController?.popToRootViewController(animated: true)
+        
     }
     func setUp(){
         self.backgroundImage?.image = nil

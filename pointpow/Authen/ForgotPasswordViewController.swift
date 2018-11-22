@@ -78,6 +78,7 @@ class ForgotPasswordViewController: BaseViewController {
     }
     
     @IBAction func resetTapped(_ sender: Any) {
+        self.showResetPasswordView(true)
     }
     
     

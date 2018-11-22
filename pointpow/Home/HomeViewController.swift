@@ -9,9 +9,11 @@
 import UIKit
 
 class HomeViewController: BaseViewController, UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-
+    @IBOutlet weak var notiView: UIView!
+    
+    @IBOutlet weak var pointBalanceLabel: UILabel!
     @IBOutlet weak var pointBalanceConstraintHeight: NSLayoutConstraint!
-    @IBOutlet weak var notifyView: UIView!
+  
     @IBOutlet weak var homeCollectionView: UICollectionView!
     
     @IBOutlet weak var profileImageView: UIImageView!
@@ -46,11 +48,22 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         
         self.registerNib(self.homeCollectionView, "PromotionCampainCell")
         self.registerNib(self.homeCollectionView, "ItemServiceCell")
+        
+        
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapToPointBalance))
+        self.pointBalanceLabel.isUserInteractionEnabled = true
+        self.pointBalanceLabel.addGestureRecognizer(tap)
+    }
+    
+    @objc func tapToPointBalance(){
+        self.showPointManagement(true)
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
@@ -58,8 +71,8 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
        
         
         
-        self.profileImageView.ovalColorWhiteProperties(borderWidth: 1.0)
-        self.notifyView.ovalColorWhiteProperties(borderWidth: 1.0)
+        self.profileImageView.ovalColorWhiteProperties(borderWidth: 2.0)
+        self.notiView.ovalColorClearProperties()
         
         if shadowImageView == nil {
             shadowImageView = findShadowImage(under: navigationController!.navigationBar)
@@ -69,6 +82,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        self.navigationController?.isNavigationBarHidden = false
         self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         self.navigationController?.navigationBar.shadowImage = nil
         self.navigationController?.navigationBar.isTranslucent = true

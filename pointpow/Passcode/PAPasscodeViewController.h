@@ -42,6 +42,7 @@ typedef enum {
     UITextField *passcodeTextField;
     UILabel *_digitLabels[6];
     UIImageView *snapshotImageView;
+    UIImageView *logoAppImageView;
 }
 
 @property (strong) UIView *backgroundView;

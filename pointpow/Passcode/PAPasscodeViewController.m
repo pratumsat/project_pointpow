@@ -9,7 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "PAPasscodeViewController.h"
 
-static NSString *BulletCharacter = @"\u25CF";
+static NSString *BulletCharacter = @"\u25CB";
 static NSString *DashCharacter = @"\u25CF"; //@"\u25CB";
 static NSInteger FailedBackgroundHeight = 20;
 static NSTimeInterval AnimationDuration = 0.3;
@@ -64,12 +64,19 @@ static NSTimeInterval AnimationDuration = 0.3;
     UIView *view = [[UIView alloc] init];
     view.backgroundColor = [UIColor whiteColor]; //[UIColor colorWithWhite:0.9 alpha:1.0];
     
+ 
+    
     // contentView is set to the visible area (below nav bar, above keyboard)
     contentView = [[UIView alloc] init];
     contentView.translatesAutoresizingMaskIntoConstraints = NO;
     contentView.backgroundColor = [UIColor clearColor];
     [view addSubview:contentView];
 
+    logoAppImageView = [[UIImageView alloc] initWithImage:([UIImage imageNamed:@"ic-logo"] )];
+    logoAppImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    logoAppImageView.contentMode = UIViewContentModeScaleAspectFit;
+    [contentView addSubview:logoAppImageView];
+    
     _inputPanel = [[UIView alloc] init];
     _inputPanel.translatesAutoresizingMaskIntoConstraints = NO;
     [contentView addSubview:_inputPanel];
@@ -87,9 +94,9 @@ static NSTimeInterval AnimationDuration = 0.3;
             _digitLabels[i] = [[UILabel alloc] init];
             _digitLabels[i].translatesAutoresizingMaskIntoConstraints = NO;
             _digitLabels[i].font = font;
-            _digitLabels[i].textColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.95 alpha:1.0];
+            _digitLabels[i].textColor = [UIColor colorWithRed:0.88 green:0 blue:0.03 alpha:1.0];
             [_inputPanel addSubview:_digitLabels[i]];
-            _digitLabels[i].text = DashCharacter;
+            _digitLabels[i].text = BulletCharacter;
         }
         passcodeTextField.hidden = YES;
         passcodeTextField.keyboardType = UIKeyboardTypeNumberPad;
@@ -99,7 +106,8 @@ static NSTimeInterval AnimationDuration = 0.3;
     
     promptLabel = [[UILabel alloc] init];
     promptLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    promptLabel.font = [UIFont fontWithName:@"ThaiSansNeue-Regular" size:20];
+    promptLabel.font = [UIFont fontWithName:@"ThaiSansNeue-Bold" size:18];
+    promptLabel.textColor = [UIColor colorWithRed:40/255 green:40/255 blue:40/255 alpha:1];
     promptLabel.textAlignment = NSTextAlignmentCenter;
     promptLabel.numberOfLines = 0;
     //[promptLabel sizeToFit];
@@ -107,7 +115,7 @@ static NSTimeInterval AnimationDuration = 0.3;
     
     messageLabel = [[UILabel alloc] init];
     messageLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    messageLabel.font = [UIFont fontWithName:@"ThaiSansNeue-Regular" size:20];
+    messageLabel.font = [UIFont fontWithName:@"ThaiSansNeue-Bold" size:18];
     messageLabel.textAlignment = NSTextAlignmentCenter;
     messageLabel.numberOfLines = 0;
     messageLabel.text = _message;
@@ -138,6 +146,7 @@ static NSTimeInterval AnimationDuration = 0.3;
                             @"messageLabel": messageLabel,
                             @"passcodeTextField": passcodeTextField,
                             @"promptLabel": promptLabel,
+                            @"logoAppImageView":logoAppImageView
                             };
     [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[contentView]|" options:0 metrics:nil views:views]];
     
@@ -159,12 +168,23 @@ static NSTimeInterval AnimationDuration = 0.3;
     [constraints addObject:_keyboardHeightConstraint];
     
     if (_centerPosition){
-        [constraints addObject:[NSLayoutConstraint constraintWithItem:promptLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
+        [constraints addObject:[NSLayoutConstraint constraintWithItem:promptLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
+        [constraints addObject:[NSLayoutConstraint constraintWithItem:promptLabel attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeWidth multiplier:0.8 constant:0]];
     }else{
         [constraints addObject:[NSLayoutConstraint constraintWithItem:promptLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeTop multiplier:1 constant:20]];
         [constraints addObject:[NSLayoutConstraint constraintWithItem:promptLabel attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeWidth multiplier:0.8 constant:0]];
-        
     }
+    
+    [constraints addObject:[NSLayoutConstraint constraintWithItem:logoAppImageView
+                                                        attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
+    
+    [constraints addObject:[NSLayoutConstraint constraintWithItem:logoAppImageView
+                                                        attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:promptLabel attribute:NSLayoutAttributeTop multiplier:1.1 constant:0]];
+    
+    [constraints addObject:[NSLayoutConstraint constraintWithItem:logoAppImageView
+                                                        attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeWidth multiplier:0.5 constant:0]];
+
+    
     [constraints addObject:[NSLayoutConstraint constraintWithItem:_inputPanel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
     
     NSDictionary *digits = @{@"d0": _digitLabels[0], @"d1": _digitLabels[1], @"d2": _digitLabels[2], @"d3": _digitLabels[3],@"d4": _digitLabels[4],@"d5": _digitLabels[5]};
@@ -275,8 +295,8 @@ static NSTimeInterval AnimationDuration = 0.3;
 }
 - (void)emptyPin{
     for (int i=0;i<6;i++) {
-        _digitLabels[i].text = DashCharacter;
-        _digitLabels[i].textColor =  [UIColor colorWithRed:0.9 green:0.9 blue:0.95 alpha:1.0];
+        _digitLabels[i].text = BulletCharacter;
+        
     }
     passcodeTextField.text = @"";
 }
@@ -384,8 +404,6 @@ static NSTimeInterval AnimationDuration = 0.3;
 - (void)showPassCodeSuccess {
     for (int i=0;i<6;i++) {
         _digitLabels[i].text = DashCharacter;
-        _digitLabels[i].textColor = [UIColor colorWithRed:0.88 green:0 blue:0.03 alpha:1.0];
-
     }
 }
 - (void)setTitlePasscode:(NSString*) messageTitle{
@@ -395,11 +413,9 @@ static NSTimeInterval AnimationDuration = 0.3;
 }
 - (void)showFailedMessage:(NSString*) messageError {
     messageLabel.hidden = YES;
-    
-    
+
     for (int i=0;i<6;i++) {
-        _digitLabels[i].text = DashCharacter;
-        _digitLabels[i].textColor =  [UIColor colorWithRed:0.9 green:0.9 blue:0.95 alpha:1.0];
+        _digitLabels[i].text = BulletCharacter;
     }
    passcodeTextField.text = @"";
    
@@ -422,7 +438,7 @@ static NSTimeInterval AnimationDuration = 0.3;
         }
         for (int i=0;i<6;i++) {
             
-            _digitLabels[i].textColor = (i >= [text length]) ?  [UIColor colorWithRed:0.9 green:0.9 blue:0.95 alpha:1.0] :[UIColor colorWithRed:0.88 green:0 blue:0.03 alpha:1.0];
+            _digitLabels[i].text = (i >= [text length]) ? BulletCharacter : DashCharacter;
         }
         if ([text length] == 6) {
             [self handleCompleteField];
@@ -484,11 +500,7 @@ static NSTimeInterval AnimationDuration = 0.3;
             break;
     }
     //[promptLabel sizeToFit];
-    
-    /*for (int i=0;i<6;i++) {
-        _digitLabels[i].text = DashCharacter;
-        _digitLabels[i].textColor =  [UIColor colorWithRed:0.9 green:0.9 blue:0.95 alpha:1.0];
-    }*/
+ 
     if (animated) {
         contentView.frame = CGRectOffset(contentView.frame, contentView.frame.size.width*dir, 0);
         [UIView animateWithDuration:AnimationDuration animations:^() {

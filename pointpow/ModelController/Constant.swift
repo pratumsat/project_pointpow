@@ -241,6 +241,12 @@ extension UIView {
         self.layer.cornerRadius = self.frame.size.width/2;
         self.clipsToBounds = true;
     }
+    func ovalColoLightGrayProperties(borderWidth:CGFloat = 1.0){
+        self.layer.cornerRadius = self.frame.size.width/2;
+        self.layer.borderColor =  Constant.Colors.LINE_PROFILE.cgColor
+        self.layer.borderWidth = borderWidth
+        self.clipsToBounds = true;
+    }
     
 }
 
@@ -413,6 +419,7 @@ struct Constant {
         struct Size {
             static let BIG_TITLE = CGFloat(28.0)
             static let TITLE = CGFloat(23.0)
+            static let ITEM_TITLE = CGFloat(20.0)
             static let BUTTON = CGFloat(22.0)
             static let TEXTFIELD = CGFloat(20.0)
             static let UNDER_TEXTFIELD = CGFloat(17.0)

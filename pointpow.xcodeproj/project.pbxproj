@@ -57,6 +57,7 @@
 		C142741721A539F5003CC246 /* PointFriendTransferReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C142741621A539F5003CC246 /* PointFriendTransferReviewViewController.swift */; };
 		C142741A21A553EE003CC246 /* ItemFavorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C142741821A553EE003CC246 /* ItemFavorCell.swift */; };
 		C142741B21A553EE003CC246 /* ItemFavorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C142741921A553EE003CC246 /* ItemFavorCell.xib */; };
+		C142741D21A68154003CC246 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C142741C21A68154003CC246 /* ResetPasswordViewController.swift */; };
 		C1817D8E219BD32B009507DB /* FriendTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1817D8D219BD32B009507DB /* FriendTransferViewController.swift */; };
 		C1817D92219BF61E009507DB /* ItemFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1817D90219BF61E009507DB /* ItemFriendCell.swift */; };
 		C1817D93219BF61F009507DB /* ItemFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1817D91219BF61E009507DB /* ItemFriendCell.xib */; };
@@ -170,6 +171,7 @@
 		C142741621A539F5003CC246 /* PointFriendTransferReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointFriendTransferReviewViewController.swift; sourceTree = "<group>"; };
 		C142741821A553EE003CC246 /* ItemFavorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFavorCell.swift; sourceTree = "<group>"; };
 		C142741921A553EE003CC246 /* ItemFavorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemFavorCell.xib; sourceTree = "<group>"; };
+		C142741C21A68154003CC246 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		C1817D8D219BD32B009507DB /* FriendTransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTransferViewController.swift; sourceTree = "<group>"; };
 		C1817D90219BF61E009507DB /* ItemFriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFriendCell.swift; sourceTree = "<group>"; };
 		C1817D91219BF61E009507DB /* ItemFriendCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemFriendCell.xib; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 				C1B542DA219A85590040DDE6 /* ChangePasswordViewController.swift */,
 				C1B542DC219ABE9A0040DDE6 /* SettingViewController.swift */,
 				C1817DA5219E6C73009507DB /* DisplayNameViewController.swift */,
+				C142741C21A68154003CC246 /* ResetPasswordViewController.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -934,6 +937,7 @@
 				C1DEBE902188297B00CBB95F /* ScannerViewController.swift in Sources */,
 				C1817DA4219E6A2E009507DB /* PPWebViewController.swift in Sources */,
 				C13D998D21997EF7001A4794 /* PersonalViewController.swift in Sources */,
+				C142741D21A68154003CC246 /* ResetPasswordViewController.swift in Sources */,
 				C13D998A21997AD6001A4794 /* HeadCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -176,7 +176,7 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
         
         if indexPath.section == 0 {
             let width = collectionView.frame.width
-            let height = width/370*280
+            let height = width/370*300
             return CGSize(width: width, height: height)
         }
         

@@ -343,6 +343,13 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         }
     }
     
+    func showResetPasswordView(_ animated:Bool){
+        if let vc:ResetPasswordViewController  = self.storyboard?.instantiateViewController(withIdentifier: "ResetPasswordViewController") as? ResetPasswordViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    
     func showBankTransferView(_ animated:Bool){
         if let vc:BankPointTransferViewController  = self.storyboard?.instantiateViewController(withIdentifier: "BankPointTransferViewController") as? BankPointTransferViewController {
             
@@ -377,11 +384,12 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
     
     func showEnterPassCodeModalView(_ title:String = NSLocalizedString("title-enter-passcode", comment: "")){
         let enterPasscode = PAPasscodeViewController(for: PasscodeActionEnter )
+        enterPasscode!.centerPosition = true
         enterPasscode!.delegate = self
-        enterPasscode?.title = title
+        enterPasscode!.title = title
         
         let navController = UINavigationController(rootViewController: enterPasscode!)
-        navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black,
+        navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.darkGray,
                                                            NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.TITLE )!]
         
         
@@ -408,25 +416,35 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
     
     func showSettingPassCodeModalView(_ title:String = NSLocalizedString("title-set-passcode", comment: "")){
         let enterPasscode = PAPasscodeViewController(for: PasscodeActionSet )
+        enterPasscode!.centerPosition = true
         enterPasscode!.delegate = self
-        enterPasscode?.title = title
+        enterPasscode!.title = title
         
         let navController = UINavigationController(rootViewController: enterPasscode!)
-        navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black,
+        navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.darkGray,
                                                            NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.TITLE )!]
         
         
         
         let presenter: Presentr = {
+//            let w = self.view.frame.width
+//            //let h = self.view.frame.height
+//
+//            let width = ModalSize.custom(size: Float(w))
+//            let height = ModalSize.custom(size: Float(w / 300 * 500))
+//            //let height = ModalSize.custom(size: Float(h))
+//
+//            let center = ModalCenterPosition.bottomCenter
+//            //let center = ModalCenterPosition.center
+//            let customType = PresentationType.custom(width: width, height: height, center: center)
+
             let w = self.view.frame.width
-            //let h = self.view.frame.height
+            let h = self.view.frame.height
             
             let width = ModalSize.custom(size: Float(w))
-            let height = ModalSize.custom(size: Float(w / 300 * 500))
-            //let height = ModalSize.custom(size: Float(h))
+            let height = ModalSize.custom(size: Float(h))
             
-            let center = ModalCenterPosition.bottomCenter
-            //let center = ModalCenterPosition.center
+            let center = ModalCenterPosition.center
             let customType = PresentationType.custom(width: width, height: height, center: center)
             
             let customPresenter = Presentr(presentationType: customType)
@@ -583,7 +601,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
     
     
     func showMessagePrompt(_ message:String){
-        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
         let ok = UIAlertAction(title: NSLocalizedString("string-button-ok", comment: ""), style: .cancel, handler: nil)
         alert.addAction(ok)
         

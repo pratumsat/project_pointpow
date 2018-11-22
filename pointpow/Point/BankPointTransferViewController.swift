@@ -40,9 +40,12 @@ class BankPointTransferViewController: BaseViewController  {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         self.transferButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
-        self.providerImageView.ovalColorClearProperties()
+        
+        self.providerImageView.ovalColoLightGrayProperties()
         self.pointpowImageView.ovalColorClearProperties()
         
+        self.lessImageView.ovalColorClearProperties()
+        self.moreImageView.ovalColorClearProperties()
     }
     
     func setUp(){

@@ -10,6 +10,8 @@ import UIKit
 
 class PointFriendTransferViewController: BaseViewController {
 
+    @IBOutlet weak var moreImageView: UIImageView!
+    @IBOutlet weak var lessImageView: UIImageView!
     @IBOutlet weak var noteTextField: UITextField!
     @IBOutlet weak var transferButton: UIButton!
     @IBOutlet weak var friendImageView: UIImageView!
@@ -29,6 +31,8 @@ class PointFriendTransferViewController: BaseViewController {
         self.myProfileImageView.ovalColorClearProperties()
         self.friendImageView.ovalColorClearProperties()
         
+        self.lessImageView.ovalColorClearProperties()
+        self.moreImageView.ovalColorClearProperties()
     }
     
     func setUp(){

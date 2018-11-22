@@ -18,12 +18,15 @@
 "string-title-setting" = "การตั้งค่า";
 "string-title-freind-transfer" = "โอนพ้อยท์ให้เพื่อน";
 "string-title-point-transfer" = "โอนพ้อยท์";
-"string-title-profile-change-displayname" = "แก้ไขดิสเพลย์เนม";
+"string-title-profile-change-displayname" = "แก้ไข Display Name";
 "string-title-profile-bank-transfer" = "โอนพ้อยท์";
-"string-title-passcode-enter" = "ความปลอดภัยของบัญชี";
-"string-title-point-detail" = "รายละเอียด";
+"string-title-passcode-enter" = "รหัสความปลอดภัย";
 "string-title-freind-transfer-review" = "ยืนยันการทำรายการ";
-
+"string-title-resetpassword" = "รีเซ็ตรหัสผ่าน";
+"string-title-finish-transfer" = "เสร็จสิ้น";
+/*Reset Password*/
+"string-reset-password-success" = "รีเซ็ตรหัสผ่านเรียบร้อย";
+"string-button-ok" = "ตกลง";
 /* ResultPointTransfer*/
 "string-point-result-success" = "โอนพ้อยท์สำเร็จ";
 "string-point-result-transfer" = "โอนพ้อยท์";
@@ -47,7 +50,7 @@
 "title-enter-passcode" = "Enter Passcode";
 "prompt-enter-passcode" = "กรุณาใส่รหัสผ่าน";
 "title-set-passcode" = "ตั้งรหัสความปลอดภัย";
-"prompt-enter-a-passcode" = "กรุณาใส่รหัสผ่าน 6 หลัก\nเพื่อความปลอดภัยในการใช้งาน";
+"prompt-enter-a-passcode" = "กรุณากำหนดรหัสผ่าน 6 หลัก\nเพื่อความปลอดภัยในการใช้งาน";
 "re-enter-your-passcode" = "ยืนยันรหัสผ่าน";
 "passcodes-did-not-match" = "รหัสผ่านไม่ตรงกัน กรุณาลองใหม่";
 "title-enter-passcode-first" = "ใส่รหัส PIN เพื่อเข้าสู่ระบบ";
@@ -74,7 +77,7 @@
 
 /*Profile*/
 "string-item-profile-change" = "แก้ไขโปรไฟล์";
-"string-item-profile-change-displayname" = "แก้ไขดิสเพลย์เนม";
+"string-item-profile-change-displayname" = "แก้ไข Display Name";
 "string-item-profile-change-pwd" = "เปลี่ยนรหัสผ่าน";
 "string-item-profile-logout" = "ออกจากระบบ";
 "string-item-header-setting" = "การแจ้งเตือน";

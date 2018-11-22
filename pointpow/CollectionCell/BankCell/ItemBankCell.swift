@@ -23,6 +23,6 @@ class ItemBankCell: UICollectionViewCell {
     }
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.coverImageView.ovalColorWhiteProperties(borderWidth: 0)
+        self.coverImageView.ovalColorClearProperties()
     }
 }

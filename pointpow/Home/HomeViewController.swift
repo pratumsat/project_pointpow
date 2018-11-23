@@ -63,13 +63,6 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = true
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = .clear
-       
-        
         
         self.profileImageView.ovalColorWhiteProperties(borderWidth: 2.0)
         self.notiView.ovalColorClearProperties()
@@ -82,12 +75,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.isNavigationBarHidden = false
-        self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-        self.navigationController?.navigationBar.shadowImage = nil
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = nil
-        
+       
         
          shadowImageView?.isHidden = false
     }

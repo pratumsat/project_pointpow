@@ -19,15 +19,16 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
         self.setUp()
     }
     
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = true
+      
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = false
+       
     }
+  
     
     func setUp(){
         self.backgroundImage?.image = nil

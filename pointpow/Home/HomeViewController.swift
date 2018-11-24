@@ -50,12 +50,18 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         self.registerNib(self.homeCollectionView, "ItemServiceCell")
         
         
+        let tapProfile  = UITapGestureRecognizer(target: self, action: #selector(tapToProfile))
+        self.profileImageView.isUserInteractionEnabled = true
+        self.profileImageView.addGestureRecognizer(tapProfile)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapToPointBalance))
         self.pointBalanceLabel.isUserInteractionEnabled = true
         self.pointBalanceLabel.addGestureRecognizer(tap)
     }
     
+    @objc func tapToProfile(){
+        self.tabBarController?.selectedIndex = 4
+    }
     @objc func tapToPointBalance(){
         self.showPointManagement(true)
     }

@@ -18,6 +18,8 @@ class ItemFriendCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var coverImageView: UIImageView!
     
+    var didSelectImageView:(()->Void)?
+    
     var recentMode:Bool = false {
         didSet{
             self.nameLabel.font = UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.FREIND_RECENT)!
@@ -44,7 +46,16 @@ class ItemFriendCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        
+        let tap  = UITapGestureRecognizer(target: self, action: #selector(didSelect))
+        self.coverImageView.isUserInteractionEnabled = true
+        self.coverImageView.addGestureRecognizer(tap)
     }
+    @objc func didSelect(){
+        self.didSelectImageView?()
+    }
+    
     override var bounds : CGRect {
         didSet {
             self.layoutIfNeeded()

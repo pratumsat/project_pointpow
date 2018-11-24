@@ -12,6 +12,10 @@ class PointManageViewController: BaseViewController {
 
     @IBOutlet weak var friendTransfer: UIImageView!
     @IBOutlet weak var transferPointImageView: UIImageView!
+    
+    
+    var isFriend:Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,7 +29,15 @@ class PointManageViewController: BaseViewController {
         
         self.hendleSetPasscodeSuccess = { (passcode) in
             print("new passcode= \(passcode)")
-            self.showPointTransferView(true)
+            
+            
+            if self.isFriend  {
+                self.showFriendTransferView(true)
+            }else{
+                self.showPointTransferView(true)
+            }
+            
+            
         }
         
         let friend = UITapGestureRecognizer(target: self, action: #selector(friendTransferTapped))
@@ -45,6 +57,7 @@ class PointManageViewController: BaseViewController {
             (alert) in
             
             self.showPersonalPopup(true) {
+                self.isFriend = false
                 self.showSettingPassCodeModalView()
             }
           
@@ -66,8 +79,8 @@ class PointManageViewController: BaseViewController {
         let okButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-ok", comment: ""), style: .default, handler: {
             (alert) in
             
-            //self.showSettingPassCodeModalView()
-            self.showFriendTransferView(true)
+            self.isFriend = true
+            self.showSettingPassCodeModalView()
             
         })
         let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: nil)

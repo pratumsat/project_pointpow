@@ -115,7 +115,7 @@ static NSTimeInterval AnimationDuration = 0.3;
     
     messageLabel = [[UILabel alloc] init];
     messageLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    messageLabel.font = [UIFont fontWithName:@"ThaiSansNeue-Bold" size:18];
+    messageLabel.font = [UIFont fontWithName:@"ThaiSansNeue-Regular" size:18];
     messageLabel.textAlignment = NSTextAlignmentCenter;
     messageLabel.numberOfLines = 0;
     messageLabel.text = _message;

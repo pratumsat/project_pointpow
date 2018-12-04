@@ -80,8 +80,8 @@ class PointManageViewController: BaseViewController {
             (alert) in
             
             self.isFriend = true
-            self.showSettingPassCodeModalView()
-            
+            //self.showSettingPassCodeModalView()
+            self.showFriendTransferView(true)
         })
         let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: nil)
         

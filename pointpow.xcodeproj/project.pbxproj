@@ -93,6 +93,8 @@
 		C1DEBE9521882F6F00CBB95F /* BaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DEBE9421882F6F00CBB95F /* BaseNavigationViewController.swift */; };
 		C1DEBE982188337500CBB95F /* ThaiSansNeue-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1DEBE962188337500CBB95F /* ThaiSansNeue-Bold.ttf */; };
 		C1DEBE992188337500CBB95F /* ThaiSansNeue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1DEBE972188337500CBB95F /* ThaiSansNeue-Regular.ttf */; };
+		C1E7B17D21AFCD7E00DA8B82 /* ResultTransferNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E7B17C21AFCD7E00DA8B82 /* ResultTransferNav.swift */; };
+		C1E7B17F21AFCDCB00DA8B82 /* PointFreindSummaryNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E7B17E21AFCDCB00DA8B82 /* PointFreindSummaryNav.swift */; };
 		DFFFDC067D70DA3C98143BF4 /* Pods_pointpow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31B9DAB23EC121F58205F612 /* Pods_pointpow.framework */; };
 /* End PBXBuildFile section */
 
@@ -215,6 +217,8 @@
 		C1DEBE9421882F6F00CBB95F /* BaseNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationViewController.swift; sourceTree = "<group>"; };
 		C1DEBE962188337500CBB95F /* ThaiSansNeue-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ThaiSansNeue-Bold.ttf"; sourceTree = "<group>"; };
 		C1DEBE972188337500CBB95F /* ThaiSansNeue-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ThaiSansNeue-Regular.ttf"; sourceTree = "<group>"; };
+		C1E7B17C21AFCD7E00DA8B82 /* ResultTransferNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTransferNav.swift; sourceTree = "<group>"; };
+		C1E7B17E21AFCDCB00DA8B82 /* PointFreindSummaryNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointFreindSummaryNav.swift; sourceTree = "<group>"; };
 		F71C5AF1196142AE070221A8 /* Pods_pointpowUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pointpowUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -321,6 +325,8 @@
 				C1817DA9219E7F18009507DB /* BankPointTransferViewController.swift */,
 				C115FA49219EC511008E7844 /* ResultTransferViewController.swift */,
 				C11BDFBE21A2C17600443D2D /* PopUpTransferSuccessViewController.swift */,
+				C1E7B17C21AFCD7E00DA8B82 /* ResultTransferNav.swift */,
+				C1E7B17E21AFCDCB00DA8B82 /* PointFreindSummaryNav.swift */,
 			);
 			path = Point;
 			sourceTree = "<group>";
@@ -886,6 +892,7 @@
 				C10CA19421914A3B00316DF3 /* HomeViewController.swift in Sources */,
 				C10CA1A021914B8900316DF3 /* PointManageViewController.swift in Sources */,
 				C1817D8E219BD32B009507DB /* FriendTransferViewController.swift in Sources */,
+				C1E7B17F21AFCDCB00DA8B82 /* PointFreindSummaryNav.swift in Sources */,
 				C1B542DB219A85590040DDE6 /* ChangePasswordViewController.swift in Sources */,
 				C1AD507C2187F45600F74415 /* ViewController.swift in Sources */,
 				C11A93BC218C20C700627B44 /* LoginViewController.swift in Sources */,
@@ -903,6 +910,7 @@
 				C1DEBE9521882F6F00CBB95F /* BaseNavigationViewController.swift in Sources */,
 				C1AD507A2187F45600F74415 /* AppDelegate.swift in Sources */,
 				C10CA1A8219185AB00316DF3 /* PAPasscodeViewController.m in Sources */,
+				C1E7B17D21AFCD7E00DA8B82 /* ResultTransferNav.swift in Sources */,
 				C10CA19D21914B1B00316DF3 /* AccountViewController.swift in Sources */,
 				C115FA4A219EC511008E7844 /* ResultTransferViewController.swift in Sources */,
 				C10CA1BE219429D500316DF3 /* ImageCell.swift in Sources */,

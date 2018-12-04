@@ -50,7 +50,9 @@ class BankPointTransferViewController: BaseViewController  {
     
     func setUp(){
         self.handlerEnterSuccess = {
-            self.showResultTransferView(true)
+            self.showResultTransferView(true) {
+                self.navigationController?.popToRootViewController(animated: true)
+            }
         }
         
         

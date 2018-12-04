@@ -40,7 +40,7 @@ class SettingViewController: BaseViewController, UICollectionViewDelegate , UICo
             return 1
         }
         if section == 1 {
-            return 3
+            return 4
         }
         return 1
     }
@@ -71,6 +71,8 @@ class SettingViewController: BaseViewController, UICollectionViewDelegate , UICo
                     itemCell.nameLabel.text = NSLocalizedString("string-item-setting-email", comment: "")
                 }else if indexPath.row == 2 {
                     itemCell.nameLabel.text = NSLocalizedString("string-item-setting-noti", comment: "")
+                }else if indexPath.row == 3 {
+                    itemCell.nameLabel.text = NSLocalizedString("string-item-setting-receipt", comment: "")
                 }
                 
                 

@@ -10,6 +10,7 @@ import UIKit
 
 class ItemFriendSummaryCell: UICollectionViewCell {
 
+    @IBOutlet weak var mView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         

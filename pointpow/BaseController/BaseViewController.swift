@@ -357,24 +357,32 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         }
     }
     
-    func showResultTransferView(_ animated:Bool){
-        if let vc:ResultTransferViewController  = self.storyboard?.instantiateViewController(withIdentifier: "ResultTransferViewController") as? ResultTransferViewController {
-            
-            self.navigationController?.pushViewController(vc, animated: animated)
+    func showResultTransferView(_ animated:Bool, finish:(()->Void)? = nil){
+        if let vc:ResultTransferNav  = self.storyboard?.instantiateViewController(withIdentifier: "ResultTransferNav") as? ResultTransferNav {
+            vc.callbackFinish = {
+                finish?()
+            }
+            self.present(vc, animated: animated, completion: nil)
         }
     }
+    
+    func showPointFriendSummaryTransferView(_ animated:Bool , finish:(()->Void)? = nil){
+        if let vc:PointFreindSummaryNav  = self.storyboard?.instantiateViewController(withIdentifier: "PointFreindSummaryNav") as? PointFreindSummaryNav {
+            vc.callbackFinish = {
+                finish?()
+            }
+            self.present(vc, animated: animated, completion: nil)
+        }
+    }
+    
+    
     func showPointFriendTransferView(_ animated:Bool){
         if let vc:PointFriendTransferViewController  = self.storyboard?.instantiateViewController(withIdentifier: "PointFriendTransferViewController") as? PointFriendTransferViewController {
             
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
-    func showPointFriendSummaryTransferView(_ animated:Bool){
-        if let vc:PointFriendSummaryViewController  = self.storyboard?.instantiateViewController(withIdentifier: "PointFriendSummaryViewController") as? PointFriendSummaryViewController {
-            
-            self.navigationController?.pushViewController(vc, animated: animated)
-        }
-    }
+
     func showPointFriendTransferReviewView(_ animated:Bool){
         if let vc:PointFriendTransferReviewViewController  = self.storyboard?.instantiateViewController(withIdentifier: "PointFriendTransferReviewViewController") as? PointFriendTransferReviewViewController {
             

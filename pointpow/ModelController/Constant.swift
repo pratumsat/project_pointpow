@@ -409,6 +409,8 @@ struct Constant {
         static let NotificationGoogleSigInFailure = "NotificationGoogleSigInFailure"
     }
     struct Colors {
+        
+        
         static let PRIMARY_COLOR = UIColor(rgb: 0xFF002F)
         static let LINE_COLOR = UIColor.groupTableViewBackground
         static let LINE_PROFILE = UIColor(rgb: 0xCCCCCC)

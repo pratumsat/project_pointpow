@@ -11,9 +11,19 @@ import UIKit
 class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var resultCollectionView: UICollectionView!
     
+    var slipView:UIView?
+    var snapView:UIView?
+    var countDown:Int = 3
+    var timer:Timer?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        snapView = UIView(frame: self.view.frame)
+        snapView!.backgroundColor = UIColor.white
+        self.view.addSubview(snapView!)
+        self.view.sendSubviewToBack(snapView!)
+        
         self.title = NSLocalizedString("string-title-freind-transfer", comment: "")
         let finishButton = UIBarButtonItem(title: NSLocalizedString("string-title-finish-transfer", comment: ""), style: .plain, target: self, action: #selector(dismissTapped))
         finishButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white,
@@ -24,9 +34,49 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
         
         self.setUp()
     }
+    func countDownForSnapShot(_ time: Double){
+        timer = Timer.scheduledTimer(timeInterval: time, target: self, selector: #selector(updateCountDown), userInfo: nil, repeats: true)
+    }
+    @objc func updateCountDown() {
+        if let snapImage = self.snapView?.snapshotImage() {
+            UIImageWriteToSavedPhotosAlbum(snapImage, nil, nil, nil)
+            print("created slip")
+            self.removeCountDown()
+        }
+    }
+    func removeCountDown() {
+        timer?.invalidate()
+        timer = nil
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let slip = self.slipView {
+            let imageView = UIImageView(image: slip.snapshotImage())
+            imageView.center = self.snapView?.center ?? CGPoint.zero
+            self.snapView?.addSubview(imageView)
+            print("add image slip")
+            
+            self.countDownForSnapShot(1)
+        }
+        
+    /*
+         if let snapImage = snapView?.snapshotImage() {
+         UIImageWriteToSavedPhotosAlbum(snapImage, nil, nil, nil)
+         print("created slip")
+         }
+         */
+    }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+     
+    }
     @objc func dismissTapped(){
-        self.navigationController?.popToRootViewController(animated: true)
+        self.dismiss(animated: true) {
+            (self.navigationController as? PointFreindSummaryNav)?.callbackFinish?()
+        }
         
     }
     
@@ -54,6 +104,8 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
         if indexPath.section == 0 {
             if let statusCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemFriendSummaryCell", for: indexPath) as? ItemFriendSummaryCell {
                 
+                self.slipView = statusCell.mView
+            
                
                 cell = statusCell
                 

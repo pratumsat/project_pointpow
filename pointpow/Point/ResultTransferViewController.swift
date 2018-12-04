@@ -11,6 +11,9 @@ import UIKit
 class ResultTransferViewController: BaseViewController  , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var resultCollectionView: UICollectionView!
+    
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,9 +29,9 @@ class ResultTransferViewController: BaseViewController  , UICollectionViewDelega
         self.setUp()
     }
     @objc func dismissTapped(){
-        
-        self.navigationController?.popToRootViewController(animated: true)
-        
+        self.dismiss(animated: true) {
+            (self.navigationController as? ResultTransferNav)?.callbackFinish?()
+        }
     }
     func setUp(){
         self.backgroundImage?.image = nil

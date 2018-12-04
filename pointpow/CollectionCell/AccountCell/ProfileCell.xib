@@ -145,6 +145,24 @@
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                     </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CjN-T2-8gK">
+                        <rect key="frame" x="223.5" y="64" width="30.5" height="30.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-camera" translatesAutoresizingMaskIntoConstraints="NO" id="kY6-H9-dRn">
+                                <rect key="frame" x="4" y="4" width="22.5" height="22.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kY6-H9-dRn" firstAttribute="top" secondItem="CjN-T2-8gK" secondAttribute="top" constant="4" id="1E3-04-fSz"/>
+                            <constraint firstItem="kY6-H9-dRn" firstAttribute="width" secondItem="kY6-H9-dRn" secondAttribute="height" multiplier="1:1" id="Lfk-ZS-CxB"/>
+                            <constraint firstAttribute="width" secondItem="CjN-T2-8gK" secondAttribute="height" multiplier="1:1" id="Mwg-PY-HwL"/>
+                            <constraint firstAttribute="bottom" secondItem="kY6-H9-dRn" secondAttribute="bottom" constant="4" id="Z9D-E5-sGp"/>
+                            <constraint firstAttribute="trailing" secondItem="kY6-H9-dRn" secondAttribute="trailing" constant="4" id="hFY-lw-MCc"/>
+                            <constraint firstItem="kY6-H9-dRn" firstAttribute="leading" secondItem="CjN-T2-8gK" secondAttribute="leading" constant="4" id="uXZ-9R-Dvv"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <constraints>
@@ -153,12 +171,15 @@
                 <constraint firstItem="P5q-MX-bR8" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" multiplier="0.7" id="A8P-Kf-51C"/>
                 <constraint firstItem="P5q-MX-bR8" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.4" id="DJK-GL-OOA"/>
                 <constraint firstItem="X0f-As-puT" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="DsU-Bl-FaS"/>
+                <constraint firstItem="CjN-T2-8gK" firstAttribute="width" secondItem="P5q-MX-bR8" secondAttribute="width" multiplier="0.2" id="F0O-Rm-pRN"/>
                 <constraint firstItem="tB0-2a-L76" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="HO6-Ar-gej"/>
+                <constraint firstItem="CjN-T2-8gK" firstAttribute="trailing" secondItem="P5q-MX-bR8" secondAttribute="trailing" constant="-7" id="JHl-pq-B9g"/>
                 <constraint firstItem="owo-gZ-3I7" firstAttribute="top" secondItem="X0f-As-puT" secondAttribute="bottom" constant="-5" id="MVx-fA-Y7l"/>
                 <constraint firstItem="dur-Ec-5ip" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Mce-Qy-lrX"/>
                 <constraint firstItem="yw7-VU-mVa" firstAttribute="top" secondItem="P5q-MX-bR8" secondAttribute="bottom" constant="5" id="TYu-iC-x0K"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="tB0-2a-L76" secondAttribute="bottom" id="Tda-li-MOZ"/>
                 <constraint firstItem="P5q-MX-bR8" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Xia-fQ-26n"/>
+                <constraint firstItem="CjN-T2-8gK" firstAttribute="top" secondItem="P5q-MX-bR8" secondAttribute="top" constant="7" id="aWk-ro-N6U"/>
                 <constraint firstItem="X0f-As-puT" firstAttribute="top" secondItem="yw7-VU-mVa" secondAttribute="bottom" constant="-10" id="eDz-Tf-lHS"/>
                 <constraint firstItem="dur-Ec-5ip" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" multiplier="1.8" id="mrJ-UL-LV8"/>
                 <constraint firstItem="tB0-2a-L76" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="ovC-r9-H7e"/>
@@ -168,14 +189,17 @@
             <size key="customSize" width="239" height="494"/>
             <connections>
                 <outlet property="backgroundImageView" destination="po6-29-quF" id="r1N-kj-dN6"/>
+                <outlet property="cameraImageView" destination="kY6-H9-dRn" id="Eyr-73-Vf3"/>
+                <outlet property="cameraView" destination="CjN-T2-8gK" id="qCg-fq-oiR"/>
                 <outlet property="changeBackground2Button" destination="dur-Ec-5ip" id="w61-Sm-yeI"/>
                 <outlet property="profileImageView" destination="P5q-MX-bR8" id="hce-Va-TVt"/>
             </connections>
-            <point key="canvasLocation" x="-24" y="77.361319340329842"/>
+            <point key="canvasLocation" x="22.399999999999999" y="119.64017991004499"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="bg-profile-image" width="5184" height="3456"/>
+        <image name="ic-camera" width="24" height="24"/>
         <image name="ic-logo-white" width="19.200000762939453" height="19.200000762939453"/>
     </resources>
 </document>

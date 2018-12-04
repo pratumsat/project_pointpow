@@ -33,7 +33,9 @@ class PointFriendTransferReviewViewController: BaseViewController {
     
     func setUp(){
         self.handlerEnterSuccess = {
-            self.showPointFriendSummaryTransferView(true)
+            self.showPointFriendSummaryTransferView(true) {
+                self.navigationController?.popToRootViewController(animated: true)
+            }
         }
         
         self.myProfileImageView.image = UIImage(named:"bg-profile-image")

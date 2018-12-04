@@ -12,6 +12,8 @@ class ProfileCell: UICollectionViewCell {
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var changeBackground2Button: UIButton!
    
+    @IBOutlet weak var cameraView: UIView!
+    @IBOutlet weak var cameraImageView: UIImageView!
     @IBOutlet weak var profileImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,7 +28,7 @@ class ProfileCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        
+        self.cameraView.ovalColorWhiteProperties(borderWidth: 2.0)
         self.profileImageView.ovalColorWhiteProperties(borderWidth: 2.0)
         self.changeBackground2Button.borderWhiteProperties()
     }

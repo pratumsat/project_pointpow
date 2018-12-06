@@ -55,6 +55,7 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
         if let slip = self.slipView {
             let imageView = UIImageView(image: slip.snapshotImage())
             imageView.center = self.snapView?.center ?? CGPoint.zero
+            imageView.updateLayerCornerRadiusProperties()
             self.snapView?.addSubview(imageView)
             print("add image slip")
             
@@ -116,7 +117,16 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
         if indexPath.section == 1 {
             if let confirmCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemConfirmSummaryCell", for: indexPath) as? ItemConfirmSummaryCell {
                 
-                
+                confirmCell.shareCallback = {
+                    if let snapImage = self.snapView?.snapshotImage() {
+                        let imageShare = [ snapImage ]
+                        let activityViewController = UIActivityViewController(activityItems: imageShare, applicationActivities: nil)
+                        activityViewController.popoverPresentationController?.sourceView = self.view
+                        self.present(activityViewController, animated: true, completion: nil)
+                    }
+                    
+                   
+                }
                 
                 cell = confirmCell
             }

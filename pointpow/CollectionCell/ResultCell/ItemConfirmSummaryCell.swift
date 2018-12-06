@@ -22,9 +22,16 @@ class ItemConfirmSummaryCell: UICollectionViewCell {
         let share  = UITapGestureRecognizer(target: self, action: #selector(shareTapped))
         self.saveView.isUserInteractionEnabled = true
         self.saveView.addGestureRecognizer(share)
+        
+        let addFav  = UITapGestureRecognizer(target: self, action: #selector(addFavTapped))
+        self.favoView.isUserInteractionEnabled = true
+        self.favoView.addGestureRecognizer(addFav)
     }
     @objc func shareTapped(){
         self.shareCallback?()
+    }
+    @objc func addFavTapped(){
+        self.favorCallback?()
     }
     override var bounds : CGRect {
         didSet {

@@ -124,8 +124,9 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
                         activityViewController.popoverPresentationController?.sourceView = self.view
                         self.present(activityViewController, animated: true, completion: nil)
                     }
-                    
-                   
+                }
+                confirmCell.favorCallback = {
+                    //add favorit
                 }
                 
                 cell = confirmCell

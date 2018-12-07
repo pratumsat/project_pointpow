@@ -105,12 +105,10 @@ class RegisterViewController: BaseViewController {
         
     }
     @objc func clearUserNameTapped(){
-        self.clearImageView?.alpha = 0
-        UIView.animate(withDuration: 0.1) {
-            self.clearImageView?.alpha = 1
+        self.clearImageView?.animationTapped({
             self.usernameTextField.text = ""
             self.clearImageView?.isHidden = true
-        }
+        })
         
     }
     @objc func eyeTapped(){
@@ -124,18 +122,15 @@ class RegisterViewController: BaseViewController {
                                      status: self.confirmPsssIsClose)
     }
     func toggleEye(_ imageView:UIImageView, textfield:UITextField, status:Bool) -> Bool{
-        imageView.alpha = 0
         if status {
-            UIView.animate(withDuration: 0.1) {
-                imageView.alpha = 1
+            imageView.animationTapped {
                 imageView.image = UIImage(named: "ic-eye-close")
                 textfield.isSecureTextEntry = true
             }
             
             return false
         }else{
-            UIView.animate(withDuration: 0.1) {
-                imageView.alpha = 1
+            imageView.animationTapped {
                 imageView.image = UIImage(named: "ic-eye")
                 textfield.isSecureTextEntry = false
             }

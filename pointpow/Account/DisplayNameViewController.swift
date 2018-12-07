@@ -80,12 +80,10 @@ class DisplayNameViewController: BaseViewController {
         
     }
     @objc func clearNameTapped(){
-        self.clearImageView?.alpha = 0
-        UIView.animate(withDuration: 0.1) {
-            self.clearImageView?.alpha = 1
+        self.clearImageView?.animationTapped({
             self.displayNameTextField.text = ""
             self.clearImageView?.isHidden = true
-        }
+        })
     }
    
 

@@ -711,22 +711,13 @@ extension BaseViewController {
         
     }
     @objc func searchTapped(){
-        self.searchImageView?.alpha = 0
-        UIView.animate(withDuration: 0.1) {
-            self.searchImageView?.alpha = 1
-        }
+        self.searchImageView?.animationTapped()
     }
     @objc func cartTapped(){
-        self.cartImageView?.alpha = 0
-        UIView.animate(withDuration: 0.1) {
-            self.cartImageView?.alpha = 1
-        }
+        self.cartImageView?.animationTapped()
     }
     @objc func moreTapped(){
-        self.moreImageView?.alpha = 0
-        UIView.animate(withDuration: 0.1) {
-            self.moreImageView?.alpha = 1
-        }
+        self.moreImageView?.animationTapped()
     }
     
 }

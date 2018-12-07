@@ -93,19 +93,14 @@ class LoginViewController: BaseViewController {
         
     }
     @objc func clearUserNameTapped(){
-        self.clearImageView?.alpha = 0
-        UIView.animate(withDuration: 0.1) {
-            self.clearImageView?.alpha = 1
+        self.clearImageView?.animationTapped({
             self.usernameTextField.text = ""
             self.clearImageView?.isHidden = true
-        }
+        })
         
     }
     @objc func eyeTapped(){
-        self.eyeImageView?.alpha = 0
-        UIView.animate(withDuration: 0.1) {
-            self.eyeImageView?.alpha = 1
-            
+        self.eyeImageView?.animationTapped({
             if self.isClose {
                 self.isClose = false
                 self.eyeImageView?.image = UIImage(named: "ic-eye-close")
@@ -116,7 +111,7 @@ class LoginViewController: BaseViewController {
                 self.passwordTextField.isSecureTextEntry = false
                 
             }
-        }
+        })
     }
     
     @objc func forgotTapped(){

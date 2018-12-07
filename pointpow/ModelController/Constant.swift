@@ -131,6 +131,14 @@ extension UITextField {
 }
 
 extension UIView {
+    func animationTapped(_ completed:(()->Void)? = nil){
+        self.alpha = 0
+        UIView.animate(withDuration: 0.1) {
+            self.alpha = 1
+            completed?()
+        }
+    }
+    
     public func snapshotImage() -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(bounds.size, isOpaque, 0)
         drawHierarchy(in: bounds, afterScreenUpdates: false)

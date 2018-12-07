@@ -141,30 +141,22 @@ class PersonalViewController: BaseViewController {
         
     }
     @objc func clearPersanalTapped(){
-        self.clearImageView3?.alpha = 0
-        UIView.animate(withDuration: 0.1) {
-            self.clearImageView3?.alpha = 1
+        self.clearImageView3?.animationTapped({
             self.parsonalTextField.text = ""
             self.clearImageView3?.isHidden = true
-        }
+        })
     }
     @objc func clearFirstNameTapped(){
-        self.clearImageView?.alpha = 0
-        UIView.animate(withDuration: 0.1) {
-            self.clearImageView?.alpha = 1
+        self.clearImageView?.animationTapped({
             self.firstNameTextField.text = ""
             self.clearImageView?.isHidden = true
-        }
-        
+        })
     }
     @objc func clearLastNameTapped(){
-        self.clearImageView2?.alpha = 0
-        UIView.animate(withDuration: 0.1) {
-            self.clearImageView2?.alpha = 1
+        self.clearImageView2?.animationTapped({
             self.lastNameTextField.text = ""
             self.clearImageView2?.isHidden = true
-        }
-        
+        })
     }
     
 

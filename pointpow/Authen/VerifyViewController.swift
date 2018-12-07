@@ -77,12 +77,10 @@ class VerifyViewController: BaseViewController {
     }
     
     @objc func clearUserNameTapped(){
-        self.clearImageView?.alpha = 0
-        UIView.animate(withDuration: 0.1) {
-            self.clearImageView?.alpha = 1
+        self.clearImageView?.animationTapped({
             self.usernameTextField.text = ""
             self.clearImageView?.isHidden = true
-        }
+        })
         
     }
     

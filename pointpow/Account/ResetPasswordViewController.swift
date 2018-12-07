@@ -88,18 +88,15 @@ class ResetPasswordViewController: BaseViewController {
                                              status: self.comfirmIsClose)
     }
     func toggleEye(_ imageView:UIImageView, textfield:UITextField, status:Bool) -> Bool{
-        imageView.alpha = 0
+       
         if status {
-            UIView.animate(withDuration: 0.1) {
-                imageView.alpha = 1
+            imageView.animationTapped {
                 imageView.image = UIImage(named: "ic-eye-close")
                 textfield.isSecureTextEntry = true
             }
-            
             return false
         }else{
-            UIView.animate(withDuration: 0.1) {
-                imageView.alpha = 1
+            imageView.animationTapped {
                 imageView.image = UIImage(named: "ic-eye")
                 textfield.isSecureTextEntry = false
             }

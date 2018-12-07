@@ -20,7 +20,7 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         snapView = UIView(frame: self.view.frame)
-        snapView!.backgroundColor = UIColor.white
+        snapView!.backgroundColor = UIColor.green
         self.view.addSubview(snapView!)
         self.view.sendSubviewToBack(snapView!)
         
@@ -56,6 +56,7 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
             let imageView = UIImageView(image: slip.snapshotImage())
             imageView.center = self.snapView?.center ?? CGPoint.zero
             imageView.updateLayerCornerRadiusProperties()
+            imageView.drawLightningView()
             self.snapView?.addSubview(imageView)
             print("add image slip")
             
@@ -106,7 +107,7 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
             if let statusCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemFriendSummaryCell", for: indexPath) as? ItemFriendSummaryCell {
                 
                 self.slipView = statusCell.mView
-            
+             
                
                 cell = statusCell
                 

@@ -139,6 +139,48 @@ extension UIView {
         }
     }
     
+    func drawLightningView(){
+        let height = self.frame.height
+        let width = self.frame.width
+        //draw crop
+        let path = UIBezierPath()
+        let linePath = UIBezierPath()
+        //draw line
+        let layer = CAShapeLayer()
+        let linelayer = CAShapeLayer()
+        
+        path.move(to: CGPoint(x: width, y: -2))
+        path.addLine(to: CGPoint(x: -20, y: -2))
+        
+        linePath.move(to: CGPoint(x: -20, y: -2))
+        
+        var scaleX = CGFloat(0)
+        var scaleY = CGFloat(12)
+        
+        
+        for i in 0..<35 {
+            if i % 2 == 0 {
+                scaleY = 12
+            }else{
+                scaleY = 1
+            }
+            linePath.addLine(to: CGPoint(x: width*scaleX, y: height - scaleY))
+            path.addLine(to: CGPoint(x: width*scaleX, y: height - scaleY))
+            scaleX += 0.03
+        }
+        //crop
+        layer.path = path.cgPath
+        
+        //draw line
+        linelayer.path = linePath.cgPath
+        linelayer.strokeColor = UIColor.clear.cgColor
+        linelayer.fillColor = UIColor.clear.cgColor
+        
+        self.layer.mask = layer
+        self.layer.addSublayer(linelayer)
+        
+    }
+
     public func snapshotImage() -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(bounds.size, isOpaque, 0)
         drawHierarchy(in: bounds, afterScreenUpdates: false)

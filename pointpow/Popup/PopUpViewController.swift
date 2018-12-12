@@ -17,6 +17,7 @@ class PopUpViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.imageView.image = UIImage(named: "ic-bg-popup")
         
     }
     

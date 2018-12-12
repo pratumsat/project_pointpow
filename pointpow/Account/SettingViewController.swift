@@ -8,8 +8,14 @@
 
 import UIKit
 
-class SettingViewController: BaseViewController, UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class SettingViewController: BaseViewController, UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIPickerViewDelegate , UIPickerViewDataSource, UIGestureRecognizerDelegate {
     @IBOutlet weak var settingCollectionView: UICollectionView!
+    
+    var language = [(id:"en" ,lang:"English"),
+                    (id:"th",lang:"ไทย")]
+    
+    var languageId =  "en"
+    var pickerView:UIPickerView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,8 +110,68 @@ class SettingViewController: BaseViewController, UICollectionViewDelegate , UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            self.chooseLanguage()
+        }
+    }
+    
+    
+    func chooseLanguage(){
+        pickerView = UIPickerView()
+        pickerView!.delegate = self
+        pickerView!.dataSource = self
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(pickerTapped))
+        tap.delegate = self
+        pickerView!.addGestureRecognizer(tap)
+        
+        
+        
+        let dummyview  = UITextField(frame: CGRect.zero)
+        self.view.addSubview(dummyview)
+        
+        dummyview.inputView = pickerView
+        dummyview.becomeFirstResponder()
+        
+        
+        var i = 0
+        for lang  in language {
+            if DataController.sharedInstance.getLanguage() == lang.id {
+                self.languageId = lang.id
+                pickerView!.selectRow(i, inComponent: 0, animated: true)
+                break
+            }
+            i += 1
+        }
         
     }
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    @objc func pickerTapped(_ tapRecognizer:UITapGestureRecognizer){
+        if tapRecognizer.state == .ended {
+            let rowHeight = self.pickerView!.rowSize(forComponent: 0).height
+            let selectedRowFrame = self.pickerView!.bounds.insetBy(dx: 0, dy: (self.pickerView!.frame.height - rowHeight) / 2)
+            let userTappedOnSelectedRow = selectedRowFrame.contains(tapRecognizer.location(in: self.pickerView))
+            if userTappedOnSelectedRow {
+                let selectedRow = self.pickerView!.selectedRow(inComponent: 0)
+                self.confirmSetLanguage(self.language[selectedRow].id)
+             
+            }
+        }
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return self.language.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return "\(self.language[row].lang)"
+    }
+
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         

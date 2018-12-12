@@ -83,6 +83,7 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
     }
     
     func setUp(){
+        self.backgroundImage?.image = nil
         self.resultCollectionView.dataSource = self
         self.resultCollectionView.delegate = self
         

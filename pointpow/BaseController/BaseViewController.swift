@@ -20,8 +20,6 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
     var windowSubview:UIImageView?
     var socialLoginSucces:Bool?
     let modelCtrl:ModelController = ModelController()
-    private var popUpViewController:PopUpViewController?  // for dismiss
-    private var personalViewController:PersonalPopupViewController?  // for dismiss
     
     
     var handlerDidCancel: (()->Void)?
@@ -542,18 +540,14 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
                 nextStepCallback?()
             }
             
-            self.personalViewController = vc
-            
-            
-            
             customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)
             
         }
     }
     
-  /*
+  
     
-    func showPoPup(_ animated:Bool){
+    func showPoPup(_ animated:Bool , dismissCallback:(()->Void)? = nil){
         let presenter: Presentr = {
             
             let w = self.view.frame.width * 0.8
@@ -566,44 +560,22 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             let customPresenter = Presentr(presentationType: customType)
             customPresenter.roundCorners = true
             customPresenter.cornerRadius = 10
-            customPresenter.dismissOnSwipe = true
-            customPresenter.dismissOnSwipeDirection = .top
+            customPresenter.dismissOnSwipe = false
             customPresenter.dismissOnTap = false
-            
-            let customview = UIView()
-            customview.frame = self.view.frame
-          
-            
-            let centerPoint = self.view.center
-            let popWidth = self.view.frame.width * 0.8
-            let popHeight = popWidth / 925 * 1105
-            let x = centerPoint.x + popWidth/2
-            let y = centerPoint.y - popHeight/2 - 20
-            
-            let image = UIImageView()
-            image.frame = CGRect(x: x, y: y, width: 20, height: 20)
-            image.image = UIImage(named: "ic-x-black")
-            image.contentMode = .scaleAspectFit
-            customview.addSubview(image)
-            
-            
-            image.isUserInteractionEnabled = true
-            let dismiss = UITapGestureRecognizer(target: self, action: #selector(dismissPoPup))
-            image.addGestureRecognizer(dismiss)
-            
-            
-            customPresenter.customBackgroundView = customview
             
             return customPresenter
         }()
     
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "PopUpViewController") as? PopUpViewController{
-            self.popUpViewController = vc
+        
+            vc.dismissView = {
+                dismissCallback?()
+            }
             customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)
             
         }
     }
-    */
+    
     
     
     func showMessagePrompt(_ message:String){
@@ -632,15 +604,51 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         self.present(alert, animated: true, completion: nil)
     }
     
+    func confirmSetLanguage(_ languageId:String){
+        let title = NSLocalizedString("alert-title-language", comment: "")
+        let message = NSLocalizedString("alert-message-language", comment: "")
+        let confirm = NSLocalizedString("alert-confirm-language", comment: "")
+        let cancel = NSLocalizedString("alert-cancel", comment: "")
+        
+        let confirmAlertCtrl = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: confirm, style: .default) { _ in
+            print("confirm change")
+            
+
+            let title = NSLocalizedString("title-exit-change", comment: "")
+            let message = NSLocalizedString("message-exit-change", comment: "")
+            let close = NSLocalizedString("close-exit-change", comment: "")
+            let cancel = NSLocalizedString("cancel-exit-change", comment: "")
+            let confirmAlertCtrl = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            
+            let confirmAction = UIAlertAction(title: close, style: .destructive) { _ in
+                DataController.sharedInstance.setLanguage(languageId)
+                exit(EXIT_SUCCESS)
+            }
+            confirmAlertCtrl.addAction(confirmAction)
+            
+            let cancelAction = UIAlertAction(title: cancel, style: .default, handler: nil)
+            confirmAlertCtrl.addAction(cancelAction)
+            
+            self.present(confirmAlertCtrl, animated: true, completion: nil)
+            
+        }
+        
+        confirmAlertCtrl.addAction(confirmAction)
+        
+        let cancelAction = UIAlertAction(title: cancel, style: .cancel, handler: nil)
+        confirmAlertCtrl.addAction(cancelAction)
+        
+        self.present(confirmAlertCtrl, animated: true, completion: nil)
+
+    }
+    
     @objc func dismissPoPup(){
         self.windowSubview?.removeFromSuperview()
         self.windowSubview = nil
     }
-    @objc func dismissPersonalPoPup(){
-        self.windowSubview?.removeFromSuperview()
-        self.windowSubview = nil
-       
-    }
+    
     @objc func dismissKeyboard(){
         view.endEditing(true)
     }
@@ -663,7 +671,7 @@ extension BaseViewController {
         windowSubview!.image = UIImage(named: "ic-x-red")
         windowSubview!.contentMode = .scaleAspectFit
         windowSubview!.isUserInteractionEnabled = true
-        let dismiss = UITapGestureRecognizer(target: self, action: #selector(dismissPersonalPoPup))
+        let dismiss = UITapGestureRecognizer(target: self, action: #selector(dismissPoPup))
         windowSubview!.addGestureRecognizer(dismiss)
         
         let window = UIApplication.shared.keyWindow!

@@ -684,6 +684,35 @@
             </objects>
             <point key="canvasLocation" x="-9" y="1313"/>
         </scene>
+        <!--Pop Up View Controller-->
+        <scene sceneID="SDf-7h-lzs">
+            <objects>
+                <viewController storyboardIdentifier="PopUpViewController" id="LHF-tK-Dj3" customClass="PopUpViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="g16-0P-CTd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-2" translatesAutoresizingMaskIntoConstraints="NO" id="Crb-Sc-nj5">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2A9-Gu-atz" firstAttribute="trailing" secondItem="Crb-Sc-nj5" secondAttribute="trailing" id="Pgm-pg-46y"/>
+                            <constraint firstItem="Crb-Sc-nj5" firstAttribute="leading" secondItem="2A9-Gu-atz" secondAttribute="leading" id="Z67-Ly-l3L"/>
+                            <constraint firstItem="Crb-Sc-nj5" firstAttribute="top" secondItem="g16-0P-CTd" secondAttribute="top" id="c6S-Al-G8S"/>
+                            <constraint firstAttribute="bottom" secondItem="Crb-Sc-nj5" secondAttribute="bottom" id="otn-fH-LeX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2A9-Gu-atz"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="Crb-Sc-nj5" id="8As-3O-EUe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I8a-2f-7Le" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1245" y="1996"/>
+        </scene>
         <!--Pop Up Transfer Success View Controller-->
         <scene sceneID="4Sz-H4-l9X">
             <objects>
@@ -2137,7 +2166,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CbL-ME-IRe">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="HLP-SO-GQl">
                                     <size key="itemSize" width="50" height="50"/>
@@ -2160,7 +2189,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="CbL-ME-IRe" firstAttribute="trailing" secondItem="NE2-Pd-IO8" secondAttribute="trailing" id="gCD-CQ-6tm"/>
-                            <constraint firstItem="CbL-ME-IRe" firstAttribute="bottom" secondItem="NE2-Pd-IO8" secondAttribute="bottom" id="hhq-x2-9Ba"/>
+                            <constraint firstItem="CbL-ME-IRe" firstAttribute="bottom" secondItem="9mE-ee-jzS" secondAttribute="bottom" id="hhq-x2-9Ba"/>
                             <constraint firstItem="CbL-ME-IRe" firstAttribute="top" secondItem="NE2-Pd-IO8" secondAttribute="top" id="ucZ-mh-xMF"/>
                             <constraint firstItem="CbL-ME-IRe" firstAttribute="leading" secondItem="NE2-Pd-IO8" secondAttribute="leading" id="yaI-Pn-u25"/>
                         </constraints>
@@ -2513,7 +2542,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="i3g-bK-YK5">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="5rK-n2-kpS">
                                     <size key="itemSize" width="50" height="50"/>
@@ -2536,7 +2565,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="i3g-bK-YK5" firstAttribute="trailing" secondItem="vLo-00-d5R" secondAttribute="trailing" id="LCH-Zv-U0H"/>
-                            <constraint firstItem="i3g-bK-YK5" firstAttribute="bottom" secondItem="vLo-00-d5R" secondAttribute="bottom" id="gbR-gt-PU2"/>
+                            <constraint firstItem="i3g-bK-YK5" firstAttribute="bottom" secondItem="4yp-XN-Kcd" secondAttribute="bottom" id="gbR-gt-PU2"/>
                             <constraint firstItem="i3g-bK-YK5" firstAttribute="top" secondItem="vLo-00-d5R" secondAttribute="top" id="oCt-fX-YEj"/>
                             <constraint firstItem="i3g-bK-YK5" firstAttribute="leading" secondItem="vLo-00-d5R" secondAttribute="leading" id="pg2-V5-BwR"/>
                         </constraints>
@@ -3199,6 +3228,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bg-2" width="564" height="679"/>
         <image name="ic-arrow-transfer" width="300" height="83"/>
         <image name="ic-bank-7" width="772" height="772"/>
         <image name="ic-birthday" width="28.799999237060547" height="28.799999237060547"/>

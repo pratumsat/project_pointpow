@@ -30,8 +30,8 @@ class PersonalPopupViewController: BaseViewController {
         self.setUp()
         
     }
-    override func dismissPersonalPoPup() {
-        super.dismissPersonalPoPup()
+    override func dismissPoPup() {
+        super.dismissPoPup()
         self.dismiss(animated: true, completion: nil)
     }
     override func viewDidAppear(_ animated: Bool) {

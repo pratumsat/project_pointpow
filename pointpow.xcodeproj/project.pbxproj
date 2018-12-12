@@ -39,6 +39,7 @@
 		C11A93BE218C20D100627B44 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93BD218C20D100627B44 /* RegisterViewController.swift */; };
 		C11A93C0218C2AD900627B44 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93BF218C2AD900627B44 /* ForgotPasswordViewController.swift */; };
 		C11A93C4218FF3E200627B44 /* VerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93C3218FF3E200627B44 /* VerifyViewController.swift */; };
+		C11B740B21BF67F700D0E769 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11B740A21BF67F700D0E769 /* DataController.swift */; };
 		C11BDFB821A2B95D00443D2D /* ItemFriendSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11BDFB621A2B95D00443D2D /* ItemFriendSummaryCell.swift */; };
 		C11BDFB921A2B95D00443D2D /* ItemFriendSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C11BDFB721A2B95D00443D2D /* ItemFriendSummaryCell.xib */; };
 		C11BDFBC21A2BB3C00443D2D /* ItemConfirmSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11BDFBA21A2BB3C00443D2D /* ItemConfirmSummaryCell.swift */; };
@@ -155,6 +156,7 @@
 		C11A93BD218C20D100627B44 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		C11A93BF218C2AD900627B44 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		C11A93C3218FF3E200627B44 /* VerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyViewController.swift; sourceTree = "<group>"; };
+		C11B740A21BF67F700D0E769 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		C11BDFB621A2B95D00443D2D /* ItemFriendSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFriendSummaryCell.swift; sourceTree = "<group>"; };
 		C11BDFB721A2B95D00443D2D /* ItemFriendSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemFriendSummaryCell.xib; sourceTree = "<group>"; };
 		C11BDFBA21A2BB3C00443D2D /* ItemConfirmSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemConfirmSummaryCell.swift; sourceTree = "<group>"; };
@@ -570,6 +572,7 @@
 			children = (
 				C1AD50B12187FEE300F74415 /* ModelController.swift */,
 				C1AD50B62188000B00F74415 /* Constant.swift */,
+				C11B740A21BF67F700D0E769 /* DataController.swift */,
 			);
 			path = ModelController;
 			sourceTree = "<group>";
@@ -911,6 +914,7 @@
 				C1AD507A2187F45600F74415 /* AppDelegate.swift in Sources */,
 				C10CA1A8219185AB00316DF3 /* PAPasscodeViewController.m in Sources */,
 				C1E7B17D21AFCD7E00DA8B82 /* ResultTransferNav.swift in Sources */,
+				C11B740B21BF67F700D0E769 /* DataController.swift in Sources */,
 				C10CA19D21914B1B00316DF3 /* AccountViewController.swift in Sources */,
 				C115FA4A219EC511008E7844 /* ResultTransferViewController.swift in Sources */,
 				C10CA1BE219429D500316DF3 /* ImageCell.swift in Sources */,

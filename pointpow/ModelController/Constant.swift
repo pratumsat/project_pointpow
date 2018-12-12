@@ -449,7 +449,12 @@ extension NSLayoutConstraint {
 }
 
 struct Constant {
-    
+    struct CacheNotification {
+        static let USER_TOKEN_CACHE = "USER_TOKEN"
+        static let NAME_CACHE = "NotiStructHolder"
+        static let NAME_CACHE_OBJECT = "NotiStructObject"
+        
+    }
     enum ViewBorder: String {
         case left, right, top, bottom
     }
@@ -459,8 +464,6 @@ struct Constant {
         static let NotificationGoogleSigInFailure = "NotificationGoogleSigInFailure"
     }
     struct Colors {
-        
-        
         static let PRIMARY_COLOR = UIColor(rgb: 0xFF002F)
         static let LINE_COLOR = UIColor.groupTableViewBackground
         static let LINE_PROFILE = UIColor(rgb: 0xCCCCCC)

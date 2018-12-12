@@ -10,14 +10,27 @@ import UIKit
 
 class PopUpViewController: BaseViewController {
 
+    @IBOutlet weak var imageView: UIImageView!
+    
+    var dismissView:(()->Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         
     }
     
-    
+    override func dismissPoPup() {
+        super.dismissPoPup()
+        self.dismiss(animated: true, completion: {
+            self.dismissView?()
+        })
+    }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.addCloseBlackView()
+    }
     /*
     // MARK: - Navigation
 

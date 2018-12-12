@@ -1,0 +1,116 @@
+//
+//  DataController.swift
+//  pointpow
+//
+//  Created by thanawat on 11/12/2561 BE.
+//  Copyright © 2561 abcpoint. All rights reserved.
+//
+
+import Foundation
+
+
+class DataController {
+    
+    static let sharedInstance : DataController = {
+        let instance = DataController(data: [:] )
+        return instance
+    }()
+    
+    //MARK: Local Variable
+    var data : [String:AnyObject]
+    
+    //MARK: Init
+    init( data : [String:AnyObject]) {
+        self.data = data
+    }
+    func retrieveToken(){
+        if let token = UserDefaults.standard.object(forKey: Constant.CacheNotification.USER_TOKEN_CACHE) as? String {
+            if !token.isEmpty {
+                data["token"] = token as AnyObject
+            }
+        }
+    }
+    func setToken(_ token:String){
+        UserDefaults.standard.set(token, forKey: Constant.CacheNotification.USER_TOKEN_CACHE)
+        UserDefaults.standard.synchronize()
+        
+        data["token"] = token as AnyObject
+    }
+    
+    func isLogin() -> Bool {
+        let token = data["token"] as? String ?? ""
+        if token != "" {
+            return true
+        }
+        return false
+    }
+  
+    func getLanguage() -> String {
+        var langStr = "en"
+        let saveLang = UserDefaults.standard.object(forKey: "AppleLanguages") as? [String] ?? nil
+        if saveLang != nil {
+            langStr = saveLang![0].substring(start: 0, end: 2)
+        }else{
+            langStr = Locale.current.languageCode!
+        }
+        return langStr.lowercased()
+    }
+    
+    func setLanguage(_ languageId:String) {
+        UserDefaults.standard.set([languageId], forKey: "AppleLanguages")
+        UserDefaults.standard.synchronize()
+    }
+    
+    func getVersion() -> String {
+        let dictionary = Bundle.main.infoDictionary!
+        let version = dictionary["CFBundleShortVersionString"] as! String
+        //let build = dictionary["CFBundleVersion"] as! String
+        return version
+    }
+    
+    
+//    func saveNotifiacationArrayOfObjectData(newNoti: NotificationStruct){
+//
+//        var myObject:NotificationStructHolder
+//        if let  cacheVersion = getNotificationArrayOfObjectData() {
+//            myObject = cacheVersion
+//        }else{
+//            myObject = NotificationStructHolder()
+//        }
+//
+//        myObject.addToArray(item: newNoti)
+//
+//        let arrrayOfObjectData = NSKeyedArchiver.archivedData(withRootObject: myObject)
+//        UserDefaults.standard.set(arrrayOfObjectData, forKey: Constanst.CacheNotification.NAME_CACHE)
+//        UserDefaults.standard.synchronize()
+//
+//    }
+//
+//    func saveNewArraysStructHolder(arrayOfObjectData:[NotificationStruct]? = nil) {
+//        if arrayOfObjectData == nil{
+//            return
+//        }
+//        let  myObject = NotificationStructHolder()
+//        myObject.setArray(array: (arrayOfObjectData!.reversed()))
+//
+//        let arrrayOfObjectData = NSKeyedArchiver.archivedData(withRootObject: myObject)
+//        UserDefaults.standard.set(arrrayOfObjectData, forKey: Constanst.CacheNotification.NAME_CACHE)
+//        UserDefaults.standard.synchronize()
+//    }
+//    func getNotificationArrayOfObjectData() -> NotificationStructHolder? {
+//        //check nil
+//        if nil == UserDefaults.standard.object(forKey: Constanst.CacheNotification.NAME_CACHE){
+//            return nil
+//        }
+//        guard let cacheVersion:NotificationStructHolder = NSKeyedUnarchiver.unarchiveObject(with: UserDefaults.standard.object(forKey: Constanst.CacheNotification.NAME_CACHE) as! Data)  as? NotificationStructHolder
+//            else{
+//                return nil
+//        }
+//        return cacheVersion
+//    }
+//    func clearNotificationArrayOfObjectData() {
+//        UserDefaults.standard.set(nil, forKey: Constanst.CacheNotification.NAME_CACHE)
+//        UserDefaults.standard.synchronize()
+//    }
+    
+}

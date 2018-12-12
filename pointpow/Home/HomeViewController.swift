@@ -21,6 +21,8 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
     var shadowImageView:UIImageView?
     var isSetHeight = false
     
+    var isFirst = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,6 +36,16 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
             self.isSetHeight = true
             let height = self.view.frame.height
             self.pointBalanceConstraintHeight.constant = height*0.15
+            
+            
+            
+        }
+     
+        if !isFirst {
+            self.showPoPup(true) {
+                //dismissView
+                self.isFirst = true
+            }
             
         }
         

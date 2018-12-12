@@ -125,7 +125,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             //when after call api success
             self.socialLoginSucces = true
             
-            
+            //test logout
             GIDSignIn.sharedInstance()?.signOut()
         }
         

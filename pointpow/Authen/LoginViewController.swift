@@ -72,8 +72,23 @@ class LoginViewController: BaseViewController {
         self.eyeImageView?.addGestureRecognizer(eyeTap)
         
         
-        
+        let gTap = UITapGestureRecognizer(target: self, action: #selector(googleTapped))
+        self.googleView.isUserInteractionEnabled = true
+        self.googleView.addGestureRecognizer(gTap)
+        let fTap = UITapGestureRecognizer(target: self, action: #selector(facebookTapped))
+        self.facebookView.isUserInteractionEnabled = true
+        self.facebookView.addGestureRecognizer(fTap)
     }
+    
+    
+    @objc func googleTapped(){
+        self.loginGoogle()
+    }
+    
+    @objc func facebookTapped(){
+        self.loginFacebook()
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField  == self.usernameTextField {
             let startingLength = textField.text?.count ?? 0

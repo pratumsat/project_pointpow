@@ -29,7 +29,7 @@ class PopUpViewController: BaseViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.addCloseBlackView()
+        self.addCloseWhiteView()
     }
     /*
     // MARK: - Navigation

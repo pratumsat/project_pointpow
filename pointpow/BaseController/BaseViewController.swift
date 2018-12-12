@@ -552,7 +552,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             
             let w = self.view.frame.width * 0.8
             let width = ModalSize.custom(size: Float(w))
-            let height = ModalSize.custom(size: Float(w / 925 * 1105))
+            let height = ModalSize.custom(size: Float(w / 260 * 310))
             
             let center = ModalCenterPosition.center
             let customType = PresentationType.custom(width: width, height: height, center: center)
@@ -662,7 +662,21 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
 }
 
 extension BaseViewController {
-    
+    func addCloseWhiteView(){
+        let x = CGFloat(self.view.frame.maxX) - 2
+        let y = CGFloat(self.view.frame.minY) - 12
+        windowSubview = UIImageView()
+        windowSubview!.frame = CGRect(x: x, y: y, width: 20, height: 20)
+        windowSubview!.image = UIImage(named: "ic-x-white")
+        windowSubview!.contentMode = .scaleAspectFit
+        windowSubview!.isUserInteractionEnabled = true
+        let dismiss = UITapGestureRecognizer(target: self, action: #selector(dismissPoPup))
+        windowSubview!.addGestureRecognizer(dismiss)
+        
+        let window = UIApplication.shared.keyWindow!
+        window.addSubview(windowSubview!);
+        
+    }
     func addCloseBlackView(){
         let x = CGFloat(self.view.frame.maxX) - 15
         let y = CGFloat(self.view.frame.minY) - 15

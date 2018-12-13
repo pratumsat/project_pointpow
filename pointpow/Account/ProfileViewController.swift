@@ -39,7 +39,7 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return 3
+            return 5
         }
         return 1
     }
@@ -58,6 +58,12 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
                     itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change-displayname", comment: "")
                     itemCell.trailLabel.text = "Lazy"
                 }else if indexPath.row == 2{
+                    itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change-mobile", comment: "")
+                    itemCell.trailLabel.text = ""
+                }else if indexPath.row == 3{
+                    itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change-email", comment: "")
+                    itemCell.trailLabel.text = ""
+                }else if indexPath.row == 4{
                     itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change-pwd", comment: "")
                     itemCell.trailLabel.text = ""
                 }
@@ -94,6 +100,10 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
             }else if indexPath.row == 1 {
                 self.showDisplayNameView(true)
             }else if indexPath.row == 2 {
+                self.showMobilePhoneView(true)
+            }else if indexPath.row == 3 {
+                self.showEmailView(true)
+            }else if indexPath.row == 4 {
                 self.showChangePasswordView(true)
             }
             

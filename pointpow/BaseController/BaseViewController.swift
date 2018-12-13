@@ -322,6 +322,18 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
+    func showMobilePhoneView(_ animated:Bool){
+        if let vc:MobileViewController  = self.storyboard?.instantiateViewController(withIdentifier: "MobileViewController") as? MobileViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    func showEmailView(_ animated:Bool){
+        if let vc:EmailViewController  = self.storyboard?.instantiateViewController(withIdentifier: "EmailViewController") as? EmailViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
     func showPointTransferView(_ animated:Bool){
         if let vc:PointTransferViewController  = self.storyboard?.instantiateViewController(withIdentifier: "PointTransferViewController") as? PointTransferViewController {
             

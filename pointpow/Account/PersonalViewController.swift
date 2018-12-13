@@ -15,8 +15,6 @@ class PersonalViewController: BaseViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
-    @IBOutlet weak var mobileTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
     
     
     var clearImageView:UIImageView?
@@ -47,16 +45,12 @@ class PersonalViewController: BaseViewController {
             self.lastNameTextField.textContentType = UITextContentType(rawValue: "")
             self.parsonalTextField.textContentType = UITextContentType(rawValue: "")
             self.birthdayTextField.textContentType = UITextContentType(rawValue: "")
-            self.mobileTextField.textContentType = UITextContentType(rawValue: "")
-            self.emailTextField.textContentType = UITextContentType(rawValue: "")
         }
         if #available(iOS 12.0, *) {
             self.firstNameTextField.textContentType = .oneTimeCode
             self.lastNameTextField.textContentType = .oneTimeCode
             self.parsonalTextField.textContentType = .oneTimeCode
             self.birthdayTextField.textContentType = .oneTimeCode
-            self.mobileTextField.textContentType = .oneTimeCode
-            self.emailTextField.textContentType = .oneTimeCode
         }
         
         
@@ -64,15 +58,11 @@ class PersonalViewController: BaseViewController {
         self.lastNameTextField.delegate = self
         self.parsonalTextField.delegate = self
         self.birthdayTextField.delegate = self
-        self.mobileTextField.delegate = self
-        self.emailTextField.delegate = self
         
         self.firstNameTextField.autocorrectionType = .no
         self.lastNameTextField.autocorrectionType = .no
         self.parsonalTextField.autocorrectionType = .no
         self.birthdayTextField.autocorrectionType = .no
-        self.mobileTextField.autocorrectionType = .no
-        self.emailTextField.autocorrectionType = .no
         
         
         self.clearImageView = self.firstNameTextField.addRightButton(UIImage(named: "ic-x")!)

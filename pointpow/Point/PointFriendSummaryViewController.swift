@@ -11,18 +11,63 @@ import UIKit
 class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var resultCollectionView: UICollectionView!
     
+    var slipImageView:UIImageView? {
+        didSet{
+            if let snap = self.snapView {
+                let backgroundImage = UIImageView(image: bgSlip)
+                backgroundImage.contentMode = .scaleAspectFill
+                backgroundImage.clipsToBounds = true
+                backgroundImage.translatesAutoresizingMaskIntoConstraints = false
+                snap.addSubview(backgroundImage)
+                snap.sendSubviewToBack(backgroundImage)
+                
+                backgroundImage.leftAnchor.constraint(equalTo: snap.leftAnchor).isActive = true
+                backgroundImage.rightAnchor.constraint(equalTo: snap.rightAnchor).isActive = true
+                backgroundImage.topAnchor.constraint(equalTo: snap.topAnchor).isActive = true
+                backgroundImage.bottomAnchor.constraint(equalTo: snap.bottomAnchor).isActive = true
+                
+                
+                slipImageView!.center = snap.center
+                slipImageView!.updateLayerCornerRadiusProperties()
+                slipImageView!.drawLightningView()
+                snap.addSubview(slipImageView!)
+                
+                
+                let logo = UIImageView(image: UIImage(named: "ic-logo"))
+                logo.contentMode = .scaleAspectFit
+                logo.translatesAutoresizingMaskIntoConstraints = false
+                snap.addSubview(logo)
+                
+                logo.centerXAnchor.constraint(equalTo: snap.centerXAnchor, constant: 0).isActive = true
+                logo.widthAnchor.constraint(equalTo: snap.widthAnchor, multiplier: 0.5).isActive = true
+                logo.bottomAnchor.constraint(equalTo: slipImageView!.topAnchor, constant: 0).isActive = true
+                
+                print("add image slip")
+                
+                self.countDownForSnapShot(1)
+            }
+        }
+    }
     var slipView:UIView?
     var snapView:UIView?
     var countDown:Int = 3
     var timer:Timer?
     
+    var bgSlip:UIImage?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         snapView = UIView(frame: self.view.frame)
-        snapView!.backgroundColor = UIColor.green
+        snapView!.backgroundColor = UIColor.clear
+        
         self.view.addSubview(snapView!)
         self.view.sendSubviewToBack(snapView!)
+        
+        
+        //load background image from api
+        self.bgSlip = UIImage(named: "bg-slip")
+        
         
         self.title = NSLocalizedString("string-title-freind-transfer", comment: "")
         let finishButton = UIBarButtonItem(title: NSLocalizedString("string-title-finish-transfer", comment: ""), style: .plain, target: self, action: #selector(dismissTapped))
@@ -53,14 +98,7 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
         super.viewDidAppear(animated)
         
         if let slip = self.slipView {
-            let imageView = UIImageView(image: slip.snapshotImage())
-            imageView.center = self.snapView?.center ?? CGPoint.zero
-            imageView.updateLayerCornerRadiusProperties()
-            imageView.drawLightningView()
-            self.snapView?.addSubview(imageView)
-            print("add image slip")
-            
-            self.countDownForSnapShot(1)
+            slipImageView = UIImageView(image: slip.snapshotImage())
         }
         
     /*

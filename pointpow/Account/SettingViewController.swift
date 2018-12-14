@@ -15,7 +15,10 @@ class SettingViewController: BaseViewController, UICollectionViewDelegate , UICo
                     (id:"th",lang:"ไทย")]
     
     var languageId =  "en"
+    var textLanguage = "English"
     var pickerView:UIPickerView?
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +28,13 @@ class SettingViewController: BaseViewController, UICollectionViewDelegate , UICo
     }
     
     func setUp(){
+        var i = 0
+        for lang  in language {
+            if DataController.sharedInstance.getLanguage() == lang.id {
+                self.textLanguage = lang.lang
+            }
+            i += 1
+        }
         self.backgroundImage?.image = nil
         
         
@@ -59,7 +69,8 @@ class SettingViewController: BaseViewController, UICollectionViewDelegate , UICo
                 cell = itemCell
                
                 itemCell.nameLabel.text = NSLocalizedString("string-item-setting-change-language", comment: "")
-                itemCell.trailLabel.text = NSLocalizedString("string-item-setting-change-language-thai", comment: "")
+                itemCell.trailLabel.text = self.textLanguage
+                
            
                 let lineBottom = UIView(frame: CGRect(x: 0, y: itemCell.frame.height - 1 , width: collectionView.frame.width, height: 1 ))
                 lineBottom.backgroundColor = Constant.Colors.LINE_PROFILE
@@ -138,6 +149,7 @@ class SettingViewController: BaseViewController, UICollectionViewDelegate , UICo
         for lang  in language {
             if DataController.sharedInstance.getLanguage() == lang.id {
                 self.languageId = lang.id
+                self.textLanguage = lang.lang
                 pickerView!.selectRow(i, inComponent: 0, animated: true)
                 break
             }

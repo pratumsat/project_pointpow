@@ -288,6 +288,9 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         }
     }
     
+    func reNewApplication(){
+        UIApplication.shared.keyWindow?.rootViewController = storyboard!.instantiateViewController(withIdentifier: "MainNav")
+    }
     
     
     func showProfileView(_ animated:Bool){

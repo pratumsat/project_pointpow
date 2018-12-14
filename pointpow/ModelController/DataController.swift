@@ -30,6 +30,16 @@ class DataController {
             }
         }
     }
+    
+    func getDefaultLanguage() -> Bool{
+        let defaultLanguage = UserDefaults.standard.object(forKey: "defaultAppLanguage") as? Bool ?? false
+        return defaultLanguage
+    }
+    func setDefaultLanguage(){
+        UserDefaults.standard.set(true, forKey: "defaultAppLanguage")
+        UserDefaults.standard.synchronize()
+    }
+    
     func setToken(_ token:String){
         UserDefaults.standard.set(token, forKey: Constant.CacheNotification.USER_TOKEN_CACHE)
         UserDefaults.standard.synchronize()

@@ -1,0 +1,135 @@
+/* 
+  Localizable.strings
+  pointpow
+
+  Created by thanawat on 30/10/2561 BE.
+  Copyright © 2561 abcpoint. All rights reserved.
+*/
+
+/*Title*/
+"string-title-verify" = "ยืนยันตัวตน";
+"string-title-register" = "สร้างบัญชีผู้ใช้";
+"string-title-login" = "ลงชื่อเข้าใช้";
+"string-title-forgotpassword" = "ลืมรหัสผ่าน?";
+"string-title-point-manage" = "จัดการพ้อยท์";
+"string-title-profile" = "โปรไฟล์";
+"string-title-profile-edit" = "แก้ไขโปรไฟล์";
+"string-title-changepassword" = "เปลี่ยนรหัสผ่าน";
+"string-title-setting" = "Settings";
+"string-title-freind-transfer" = "โอนพ้อยท์ให้เพื่อน";
+"string-title-point-transfer" = "โอนพ้อยท์";
+"string-title-profile-change-displayname" = "แก้ไข Display Name";
+"string-title-profile-change-mobile" = "เบอร์มือถือ";
+"string-title-profile-change-email" = "อีเมล";
+"string-title-profile-bank-transfer" = "โอนพ้อยท์";
+"string-title-passcode-enter" = "รหัสความปลอดภัย";
+"string-title-freind-transfer-review" = "ยืนยันการทำรายการ";
+"string-title-resetpassword" = "รีเซ็ตรหัสผ่าน";
+"string-title-finish-transfer" = "เสร็จสิ้น";
+/*Reset Password*/
+"string-reset-password-success" = "รีเซ็ตรหัสผ่านเรียบร้อย";
+"string-button-ok" = "ตกลง";
+/* ResultPointTransfer*/
+"string-point-result-success" = "โอนพ้อยท์สำเร็จ";
+"string-point-result-transfer" = "โอนพ้อยท์";
+"string-point-result-from" = "จาก";
+"string-point-result-receiver-point" = "ได้รับพ้อยท์";
+"string-point-result-create-time" = "เวลาทำรายการ";
+"string-point-result-transfer-time" = "เวลาโอนพ้อยท์";
+"string-point-friend-transfer" = "โอนพ้อยท์ให้เพื่อน";
+
+/* ResultPointFriendSummary*/
+"string-point-friend-result-transfer" = "โอนพ้อยท์จำนวน";
+"string-point-friend-result-to" = "ให้";
+"string-point-friend-result-balance" = "พ้อยท์คงเหลือ";
+"string-point-friend-result-create-time" = "เวลาทำรายการ";
+"string-point-friend-result-transfer-time" = "เวลาโอนพ้อยท์";
+
+/*Friend Transfer*/
+"string-point-transfer-friend-header-recent" = "โอนพ้อยท์ให้เพื่อนล่าสุด";
+/* Pass code */
+"title-old-enter-passcode" = "กรุณาใส่รหัสผ่านเดิม";
+"title-enter-passcode" = "Enter Passcode";
+"prompt-enter-passcode" = "กรุณาใส่รหัสผ่าน";
+"title-set-passcode" = "ตั้งรหัสความปลอดภัย";
+"prompt-enter-a-passcode" = "กรุณากำหนดรหัสผ่าน 6 หลัก\nเพื่อความปลอดภัยในการใช้งาน";
+"re-enter-your-passcode" = "ยืนยันรหัสผ่าน";
+"passcodes-did-not-match" = "รหัสผ่านไม่ตรงกัน กรุณาลองใหม่";
+"title-enter-passcode-first" = "ใส่รหัส PIN เพื่อเข้าสู่ระบบ";
+
+/*Home*/
+"string-item-event" = "กิจกรรม";
+"string-item-gift" = "แลกสินค้า/บริการ";
+"string-item-gold" = "ออมทอง";
+"string-item-transfer-point" = "โอนพ้อยท์";
+"string-item-transfer-friend" = "โอนพ้อยท์ให้เพื่อน";
+
+/*Account*/
+"string-item-history" = "ประวัติ";
+"string-item-history2" = "การทำรายการ";
+"string-item-ticket" = "ตั๋วของฉัน";
+"string-item-bill" = "บิลของฉัน";
+"string-item-qr" = "คิวอาร์โค้ด";
+"string-item-profile" = "โปรไฟล์";
+"string-item-security-setting" = "ตั้งค่าความปลอดภัย";
+"string-item-about" = "เกี่ยวกับ";
+"string-item-about2" = "Point Pow";
+"string-item-setting" = "การตั้งค่า";
+
+
+/*Profile*/
+"string-item-profile-change" = "แก้ไขโปรไฟล์";
+"string-item-profile-change-displayname" = "แก้ไข Display Name";
+"string-item-profile-change-mobile" = "เบอร์มือถือ";
+"string-item-profile-change-email" = "อีเมล";
+"string-item-profile-change-pwd" = "เปลี่ยนรหัสผ่าน";
+"string-item-profile-logout" = "ออกจากระบบ";
+"string-item-header-setting" = "การแจ้งเตือน";
+
+/*Setting*/
+"string-item-setting-profile-edit" = "แก้ไขโปรไฟล์";
+"string-item-setting-change-language" = "ภาษา";
+"string-item-setting-change-language-thai" = "ไทย";
+"string-item-setting-sms" = "SMS";
+"string-item-setting-email" = "อีเมล";
+"string-item-setting-noti" = "การแจ้งเตือน";
+"string-item-setting-receipt" = "บันทึกสลิปอัตโนมัติ";
+"string-item-setting-about" = "เกี่ยวกับ Point Pow";
+
+
+"alert-title-language" = "ภาษา";
+"alert-message-already-language" = "ภาษาปัจจุบันคือภาษา ";
+"alert-message-language" = "คุณต้องการที่จะเปลี่ยนภาษาหรือไม่?";
+"alert-confirm-language" = "ตกลง";
+"alert-cancel" = "ยกเลิก";
+
+"title-exit-change" = "ต้องการรีสตาร์ทใหม่";
+"message-exit-change" = "การเปลี่ยนภาษาคุณจะต้องทำการปิดและเปิดแอปพลิเคชันใหม่อีกครั้ง";
+"close-exit-change" = "ปิด";
+"cancel-exit-change" = "ยกเลิก";
+
+
+/*dialog*/
+"string-dailog-title-fill-firstname-lastname" = "กรุณากรอกข้อมูลส่วนตัว\nก่อนทำรายการ";
+"string-dailog-button-cancel" = "ยกเลิก";
+"string-dailog-button-ok" = "ตกลง";
+"string-dailog-title-set-passcode" = "กรุณาตั้งรหัสความปลอดภัย";
+
+/* Alert Invalid QR code*/
+"string-title-invalid-qr" = "Invalid QR code/Barcode";
+"string-message-invalid-qr" = "Please verify that the code is still valid and try again.";
+"string-line-up-qr" = "Place the QR code at\r\nthe center of box for scan";
+"string-line-up-barcode" = "Place the barcode at the center of box for scan";
+"alert-confirm-phone" = "OK";
+
+"string-title-access-camera" = "Camera Don't Allow";
+"string-title-access-photo" = "Photos Don't Allow";
+"string-message-access-camera" = "abcPay does not have access to your camera. To enable access, tap Settings and turn on Camera.";
+"string-message-access-photo" = "abcPay does not have access to your photos. To enable access, tap Settings and turn on Photos.";
+"string-button-access-setting" = "Settings";
+"string-button-access-cancel" = "Cancel";
+
+/* scanning */
+"string-title-scan-fail" = "Scanning not supported";
+"string-message-scan-fail" = "Your device does not support scanning a code from an item. Please use a device with a camera.";
+

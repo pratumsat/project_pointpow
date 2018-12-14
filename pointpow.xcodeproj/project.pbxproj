@@ -61,6 +61,7 @@
 		C142741D21A68154003CC246 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C142741C21A68154003CC246 /* ResetPasswordViewController.swift */; };
 		C169FF9C21C25C8500F9D354 /* MobileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C169FF9B21C25C8500F9D354 /* MobileViewController.swift */; };
 		C169FF9E21C25C9200F9D354 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C169FF9D21C25C9200F9D354 /* EmailViewController.swift */; };
+		C169FFBF21C36E1300F9D354 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C169FFC121C36E1300F9D354 /* Localizable.strings */; };
 		C1817D8E219BD32B009507DB /* FriendTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1817D8D219BD32B009507DB /* FriendTransferViewController.swift */; };
 		C1817D92219BF61E009507DB /* ItemFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1817D90219BF61E009507DB /* ItemFriendCell.swift */; };
 		C1817D93219BF61F009507DB /* ItemFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1817D91219BF61E009507DB /* ItemFriendCell.xib */; };
@@ -89,7 +90,6 @@
 		C1AD50B72188000B00F74415 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AD50B62188000B00F74415 /* Constant.swift */; };
 		C1B542DB219A85590040DDE6 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B542DA219A85590040DDE6 /* ChangePasswordViewController.swift */; };
 		C1B542DD219ABE9A0040DDE6 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B542DC219ABE9A0040DDE6 /* SettingViewController.swift */; };
-		C1DEBE8A21880F5A00CBB95F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C1DEBE8921880F5A00CBB95F /* Localizable.strings */; };
 		C1DEBE8C2188115D00CBB95F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1DEBE8B2188115D00CBB95F /* GoogleService-Info.plist */; };
 		C1DEBE902188297B00CBB95F /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DEBE8F2188297A00CBB95F /* ScannerViewController.swift */; };
 		C1DEBE92218829D900CBB95F /* Scanner2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DEBE91218829D900CBB95F /* Scanner2ViewController.swift */; };
@@ -180,6 +180,8 @@
 		C142741C21A68154003CC246 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		C169FF9B21C25C8500F9D354 /* MobileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileViewController.swift; sourceTree = "<group>"; };
 		C169FF9D21C25C9200F9D354 /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
+		C169FFC021C36E1300F9D354 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C169FFC221C36E2400F9D354 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C1817D8D219BD32B009507DB /* FriendTransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTransferViewController.swift; sourceTree = "<group>"; };
 		C1817D90219BF61E009507DB /* ItemFriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFriendCell.swift; sourceTree = "<group>"; };
 		C1817D91219BF61E009507DB /* ItemFriendCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemFriendCell.xib; sourceTree = "<group>"; };
@@ -215,7 +217,6 @@
 		C1AD50B62188000B00F74415 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		C1B542DA219A85590040DDE6 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		C1B542DC219ABE9A0040DDE6 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		C1DEBE8921880F5A00CBB95F /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		C1DEBE8B2188115D00CBB95F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C1DEBE8D2188178B00CBB95F /* pointpow.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = pointpow.entitlements; sourceTree = "<group>"; };
 		C1DEBE8F2188297A00CBB95F /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
@@ -594,7 +595,7 @@
 		C1DEBE8821880F2800CBB95F /* Localization */ = {
 			isa = PBXGroup;
 			children = (
-				C1DEBE8921880F5A00CBB95F /* Localizable.strings */,
+				C169FFC121C36E1300F9D354 /* Localizable.strings */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -713,6 +714,7 @@
 			knownRegions = (
 				en,
 				Base,
+				th,
 			);
 			mainGroup = C1AD506D2187F45600F74415;
 			productRefGroup = C1AD50772187F45600F74415 /* Products */;
@@ -736,7 +738,7 @@
 				C1817D97219BFCDE009507DB /* FriendCollectionCell.xib in Resources */,
 				C1AD50842187F45900F74415 /* LaunchScreen.storyboard in Resources */,
 				C10CA1B22193E01200316DF3 /* ItemServiceCell.xib in Resources */,
-				C1DEBE8A21880F5A00CBB95F /* Localizable.strings in Resources */,
+				C169FFBF21C36E1300F9D354 /* Localizable.strings in Resources */,
 				C1DEBE982188337500CBB95F /* ThaiSansNeue-Bold.ttf in Resources */,
 				C11A93B8218C00C800627B44 /* IntroCell1.xib in Resources */,
 				C10CA1BF219429D500316DF3 /* ImageCell.xib in Resources */,
@@ -994,6 +996,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		C169FFC121C36E1300F9D354 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C169FFC021C36E1300F9D354 /* en */,
+				C169FFC221C36E2400F9D354 /* th */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		C1AD507D2187F45600F74415 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1017,6 +1028,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1078,6 +1090,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

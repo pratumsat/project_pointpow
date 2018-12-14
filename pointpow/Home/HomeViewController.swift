@@ -23,12 +23,26 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
     
     var isFirst = false
     
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.showIntroduce(false)
+        if !DataController.sharedInstance.getDefaultLanguage() {
+            UserDefaults.standard.set(["th"], forKey: "AppleLanguages")
+            UserDefaults.standard.synchronize()
+            
+            DataController.sharedInstance.setDefaultLanguage()
+        }
+        
+        
+        //self.showIntroduce(false)
         self.setUp()
+        
+        
     }
+    
+   
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         

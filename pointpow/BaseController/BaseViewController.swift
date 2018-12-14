@@ -532,7 +532,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         let presenter: Presentr = {
             
             let w = self.view.frame.width * 0.8
-            let h = w/275*360
+            let h = w/390*600
             let width = ModalSize.custom(size: Float(w))
             let height = ModalSize.custom(size: Float(h))
             
@@ -693,10 +693,10 @@ extension BaseViewController {
         
     }
     func addCloseBlackView(){
-        let x = CGFloat(self.view.frame.maxX) - 15
-        let y = CGFloat(self.view.frame.minY) - 15
+        let x = CGFloat(self.view.frame.maxX) - 12.5
+        let y = CGFloat(self.view.frame.minY) - 12.5
         windowSubview = UIImageView()
-        windowSubview!.frame = CGRect(x: x, y: y, width: 30, height: 30)
+        windowSubview!.frame = CGRect(x: x, y: y, width: 25, height: 25)
         windowSubview!.image = UIImage(named: "ic-x-red")
         windowSubview!.contentMode = .scaleAspectFit
         windowSubview!.isUserInteractionEnabled = true

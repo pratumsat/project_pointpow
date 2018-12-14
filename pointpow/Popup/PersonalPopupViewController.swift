@@ -10,6 +10,8 @@ import UIKit
 
 class PersonalPopupViewController: BaseViewController {
 
+    @IBOutlet weak var optionLabel: UILabel!
+    @IBOutlet weak var optionTextField: UITextField!
     
     @IBOutlet weak var parsonalTextField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
@@ -20,7 +22,7 @@ class PersonalPopupViewController: BaseViewController {
     var clearImageView:UIImageView?
     var clearImageView2:UIImageView?
     var clearImageView3:UIImageView?
-    
+    var clearImageView4:UIImageView?
     
     var nextStep:(()->Void)?
     
@@ -45,6 +47,8 @@ class PersonalPopupViewController: BaseViewController {
     }
     
     func setUp(){
+        
+        
         self.backgroundImage?.image = nil
         
         self.nextButton.borderClearProperties(borderWidth: 1)
@@ -54,22 +58,26 @@ class PersonalPopupViewController: BaseViewController {
             self.lastNameTextField.textContentType = UITextContentType(rawValue: "")
             self.parsonalTextField.textContentType = UITextContentType(rawValue: "")
           
+            self.optionTextField.textContentType = UITextContentType(rawValue: "")
         }
         if #available(iOS 12.0, *) {
             self.firstNameTextField.textContentType = .oneTimeCode
             self.lastNameTextField.textContentType = .oneTimeCode
             self.parsonalTextField.textContentType = .oneTimeCode
          
+            self.optionTextField.textContentType = .oneTimeCode
         }
        
         
         self.firstNameTextField.delegate = self
         self.lastNameTextField.delegate = self
         self.parsonalTextField.delegate = self
+        self.optionTextField.delegate = self
         
         self.firstNameTextField.autocorrectionType = .no
         self.lastNameTextField.autocorrectionType = .no
         self.parsonalTextField.autocorrectionType = .no
+        self.optionTextField.autocorrectionType = .no
       
         
         
@@ -90,6 +98,13 @@ class PersonalPopupViewController: BaseViewController {
         self.clearImageView3?.isUserInteractionEnabled = true
         self.clearImageView3?.addGestureRecognizer(tap3)
         self.clearImageView3?.isHidden = true
+        
+        self.clearImageView4 = self.optionTextField.addRightButton(UIImage(named: "ic-x")!)
+        let tap4 = UITapGestureRecognizer(target: self, action: #selector(clearOptionalTapped))
+        self.clearImageView4?.isUserInteractionEnabled = true
+        self.clearImageView4?.addGestureRecognizer(tap4)
+        self.clearImageView4?.isHidden = true
+        
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -135,6 +150,20 @@ class PersonalPopupViewController: BaseViewController {
                 self.clearImageView3?.isHidden = false
             }
         }
+        if textField  == self.optionTextField {
+            let startingLength = textField.text?.count ?? 0
+            let lengthToAdd = string.count
+            let lengthToReplace = range.length
+            
+            let newLength = startingLength + lengthToAdd - lengthToReplace
+            //return newLength <= 20
+            
+            if newLength == 0 {
+                self.clearImageView4?.isHidden = true
+            }else{
+                self.clearImageView4?.isHidden = false
+            }
+        }
         return true
         
     }
@@ -154,6 +183,13 @@ class PersonalPopupViewController: BaseViewController {
         self.clearImageView2?.animationTapped({
             self.lastNameTextField.text = ""
             self.clearImageView2?.isHidden = true
+        })
+        
+    }
+    @objc func clearOptionalTapped(){
+        self.clearImageView4?.animationTapped({
+            self.optionTextField.text = ""
+            self.clearImageView4?.isHidden = true
         })
         
     }

@@ -62,6 +62,9 @@
 		C169FF9C21C25C8500F9D354 /* MobileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C169FF9B21C25C8500F9D354 /* MobileViewController.swift */; };
 		C169FF9E21C25C9200F9D354 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C169FF9D21C25C9200F9D354 /* EmailViewController.swift */; };
 		C169FFBF21C36E1300F9D354 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C169FFC121C36E1300F9D354 /* Localizable.strings */; };
+		C169FFC421C4D66600F9D354 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C169FFC321C4D66600F9D354 /* FavoriteViewController.swift */; };
+		C169FFC821C4F10100F9D354 /* FavorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C169FFC621C4F10100F9D354 /* FavorCell.swift */; };
+		C169FFC921C4F10100F9D354 /* FavorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C169FFC721C4F10100F9D354 /* FavorCell.xib */; };
 		C1817D8E219BD32B009507DB /* FriendTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1817D8D219BD32B009507DB /* FriendTransferViewController.swift */; };
 		C1817D92219BF61E009507DB /* ItemFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1817D90219BF61E009507DB /* ItemFriendCell.swift */; };
 		C1817D93219BF61F009507DB /* ItemFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1817D91219BF61E009507DB /* ItemFriendCell.xib */; };
@@ -182,6 +185,9 @@
 		C169FF9D21C25C9200F9D354 /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
 		C169FFC021C36E1300F9D354 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C169FFC221C36E2400F9D354 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C169FFC321C4D66600F9D354 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		C169FFC621C4F10100F9D354 /* FavorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavorCell.swift; sourceTree = "<group>"; };
+		C169FFC721C4F10100F9D354 /* FavorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavorCell.xib; sourceTree = "<group>"; };
 		C1817D8D219BD32B009507DB /* FriendTransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTransferViewController.swift; sourceTree = "<group>"; };
 		C1817D90219BF61E009507DB /* ItemFriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFriendCell.swift; sourceTree = "<group>"; };
 		C1817D91219BF61E009507DB /* ItemFriendCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemFriendCell.xib; sourceTree = "<group>"; };
@@ -316,6 +322,7 @@
 				C1817DA5219E6C73009507DB /* DisplayNameViewController.swift */,
 				C169FF9B21C25C8500F9D354 /* MobileViewController.swift */,
 				C169FF9D21C25C9200F9D354 /* EmailViewController.swift */,
+				C169FFC321C4D66600F9D354 /* FavoriteViewController.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -416,6 +423,7 @@
 		C11A93B4218C00A000627B44 /* CollectionCell */ = {
 			isa = PBXGroup;
 			children = (
+				C169FFC521C4F0E600F9D354 /* FavorCell */,
 				C115FA4B219ECB5F008E7844 /* ResultCell */,
 				C1817D9A219C07C3009507DB /* BankCell */,
 				C1817D8F219BF5F3009507DB /* FriendTransferCell */,
@@ -460,6 +468,15 @@
 				C13D998921997AD6001A4794 /* HeadCell.xib */,
 			);
 			path = HeadCell;
+			sourceTree = "<group>";
+		};
+		C169FFC521C4F0E600F9D354 /* FavorCell */ = {
+			isa = PBXGroup;
+			children = (
+				C169FFC621C4F10100F9D354 /* FavorCell.swift */,
+				C169FFC721C4F10100F9D354 /* FavorCell.xib */,
+			);
+			path = FavorCell;
 			sourceTree = "<group>";
 		};
 		C1817D8F219BF5F3009507DB /* FriendTransferCell */ = {
@@ -745,6 +762,7 @@
 				C11BDFBD21A2BB3C00443D2D /* ItemConfirmSummaryCell.xib in Resources */,
 				C1AD50812187F45900F74415 /* Assets.xcassets in Resources */,
 				C10CA1BA2193E1D100316DF3 /* PromotionCampainCell.xib in Resources */,
+				C169FFC921C4F10100F9D354 /* FavorCell.xib in Resources */,
 				C11BDFB921A2B95D00443D2D /* ItemFriendSummaryCell.xib in Resources */,
 				C142741B21A553EE003CC246 /* ItemFavorCell.xib in Resources */,
 				C1817DA2219C1934009507DB /* SwitchCell.xib in Resources */,
@@ -906,6 +924,7 @@
 				C1E7B17F21AFCDCB00DA8B82 /* PointFreindSummaryNav.swift in Sources */,
 				C1B542DB219A85590040DDE6 /* ChangePasswordViewController.swift in Sources */,
 				C1AD507C2187F45600F74415 /* ViewController.swift in Sources */,
+				C169FFC421C4D66600F9D354 /* FavoriteViewController.swift in Sources */,
 				C11A93BC218C20C700627B44 /* LoginViewController.swift in Sources */,
 				C1AD50B22187FEE300F74415 /* ModelController.swift in Sources */,
 				C142741721A539F5003CC246 /* PointFriendTransferReviewViewController.swift in Sources */,
@@ -928,6 +947,7 @@
 				C115FA4A219EC511008E7844 /* ResultTransferViewController.swift in Sources */,
 				C10CA1BE219429D500316DF3 /* ImageCell.swift in Sources */,
 				C115FA5521A2A40F008E7844 /* PointFriendTransferViewController.swift in Sources */,
+				C169FFC821C4F10100F9D354 /* FavorCell.swift in Sources */,
 				C1AD50A92187F7B500F74415 /* BaseViewController.swift in Sources */,
 				C11BDFB821A2B95D00443D2D /* ItemFriendSummaryCell.swift in Sources */,
 				C1817D92219BF61E009507DB /* ItemFriendCell.swift in Sources */,

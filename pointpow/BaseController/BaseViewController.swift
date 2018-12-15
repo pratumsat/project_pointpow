@@ -363,6 +363,14 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         }
     }
     
+    func showFavoriteView(_ animated:Bool){
+        if let vc:FavoriteViewController  = self.storyboard?.instantiateViewController(withIdentifier: "FavoriteViewController") as? FavoriteViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    
+    
     func showBankTransferView(_ animated:Bool){
         if let vc:BankPointTransferViewController  = self.storyboard?.instantiateViewController(withIdentifier: "BankPointTransferViewController") as? BankPointTransferViewController {
             

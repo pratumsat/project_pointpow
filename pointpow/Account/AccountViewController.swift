@@ -10,7 +10,7 @@ import UIKit
 
 class AccountViewController: BaseViewController , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    let sizeArray = 8
+    let sizeArray = 9
     
     @IBOutlet weak var profileCollectionView: UICollectionView!
     override func viewDidLoad() {
@@ -102,10 +102,14 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
                     item.nameLabel.text = NSLocalizedString("string-item-security-setting", comment: "")
                     item.name2Label.text = ""
                 case 6:
+                    item.itemImageView.image = nil
+                    item.nameLabel.text = NSLocalizedString("string-item-favorite", comment: "")
+                    item.name2Label.text = ""
+                case 7:
                     item.itemImageView.image = UIImage(named: "ic-account-setting")
                     item.nameLabel.text = NSLocalizedString("string-item-setting", comment: "")
                     item.name2Label.text = ""
-                case 7:
+                case 8:
                     item.itemImageView.image = UIImage(named: "ic-account-about")
                     item.nameLabel.text = NSLocalizedString("string-item-about", comment: "")
                     item.name2Label.text = NSLocalizedString("string-item-about2", comment: "")
@@ -160,6 +164,9 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
                 self.showProfileView(true)
             }
             if indexPath.row == 6 {
+                self.showFavoriteView(true)
+            }
+            if indexPath.row == 7 {
                 self.showSettingView(true)
             }
         }

@@ -167,6 +167,9 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
                 }
                 confirmCell.favorCallback = {
                     //add favorit
+                    self.showAddNameFavoritePopup(true, savedCallback: {
+                        print("saved")
+                    })
                 }
                 
                 cell = confirmCell

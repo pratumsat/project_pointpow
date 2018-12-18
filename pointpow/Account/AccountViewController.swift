@@ -7,10 +7,16 @@
 //
 
 import UIKit
+import Photos
 
-class AccountViewController: BaseViewController , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class AccountViewController: BaseViewController , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     let sizeArray = 9
+    var picker:UIImagePickerController?
+    
+    var profileImage:UIImage?
+    var profileBackgroundImage:UIImage?
+    var chooseProfile = false
     
     @IBOutlet weak var profileCollectionView: UICollectionView!
     override func viewDidLoad() {
@@ -64,6 +70,22 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
         if indexPath.section == 0 {
             if let profileCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileCell", for: indexPath) as? ProfileCell{
                 
+                if let pi = self.profileImage {
+                    profileCell.profileImageView.image = pi
+                }
+                if let pbi = self.profileBackgroundImage {
+                    profileCell.backgroundImageView.image = pbi
+                }
+                
+                
+                profileCell.backgroundTappedCallback = {
+                    self.chooseProfile = false
+                    self.addFileTapped()
+                }
+                profileCell.profileTappedCallback = {
+                    self.chooseProfile = true
+                    self.addFileTapped()
+                }
                 
                 cell = profileCell
                 
@@ -102,7 +124,7 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
                     item.nameLabel.text = NSLocalizedString("string-item-security-setting", comment: "")
                     item.name2Label.text = ""
                 case 6:
-                    item.itemImageView.image = nil
+                    item.itemImageView.image = UIImage(named: "ic-account-fav")
                     item.nameLabel.text = NSLocalizedString("string-item-favorite", comment: "")
                     item.name2Label.text = ""
                 case 7:
@@ -192,5 +214,109 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
         return CGSize(width: width, height: width)
     }
 
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        let chosenImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        if chooseProfile {
+            // square for profile
+            let resizeImage = chosenImage.resizeUIImage(targetSize: CGSize(width: 400.0, height: 400.0))
+            self.profileImage = resizeImage
+            
+        }else{
+            // square for background
+            let resizeImage = chosenImage.resizeUIImage(targetSize: CGSize(width: 370, height: 300))
+            self.profileBackgroundImage = resizeImage
+        }
+        
+        //reload data
+        self.profileCollectionView.reloadData()
+        dismiss(animated: true, completion: nil)
+    }
+    
+//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+////
+//        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+//        print("image size =  \(chosenImage.size)")
+//
+//        let resizeImage = resizeUIImage(image: chosenImage, targetSize: CGSize(width: 400.0, height: 400.0))
+//
+//        print("reize image size =  \(resizeImage.size)")
+//        //self.progressLoading(resizeImage) send data
+//
+//        self.imageCover = resizeImage // preview
+//        self.profileCollection.reloadData()
+//
+//        dismiss(animated:true, completion: nil)
+//    }
+    
+    func addFileTapped() {
+        //Gallery
+        var style:UIAlertController.Style = .alert
+        if (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad){
+            style = .alert
+        }else{
+            style = .actionSheet
+        }
+        let actionSheetController: UIAlertController = UIAlertController(
+            title: nil,
+            message: nil,
+            preferredStyle:  style)
+        
+        let cancelAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("string-take-cancel", comment: ""), style: .destructive) { action -> Void in
+            //Just dismiss the action sheet
+        }
+        let takePictureAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("string-take-option1", comment: ""), style: .default) { action -> Void in
+            self.photoFromCamera()
+        }
+        let choosePictureAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("string-take-option2", comment: ""), style: .default) { action -> Void in
+            self.photoFromGallery()
+        }
+        
+        
+        actionSheetController.addAction(takePictureAction)
+        actionSheetController.addAction(choosePictureAction)
+        actionSheetController.addAction(cancelAction)
+        
+        self.present(actionSheetController, animated: true)
+        
+        
+    }
+    
+    
+    func photoFromGallery() {
+        
+        let status = PHPhotoLibrary.authorizationStatus()
+        if (status != PHAuthorizationStatus.denied) {
+            
+            picker = UIImagePickerController()
+            picker!.allowsEditing = false
+            picker!.sourceType = .photoLibrary
+            picker!.delegate = self
+            picker!.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+            present(picker!, animated: true, completion: nil)
+            
+        }else{
+            self.cannotAccessPhoto()
+        }
+    }
+    
+    func photoFromCamera(){
+        
+        if AVCaptureDevice.authorizationStatus(for: AVMediaType.video) !=  AVAuthorizationStatus.denied {
+            picker = UIImagePickerController()
+            picker!.allowsEditing = false
+            picker!.sourceType = .camera
+            picker!.delegate = self
+            present(picker!, animated: true, completion: nil)
+        } else {
+            self.cannotAccessCamera()
+        }
+        
+        
+    }
 
 }

@@ -37,6 +37,35 @@ class FavoriteViewController: BaseViewController, UICollectionViewDelegate , UIC
        
         if let favCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FavorCell", for: indexPath) as?  FavorCell{
             
+            favCell.nameLabel.text = "item \(indexPath.row)"
+            
+            favCell.editCallback = {
+                self.showAddNameFavoritePopup(true, favName: favCell.nameLabel.text!, savedCallback: {
+                    print("saved")
+                })
+            }
+            favCell.deleteCallback = {
+                var title = NSLocalizedString("string-dailog-title-delete-item-favorite", comment: "")
+                title += "\(favCell.nameLabel.text!) ?"
+                let alert = UIAlertController(title: title, message: "", preferredStyle: .alert)
+                
+                let okButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-ok", comment: ""), style: .default, handler: {
+                    (alert)  in 
+                    
+                    
+                    print("delete")
+                    
+                })
+                let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: nil)
+                
+                
+                
+                alert.addAction(cancelButton)
+                alert.addAction(okButton)
+                self.present(alert, animated: true, completion: nil)
+            }
+            
+            
             let lineBottom = UIView(frame: CGRect(x: 0, y: favCell.frame.height - 1 , width: collectionView.frame.width, height: 1 ))
             lineBottom.backgroundColor = Constant.Colors.LINE_PROFILE
             favCell.addSubview(lineBottom)

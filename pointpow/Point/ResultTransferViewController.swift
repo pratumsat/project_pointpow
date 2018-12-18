@@ -69,6 +69,12 @@ class ResultTransferViewController: BaseViewController  , UICollectionViewDelega
         }else if indexPath.section == 1 {
             if let favCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemFavorCell", for: indexPath) as? ItemFavorCell {
                 
+                favCell.favorCallback = {
+                    //add favorit
+                    self.showAddNameFavoritePopup(true, savedCallback: {
+                        print("saved")
+                    })
+                }
                 cell = favCell
             }
         }

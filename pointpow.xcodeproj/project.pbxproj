@@ -65,6 +65,7 @@
 		C169FFC421C4D66600F9D354 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C169FFC321C4D66600F9D354 /* FavoriteViewController.swift */; };
 		C169FFC821C4F10100F9D354 /* FavorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C169FFC621C4F10100F9D354 /* FavorCell.swift */; };
 		C169FFC921C4F10100F9D354 /* FavorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C169FFC721C4F10100F9D354 /* FavorCell.xib */; };
+		C169FFCB21C7939E00F9D354 /* FavorPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C169FFCA21C7939E00F9D354 /* FavorPopupViewController.swift */; };
 		C1817D8E219BD32B009507DB /* FriendTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1817D8D219BD32B009507DB /* FriendTransferViewController.swift */; };
 		C1817D92219BF61E009507DB /* ItemFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1817D90219BF61E009507DB /* ItemFriendCell.swift */; };
 		C1817D93219BF61F009507DB /* ItemFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1817D91219BF61E009507DB /* ItemFriendCell.xib */; };
@@ -188,6 +189,7 @@
 		C169FFC321C4D66600F9D354 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		C169FFC621C4F10100F9D354 /* FavorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavorCell.swift; sourceTree = "<group>"; };
 		C169FFC721C4F10100F9D354 /* FavorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavorCell.xib; sourceTree = "<group>"; };
+		C169FFCA21C7939E00F9D354 /* FavorPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavorPopupViewController.swift; sourceTree = "<group>"; };
 		C1817D8D219BD32B009507DB /* FriendTransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTransferViewController.swift; sourceTree = "<group>"; };
 		C1817D90219BF61E009507DB /* ItemFriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFriendCell.swift; sourceTree = "<group>"; };
 		C1817D91219BF61E009507DB /* ItemFriendCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemFriendCell.xib; sourceTree = "<group>"; };
@@ -587,6 +589,7 @@
 			children = (
 				C10CA1A32191755C00316DF3 /* PersonalPopupViewController.swift */,
 				C1AD50AE2187FE9000F74415 /* PopUpViewController.swift */,
+				C169FFCA21C7939E00F9D354 /* FavorPopupViewController.swift */,
 			);
 			path = Popup;
 			sourceTree = "<group>";
@@ -978,6 +981,7 @@
 				C13D998521997938001A4794 /* LogoutCell.swift in Sources */,
 				C1DEBE902188297B00CBB95F /* ScannerViewController.swift in Sources */,
 				C1817DA4219E6A2E009507DB /* PPWebViewController.swift in Sources */,
+				C169FFCB21C7939E00F9D354 /* FavorPopupViewController.swift in Sources */,
 				C13D998D21997EF7001A4794 /* PersonalViewController.swift in Sources */,
 				C142741D21A68154003CC246 /* ResetPasswordViewController.swift in Sources */,
 				C13D998A21997AD6001A4794 /* HeadCell.swift in Sources */,

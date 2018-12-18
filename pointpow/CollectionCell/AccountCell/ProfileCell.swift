@@ -15,9 +15,39 @@ class ProfileCell: UICollectionViewCell {
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var cameraImageView: UIImageView!
     @IBOutlet weak var profileImageView: UIImageView!
+    
+    var profileTappedCallback:(()->Void)?
+    var backgroundTappedCallback:(()->Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     
+        
+        let profile = UITapGestureRecognizer(target: self, action: #selector(changeProfileTapped))
+        self.profileImageView.isUserInteractionEnabled = true
+        self.profileImageView.addGestureRecognizer(profile)
+        
+        let profile2 = UITapGestureRecognizer(target: self, action: #selector(changeProfileTapped))
+        self.cameraView.isUserInteractionEnabled = true
+        self.cameraView.addGestureRecognizer(profile2)
+        
+        
+        
+        let background = UITapGestureRecognizer(target: self, action: #selector(changeBackgroundTapped))
+        self.changeBackground2Button.isUserInteractionEnabled = true
+        self.changeBackground2Button.addGestureRecognizer(background)
+    }
+    
+    @objc func changeProfileTapped(){
+        print("tap profile")
+        self.profileTappedCallback?()
+        //self.profileImageView.image
+    }
+    
+    @objc func changeBackgroundTapped(){
+        print("tap background")
+        self.backgroundTappedCallback?()
+        //self.backgroundImageView.image
     }
 
     override var bounds : CGRect {

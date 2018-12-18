@@ -11,10 +11,23 @@ import UIKit
 class ItemFavorCell: UICollectionViewCell {
     @IBOutlet weak var favoView: UIView!
     
+    var favorCallback:(()->Void)?
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        let addFav  = UITapGestureRecognizer(target: self, action: #selector(addFavTapped))
+        self.favoView.isUserInteractionEnabled = true
+        self.favoView.addGestureRecognizer(addFav)
+        
     }
+    
+    @objc func addFavTapped(){
+        self.favorCallback?()
+    }
+    
+    
     override var bounds : CGRect {
         didSet {
             self.layoutIfNeeded()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PersonalViewController: BaseViewController {
+class PersonalViewController: BaseViewController  {
 
     @IBOutlet weak var birthdayTextField: UITextField!
     @IBOutlet weak var parsonalTextField: UITextField!
@@ -22,6 +22,8 @@ class PersonalViewController: BaseViewController {
     var clearImageView3:UIImageView?
     
     
+    var pickerView:UIDatePicker?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = NSLocalizedString("string-title-profile-edit", comment: "")
@@ -34,10 +36,37 @@ class PersonalViewController: BaseViewController {
         self.nextButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
         
     }
+    @objc func donedatePicker(){
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd MMMM yyyy"
+        self.birthdayTextField.text = formatter.string(from: pickerView!.date)
+        self.view.endEditing(true)
+    }
     
+    @objc func cancelDatePicker(){
+        self.view.endEditing(true)
+    }
     func setUp(){
-        self.backgroundImage?.image = nil
+        pickerView = UIDatePicker()
+        pickerView!.datePickerMode = .date
+
+        let toolbar = UIToolbar();
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self,
+                                         action: #selector(donedatePicker));
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,
+                                          target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self,
+                                           action: #selector(cancelDatePicker));
+        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
         
+        self.birthdayTextField.tintColor = UIColor.clear
+        self.birthdayTextField.isUserInteractionEnabled = true
+        self.birthdayTextField.inputView = pickerView
+        self.birthdayTextField.inputAccessoryView = toolbar
+        
+        
+        self.backgroundImage?.image = nil
         self.nextButton.borderClearProperties(borderWidth: 1)
         
         if #available(iOS 10.0, *) {
@@ -147,6 +176,17 @@ class PersonalViewController: BaseViewController {
             self.lastNameTextField.text = ""
             self.clearImageView2?.isHidden = true
         })
+    }
+    
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 2
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return "1"
     }
     
 

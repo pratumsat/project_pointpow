@@ -134,7 +134,10 @@ class LoginViewController: BaseViewController {
     }
 
     @IBAction func loginTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.showMessagePrompt("ใส่รหัสผ่านไม่ถูกต้อง")
+        //self.usernameTextField.addBottomLabelErrorMessage("อีเมลไม่ถูกต้อง", marginLeft: 15 )
+        self.passwordTextField.addBottomLabelErrorMessage("ใส่รหัสผ่านไม่ถูกต้อง" , marginLeft: 15)
+       // self.dismiss(animated: true, completion: nil)
     }
     /*
     // MARK: - Navigation

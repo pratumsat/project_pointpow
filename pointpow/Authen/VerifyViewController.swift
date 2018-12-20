@@ -58,6 +58,7 @@ class VerifyViewController: BaseViewController {
         self.clearImageView?.isHidden = true
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
         if textField  == self.usernameTextField {
             let startingLength = textField.text?.count ?? 0
             let lengthToAdd = string.count
@@ -71,6 +72,17 @@ class VerifyViewController: BaseViewController {
             }else{
                 self.clearImageView?.isHidden = false
             }
+            
+            let text = textField.text ?? ""
+            
+            if string.count == 0 {
+                textField.text = String(text.dropLast()).chunkFormatted()
+            }  else {
+                let newText = String((text + string).filter({ $0 != "-" }).prefix(10))
+                textField.text = newText.chunkFormatted()
+            }
+            return false
+            
         }
         return true
         
@@ -88,6 +100,8 @@ class VerifyViewController: BaseViewController {
     @IBAction func sendTapped(_ sender: Any) {
     }
     @IBAction func verifyTapped(_ sender: Any) {
+        self.otpTextField.addBottomLabelErrorMessage("รหัส OTP ไม่ถูกต้อง กรุณากรอกใหม่อีกครั้ง", marginLeft: 15)
+        self.showMessagePrompt("รหัส OTP ไม่ถูกต้อง กรุณากรอกใหม่อีกครั้ง")
     }
     
    

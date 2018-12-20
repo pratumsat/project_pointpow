@@ -36,7 +36,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         }
         
         
-        //self.showIntroduce(false)
+        self.showIntroduce(false)
         self.setUp()
         
         

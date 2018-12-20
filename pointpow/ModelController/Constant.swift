@@ -107,6 +107,23 @@ extension UILabel{
 }
 
 extension UITextField {
+    
+    func addBottomLabelErrorMessage(_ errorMessage:String, marginLeft:CGFloat = 0 , marginBottom:CGFloat = 25){
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.UNDER_TEXTFIELD)
+        label.textColor = UIColor.red
+        label.text = errorMessage
+        label.sizeToFit()
+        self.addSubview(label)
+        
+        label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: marginBottom).isActive = true
+        label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: marginLeft).isActive = true
+        
+        
+        
+        
+    }
     func addRightButton(_ image:UIImage) -> UIImageView {
         let width = self.frame.height*0.4
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: width))
@@ -416,7 +433,7 @@ extension Collection {
     }
 }
 extension String {
-    func chunkFormatted(withChunkSize chunkSize: Int = 3, withSeparator separator: Character = " ") -> String {
+    func chunkFormatted(withChunkSize chunkSize: Int = 3, withSeparator separator: Character = "-") -> String {
         return self.filter { $0 != separator }.chunk(n: chunkSize).map{ String($0) }.joined(separator: String(separator))
     }
     

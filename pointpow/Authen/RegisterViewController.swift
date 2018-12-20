@@ -10,6 +10,7 @@ import UIKit
 
 class RegisterViewController: BaseViewController {
 
+    @IBOutlet weak var infomationlabel: UILabel!
     @IBOutlet weak var googleView: UIView!
     @IBOutlet weak var facebookView: UIView!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
@@ -156,6 +157,16 @@ class RegisterViewController: BaseViewController {
     }
     
     @IBAction func registerTapped(_ sender: Any) {
+        self.showMessagePrompt("ยืนยันรหัสผ่านไม่ถูกต้อง กรุณากรอกใหม่อีกครั้ง")
+        
+        //self.usernameTextField.addBottomLabelErrorMessage("อีเมลไม่ถูกต้อง", marginLeft: 15 )
+        
+        //self.infomationlabel.isHidden = true
+        //self.passwordTextField.addBottomLabelErrorMessage("รหัสไม่ถูกต้อง ต้องมีตัวอักษรและตัวเลขอย่างน้อย 6 ตัว" , marginLeft: 15)
+        //self.confirmPasswordTextField.addBottomLabelErrorMessage("รหัสไม่ถูกต้อง ต้องมีตัวอักษรและตัวเลขอย่างน้อย 6ตัว" , marginLeft: 15)
+        
+        //self.confirmPasswordTextField.addBottomLabelErrorMessage("ยืนยันรหัสผ่านไม่ถูกต้อง กรุณากรอกใหม่อีกครั้ง" , marginLeft: 15)
+        
         self.showVerify(true)
     }
     

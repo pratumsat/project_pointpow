@@ -17,6 +17,12 @@ class VerifyViewController: BaseViewController {
     
     var clearImageView:UIImageView?
     
+     var errorOTPlLabel:UILabel?
+    var countDown:Int = 10
+    var timer:Timer?
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,6 +33,10 @@ class VerifyViewController: BaseViewController {
         super.viewWillLayoutSubviews()
         self.verifyButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
         
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.removeCountDownLable()
     }
     func setUp(){
         self.sendButton.borderRedColorProperties(borderWidth: 1)  
@@ -56,7 +66,45 @@ class VerifyViewController: BaseViewController {
         self.clearImageView?.isUserInteractionEnabled = true
         self.clearImageView?.addGestureRecognizer(tap)
         self.clearImageView?.isHidden = true
+        
+        
+        self.sendButton.isEnabled = false
+        self.countDown(1.0)
+        
     }
+    func updateButton(){
+        self.sendButton.borderLightGrayColorProperties(borderWidth: 1)
+        self.sendButton.addSpacingCharacters(0,  title: "\(countDown)", color: UIColor.lightGray)
+        
+    }
+    func resetButton(){
+        self.sendButton.borderRedColorProperties(borderWidth: 1)
+        self.sendButton.addSpacingCharacters(0,  title: NSLocalizedString("string-button-re-send", comment: ""),
+                                             color: Constant.Colors.PRIMARY_COLOR)
+        self.sendButton.isEnabled = true
+    }
+    func countDown(_ time: Double){
+        timer = Timer.scheduledTimer(timeInterval: time, target: self, selector: #selector(updateCountDown), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateCountDown() {
+        if(countDown > 0) {
+            countDown -= 1
+            self.updateButton()
+        } else {
+            self.resetButton()
+            self.removeCountDownLable()
+        }
+    }
+    func removeCountDownLable() {
+        //finish
+        countDown = 60
+        timer?.invalidate()
+        timer = nil
+        
+    }
+    
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 
         if textField  == self.usernameTextField {
@@ -98,10 +146,17 @@ class VerifyViewController: BaseViewController {
     
    
     @IBAction func sendTapped(_ sender: Any) {
+        self.sendButton.isEnabled = false
+        self.countDown(1.0)
     }
     @IBAction func verifyTapped(_ sender: Any) {
-        self.otpTextField.addBottomLabelErrorMessage("รหัส OTP ไม่ถูกต้อง กรุณากรอกใหม่อีกครั้ง", marginLeft: 15)
-        self.showMessagePrompt("รหัส OTP ไม่ถูกต้อง กรุณากรอกใหม่อีกครั้ง")
+        let otp = self.otpTextField.text!
+        
+        self.errorOTPlLabel?.removeFromSuperview()
+        
+        let errorMessage = NSLocalizedString("string-error-otp", comment: "")
+        self.errorOTPlLabel = self.otpTextField.addBottomLabelErrorMessage(errorMessage, marginLeft: 15)
+        self.showMessagePrompt(errorMessage)
     }
     
    

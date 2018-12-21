@@ -21,7 +21,7 @@ class LoginViewController: BaseViewController {
     var eyeImageView:UIImageView?
     var isClose:Bool = false
     
-    var errorEmailLabel:UILabel?
+    var errorUsernamelLabel:UILabel?
     var errorPasswordLabel:UILabel?
     
     override func viewDidLoad() {
@@ -138,27 +138,69 @@ class LoginViewController: BaseViewController {
     
     @IBAction func loginTapped(_ sender: Any) {
     
-        let email = self.usernameTextField.text!
+        let username = self.usernameTextField.text!
         let password = self.passwordTextField.text!
         
+        var errorEmpty = 0
+        var emptyMessage = ""
         
-       
-        self.errorEmailLabel?.removeFromSuperview()
+        self.errorUsernamelLabel?.removeFromSuperview()
         self.errorPasswordLabel?.removeFromSuperview()
+      
+        if password.isEmpty {
+            emptyMessage = NSLocalizedString("string-error-empty-pwd", comment: "")
+            self.errorPasswordLabel =  self.passwordTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 15 )
+            errorEmpty += 1
+        }
         
-        if !isValidEmail(email) {
-            let emailNotValid = NSLocalizedString("string-error-invalid-email", comment: "")
-            self.showMessagePrompt(emailNotValid)
-            self.errorEmailLabel =  self.usernameTextField.addBottomLabelErrorMessage(emailNotValid, marginLeft: 15 )
+        if username.isEmpty {
+            emptyMessage = NSLocalizedString("string-error-empty-username", comment: "")
+            self.errorUsernamelLabel =  self.usernameTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 15 )
+            errorEmpty += 1
+            
+        }
+        if errorEmpty > 0 {
+            self.showMessagePrompt(emptyMessage)
+            return
+        }
+
+       
+        if isValidNumber(username){
+            print("number")
+            
+            if password == "123456A" {
+                self.dismiss(animated: true, completion: nil)
+            }else{
+                self.showMessagePrompt("ใส่รหัสผ่านไม่ถูกต้อง")
+                self.errorPasswordLabel =  self.passwordTextField.addBottomLabelErrorMessage("ใส่รหัสผ่านไม่ถูกต้อง" , marginLeft: 15)
+            }
+            
             return
         }
         
-        if password == "123456A" {
-            self.dismiss(animated: true, completion: nil)
+        if isValidEmail(username) {
+            print("email")
+            
+            if password == "123456A" {
+                self.dismiss(animated: true, completion: nil)
+            }else{
+                self.showMessagePrompt("ใส่รหัสผ่านไม่ถูกต้อง")
+                self.errorPasswordLabel =  self.passwordTextField.addBottomLabelErrorMessage("ใส่รหัสผ่านไม่ถูกต้อง" , marginLeft: 15)
+            }
+            
         }else{
-            self.showMessagePrompt("ใส่รหัสผ่านไม่ถูกต้อง")
-            self.errorPasswordLabel =  self.passwordTextField.addBottomLabelErrorMessage("ใส่รหัสผ่านไม่ถูกต้อง" , marginLeft: 15)
+           
+            print("not email")
+            
+            let emailNotValid = NSLocalizedString("string-error-invalid-email", comment: "")
+            self.showMessagePrompt(emailNotValid)
+            self.errorUsernamelLabel =  self.usernameTextField.addBottomLabelErrorMessage(emailNotValid, marginLeft: 15 )
+
+            
         }
+      
+        
+        
         
     }
     /*

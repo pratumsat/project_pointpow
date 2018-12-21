@@ -24,6 +24,10 @@ class RegisterViewController: BaseViewController {
     var confirmPsssIsClose:Bool = false
     var psssIsClose:Bool = false
     
+    var errorUsernamelLabel:UILabel?
+    var errorPasswordLabel:UILabel?
+    var errorConfirmPasswordLabel:UILabel?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -157,20 +161,117 @@ class RegisterViewController: BaseViewController {
     }
     
     @IBAction func registerTapped(_ sender: Any) {
-        self.showMessagePrompt("ยืนยันรหัสผ่านไม่ถูกต้อง กรุณากรอกใหม่อีกครั้ง")
+        let username = self.usernameTextField.text!
+        let password = self.passwordTextField.text!
+        let confirmPassword = self.confirmPasswordTextField.text!
         
-        //self.usernameTextField.addBottomLabelErrorMessage("อีเมลไม่ถูกต้อง", marginLeft: 15 )
+        var errorEmpty = 0
+        var emptyMessage = ""
         
-        //self.infomationlabel.isHidden = true
-        //self.passwordTextField.addBottomLabelErrorMessage("รหัสไม่ถูกต้อง ต้องมีตัวอักษรและตัวเลขอย่างน้อย 6 ตัว" , marginLeft: 15)
-        //self.confirmPasswordTextField.addBottomLabelErrorMessage("รหัสไม่ถูกต้อง ต้องมีตัวอักษรและตัวเลขอย่างน้อย 6ตัว" , marginLeft: 15)
+        self.errorUsernamelLabel?.removeFromSuperview()
+        self.errorPasswordLabel?.removeFromSuperview()
+        self.errorConfirmPasswordLabel?.removeFromSuperview()
+        self.infomationlabel.isHidden = false
+       
+        if confirmPassword.isEmpty {
+            emptyMessage = NSLocalizedString("string-error-empty-confirm-pwd", comment: "")
+            self.errorConfirmPasswordLabel =  self.confirmPasswordTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 15 )
+            errorEmpty += 1
+        }
         
-        //self.confirmPasswordTextField.addBottomLabelErrorMessage("ยืนยันรหัสผ่านไม่ถูกต้อง กรุณากรอกใหม่อีกครั้ง" , marginLeft: 15)
+        if password.isEmpty {
+            emptyMessage = NSLocalizedString("string-error-empty-pwd", comment: "")
+            self.infomationlabel.isHidden = true
+            self.errorPasswordLabel =  self.passwordTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 15 )
+            errorEmpty += 1
+        }
         
-        self.showVerify(true)
+        if username.isEmpty {
+            emptyMessage = NSLocalizedString("string-error-empty-username", comment: "")
+            self.errorUsernamelLabel =  self.usernameTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 15 )
+            errorEmpty += 1
+            
+        }
+        if errorEmpty > 0 {
+            self.showMessagePrompt(emptyMessage)
+            return
+        }
+        
+        if isValidNumber(username){
+            print("number")
+            
+            guard validateMobile(username) else { return }
+            guard validatePassword(password, confirmPassword) else { return }
+            print("pass")
+            self.showVerify(true)
+            return
+        }
+        
+        if isValidEmail(username) {
+            print("email")
+            guard validatePassword(password, confirmPassword) else { return }
+            print("pass")
+            self.showVerify(true)
+            
+        }else{
+            print("not email")
+            let emailNotValid = NSLocalizedString("string-error-invalid-email", comment: "")
+            self.showMessagePrompt(emailNotValid)
+            self.errorUsernamelLabel =  self.usernameTextField.addBottomLabelErrorMessage(emailNotValid, marginLeft: 15 )
+            
+        }
+        
+    }
+    
+    func validateMobile(_ mobile:String)-> Bool{
+        var errorMobile = 0
+        if mobile.count != 10 {
+            errorMobile += 1
+        }
+        if !checkPrefixcellPhone(mobile) {
+            errorMobile += 1
+        }
+        if errorMobile > 0 {
+            let errorMessage = NSLocalizedString("string-error-invalid-mobile", comment: "")
+            self.showMessagePrompt(errorMessage)
+            self.errorUsernamelLabel =  self.usernameTextField.addBottomLabelErrorMessage(errorMessage , marginLeft: 15)
+            return false
+        }
+        return true
+    }
+    func validatePassword(_ password:String, _ confirmPassword:String) ->Bool{
+        var errorPassowrd = 0
+        var errorMessagePassword = ""
+        if !validPassword(confirmPassword){
+            errorMessagePassword = NSLocalizedString("string-error-invalid-confirm-pwd", comment: "")
+            self.errorConfirmPasswordLabel =  self.confirmPasswordTextField.addBottomLabelErrorMessage(errorMessagePassword, marginLeft: 15 )
+            errorPassowrd += 1
+        }
+        if !validPassword(password) {
+            errorMessagePassword = NSLocalizedString("string-error-invalid-pwd", comment: "")
+            self.infomationlabel.isHidden = true
+            self.errorPasswordLabel =  self.passwordTextField.addBottomLabelErrorMessage(errorMessagePassword, marginLeft: 15 )
+            errorPassowrd += 1
+        }
+        if errorPassowrd > 0 {
+            self.showMessagePrompt(errorMessagePassword)
+            return false
+        }
+        
+        if password != confirmPassword {
+            let errorMissmatch = NSLocalizedString("string-error-mismatch-pwd", comment: "")
+            self.showMessagePrompt(errorMissmatch)
+            self.errorConfirmPasswordLabel =  self.confirmPasswordTextField.addBottomLabelErrorMessage(errorMissmatch, marginLeft: 15 )
+            
+            return false
+        }
+        
+        
+        return true
     }
     
 
+    
     /*
     // MARK: - Navigation
 

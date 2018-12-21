@@ -510,6 +510,16 @@ struct Constant {
 }
 
 
+
+func checkPrefixcellPhone(_ mobile:String) ->Bool {
+    let prefixZero = mobile.hasPrefix("0")
+    if  prefixZero  {
+        return true
+    }else{
+        return false
+    }
+}
+
 func fontList(){
     for family: String in UIFont.familyNames
     {
@@ -520,6 +530,35 @@ func fontList(){
         }
     }
 }
+
+func validPassword(_ password:String) ->Bool {
+    if password.count < 6 {
+        return false
+    }
+    let array = Array(password)
+    
+    
+    var str = 0
+    var digi = 0
+    for each in array {
+        if isValidNumber(each.description){
+            digi += 1
+        }else{
+            str += 1
+        }
+    }
+    print(array)
+    print("str = \(str)")
+    print("digi = \(digi)")
+    
+    if str != 0 && digi != 0{
+        return true
+    }else{
+        return false
+    }
+    
+}
+
 func isValidEmail(_ email:String) -> Bool {
     // print("validate calendar: \(testStr)")
     let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"

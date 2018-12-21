@@ -168,6 +168,8 @@ class LoginViewController: BaseViewController {
         if isValidNumber(username){
             print("number")
             
+            guard validateMobile(username) else { return }
+            
             if password == "123456A" {
                 self.dismiss(animated: true, completion: nil)
             }else{
@@ -198,19 +200,22 @@ class LoginViewController: BaseViewController {
 
             
         }
-      
-        
-        
-        
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+   
+    func validateMobile(_ mobile:String)-> Bool{
+        var errorMobile = 0
+        if mobile.count != 10 {
+            errorMobile += 1
+        }
+        if !checkPrefixcellPhone(mobile) {
+            errorMobile += 1
+        }
+        if errorMobile > 0 {
+            let errorMessage = NSLocalizedString("string-error-invalid-mobile", comment: "")
+            self.showMessagePrompt(errorMessage)
+            self.errorUsernamelLabel =  self.usernameTextField.addBottomLabelErrorMessage(errorMessage , marginLeft: 15)
+            return false
+        }
+        return true
     }
-    */
-
 }

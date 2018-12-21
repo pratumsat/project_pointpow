@@ -21,6 +21,8 @@ class LoginViewController: BaseViewController {
     var eyeImageView:UIImageView?
     var isClose:Bool = false
     
+    var errorEmailLabel:UILabel?
+    var errorPasswordLabel:UILabel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,11 +135,31 @@ class LoginViewController: BaseViewController {
         self.showForgot(true)
     }
 
+    
     @IBAction func loginTapped(_ sender: Any) {
-        self.showMessagePrompt("ใส่รหัสผ่านไม่ถูกต้อง")
-        //self.usernameTextField.addBottomLabelErrorMessage("อีเมลไม่ถูกต้อง", marginLeft: 15 )
-        self.passwordTextField.addBottomLabelErrorMessage("ใส่รหัสผ่านไม่ถูกต้อง" , marginLeft: 15)
-       // self.dismiss(animated: true, completion: nil)
+    
+        let email = self.usernameTextField.text!
+        let password = self.passwordTextField.text!
+        
+        
+       
+        self.errorEmailLabel?.removeFromSuperview()
+        self.errorPasswordLabel?.removeFromSuperview()
+        
+        if !isValidEmail(email) {
+            let emailNotValid = NSLocalizedString("string-error-invalid-email", comment: "")
+            self.showMessagePrompt(emailNotValid)
+            self.errorEmailLabel =  self.usernameTextField.addBottomLabelErrorMessage(emailNotValid, marginLeft: 15 )
+            return
+        }
+        
+        if password == "123456A" {
+            self.dismiss(animated: true, completion: nil)
+        }else{
+            self.showMessagePrompt("ใส่รหัสผ่านไม่ถูกต้อง")
+            self.errorPasswordLabel =  self.passwordTextField.addBottomLabelErrorMessage("ใส่รหัสผ่านไม่ถูกต้อง" , marginLeft: 15)
+        }
+        
     }
     /*
     // MARK: - Navigation

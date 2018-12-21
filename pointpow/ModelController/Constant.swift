@@ -108,7 +108,7 @@ extension UILabel{
 
 extension UITextField {
     
-    func addBottomLabelErrorMessage(_ errorMessage:String, marginLeft:CGFloat = 0 , marginBottom:CGFloat = 25){
+    func addBottomLabelErrorMessage(_ errorMessage:String, marginLeft:CGFloat = 0 , marginBottom:CGFloat = 25) -> UILabel {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.UNDER_TEXTFIELD)
@@ -122,7 +122,7 @@ extension UITextField {
         
         
         
-        
+        return label
     }
     func addRightButton(_ image:UIImage) -> UIImageView {
         let width = self.frame.height*0.4
@@ -512,6 +512,156 @@ struct Constant {
 
 
 
+    func fontList(){
+        for family: String in UIFont.familyNames
+        {
+            print("\(family)")
+            for names: String in UIFont.fontNames(forFamilyName: family)
+            {
+                print("== \(names)")
+            }
+        }
+    }
+    func isValidEmail(_ email:String) -> Bool {
+        // print("validate calendar: \(testStr)")
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: email)
+    }
+    
+    func isValidString(_ str:String) -> Bool{
+        let alphaSet = NSCharacterSet.alphanumerics
+        
+        
+        let numberCharacters = NSCharacterSet.decimalDigits
+        if str.rangeOfCharacter(from: numberCharacters) != nil {
+            return false
+        }
+        
+        let valid = str.trimmingCharacters(in: alphaSet)
+        if valid == "" {
+            return true
+        }else{
+            return false
+        }
+    }
+    
+    func isValidStringId(_ str:String) -> Bool{
+        let alphaSet = NSCharacterSet.alphanumerics
+        
+        
+        let valid = str.trimmingCharacters(in: alphaSet)
+        if valid == "" {
+            return true
+        }else{
+            return false
+        }
+    }
+    func isValidIDCard(_ idCard:String) -> Bool{
+        if idCard.count != 13  { return false }
+        var sum:Int = 0
+        for i in 0..<12 {
+            let pos = Array(idCard)[i].description
+            sum += Int(pos)! * Int(13 - i)
+        }
+        let mod = (11 - (sum % 11)) % 10
+        let lastdigi = Array(idCard)[12].description
+        if mod == Int(lastdigi) {
+            return true
+            
+        }
+        return false
+    }
+    
+    func heightForView(text:String, font:UIFont, width:CGFloat, lineHeight:Bool = false) -> CGFloat{
+        let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        label.font = font
+        label.text = text
+        if lineHeight {
+            label.setLineSpacing(lineSpacing: 0, lineHeightMultiple: 0.7)
+        }
+        label.sizeToFit()
+        
+        return label.frame.height
+    }
+    
+    
+    
+    func convertDateOfDay(_ dateString:String) -> String {
+        //2017-03-29 20:15:25.000+00:00
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSz"
+        if let d1 = dateFormatter.date(from: dateString){
+            
+            let calendar = NSCalendar.current
+            let unitFlags: Set<Calendar.Component> = [.minute, .hour, .day, .weekOfYear, .month, .year, .second]
+            let components = calendar.dateComponents(unitFlags, from: d1)
+            
+            
+            var newStringDate = String(format: "%02d", components.day!)
+            newStringDate += "-\(String(format: "%02d", components.month!))"
+            newStringDate += "-\(String(format: "%02d", components.year!))"
+            
+            print("\(newStringDate)")
+            return newStringDate
+            
+        }
+        
+        return "-"
+    }
+    func convertDate(_ dateString:String , pattern:String = "haveSecond") -> String {
+        //2017-03-29 20:15:25.000+00:00
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSz"
+        if let d1 = dateFormatter.date(from: dateString){
+            
+            let calendar = NSCalendar.current
+            let unitFlags: Set<Calendar.Component> = [.minute, .hour, .day, .weekOfYear, .month, .year, .second]
+            let components = calendar.dateComponents(unitFlags, from: d1)
+            
+            
+            var newStringDate = String(format: "%02d", components.day!)
+            newStringDate += "-\(String(format: "%02d", components.month!))"
+            newStringDate += "-\(String(format: "%02d", components.year!))"
+            newStringDate += " \(String(format: "%02d", components.hour!))"
+            newStringDate += ":\(String(format: "%02d", components.minute!))"
+            
+            if pattern == "haveSecond" {
+                newStringDate += ":\(String(format: "%02d", components.second!))"
+            }
+            
+            
+            print("\(newStringDate)")
+            return newStringDate
+            
+        }
+        
+        return "-"
+    }
+    func dateNow() -> String {
+        let d1 = Date()
+        
+        let calendar = NSCalendar.current
+        let unitFlags: Set<Calendar.Component> = [.minute, .hour, .day, .weekOfYear, .month, .year, .second]
+        let components = calendar.dateComponents(unitFlags, from: d1)
+        
+        
+        var newStringDate = String(format: "%02d", components.day!)
+        newStringDate += "-\(String(format: "%02d", components.month!))"
+        newStringDate += "-\(String(format: "%02d", components.year!))"
+        //    newStringDate += " \(String(format: "%02d", components.hour!))"
+        //    newStringDate += ":\(String(format: "%02d", components.minute!))"
+        //    newStringDate += ":\(String(format: "%02d", components.second!))"
+        //
+        print("\(newStringDate)")
+        return newStringDate
+        
+    }
 
 
 

@@ -225,14 +225,17 @@ class RegisterViewController: BaseViewController {
     
     func validateMobile(_ mobile:String)-> Bool{
         var errorMobile = 0
-        if mobile.count != 10 {
-            errorMobile += 1
-        }
+        var errorMessage = ""
+       
         if !checkPrefixcellPhone(mobile) {
+            errorMessage = NSLocalizedString("string-error-invalid-mobile", comment: "")
             errorMobile += 1
         }
-        if errorMobile > 0 {
-            let errorMessage = NSLocalizedString("string-error-invalid-mobile", comment: "")
+        if mobile.count < 10 {
+            errorMessage = NSLocalizedString("string-error-invalid-mobile1", comment: "")
+            errorMobile += 1
+        }
+        if errorMobile > 0 { 
             self.showMessagePrompt(errorMessage)
             self.errorUsernamelLabel =  self.usernameTextField.addBottomLabelErrorMessage(errorMessage , marginLeft: 15)
             return false

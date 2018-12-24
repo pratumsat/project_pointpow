@@ -206,14 +206,17 @@ class LoginViewController: BaseViewController {
    
     func validateMobile(_ mobile:String)-> Bool{
         var errorMobile = 0
-        if mobile.count != 10 {
+        var errorMessage = ""
+        
+        if !checkPrefixcellPhone(mobile) {
+            errorMessage = NSLocalizedString("string-error-invalid-mobile", comment: "")
             errorMobile += 1
         }
-        if !checkPrefixcellPhone(mobile) {
+        if mobile.count < 10 {
+            errorMessage = NSLocalizedString("string-error-invalid-mobile1", comment: "")
             errorMobile += 1
         }
         if errorMobile > 0 {
-            let errorMessage = NSLocalizedString("string-error-invalid-mobile", comment: "")
             self.showMessagePrompt(errorMessage)
             self.errorUsernamelLabel =  self.usernameTextField.addBottomLabelErrorMessage(errorMessage , marginLeft: 15)
             return false

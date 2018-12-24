@@ -57,7 +57,7 @@ class PersonalPopupViewController: BaseViewController {
     
     func setUp(){
         
-        self.isMobileField = false
+        self.isMobileField = true
         
         self.backgroundImage?.image = nil
         
@@ -319,15 +319,19 @@ class PersonalPopupViewController: BaseViewController {
     
     func validateIDcard(_ id:String)-> Bool{
         var errorMobile = 0
+        var errorMessage = ""
         let nID = id.replace(target: "-", withString: "")
-        if nID.count != 13 {
-            errorMobile += 1
-        }
         if !isValidIDCard(nID) {
+            errorMessage = NSLocalizedString("string-error-invalid-personal-id", comment: "")
             errorMobile += 1
         }
+        if nID.count < 13 {
+            errorMessage = NSLocalizedString("string-error-invalid-personal-id1", comment: "")
+            errorMobile += 1
+        }
+
         if errorMobile > 0 {
-            let errorMessage = NSLocalizedString("string-error-invalid-personal-id", comment: "")
+            
             self.showMessagePrompt(errorMessage)
             self.errorPersonalIDLabel =  self.parsonalTextField.addBottomLabelErrorMessage(errorMessage , marginLeft: 0)
             return false
@@ -336,15 +340,21 @@ class PersonalPopupViewController: BaseViewController {
     }
     func validateMobile(_ mobile:String)-> Bool{
         var errorMobile = 0
+        var errorMessage = ""
         let nMobile = mobile.replace(target: "-", withString: "")
         if nMobile.count != 10 {
             errorMobile += 1
         }
         if !checkPrefixcellPhone(nMobile) {
+            errorMessage = NSLocalizedString("string-error-invalid-mobile", comment: "")
+            errorMobile += 1
+        }
+        if nMobile.count < 10 {
+            errorMessage = NSLocalizedString("string-error-invalid-mobile1", comment: "")
             errorMobile += 1
         }
         if errorMobile > 0 {
-            let errorMessage = NSLocalizedString("string-error-invalid-mobile", comment: "")
+            
             self.showMessagePrompt(errorMessage)
             self.errorMobileLabel =  self.optionTextField.addBottomLabelErrorMessage(errorMessage , marginLeft: 0)
             return false

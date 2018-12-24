@@ -26,6 +26,15 @@ class PersonalPopupViewController: BaseViewController {
     
     var nextStep:(()->Void)?
     
+    
+    var errorLastnamelLabel:UILabel?
+    var errorFirstNameLabel:UILabel?
+    var errorPersonalIDLabel:UILabel?
+    var errorEmailLabel:UILabel?
+    var errorMobileLabel:UILabel?
+    
+    var isMobileField:Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,6 +57,7 @@ class PersonalPopupViewController: BaseViewController {
     
     func setUp(){
         
+        self.isMobileField = false
         
         self.backgroundImage?.image = nil
         
@@ -79,6 +89,13 @@ class PersonalPopupViewController: BaseViewController {
         self.parsonalTextField.autocorrectionType = .no
         self.optionTextField.autocorrectionType = .no
       
+        if self.isMobileField {
+            self.optionTextField.keyboardType = .numberPad
+            self.optionLabel.text = NSLocalizedString("string-item-popup-profile-mobile", comment: "")
+        }else{
+            self.optionTextField.keyboardType = .emailAddress
+            self.optionLabel.text = NSLocalizedString("string-item-popup-profile-email", comment: "")
+        }
         
         
         self.clearImageView = self.firstNameTextField.addRightButton(UIImage(named: "ic-x")!)
@@ -149,6 +166,18 @@ class PersonalPopupViewController: BaseViewController {
             }else{
                 self.clearImageView3?.isHidden = false
             }
+            
+            //Mobile
+            let text = textField.text ?? ""
+            
+            if string.count == 0 {
+                textField.text = String(text.dropLast()).chunkFormattedPersonalID()
+            }  else {
+                let newText = String((text + string).filter({ $0 != "-" }).prefix(13))
+                textField.text = newText.chunkFormattedPersonalID()
+            }
+            return false
+            
         }
         if textField  == self.optionTextField {
             let startingLength = textField.text?.count ?? 0
@@ -163,6 +192,21 @@ class PersonalPopupViewController: BaseViewController {
             }else{
                 self.clearImageView4?.isHidden = false
             }
+            if self.isMobileField {
+                //Mobile
+                let text = textField.text ?? ""
+                
+                if string.count == 0 {
+                    textField.text = String(text.dropLast()).chunkFormatted()
+                }  else {
+                    let newText = String((text + string).filter({ $0 != "-" }).prefix(10))
+                    textField.text = newText.chunkFormatted()
+                }
+                return false
+            }else{
+                //Email
+            }
+            
         }
         return true
         
@@ -194,24 +238,118 @@ class PersonalPopupViewController: BaseViewController {
         
     }
     @IBAction func nextTapped(_ sender: Any) {
-        self.windowSubview?.removeFromSuperview()
-        self.windowSubview = nil
         
-        self.dismiss(animated: true) {
-            self.nextStep?()
+        errorLastnamelLabel?.removeFromSuperview()
+        errorFirstNameLabel?.removeFromSuperview()
+        errorPersonalIDLabel?.removeFromSuperview()
+        errorEmailLabel?.removeFromSuperview()
+        errorMobileLabel?.removeFromSuperview()
+        
+        
+        let firstName = self.firstNameTextField.text!
+        let lastName = self.lastNameTextField.text!
+        let personalID  = self.parsonalTextField.text!
+        let optional = self.optionTextField.text!
+        
+        var errorEmpty = 0
+        var emptyMessage = ""
+        
+        
+        
+        if optional.isEmpty {
+            if self.isMobileField {
+                emptyMessage = NSLocalizedString("string-error-empty-mobile", comment: "")
+                self.errorMobileLabel =  self.optionTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
+            }else{
+                emptyMessage = NSLocalizedString("string-error-empty-email", comment: "")
+                self.errorEmailLabel =  self.optionTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
+            }
+            errorEmpty += 1
+            
+        }
+        if personalID.isEmpty {
+            emptyMessage = NSLocalizedString("string-error-empty-personal-id", comment: "")
+            self.errorPersonalIDLabel =  self.parsonalTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
+            errorEmpty += 1
+            
+        }
+        if lastName.isEmpty {
+            emptyMessage = NSLocalizedString("string-error-empty-lastname", comment: "")
+            self.errorLastnamelLabel =  self.lastNameTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
+            errorEmpty += 1
+            
+        }
+        if firstName.isEmpty {
+            emptyMessage = NSLocalizedString("string-error-empty-firstname", comment: "")
+            self.errorFirstNameLabel =  self.firstNameTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
+            errorEmpty += 1
         }
         
+        
+        if errorEmpty > 0 {
+            self.showMessagePrompt(emptyMessage)
+            return
+        }
+
+    
+        guard validateIDcard(personalID) else { return }
+        
+        if self.isMobileField {
+            guard validateMobile(optional) else { return }
+            
+            self.dismiss(animated: true) {
+                self.windowSubview?.removeFromSuperview()
+                self.windowSubview = nil
+                self.nextStep?()
+            }
+        }else{
+            if isValidEmail(optional) {
+                self.dismiss(animated: true) {
+                    self.windowSubview?.removeFromSuperview()
+                    self.windowSubview = nil
+                    self.nextStep?()
+                }
+            }else{
+                let emailNotValid = NSLocalizedString("string-error-invalid-email", comment: "")
+                self.showMessagePrompt(emailNotValid)
+                self.errorEmailLabel =  self.optionTextField.addBottomLabelErrorMessage(emailNotValid, marginLeft: 0 )
+            }
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func validateIDcard(_ id:String)-> Bool{
+        var errorMobile = 0
+        let nID = id.replace(target: "-", withString: "")
+        if nID.count != 13 {
+            errorMobile += 1
+        }
+        if !isValidIDCard(nID) {
+            errorMobile += 1
+        }
+        if errorMobile > 0 {
+            let errorMessage = NSLocalizedString("string-error-invalid-personal-id", comment: "")
+            self.showMessagePrompt(errorMessage)
+            self.errorPersonalIDLabel =  self.parsonalTextField.addBottomLabelErrorMessage(errorMessage , marginLeft: 0)
+            return false
+        }
+        return true
     }
-    */
+    func validateMobile(_ mobile:String)-> Bool{
+        var errorMobile = 0
+        let nMobile = mobile.replace(target: "-", withString: "")
+        if nMobile.count != 10 {
+            errorMobile += 1
+        }
+        if !checkPrefixcellPhone(nMobile) {
+            errorMobile += 1
+        }
+        if errorMobile > 0 {
+            let errorMessage = NSLocalizedString("string-error-invalid-mobile", comment: "")
+            self.showMessagePrompt(errorMessage)
+            self.errorMobileLabel =  self.optionTextField.addBottomLabelErrorMessage(errorMessage , marginLeft: 0)
+            return false
+        }
+        return true
+    }
 
 }

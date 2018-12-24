@@ -431,10 +431,35 @@ extension Collection {
         }
         return res
     }
+    public func chunkP(n: Int) -> [SubSequence] {
+        var res: [SubSequence] = []
+        var i = startIndex
+        var j: Index
+        while i != endIndex {
+            var na = n
+            if res.count == 1 {
+                na = n + 3
+            }
+            if res.count == 2 {
+                na = n + 4
+            }
+            if res.count == 3 {
+                na = n + 1
+            }
+            j = index(i, offsetBy: na, limitedBy: endIndex) ?? endIndex
+            res.append(self[i..<j])
+            i = j
+            
+        }
+        return res
+    }
 }
 extension String {
     func chunkFormatted(withChunkSize chunkSize: Int = 3, withSeparator separator: Character = "-") -> String {
         return self.filter { $0 != separator }.chunk(n: chunkSize).map{ String($0) }.joined(separator: String(separator))
+    }
+    func chunkFormattedPersonalID(withChunkSize chunkSize: Int = 1, withSeparator separator: Character = "-") -> String {
+        return self.filter { $0 != separator }.chunkP(n: chunkSize).map{ String($0) }.joined(separator: String(separator))
     }
     
     func replace(target: String, withString: String) -> String{
@@ -494,7 +519,7 @@ struct Constant {
             static let ITEM_TITLE = CGFloat(20.0)
             static let BUTTON = CGFloat(22.0)
             static let TEXTFIELD = CGFloat(20.0)
-            static let UNDER_TEXTFIELD = CGFloat(17.0)
+            static let UNDER_TEXTFIELD = CGFloat(15.0)
             static let CONTENT = CGFloat(22.0)
             static let TAB = CGFloat(12.0)
             static let FREIND_RECENT = CGFloat(15.0)

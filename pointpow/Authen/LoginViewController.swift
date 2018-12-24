@@ -137,7 +137,8 @@ class LoginViewController: BaseViewController {
 
     
     @IBAction func loginTapped(_ sender: Any) {
-    
+        self.dismiss(animated: true, completion: nil)
+        
         let username = self.usernameTextField.text!
         let password = self.passwordTextField.text!
         
@@ -169,6 +170,7 @@ class LoginViewController: BaseViewController {
             print("number")
             
             guard validateMobile(username) else { return }
+            
             
             if password == "123456A" {
                 self.dismiss(animated: true, completion: nil)

@@ -1532,7 +1532,6 @@
                                         </state>
                                         <connections>
                                             <action selector="nextTapped:" destination="nhk-fF-zva" eventType="touchUpInside" id="9d2-dR-KoC"/>
-                                            <action selector="resetTapped:" destination="bNh-MO-bgB" eventType="touchUpInside" id="a7g-ap-7Hd"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="COH-0J-skQ">
@@ -1754,7 +1753,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="resetTapped:" destination="bNh-MO-bgB" eventType="touchUpInside" id="fBI-IQ-QY7"/>
+                                            <action selector="saveTapped:" destination="082-Yj-yCy" eventType="touchUpInside" id="Koc-wo-W5H"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbr-G4-fD5">
@@ -1934,7 +1933,6 @@
                                         </state>
                                         <connections>
                                             <action selector="confirmTapped:" destination="pjU-ce-5DK" eventType="touchUpInside" id="2kZ-5p-AXF"/>
-                                            <action selector="resetTapped:" destination="bNh-MO-bgB" eventType="touchUpInside" id="t92-37-P7E"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IHb-2F-GID">
@@ -2211,7 +2209,6 @@
                                         </state>
                                         <connections>
                                             <action selector="confirmTapped:" destination="7o7-j6-umE" eventType="touchUpInside" id="lrn-Cy-03a"/>
-                                            <action selector="resetTapped:" destination="bNh-MO-bgB" eventType="touchUpInside" id="JyY-EJ-WKI"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mdA-05-78o">
@@ -3233,7 +3230,6 @@
                                         </state>
                                         <connections>
                                             <action selector="confirmTapped:" destination="Y5Z-UY-lDe" eventType="touchUpInside" id="5rc-Hv-jAP"/>
-                                            <action selector="resetTapped:" destination="bNh-MO-bgB" eventType="touchUpInside" id="1dU-N2-BzU"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EKI-GW-Atl">
@@ -3309,7 +3305,6 @@
                                         </state>
                                         <connections>
                                             <action selector="confirmTapped:" destination="2hb-HZ-XcX" eventType="touchUpInside" id="rng-rf-FXf"/>
-                                            <action selector="resetTapped:" destination="bNh-MO-bgB" eventType="touchUpInside" id="AJY-8r-6Tf"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JX3-8p-dni">
@@ -3436,7 +3431,6 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="resetTapped:" destination="bNh-MO-bgB" eventType="touchUpInside" id="5m9-UG-0Wu"/>
                                             <action selector="saveTapped:" destination="che-H4-VDX" eventType="touchUpInside" id="Aap-Uz-6f7"/>
                                         </connections>
                                     </button>

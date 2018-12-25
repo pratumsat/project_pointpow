@@ -24,6 +24,8 @@ class PersonalViewController: BaseViewController  {
     
     var pickerView:UIDatePicker?
     
+     var errorPersonalIDLabel:UILabel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = NSLocalizedString("string-title-profile-edit", comment: "")
@@ -189,5 +191,61 @@ class PersonalViewController: BaseViewController  {
         return "1"
     }
     
+    
+    @IBAction func saveTapped(_ sender: Any) {
+        
+        errorPersonalIDLabel?.removeFromSuperview()
+        
+        let firstName = self.firstNameTextField.text!
+        let lastName = self.lastNameTextField.text!
+        let personalID  = self.parsonalTextField.text!
+        
+        
+        var errorEmpty = 0
+        var emptyMessage = ""
+        
+        
+      
+        if personalID.isEmpty {
+            emptyMessage = NSLocalizedString("string-error-empty-personal-id", comment: "")
+            self.errorPersonalIDLabel =  self.parsonalTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
+            errorEmpty += 1
+            
+        }
+        
+        
+        if errorEmpty > 0 {
+            self.showMessagePrompt(emptyMessage)
+            return
+        }
+        
+        
+        guard validateIDcard(personalID) else { return }
+       
+        //pass
+       
+    }
+    
+    func validateIDcard(_ id:String)-> Bool{
+        var errorMobile = 0
+        var errorMessage = ""
+        let nID = id.replace(target: "-", withString: "")
+        if !isValidIDCard(nID) {
+            errorMessage = NSLocalizedString("string-error-invalid-personal-id", comment: "")
+            errorMobile += 1
+        }
+        if nID.count < 13 {
+            errorMessage = NSLocalizedString("string-error-invalid-personal-id1", comment: "")
+            errorMobile += 1
+        }
+        
+        if errorMobile > 0 {
+            
+            self.showMessagePrompt(errorMessage)
+            self.errorPersonalIDLabel =  self.parsonalTextField.addBottomLabelErrorMessage(errorMessage , marginLeft: 0)
+            return false
+        }
+        return true
+    }
 
 }

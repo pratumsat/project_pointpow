@@ -353,6 +353,10 @@ class PersonalPopupViewController: BaseViewController {
             errorMessage = NSLocalizedString("string-error-invalid-mobile1", comment: "")
             errorMobile += 1
         }
+        if nMobile.count > 10 {
+            errorMessage = NSLocalizedString("string-error-invalid-mobile2", comment: "")
+            errorMobile += 1
+        }
         if errorMobile > 0 {
             
             self.showMessagePrompt(errorMessage)

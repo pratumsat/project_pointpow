@@ -137,7 +137,7 @@ class LoginViewController: BaseViewController {
 
     
     @IBAction func loginTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        
         
         let username = self.usernameTextField.text!
         let password = self.passwordTextField.text!
@@ -214,6 +214,10 @@ class LoginViewController: BaseViewController {
         }
         if mobile.count < 10 {
             errorMessage = NSLocalizedString("string-error-invalid-mobile1", comment: "")
+            errorMobile += 1
+        }
+        if mobile.count > 10 {
+            errorMessage = NSLocalizedString("string-error-invalid-mobile2", comment: "")
             errorMobile += 1
         }
         if errorMobile > 0 {

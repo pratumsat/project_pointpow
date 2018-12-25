@@ -15,6 +15,8 @@ class ForgotPasswordViewController: BaseViewController {
     
     var clearImageView:UIImageView?
     
+
+    var errorUsernamelLabel:UILabel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,19 +78,78 @@ class ForgotPasswordViewController: BaseViewController {
     }
     
     @IBAction func resetTapped(_ sender: Any) {
-        self.showResetPasswordView(true)
+        let username = self.usernameTextField.text!
+        
+        var errorEmpty = 0
+        var emptyMessage = ""
+        
+        self.errorUsernamelLabel?.removeFromSuperview()
+        
+        if username.isEmpty {
+            emptyMessage = NSLocalizedString("string-error-empty-username", comment: "")
+            self.errorUsernamelLabel =  self.usernameTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 15 )
+            errorEmpty += 1
+            
+        }
+        if errorEmpty > 0 {
+            self.showMessagePrompt(emptyMessage)
+            return
+        }
+        
+        
+        if isValidNumber(username){
+            print("number")
+            
+            guard validateMobile(username) else { return }
+            
+            
+           self.showResetPasswordView(true)
+            
+            return
+        }
+        
+        if isValidEmail(username) {
+            print("email")
+            
+             self.showResetPasswordView(true)
+            
+            
+        }else{
+            
+            print("not email")
+            
+            let emailNotValid = NSLocalizedString("string-error-invalid-email", comment: "")
+            self.showMessagePrompt(emailNotValid)
+            self.errorUsernamelLabel =  self.usernameTextField.addBottomLabelErrorMessage(emailNotValid, marginLeft: 15 )
+            
+            
+        }
+       
     }
     
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func validateMobile(_ mobile:String)-> Bool{
+        var errorMobile = 0
+        var errorMessage = ""
+        
+        if !checkPrefixcellPhone(mobile) {
+            errorMessage = NSLocalizedString("string-error-invalid-mobile", comment: "")
+            errorMobile += 1
+        }
+        if mobile.count < 10 {
+            errorMessage = NSLocalizedString("string-error-invalid-mobile1", comment: "")
+            errorMobile += 1
+        }
+        if mobile.count > 10 {
+            errorMessage = NSLocalizedString("string-error-invalid-mobile2", comment: "")
+            errorMobile += 1
+        }
+        if errorMobile > 0 {
+            self.showMessagePrompt(errorMessage)
+            self.errorUsernamelLabel =  self.usernameTextField.addBottomLabelErrorMessage(errorMessage , marginLeft: 15)
+            return false
+        }
+        return true
     }
-    */
+    
 
 }

@@ -80,16 +80,6 @@
 
 
 
-/* PopUp */
-"string-item-popup-profile-mobile" = "เบอร์มือถือ";
-"string-item-popup-profile-email" = "อีเมล";
-"string-error-empty-firstname" = "กรุณากรอกชื่อ";
-"string-error-empty-lastname" = "กรุณากรอกนามสกุล";
-"string-error-empty-email" = "กรุณากรอกอีเมล";
-"string-error-empty-mobile" = "กรุณากรอกเบอร์มือถือ";
-"string-error-empty-personal-id" = "กรุณากรอกเลขบัตรประชาชน";
-
-
 /*Profile*/
 "string-item-profile-change" = "แก้ไขโปรไฟล์";
 "string-item-profile-change-displayname" = "Display Name";
@@ -159,6 +149,7 @@
 "string-error-invalid-email" = "อีเมลไม่ถูกต้อง";
 "string-error-invalid-mobile" = "เบอร์มือถือไม่ถูกต้อง";
 "string-error-invalid-mobile1" = "เบอร์มือถือไม่ครบ 10 หลัก";
+"string-error-invalid-mobile2" = "เบอร์มือถือจะต้องไม่เกิน 10 หลัก";
 "string-error-empty-username" = "กรุณากรอก อีเมล/เบอร์มือถือ";
 "string-error-empty-pwd" = "กรุณากรอกรหัสผ่าน";
 "string-error-empty-confirm-pwd" = "กรุณากรอกยืนยันรหัสผ่าน";
@@ -172,3 +163,15 @@
 
 /*verify*/
 "string-button-re-send"  = "ส่งอีกครั้ง";
+
+
+
+
+/* PopUp */
+"string-item-popup-profile-mobile" = "เบอร์มือถือ";
+"string-item-popup-profile-email" = "อีเมล";
+"string-error-empty-firstname" = "กรุณากรอกชื่อ";
+"string-error-empty-lastname" = "กรุณากรอกนามสกุล";
+"string-error-empty-email" = "กรุณากรอกอีเมล";
+"string-error-empty-mobile" = "กรุณากรอกเบอร์มือถือ";
+"string-error-empty-personal-id" = "กรุณากรอกเลขบัตรประชาชน";

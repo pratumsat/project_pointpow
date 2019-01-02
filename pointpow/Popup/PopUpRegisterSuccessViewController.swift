@@ -12,10 +12,41 @@ class PopUpRegisterSuccessViewController: BaseViewController {
 
     var dismissView:(()->Void)?
     
+    var countDown:Int = 3
+    var timer:Timer?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
          self.backgroundImage?.image = nil
+        self.countDown(1.0)
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        self.removeCountDownLable()
+    }
+    func countDown(_ time: Double){
+        timer = Timer.scheduledTimer(timeInterval: time, target: self, selector: #selector(updateCountDown), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateCountDown() {
+        if(countDown > 0) {
+            countDown = countDown - 1
+        } else {
+            self.removeCountDownLable()
+            self.closeView()
+        }
+    }
+    func removeCountDownLable() {
+        //finish
+        countDown = 60
+        timer?.invalidate()
+        timer = nil
+        
+        
+        
     }
     
     

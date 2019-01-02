@@ -211,7 +211,15 @@ class RegisterViewController: BaseViewController {
             print("email")
             guard validatePassword(password, confirmPassword) else { return }
             print("pass")
-            self.showVerify(true)
+            
+            let message = NSLocalizedString("string-verify-password-send-email", comment: "")
+            let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+            let ok = UIAlertAction(title: NSLocalizedString("string-button-ok", comment: ""), style: .cancel, handler: { (action) in
+                
+                self.showLogin(true)
+            })
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
             
         }else{
             print("not email")

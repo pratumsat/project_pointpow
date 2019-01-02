@@ -18,7 +18,7 @@ class VerifyViewController: BaseViewController {
     var clearImageView:UIImageView?
     
      var errorOTPlLabel:UILabel?
-    var countDown:Int = 10
+    var countDown:Int = 60
     var timer:Timer?
     
     

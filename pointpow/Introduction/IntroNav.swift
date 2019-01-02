@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Presentr
 
 class IntroNav: BaseNavigationViewController {
 
@@ -25,13 +26,30 @@ class IntroNav: BaseNavigationViewController {
         print("rootView IntroNav resetPassword")
         
         if let vc:ResetNav  = self.storyboard?.instantiateViewController(withIdentifier: "ResetNav") as? ResetNav {
-            present(vc, animated: true, completion: {
-                //didsave
-            })
+            present(vc, animated: true, completion: nil)
         }
     }
     @objc func verifyEmailRegister(_ notification: NSNotification){
         print("rootView IntroNav verifyEmailRegister")
+        
+        let presenter: Presentr = {
+            
+            let customPresenter = Presentr(presentationType: PresentationType.alert)
+            customPresenter.roundCorners = true
+            customPresenter.cornerRadius = 10
+            customPresenter.dismissOnSwipe = true
+            customPresenter.dismissOnTap = true
+            
+            
+            return customPresenter
+        }()
+        
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "PopUpRegisterSuccessViewController") as? PopUpRegisterSuccessViewController{
+            
+            customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
+            
+        }
+        
     }
     
     func hideStatusBar(){

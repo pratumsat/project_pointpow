@@ -103,16 +103,28 @@ class ForgotPasswordViewController: BaseViewController {
             guard validateMobile(username) else { return }
             
             
-           self.showResetPasswordView(true)
-            
+            let message = NSLocalizedString("string-reset-password-send-mobile", comment: "")
+            let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+            let ok = UIAlertAction(title: NSLocalizedString("string-button-ok", comment: ""), style: .cancel, handler: { (action) in
+                
+                self.navigationController?.popViewController(animated: true)
+            })
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
             return
         }
         
         if isValidEmail(username) {
             print("email")
             
-             self.showResetPasswordView(true)
-            
+            let message = NSLocalizedString("string-reset-password-send-email", comment: "")
+            let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+            let ok = UIAlertAction(title: NSLocalizedString("string-button-ok", comment: ""), style: .cancel, handler: { (action) in
+                
+                self.navigationController?.popViewController(animated: true)
+            })
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
             
         }else{
             

@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        
         DataController.sharedInstance.retrieveToken()
         
         FirebaseApp.configure()
@@ -40,19 +41,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // Override point for customization after application launch.
         return true
     }
-    @available(iOS 9.0, *)
-    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
-        -> Bool {
-            return GIDSignIn.sharedInstance().handle(url,
-                                                     sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-                                                     annotation: [:])
+    
+    func getId(_ query:String) ->String?{
+        guard let a2 = query.range(of: "&") else {return nil}
+        
+        let startKey = query.distance(from: query.startIndex, to: a2.upperBound)
+        let endKey = query.distance(from: query.startIndex, to: query.endIndex)
+        
+        return query.substring(start: startKey, end: endKey)
     }
     
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        return GIDSignIn.sharedInstance().handle(url,
-                                                 sourceApplication: sourceApplication,
-                                                 annotation: annotation)
+    func getKey(_ query:String) ->String?{
+        guard let a2 = query.range(of: "&") else {return nil}
+        
+        let startKey = query.distance(from: query.startIndex, to: query.startIndex)
+        let endKey = query.distance(from: query.startIndex, to: a2.lowerBound)
+        
+        return query.substring(start: startKey, end: endKey)
     }
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
+        -> Bool {
+            let urlScheme = url.scheme // URL_scheme
+            let host = url.host
+            
+            print("HELLo SCHEME")
+            
+            if urlScheme == "pointpow" {
+                if host  == "resetpassword" {
+                    
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constant.DefaultConstansts.RESET_PASSWORD), object: nil, userInfo: [:] as [String:AnyObject])
+                }else if host == "emailverify" {
+                    
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constant.DefaultConstansts.VERIFI_EMAIL_REGISTER), object: nil, userInfo: [:] as [String:AnyObject])
+                }
+            }
+            
+            return GIDSignIn.sharedInstance().handle(url,sourceApplication:
+                options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
+    }
+   
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {
             print(error.localizedDescription)

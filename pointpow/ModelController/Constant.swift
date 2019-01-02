@@ -454,6 +454,25 @@ extension Collection {
         return res
     }
 }
+extension URL {
+    var queryDictionary: [String: String]? {
+        guard let query = self.query else { return nil}
+        
+        var queryStrings = [String: String]()
+        for pair in query.components(separatedBy: "&") {
+            
+            let key = pair.components(separatedBy: "=")[0]
+            
+            let value = pair
+                .components(separatedBy:"=")[1]
+                .replacingOccurrences(of: "+", with: " ")
+                .removingPercentEncoding ?? ""
+            
+            queryStrings[key] = value
+        }
+        return queryStrings
+    }
+}
 extension String {
     func chunkFormatted(withChunkSize chunkSize: Int = 3, withSeparator separator: Character = "-") -> String {
         return self.filter { $0 != separator }.chunk(n: chunkSize).map{ String($0) }.joined(separator: String(separator))
@@ -491,6 +510,24 @@ extension NSLayoutConstraint {
 }
 
 struct Constant {
+    struct TopViewController{
+        static var top: UIViewController? {
+            get {
+                return topViewController()
+            }
+        }
+        static func topViewController(from viewController: UIViewController? = UIApplication.shared.delegate?.window??.rootViewController) -> UIViewController? {
+            if let tabBarViewController = viewController as? UITabBarController {
+                return topViewController(from: tabBarViewController.selectedViewController)
+            } else if let navigationController = viewController as? UINavigationController {
+                return topViewController(from: navigationController.visibleViewController)
+            } else if let presentedViewController = viewController?.presentedViewController {
+                return topViewController(from: presentedViewController)
+            } else {
+                return viewController
+            }
+        }
+    }
     struct CacheNotification {
         static let USER_TOKEN_CACHE = "USER_TOKEN"
         static let NAME_CACHE = "NotiStructHolder"
@@ -501,6 +538,8 @@ struct Constant {
         case left, right, top, bottom
     }
     struct DefaultConstansts {
+        static let RESET_PASSWORD = "RESET_PASSWORD"
+        static let VERIFI_EMAIL_REGISTER = "VERIFI_EMAIL_REGISTER"
         static let NOTIFICATION_SELECTED_PAGE = "NOTIFICATION_SELECTED_PAGE"
         static let NotificationGoogleSigInSuccess = "NotificationGoogleSigInSuccess"
         static let NotificationGoogleSigInFailure = "NotificationGoogleSigInFailure"

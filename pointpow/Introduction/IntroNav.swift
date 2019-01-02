@@ -14,6 +14,24 @@ class IntroNav: BaseNavigationViewController {
         super.viewDidLoad()
 
        
+        NotificationCenter.default.addObserver(self, selector: #selector(resetPassword), name: NSNotification.Name(rawValue: Constant.DefaultConstansts.RESET_PASSWORD), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(verifyEmailRegister), name: NSNotification.Name(rawValue: Constant.DefaultConstansts.VERIFI_EMAIL_REGISTER), object: nil)
+        
+        
+        
+    }
+    @objc func resetPassword(_ notification: NSNotification){
+        print("rootView IntroNav resetPassword")
+        
+        if let vc:ResetNav  = self.storyboard?.instantiateViewController(withIdentifier: "ResetNav") as? ResetNav {
+            present(vc, animated: true, completion: {
+                //didsave
+            })
+        }
+    }
+    @objc func verifyEmailRegister(_ notification: NSNotification){
+        print("rootView IntroNav verifyEmailRegister")
     }
     
     func hideStatusBar(){

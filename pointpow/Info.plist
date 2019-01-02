@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-    <string>$(DEVELOPMENT_LANGUAGE)</string>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
 	<string>PointPow</string>
 	<key>CFBundleExecutable</key>
@@ -34,6 +34,16 @@
 				<string>com.googleusercontent.apps.261564730163-m1h4v9mpisom3aj34skdf139kjfjgh5r</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.pointpower.pointpow</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>pointpow</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
@@ -59,9 +69,9 @@
 	<string>$(PRODUCT_NAME) Would Like to Access the Camera</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>$(PRODUCT_NAME) Would Like to Access the Face ID</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>$(PRODUCT_NAME) Would Like to Access the Photos</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>$(PRODUCT_NAME) Would Like to Access the Photos</string>
+	<key>NSPhotoLibraryUsageDescription</key>
 	<string>$(PRODUCT_NAME) Would Like to Access the Photos</string>
 	<key>UIAppFonts</key>
 	<array>

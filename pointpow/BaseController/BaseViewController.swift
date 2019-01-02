@@ -535,6 +535,26 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             
         }
     }
+    
+    func showRegisterSuccessPopup(_ animated:Bool , nextStepCallback:(()->Void)? = nil ){
+        let presenter: Presentr = {
+            
+            let customPresenter = Presentr(presentationType: PresentationType.alert)
+            customPresenter.roundCorners = true
+            customPresenter.cornerRadius = 10
+            customPresenter.dismissOnSwipe = true
+            customPresenter.dismissOnTap = true
+            
+            
+            return customPresenter
+        }()
+        
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "PopUpRegisterSuccessViewController") as? PopUpRegisterSuccessViewController{
+            
+            customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)
+            
+        }
+    }
     func showAddNameFavoritePopup(_ animated:Bool ,favName:String? = nil, savedCallback:(()->Void)? = nil ){
         let presenter: Presentr = {
             

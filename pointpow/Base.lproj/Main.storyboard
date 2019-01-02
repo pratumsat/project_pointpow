@@ -3050,7 +3050,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fkp-oz-xK0">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ojh-3i-mOM">
                                         <rect key="frame" x="20" y="40" width="374" height="40"/>
@@ -3077,7 +3077,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R02-as-zg8">
-                                        <rect key="frame" x="20" y="79.666666666666671" width="374" height="0.3333333333333286"/>
+                                        <rect key="frame" x="20" y="79.666666666666657" width="374" height="0.3333333333333286"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.5" id="92P-cQ-sbO"/>
@@ -3144,6 +3144,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TVX-fJ-kno"/>
                     </view>
+                    <navigationItem key="navigationItem" id="ns6-jI-74B"/>
                     <connections>
                         <outlet property="confirmButton" destination="sEk-dQ-9x3" id="uA7-pQ-Nmg"/>
                         <outlet property="confirmNewPasswordTextField" destination="oKl-Vg-zta" id="WJP-42-5iz"/>
@@ -3152,7 +3153,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fLN-09-L1H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5533" y="1334"/>
+            <point key="canvasLocation" x="6045" y="1326"/>
         </scene>
         <!--Result Transfer Nav-->
         <scene sceneID="pzV-Yr-xuf">
@@ -3480,6 +3481,74 @@
             </objects>
             <point key="canvasLocation" x="5620" y="2701"/>
         </scene>
+        <!--Pop Up Register Success View Controller-->
+        <scene sceneID="naN-kT-54W">
+            <objects>
+                <viewController storyboardIdentifier="PopUpRegisterSuccessViewController" id="G7y-FO-S5p" customClass="PopUpRegisterSuccessViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ghp-QR-Pzg">
+                        <rect key="frame" x="0.0" y="0.0" width="212" height="140"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-status-success2" translatesAutoresizingMaskIntoConstraints="NO" id="bhz-Xn-u2C">
+                                <rect key="frame" x="78" y="14" width="56" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="bhz-Xn-u2C" secondAttribute="height" multiplier="1:1" id="oLf-r0-evU"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="คุณได้ทำการยืนยันตัวตน" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWO-qF-syv">
+                                <rect key="frame" x="39.333333333333329" y="70" width="133.66666666666669" height="23.666666666666671"/>
+                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
+                                <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="เรียบร้อยแล้ว" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vD-Be-kdx">
+                                <rect key="frame" x="70.666666666666671" y="93.666666666666671" width="71.000000000000014" height="24"/>
+                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
+                                <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="sWO-qF-syv" firstAttribute="top" secondItem="bhz-Xn-u2C" secondAttribute="bottom" id="MLg-lV-Vtj"/>
+                            <constraint firstItem="sWO-qF-syv" firstAttribute="centerX" secondItem="bhz-Xn-u2C" secondAttribute="centerX" id="MZz-BM-bww"/>
+                            <constraint firstItem="5vD-Be-kdx" firstAttribute="top" secondItem="sWO-qF-syv" secondAttribute="bottom" id="XYJ-4d-uRV"/>
+                            <constraint firstItem="bhz-Xn-u2C" firstAttribute="centerX" secondItem="Ghp-QR-Pzg" secondAttribute="centerX" id="aEk-8V-BTT"/>
+                            <constraint firstItem="bhz-Xn-u2C" firstAttribute="centerY" secondItem="Ghp-QR-Pzg" secondAttribute="centerY" multiplier="0.6" id="m6Q-kD-xxH"/>
+                            <constraint firstItem="5vD-Be-kdx" firstAttribute="centerX" secondItem="bhz-Xn-u2C" secondAttribute="centerX" id="uUb-5J-Ou3"/>
+                            <constraint firstItem="bhz-Xn-u2C" firstAttribute="height" secondItem="Ghp-QR-Pzg" secondAttribute="height" multiplier="0.4" id="w9E-EW-t0D"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ii1-FI-Vk5"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="212" height="140"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mi7-p7-AhV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1958" y="1889"/>
+        </scene>
+        <!--Reset Nav-->
+        <scene sceneID="gOr-Gs-yfK">
+            <objects>
+                <navigationController storyboardIdentifier="ResetNav" id="Bb2-ia-8bH" customClass="ResetNav" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="71N-MI-vLQ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="23"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ZBb-uj-r5F" kind="relationship" relationship="rootViewController" id="wsa-4V-J5w"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gFp-EA-y7l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5286" y="1326"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ic-arrow-transfer" width="300" height="83"/>
@@ -3500,6 +3569,7 @@
         <image name="ic-search" width="120" height="119"/>
         <image name="ic-sms" width="90" height="93"/>
         <image name="ic-status-success" width="159" height="158"/>
+        <image name="ic-status-success2" width="450" height="449"/>
         <image name="ic-tab-account" width="75" height="75"/>
         <image name="ic-tab-account-active" width="75" height="75"/>
         <image name="ic-tab-home" width="75" height="75"/>

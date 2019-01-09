@@ -35,7 +35,11 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
             DataController.sharedInstance.setDefaultLanguage()
         }
         
-        
+        if DataController.sharedInstance.isLogin() {
+            print("isLogin")
+        }else{
+            print("notLogin")
+        }
         self.showIntroduce(false)
         self.setUp()
         

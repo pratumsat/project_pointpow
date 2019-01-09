@@ -288,7 +288,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         }
     }
     
-    func reNewApplication(){
+    @objc func reNewApplication(){
         UIApplication.shared.keyWindow?.rootViewController = storyboard!.instantiateViewController(withIdentifier: "MainNav")
     }
     
@@ -649,7 +649,46 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         }
     }
     
+    func handlerMessageError(_ messageError:String ,  title:String =  "Error"){
+        if messageError == "-1009"{
+            self.AlertMessageDialogOK(NSLocalizedString("error-connect-server-internet", comment: ""))
+            return
+        }
+        if messageError == "401"{
+            self.AlertErrorAccessDenied()
+            return
+        }
+        if messageError == "500"{
+            self.AlertMessageDialogOK(NSLocalizedString("error-connect-server", comment: ""))
+            return
+        }
+        self.AlertMessageDialogOK(messageError , title: title)
+    }
     
+    func AlertErrorAccessDenied(){
+        let title:String = "Error"
+        let message:String = NSLocalizedString("error-access-denied", comment: "")
+       
+        let confirm = NSLocalizedString("error-access-denied-confirm", comment: "")
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: confirm, style: .default) { _ in
+            
+            //Logout
+            DataController.sharedInstance.setToken("")
+             Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.reNewApplication), userInfo: nil, repeats: false)
+            
+        }
+        alert.addAction(confirmAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func AlertMessageDialogOK(_ message:String, title:String = "Error"){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: NSLocalizedString("string-button-ok", comment: ""), style: .default, handler: nil)
+        alert.addAction(ok)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
     
     func showMessagePrompt(_ message:String){
         let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
@@ -676,6 +715,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         alert.addAction(delete)
         self.present(alert, animated: true, completion: nil)
     }
+  
     
     func confirmSetLanguage(_ languageId:String){
         let title = NSLocalizedString("alert-title-language", comment: "")

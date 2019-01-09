@@ -79,6 +79,7 @@ class DataController {
     }
     
     
+    
 //    func saveNotifiacationArrayOfObjectData(newNoti: NotificationStruct){
 //
 //        var myObject:NotificationStructHolder

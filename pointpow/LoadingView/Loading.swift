@@ -12,6 +12,7 @@ import Foundation
 class Loading {
     var mRootView:UIView
     var loadingView:UIActivityIndicatorView?
+    var backgroundView:UIView?
     
     init(rootView: UIView) {
         self.mRootView = rootView
@@ -23,6 +24,10 @@ class Loading {
             loadingView?.center = self.mRootView.center
             loadingView?.startAnimating()
             
+            backgroundView = UIView(frame: self.mRootView.frame)
+            backgroundView?.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+            
+            self.mRootView.addSubview(backgroundView!)
             self.mRootView.addSubview(loadingView!)
             self.mRootView.bringSubviewToFront(loadingView!)
         }
@@ -32,7 +37,7 @@ class Loading {
         if let view = loadingView {
             view.stopAnimating()
             view.removeFromSuperview()
-            
+            backgroundView?.removeFromSuperview()
             loadingView = nil
         }
     }

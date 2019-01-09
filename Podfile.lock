@@ -15,6 +15,9 @@ PODS:
     - FirebaseAnalytics (= 5.1.0)
   - Firebase/CoreOnly (5.5.0):
     - FirebaseCore (= 5.1.0)
+  - Firebase/Messaging (5.5.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (= 3.1.0)
   - FirebaseAnalytics (5.1.0):
     - FirebaseCore (~> 5.1)
     - FirebaseInstanceID (~> 3.2)
@@ -29,6 +32,11 @@ PODS:
   - FirebaseInstanceID (3.2.0):
     - FirebaseCore (~> 5.1)
     - GoogleUtilities/Environment (~> 5.2)
+  - FirebaseMessaging (3.1.0):
+    - FirebaseCore (~> 5.0)
+    - FirebaseInstanceID (~> 3.0)
+    - GoogleUtilities/Reachability (~> 5.2)
+    - Protobuf (~> 3.1)
   - GoogleAppMeasurement (5.1.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2.0)
     - GoogleUtilities/MethodSwizzler (~> 5.2.0)
@@ -101,6 +109,7 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - Presentr (1.3.2)
+  - Protobuf (3.6.1)
   - SDWebImage/Core (4.4.2)
   - SDWebImage/WebP (4.4.2):
     - libwebp (~> 0.5)
@@ -111,6 +120,7 @@ DEPENDENCIES:
   - Alamofire (~> 4.7)
   - FBSDKLoginKit
   - Firebase/Core
+  - Firebase/Messaging
   - GoogleSignIn
   - Presentr
   - SDWebImage/WebP
@@ -126,6 +136,7 @@ SPEC REPOS:
     - FirebaseAnalytics
     - FirebaseCore
     - FirebaseInstanceID
+    - FirebaseMessaging
     - GoogleAppMeasurement
     - GoogleSignIn
     - GoogleToolboxForMac
@@ -135,6 +146,7 @@ SPEC REPOS:
     - libwebp
     - nanopb
     - Presentr
+    - Protobuf
     - SDWebImage
     - ZBarSDK
 
@@ -147,6 +159,7 @@ SPEC CHECKSUMS:
   FirebaseAnalytics: d4a260c114aec0d765ab5b9c404ac63de1d29381
   FirebaseCore: ee4b35cf8c8e781da296cc7c15125e4608bb954d
   FirebaseInstanceID: 8cd2c6cfe7b9ab65ce7e248f6da7f26f6775b9be
+  FirebaseMessaging: f67b3719f520ee200da0e20ce577fe2bce0c01d0
   GoogleAppMeasurement: e785bdb86d3d280abc778156cec323a975f11d1d
   GoogleSignIn: d9ef55b10f0aa401a5de2747f59b725e4b9732ac
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
@@ -156,9 +169,10 @@ SPEC CHECKSUMS:
   libwebp: 0f01098c6c17175391af621b2f14150f3ca16e16
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Presentr: 797ae6ec8904eaba4ec58a4c2065bd66e31569ea
+  Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   ZBarSDK: 4c1b5daeb7d6cc67dc9355e690af0230a661f6ec
 
-PODFILE CHECKSUM: 3feef0db81da2c424849621765bf90eaa013f839
+PODFILE CHECKSUM: 32f4ba26f02c3e2e2282b7631e3b1a7e3e4f9cc0
 
 COCOAPODS: 1.5.3

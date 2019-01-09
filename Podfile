@@ -10,6 +10,7 @@ target 'pointpow' do
     pod 'SDWebImage/WebP'
     pod 'Presentr'
     pod 'Firebase/Core'
+    pod 'Firebase/Messaging'
     pod 'ZBarSDK', '~>1.3.1'
     pod 'GoogleSignIn'
     

@@ -257,11 +257,11 @@ class RegisterViewController: BaseViewController {
     func validatePassword(_ password:String, _ confirmPassword:String) ->Bool{
         var errorPassowrd = 0
         var errorMessagePassword = ""
-        if !validPassword(confirmPassword){
-            errorMessagePassword = NSLocalizedString("string-error-invalid-confirm-pwd", comment: "")
-            self.errorConfirmPasswordLabel =  self.confirmPasswordTextField.addBottomLabelErrorMessage(errorMessagePassword, marginLeft: 15 )
-            errorPassowrd += 1
-        }
+//        if !validPassword(confirmPassword){
+//            errorMessagePassword = NSLocalizedString("string-error-invalid-confirm-pwd", comment: "")
+//            self.errorConfirmPasswordLabel =  self.confirmPasswordTextField.addBottomLabelErrorMessage(errorMessagePassword, marginLeft: 15 )
+//            errorPassowrd += 1
+//        }
         if !validPassword(password) {
             errorMessagePassword = NSLocalizedString("string-error-invalid-pwd", comment: "")
             self.infomationlabel.isHidden = true

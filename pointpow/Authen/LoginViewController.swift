@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import FirebaseMessaging
 
 class LoginViewController: BaseViewController {
 
@@ -62,6 +64,9 @@ class LoginViewController: BaseViewController {
         self.passwordTextField.autocorrectionType = .no
         self.passwordTextField.isSecureTextEntry = true
         
+        self.usernameTextField.returnKeyType = .next
+        self.passwordTextField.returnKeyType = .done
+        
         self.clearImageView = self.usernameTextField.addRightButton(UIImage(named: "ic-x")!)
         let tap = UITapGestureRecognizer(target: self, action: #selector(clearUserNameTapped))
         self.clearImageView?.isUserInteractionEnabled = true
@@ -89,6 +94,15 @@ class LoginViewController: BaseViewController {
     
     @objc func facebookTapped(){
         self.loginFacebook()
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        if textField == self.usernameTextField {
+            self.passwordTextField.becomeFirstResponder()
+        }
+        
+        return true
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -138,7 +152,6 @@ class LoginViewController: BaseViewController {
     
     @IBAction func loginTapped(_ sender: Any) {
         
-        
         let username = self.usernameTextField.text!
         let password = self.passwordTextField.text!
         
@@ -172,12 +185,6 @@ class LoginViewController: BaseViewController {
             guard validateMobile(username) else { return }
             
             
-            if password == "123456A" {
-                self.dismiss(animated: true, completion: nil)
-            }else{
-                self.showMessagePrompt("ใส่รหัสผ่านไม่ถูกต้อง")
-                self.errorPasswordLabel =  self.passwordTextField.addBottomLabelErrorMessage("ใส่รหัสผ่านไม่ถูกต้อง" , marginLeft: 15)
-            }
             
             return
         }
@@ -185,12 +192,41 @@ class LoginViewController: BaseViewController {
         if isValidEmail(username) {
             print("email")
             
-            if password == "123456A" {
-                self.dismiss(animated: true, completion: nil)
-            }else{
-                self.showMessagePrompt("ใส่รหัสผ่านไม่ถูกต้อง")
-                self.errorPasswordLabel =  self.passwordTextField.addBottomLabelErrorMessage("ใส่รหัสผ่านไม่ถูกต้อง" , marginLeft: 15)
-            }
+//            if password == "123456A" {
+//                self.dismiss(animated: true, completion: nil)
+//            }else{
+//                self.showMessagePrompt("รหัสผ่านไม่ถูกต้อง")
+//                self.errorPasswordLabel =  self.passwordTextField.addBottomLabelErrorMessage("รหัสผ่านไม่ถูกต้อง" , marginLeft: 15)
+//            }
+            
+            let fcmToken = Messaging.messaging().fcmToken ?? ""
+            let params:Parameters = ["email" : username,
+                                     "password": password,
+                                     "device_token": fcmToken,
+                                     "app_os": "ios"]
+            modelCtrl.loginWithEmail(params: params, succeeded: { (result) in
+                if let mResult = result as? [String:AnyObject]{
+                    print(mResult)
+                    
+                    self.dismiss(animated: true, completion: nil)
+                    
+                }
+            }, error: { (error) in
+                if let mError = error as? [String:AnyObject]{
+                    print(mError)
+                    let message = mError["message"] as? String ?? ""
+                    let field = mError["field"] as? String ?? ""
+                    if field == "username" {
+                        self.errorUsernamelLabel = self.usernameTextField.addBottomLabelErrorMessage(message, marginLeft: 15)
+                    }else if field == "password"{
+                        self.errorPasswordLabel =  self.passwordTextField.addBottomLabelErrorMessage(message, marginLeft: 15)
+                    }
+                    self.showMessagePrompt(message)
+                }
+            }, failure: { (messageError) in
+                self.handlerMessageError(messageError , title: "")
+            })
+            
             
         }else{
            

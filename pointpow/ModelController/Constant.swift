@@ -510,6 +510,10 @@ extension NSLayoutConstraint {
 }
 
 struct Constant {
+    struct PointPowAPI {
+        static let HOST = "http://192.168.1.43/"
+        static let loginWithEmail  = "\(HOST)pointpow-api/public/api/v1/login"
+    }
     struct TopViewController{
         static var top: UIViewController? {
             get {

@@ -82,6 +82,7 @@
 		C1817DAA219E7F18009507DB /* BankPointTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1817DA9219E7F18009507DB /* BankPointTransferViewController.swift */; };
 		C197FEDA21DC5616002F24E8 /* PopUpRegisterSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FED921DC5616002F24E8 /* PopUpRegisterSuccessViewController.swift */; };
 		C197FEDE21DC8E98002F24E8 /* ResetNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FEDD21DC8E98002F24E8 /* ResetNav.swift */; };
+		C197FEE121E5D225002F24E8 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FEE021E5D225002F24E8 /* UserInfo.swift */; };
 		C1AD507A2187F45600F74415 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AD50792187F45600F74415 /* AppDelegate.swift */; };
 		C1AD507C2187F45600F74415 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AD507B2187F45600F74415 /* ViewController.swift */; };
 		C1AD507F2187F45600F74415 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1AD507D2187F45600F74415 /* Main.storyboard */; };
@@ -208,6 +209,7 @@
 		C1817DA9219E7F18009507DB /* BankPointTransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankPointTransferViewController.swift; sourceTree = "<group>"; };
 		C197FED921DC5616002F24E8 /* PopUpRegisterSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpRegisterSuccessViewController.swift; sourceTree = "<group>"; };
 		C197FEDD21DC8E98002F24E8 /* ResetNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetNav.swift; sourceTree = "<group>"; };
+		C197FEE021E5D225002F24E8 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		C1AD50762187F45600F74415 /* pointpow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pointpow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1AD50792187F45600F74415 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1AD507B2187F45600F74415 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -504,6 +506,14 @@
 			path = BankCell;
 			sourceTree = "<group>";
 		};
+		C197FEDF21E5D20B002F24E8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C197FEE021E5D225002F24E8 /* UserInfo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		C1AD506D2187F45600F74415 = {
 			isa = PBXGroup;
 			children = (
@@ -543,6 +553,7 @@
 				C1DEBE8D2188178B00CBB95F /* pointpow.entitlements */,
 				C1DEBE8821880F2800CBB95F /* Localization */,
 				C1AD50B32187FF3000F74415 /* LoadingView */,
+				C197FEDF21E5D20B002F24E8 /* Model */,
 				C1AD50B02187FED900F74415 /* ModelController */,
 				C1AD50AD2187FE7F00F74415 /* Popup */,
 				C1AD50A72187F78700F74415 /* BaseController */,
@@ -721,6 +732,9 @@
 							com.apple.Keychain = {
 								enabled = 0;
 							};
+							com.apple.Push = {
+								enabled = 0;
+							};
 						};
 					};
 					C1AD50892187F45900F74415 = {
@@ -837,6 +851,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Presentr/Presentr.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/ZBarSDK/ZBarSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/libwebp/libwebp.framework",
@@ -853,6 +868,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Presentr.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZBarSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libwebp.framework",
@@ -992,6 +1008,7 @@
 				C169FFCB21C7939E00F9D354 /* FavorPopupViewController.swift in Sources */,
 				C13D998D21997EF7001A4794 /* PersonalViewController.swift in Sources */,
 				C142741D21A68154003CC246 /* ResetPasswordViewController.swift in Sources */,
+				C197FEE121E5D225002F24E8 /* UserInfo.swift in Sources */,
 				C13D998A21997AD6001A4794 /* HeadCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

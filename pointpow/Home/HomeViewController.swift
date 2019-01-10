@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 class HomeViewController: BaseViewController, UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var notiView: UIView!
@@ -40,6 +41,16 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         }else{
             print("notLogin")
         }
+        
+        //test logout
+        self.fbLoginManager.logOut()
+        if((FBSDKAccessToken.current()) == nil){
+            print("logout success")
+        }else{
+            print("logout i not success")
+        }
+
+        
         self.showIntroduce(false)
         self.setUp()
         

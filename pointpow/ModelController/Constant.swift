@@ -515,6 +515,7 @@ struct Constant {
         static let loginWithEmailORMobile  = "\(HOST)v1/login"
         static let registerWithEmail  = "\(HOST)v1/register-email"
         static let registerWithMobile  = "\(HOST)v1/register-mobile"
+        static let loginWithSocial  = "\(HOST)v1/social-login"
         static let verifyOTP  = "\(HOST)v1/otp-verify"
         
     }

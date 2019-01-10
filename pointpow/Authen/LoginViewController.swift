@@ -87,7 +87,20 @@ class LoginViewController: BaseViewController {
         self.facebookView.addGestureRecognizer(fTap)
     }
     
-    
+    override var socialLoginSucces: Bool?{
+        didSet{
+            print("success")
+            if isExist {
+                self.dismiss(animated: true, completion: nil)
+            }else{
+                self.showRegisterSuccessPopup(true) {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+            
+            
+        }
+    }
     @objc func googleTapped(){
         self.loginGoogle()
     }

@@ -11,6 +11,7 @@ import Presentr
 
 class IntroNav: BaseNavigationViewController {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,6 +23,11 @@ class IntroNav: BaseNavigationViewController {
         
         
     }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+  
+    }
+    
     @objc func resetPassword(_ notification: NSNotification){
         print("rootView IntroNav resetPassword")
         

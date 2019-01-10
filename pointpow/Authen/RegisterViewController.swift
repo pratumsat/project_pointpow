@@ -105,6 +105,59 @@ class RegisterViewController: BaseViewController {
         self.facebookView.addGestureRecognizer(fTap)
     }
     
+    override func GoogleSigInSuccess(notification: NSNotification) {
+        if let userInfo = notification.userInfo as? [String:AnyObject]{
+            
+            print(userInfo)
+            
+            let ggtoken = userInfo["idToken"] as? String ?? ""
+            let email = userInfo["email"] as? String ?? ""
+            let first_name = userInfo["givenName"] as? String ?? ""
+            let last_name = userInfo["familyName"] as? String ?? ""
+            let fcmToken = Messaging.messaging().fcmToken ?? ""
+            
+            let params:Parameters = ["email" : email,
+                                     "firstname": first_name,
+                                     "lastname" : last_name,
+                                     "social_token" : ggtoken,
+                                     "device_token": fcmToken,
+                                     "app_os": "ios"]
+            
+            self.modelCtrl.loginWithSocial(params: params, succeeded: { (result) in
+                if let mResult = result as? [String:AnyObject]{
+                    print(mResult)
+                    let dupicate = mResult["exist_email"] as? NSNumber ?? 0
+                    if dupicate.boolValue {
+                        self.isExist = true
+                    }else{
+                        self.isExist = false
+                    }
+                    self.socialLoginSucces = true
+                }
+            }, error: { (error) in
+                if let mError = error as? [String:AnyObject]{
+                    print(mError)
+                }
+            }, failure: { (messageError) in
+                self.handlerMessageError(messageError , title: "")
+            })
+            
+        }
+    }
+    override var socialLoginSucces: Bool?{
+        didSet{
+            print("success")
+            if isExist {
+                self.dismiss(animated: true, completion: nil)
+            }else{
+                self.showRegisterSuccessPopup(true) {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+            
+            
+        }
+    }
     @objc func googleTapped(){
         self.loginGoogle()
     }

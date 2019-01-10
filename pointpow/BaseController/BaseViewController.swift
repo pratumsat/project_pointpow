@@ -121,16 +121,45 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
     
     
     @objc func GoogleSigInSuccess(notification: NSNotification){
-        if let userInfo = notification.userInfo as? [String:AnyObject]{
-            
-            print(userInfo)
-            
-            //when after call api success
-            self.socialLoginSucces = true
-            
-            //test logout
-            //GIDSignIn.sharedInstance()?.signOut()
-        }
+//        if let userInfo = notification.userInfo as? [String:AnyObject]{
+//
+//            print(userInfo)
+//
+////            let fbtoken = FBSDKAccessToken.current()?.tokenString ?? ""
+////            let email = item["email"] as? String ?? ""
+////            let first_name = item["first_name"] as? String ?? ""
+////            let last_name = item["last_name"] as? String ?? ""
+////            let fcmToken = Messaging.messaging().fcmToken ?? ""
+////
+////            let params:Parameters = ["email" : email,
+////                                     "firstname": first_name,
+////                                     "lastname" : last_name,
+////                                     "social_token" : fbtoken,
+////                                     "device_token": fcmToken,
+////                                     "app_os": "ios"]
+////
+////            self.modelCtrl.loginWithSocial(params: params, succeeded: { (result) in
+////                if let mResult = result as? [String:AnyObject]{
+////                    print(mResult)
+////                    let dupicate = mResult["exist_email"] as? NSNumber ?? 0
+////                    if dupicate.boolValue {
+////                        self.isExist = true
+////                    }else{
+////                        self.isExist = false
+////                    }
+////                    self.socialLoginSucces = true
+////                }
+////            }, error: { (error) in
+////                if let mError = error as? [String:AnyObject]{
+////                    print(mError)
+////                }
+////            }, failure: { (messageError) in
+////                self.handlerMessageError(messageError , title: "")
+////            })
+//            //when after call api success
+//            //self.socialLoginSucces = true
+//
+//        }
         
     }
     @objc func GoogleSigInFailure(notification: NSNotification){

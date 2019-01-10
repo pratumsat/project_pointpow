@@ -8,6 +8,7 @@
 
 import UIKit
 import FBSDKLoginKit
+import GoogleSignIn
 
 class HomeViewController: BaseViewController, UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var notiView: UIView!
@@ -41,6 +42,10 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         }else{
             print("notLogin")
         }
+        
+        
+        //test logout
+        GIDSignIn.sharedInstance()?.signOut()
         
         //test logout
         self.fbLoginManager.logOut()

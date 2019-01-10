@@ -262,9 +262,11 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
-    func showVerify(_ animated:Bool){
+    func showVerify(_ mobilePhone:String, _ ref_id:String, _ member_id:String, _ animated:Bool){
         if let vc:VerifyViewController = self.storyboard?.instantiateViewController(withIdentifier: "VerifyViewController") as? VerifyViewController {
-            
+            vc.mobilePhone = mobilePhone
+            vc.ref_id = ref_id
+            vc.member_id = member_id
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
@@ -550,7 +552,9 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         }()
         
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "PopUpRegisterSuccessViewController") as? PopUpRegisterSuccessViewController{
-            
+            vc.dismissView = {
+                nextStepCallback?()
+            }
             customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)
             
         }

@@ -184,27 +184,46 @@ class LoginViewController: BaseViewController {
             
             guard validateMobile(username) else { return }
             
-            
+            let fcmToken = Messaging.messaging().fcmToken ?? ""
+            let params:Parameters = ["mobile" : username,
+                                     "password": password,
+                                     "device_token": fcmToken,
+                                     "app_os": "ios"]
+            modelCtrl.loginWithEmailORMobile(params: params, succeeded: { (result) in
+                if let mResult = result as? [String:AnyObject]{
+                    print(mResult)
+                    
+                    self.dismiss(animated: true, completion: nil)
+                    
+                }
+            }, error: { (error) in
+                if let mError = error as? [String:AnyObject]{
+                    print(mError)
+                    let message = mError["message"] as? String ?? ""
+                    let field = mError["field"] as? String ?? ""
+                    if field == "username" {
+                        self.errorUsernamelLabel = self.usernameTextField.addBottomLabelErrorMessage(message, marginLeft: 15)
+                    }else if field == "password"{
+                        self.errorPasswordLabel =  self.passwordTextField.addBottomLabelErrorMessage(message, marginLeft: 15)
+                    }
+                    self.showMessagePrompt(message)
+                }
+            }, failure: { (messageError) in
+                self.handlerMessageError(messageError , title: "")
+            })
             
             return
         }
         
         if isValidEmail(username) {
             print("email")
-            
-//            if password == "123456A" {
-//                self.dismiss(animated: true, completion: nil)
-//            }else{
-//                self.showMessagePrompt("รหัสผ่านไม่ถูกต้อง")
-//                self.errorPasswordLabel =  self.passwordTextField.addBottomLabelErrorMessage("รหัสผ่านไม่ถูกต้อง" , marginLeft: 15)
-//            }
-            
+         
             let fcmToken = Messaging.messaging().fcmToken ?? ""
             let params:Parameters = ["email" : username,
                                      "password": password,
                                      "device_token": fcmToken,
                                      "app_os": "ios"]
-            modelCtrl.loginWithEmail(params: params, succeeded: { (result) in
+            modelCtrl.loginWithEmailORMobile(params: params, succeeded: { (result) in
                 if let mResult = result as? [String:AnyObject]{
                     print(mResult)
                     

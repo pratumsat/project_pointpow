@@ -24,7 +24,7 @@ class PopUpRegisterSuccessViewController: BaseViewController {
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        
+        self.dismissView?()
         self.removeCountDownLable()
     }
     func countDown(_ time: Double){
@@ -41,7 +41,7 @@ class PopUpRegisterSuccessViewController: BaseViewController {
     }
     func removeCountDownLable() {
         //finish
-        countDown = 60
+        countDown = 3
         timer?.invalidate()
         timer = nil
         
@@ -51,9 +51,7 @@ class PopUpRegisterSuccessViewController: BaseViewController {
     
     
     func closeView(){
-        self.dismiss(animated: true, completion: {
-            self.dismissView?()
-        })
+        self.dismiss(animated: true, completion: nil)
     }
 
 }

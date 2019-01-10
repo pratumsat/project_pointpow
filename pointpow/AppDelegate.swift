@@ -92,7 +92,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constant.DefaultConstansts.RESET_PASSWORD), object: nil, userInfo: [:] as [String:AnyObject])
                 }else if host == "emailverify" {
                     
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constant.DefaultConstansts.VERIFI_EMAIL_REGISTER), object: nil, userInfo: [:] as [String:AnyObject])
+                    if let dic = url.queryDictionary {
+                        let token = dic["token"] ?? "unknow"
+                        let activateToken = DataController.sharedInstance.getActivateToken()
+                       
+                        if activateToken == token {
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constant.DefaultConstansts.VERIFI_EMAIL_REGISTER), object: nil, userInfo: [:] as [String:AnyObject])
+                        }
+                    }
+                    
+                    
                 }
             }
             

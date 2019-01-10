@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class VerifyViewController: BaseViewController {
     @IBOutlet weak var verifyButton: UIButton!
@@ -21,7 +22,9 @@ class VerifyViewController: BaseViewController {
     var countDown:Int = 60
     var timer:Timer?
     
-    
+    var ref_id:String?
+    var member_id:String?
+    var mobilePhone:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +62,13 @@ class VerifyViewController: BaseViewController {
         
         self.otpTextField.autocorrectionType = .no
         self.usernameTextField.autocorrectionType = .no
+        
+        if let mobile = self.mobilePhone {
+            let newText = String(mobile.filter({ $0 != "-" }).prefix(10))
+            self.usernameTextField.text = newText.chunkFormatted()
+        }
+        self.usernameTextField.isEnabled = false
+        self.otpTextField.keyboardType = .numberPad
         
 
         self.clearImageView = self.usernameTextField.addRightButton(UIImage(named: "ic-x")!)
@@ -153,10 +163,34 @@ class VerifyViewController: BaseViewController {
         let otp = self.otpTextField.text!
         
         self.errorOTPlLabel?.removeFromSuperview()
+
+        let params:Parameters = ["ref_id" : self.ref_id ?? "",
+                                 "otp" : otp,
+                                 "member_id" : self.member_id ?? ""]
         
-        let errorMessage = NSLocalizedString("string-error-otp", comment: "")
-        self.errorOTPlLabel = self.otpTextField.addBottomLabelErrorMessage(errorMessage, marginLeft: 15)
-        self.showMessagePrompt(errorMessage)
+        modelCtrl.verifyOTP(params: params, succeeded: { (result) in
+            if let mResult = result as? [String:AnyObject]{
+                print(mResult)
+                
+                
+                self.showRegisterSuccessPopup(true , nextStepCallback: {
+                    self.showLogin(true)
+                })
+            }
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                print(mError)
+                let message = mError["message"] as? String ?? ""
+                self.errorOTPlLabel = self.otpTextField.addBottomLabelErrorMessage(message, marginLeft: 15)
+                self.showMessagePrompt(message)
+            }
+        }, failure: { (messageError) in
+            self.handlerMessageError(messageError , title: "")
+        })
+        
+//        let errorMessage = NSLocalizedString("string-error-otp", comment: "")
+//        self.errorOTPlLabel = self.otpTextField.addBottomLabelErrorMessage(errorMessage, marginLeft: 15)
+//        self.showMessagePrompt(errorMessage)
     }
     
    

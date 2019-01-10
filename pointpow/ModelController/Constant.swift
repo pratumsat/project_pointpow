@@ -511,8 +511,12 @@ extension NSLayoutConstraint {
 
 struct Constant {
     struct PointPowAPI {
-        static let HOST = "http://192.168.1.43/"
-        static let loginWithEmail  = "\(HOST)pointpow-api/public/api/v1/login"
+        static let HOST = "http://192.168.1.43/pointpow-api/public/api/"
+        static let loginWithEmailORMobile  = "\(HOST)v1/login"
+        static let registerWithEmail  = "\(HOST)v1/register-email"
+        static let registerWithMobile  = "\(HOST)v1/register-mobile"
+        static let verifyOTP  = "\(HOST)v1/otp-verify"
+        
     }
     struct TopViewController{
         static var top: UIViewController? {
@@ -533,6 +537,7 @@ struct Constant {
         }
     }
     struct CacheNotification {
+        static let USER_ACTIVATE_TOKEN_CACHE = "USER_ACTIVATE_TOKEN_CACHE"
         static let USER_TOKEN_CACHE = "USER_TOKEN"
         static let NAME_CACHE = "NotiStructHolder"
         static let NAME_CACHE_OBJECT = "NotiStructObject"

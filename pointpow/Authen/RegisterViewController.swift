@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import FirebaseMessaging
 
 class RegisterViewController: BaseViewController {
 
@@ -72,6 +74,10 @@ class RegisterViewController: BaseViewController {
         self.passwordTextField.isSecureTextEntry = true
         self.confirmPasswordTextField.isSecureTextEntry = true
         
+        
+        self.usernameTextField.returnKeyType = .next
+        self.passwordTextField.returnKeyType = .next
+        self.confirmPasswordTextField.returnKeyType = .done
         
         self.clearImageView = self.usernameTextField.addRightButton(UIImage(named: "ic-x")!)
         let tap = UITapGestureRecognizer(target: self, action: #selector(clearUserNameTapped))
@@ -159,6 +165,18 @@ class RegisterViewController: BaseViewController {
             return true
         }
     }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        if textField == self.usernameTextField {
+            self.passwordTextField.becomeFirstResponder()
+        }
+        if textField == self.passwordTextField {
+            self.confirmPasswordTextField.becomeFirstResponder()
+        }
+        
+        return true
+    }
     
     @IBAction func registerTapped(_ sender: Any) {
         let username = self.usernameTextField.text!
@@ -203,7 +221,38 @@ class RegisterViewController: BaseViewController {
             guard validateMobile(username) else { return }
             guard validatePassword(password, confirmPassword) else { return }
             print("pass")
-            self.showVerify(true)
+            
+            
+            let fcmToken = Messaging.messaging().fcmToken ?? ""
+            let params:Parameters = ["mobile" : username,
+                                     "password": password,
+                                     "device_token": fcmToken,
+                                     "app_os": "ios"]
+            
+            modelCtrl.registerWithMobile(params: params, succeeded: { (result) in
+                if let mResult = result as? [String:AnyObject]{
+                    print(mResult)
+                    let ref_id = mResult["ref_id"] as? String ?? ""
+                    let member_id = mResult["member_id"] as? NSNumber ?? 0
+                    self.showVerify(username, ref_id, member_id.stringValue, true)
+                }
+            }, error: { (error) in
+                if let mError = error as? [String:AnyObject]{
+                    print(mError)
+                    if let mError = error as? [String:AnyObject]{
+                        print(mError)
+                        let message = mError["message"] as? String ?? ""
+                        let field = mError["field"] as? String ?? ""
+                        
+                        self.errorUsernamelLabel =  self.usernameTextField.addBottomLabelErrorMessage(message, marginLeft: 15 )
+                        self.showMessagePrompt(message)
+                    }
+                }
+            }, failure: { (messageError) in
+                self.handlerMessageError(messageError , title: "")
+            })
+            
+            
             return
         }
         
@@ -212,14 +261,41 @@ class RegisterViewController: BaseViewController {
             guard validatePassword(password, confirmPassword) else { return }
             print("pass")
             
-            let message = NSLocalizedString("string-verify-password-send-email", comment: "")
-            let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
-            let ok = UIAlertAction(title: NSLocalizedString("string-button-ok", comment: ""), style: .cancel, handler: { (action) in
-                
-                self.showLogin(true)
+            let fcmToken = Messaging.messaging().fcmToken ?? ""
+            let params:Parameters = ["email" : username,
+                                     "password": password,
+                                     "device_token": fcmToken,
+                                     "app_os": "ios"]
+            modelCtrl.registerWithEmail(params: params, succeeded: { (result) in
+                if let mResult = result as? [String:AnyObject]{
+                    print(mResult)
+                    
+                    let message = NSLocalizedString("string-verify-password-send-email", comment: "")
+                    let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+                    let ok = UIAlertAction(title: NSLocalizedString("string-button-ok", comment: ""), style: .cancel, handler: { (action) in
+                        
+                        self.showLogin(true)
+                    })
+                    alert.addAction(ok)
+                    self.present(alert, animated: true, completion: nil)
+
+                    
+                }
+            }, error: { (error) in
+                if let mError = error as? [String:AnyObject]{
+                    print(mError)
+                    if let mError = error as? [String:AnyObject]{
+                        print(mError)
+                        let message = mError["message"] as? String ?? ""
+                        let field = mError["field"] as? String ?? ""
+                        
+                        self.errorUsernamelLabel =  self.usernameTextField.addBottomLabelErrorMessage(message, marginLeft: 15 )
+                        self.showMessagePrompt(message)
+                    }
+                }
+            }, failure: { (messageError) in
+                self.handlerMessageError(messageError , title: "")
             })
-            alert.addAction(ok)
-            self.present(alert, animated: true, completion: nil)
             
         }else{
             print("not email")
@@ -257,11 +333,7 @@ class RegisterViewController: BaseViewController {
     func validatePassword(_ password:String, _ confirmPassword:String) ->Bool{
         var errorPassowrd = 0
         var errorMessagePassword = ""
-//        if !validPassword(confirmPassword){
-//            errorMessagePassword = NSLocalizedString("string-error-invalid-confirm-pwd", comment: "")
-//            self.errorConfirmPasswordLabel =  self.confirmPasswordTextField.addBottomLabelErrorMessage(errorMessagePassword, marginLeft: 15 )
-//            errorPassowrd += 1
-//        }
+        
         if !validPassword(password) {
             errorMessagePassword = NSLocalizedString("string-error-invalid-pwd", comment: "")
             self.infomationlabel.isHidden = true

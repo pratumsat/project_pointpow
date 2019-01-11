@@ -31,6 +31,8 @@ class IntroNav: BaseNavigationViewController {
     @objc func resetPassword(_ notification: NSNotification){
         print("rootView IntroNav resetPassword")
         
+    
+        
         if let vc:ResetNav  = self.storyboard?.instantiateViewController(withIdentifier: "ResetNav") as? ResetNav {
             present(vc, animated: true, completion: nil)
         }

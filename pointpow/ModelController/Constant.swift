@@ -517,6 +517,10 @@ struct Constant {
         static let registerWithMobile  = "\(HOST)v1/register-mobile"
         static let loginWithSocial  = "\(HOST)v1/social-login"
         static let verifyOTP  = "\(HOST)v1/otp-verify"
+        static let resendOTP  = "\(HOST)v1/otp-resend"
+        static let forgotPassword  = "\(HOST)v1/reset-password"
+        static let setNewPassword = "\(HOST)v1/set-new-password"
+        static let userData = "\(HOST)v1/member/get"
         
     }
     struct TopViewController{
@@ -538,6 +542,7 @@ struct Constant {
         }
     }
     struct CacheNotification {
+        static let USER_RESET_PASSWORD_TOKEN_CACHE = "USER_RESET_PASSWORD_TOKEN_CACHE"
         static let USER_ACTIVATE_TOKEN_CACHE = "USER_ACTIVATE_TOKEN_CACHE"
         static let USER_TOKEN_CACHE = "USER_TOKEN"
         static let NAME_CACHE = "NotiStructHolder"

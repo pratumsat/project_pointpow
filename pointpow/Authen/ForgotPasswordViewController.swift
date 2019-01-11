@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ForgotPasswordViewController: BaseViewController {
 
@@ -102,29 +103,61 @@ class ForgotPasswordViewController: BaseViewController {
             
             guard validateMobile(username) else { return }
             
+           
+            let params:Parameters = ["mobile" : username  ]
             
-            let message = NSLocalizedString("string-reset-password-send-mobile", comment: "")
-            let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
-            let ok = UIAlertAction(title: NSLocalizedString("string-button-ok", comment: ""), style: .cancel, handler: { (action) in
+            modelCtrl.forgotPassword(params: params, succeeded: { (result) in
                 
-                self.navigationController?.popViewController(animated: true)
+                let message = NSLocalizedString("string-reset-password-send-mobile", comment: "")
+                let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+                let ok = UIAlertAction(title: NSLocalizedString("string-button-ok", comment: ""), style: .cancel, handler: { (action) in
+                    
+                    self.navigationController?.popViewController(animated: true)
+                })
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+                
+            }, error: { (error) in
+                if let mError = error as? [String:AnyObject]{
+                    print(mError)
+                    let message = mError["message"] as? String ?? ""
+                    self.errorUsernamelLabel = self.usernameTextField.addBottomLabelErrorMessage(message, marginLeft: 15)
+                    self.showMessagePrompt(message)
+                }
+            }, failure: { (messageError) in
+                self.handlerMessageError(messageError , title: "")
             })
-            alert.addAction(ok)
-            self.present(alert, animated: true, completion: nil)
+            
+            
             return
         }
         
         if isValidEmail(username) {
             print("email")
+           
+            let params:Parameters = ["email" : username  ]
             
-            let message = NSLocalizedString("string-reset-password-send-email", comment: "")
-            let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
-            let ok = UIAlertAction(title: NSLocalizedString("string-button-ok", comment: ""), style: .cancel, handler: { (action) in
+            modelCtrl.forgotPassword(params: params, succeeded: { (result) in
+
+                let message = NSLocalizedString("string-reset-password-send-email", comment: "")
+                let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+                let ok = UIAlertAction(title: NSLocalizedString("string-button-ok", comment: ""), style: .cancel, handler: { (action) in
+                    
+                    self.navigationController?.popViewController(animated: true)
+                })
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
                 
-                self.navigationController?.popViewController(animated: true)
+            }, error: { (error) in
+                if let mError = error as? [String:AnyObject]{
+                    print(mError)
+                    let message = mError["message"] as? String ?? ""
+                    self.errorUsernamelLabel = self.usernameTextField.addBottomLabelErrorMessage(message, marginLeft: 15)
+                    self.showMessagePrompt(message)
+                }
+            }, failure: { (messageError) in
+                self.handlerMessageError(messageError , title: "")
             })
-            alert.addAction(ok)
-            self.present(alert, animated: true, completion: nil)
             
         }else{
             

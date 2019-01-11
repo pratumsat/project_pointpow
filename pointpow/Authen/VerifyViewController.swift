@@ -158,6 +158,32 @@ class VerifyViewController: BaseViewController {
     @IBAction func sendTapped(_ sender: Any) {
         self.sendButton.isEnabled = false
         self.countDown(1.0)
+        
+        let params:Parameters = ["mobile" : mobilePhone ?? "" ]
+        
+        modelCtrl.resendOTP(params: params, succeeded: { (result) in
+            if let mResult = result as? [String:AnyObject]{
+                print(mResult)
+                
+                if let mResult = result as? [String:AnyObject]{
+                    print(mResult)
+                    let ref_otp = mResult["ref_otp"] as? String ?? ""
+                    self.ref_id = ref_otp
+                   
+                }
+            }
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                print(mError)
+                let message = mError["message"] as? String ?? ""
+                self.errorOTPlLabel = self.otpTextField.addBottomLabelErrorMessage(message, marginLeft: 15)
+                self.showMessagePrompt(message)
+            }
+        }, failure: { (messageError) in
+            self.handlerMessageError(messageError , title: "")
+        })
+        
+        
     }
     @IBAction func verifyTapped(_ sender: Any) {
         let otp = self.otpTextField.text!

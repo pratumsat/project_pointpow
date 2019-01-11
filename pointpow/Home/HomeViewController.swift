@@ -39,29 +39,39 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         
         if DataController.sharedInstance.isLogin() {
             print("isLogin")
+            self.getUserInfo()
         }else{
             print("notLogin")
+            self.showIntroduce(false)
         }
         
         
         //test logout
-        GIDSignIn.sharedInstance()?.signOut()
+//        GIDSignIn.sharedInstance()?.signOut()
         
         //test logout
-        self.fbLoginManager.logOut()
-        if((FBSDKAccessToken.current()) == nil){
-            print("logout success")
-        }else{
-            print("logout i not success")
-        }
+//        self.fbLoginManager.logOut()
+//        if((FBSDKAccessToken.current()) == nil){
+//            print("logout success")
+//        }else{
+//            print("logout i not success")
+//        }
 
         
-        self.showIntroduce(false)
+        
         self.setUp()
         
         
     }
-    
+    func getUserInfo(){
+        modelCtrl.getUserData(params: nil, succeeded: { (result) in
+            print(result)
+        }, error: { (error) in
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+        }
+    }
    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

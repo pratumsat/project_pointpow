@@ -88,8 +88,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             
             if urlScheme == "pointpow" {
                 if host  == "resetpassword" {
+                    if let dic = url.queryDictionary {
+                        let token = dic["reset_token"] ?? "unknow"
+                        let resetToken = DataController.sharedInstance.getResetPasswordToken()
+                        
+                        if resetToken == token {
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constant.DefaultConstansts.RESET_PASSWORD), object: nil, userInfo: ["reset_token":token] as [String:AnyObject])  }
+                    }
                     
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constant.DefaultConstansts.RESET_PASSWORD), object: nil, userInfo: [:] as [String:AnyObject])
                 }else if host == "emailverify" {
                     
                     if let dic = url.queryDictionary {

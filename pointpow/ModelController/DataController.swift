@@ -46,12 +46,23 @@ class DataController {
         
         data["token"] = token as AnyObject
     }
+    func getToken() -> String {
+        return data["token"] as? String ?? ""
+    }
     func setActivateToken(_ token:String){
         UserDefaults.standard.set(token, forKey: Constant.CacheNotification.USER_ACTIVATE_TOKEN_CACHE)
         UserDefaults.standard.synchronize()
     }
     func getActivateToken() -> String{
         let token = UserDefaults.standard.object(forKey: Constant.CacheNotification.USER_ACTIVATE_TOKEN_CACHE) as? String ?? ""
+        return token
+    }
+    func setResetPasswordToken(_ token:String){
+        UserDefaults.standard.set(token, forKey: Constant.CacheNotification.USER_RESET_PASSWORD_TOKEN_CACHE)
+        UserDefaults.standard.synchronize()
+    }
+    func getResetPasswordToken() -> String{
+        let token = UserDefaults.standard.object(forKey: Constant.CacheNotification.USER_RESET_PASSWORD_TOKEN_CACHE) as? String ?? ""
         return token
     }
     

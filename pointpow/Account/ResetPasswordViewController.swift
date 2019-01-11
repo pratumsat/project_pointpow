@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ResetPasswordViewController: BaseViewController {
     
@@ -148,15 +149,31 @@ class ResetPasswordViewController: BaseViewController {
         }
         guard validatePassword(password, confirmPassword) else { return }
         
-        let message = NSLocalizedString("string-reset-password-success", comment: "")
-        let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
-        let ok = UIAlertAction(title: NSLocalizedString("string-button-ok", comment: ""), style: .cancel, handler: { (action) in
-            
-            self.dismiss(animated: true, completion: nil)
-        })
-        alert.addAction(ok)
-        self.present(alert, animated: true, completion: nil)
+        let reset_token = DataController.sharedInstance.getResetPasswordToken()
+        let params:Parameters = ["reset_token" : reset_token,
+                                 "new_password" : password]
         
+        modelCtrl.setPassword(params: params, succeeded: { (result) in
+            DataController.sharedInstance.setResetPasswordToken("")
+            
+            let message = NSLocalizedString("string-reset-password-success", comment: "")
+            let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+            let ok = UIAlertAction(title: NSLocalizedString("string-button-ok", comment: ""), style: .cancel, handler: { (action) in
+                
+                self.dismiss(animated: true, completion: nil)
+            })
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
+
+            
+        }, error: { (error) in
+           if let mError = error as? [String:AnyObject]{
+                print(mError)
+            }
+        }, failure: { (messageError) in
+            self.handlerMessageError(messageError , title: "")
+        })
+   
     }
     
     

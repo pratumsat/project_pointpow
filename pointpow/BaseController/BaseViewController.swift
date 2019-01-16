@@ -34,6 +34,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
     private var moreImageView:UIImageView?
     
     var backgroundImage:UIImageView?
+    var refreshControl:UIRefreshControl?
     
     private var _fbLoginManager: FBSDKLoginManager?
     var fbLoginManager: FBSDKLoginManager {
@@ -793,6 +794,10 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         self.present(confirmAlertCtrl, animated: true, completion: nil)
 
     }
+    @objc func reloadData(){
+        print("reload Data")
+        self.refreshControl?.endRefreshing()
+    }
     
     @objc func dismissPoPup(){
         self.windowSubview?.removeFromSuperview()
@@ -808,10 +813,18 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         // Dispose of any resources that can be recreated.
     }
     
-    
+   
 }
 
 extension BaseViewController {
+    
+    func addRefreshViewController(_ collectionView:UICollectionView){
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl!.addTarget(self, action: #selector(reloadData), for: .valueChanged)
+        collectionView.isScrollEnabled = true
+        collectionView.alwaysBounceVertical = true
+        collectionView.addSubview(self.refreshControl!)
+    }
     func addCloseWhiteView(){
         let x = CGFloat(self.view.frame.maxX) - 2
         let y = CGFloat(self.view.frame.minY) - 12

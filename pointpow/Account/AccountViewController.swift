@@ -17,6 +17,7 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
     var profileImage:UIImage?
     var profileBackgroundImage:UIImage?
     var chooseProfile = false
+    var userData:AnyObject?
     
     @IBOutlet weak var profileCollectionView: UICollectionView!
     override func viewDidLoad() {
@@ -35,6 +36,42 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
        
     }
   
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if DataController.sharedInstance.isLogin() {
+            self.getUserInfo()
+        }
+    }
+    override func reloadData() {
+        self.getUserInfo()
+    }
+    
+    func getUserInfo(_ avaliable:(()->Void)?  = nil){
+        var isLoading:Bool = true
+        if self.userData != nil {
+            isLoading = false
+        }else{
+            isLoading = true
+        }
+        modelCtrl.getUserData(params: nil , isLoading , succeeded: { (result) in
+            self.userData = result
+            avaliable?()
+            
+            self.refreshControl?.endRefreshing()
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                //self.showMessagePrompt(message)
+            }
+            self.refreshControl?.endRefreshing()
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            self.refreshControl?.endRefreshing()
+        }
+    }
     
     func setUp(){
         self.backgroundImage?.image = nil
@@ -49,6 +86,9 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
         
         self.profileCollectionView.dataSource = self
         self.profileCollectionView.delegate = self
+        
+        
+        self.addRefreshViewController(self.profileCollectionView)
         
         self.registerNib(self.profileCollectionView, "ProfileCell")
         self.registerNib(self.profileCollectionView, "ItemServiceCell")

@@ -8,7 +8,8 @@
 import Alamofire
 import Foundation
 import FirebaseMessaging
-
+import FBSDKLoginKit
+import GoogleSignIn
 /*
  
  let urlStr: String = "maps://"
@@ -26,21 +27,33 @@ import FirebaseMessaging
  
  */
 class ModelController {
+    private var _fbLoginManager: FBSDKLoginManager?
+    var fbLoginManager: FBSDKLoginManager {
+        get {
+            if _fbLoginManager == nil {
+                _fbLoginManager = FBSDKLoginManager()
+            }
+            return _fbLoginManager!
+        }
+    }
     
     var loadingStart:(()->Void)?
     var loadingFinish:(()->Void)?
 
     func loginWithEmailORMobile(params:Parameters? ,
+                                _ isLoading:Bool = true,
                         succeeded:( (_ result:AnyObject) ->Void)? = nil,
                         error:((_ errorObject:AnyObject)->Void)?,
                         failure:( (_ statusCode:String) ->Void)? = nil ){
         
-        self.loadingStart?()
-        
+        if isLoading {
+            self.loadingStart?()
+        }
         Alamofire.request(Constant.PointPowAPI.loginWithEmailORMobile , method: .post , parameters : params).validate().responseJSON { response in
             
-            self.loadingFinish?()
-            
+            if isLoading {
+                self.loadingFinish?()
+            }
             switch response.result {
             case .success(let json):
                 print(json)
@@ -110,16 +123,19 @@ class ModelController {
     
     
     func registerWithEmail(params:Parameters? ,
+                           _ isLoading:Bool = true,
                                 succeeded:( (_ result:AnyObject) ->Void)? = nil,
                                 error:((_ errorObject:AnyObject)->Void)?,
                                 failure:( (_ statusCode:String) ->Void)? = nil ){
         
-        self.loadingStart?()
-        
+        if isLoading {
+            self.loadingStart?()
+        }
         Alamofire.request(Constant.PointPowAPI.registerWithEmail , method: .post , parameters : params).validate().responseJSON { response in
             
-            self.loadingFinish?()
-            
+            if isLoading {
+                self.loadingFinish?()
+            }
             switch response.result {
             case .success(let json):
                 print(json)
@@ -187,16 +203,19 @@ class ModelController {
     }
     
     func registerWithMobile(params:Parameters? ,
+                            _ isLoading:Bool = true,
                            succeeded:( (_ result:AnyObject) ->Void)? = nil,
                            error:((_ errorObject:AnyObject)->Void)?,
                            failure:( (_ statusCode:String) ->Void)? = nil ){
         
-        self.loadingStart?()
-        
+        if isLoading {
+            self.loadingStart?()
+        }
         Alamofire.request(Constant.PointPowAPI.registerWithMobile , method: .post , parameters : params).validate().responseJSON { response in
             
-            self.loadingFinish?()
-            
+            if isLoading {
+                self.loadingFinish?()
+            }
             switch response.result {
             case .success(let json):
                 print(json)
@@ -264,16 +283,19 @@ class ModelController {
     }
     
     func loginWithSocial(params:Parameters? ,
+                         _ isLoading:Bool = true,
                             succeeded:( (_ result:AnyObject) ->Void)? = nil,
                             error:((_ errorObject:AnyObject)->Void)?,
                             failure:( (_ statusCode:String) ->Void)? = nil ){
         
-        self.loadingStart?()
-        
+        if isLoading {
+            self.loadingStart?()
+        }
         Alamofire.request(Constant.PointPowAPI.loginWithSocial , method: .post , parameters : params).validate().responseJSON { response in
             
-            self.loadingFinish?()
-            
+            if isLoading {
+                self.loadingFinish?()
+            }
             switch response.result {
             case .success(let json):
                 print(json)
@@ -343,16 +365,19 @@ class ModelController {
     }
     
     func verifyOTP(params:Parameters? ,
+                            _ isLoading:Bool = true,
                             succeeded:( (_ result:AnyObject) ->Void)? = nil,
                             error:((_ errorObject:AnyObject)->Void)?,
                             failure:( (_ statusCode:String) ->Void)? = nil ){
         
-        self.loadingStart?()
-        
+        if isLoading {
+            self.loadingStart?()
+        }
         Alamofire.request(Constant.PointPowAPI.verifyOTP , method: .post , parameters : params).validate().responseJSON { response in
             
-            self.loadingFinish?()
-            
+            if isLoading {
+                self.loadingFinish?()
+            }
             switch response.result {
             case .success(let json):
                 print(json)
@@ -418,16 +443,19 @@ class ModelController {
     }
     
     func resendOTP(params:Parameters? ,
+                   _ isLoading:Bool = true,
                    succeeded:( (_ result:AnyObject) ->Void)? = nil,
                    error:((_ errorObject:AnyObject)->Void)?,
                    failure:( (_ statusCode:String) ->Void)? = nil ){
         
-        self.loadingStart?()
-        
+        if isLoading {
+            self.loadingStart?()
+        }
         Alamofire.request(Constant.PointPowAPI.resendOTP , method: .post , parameters : params).validate().responseJSON { response in
             
-            self.loadingFinish?()
-            
+            if isLoading {
+                self.loadingFinish?()
+            }
             switch response.result {
             case .success(let json):
                 print(json)
@@ -495,16 +523,19 @@ class ModelController {
     
     
     func forgotPassword(params:Parameters? ,
+                        _ isLoading:Bool = true,
                    succeeded:( (_ result:AnyObject) ->Void)? = nil,
                    error:((_ errorObject:AnyObject)->Void)?,
                    failure:( (_ statusCode:String) ->Void)? = nil ){
         
-        self.loadingStart?()
-        
+        if isLoading {
+            self.loadingStart?()
+        }
         Alamofire.request(Constant.PointPowAPI.forgotPassword , method: .post , parameters : params).validate().responseJSON { response in
             
-            self.loadingFinish?()
-            
+            if isLoading {
+                self.loadingFinish?()
+            }
             switch response.result {
             case .success(let json):
                 print(json)
@@ -573,16 +604,18 @@ class ModelController {
     }
     
     func setPassword(params:Parameters? ,
+                        _ isLoading:Bool = true,
                         succeeded:( (_ result:AnyObject) ->Void)? = nil,
                         error:((_ errorObject:AnyObject)->Void)?,
                         failure:( (_ statusCode:String) ->Void)? = nil ){
-        
-        self.loadingStart?()
-        
+        if isLoading {
+            self.loadingStart?()
+        }
         Alamofire.request(Constant.PointPowAPI.setNewPassword , method: .post , parameters : params).validate().responseJSON { response in
             
-            self.loadingFinish?()
-            
+            if isLoading {
+                self.loadingFinish?()
+            }
             switch response.result {
             case .success(let json):
                 print(json)
@@ -651,11 +684,15 @@ class ModelController {
     
     
     func getUserData(params:Parameters? ,
+                     _ isLoading:Bool = true,
                      succeeded:( (_ result:AnyObject) ->Void)? = nil,
                      error:((_ errorObject:AnyObject)->Void)?,
                      failure:( (_ statusCode:String) ->Void)? = nil ){
         
-        self.loadingStart?()
+        if isLoading {
+            self.loadingStart?()
+        }
+        
         let token = DataController.sharedInstance.getToken()
         let header: HTTPHeaders = ["Authorization":"Bearer \(token)"]
    
@@ -664,11 +701,15 @@ class ModelController {
                           parameters : params,
                           headers: header ).validate().responseJSON { response in
             
-            self.loadingFinish?()
+                            
+            if isLoading {
+                self.loadingFinish?()
+            }
+            
             
             switch response.result {
             case .success(let json):
-                print(json)
+                print("UserData \n\(json)")
                 
                 if let data = json as? [String:AnyObject] {
                     
@@ -732,6 +773,19 @@ class ModelController {
         }
     }
     
+    
+    func logOut(){
+        GIDSignIn.sharedInstance()?.signOut()
+        self.fbLoginManager.logOut()
+        
+        /*
+        if((FBSDKAccessToken.current()) == nil){
+            print("logout success")
+        }else{
+            print("logout i not success")
+        }
+         */
+    }
     
     
 }

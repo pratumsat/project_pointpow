@@ -558,6 +558,10 @@ struct Constant {
         static let NOTIFICATION_SELECTED_PAGE = "NOTIFICATION_SELECTED_PAGE"
         static let NotificationGoogleSigInSuccess = "NotificationGoogleSigInSuccess"
         static let NotificationGoogleSigInFailure = "NotificationGoogleSigInFailure"
+        
+            struct DefaultImaege{
+                static let PROFILE_IMAGE_PLACE_HOLDER = "bg-profile-image"
+        }
     }
     struct Colors {
         static let PRIMARY_COLOR = UIColor(rgb: 0xFF002F)

@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import FBSDKLoginKit
-import GoogleSignIn
 
 class HomeViewController: BaseViewController, UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var notiView: UIView!
@@ -25,53 +23,21 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
     
     var isFirst = false
     
+    var userData:AnyObject?
    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         if !DataController.sharedInstance.getDefaultLanguage() {
             UserDefaults.standard.set(["th"], forKey: "AppleLanguages")
             UserDefaults.standard.synchronize()
-            
             DataController.sharedInstance.setDefaultLanguage()
         }
         
-        if DataController.sharedInstance.isLogin() {
-            print("isLogin")
-            self.getUserInfo()
-        }else{
-            print("notLogin")
-            self.showIntroduce(false)
-        }
-        
-        
-        //test logout
-//        GIDSignIn.sharedInstance()?.signOut()
-        
-        //test logout
-//        self.fbLoginManager.logOut()
-//        if((FBSDKAccessToken.current()) == nil){
-//            print("logout success")
-//        }else{
-//            print("logout i not success")
-//        }
-
-        
-        
         self.setUp()
         
-        
     }
-    func getUserInfo(){
-        modelCtrl.getUserData(params: nil, succeeded: { (result) in
-            print(result)
-        }, error: { (error) in
-            print(error)
-        }) { (messageError) in
-            print("messageError")
-        }
-    }
+   
    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -80,20 +46,24 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
             self.isSetHeight = true
             let height = self.view.frame.height
             self.pointBalanceConstraintHeight.constant = height*0.15
-            
-            
-            
-        }
-     
-        if !isFirst {
-            self.showPoPup(true) {
-                //dismissView
-                self.isFirst = true
-            }
-            
         }
         
+        if DataController.sharedInstance.isLogin() {
+            print("isLogin")
+            
+            self.getUserInfo() { //validate
+                if !self.isFirst {
+                    self.showPoPup(true) {   //dismissView
+                        self.isFirst = true
+                    }
+                }
+            }
+        }else{
+            print("notLogin")
+            self.showIntroduce(false)
+        }
     }
+    
     func setUp(){
         self.backgroundImage?.image = nil
        
@@ -101,6 +71,9 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         
         self.homeCollectionView.delegate = self
         self.homeCollectionView.dataSource = self
+        
+        
+        self.addRefreshViewController(self.homeCollectionView)
         
         self.registerNib(self.homeCollectionView, "PromotionCampainCell")
         self.registerNib(self.homeCollectionView, "ItemServiceCell")
@@ -113,6 +86,45 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapToPointBalance))
         self.pointBalanceLabel.isUserInteractionEnabled = true
         self.pointBalanceLabel.addGestureRecognizer(tap)
+    }
+    
+    override func reloadData() {
+        self.getUserInfo()
+    }
+    
+    func getUserInfo(_ avaliable:(()->Void)?  = nil){
+        var isLoading:Bool = true
+        if self.userData != nil {
+            isLoading = false
+        }else{
+            isLoading = true
+        }
+        
+        modelCtrl.getUserData(params: nil , isLoading , succeeded: { (result) in
+            self.userData = result
+            avaliable?()
+            if let data  = result as? [String:AnyObject] {
+                
+                let pointBalance = data["member_point"]?["total"] as? String ?? ""
+                let  profileImage = data["picture_data"] as? String ?? ""
+                self.pointBalanceLabel.text = pointBalance
+                self.profileImageView.sd_setImage(with: URL(string: profileImage), placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_IMAGE_PLACE_HOLDER )!)
+            }
+            
+            self.refreshControl?.endRefreshing()
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                //self.showMessagePrompt(message)
+            }
+            self.refreshControl?.endRefreshing()
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            self.refreshControl?.endRefreshing()
+        }
     }
     
     @objc func tapToProfile(){
@@ -137,9 +149,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-       
-        
-         shadowImageView?.isHidden = false
+        shadowImageView?.isHidden = false
     }
    
     

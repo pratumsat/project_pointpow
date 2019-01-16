@@ -104,7 +104,7 @@ class ForgotPasswordViewController: BaseViewController {
             guard validateMobile(username) else { return }
             
            
-            let params:Parameters = ["mobile" : username  ]
+            let params:Parameters = ["mobile-tmp" : username  ]
             
             modelCtrl.forgotPassword(params: params, succeeded: { (result) in
                 

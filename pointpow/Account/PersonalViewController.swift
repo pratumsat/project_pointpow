@@ -40,6 +40,7 @@ class PersonalViewController: BaseViewController  {
     }
     @objc func donedatePicker(){
         let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "th")
         formatter.dateFormat = "dd MMMM yyyy"
         self.birthdayTextField.text = formatter.string(from: pickerView!.date)
         self.view.endEditing(true)
@@ -51,6 +52,7 @@ class PersonalViewController: BaseViewController  {
     func setUp(){
         pickerView = UIDatePicker()
         pickerView!.datePickerMode = .date
+        pickerView!.calendar = Calendar(identifier: .buddhist)
 
         let toolbar = UIToolbar();
         toolbar.sizeToFit()

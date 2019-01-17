@@ -57,6 +57,7 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
             self.userData = result
             avaliable?()
             
+            self.profileCollectionView.reloadData()
             self.refreshControl?.endRefreshing()
         }, error: { (error) in
             if let mError = error as? [String:AnyObject]{
@@ -110,6 +111,23 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
         if indexPath.section == 0 {
             if let profileCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileCell", for: indexPath) as? ProfileCell{
                 
+                if let userData = self.userData as? [String:AnyObject] {
+                    let profileImage = userData["picture_data"] as? String ?? ""
+                    let backgroundProfileImage = userData["picture_background"] as? String ?? ""
+                    let pointpowId = userData["pointpow_id"] as? String ?? "-"
+                    let displayName = userData["display_name"] as? String ?? "-"
+                    let pointBalance = userData["member_point"]?["total"] as? String ?? "0.00"
+                    
+                    profileCell.profileImageView.sd_setImage(with: URL(string: profileImage), placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_IMAGE_PLACE_HOLDER )!)
+                    
+                    profileCell.backgroundImageView.sd_setImage(with: URL(string: backgroundProfileImage), placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_BACKGROUND__IMAGE_PLACE_HOLDER )!)
+                    
+                    profileCell.pointBalanceLabel.text = pointBalance
+                    profileCell.displayNameLabel.text = displayName
+                    profileCell.pointpowIdLabel.text = pointpowId
+                    
+                }
+                
                 if let pi = self.profileImage {
                     profileCell.profileImageView.image = pi
                 }
@@ -126,6 +144,7 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
                     self.chooseProfile = true
                     self.addFileTapped()
                 }
+              
                 
                 cell = profileCell
                 

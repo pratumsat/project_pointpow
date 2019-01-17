@@ -561,6 +561,7 @@ struct Constant {
         
             struct DefaultImaege{
                 static let PROFILE_IMAGE_PLACE_HOLDER = "bg-profile-image"
+                static let PROFILE_BACKGROUND__IMAGE_PLACE_HOLDER = "bg-profile-image"
         }
     }
     struct Colors {

@@ -16,9 +16,12 @@ class ProfileCell: UICollectionViewCell {
     @IBOutlet weak var cameraImageView: UIImageView!
     @IBOutlet weak var profileImageView: UIImageView!
     
+    @IBOutlet weak var pointBalanceLabel: UILabel!
     var profileTappedCallback:(()->Void)?
     var backgroundTappedCallback:(()->Void)?
     
+    @IBOutlet weak var pointpowIdLabel: UILabel!
+    @IBOutlet weak var displayNameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
     

@@ -105,7 +105,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
             avaliable?()
             if let data  = result as? [String:AnyObject] {
                 
-                let pointBalance = data["member_point"]?["total"] as? String ?? ""
+                let pointBalance = data["member_point"]?["total"] as? String ?? "0.00"
                 let  profileImage = data["picture_data"] as? String ?? ""
                 self.pointBalanceLabel.text = pointBalance
                 self.profileImageView.sd_setImage(with: URL(string: profileImage), placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_IMAGE_PLACE_HOLDER )!)

@@ -774,6 +774,199 @@ class ModelController {
     }
     
     
+    func uploadImageProfile(_ image:UIImage,
+                            _ isLoading:Bool = true,
+                            succeeded:( (_ result:AnyObject) ->Void)? = nil,
+                            error:((_ errorObject:AnyObject)->Void)?,
+                            failure:( (_ statusCode:String) ->Void)? = nil ,
+                            inprogress:((_ progress:Double) ->Void)? = nil ,
+                            uploadTask:((_ uploadtask:UploadRequest) ->Void)? = nil ){
+    
+
+        let imageData = image.pngData()!
+        
+        let token = DataController.sharedInstance.getToken()
+        let header: HTTPHeaders = ["Authorization":"Bearer \(token)"]
+        
+        
+        Alamofire.upload(
+            multipartFormData: { multipartFormData in
+                multipartFormData.append(imageData, withName: "image", fileName: "avatar.png", mimeType: "image/png")
+        },
+            to: Constant.PointPowAPI.addImageProfile,
+            headers : header,
+            encodingCompletion: { encodingResult in
+                
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    uploadTask?(upload)
+                    upload.uploadProgress(closure: { (progress) in
+                        print(progress.fractionCompleted)
+                        
+                        inprogress?(progress.fractionCompleted)
+                    })
+                    
+                    upload.validate().responseJSON { response in
+                        
+                        switch response.result {
+                        case .success(let json):
+                            print(json)
+                            break
+                            
+                        case .failure(let mError):
+                            let code = (mError as NSError).code
+                            if code == -1009 || code == -1001 || code == -1004 || code == -1005 {
+                                failure?("-1009")
+                                return
+                            }
+                            
+                            if  response.response?.statusCode == 401 {
+                                failure?("401")
+                                return
+                                
+                            }
+                            if  response.response?.statusCode == 500 {
+                                failure?("500")
+                                return
+                                
+                            }
+                            if let data = response.data {
+                                if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
+                                    if let data = json as? [String:AnyObject] {
+                                        
+                                        let success = data["success"] as? NSNumber  ??  0
+                                        
+                                        if success.intValue == 0 {
+                                            let messageError = data["message"] as? String  ??  ""
+                                            let field = data["field"] as? String  ??  ""
+                                            var errorObject:[String:AnyObject] = [:]
+                                            errorObject["message"] = messageError as AnyObject
+                                            errorObject["field"] = field as AnyObject
+                                            error?(errorObject as AnyObject)
+                                        }
+                                    }
+                                }
+                            }
+                            
+                            break
+                            
+                        }
+                        
+                    }
+                case .failure(let encodingError):
+                    print(encodingError)
+                }
+        })
+    }
+    
+    func uploadImageBackground(_ image:UIImage,
+                            _ isLoading:Bool = true,
+                            succeeded:( (_ result:AnyObject) ->Void)? = nil,
+                            error:((_ errorObject:AnyObject)->Void)?,
+                            failure:( (_ statusCode:String) ->Void)? = nil ,
+                            inprogress:((_ progress:Double) ->Void)? = nil ,
+                            uploadTask:((_ uploadtask:UploadRequest) ->Void)? = nil ){
+        
+        
+        let imageData = image.pngData()!
+        
+        let token = DataController.sharedInstance.getToken()
+        let header: HTTPHeaders = ["Authorization":"Bearer \(token)"]
+        
+        
+        Alamofire.upload(
+            multipartFormData: { multipartFormData in
+                multipartFormData.append(imageData, withName: "image", fileName: "avatar.png", mimeType: "image/png")
+        },
+            to: Constant.PointPowAPI.addBackgroundImageProfile,
+            headers : header,
+            encodingCompletion: { encodingResult in
+                
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    uploadTask?(upload)
+                    upload.uploadProgress(closure: { (progress) in
+                        print(progress.fractionCompleted)
+                        
+                        inprogress?(progress.fractionCompleted)
+                    })
+                    
+                    upload.validate().responseJSON { response in
+                        
+                        switch response.result {
+                        case .success(let json):
+                            print(json)
+                            break
+                            
+                        case .failure(let mError):
+                            let code = (mError as NSError).code
+                            if code == -1009 || code == -1001 || code == -1004 || code == -1005 {
+                                failure?("-1009")
+                                return
+                            }
+                            
+                            if  response.response?.statusCode == 401 {
+                                failure?("401")
+                                return
+                                
+                            }
+                            if  response.response?.statusCode == 500 {
+                                failure?("500")
+                                return
+                                
+                            }
+                            if let data = response.data {
+                                if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
+                                    if let data = json as? [String:AnyObject] {
+                                        
+                                        let success = data["success"] as? NSNumber  ??  0
+                                        
+                                        if success.intValue == 0 {
+                                            let messageError = data["message"] as? String  ??  ""
+                                            let field = data["field"] as? String  ??  ""
+                                            var errorObject:[String:AnyObject] = [:]
+                                            errorObject["message"] = messageError as AnyObject
+                                            errorObject["field"] = field as AnyObject
+                                            error?(errorObject as AnyObject)
+                                        }
+                                    }
+                                }
+                            }
+                            
+                            break
+                            
+                        }
+                        
+                    }
+                case .failure(let encodingError):
+                    print(encodingError)
+                }
+        })
+    }
+    
+    func loadImage(_ pathImage:String,_ defaultImage:String, result:( (_ image:UIImage?) ->Void)? = nil){
+        
+        let token = DataController.sharedInstance.getToken()
+        let header: HTTPHeaders = ["Authorization":"Bearer \(token)"]
+        
+        
+        Alamofire.request(pathImage, method: .get, parameters: nil , headers: header).responseData { (data) in
+          
+            if data.result.value != nil {
+                let img = UIImage(data: data.result.value!)
+                if img != nil {
+                    result?(img)
+                }else{
+                    result?(UIImage(named: defaultImage))
+                }
+                
+            }else{
+                result?(UIImage(named: defaultImage))
+            }
+        }
+    }
+    
+    
     func logOut(){
         GIDSignIn.sharedInstance()?.signOut()
         self.fbLoginManager.logOut()

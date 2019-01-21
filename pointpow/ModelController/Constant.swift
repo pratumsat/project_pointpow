@@ -511,17 +511,24 @@ extension NSLayoutConstraint {
 
 struct Constant {
     struct PointPowAPI {
-        static let HOST = "http://192.168.1.43/pointpow-api/public/api/"
-        static let loginWithEmailORMobile  = "\(HOST)v1/login"
-        static let registerWithEmail  = "\(HOST)v1/register-email"
-        static let registerWithMobile  = "\(HOST)v1/register-mobile"
-        static let loginWithSocial  = "\(HOST)v1/social-login"
-        static let verifyOTP  = "\(HOST)v1/otp-verify"
-        static let resendOTP  = "\(HOST)v1/otp-resend"
-        static let forgotPassword  = "\(HOST)v1/reset-password"
-        static let setNewPassword = "\(HOST)v1/set-new-password"
-        static let userData = "\(HOST)v1/member/get"
+        static let HOST = "http://192.168.1.45/pointpow-api/public/api/"
+        static let POINTPOW_VERSION1 = "v1/"
+        static let loginWithEmailORMobile  = "\(HOST)\(POINTPOW_VERSION1)login"
+        static let registerWithEmail  = "\(HOST)\(POINTPOW_VERSION1)register-email"
+        static let registerWithMobile  = "\(HOST)\(POINTPOW_VERSION1)register-mobile"
+        static let loginWithSocial  = "\(HOST)\(POINTPOW_VERSION1)social-login"
+        static let verifyOTP  = "\(HOST)\(POINTPOW_VERSION1)otp-verify"
+        static let resendOTP  = "\(HOST)\(POINTPOW_VERSION1)otp-resend"
+        static let forgotPassword  = "\(HOST)\(POINTPOW_VERSION1)reset-password"
+        static let setNewPassword = "\(HOST)\(POINTPOW_VERSION1)set-new-password"
+        static let userData = "\(HOST)\(POINTPOW_VERSION1)member/get"
+        static let addImageProfile = "\(HOST)\(POINTPOW_VERSION1)member/upload-profile-image"
+        static let addBackgroundImageProfile = "\(HOST)\(POINTPOW_VERSION1)member/upload-background-image"
         
+    }
+    struct PathImages {
+        static let profile = "\(PointPowAPI.HOST)\(PointPowAPI.POINTPOW_VERSION1)member/image/profile/"
+        static let background = "\(PointPowAPI.HOST)\(PointPowAPI.POINTPOW_VERSION1)member/image/profile-background/"
     }
     struct TopViewController{
         static var top: UIViewController? {
@@ -560,8 +567,8 @@ struct Constant {
         static let NotificationGoogleSigInFailure = "NotificationGoogleSigInFailure"
         
             struct DefaultImaege{
-                static let PROFILE_IMAGE_PLACE_HOLDER = "bg-profile-image"
-                static let PROFILE_BACKGROUND__IMAGE_PLACE_HOLDER = "bg-profile-image"
+                static let PROFILE_PLACEHOLDER = "bg-profile-image"
+                static let PROFILE_BACKGROUND_PLACEHOLDER = "bg-profile-image"
         }
     }
     struct Colors {

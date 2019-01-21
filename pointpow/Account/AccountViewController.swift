@@ -8,6 +8,7 @@
 
 import UIKit
 import Photos
+import  Alamofire
 
 class AccountViewController: BaseViewController , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -18,6 +19,8 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
     var profileBackgroundImage:UIImage?
     var chooseProfile = false
     var userData:AnyObject?
+    
+     var upload:UploadRequest?
     
     @IBOutlet weak var profileCollectionView: UICollectionView!
     override func viewDidLoad() {
@@ -34,6 +37,10 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
        
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.upload?.cancel()
     }
   
     override func viewDidAppear(_ animated: Bool) {
@@ -118,10 +125,20 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
                     let displayName = userData["display_name"] as? String ?? "-"
                     let pointBalance = userData["member_point"]?["total"] as? String ?? "0.00"
                     
-                    profileCell.profileImageView.sd_setImage(with: URL(string: profileImage), placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_IMAGE_PLACE_HOLDER )!)
+                    let parthProfileImage = "\(Constant.PathImages.profile)\(profileImage)"
+                    let parthBackgroundImage = "\(Constant.PathImages.background)\(backgroundProfileImage)"
                     
-                    profileCell.backgroundImageView.sd_setImage(with: URL(string: backgroundProfileImage), placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_BACKGROUND__IMAGE_PLACE_HOLDER )!)
+                    modelCtrl.loadImage(parthProfileImage , Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER) { (image) in
+                        
+                        profileCell.profileImageView.image = image
+                    }
                     
+                    modelCtrl.loadImage(parthBackgroundImage , Constant.DefaultConstansts.DefaultImaege.PROFILE_BACKGROUND_PLACEHOLDER)
+                    { (image) in
+                        
+                        profileCell.backgroundImageView.image = image
+                    }
+
                     profileCell.pointBalanceLabel.text = pointBalance
                     profileCell.displayNameLabel.text = displayName
                     profileCell.pointpowIdLabel.text = pointpowId
@@ -284,11 +301,13 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
             // square for profile
             let resizeImage = chosenImage.resizeUIImage(targetSize: CGSize(width: 400.0, height: 400.0))
             self.profileImage = resizeImage
+            self.uploadProfileImage(resizeImage)
             
         }else{
             // square for background
             let resizeImage = chosenImage.resizeUIImage(targetSize: CGSize(width: 370, height: 300))
             self.profileBackgroundImage = resizeImage
+            self.uploadBackgroundImage(resizeImage)
         }
         
         //reload data
@@ -296,21 +315,6 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
         dismiss(animated: true, completion: nil)
     }
     
-//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-////
-//        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-//        print("image size =  \(chosenImage.size)")
-//
-//        let resizeImage = resizeUIImage(image: chosenImage, targetSize: CGSize(width: 400.0, height: 400.0))
-//
-//        print("reize image size =  \(resizeImage.size)")
-//        //self.progressLoading(resizeImage) send data
-//
-//        self.imageCover = resizeImage // preview
-//        self.profileCollection.reloadData()
-//
-//        dismiss(animated:true, completion: nil)
-//    }
     
     func addFileTapped() {
         //Gallery
@@ -376,6 +380,48 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
         }
         
         
+    }
+    
+    
+    func uploadProfileImage(_ image:UIImage){
+        self.modelCtrl.uploadImageProfile(image, true, succeeded: { (result) in
+            print("print")
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                //self.showMessagePrompt(message)
+            }
+        }, failure: { (messageError) in
+            self.handlerMessageError(messageError)
+        }, inprogress: { (progress) in
+            if progress >= 1.0 {
+                //hide
+                print("progress : \(progress)")
+            }
+        }) { (upload) in
+            self.upload = upload
+        }
+    }
+    func uploadBackgroundImage(_ image:UIImage){
+        self.modelCtrl.uploadImageBackground(image, true, succeeded: { (result) in
+            print("print")
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                //self.showMessagePrompt(message)
+            }
+        }, failure: { (messageError) in
+            self.handlerMessageError(messageError)
+        }, inprogress: { (progress) in
+            if progress >= 1.0 {
+                //hide
+                print("progress : \(progress)")
+            }
+        }) { (upload) in
+            self.upload = upload
+        }
     }
 
 }

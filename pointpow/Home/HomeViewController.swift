@@ -108,7 +108,13 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
                 let pointBalance = data["member_point"]?["total"] as? String ?? "0.00"
                 let  profileImage = data["picture_data"] as? String ?? ""
                 self.pointBalanceLabel.text = pointBalance
-                self.profileImageView.sd_setImage(with: URL(string: profileImage), placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_IMAGE_PLACE_HOLDER )!)
+                
+                let parthProfileImage = "\(Constant.PathImages.profile)\(profileImage)"
+                self.modelCtrl.loadImage(parthProfileImage , Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER) { (image) in
+                    
+                    self.profileImageView.image = image
+                }
+                
             }
             
             self.refreshControl?.endRefreshing()

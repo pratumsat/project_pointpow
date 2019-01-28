@@ -13,6 +13,10 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
     
     @IBOutlet weak var profileCollectionView: UICollectionView!
     
+    enum SelectType {
+        case EMAIL, MOBILE ,EDITPROFILE
+    }
+    var select:SelectType = .EDITPROFILE
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,6 +26,23 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
     
     
     func setUp(){
+        self.hendleSetPasscodeSuccess = { (passcode) in
+            print("new passcode= \(passcode)")
+            
+        }
+        self.handlerEnterSuccess = {
+            switch self.select {
+            case .EDITPROFILE:
+                self.showPersonalView(true)
+                
+            case .EMAIL:
+                self.showEmailView(true)
+                
+            case .MOBILE:
+                self.showMobilePhoneView(true)
+            }
+        }
+
         self.backgroundImage?.image = nil
         
         
@@ -96,13 +117,27 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
-                self.showPersonalView(true)
+                //check isPassCode
+                //self.showSettingPassCodeModalView()
+                
+                self.select = .EDITPROFILE
+                self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
+                
             }else if indexPath.row == 1 {
                 self.showDisplayNameView(true)
+            
             }else if indexPath.row == 2 {
-                self.showMobilePhoneView(true)
+                
+                self.select = .MOBILE
+                self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
+                
+                
             }else if indexPath.row == 3 {
-                self.showEmailView(true)
+                
+                self.select = .EMAIL
+                 self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
+                
+                
             }else if indexPath.row == 4 {
                 self.showChangePasswordView(true)
             }

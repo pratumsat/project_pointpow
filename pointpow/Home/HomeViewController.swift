@@ -240,6 +240,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         if indexPath.section == 1 {
             if indexPath.row == 1 {
                 print("gold saving")
+                self.showGoldPage(true)
             }
         }
     }

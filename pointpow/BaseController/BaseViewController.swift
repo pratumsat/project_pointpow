@@ -283,7 +283,11 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         }
         
     }
-   
+    func showGoldPage(_ animated:Bool){
+        if let vc:SWRevealViewController = self.storyboard?.instantiateViewController(withIdentifier: "GoldSWRevealViewController") as? SWRevealViewController {
+            self.present(vc, animated: animated, completion: nil)
+        }
+    }
     func showIntroduce(_ animated:Bool){
         if let vc:IntroNav = self.storyboard?.instantiateViewController(withIdentifier: "IntroNav") as? IntroNav {
             

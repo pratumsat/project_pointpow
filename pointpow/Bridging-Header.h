@@ -15,3 +15,4 @@
 #import "PAPasscodeViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <ZBarSDK/ZBarSDK.h>
+#import <SWRevealViewController/SWRevealViewController.h>

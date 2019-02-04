@@ -511,7 +511,8 @@ extension NSLayoutConstraint {
 
 struct Constant {
     struct PointPowAPI {
-        static let HOST = "http://192.168.1.45/pointpow-api/public/api/"
+        // UAT http://103.27.201.106/dev-pointpow/pointpow-api/public/api/v1/
+        static let HOST = "http://103.27.201.106/dev-pointpow/pointpow-api/public/api/"
         static let POINTPOW_VERSION1 = "v1/"
         static let loginWithEmailORMobile  = "\(HOST)\(POINTPOW_VERSION1)login"
         static let registerWithEmail  = "\(HOST)\(POINTPOW_VERSION1)register-email"

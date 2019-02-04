@@ -455,7 +455,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         
         let navController = UINavigationController(rootViewController: enterPasscode!)
         navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                                                           NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.TITLE )!]
+                                                           NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.NOTO_SANS_BOLD, size: Constant.Fonts.Size.TITLE )!]
     
         let presenter: Presentr = {
             let w = self.view.frame.width
@@ -485,7 +485,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         
         let navController = UINavigationController(rootViewController: enterPasscode!)
         navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                                                           NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.TITLE )!]
+                                                           NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.NOTO_SANS_BOLD, size: Constant.Fonts.Size.TITLE )!]
         
         
         

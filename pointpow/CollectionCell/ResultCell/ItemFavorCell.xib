@@ -10,8 +10,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="ThaiSansNeue-Bold.ttf">
-            <string>ThaiSansNeue-Bold</string>
+        <array key="NotoSansThai-SemiBold.ttf">
+            <string>NotoSansThai-SemiBold</string>
         </array>
     </customFonts>
     <objects>
@@ -28,11 +28,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="388" height="87"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2md-w2-xRi">
-                                <rect key="frame" x="111" y="17.5" width="166" height="52"/>
+                                <rect key="frame" x="108.5" y="17.5" width="171" height="52"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="เพิ่มในรายการโปรด" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NuB-KT-Z1a">
-                                        <rect key="frame" x="62" y="14.5" width="104" height="23.5"/>
-                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
+                                        <rect key="frame" x="62" y="15.5" width="109" height="21.5"/>
+                                        <fontDescription key="fontDescription" name="NotoSansThai-SemiBold" family="Noto Sans Thai" pointSize="14"/>
                                         <color key="textColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>

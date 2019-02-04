@@ -22,7 +22,7 @@ class ItemFriendCell: UICollectionViewCell {
     
     var recentMode:Bool = false {
         didSet{
-            self.nameLabel.font = UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.FREIND_RECENT)!
+            self.nameLabel.font = UIFont(name: Constant.Fonts.NOTO_SANS_BOLD, size: Constant.Fonts.Size.FREIND_RECENT)!
             self.heightConstraintButton.constant = 20
             self.marginTopConstraintButton.constant = 8
             
@@ -35,7 +35,7 @@ class ItemFriendCell: UICollectionViewCell {
             self.addConstraint(newConstaint)
             
             
-            self.transferButton.titleLabel?.font = UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.FREIND_RECENT)!
+            self.transferButton.titleLabel?.font = UIFont(name: Constant.Fonts.NOTO_SANS_BOLD, size: Constant.Fonts.Size.FREIND_RECENT)!
      
             self.layoutIfNeeded()
         }

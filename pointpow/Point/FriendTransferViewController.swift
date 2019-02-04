@@ -112,7 +112,7 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
         
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeadCell", for: indexPath) as! HeadCell
         header.nameLabel.text = NSLocalizedString("string-point-transfer-friend-header-recent", comment: "")
-        header.nameLabel.font = UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.FRIEND_HEADER_RECENT)!
+        header.nameLabel.font = UIFont(name: Constant.Fonts.NOTO_SANS_BOLD, size: Constant.Fonts.Size.FRIEND_HEADER_RECENT)!
         header.backgroundColor = UIColor.white
         header.marginLeftConstrantLabel.constant = 35
 

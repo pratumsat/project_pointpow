@@ -25,7 +25,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TOw-vR-gUW">
-                        <rect key="frame" x="20" y="40" width="359" height="40"/>
+                        <rect key="frame" x="0.0" y="40" width="399" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="Sho-Sk-YWW"/>
                         </constraints>
@@ -42,8 +42,8 @@
             <constraints>
                 <constraint firstItem="TOw-vR-gUW" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="FhW-Ne-1HE"/>
                 <constraint firstItem="TOw-vR-gUW" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Ra7-Nv-eI4"/>
-                <constraint firstItem="TOw-vR-gUW" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="SOf-6b-fnP"/>
-                <constraint firstAttribute="trailing" secondItem="TOw-vR-gUW" secondAttribute="trailing" constant="20" id="dPC-lX-6j5"/>
+                <constraint firstItem="TOw-vR-gUW" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="SOf-6b-fnP"/>
+                <constraint firstAttribute="trailing" secondItem="TOw-vR-gUW" secondAttribute="trailing" id="dPC-lX-6j5"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="399" height="120"/>

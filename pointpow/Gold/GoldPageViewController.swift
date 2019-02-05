@@ -13,7 +13,11 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
     @IBOutlet weak var homeCollectionView: UICollectionView!
     
     
-    let arrayItem = ["goldprice","goldbalance","saving","register", "logo"]
+    let arrayItem_registered = ["goldprice","goldbalance","saving", "logo"]
+    let arrayItem_no_registered = ["goldprice","register", "logo"]
+    var arrayItem:[String] = []
+    var isRegistered  = false
+    let headerSizeCell = CGFloat(20)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +25,9 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
        self.setUp()
     }
     func setUp(){
+        self.isRegistered = false
+        self.arrayItem = self.arrayItem_no_registered
+        
         self.backgroundImage?.image = nil
     
         self.homeCollectionView.delegate = self
@@ -53,14 +60,14 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "GoldPriceCell", for: indexPath) as? GoldPriceCell{
                 cell = item
                 
-                item.backgroundColor = UIColor.red
+                
             }
         }
         if menu == "goldbalance" {
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "MyGoldCell", for: indexPath) as? MyGoldCell {
                 cell = item
                
-                item.backgroundColor = UIColor.green
+               
             }
             
         }
@@ -68,7 +75,7 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "SavingCell", for: indexPath) as? SavingCell {
                 cell = item
                 
-                item.backgroundColor = UIColor.blue
+               
             }
             
         }
@@ -83,13 +90,9 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
             }
         }
         if menu == "logo" {
-            if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "LogoGoldCell", for: indexPath) as? RegisterGoldCell {
+            if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "LogoGoldCell", for: indexPath) as? LogoGoldCell {
                 cell = item
-                
-                item.registerCallback = {
-                    self.showRegisterGoldSaving(true)
-                }
-                
+               
             }
         }
         
@@ -101,25 +104,54 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         return cell!
     }
     
-   
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+        
+        return CGSize(width: collectionView.frame.width, height: headerSizeCell)
+        
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        
+        return CGSize.zero
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        
         let menu = self.arrayItem[indexPath.section]
-        if menu == "register" {
-            let width = collectionView.frame.width
-            let height = CGFloat(100.0)
-            return CGSize(width: width, height: height)
-        }
-        if menu == "logo" {
-            let width = collectionView.frame.width
-            let height = CGFloat(100.0)
-            return CGSize(width: width, height: height)
-        }
+        
+        
        
-        let width = collectionView.frame.width
-        let height = CGFloat(300.0)
+        let cheight = collectionView.frame.height
+     
+        if isRegistered {
+            if menu == "logo" {
+                let height = cheight - 600
+                let width = collectionView.frame.width
+                return CGSize(width: width, height: height)
+            }
+            
+        }else{
+          
+            if menu == "logo" {
+                let height = cheight - 320
+                let width = collectionView.frame.width
+                return CGSize(width: width, height: height)
+            }
+        }
+        if menu == "register" {
+            let height = CGFloat(40.0)
+            let width = collectionView.frame.width - 40
+            return CGSize(width: width, height: height)
+        }
+        if menu == "goldprice" {
+            let width = collectionView.frame.width - 40
+            let height = width/375*250
+            return CGSize(width: width, height: height)
+        }
+        
+        let width = collectionView.frame.width - 40
+        let height = CGFloat(200.0)
         return CGSize(width: width, height: height)
     }
 

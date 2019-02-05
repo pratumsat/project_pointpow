@@ -25,6 +25,7 @@
 		C10CA1BA2193E1D100316DF3 /* PromotionCampainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C10CA1B82193E1D100316DF3 /* PromotionCampainCell.xib */; };
 		C10CA1BE219429D500316DF3 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA1BC219429D500316DF3 /* ImageCell.swift */; };
 		C10CA1BF219429D500316DF3 /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C10CA1BD219429D500316DF3 /* ImageCell.xib */; };
+		C10D94AB22094AAF0083FA47 /* RegisterGoldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10D94AA22094AAF0083FA47 /* RegisterGoldViewController.swift */; };
 		C115FA4A219EC511008E7844 /* ResultTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C115FA49219EC511008E7844 /* ResultTransferViewController.swift */; };
 		C115FA4E219ECB85008E7844 /* ItemListResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C115FA4C219ECB85008E7844 /* ItemListResultCell.swift */; };
 		C115FA4F219ECB85008E7844 /* ItemListResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C115FA4D219ECB85008E7844 /* ItemListResultCell.xib */; };
@@ -168,6 +169,7 @@
 		C10CA1B82193E1D100316DF3 /* PromotionCampainCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromotionCampainCell.xib; sourceTree = "<group>"; };
 		C10CA1BC219429D500316DF3 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		C10CA1BD219429D500316DF3 /* ImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
+		C10D94AA22094AAF0083FA47 /* RegisterGoldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGoldViewController.swift; sourceTree = "<group>"; };
 		C115FA49219EC511008E7844 /* ResultTransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTransferViewController.swift; sourceTree = "<group>"; };
 		C115FA4C219ECB85008E7844 /* ItemListResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListResultCell.swift; sourceTree = "<group>"; };
 		C115FA4D219ECB85008E7844 /* ItemListResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemListResultCell.xib; sourceTree = "<group>"; };
@@ -549,15 +551,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		C197FF2422081C3F002F24E8 /* SWSlide */ = {
+		C197FF2422081C3F002F24E8 /* Gold */ = {
 			isa = PBXGroup;
 			children = (
 				C197FF2722082046002F24E8 /* GoldBaseViewController.swift */,
 				C197FF2522081C72002F24E8 /* GoldPageViewController.swift */,
 				C197FF2922082503002F24E8 /* GoldProfileViewController.swift */,
 				C197FF2B22082527002F24E8 /* GoldWithDrawViewController.swift */,
+				C10D94AA22094AAF0083FA47 /* RegisterGoldViewController.swift */,
 			);
-			path = SWSlide;
+			path = Gold;
 			sourceTree = "<group>";
 		};
 		C197FF2F22083A3D002F24E8 /* GoldHomeCell */ = {
@@ -602,7 +605,7 @@
 		C1AD50782187F45600F74415 /* pointpow */ = {
 			isa = PBXGroup;
 			children = (
-				C197FF2422081C3F002F24E8 /* SWSlide */,
+				C197FF2422081C3F002F24E8 /* Gold */,
 				C10CA1A5219185A000316DF3 /* Passcode */,
 				C10CA19E21914B7A00316DF3 /* Point */,
 				C10CA19B21914B0700316DF3 /* Account */,
@@ -1091,6 +1094,7 @@
 				C1DEBE902188297B00CBB95F /* ScannerViewController.swift in Sources */,
 				C1817DA4219E6A2E009507DB /* PPWebViewController.swift in Sources */,
 				C197FF2C22082527002F24E8 /* GoldWithDrawViewController.swift in Sources */,
+				C10D94AB22094AAF0083FA47 /* RegisterGoldViewController.swift in Sources */,
 				C169FFCB21C7939E00F9D354 /* FavorPopupViewController.swift in Sources */,
 				C13D998D21997EF7001A4794 /* PersonalViewController.swift in Sources */,
 				C142741D21A68154003CC246 /* ResetPasswordViewController.swift in Sources */,

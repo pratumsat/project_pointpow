@@ -72,7 +72,7 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
                 cell = item
                 
                 item.registerCallback = {
-                    
+                    self.showRegisterGoldSaving(true)
                 }
                 item.backgroundColor = UIColor.orange
             }
@@ -105,7 +105,7 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         }
         if indexPath.section == 4 {
             let width = collectionView.frame.width
-            let height = CGFloat(100.0)
+            let height = CGFloat(140.0)
             return CGSize(width: width, height: height)
         }
         

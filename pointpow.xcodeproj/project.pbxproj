@@ -26,6 +26,9 @@
 		C10CA1BE219429D500316DF3 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA1BC219429D500316DF3 /* ImageCell.swift */; };
 		C10CA1BF219429D500316DF3 /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C10CA1BD219429D500316DF3 /* ImageCell.xib */; };
 		C10D94AB22094AAF0083FA47 /* RegisterGoldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10D94AA22094AAF0083FA47 /* RegisterGoldViewController.swift */; };
+		C10D94AD22095EA20083FA47 /* GoldMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10D94AC22095EA20083FA47 /* GoldMenuTableViewController.swift */; };
+		C10D94B1220960940083FA47 /* NameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10D94AF220960940083FA47 /* NameTableViewCell.swift */; };
+		C10D94B2220960940083FA47 /* NameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C10D94B0220960940083FA47 /* NameTableViewCell.xib */; };
 		C115FA4A219EC511008E7844 /* ResultTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C115FA49219EC511008E7844 /* ResultTransferViewController.swift */; };
 		C115FA4E219ECB85008E7844 /* ItemListResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C115FA4C219ECB85008E7844 /* ItemListResultCell.swift */; };
 		C115FA4F219ECB85008E7844 /* ItemListResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C115FA4D219ECB85008E7844 /* ItemListResultCell.xib */; };
@@ -170,6 +173,9 @@
 		C10CA1BC219429D500316DF3 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		C10CA1BD219429D500316DF3 /* ImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
 		C10D94AA22094AAF0083FA47 /* RegisterGoldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGoldViewController.swift; sourceTree = "<group>"; };
+		C10D94AC22095EA20083FA47 /* GoldMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldMenuTableViewController.swift; sourceTree = "<group>"; };
+		C10D94AF220960940083FA47 /* NameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTableViewCell.swift; sourceTree = "<group>"; };
+		C10D94B0220960940083FA47 /* NameTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NameTableViewCell.xib; sourceTree = "<group>"; };
 		C115FA49219EC511008E7844 /* ResultTransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTransferViewController.swift; sourceTree = "<group>"; };
 		C115FA4C219ECB85008E7844 /* ItemListResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListResultCell.swift; sourceTree = "<group>"; };
 		C115FA4D219ECB85008E7844 /* ItemListResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemListResultCell.xib; sourceTree = "<group>"; };
@@ -429,6 +435,15 @@
 			path = Banner;
 			sourceTree = "<group>";
 		};
+		C10D94AE220960790083FA47 /* TableCell */ = {
+			isa = PBXGroup;
+			children = (
+				C10D94AF220960940083FA47 /* NameTableViewCell.swift */,
+				C10D94B0220960940083FA47 /* NameTableViewCell.xib */,
+			);
+			path = TableCell;
+			sourceTree = "<group>";
+		};
 		C115FA4B219ECB5F008E7844 /* ResultCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -559,6 +574,7 @@
 				C197FF2922082503002F24E8 /* GoldProfileViewController.swift */,
 				C197FF2B22082527002F24E8 /* GoldWithDrawViewController.swift */,
 				C10D94AA22094AAF0083FA47 /* RegisterGoldViewController.swift */,
+				C10D94AC22095EA20083FA47 /* GoldMenuTableViewController.swift */,
 			);
 			path = Gold;
 			sourceTree = "<group>";
@@ -613,6 +629,7 @@
 				C10CA19521914AC600316DF3 /* Promotion */,
 				C10CA19221914A2800316DF3 /* Home */,
 				C11A93BA218C20B600627B44 /* Authen */,
+				C10D94AE220960790083FA47 /* TableCell */,
 				C11A93B4218C00A000627B44 /* CollectionCell */,
 				C11A93AF218BF68A00627B44 /* Main */,
 				C11A93AC218BF64100627B44 /* Introduction */,
@@ -860,6 +877,7 @@
 				C10CA1BA2193E1D100316DF3 /* PromotionCampainCell.xib in Resources */,
 				C169FFC921C4F10100F9D354 /* FavorCell.xib in Resources */,
 				C11BDFB921A2B95D00443D2D /* ItemFriendSummaryCell.xib in Resources */,
+				C10D94B2220960940083FA47 /* NameTableViewCell.xib in Resources */,
 				C142741B21A553EE003CC246 /* ItemFavorCell.xib in Resources */,
 				C197FF3722083AA6002F24E8 /* MyGoldCell.xib in Resources */,
 				C1817DA2219C1934009507DB /* SwitchCell.xib in Resources */,
@@ -1048,6 +1066,7 @@
 				C1817D99219C041F009507DB /* PointTransferViewController.swift in Sources */,
 				C197FF2A22082503002F24E8 /* GoldProfileViewController.swift in Sources */,
 				C197FEDE21DC8E98002F24E8 /* ResetNav.swift in Sources */,
+				C10D94AD22095EA20083FA47 /* GoldMenuTableViewController.swift in Sources */,
 				C142741A21A553EE003CC246 /* ItemFavorCell.swift in Sources */,
 				C1DEBE9521882F6F00CBB95F /* BaseNavigationViewController.swift in Sources */,
 				C1AD507A2187F45600F74415 /* AppDelegate.swift in Sources */,
@@ -1071,6 +1090,7 @@
 				C1AD50AF2187FE9000F74415 /* PopUpViewController.swift in Sources */,
 				C11A93C0218C2AD900627B44 /* ForgotPasswordViewController.swift in Sources */,
 				C11A93BE218C20D100627B44 /* RegisterViewController.swift in Sources */,
+				C10D94B1220960940083FA47 /* NameTableViewCell.swift in Sources */,
 				C1817DA1219C1934009507DB /* SwitchCell.swift in Sources */,
 				C13D99822199755B001A4794 /* ProfileViewController.swift in Sources */,
 				C1817DA8219E7BFE009507DB /* CheckBox.swift in Sources */,

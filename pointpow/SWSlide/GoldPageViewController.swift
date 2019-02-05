@@ -29,10 +29,12 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         self.registerNib(self.homeCollectionView, "GoldPriceCell")
         self.registerNib(self.homeCollectionView, "MyGoldCell")
         self.registerNib(self.homeCollectionView, "SavingCell")
+        self.registerNib(self.homeCollectionView, "RegisterGoldCell")
+        self.registerNib(self.homeCollectionView, "LogoGoldCell")
         
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -65,6 +67,23 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
             }
             
         }
+        if indexPath.section == 3 {
+            if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "RegisterGoldCell", for: indexPath) as? RegisterGoldCell {
+                cell = item
+                
+                item.registerCallback = {
+                    
+                }
+                item.backgroundColor = UIColor.orange
+            }
+        }
+        if indexPath.section == 4 {
+            if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "LogoGoldCell", for: indexPath) as? LogoGoldCell {
+                cell = item
+                
+                item.backgroundColor = UIColor.brown
+            }
+        }
         
         if cell == nil {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as UICollectionViewCell
@@ -77,6 +96,18 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
+        
+        
+        if indexPath.section == 3 {
+            let width = collectionView.frame.width
+            let height = CGFloat(100.0)
+            return CGSize(width: width, height: height)
+        }
+        if indexPath.section == 4 {
+            let width = collectionView.frame.width
+            let height = CGFloat(100.0)
+            return CGSize(width: width, height: height)
+        }
         
         let width = collectionView.frame.width
         let height = CGFloat(300.0)

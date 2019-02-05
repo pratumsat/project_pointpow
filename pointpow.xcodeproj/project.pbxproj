@@ -96,6 +96,10 @@
 		C197FF3722083AA6002F24E8 /* MyGoldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C197FF3522083AA6002F24E8 /* MyGoldCell.xib */; };
 		C197FF3A22083AE9002F24E8 /* SavingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FF3822083AE9002F24E8 /* SavingCell.swift */; };
 		C197FF3B22083AE9002F24E8 /* SavingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C197FF3922083AE9002F24E8 /* SavingCell.xib */; };
+		C197FF3E22093D9B002F24E8 /* RegisterGoldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FF3C22093D9B002F24E8 /* RegisterGoldCell.swift */; };
+		C197FF3F22093D9B002F24E8 /* RegisterGoldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C197FF3D22093D9B002F24E8 /* RegisterGoldCell.xib */; };
+		C197FF422209401D002F24E8 /* LogoGoldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FF402209401D002F24E8 /* LogoGoldCell.swift */; };
+		C197FF432209401D002F24E8 /* LogoGoldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C197FF412209401D002F24E8 /* LogoGoldCell.xib */; };
 		C1AD507A2187F45600F74415 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AD50792187F45600F74415 /* AppDelegate.swift */; };
 		C1AD507C2187F45600F74415 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AD507B2187F45600F74415 /* ViewController.swift */; };
 		C1AD507F2187F45600F74415 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1AD507D2187F45600F74415 /* Main.storyboard */; };
@@ -236,6 +240,10 @@
 		C197FF3522083AA6002F24E8 /* MyGoldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyGoldCell.xib; sourceTree = "<group>"; };
 		C197FF3822083AE9002F24E8 /* SavingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingCell.swift; sourceTree = "<group>"; };
 		C197FF3922083AE9002F24E8 /* SavingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavingCell.xib; sourceTree = "<group>"; };
+		C197FF3C22093D9B002F24E8 /* RegisterGoldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGoldCell.swift; sourceTree = "<group>"; };
+		C197FF3D22093D9B002F24E8 /* RegisterGoldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterGoldCell.xib; sourceTree = "<group>"; };
+		C197FF402209401D002F24E8 /* LogoGoldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoGoldCell.swift; sourceTree = "<group>"; };
+		C197FF412209401D002F24E8 /* LogoGoldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoGoldCell.xib; sourceTree = "<group>"; };
 		C1AD50762187F45600F74415 /* pointpow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pointpow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1AD50792187F45600F74415 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1AD507B2187F45600F74415 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -561,6 +569,10 @@
 				C197FF3522083AA6002F24E8 /* MyGoldCell.xib */,
 				C197FF3822083AE9002F24E8 /* SavingCell.swift */,
 				C197FF3922083AE9002F24E8 /* SavingCell.xib */,
+				C197FF3C22093D9B002F24E8 /* RegisterGoldCell.swift */,
+				C197FF3D22093D9B002F24E8 /* RegisterGoldCell.xib */,
+				C197FF402209401D002F24E8 /* LogoGoldCell.swift */,
+				C197FF412209401D002F24E8 /* LogoGoldCell.xib */,
 			);
 			path = GoldHomeCell;
 			sourceTree = "<group>";
@@ -852,12 +864,14 @@
 				C115FA4F219ECB85008E7844 /* ItemListResultCell.xib in Resources */,
 				C1817D93219BF61F009507DB /* ItemFriendCell.xib in Resources */,
 				C197FF3B22083AE9002F24E8 /* SavingCell.xib in Resources */,
+				C197FF432209401D002F24E8 /* LogoGoldCell.xib in Resources */,
 				C1DEBE992188337500CBB95F /* ThaiSansNeue-Regular.ttf in Resources */,
 				C120D7D321955BC900F9EEBB /* ItemProfileCell.xib in Resources */,
 				C13D998B21997AD6001A4794 /* HeadCell.xib in Resources */,
 				C1AD507F2187F45600F74415 /* Main.storyboard in Resources */,
 				C13D998621997938001A4794 /* LogoutCell.xib in Resources */,
 				C197FF3322083A6F002F24E8 /* GoldPriceCell.xib in Resources */,
+				C197FF3F22093D9B002F24E8 /* RegisterGoldCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1025,6 +1039,7 @@
 				C11BDFBF21A2C17600443D2D /* PopUpTransferSuccessViewController.swift in Sources */,
 				C1817DAA219E7F18009507DB /* BankPointTransferViewController.swift in Sources */,
 				C10CA1A221914F2E00316DF3 /* MainTabbarViewController.swift in Sources */,
+				C197FF3E22093D9B002F24E8 /* RegisterGoldCell.swift in Sources */,
 				C10CA1A42191755C00316DF3 /* PersonalPopupViewController.swift in Sources */,
 				C197FF2622081C72002F24E8 /* GoldPageViewController.swift in Sources */,
 				C1817D99219C041F009507DB /* PointTransferViewController.swift in Sources */,
@@ -1062,6 +1077,7 @@
 				C115FA5721A2B3EB008E7844 /* PointFriendSummaryViewController.swift in Sources */,
 				C11BDFBC21A2BB3C00443D2D /* ItemConfirmSummaryCell.swift in Sources */,
 				C1DEBE92218829D900CBB95F /* Scanner2ViewController.swift in Sources */,
+				C197FF422209401D002F24E8 /* LogoGoldCell.swift in Sources */,
 				C11A93AE218BF67F00627B44 /* IntroNav.swift in Sources */,
 				C1B542DD219ABE9A0040DDE6 /* SettingViewController.swift in Sources */,
 				C10CA1B92193E1D100316DF3 /* PromotionCampainCell.swift in Sources */,

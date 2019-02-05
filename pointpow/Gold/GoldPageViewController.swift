@@ -12,6 +12,9 @@ import UIKit
 class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var homeCollectionView: UICollectionView!
     
+    
+    let arrayItem = ["goldprice","goldbalance","saving","register", "logo"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,7 +37,7 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 5
+        return arrayItem.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -44,14 +47,16 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell:UICollectionViewCell?
         
-        if indexPath.section == 0 {
+        let menu = self.arrayItem[indexPath.section]
+        //["goldprice","goldbalance","saving","register"]
+        if menu == "goldprice" {
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "GoldPriceCell", for: indexPath) as? GoldPriceCell{
                 cell = item
                 
                 item.backgroundColor = UIColor.red
             }
         }
-        if indexPath.section == 1 {
+        if menu == "goldbalance" {
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "MyGoldCell", for: indexPath) as? MyGoldCell {
                 cell = item
                
@@ -59,7 +64,7 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
             }
             
         }
-        if indexPath.section == 2 {
+        if menu == "saving" {
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "SavingCell", for: indexPath) as? SavingCell {
                 cell = item
                 
@@ -67,21 +72,24 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
             }
             
         }
-        if indexPath.section == 3 {
+        if menu == "register" {
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "RegisterGoldCell", for: indexPath) as? RegisterGoldCell {
                 cell = item
                 
                 item.registerCallback = {
                     self.showRegisterGoldSaving(true)
                 }
-                item.backgroundColor = UIColor.orange
+               
             }
         }
-        if indexPath.section == 4 {
-            if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "LogoGoldCell", for: indexPath) as? LogoGoldCell {
+        if menu == "logo" {
+            if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "LogoGoldCell", for: indexPath) as? RegisterGoldCell {
                 cell = item
                 
-                item.backgroundColor = UIColor.brown
+                item.registerCallback = {
+                    self.showRegisterGoldSaving(true)
+                }
+                
             }
         }
         
@@ -93,22 +101,23 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         return cell!
     }
     
+   
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         
-        
-        if indexPath.section == 3 {
+        let menu = self.arrayItem[indexPath.section]
+        if menu == "register" {
             let width = collectionView.frame.width
             let height = CGFloat(100.0)
             return CGSize(width: width, height: height)
         }
-        if indexPath.section == 4 {
+        if menu == "logo" {
             let width = collectionView.frame.width
-            let height = CGFloat(140.0)
+            let height = CGFloat(100.0)
             return CGSize(width: width, height: height)
         }
-        
+       
         let width = collectionView.frame.width
         let height = CGFloat(300.0)
         return CGSize(width: width, height: height)

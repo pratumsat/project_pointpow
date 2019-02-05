@@ -28,8 +28,8 @@ class RegisterGoldCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        //self.registerButton.borderClearProperties(borderWidth: 1)
-        //self.registerButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
+        self.registerButton.borderClearProperties(borderWidth: 1 , radius : 5)
+        self.registerButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
         
     }
     @IBAction func registerTapped(_ sender: Any) {

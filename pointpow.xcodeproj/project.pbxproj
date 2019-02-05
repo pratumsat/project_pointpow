@@ -29,6 +29,10 @@
 		C10D94AD22095EA20083FA47 /* GoldMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10D94AC22095EA20083FA47 /* GoldMenuTableViewController.swift */; };
 		C10D94B1220960940083FA47 /* NameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10D94AF220960940083FA47 /* NameTableViewCell.swift */; };
 		C10D94B2220960940083FA47 /* NameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C10D94B0220960940083FA47 /* NameTableViewCell.xib */; };
+		C10D94B42209717E0083FA47 /* NavGoldPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10D94B32209717E0083FA47 /* NavGoldPage.swift */; };
+		C10D94B82209719F0083FA47 /* NavProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10D94B72209719F0083FA47 /* NavProfile.swift */; };
+		C10D94BA220971B10083FA47 /* NavHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10D94B9220971B10083FA47 /* NavHistory.swift */; };
+		C10D94BE220978B60083FA47 /* NavWithdraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10D94BD220978B60083FA47 /* NavWithdraw.swift */; };
 		C115FA4A219EC511008E7844 /* ResultTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C115FA49219EC511008E7844 /* ResultTransferViewController.swift */; };
 		C115FA4E219ECB85008E7844 /* ItemListResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C115FA4C219ECB85008E7844 /* ItemListResultCell.swift */; };
 		C115FA4F219ECB85008E7844 /* ItemListResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C115FA4D219ECB85008E7844 /* ItemListResultCell.xib */; };
@@ -176,6 +180,10 @@
 		C10D94AC22095EA20083FA47 /* GoldMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldMenuTableViewController.swift; sourceTree = "<group>"; };
 		C10D94AF220960940083FA47 /* NameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTableViewCell.swift; sourceTree = "<group>"; };
 		C10D94B0220960940083FA47 /* NameTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NameTableViewCell.xib; sourceTree = "<group>"; };
+		C10D94B32209717E0083FA47 /* NavGoldPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavGoldPage.swift; sourceTree = "<group>"; };
+		C10D94B72209719F0083FA47 /* NavProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavProfile.swift; sourceTree = "<group>"; };
+		C10D94B9220971B10083FA47 /* NavHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavHistory.swift; sourceTree = "<group>"; };
+		C10D94BD220978B60083FA47 /* NavWithdraw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavWithdraw.swift; sourceTree = "<group>"; };
 		C115FA49219EC511008E7844 /* ResultTransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTransferViewController.swift; sourceTree = "<group>"; };
 		C115FA4C219ECB85008E7844 /* ItemListResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListResultCell.swift; sourceTree = "<group>"; };
 		C115FA4D219ECB85008E7844 /* ItemListResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemListResultCell.xib; sourceTree = "<group>"; };
@@ -575,6 +583,10 @@
 				C197FF2B22082527002F24E8 /* GoldWithDrawViewController.swift */,
 				C10D94AA22094AAF0083FA47 /* RegisterGoldViewController.swift */,
 				C10D94AC22095EA20083FA47 /* GoldMenuTableViewController.swift */,
+				C10D94B32209717E0083FA47 /* NavGoldPage.swift */,
+				C10D94B72209719F0083FA47 /* NavProfile.swift */,
+				C10D94B9220971B10083FA47 /* NavHistory.swift */,
+				C10D94BD220978B60083FA47 /* NavWithdraw.swift */,
 			);
 			path = Gold;
 			sourceTree = "<group>";
@@ -1050,7 +1062,9 @@
 				C1AD507C2187F45600F74415 /* ViewController.swift in Sources */,
 				C169FFC421C4D66600F9D354 /* FavoriteViewController.swift in Sources */,
 				C11A93BC218C20C700627B44 /* LoginViewController.swift in Sources */,
+				C10D94BA220971B10083FA47 /* NavHistory.swift in Sources */,
 				C1AD50B22187FEE300F74415 /* ModelController.swift in Sources */,
+				C10D94B82209719F0083FA47 /* NavProfile.swift in Sources */,
 				C197FEDA21DC5616002F24E8 /* PopUpRegisterSuccessViewController.swift in Sources */,
 				C142741721A539F5003CC246 /* PointFriendTransferReviewViewController.swift in Sources */,
 				C10CA19721914AD500316DF3 /* PromotionViewController.swift in Sources */,
@@ -1071,6 +1085,7 @@
 				C1DEBE9521882F6F00CBB95F /* BaseNavigationViewController.swift in Sources */,
 				C1AD507A2187F45600F74415 /* AppDelegate.swift in Sources */,
 				C10CA1A8219185AB00316DF3 /* PAPasscodeViewController.m in Sources */,
+				C10D94BE220978B60083FA47 /* NavWithdraw.swift in Sources */,
 				C1E7B17D21AFCD7E00DA8B82 /* ResultTransferNav.swift in Sources */,
 				C11B740B21BF67F700D0E769 /* DataController.swift in Sources */,
 				C10CA19D21914B1B00316DF3 /* AccountViewController.swift in Sources */,
@@ -1119,6 +1134,7 @@
 				C13D998D21997EF7001A4794 /* PersonalViewController.swift in Sources */,
 				C142741D21A68154003CC246 /* ResetPasswordViewController.swift in Sources */,
 				C197FEE121E5D225002F24E8 /* UserInfo.swift in Sources */,
+				C10D94B42209717E0083FA47 /* NavGoldPage.swift in Sources */,
 				C13D998A21997AD6001A4794 /* HeadCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

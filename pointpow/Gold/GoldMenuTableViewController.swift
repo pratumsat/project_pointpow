@@ -77,20 +77,27 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
         if indexPath.row == 0 {
             // "Saving"
             if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
-                
-                self.revealViewController()?.pushFrontViewController(saving, animated: true)
-                
+                self.revealViewController()?.pushFrontViewController(saving, animated: true)   
             }
         }
         if indexPath.row == 1 {
             // "Withdraw"
+            if let withdraw = self.storyboard?.instantiateViewController(withIdentifier: "GoldWithdraw") as? UINavigationController {
+                self.revealViewController()?.pushFrontViewController(withdraw, animated: true)
+            }
         }
         if indexPath.row == 2 {
             // "History"
+            if let history = self.storyboard?.instantiateViewController(withIdentifier: "GoldHistory") as? UINavigationController {
+                self.revealViewController()?.pushFrontViewController(history, animated: true)
+            }
+            
         }
         if indexPath.row == 3 {
             // "Profile"
-            
+            if let profile = self.storyboard?.instantiateViewController(withIdentifier: "GoldAccount") as? UINavigationController {
+                self.revealViewController()?.pushFrontViewController(profile, animated: true)
+            }
         }
     }
 

@@ -25,9 +25,14 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TOw-vR-gUW">
-                        <rect key="frame" x="140.5" y="40" width="118" height="40"/>
-                        <fontDescription key="fontDescription" name="NotoSansThai-SemiBold" family="Noto Sans Thai" pointSize="18"/>
-                        <state key="normal" title="Register Gold"/>
+                        <rect key="frame" x="20" y="40" width="359" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="Sho-Sk-YWW"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="NotoSansThai-SemiBold" family="Noto Sans Thai" pointSize="16"/>
+                        <state key="normal" title="สมัครสมาชิกออมทองคำ">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
                         <connections>
                             <action selector="registerTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="raf-TL-rOM"/>
                         </connections>
@@ -37,6 +42,8 @@
             <constraints>
                 <constraint firstItem="TOw-vR-gUW" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="FhW-Ne-1HE"/>
                 <constraint firstItem="TOw-vR-gUW" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Ra7-Nv-eI4"/>
+                <constraint firstItem="TOw-vR-gUW" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="SOf-6b-fnP"/>
+                <constraint firstAttribute="trailing" secondItem="TOw-vR-gUW" secondAttribute="trailing" constant="20" id="dPC-lX-6j5"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="399" height="120"/>

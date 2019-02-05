@@ -3629,10 +3629,10 @@
             </objects>
             <point key="canvasLocation" x="-4358" y="2779"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Nav Gold Page-->
         <scene sceneID="BVx-bQ-9gw">
             <objects>
-                <navigationController storyboardIdentifier="GoldPageNav" id="SJQ-E8-2EB" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="GoldPageNav" id="SJQ-E8-2EB" customClass="NavGoldPage" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FyQ-5t-oGR">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -3704,10 +3704,10 @@
             </objects>
             <point key="canvasLocation" x="-2639" y="3481"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Nav Withdraw-->
         <scene sceneID="Ebu-6v-y09">
             <objects>
-                <navigationController id="reZ-yS-bd7" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="GoldWithdraw" id="reZ-yS-bd7" customClass="NavWithdraw" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jyI-MS-kDa">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -3779,10 +3779,10 @@
             </objects>
             <point key="canvasLocation" x="-2639" y="4156"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Nav Profile-->
         <scene sceneID="5PS-Gx-afF">
             <objects>
-                <navigationController id="DPa-fo-yyH" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="GoldAccount" id="DPa-fo-yyH" customClass="NavProfile" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CTc-Pc-4Bx">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -4125,6 +4125,81 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3te-CT-Rmc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1594.2028985507247" y="2777.6785714285711"/>
+        </scene>
+        <!--Gold Profile View Controller-->
+        <scene sceneID="SOb-6u-d2c">
+            <objects>
+                <viewController id="ZSy-yS-JLi" customClass="GoldProfileViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tFd-hj-0GE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CYZ-nP-mBp">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="o4h-yw-arE">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <label key="backgroundView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="history gold" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="o9h-gk-geg">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="TxG-21-cSF">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="CYZ-nP-mBp" firstAttribute="bottom" secondItem="tFd-hj-0GE" secondAttribute="bottom" id="FoM-ad-wmt"/>
+                            <constraint firstItem="CYZ-nP-mBp" firstAttribute="top" secondItem="fde-CU-MRL" secondAttribute="top" id="u5D-Mh-BYj"/>
+                            <constraint firstItem="CYZ-nP-mBp" firstAttribute="trailing" secondItem="fde-CU-MRL" secondAttribute="trailing" id="vvo-Cx-XNa"/>
+                            <constraint firstItem="CYZ-nP-mBp" firstAttribute="leading" secondItem="fde-CU-MRL" secondAttribute="leading" id="yBp-FM-bvo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fde-CU-MRL"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dGl-CO-g5v">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ZJ8-Mk-Yle"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S91-Sq-q9O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2639" y="4845"/>
+        </scene>
+        <!--Nav History-->
+        <scene sceneID="Dmx-x0-f87">
+            <objects>
+                <navigationController storyboardIdentifier="GoldHistory" id="BtC-AL-2Hs" customClass="NavHistory" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Mo1-SH-G0w">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="NotoSansThai-SemiBold" family="Noto Sans Thai" pointSize="19"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ZSy-yS-JLi" kind="relationship" relationship="rootViewController" id="pqb-AC-pLf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xqk-7E-2SX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3488" y="4845"/>
         </scene>
     </scenes>
     <resources>

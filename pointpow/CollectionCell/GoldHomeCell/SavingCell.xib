@@ -10,6 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="NotoSansThai-Regular.ttf">
+            <string>NotoSansThai-Regular</string>
+        </array>
         <array key="NotoSansThai-SemiBold.ttf">
             <string>NotoSansThai-SemiBold</string>
         </array>
@@ -17,29 +20,149 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SavingCell" id="gTV-IL-0wX" customClass="SavingCell" customModule="pointpow" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="284" height="156"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SavingCell" id="ba1-lG-ap1" customClass="SavingCell" customModule="pointpow" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="419" height="274"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="284" height="156"/>
+                <rect key="frame" x="0.0" y="0.0" width="419" height="274"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saving" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekf-nF-94r">
-                        <rect key="frame" x="114" y="65" width="56" height="26"/>
-                        <fontDescription key="fontDescription" name="NotoSansThai-SemiBold" family="Noto Sans Thai" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ออมทองคำ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XcF-H8-kQ4">
+                        <rect key="frame" x="10" y="10" width="102.5" height="34"/>
+                        <fontDescription key="fontDescription" name="NotoSansThai-SemiBold" family="Noto Sans Thai" pointSize="22"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="จำนวน Point Pow คงเหลือ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DwH-MY-4BG">
+                        <rect key="frame" x="10" y="59" width="152" height="22"/>
+                        <fontDescription key="fontDescription" name="NotoSansThai-Regular" family="Noto Sans Thai" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="จำนวน Point Pow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OeG-Ps-qTQ">
+                        <rect key="frame" x="10" y="101" width="104" height="21.5"/>
+                        <fontDescription key="fontDescription" name="NotoSansThai-Regular" family="Noto Sans Thai" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="จำนวนทองที่จะได้รับ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lfa-t7-AaP">
+                        <rect key="frame" x="10" y="164" width="110" height="21.5"/>
+                        <fontDescription key="fontDescription" name="NotoSansThai-Regular" family="Noto Sans Thai" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYY-yR-BYP">
+                        <rect key="frame" x="390" y="101" width="19" height="21.5"/>
+                        <fontDescription key="fontDescription" name="NotoSansThai-Regular" family="Noto Sans Thai" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="กรัม" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hY-sn-egu">
+                        <rect key="frame" x="390" y="164" width="24" height="21.5"/>
+                        <fontDescription key="fontDescription" name="NotoSansThai-Regular" family="Noto Sans Thai" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="ที่ต้องการออมทองคำ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWI-hz-CWO">
+                        <rect key="frame" x="10" y="122.5" width="117" height="21.5"/>
+                        <fontDescription key="fontDescription" name="NotoSansThai-Regular" family="Noto Sans Thai" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJG-wA-ZYz">
+                        <rect key="frame" x="329.5" y="55" width="50.5" height="30.5"/>
+                        <fontDescription key="fontDescription" name="NotoSansThai-SemiBold" family="Noto Sans Thai" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xk3-88-6Xe">
+                        <rect key="frame" x="390" y="59.5" width="19" height="21.5"/>
+                        <fontDescription key="fontDescription" name="NotoSansThai-Regular" family="Noto Sans Thai" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="9000" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eNv-21-EAw">
+                        <rect key="frame" x="167" y="92" width="213" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="bcK-8q-ZMD"/>
+                        </constraints>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" name="NotoSansThai-SemiBold" family="Noto Sans Thai" pointSize="16"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="etu-RZ-ygw">
+                        <rect key="frame" x="63" y="205" width="293" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="H0J-WN-9QX"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="NotoSansThai-SemiBold" family="Noto Sans Thai" pointSize="16"/>
+                        <state key="normal" title="ออมทองคำ">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <connections>
+                            <action selector="savingTapped:" destination="ba1-lG-ap1" eventType="touchUpInside" id="ZVc-S3-3VT"/>
+                        </connections>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cS6-eU-lbA">
+                        <rect key="frame" x="167" y="155" width="213" height="40"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hr5-Rp-ang">
+                                <rect key="frame" x="10" y="0.0" width="193" height="40"/>
+                                <fontDescription key="fontDescription" name="NotoSansThai-SemiBold" family="Noto Sans Thai" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.94999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Hr5-Rp-ang" firstAttribute="top" secondItem="cS6-eU-lbA" secondAttribute="top" id="59G-ah-i0p"/>
+                            <constraint firstAttribute="bottom" secondItem="Hr5-Rp-ang" secondAttribute="bottom" id="8Fj-oU-2Uy"/>
+                            <constraint firstAttribute="trailing" secondItem="Hr5-Rp-ang" secondAttribute="trailing" constant="10" id="NV9-7c-0Hr"/>
+                            <constraint firstItem="Hr5-Rp-ang" firstAttribute="leading" secondItem="cS6-eU-lbA" secondAttribute="leading" constant="10" id="n8k-0b-aaW"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="ekf-nF-94r" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="G6n-eL-DiK"/>
-                <constraint firstItem="ekf-nF-94r" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="PA4-Yw-tjx"/>
+                <constraint firstItem="Lfa-t7-AaP" firstAttribute="top" secondItem="dWI-hz-CWO" secondAttribute="bottom" constant="20" id="0TG-AG-taS"/>
+                <constraint firstItem="OeG-Ps-qTQ" firstAttribute="leading" secondItem="DwH-MY-4BG" secondAttribute="leading" id="3Xb-7P-JRz"/>
+                <constraint firstItem="cS6-eU-lbA" firstAttribute="width" secondItem="eNv-21-EAw" secondAttribute="width" id="4NK-IE-zlb"/>
+                <constraint firstItem="dWI-hz-CWO" firstAttribute="top" secondItem="OeG-Ps-qTQ" secondAttribute="bottom" id="5sg-Ci-BHQ"/>
+                <constraint firstItem="etu-RZ-ygw" firstAttribute="width" secondItem="ba1-lG-ap1" secondAttribute="width" multiplier="0.7" id="7WF-ha-KHU"/>
+                <constraint firstItem="DwH-MY-4BG" firstAttribute="top" secondItem="XcF-H8-kQ4" secondAttribute="bottom" constant="15" id="8HN-J1-N9K"/>
+                <constraint firstItem="eNv-21-EAw" firstAttribute="leading" secondItem="dWI-hz-CWO" secondAttribute="trailing" constant="40" id="9Dk-3Q-bfH"/>
+                <constraint firstItem="VYY-yR-BYP" firstAttribute="leading" secondItem="eNv-21-EAw" secondAttribute="trailing" constant="10" id="9K8-Q8-TPy"/>
+                <constraint firstItem="cS6-eU-lbA" firstAttribute="centerY" secondItem="Lfa-t7-AaP" secondAttribute="centerY" id="AR2-IM-Ege"/>
+                <constraint firstItem="XcF-H8-kQ4" firstAttribute="top" secondItem="ba1-lG-ap1" secondAttribute="top" constant="10" id="AT0-Wz-7ve"/>
+                <constraint firstItem="OeG-Ps-qTQ" firstAttribute="top" secondItem="DwH-MY-4BG" secondAttribute="bottom" constant="20" id="Bwl-47-jmB"/>
+                <constraint firstItem="etu-RZ-ygw" firstAttribute="centerX" secondItem="ba1-lG-ap1" secondAttribute="centerX" id="C8f-6M-j7d"/>
+                <constraint firstItem="dWI-hz-CWO" firstAttribute="leading" secondItem="OeG-Ps-qTQ" secondAttribute="leading" id="DqY-N7-XMb"/>
+                <constraint firstItem="xk3-88-6Xe" firstAttribute="leading" secondItem="VYY-yR-BYP" secondAttribute="leading" id="EOg-bl-Pkh"/>
+                <constraint firstItem="eNv-21-EAw" firstAttribute="centerY" secondItem="OeG-Ps-qTQ" secondAttribute="centerY" id="H96-2P-Ggo"/>
+                <constraint firstItem="4hY-sn-egu" firstAttribute="leading" secondItem="cS6-eU-lbA" secondAttribute="trailing" constant="10" id="Hn9-Hn-3Ji"/>
+                <constraint firstItem="4hY-sn-egu" firstAttribute="leading" secondItem="VYY-yR-BYP" secondAttribute="leading" id="NET-Us-Mer"/>
+                <constraint firstItem="etu-RZ-ygw" firstAttribute="top" secondItem="cS6-eU-lbA" secondAttribute="bottom" constant="10" id="O0J-EA-7sx"/>
+                <constraint firstItem="cS6-eU-lbA" firstAttribute="height" secondItem="eNv-21-EAw" secondAttribute="height" id="RDi-Ze-O8Z"/>
+                <constraint firstItem="VYY-yR-BYP" firstAttribute="centerY" secondItem="OeG-Ps-qTQ" secondAttribute="centerY" id="Vhy-VJ-2Te"/>
+                <constraint firstItem="Lfa-t7-AaP" firstAttribute="leading" secondItem="OeG-Ps-qTQ" secondAttribute="leading" id="cE7-xQ-dw0"/>
+                <constraint firstItem="xk3-88-6Xe" firstAttribute="centerY" secondItem="DwH-MY-4BG" secondAttribute="centerY" id="cN9-tA-21z"/>
+                <constraint firstAttribute="trailing" secondItem="VYY-yR-BYP" secondAttribute="trailing" constant="10" id="fge-TK-PM3"/>
+                <constraint firstItem="uJG-wA-ZYz" firstAttribute="centerY" secondItem="DwH-MY-4BG" secondAttribute="centerY" id="g5C-zZ-Hxm"/>
+                <constraint firstItem="DwH-MY-4BG" firstAttribute="leading" secondItem="XcF-H8-kQ4" secondAttribute="leading" id="hYt-Lc-6DY"/>
+                <constraint firstItem="XcF-H8-kQ4" firstAttribute="leading" secondItem="ba1-lG-ap1" secondAttribute="leading" constant="10" id="iYF-jk-OvH"/>
+                <constraint firstItem="4hY-sn-egu" firstAttribute="centerY" secondItem="Lfa-t7-AaP" secondAttribute="centerY" id="rDR-YS-VAu"/>
+                <constraint firstItem="xk3-88-6Xe" firstAttribute="leading" secondItem="uJG-wA-ZYz" secondAttribute="trailing" constant="10" id="vls-kN-Zhd"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="284" height="156"/>
-            <point key="canvasLocation" x="324.80000000000001" y="76.46176911544228"/>
+            <viewLayoutGuide key="safeArea" id="Uje-4R-HRt"/>
+            <size key="customSize" width="490" height="366"/>
+            <connections>
+                <outlet property="goldamountLabel" destination="Hr5-Rp-ang" id="PeX-I4-Ruq"/>
+                <outlet property="goldamountView" destination="cS6-eU-lbA" id="7e3-Ra-gAG"/>
+                <outlet property="pointpowTextField" destination="eNv-21-EAw" id="KlF-Xw-2P8"/>
+                <outlet property="savingButton" destination="etu-RZ-ygw" id="pou-l7-Up5"/>
+            </connections>
+            <point key="canvasLocation" x="296.80000000000001" y="-134.93253373313345"/>
         </collectionViewCell>
     </objects>
 </document>

@@ -25,8 +25,8 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
        self.setUp()
     }
     func setUp(){
-        self.isRegistered = false
-        self.arrayItem = self.arrayItem_no_registered
+        self.isRegistered = true
+        self.arrayItem = self.arrayItem_registered
         
         self.backgroundImage?.image = nil
     
@@ -66,7 +66,6 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         if menu == "goldbalance" {
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "MyGoldCell", for: indexPath) as? MyGoldCell {
                 cell = item
-               
                
             }
             
@@ -120,22 +119,17 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         
         let menu = self.arrayItem[indexPath.section]
         
-        
-       
         let cheight = collectionView.frame.height
-     
-        if isRegistered {
-            if menu == "logo" {
-                let height = cheight - 600
+        if menu == "logo" {
+            if isRegistered {
                 let width = collectionView.frame.width
+                let height = abs(cheight - (((width/375*250)*2)+(width/375*290)))
+                
                 return CGSize(width: width, height: height)
-            }
-            
-        }else{
-          
-            if menu == "logo" {
-                let height = cheight - 320
+            }else{
                 let width = collectionView.frame.width
+                let height = abs(cheight - (((width/375*250))+(40+40)))
+                
                 return CGSize(width: width, height: height)
             }
         }
@@ -149,10 +143,18 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
             let height = width/375*250
             return CGSize(width: width, height: height)
         }
+        if menu == "goldbalance"{
+            let width = collectionView.frame.width - 40
+            let height = width/375*250
+            return CGSize(width: width, height: height)
+        }
+        if menu == "saving"{
+            let width = collectionView.frame.width - 40
+            let height = width/375*290
+            return CGSize(width: width, height: height)
+        }
         
-        let width = collectionView.frame.width - 40
-        let height = CGFloat(200.0)
-        return CGSize(width: width, height: height)
+        return CGSize.zero
     }
 
  

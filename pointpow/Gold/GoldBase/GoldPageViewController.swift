@@ -17,7 +17,7 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
     let arrayItem_no_registered = ["goldprice","register", "logo"]
     var arrayItem:[String] = []
     var isRegistered  = false
-    let headerSizeCell = CGFloat(20)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +43,12 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         self.registerNib(self.homeCollectionView, "LogoGoldCell")
         
     }
+    
+//    override func reloadData() {
+//        super.reloadData()
+//        //reload data
+//    }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return arrayItem.count
     }
@@ -50,12 +56,16 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
     }
-    
+    override func textFieldDidBeginEditing(_ textField: UITextField) {
+        //let y = textField.frame.origin.y + (textField.superview?.frame.origin.y)!;
+        let pointInTable = textField.superview?.convert(textField.frame.origin, to: self.homeCollectionView)
+        self.positionYTextField = pointInTable?.y ?? 600
+        
+    }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell:UICollectionViewCell?
         
         let menu = self.arrayItem[indexPath.section]
-        //["goldprice","goldbalance","saving","register"]
         if menu == "goldprice" {
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "GoldPriceCell", for: indexPath) as? GoldPriceCell{
                 cell = item
@@ -73,7 +83,12 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         if menu == "saving" {
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "SavingCell", for: indexPath) as? SavingCell {
                 cell = item
-                
+                item.pointpowTextField.autocorrectionType = .no
+                item.pointpowTextField.delegate = self
+                item.savingCallback = {
+                    print("saving")
+                    self.confirmGoldSavingPage(true)
+                }
                
             }
             
@@ -106,7 +121,7 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         
         
-        return CGSize(width: collectionView.frame.width, height: headerSizeCell)
+        return CGSize(width: collectionView.frame.width, height: 20)
         
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
@@ -123,7 +138,7 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         if menu == "logo" {
             if isRegistered {
                 let width = collectionView.frame.width
-                let height = abs(cheight - (((width/375*250)*2)+(width/375*290)))
+                let height = abs(cheight - (((width/375*250)*2)+(width/375*300)))
                 
                 return CGSize(width: width, height: height)
             }else{
@@ -150,7 +165,7 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         }
         if menu == "saving"{
             let width = collectionView.frame.width - 40
-            let height = width/375*290
+            let height = width/375*300
             return CGSize(width: width, height: height)
         }
         

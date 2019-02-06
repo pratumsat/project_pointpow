@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		16B23D162FFAF9446F2A6DA2 /* Pods_pointpowTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397FA4B92F56CF5C6AC3D5E5 /* Pods_pointpowTests.framework */; };
 		A8335B1A06016D739FCCD24A /* Pods_pointpowUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71C5AF1196142AE070221A8 /* Pods_pointpowUITests.framework */; };
+		C106BEA6220AC01400E2331E /* ConfirmSavingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C106BEA5220AC01400E2331E /* ConfirmSavingViewController.swift */; };
 		C10CA19421914A3B00316DF3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA19321914A3B00316DF3 /* HomeViewController.swift */; };
 		C10CA19721914AD500316DF3 /* PromotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA19621914AD500316DF3 /* PromotionViewController.swift */; };
 		C10CA19A21914AF900316DF3 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA19921914AF900316DF3 /* TransactionViewController.swift */; };
@@ -159,6 +160,7 @@
 		397FA4B92F56CF5C6AC3D5E5 /* Pods_pointpowTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pointpowTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E353ACA4AAA10E36B259268 /* Pods-pointpowUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pointpowUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pointpowUITests/Pods-pointpowUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		AB6FAB2B79444F6CC167E5C8 /* Pods-pointpow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pointpow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pointpow/Pods-pointpow.debug.xcconfig"; sourceTree = "<group>"; };
+		C106BEA5220AC01400E2331E /* ConfirmSavingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmSavingViewController.swift; sourceTree = "<group>"; };
 		C10CA19321914A3B00316DF3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C10CA19621914AD500316DF3 /* PromotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionViewController.swift; sourceTree = "<group>"; };
 		C10CA19921914AF900316DF3 /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
@@ -342,6 +344,31 @@
 				328781DEB921FD905986758A /* Pods-pointpowUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		C106BEA3220ABF5700E2331E /* GoldSaving */ = {
+			isa = PBXGroup;
+			children = (
+				C106BEA5220AC01400E2331E /* ConfirmSavingViewController.swift */,
+			);
+			path = GoldSaving;
+			sourceTree = "<group>";
+		};
+		C106BEA4220ABF6900E2331E /* GoldBase */ = {
+			isa = PBXGroup;
+			children = (
+				C197FF2722082046002F24E8 /* GoldBaseViewController.swift */,
+				C197FF2522081C72002F24E8 /* GoldPageViewController.swift */,
+				C197FF2922082503002F24E8 /* GoldProfileViewController.swift */,
+				C197FF2B22082527002F24E8 /* GoldWithDrawViewController.swift */,
+				C10D94AA22094AAF0083FA47 /* RegisterGoldViewController.swift */,
+				C10D94AC22095EA20083FA47 /* GoldMenuTableViewController.swift */,
+				C10D94B32209717E0083FA47 /* NavGoldPage.swift */,
+				C10D94B72209719F0083FA47 /* NavProfile.swift */,
+				C10D94B9220971B10083FA47 /* NavHistory.swift */,
+				C10D94BD220978B60083FA47 /* NavWithdraw.swift */,
+			);
+			path = GoldBase;
 			sourceTree = "<group>";
 		};
 		C10CA19221914A2800316DF3 /* Home */ = {
@@ -577,16 +604,8 @@
 		C197FF2422081C3F002F24E8 /* Gold */ = {
 			isa = PBXGroup;
 			children = (
-				C197FF2722082046002F24E8 /* GoldBaseViewController.swift */,
-				C197FF2522081C72002F24E8 /* GoldPageViewController.swift */,
-				C197FF2922082503002F24E8 /* GoldProfileViewController.swift */,
-				C197FF2B22082527002F24E8 /* GoldWithDrawViewController.swift */,
-				C10D94AA22094AAF0083FA47 /* RegisterGoldViewController.swift */,
-				C10D94AC22095EA20083FA47 /* GoldMenuTableViewController.swift */,
-				C10D94B32209717E0083FA47 /* NavGoldPage.swift */,
-				C10D94B72209719F0083FA47 /* NavProfile.swift */,
-				C10D94B9220971B10083FA47 /* NavHistory.swift */,
-				C10D94BD220978B60083FA47 /* NavWithdraw.swift */,
+				C106BEA4220ABF6900E2331E /* GoldBase */,
+				C106BEA3220ABF5700E2331E /* GoldSaving */,
 			);
 			path = Gold;
 			sourceTree = "<group>";
@@ -1090,6 +1109,7 @@
 				C11B740B21BF67F700D0E769 /* DataController.swift in Sources */,
 				C10CA19D21914B1B00316DF3 /* AccountViewController.swift in Sources */,
 				C169FF9E21C25C9200F9D354 /* EmailViewController.swift in Sources */,
+				C106BEA6220AC01400E2331E /* ConfirmSavingViewController.swift in Sources */,
 				C115FA4A219EC511008E7844 /* ResultTransferViewController.swift in Sources */,
 				C10CA1BE219429D500316DF3 /* ImageCell.swift in Sources */,
 				C115FA5521A2A40F008E7844 /* PointFriendTransferViewController.swift in Sources */,

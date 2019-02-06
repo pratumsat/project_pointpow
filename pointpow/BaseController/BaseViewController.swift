@@ -288,6 +288,15 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             self.present(vc, animated: animated, completion: nil)
         }
     }
+    
+    func confirmGoldSavingPage(_ animated:Bool){
+        if let vc:ConfirmSavingViewController  = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmSavingViewController") as? ConfirmSavingViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    
+    
     func showIntroduce(_ animated:Bool){
         if let vc:IntroNav = self.storyboard?.instantiateViewController(withIdentifier: "IntroNav") as? IntroNav {
             

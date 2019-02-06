@@ -13,8 +13,10 @@ class SavingCell: UICollectionViewCell {
     @IBOutlet weak var goldamountLabel: UILabel!
     @IBOutlet weak var goldamountView: UIView!
     @IBOutlet weak var pointpowTextField: UITextField!
-   
     @IBOutlet weak var savingButton: UIButton!
+    
+    var savingCallback:(()->Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -40,5 +42,6 @@ class SavingCell: UICollectionViewCell {
         self.pointpowTextField.setRightPaddingPoints(10)
     }
     @IBAction func savingTapped(_ sender: Any) {
+        self.savingCallback?()
     }
 }

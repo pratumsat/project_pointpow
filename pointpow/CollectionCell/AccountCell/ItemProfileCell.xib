@@ -13,9 +13,6 @@
         <array key="NotoSansThai-SemiBold.ttf">
             <string>NotoSansThai-SemiBold</string>
         </array>
-        <array key="ThaiSansNeue-Bold.ttf">
-            <string>ThaiSansNeue-Bold</string>
-        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -41,7 +38,7 @@
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e36-Th-oAM">
                         <rect key="frame" x="254.5" y="32" width="0.0" height="0.0"/>
-                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
+                        <fontDescription key="fontDescription" name="NotoSansThai-SemiBold" family="Noto Sans Thai" pointSize="12"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>

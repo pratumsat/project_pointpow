@@ -10,6 +10,10 @@
 		16B23D162FFAF9446F2A6DA2 /* Pods_pointpowTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397FA4B92F56CF5C6AC3D5E5 /* Pods_pointpowTests.framework */; };
 		A8335B1A06016D739FCCD24A /* Pods_pointpowUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71C5AF1196142AE070221A8 /* Pods_pointpowUITests.framework */; };
 		C106BEA6220AC01400E2331E /* ConfirmSavingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C106BEA5220AC01400E2331E /* ConfirmSavingViewController.swift */; };
+		C106BEAE220BEB3000E2331E /* GoldItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C106BEAC220BEB3000E2331E /* GoldItemCell.swift */; };
+		C106BEAF220BEB3000E2331E /* GoldItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C106BEAD220BEB3000E2331E /* GoldItemCell.xib */; };
+		C106BEB2220BED4E00E2331E /* BrowseImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C106BEB0220BED4E00E2331E /* BrowseImageCell.swift */; };
+		C106BEB3220BED4E00E2331E /* BrowseImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C106BEB1220BED4E00E2331E /* BrowseImageCell.xib */; };
 		C10CA19421914A3B00316DF3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA19321914A3B00316DF3 /* HomeViewController.swift */; };
 		C10CA19721914AD500316DF3 /* PromotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA19621914AD500316DF3 /* PromotionViewController.swift */; };
 		C10CA19A21914AF900316DF3 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA19921914AF900316DF3 /* TransactionViewController.swift */; };
@@ -89,6 +93,9 @@
 		C1817DA6219E6C73009507DB /* DisplayNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1817DA5219E6C73009507DB /* DisplayNameViewController.swift */; };
 		C1817DA8219E7BFE009507DB /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1817DA7219E7BFE009507DB /* CheckBox.swift */; };
 		C1817DAA219E7F18009507DB /* BankPointTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1817DA9219E7F18009507DB /* BankPointTransferViewController.swift */; };
+		C181F063220C00B8003F7C70 /* SaveButtonProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C181F061220C00B8003F7C70 /* SaveButtonProfileCell.swift */; };
+		C181F064220C00B8003F7C70 /* SaveButtonProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C181F062220C00B8003F7C70 /* SaveButtonProfileCell.xib */; };
+		C181F066220C0392003F7C70 /* GoldHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C181F065220C0392003F7C70 /* GoldHistoryViewController.swift */; };
 		C197FEDA21DC5616002F24E8 /* PopUpRegisterSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FED921DC5616002F24E8 /* PopUpRegisterSuccessViewController.swift */; };
 		C197FEDE21DC8E98002F24E8 /* ResetNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FEDD21DC8E98002F24E8 /* ResetNav.swift */; };
 		C197FEE121E5D225002F24E8 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FEE021E5D225002F24E8 /* UserInfo.swift */; };
@@ -161,6 +168,10 @@
 		7E353ACA4AAA10E36B259268 /* Pods-pointpowUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pointpowUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pointpowUITests/Pods-pointpowUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		AB6FAB2B79444F6CC167E5C8 /* Pods-pointpow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pointpow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pointpow/Pods-pointpow.debug.xcconfig"; sourceTree = "<group>"; };
 		C106BEA5220AC01400E2331E /* ConfirmSavingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmSavingViewController.swift; sourceTree = "<group>"; };
+		C106BEAC220BEB3000E2331E /* GoldItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldItemCell.swift; sourceTree = "<group>"; };
+		C106BEAD220BEB3000E2331E /* GoldItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoldItemCell.xib; sourceTree = "<group>"; };
+		C106BEB0220BED4E00E2331E /* BrowseImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseImageCell.swift; sourceTree = "<group>"; };
+		C106BEB1220BED4E00E2331E /* BrowseImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrowseImageCell.xib; sourceTree = "<group>"; };
 		C10CA19321914A3B00316DF3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C10CA19621914AD500316DF3 /* PromotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionViewController.swift; sourceTree = "<group>"; };
 		C10CA19921914AF900316DF3 /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
@@ -242,6 +253,9 @@
 		C1817DA5219E6C73009507DB /* DisplayNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayNameViewController.swift; sourceTree = "<group>"; };
 		C1817DA7219E7BFE009507DB /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		C1817DA9219E7F18009507DB /* BankPointTransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankPointTransferViewController.swift; sourceTree = "<group>"; };
+		C181F061220C00B8003F7C70 /* SaveButtonProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButtonProfileCell.swift; sourceTree = "<group>"; };
+		C181F062220C00B8003F7C70 /* SaveButtonProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SaveButtonProfileCell.xib; sourceTree = "<group>"; };
+		C181F065220C0392003F7C70 /* GoldHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldHistoryViewController.swift; sourceTree = "<group>"; };
 		C197FED921DC5616002F24E8 /* PopUpRegisterSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpRegisterSuccessViewController.swift; sourceTree = "<group>"; };
 		C197FEDD21DC8E98002F24E8 /* ResetNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetNav.swift; sourceTree = "<group>"; };
 		C197FEE021E5D225002F24E8 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
@@ -359,8 +373,6 @@
 			children = (
 				C197FF2722082046002F24E8 /* GoldBaseViewController.swift */,
 				C197FF2522081C72002F24E8 /* GoldPageViewController.swift */,
-				C197FF2922082503002F24E8 /* GoldProfileViewController.swift */,
-				C197FF2B22082527002F24E8 /* GoldWithDrawViewController.swift */,
 				C10D94AA22094AAF0083FA47 /* RegisterGoldViewController.swift */,
 				C10D94AC22095EA20083FA47 /* GoldMenuTableViewController.swift */,
 				C10D94B32209717E0083FA47 /* NavGoldPage.swift */,
@@ -369,6 +381,35 @@
 				C10D94BD220978B60083FA47 /* NavWithdraw.swift */,
 			);
 			path = GoldBase;
+			sourceTree = "<group>";
+		};
+		C106BEA7220BE6F000E2331E /* GoldProfile */ = {
+			isa = PBXGroup;
+			children = (
+				C197FF2922082503002F24E8 /* GoldProfileViewController.swift */,
+			);
+			path = GoldProfile;
+			sourceTree = "<group>";
+		};
+		C106BEAA220BE8A100E2331E /* GoldWithdraw */ = {
+			isa = PBXGroup;
+			children = (
+				C197FF2B22082527002F24E8 /* GoldWithDrawViewController.swift */,
+			);
+			path = GoldWithdraw;
+			sourceTree = "<group>";
+		};
+		C106BEAB220BEAF500E2331E /* GoldProfileCell */ = {
+			isa = PBXGroup;
+			children = (
+				C106BEAC220BEB3000E2331E /* GoldItemCell.swift */,
+				C106BEAD220BEB3000E2331E /* GoldItemCell.xib */,
+				C106BEB0220BED4E00E2331E /* BrowseImageCell.swift */,
+				C106BEB1220BED4E00E2331E /* BrowseImageCell.xib */,
+				C181F061220C00B8003F7C70 /* SaveButtonProfileCell.swift */,
+				C181F062220C00B8003F7C70 /* SaveButtonProfileCell.xib */,
+			);
+			path = GoldProfileCell;
 			sourceTree = "<group>";
 		};
 		C10CA19221914A2800316DF3 /* Home */ = {
@@ -516,6 +557,7 @@
 		C11A93B4218C00A000627B44 /* CollectionCell */ = {
 			isa = PBXGroup;
 			children = (
+				C106BEAB220BEAF500E2331E /* GoldProfileCell */,
 				C197FF2F22083A3D002F24E8 /* GoldHomeCell */,
 				C169FFC521C4F0E600F9D354 /* FavorCell */,
 				C115FA4B219ECB5F008E7844 /* ResultCell */,
@@ -593,6 +635,14 @@
 			path = BankCell;
 			sourceTree = "<group>";
 		};
+		C181F067220C0399003F7C70 /* GoldHistory */ = {
+			isa = PBXGroup;
+			children = (
+				C181F065220C0392003F7C70 /* GoldHistoryViewController.swift */,
+			);
+			path = GoldHistory;
+			sourceTree = "<group>";
+		};
 		C197FEDF21E5D20B002F24E8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -604,6 +654,9 @@
 		C197FF2422081C3F002F24E8 /* Gold */ = {
 			isa = PBXGroup;
 			children = (
+				C181F067220C0399003F7C70 /* GoldHistory */,
+				C106BEAA220BE8A100E2331E /* GoldWithdraw */,
+				C106BEA7220BE6F000E2331E /* GoldProfile */,
 				C106BEA4220ABF6900E2331E /* GoldBase */,
 				C106BEA3220ABF5700E2331E /* GoldSaving */,
 			);
@@ -893,12 +946,15 @@
 			files = (
 				C1817D9E219C07DF009507DB /* ItemBankCell.xib in Resources */,
 				C1DEBE8C2188115D00CBB95F /* GoogleService-Info.plist in Resources */,
+				C181F064220C00B8003F7C70 /* SaveButtonProfileCell.xib in Resources */,
 				C197FEE72207EA18002F24E8 /* NotoSansThai-SemiBold.ttf in Resources */,
 				C1817D97219BFCDE009507DB /* FriendCollectionCell.xib in Resources */,
 				C1AD50842187F45900F74415 /* LaunchScreen.storyboard in Resources */,
 				C10CA1B22193E01200316DF3 /* ItemServiceCell.xib in Resources */,
+				C106BEB3220BED4E00E2331E /* BrowseImageCell.xib in Resources */,
 				C169FFBF21C36E1300F9D354 /* Localizable.strings in Resources */,
 				C197FEE42207E4F6002F24E8 /* NotoSansThai-Bold.ttf in Resources */,
+				C106BEAF220BEB3000E2331E /* GoldItemCell.xib in Resources */,
 				C1DEBE982188337500CBB95F /* ThaiSansNeue-Bold.ttf in Resources */,
 				C11A93B8218C00C800627B44 /* IntroCell1.xib in Resources */,
 				C10CA1BF219429D500316DF3 /* ImageCell.xib in Resources */,
@@ -1075,6 +1131,7 @@
 				C11A93B3218BF6D200627B44 /* IntroViewController.swift in Sources */,
 				C10CA19421914A3B00316DF3 /* HomeViewController.swift in Sources */,
 				C10CA1A021914B8900316DF3 /* PointManageViewController.swift in Sources */,
+				C181F063220C00B8003F7C70 /* SaveButtonProfileCell.swift in Sources */,
 				C1817D8E219BD32B009507DB /* FriendTransferViewController.swift in Sources */,
 				C1E7B17F21AFCDCB00DA8B82 /* PointFreindSummaryNav.swift in Sources */,
 				C1B542DB219A85590040DDE6 /* ChangePasswordViewController.swift in Sources */,
@@ -1121,12 +1178,14 @@
 				C11A93C4218FF3E200627B44 /* VerifyViewController.swift in Sources */,
 				C1AD50B52187FF4000F74415 /* Loading.swift in Sources */,
 				C1817D9D219C07DF009507DB /* ItemBankCell.swift in Sources */,
+				C181F066220C0392003F7C70 /* GoldHistoryViewController.swift in Sources */,
 				C10CA1B12193E01200316DF3 /* ItemServiceCell.swift in Sources */,
 				C1AD50AF2187FE9000F74415 /* PopUpViewController.swift in Sources */,
 				C11A93C0218C2AD900627B44 /* ForgotPasswordViewController.swift in Sources */,
 				C11A93BE218C20D100627B44 /* RegisterViewController.swift in Sources */,
 				C10D94B1220960940083FA47 /* NameTableViewCell.swift in Sources */,
 				C1817DA1219C1934009507DB /* SwitchCell.swift in Sources */,
+				C106BEAE220BEB3000E2331E /* GoldItemCell.swift in Sources */,
 				C13D99822199755B001A4794 /* ProfileViewController.swift in Sources */,
 				C1817DA8219E7BFE009507DB /* CheckBox.swift in Sources */,
 				C169FF9C21C25C8500F9D354 /* MobileViewController.swift in Sources */,
@@ -1139,6 +1198,7 @@
 				C11A93AE218BF67F00627B44 /* IntroNav.swift in Sources */,
 				C1B542DD219ABE9A0040DDE6 /* SettingViewController.swift in Sources */,
 				C10CA1B92193E1D100316DF3 /* PromotionCampainCell.swift in Sources */,
+				C106BEB2220BED4E00E2331E /* BrowseImageCell.swift in Sources */,
 				C11A93B7218C00C800627B44 /* IntroCell1.swift in Sources */,
 				C10CA1AA21918E3C00316DF3 /* PasscodeSettingViewController.swift in Sources */,
 				C197FF3622083AA6002F24E8 /* MyGoldCell.swift in Sources */,

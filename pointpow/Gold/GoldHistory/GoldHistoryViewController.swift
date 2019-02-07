@@ -1,14 +1,14 @@
 //
-//  GoldWithDrawViewController.swift
+//  GoldHistoryViewController.swift
 //  pointpow
 //
-//  Created by thanawat on 4/2/2562 BE.
+//  Created by thanawat on 7/2/2562 BE.
 //  Copyright © 2562 abcpoint. All rights reserved.
 //
 
 import UIKit
 
-class GoldWithDrawViewController: GoldBaseViewController {
+class GoldHistoryViewController: GoldBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,4 +16,6 @@ class GoldWithDrawViewController: GoldBaseViewController {
         // Do any additional setup after loading the view.
     }
     
+
+
 }

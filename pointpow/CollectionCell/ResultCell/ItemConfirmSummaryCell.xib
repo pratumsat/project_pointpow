@@ -10,8 +10,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="ThaiSansNeue-Bold.ttf">
-            <string>ThaiSansNeue-Bold</string>
+        <array key="NotoSansThai-SemiBold.ttf">
+            <string>NotoSansThai-SemiBold</string>
         </array>
     </customFonts>
     <objects>
@@ -28,11 +28,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="236.5" height="92"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mo5-Py-zpF">
-                                <rect key="frame" x="33.5" y="18.5" width="169.5" height="55"/>
+                                <rect key="frame" x="31" y="18.5" width="174.5" height="55"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="เพิ่มในรายการโปรด" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVe-RE-fHY">
-                                        <rect key="frame" x="65.5" y="16" width="104" height="23.5"/>
-                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
+                                        <rect key="frame" x="65.5" y="17" width="109" height="21.5"/>
+                                        <fontDescription key="fontDescription" name="NotoSansThai-SemiBold" family="Noto Sans Thai" pointSize="14"/>
                                         <color key="textColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -66,11 +66,11 @@
                         <rect key="frame" x="256.5" y="0.0" width="236.5" height="92"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbe-89-WTV">
-                                <rect key="frame" x="56.5" y="18.5" width="123.5" height="55"/>
+                                <rect key="frame" x="54.5" y="18.5" width="127.5" height="55"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="บันทึก/แชร์" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1W2-qM-q8f">
-                                        <rect key="frame" x="65" y="16" width="58.5" height="23.5"/>
-                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
+                                        <rect key="frame" x="65" y="17" width="62.5" height="21.5"/>
+                                        <fontDescription key="fontDescription" name="NotoSansThai-SemiBold" family="Noto Sans Thai" pointSize="14"/>
                                         <color key="textColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>

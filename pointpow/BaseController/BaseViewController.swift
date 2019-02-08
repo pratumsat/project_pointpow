@@ -283,7 +283,20 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         }
         
     }
-   
+    func showGoldPage(_ animated:Bool){
+        if let vc:SWRevealViewController = self.storyboard?.instantiateViewController(withIdentifier: "GoldSWRevealViewController") as? SWRevealViewController {
+            self.present(vc, animated: animated, completion: nil)
+        }
+    }
+    
+    func confirmGoldSavingPage(_ animated:Bool){
+        if let vc:ConfirmSavingViewController  = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmSavingViewController") as? ConfirmSavingViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    
+    
     func showIntroduce(_ animated:Bool){
         if let vc:IntroNav = self.storyboard?.instantiateViewController(withIdentifier: "IntroNav") as? IntroNav {
             
@@ -306,6 +319,12 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
     }
     func showRegister(_ animated:Bool){
         if let vc:RegisterViewController = self.storyboard?.instantiateViewController(withIdentifier: "RegisterViewController") as? RegisterViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    func showRegisterGoldSaving(_ animated:Bool){
+        if let vc:RegisterGoldViewController = self.storyboard?.instantiateViewController(withIdentifier: "RegisterGoldViewController") as? RegisterGoldViewController {
             
             self.navigationController?.pushViewController(vc, animated: animated)
         }
@@ -455,7 +474,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         
         let navController = UINavigationController(rootViewController: enterPasscode!)
         navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                                                           NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.TITLE )!]
+                                                           NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.NOTO_SANS_BOLD, size: Constant.Fonts.Size.TITLE )!]
     
         let presenter: Presentr = {
             let w = self.view.frame.width
@@ -485,7 +504,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         
         let navController = UINavigationController(rootViewController: enterPasscode!)
         navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                                                           NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.TITLE )!]
+                                                           NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.NOTO_SANS_BOLD, size: Constant.Fonts.Size.TITLE )!]
         
         
         

@@ -16,7 +16,7 @@ target 'pointpow' do
     
     pod 'FBSDKLoginKit'
     
-
+    pod 'SWRevealViewController', :git => 'https://github.com/John-Lluch/SWRevealViewController.git', :tag => 'v2.4.0'
 
   target 'pointpowTests' do
     inherit! :search_paths

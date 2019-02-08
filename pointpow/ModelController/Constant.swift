@@ -11,7 +11,7 @@ import UIKit
 extension UIViewController {
     func setCustomTitleView(_ title:String){
         let titleView = UILabel()
-        titleView.font = UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.TITLE)
+        titleView.font = UIFont(name: Constant.Fonts.NOTO_SANS_BOLD, size: Constant.Fonts.Size.TITLE)
         titleView.textColor = UIColor.white
         titleView.text = title
         titleView.addSpacingCharacters(2.0)
@@ -111,7 +111,7 @@ extension UITextField {
     func addBottomLabelErrorMessage(_ errorMessage:String, marginLeft:CGFloat = 0 , marginBottom:CGFloat = 25) -> UILabel {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.UNDER_TEXTFIELD)
+        label.font = UIFont(name: Constant.Fonts.NOTO_SANS_BOLD, size: Constant.Fonts.Size.UNDER_TEXTFIELD)
         label.textColor = UIColor.red
         label.text = errorMessage
         label.sizeToFit()
@@ -243,8 +243,8 @@ extension UIView {
         self.layer.mask = mask
     }
     
-    func borderRedColorProperties(borderWidth:CGFloat = 1.0){
-        self.layer.cornerRadius = self.frame.size.height/2;
+    func borderRedColorProperties(borderWidth:CGFloat = 1.0, radius:CGFloat? = nil){
+        self.layer.cornerRadius = radius ?? self.frame.size.height/2
         self.layer.borderWidth = borderWidth
         self.layer.borderColor = Constant.Colors.PRIMARY_COLOR.cgColor
         self.layer.masksToBounds = true
@@ -511,7 +511,8 @@ extension NSLayoutConstraint {
 
 struct Constant {
     struct PointPowAPI {
-        static let HOST = "http://192.168.1.45/pointpow-api/public/api/"
+        // UAT http://103.27.201.106/dev-pointpow/pointpow-api/public/api/v1/
+        static let HOST = "http://103.27.201.106/dev-pointpow/pointpow-api/public/api/"
         static let POINTPOW_VERSION1 = "v1/"
         static let loginWithEmailORMobile  = "\(HOST)\(POINTPOW_VERSION1)login"
         static let registerWithEmail  = "\(HOST)\(POINTPOW_VERSION1)register-email"
@@ -580,20 +581,24 @@ struct Constant {
     }
     struct Fonts {
         struct Size {
-            static let BIG_TITLE = CGFloat(28.0)
-            static let TITLE = CGFloat(23.0)
-            static let ITEM_TITLE = CGFloat(20.0)
-            static let BUTTON = CGFloat(22.0)
-            static let TEXTFIELD = CGFloat(20.0)
-            static let UNDER_TEXTFIELD = CGFloat(15.0)
-            static let CONTENT = CGFloat(22.0)
-            static let TAB = CGFloat(12.0)
-            static let FREIND_RECENT = CGFloat(15.0)
-            static let FRIEND_HEADER_RECENT = CGFloat(20.0)
+            static let TITLE = CGFloat(19.0)
+            static let ITEM_TITLE = CGFloat(16.0)
+            static let BUTTON = CGFloat(18.0)
+            static let TEXTFIELD = CGFloat(16.0)
+            static let UNDER_TEXTFIELD = CGFloat(11.0)
+            static let CONTENT = CGFloat(18.0)
+            static let TAB = CGFloat(8.0)
+            static let FREIND_RECENT = CGFloat(11.0)
+            static let FRIEND_HEADER_RECENT = CGFloat(16.0)
             
         }
-        static let THAI_SANS_BOLD = "ThaiSansNeue-Bold"
-        static let THAI_SANS_REGULAR = "ThaiSansNeue-Regular"
+       
+        //Noto Sans Thai
+        //== NotoSansThai-Bold
+        //== NotoSansThai-SemiBold
+        //== NotoSansThai-Regular
+        static let NOTO_SANS_BOLD = "NotoSansThai-SemiBold"
+        static let NOTO_SANS_REGULAR = "NotoSansThai-Regular"
     }
     struct ApiMain {
         //

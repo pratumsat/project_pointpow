@@ -72,7 +72,7 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
         self.title = NSLocalizedString("string-title-freind-transfer", comment: "")
         let finishButton = UIBarButtonItem(title: NSLocalizedString("string-title-finish-transfer", comment: ""), style: .plain, target: self, action: #selector(dismissTapped))
         finishButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white,
-                                             NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.ITEM_TITLE )!]
+                                             NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.NOTO_SANS_BOLD, size: Constant.Fonts.Size.ITEM_TITLE )!]
             , for: .normal)
         
         self.navigationItem.rightBarButtonItem = finishButton

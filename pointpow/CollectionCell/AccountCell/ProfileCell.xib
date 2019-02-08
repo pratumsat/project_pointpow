@@ -10,11 +10,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="ThaiSansNeue-Bold.ttf">
-            <string>ThaiSansNeue-Bold</string>
+        <array key="NotoSansThai-Regular.ttf">
+            <string>NotoSansThai-Regular</string>
         </array>
-        <array key="ThaiSansNeue-Regular.ttf">
-            <string>ThaiSansNeue-Regular</string>
+        <array key="NotoSansThai-SemiBold.ttf">
+            <string>NotoSansThai-SemiBold</string>
         </array>
     </customFonts>
     <objects>
@@ -62,11 +62,11 @@
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yw7-VU-mVa">
-                        <rect key="frame" x="181.5" y="214" width="7.5" height="31.5"/>
+                        <rect key="frame" x="181.5" y="214" width="7" height="30.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRj-eO-Yjx">
-                                <rect key="frame" x="0.0" y="0.0" width="7.5" height="31.5"/>
-                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="24"/>
+                                <rect key="frame" x="0.0" y="0.0" width="7" height="30.5"/>
+                                <fontDescription key="fontDescription" name="NotoSansThai-SemiBold" family="Noto Sans Thai" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -80,16 +80,16 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X0f-As-puT">
-                        <rect key="frame" x="149" y="235.5" width="72" height="37"/>
+                        <rect key="frame" x="146.5" y="234.5" width="77" height="36.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8pM-WY-Bc3">
-                                <rect key="frame" x="0.0" y="0.0" width="42" height="37"/>
-                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="28"/>
+                                <rect key="frame" x="0.0" y="0.0" width="47" height="36.5"/>
+                                <fontDescription key="fontDescription" name="NotoSansThai-SemiBold" family="Noto Sans Thai" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-logo-white" translatesAutoresizingMaskIntoConstraints="NO" id="ubA-PE-TvG">
-                                <rect key="frame" x="47" y="6" width="25" height="25"/>
+                                <rect key="frame" x="52" y="6" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="Ocm-dU-R9s"/>
                                     <constraint firstAttribute="width" secondItem="ubA-PE-TvG" secondAttribute="height" multiplier="1:1" id="kmq-hW-Xo0"/>
@@ -108,17 +108,17 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="owo-gZ-3I7">
-                        <rect key="frame" x="147" y="267.5" width="76" height="19.5"/>
+                        <rect key="frame" x="146" y="266" width="78.5" height="17"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Point Pow ID :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWo-MT-Y7j">
-                                <rect key="frame" x="0.0" y="0.0" width="66.5" height="19.5"/>
-                                <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="15"/>
+                                <rect key="frame" x="0.0" y="0.0" width="69.5" height="17"/>
+                                <fontDescription key="fontDescription" name="NotoSansThai-Regular" family="Noto Sans Thai" pointSize="11"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7f-9N-6RS">
-                                <rect key="frame" x="71.5" y="0.0" width="4.5" height="19.5"/>
-                                <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="15"/>
+                                <rect key="frame" x="74.5" y="0.0" width="4" height="17"/>
+                                <fontDescription key="fontDescription" name="NotoSansThai-Regular" family="Noto Sans Thai" pointSize="11"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -140,7 +140,7 @@
                             <constraint firstAttribute="height" constant="25" id="1mU-BL-0Pn"/>
                             <constraint firstAttribute="width" constant="170" id="t2a-cb-CMr"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
+                        <fontDescription key="fontDescription" name="NotoSansThai-SemiBold" family="Noto Sans Thai" pointSize="11"/>
                         <state key="normal" title="แตะเพื่อเปลี่ยนรูปพื้นหลัง">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>

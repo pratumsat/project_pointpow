@@ -35,7 +35,7 @@ class ResetPasswordViewController: BaseViewController {
        
         let cancelButton = UIBarButtonItem(title: NSLocalizedString("string-title-cancel-reset-pwd", comment: ""), style: .plain, target: self, action: #selector(cancelTapped))
         cancelButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white,
-                                             NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.ITEM_TITLE )!]
+                                             NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.NOTO_SANS_BOLD, size: Constant.Fonts.Size.ITEM_TITLE )!]
             , for: .normal)
         
         

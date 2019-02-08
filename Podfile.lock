@@ -114,6 +114,7 @@ PODS:
   - SDWebImage/WebP (4.4.2):
     - libwebp (~> 0.5)
     - SDWebImage/Core
+  - SWRevealViewController (2.4.0)
   - ZBarSDK (1.3.1)
 
 DEPENDENCIES:
@@ -124,6 +125,7 @@ DEPENDENCIES:
   - GoogleSignIn
   - Presentr
   - SDWebImage/WebP
+  - SWRevealViewController (from `https://github.com/John-Lluch/SWRevealViewController.git`, tag `v2.4.0`)
   - ZBarSDK (~> 1.3.1)
 
 SPEC REPOS:
@@ -150,6 +152,16 @@ SPEC REPOS:
     - SDWebImage
     - ZBarSDK
 
+EXTERNAL SOURCES:
+  SWRevealViewController:
+    :git: https://github.com/John-Lluch/SWRevealViewController.git
+    :tag: v2.4.0
+
+CHECKOUT OPTIONS:
+  SWRevealViewController:
+    :git: https://github.com/John-Lluch/SWRevealViewController.git
+    :tag: v2.4.0
+
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
@@ -171,8 +183,9 @@ SPEC CHECKSUMS:
   Presentr: 797ae6ec8904eaba4ec58a4c2065bd66e31569ea
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
+  SWRevealViewController: b653f339865208c97be99a24876545f5be0cc4bb
   ZBarSDK: 4c1b5daeb7d6cc67dc9355e690af0230a661f6ec
 
-PODFILE CHECKSUM: 32f4ba26f02c3e2e2282b7631e3b1a7e3e4f9cc0
+PODFILE CHECKSUM: 45fd064677ae9b7ab52fe2d27d19d97cd175e456
 
 COCOAPODS: 1.5.3

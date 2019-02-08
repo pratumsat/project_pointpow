@@ -239,7 +239,7 @@ class ScannerViewController: BaseViewController ,AVCaptureMetadataOutputObjectsD
             scanLabel.textColor = UIColor.white
             scanLabel.numberOfLines = 0
             scanLabel.lineBreakMode = .byWordWrapping
-            scanLabel.font = UIFont(name: Constant.Fonts.NOTO_SANS_BOLD, size: Constant.Fonts.Size.CONTENT)!
+            scanLabel.font = UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.CONTENT)!
             scanLabel.textAlignment = .center
             scanLabel.text = NSLocalizedString("string-line-up-qr", comment: "")
             scanLabel.sizeToFit()
@@ -286,7 +286,7 @@ class ScannerViewController: BaseViewController ,AVCaptureMetadataOutputObjectsD
             scanLabel.textColor = UIColor.white
             scanLabel.numberOfLines = 0
             scanLabel.lineBreakMode = .byWordWrapping
-            scanLabel.font = UIFont(name: Constant.Fonts.NOTO_SANS_BOLD, size: Constant.Fonts.Size.CONTENT)!
+            scanLabel.font = UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.CONTENT)!
             scanLabel.textAlignment = .center
             scanLabel.text = NSLocalizedString("string-line-up-barcode", comment: "")
             scanLabel.sizeToFit()

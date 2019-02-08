@@ -47,8 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         application.registerForRemoteNotifications()
         
         
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.NOTO_SANS_BOLD, size: Constant.Fonts.Size.TAB )!], for: .normal)
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.NOTO_SANS_BOLD, size: Constant.Fonts.Size.TAB )!], for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.TAB )!], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.TAB )!], for: .selected)
         
         /* tabbar color */
         //UITabBar.appearance().barTintColor = UIColor.white

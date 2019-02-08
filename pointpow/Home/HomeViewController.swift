@@ -36,7 +36,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         
         self.setUp()
         
-        
+        fontList()
         
     }
    

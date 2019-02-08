@@ -106,7 +106,7 @@ static NSTimeInterval AnimationDuration = 0.3;
     
     promptLabel = [[UILabel alloc] init];
     promptLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    promptLabel.font = [UIFont fontWithName:@"NotoSansThai-Bold" size:14];
+    promptLabel.font = [UIFont fontWithName:@"ThaiSansNeue-Bold" size:18];
     promptLabel.textColor = [UIColor colorWithRed:40/255 green:40/255 blue:40/255 alpha:1];
     promptLabel.textAlignment = NSTextAlignmentCenter;
     promptLabel.numberOfLines = 0;
@@ -115,7 +115,7 @@ static NSTimeInterval AnimationDuration = 0.3;
     
     messageLabel = [[UILabel alloc] init];
     messageLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    messageLabel.font = [UIFont fontWithName:@"NotoSansThai-Regular" size:14];
+    messageLabel.font = [UIFont fontWithName:@"ThaiSansNeue-Regular" size:18];
     messageLabel.textAlignment = NSTextAlignmentCenter;
     messageLabel.numberOfLines = 0;
     messageLabel.text = _message;

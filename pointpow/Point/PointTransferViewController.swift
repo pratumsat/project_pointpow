@@ -69,7 +69,7 @@ class PointTransferViewController: BaseViewController , UICollectionViewDelegate
                     break
 
                 }
-              //  item.providerLabel.setLineSpacing(lineSpacing: 0, lineHeightMultiple: 0.7)   // for thai sans
+                item.providerLabel.setLineSpacing(lineSpacing: 0, lineHeightMultiple: 0.7)   // for thai sans
                 item.providerLabel.textAlignment = .center
         }
 

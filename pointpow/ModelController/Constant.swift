@@ -11,7 +11,7 @@ import UIKit
 extension UIViewController {
     func setCustomTitleView(_ title:String){
         let titleView = UILabel()
-        titleView.font = UIFont(name: Constant.Fonts.NOTO_SANS_BOLD, size: Constant.Fonts.Size.TITLE)
+        titleView.font = UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.TITLE)
         titleView.textColor = UIColor.white
         titleView.text = title
         titleView.addSpacingCharacters(2.0)
@@ -111,7 +111,7 @@ extension UITextField {
     func addBottomLabelErrorMessage(_ errorMessage:String, marginLeft:CGFloat = 0 , marginBottom:CGFloat = 25) -> UILabel {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: Constant.Fonts.NOTO_SANS_BOLD, size: Constant.Fonts.Size.UNDER_TEXTFIELD)
+        label.font = UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.UNDER_TEXTFIELD)
         label.textColor = UIColor.red
         label.text = errorMessage
         label.sizeToFit()
@@ -581,15 +581,25 @@ struct Constant {
     }
     struct Fonts {
         struct Size {
-            static let TITLE = CGFloat(19.0)
-            static let ITEM_TITLE = CGFloat(16.0)
-            static let BUTTON = CGFloat(18.0)
-            static let TEXTFIELD = CGFloat(16.0)
-            static let UNDER_TEXTFIELD = CGFloat(11.0)
-            static let CONTENT = CGFloat(18.0)
-            static let TAB = CGFloat(8.0)
-            static let FREIND_RECENT = CGFloat(11.0)
-            static let FRIEND_HEADER_RECENT = CGFloat(16.0)
+//            static let TITLE = CGFloat(19.0)
+//            static let ITEM_TITLE = CGFloat(16.0)
+//            static let BUTTON = CGFloat(18.0)
+//            static let TEXTFIELD = CGFloat(16.0)
+//            static let UNDER_TEXTFIELD = CGFloat(11.0)
+//            static let CONTENT = CGFloat(18.0)
+//            static let TAB = CGFloat(8.0)
+//            static let FREIND_RECENT = CGFloat(11.0)
+//            static let FRIEND_HEADER_RECENT = CGFloat(16.0)
+            
+            static let TITLE = CGFloat(23.0)
+            static let ITEM_TITLE = CGFloat(20.0)
+            static let BUTTON = CGFloat(22.0)
+            static let TEXTFIELD = CGFloat(20.0)
+            static let UNDER_TEXTFIELD = CGFloat(15.0)
+            static let CONTENT = CGFloat(22.0)
+            static let TAB = CGFloat(13.0)
+            static let FREIND_RECENT = CGFloat(15.0)
+            static let FRIEND_HEADER_RECENT = CGFloat(20.0)
             
         }
        
@@ -597,8 +607,11 @@ struct Constant {
         //== NotoSansThai-Bold
         //== NotoSansThai-SemiBold
         //== NotoSansThai-Regular
-        static let NOTO_SANS_BOLD = "NotoSansThai-SemiBold"
-        static let NOTO_SANS_REGULAR = "NotoSansThai-Regular"
+        //static let NOTO_SANS_BOLD = "NotoSansThai-SemiBold"
+        //static let NOTO_SANS_REGULAR = "NotoSansThai-Regular"
+        
+        static let THAI_SANS_BOLD = "ThaiSansNeue-Bold"
+        static let THAI_SANS_REGULAR = "ThaiSansNeue-Regular"
     }
     struct ApiMain {
         //

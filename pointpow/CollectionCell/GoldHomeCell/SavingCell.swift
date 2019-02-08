@@ -10,6 +10,7 @@ import UIKit
 
 class SavingCell: UICollectionViewCell {
 
+    @IBOutlet weak var headView: UIView!
     @IBOutlet weak var goldamountLabel: UILabel!
     @IBOutlet weak var goldamountView: UIView!
     @IBOutlet weak var pointpowTextField: UITextField!
@@ -32,13 +33,13 @@ class SavingCell: UICollectionViewCell {
     }
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        self.savingButton.borderClearProperties(borderWidth: 1 , radius : 5)
+        self.headView.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
+        self.savingButton.borderClearProperties(borderWidth: 1)
         self.savingButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
         
         
-        self.goldamountView.borderClearProperties(borderWidth: 1, radius : 5)
-        self.pointpowTextField.borderRedColorProperties(borderWidth: 1, radius : 5)
+        self.goldamountView.borderClearProperties(borderWidth: 1)
+        self.pointpowTextField.borderRedColorProperties(borderWidth: 1)
         self.pointpowTextField.setRightPaddingPoints(10)
     }
     @IBAction func savingTapped(_ sender: Any) {

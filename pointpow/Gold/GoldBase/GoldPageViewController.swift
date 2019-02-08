@@ -22,7 +22,8 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       self.setUp()
+        self.title = NSLocalizedString("string-title-gold-page", comment: "")
+        self.setUp()
     }
     func setUp(){
         self.isRegistered = true
@@ -138,12 +139,12 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         if menu == "logo" {
             if isRegistered {
                 let width = collectionView.frame.width
-                let height = abs(cheight - (((width/375*250)*2)+(width/375*300)))
+                let height = abs((cheight+(40)) - (((width/375*260))+((width/375*250))+(width/375*355)))
                 
                 return CGSize(width: width, height: height)
             }else{
                 let width = collectionView.frame.width
-                let height = abs(cheight - (((width/375*250))+(40+40)))
+                let height = abs(cheight - (((width/375*260))+(40+80)))
                 
                 return CGSize(width: width, height: height)
             }
@@ -155,7 +156,7 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         }
         if menu == "goldprice" {
             let width = collectionView.frame.width - 40
-            let height = width/375*250
+            let height = width/375*260
             return CGSize(width: width, height: height)
         }
         if menu == "goldbalance"{
@@ -165,7 +166,7 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         }
         if menu == "saving"{
             let width = collectionView.frame.width - 40
-            let height = width/375*300
+            let height = width/375*355
             return CGSize(width: width, height: height)
         }
         

@@ -10,6 +10,7 @@ import UIKit
 
 class GoldPriceCell: UICollectionViewCell {
 
+    @IBOutlet weak var headView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -18,4 +19,17 @@ class GoldPriceCell: UICollectionViewCell {
         self.shadowCellProperties()
     }
 
+    
+    override var bounds : CGRect {
+        didSet {
+            self.layoutIfNeeded()
+        }
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        
+        self.headView.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
+        
+    }
 }

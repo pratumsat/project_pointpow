@@ -28,6 +28,7 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
     
         self.menuTableView.tableFooterView = UIView()
         self.registerTableViewNib(self.menuTableView, "NameTableViewCell")
+        self.registerTableViewNib(self.menuTableView, "ProfileTableViewCell")
     }
     
     override func viewWillLayoutSubviews() {
@@ -37,35 +38,49 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return CGFloat(200)
+        }
         return CGFloat(50)
+        
     }
  
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        if section == 0 {
+            return 1
+        }
+        return 3
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell:UITableViewCell?
         
-        if let item = tableView.dequeueReusableCell(withIdentifier: "NameTableViewCell", for: indexPath) as? NameTableViewCell{
-            cell = item
-            
-            if indexPath.row == 0 {
-                item.nameLabel.text = "Saving"
+        if indexPath.section == 0 {
+            if let head = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell", for: indexPath) as? ProfileTableViewCell {
+                cell = head
+               
+        
             }
-            if indexPath.row == 1 {
-                item.nameLabel.text = "Withdraw"
-            }
-            if indexPath.row == 2 {
-                item.nameLabel.text = "History"
-            }
-            if indexPath.row == 3 {
-                item.nameLabel.text = "Profile"
+        }else{
+            if let item = tableView.dequeueReusableCell(withIdentifier: "NameTableViewCell", for: indexPath) as? NameTableViewCell{
+                cell = item
+                
+                if indexPath.row == 0 {
+                    item.nameLabel.text = "ออมทอง"
+                }
+                if indexPath.row == 1 {
+                    item.nameLabel.text = "ถอนทอง"
+                }
+                if indexPath.row == 2 {
+                    item.nameLabel.text = "ประวัติการทำรายการ"
+                }
             }
         }
+        
         
         if cell == nil {
             cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
@@ -74,31 +89,34 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            // "Saving"
-            if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
-                self.revealViewController()?.pushFrontViewController(saving, animated: true)   
-            }
-        }
-        if indexPath.row == 1 {
-            // "Withdraw"
-            if let withdraw = self.storyboard?.instantiateViewController(withIdentifier: "GoldWithdraw") as? UINavigationController {
-                self.revealViewController()?.pushFrontViewController(withdraw, animated: true)
-            }
-        }
-        if indexPath.row == 2 {
-            // "History"
-            if let history = self.storyboard?.instantiateViewController(withIdentifier: "GoldHistory") as? UINavigationController {
-                self.revealViewController()?.pushFrontViewController(history, animated: true)
-            }
-            
-        }
-        if indexPath.row == 3 {
+        if indexPath.section == 0 {
             // "Profile"
             if let profile = self.storyboard?.instantiateViewController(withIdentifier: "GoldAccount") as? UINavigationController {
                 self.revealViewController()?.pushFrontViewController(profile, animated: true)
             }
         }
+        if indexPath.section == 1 {
+            if indexPath.row == 0 {
+                // "Saving"
+                if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
+                    self.revealViewController()?.pushFrontViewController(saving, animated: true)
+                }
+            }
+            if indexPath.row == 1 {
+                // "Withdraw"
+                if let withdraw = self.storyboard?.instantiateViewController(withIdentifier: "GoldWithdraw") as? UINavigationController {
+                    self.revealViewController()?.pushFrontViewController(withdraw, animated: true)
+                }
+            }
+            if indexPath.row == 2 {
+                // "History"
+                if let history = self.storyboard?.instantiateViewController(withIdentifier: "GoldHistory") as? UINavigationController {
+                    self.revealViewController()?.pushFrontViewController(history, animated: true)
+                }
+                
+            }
+        }
+        
     }
 
     

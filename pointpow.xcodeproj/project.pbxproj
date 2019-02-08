@@ -96,6 +96,8 @@
 		C181F063220C00B8003F7C70 /* SaveButtonProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C181F061220C00B8003F7C70 /* SaveButtonProfileCell.swift */; };
 		C181F064220C00B8003F7C70 /* SaveButtonProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C181F062220C00B8003F7C70 /* SaveButtonProfileCell.xib */; };
 		C181F066220C0392003F7C70 /* GoldHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C181F065220C0392003F7C70 /* GoldHistoryViewController.swift */; };
+		C181F06A220D8566003F7C70 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C181F068220D8566003F7C70 /* ProfileTableViewCell.swift */; };
+		C181F06B220D8566003F7C70 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C181F069220D8566003F7C70 /* ProfileTableViewCell.xib */; };
 		C197FEDA21DC5616002F24E8 /* PopUpRegisterSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FED921DC5616002F24E8 /* PopUpRegisterSuccessViewController.swift */; };
 		C197FEDE21DC8E98002F24E8 /* ResetNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FEDD21DC8E98002F24E8 /* ResetNav.swift */; };
 		C197FEE121E5D225002F24E8 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FEE021E5D225002F24E8 /* UserInfo.swift */; };
@@ -256,6 +258,8 @@
 		C181F061220C00B8003F7C70 /* SaveButtonProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButtonProfileCell.swift; sourceTree = "<group>"; };
 		C181F062220C00B8003F7C70 /* SaveButtonProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SaveButtonProfileCell.xib; sourceTree = "<group>"; };
 		C181F065220C0392003F7C70 /* GoldHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldHistoryViewController.swift; sourceTree = "<group>"; };
+		C181F068220D8566003F7C70 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		C181F069220D8566003F7C70 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
 		C197FED921DC5616002F24E8 /* PopUpRegisterSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpRegisterSuccessViewController.swift; sourceTree = "<group>"; };
 		C197FEDD21DC8E98002F24E8 /* ResetNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetNav.swift; sourceTree = "<group>"; };
 		C197FEE021E5D225002F24E8 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
@@ -516,6 +520,8 @@
 			children = (
 				C10D94AF220960940083FA47 /* NameTableViewCell.swift */,
 				C10D94B0220960940083FA47 /* NameTableViewCell.xib */,
+				C181F068220D8566003F7C70 /* ProfileTableViewCell.swift */,
+				C181F069220D8566003F7C70 /* ProfileTableViewCell.xib */,
 			);
 			path = TableCell;
 			sourceTree = "<group>";
@@ -970,6 +976,7 @@
 				C1817DA2219C1934009507DB /* SwitchCell.xib in Resources */,
 				C120D7CF21955BB500F9EEBB /* ProfileCell.xib in Resources */,
 				C115FA4F219ECB85008E7844 /* ItemListResultCell.xib in Resources */,
+				C181F06B220D8566003F7C70 /* ProfileTableViewCell.xib in Resources */,
 				C1817D93219BF61F009507DB /* ItemFriendCell.xib in Resources */,
 				C197FF3B22083AE9002F24E8 /* SavingCell.xib in Resources */,
 				C197FF432209401D002F24E8 /* LogoGoldCell.xib in Resources */,
@@ -1150,6 +1157,7 @@
 				C11BDFBF21A2C17600443D2D /* PopUpTransferSuccessViewController.swift in Sources */,
 				C1817DAA219E7F18009507DB /* BankPointTransferViewController.swift in Sources */,
 				C10CA1A221914F2E00316DF3 /* MainTabbarViewController.swift in Sources */,
+				C181F06A220D8566003F7C70 /* ProfileTableViewCell.swift in Sources */,
 				C197FF3E22093D9B002F24E8 /* RegisterGoldCell.swift in Sources */,
 				C10CA1A42191755C00316DF3 /* PersonalPopupViewController.swift in Sources */,
 				C197FF2622081C72002F24E8 /* GoldPageViewController.swift in Sources */,

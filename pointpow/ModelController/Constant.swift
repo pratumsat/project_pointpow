@@ -578,6 +578,7 @@ struct Constant {
         static let LINE_PROFILE = UIColor(rgb: 0xCCCCCC)
         static let GRADIENT_1 = UIColor(rgb: 0xFF2158) //top
         static let GRADIENT_2 = UIColor(rgb: 0xFE2222) //bottom
+        static let GREEN = UIColor(rgb: 0x43922B)
     }
     struct Fonts {
         struct Size {

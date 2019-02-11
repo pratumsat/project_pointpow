@@ -329,6 +329,21 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
+   
+    func showRegisterGoldStep2Saving(_ animated:Bool){
+        if let vc:RegisterGoldstep2ViewController = self.storyboard?.instantiateViewController(withIdentifier: "RegisterGoldstep2ViewController") as? RegisterGoldstep2ViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    
+    func showRegisterGoldStep3Saving(_ animated:Bool){
+        if let vc:RegisterGoldstep3ViewController = self.storyboard?.instantiateViewController(withIdentifier: "RegisterGoldstep3ViewController") as? RegisterGoldstep3ViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    
     func showForgot(_ animated:Bool){
         if let vc:ForgotPasswordViewController = self.storyboard?.instantiateViewController(withIdentifier: "ForgotPasswordViewController") as? ForgotPasswordViewController {
             

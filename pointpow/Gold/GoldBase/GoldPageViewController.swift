@@ -139,7 +139,7 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         if menu == "logo" {
             if isRegistered {
                 let width = collectionView.frame.width
-                let height = abs((cheight+(40)) - (((width/375*260))+((width/375*250))+(width/375*355)))
+                let height = abs((cheight+(80)) - (((width/375*260))+((width/375*250))+(width/375*355)))
                 
                 return CGSize(width: width, height: height)
             }else{

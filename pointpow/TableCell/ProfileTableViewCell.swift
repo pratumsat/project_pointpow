@@ -10,7 +10,7 @@ import UIKit
 
 class ProfileTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var statusImageView: UIImageView!
+    
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var goldIdLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -34,9 +34,9 @@ class ProfileTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.profileImageView.ovalColorWhiteProperties(borderWidth: 1.0)
-        self.statusImageView.ovalColorWhiteProperties(borderWidth: 1.0)
-        
+        self.profileImageView.ovalColorClearProperties()
+      
+      
       
     }
     

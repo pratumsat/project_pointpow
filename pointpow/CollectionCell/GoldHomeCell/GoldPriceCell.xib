@@ -27,8 +27,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="390" height="250"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nw8-i7-C7D">
-                        <rect key="frame" x="214.5" y="102.5" width="195" height="195"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-gold-bg-price" translatesAutoresizingMaskIntoConstraints="NO" id="nw8-i7-C7D">
+                        <rect key="frame" x="234" y="115" width="195" height="195"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="nw8-i7-C7D" secondAttribute="height" multiplier="1:1" id="vXI-Bb-NqO"/>
@@ -72,8 +72,8 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*ราคาอ้างอิงจากสมาคมค้าทองคำไทย" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNZ-Ib-X9d">
-                        <rect key="frame" x="10" y="221.5" width="149" height="18.5"/>
-                        <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="14"/>
+                        <rect key="frame" x="10" y="221.5" width="160" height="18.5"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="14"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -107,11 +107,12 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g96-ur-6av">
-                        <rect key="frame" x="291" y="162.5" width="23" height="23"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-gold-value-more" translatesAutoresizingMaskIntoConstraints="NO" id="g96-ur-6av">
+                        <rect key="frame" x="299" y="164" width="20" height="20"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="g96-ur-6av" secondAttribute="height" multiplier="1:1" id="Kaf-yg-eRg"/>
+                            <constraint firstAttribute="width" constant="20" id="zMd-az-aPA"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKy-QY-HVM">
@@ -141,7 +142,7 @@
                 <constraint firstItem="nw8-i7-C7D" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.5" id="Jwm-DP-Jeq"/>
                 <constraint firstItem="YbZ-eN-8E0" firstAttribute="leading" secondItem="4sE-si-l7Q" secondAttribute="leading" id="N5O-qf-6Ah"/>
                 <constraint firstItem="bXp-NT-CTa" firstAttribute="centerY" secondItem="zAn-eB-nME" secondAttribute="centerY" id="NRb-Zx-jxm"/>
-                <constraint firstItem="nw8-i7-C7D" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="trailing" multiplier="0.8" id="NUr-Sy-Nsg"/>
+                <constraint firstItem="nw8-i7-C7D" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="trailing" multiplier="0.85" id="NUr-Sy-Nsg"/>
                 <constraint firstItem="4sE-si-l7Q" firstAttribute="leading" secondItem="zAn-eB-nME" secondAttribute="leading" id="Nhb-zv-dCH"/>
                 <constraint firstItem="NKy-QY-HVM" firstAttribute="centerY" secondItem="b6O-H3-BbB" secondAttribute="centerY" id="O61-xn-ICf"/>
                 <constraint firstItem="b6O-H3-BbB" firstAttribute="top" secondItem="eB5-Db-8cT" secondAttribute="bottom" constant="10" id="PAE-hd-uTM"/>
@@ -154,13 +155,12 @@
                 <constraint firstItem="Kvk-Gm-6mv" firstAttribute="trailing" secondItem="E7r-Gd-Tzb" secondAttribute="trailing" id="ffl-kK-aZA"/>
                 <constraint firstItem="djn-Dx-rUT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="fpy-CJ-kbw"/>
                 <constraint firstItem="bXp-NT-CTa" firstAttribute="leading" secondItem="0dz-1c-ROw" secondAttribute="trailing" constant="5" id="haC-Gu-Vxo"/>
-                <constraint firstItem="NKy-QY-HVM" firstAttribute="leading" secondItem="g96-ur-6av" secondAttribute="trailing" constant="10" id="jBe-zD-LMy"/>
+                <constraint firstItem="NKy-QY-HVM" firstAttribute="leading" secondItem="g96-ur-6av" secondAttribute="trailing" constant="5" id="jBe-zD-LMy"/>
                 <constraint firstItem="Kvk-Gm-6mv" firstAttribute="centerY" secondItem="eB5-Db-8cT" secondAttribute="centerY" id="jtn-QX-ZPV"/>
                 <constraint firstItem="g96-ur-6av" firstAttribute="centerY" secondItem="NKy-QY-HVM" secondAttribute="centerY" id="lCJ-xm-O1E"/>
                 <constraint firstItem="b6O-H3-BbB" firstAttribute="leading" secondItem="eB5-Db-8cT" secondAttribute="leading" id="mFZ-h3-Icg"/>
                 <constraint firstItem="zAn-eB-nME" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="ndv-jU-2QT"/>
-                <constraint firstItem="g96-ur-6av" firstAttribute="height" secondItem="NKy-QY-HVM" secondAttribute="height" multiplier="0.5" id="pgm-eu-U6S"/>
-                <constraint firstItem="nw8-i7-C7D" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="bottom" multiplier="0.8" id="qAY-ST-9Bv"/>
+                <constraint firstItem="nw8-i7-C7D" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="bottom" multiplier="0.85" id="qAY-ST-9Bv"/>
                 <constraint firstItem="TvL-ZD-uWP" firstAttribute="leading" secondItem="E7r-Gd-Tzb" secondAttribute="trailing" constant="5" id="qoq-ei-Zps"/>
                 <constraint firstItem="E7r-Gd-Tzb" firstAttribute="centerY" secondItem="YbZ-eN-8E0" secondAttribute="centerY" id="t9p-Xg-0am"/>
                 <constraint firstItem="H77-2R-NjL" firstAttribute="leading" secondItem="TvL-ZD-uWP" secondAttribute="leading" id="ubG-3J-fYW"/>
@@ -174,4 +174,8 @@
             <point key="canvasLocation" x="86.400000000000006" y="23.388305847076463"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="ic-gold-bg-price" width="420" height="419"/>
+        <image name="ic-gold-value-more" width="30" height="29"/>
+    </resources>
 </document>

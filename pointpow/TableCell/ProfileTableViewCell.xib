@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="ThaiSansNeue-Bold.ttf">
+            <string>ThaiSansNeue-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProfileTableViewCell" rowHeight="253" id="KGk-i7-Jjw" customClass="ProfileTableViewCell" customModule="pointpow" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="253"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="252.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TT6-7w-bVu">
+                        <rect key="frame" x="137" y="33.5" width="110" height="110"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-gold-profile" translatesAutoresizingMaskIntoConstraints="NO" id="KTi-GO-xGJ">
+                                <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="IeP-IW-cd4"/>
+                                    <constraint firstAttribute="width" secondItem="KTi-GO-xGJ" secondAttribute="height" multiplier="1:1" id="eKB-Np-OQi"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" secondItem="KTi-GO-xGJ" secondAttribute="height" id="DHm-05-WGo"/>
+                            <constraint firstItem="KTi-GO-xGJ" firstAttribute="centerX" secondItem="TT6-7w-bVu" secondAttribute="centerX" id="LVf-Og-ec4"/>
+                            <constraint firstAttribute="width" secondItem="KTi-GO-xGJ" secondAttribute="width" id="NlC-HB-ON2"/>
+                            <constraint firstAttribute="width" secondItem="TT6-7w-bVu" secondAttribute="height" multiplier="1:1" id="QiG-av-8sC"/>
+                            <constraint firstItem="KTi-GO-xGJ" firstAttribute="centerY" secondItem="TT6-7w-bVu" secondAttribute="centerY" id="m3T-cO-xiW"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="thanawat prathumset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="67t-o4-Ews">
+                        <rect key="frame" x="138.5" y="148.5" width="107" height="19.5"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ygV-qC-BA9">
+                        <rect key="frame" x="121" y="168" width="142" height="19.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gold Saving ID :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mr3-Ji-jEU">
+                                <rect key="frame" x="0.0" y="0.0" width="82" height="19.5"/>
+                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="xxxxxxxxxx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ez3-W7-CVt">
+                                <rect key="frame" x="87" y="0.0" width="55" height="19.5"/>
+                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mr3-Ji-jEU" firstAttribute="top" secondItem="ygV-qC-BA9" secondAttribute="top" id="2D4-qa-yNW"/>
+                            <constraint firstAttribute="bottom" secondItem="mr3-Ji-jEU" secondAttribute="bottom" id="4Kq-9R-Fw6"/>
+                            <constraint firstAttribute="trailing" secondItem="ez3-W7-CVt" secondAttribute="trailing" id="RFP-VN-Oac"/>
+                            <constraint firstItem="ez3-W7-CVt" firstAttribute="centerY" secondItem="mr3-Ji-jEU" secondAttribute="centerY" id="VxH-r6-k4m"/>
+                            <constraint firstItem="mr3-Ji-jEU" firstAttribute="top" secondItem="ygV-qC-BA9" secondAttribute="top" id="X8z-Ts-a9q"/>
+                            <constraint firstItem="mr3-Ji-jEU" firstAttribute="leading" secondItem="ygV-qC-BA9" secondAttribute="leading" id="YOY-CQ-Pry"/>
+                            <constraint firstItem="ez3-W7-CVt" firstAttribute="leading" secondItem="mr3-Ji-jEU" secondAttribute="trailing" constant="5" id="bVP-ku-td6"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gic-26-3fP">
+                        <rect key="frame" x="157" y="187.5" width="70.5" height="20"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="สถานะ :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ek-XR-9Os">
+                                <rect key="frame" x="0.0" y="0.0" width="37.5" height="20"/>
+                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="อนุมัติ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NmB-4a-CTF">
+                                <rect key="frame" x="42.5" y="0.0" width="28" height="20"/>
+                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="NmB-4a-CTF" firstAttribute="leading" secondItem="3ek-XR-9Os" secondAttribute="trailing" constant="5" id="S6h-sg-1WJ"/>
+                            <constraint firstAttribute="bottom" secondItem="NmB-4a-CTF" secondAttribute="bottom" id="V21-NA-oRO"/>
+                            <constraint firstItem="3ek-XR-9Os" firstAttribute="centerY" secondItem="gic-26-3fP" secondAttribute="centerY" id="hvS-I1-9ys"/>
+                            <constraint firstItem="NmB-4a-CTF" firstAttribute="top" secondItem="gic-26-3fP" secondAttribute="top" id="kzX-cn-YAA"/>
+                            <constraint firstAttribute="height" secondItem="3ek-XR-9Os" secondAttribute="height" id="qw7-dv-WHb"/>
+                            <constraint firstItem="3ek-XR-9Os" firstAttribute="leading" secondItem="gic-26-3fP" secondAttribute="leading" id="usZ-wU-0Ok"/>
+                            <constraint firstAttribute="trailing" secondItem="NmB-4a-CTF" secondAttribute="trailing" id="wSD-0Q-nmS"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="gic-26-3fP" firstAttribute="top" secondItem="ygV-qC-BA9" secondAttribute="bottom" id="41Q-qA-q9G"/>
+                    <constraint firstItem="67t-o4-Ews" firstAttribute="centerX" secondItem="TT6-7w-bVu" secondAttribute="centerX" id="4hp-gQ-7wc"/>
+                    <constraint firstItem="ygV-qC-BA9" firstAttribute="top" secondItem="67t-o4-Ews" secondAttribute="bottom" id="5Ix-ma-WaF"/>
+                    <constraint firstItem="67t-o4-Ews" firstAttribute="top" secondItem="TT6-7w-bVu" secondAttribute="bottom" constant="5" id="AbJ-N1-h4R"/>
+                    <constraint firstItem="gic-26-3fP" firstAttribute="top" secondItem="ygV-qC-BA9" secondAttribute="bottom" id="DpI-uN-ORE"/>
+                    <constraint firstItem="TT6-7w-bVu" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" multiplier="0.7" id="FjI-p0-deK"/>
+                    <constraint firstItem="ygV-qC-BA9" firstAttribute="centerX" secondItem="TT6-7w-bVu" secondAttribute="centerX" id="ZEI-S3-YWj"/>
+                    <constraint firstItem="gic-26-3fP" firstAttribute="centerX" secondItem="TT6-7w-bVu" secondAttribute="centerX" id="gud-IL-lf1"/>
+                    <constraint firstItem="ygV-qC-BA9" firstAttribute="top" secondItem="67t-o4-Ews" secondAttribute="bottom" id="m3X-xt-UQo"/>
+                    <constraint firstItem="TT6-7w-bVu" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" multiplier="1.2" id="pB7-Qo-0hE"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="goldIdLabel" destination="ez3-W7-CVt" id="BrD-R1-Kkc"/>
+                <outlet property="nameLabel" destination="67t-o4-Ews" id="Ycp-ou-Hyz"/>
+                <outlet property="profileImageView" destination="KTi-GO-xGJ" id="a7L-Yq-jOV"/>
+                <outlet property="statusLabel" destination="3ek-XR-9Os" id="4wk-cp-WEo"/>
+            </connections>
+            <point key="canvasLocation" x="137.59999999999999" y="62.518740629685162"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic-gold-profile" width="402" height="403"/>
+    </resources>
+</document>

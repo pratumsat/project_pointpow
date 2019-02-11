@@ -1,24 +1,19 @@
 //
-//  RegisterGoldViewController.swift
+//  RegisterGoldstep2ViewController.swift
 //  pointpow
 //
-//  Created by thanawat on 5/2/2562 BE.
+//  Created by thanawat on 11/2/2562 BE.
 //  Copyright © 2562 abcpoint. All rights reserved.
 //
 
 import UIKit
 
-class RegisterGoldViewController: BaseViewController {
-
+class RegisterGoldstep2ViewController: BaseViewController {
     @IBOutlet weak var step1Label: UILabel!
     @IBOutlet weak var step2Label: UILabel!
     @IBOutlet weak var step3Label: UILabel!
-    
-    
-    @IBOutlet weak var previewImageView: UIImageView!
     @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var uploadButton: UIButton!
-   // @IBOutlet weak var checkBok: CheckBox!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,6 +23,7 @@ class RegisterGoldViewController: BaseViewController {
         self.backgroundImage?.image = nil
         //self.checkBok.isChecked = true
     }
+
     override func viewWillLayoutSubviews(){
         super.viewWillLayoutSubviews()
         
@@ -38,8 +34,9 @@ class RegisterGoldViewController: BaseViewController {
         self.step3Label.ovalColorClearProperties()
         
     }
-    @IBAction func nextStepTapped(_ sender: Any) {
-        self.showRegisterGoldStep2Saving(true)
-    }
     
+    @IBAction func nextStepTapped(_ sender: Any) {
+        
+        self.showRegisterGoldStep3Saving(true)
+    }
 }

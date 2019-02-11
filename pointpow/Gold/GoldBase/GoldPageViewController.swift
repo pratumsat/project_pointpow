@@ -25,9 +25,10 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         self.title = NSLocalizedString("string-title-gold-page", comment: "")
         self.setUp()
     }
+    
     func setUp(){
-        self.isRegistered = true
-        self.arrayItem = self.arrayItem_registered
+        self.isRegistered = false
+        self.arrayItem = self.arrayItem_no_registered
         
         self.backgroundImage?.image = nil
     

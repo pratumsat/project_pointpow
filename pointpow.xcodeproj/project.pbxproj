@@ -100,6 +100,7 @@
 		C181F06B220D8566003F7C70 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C181F069220D8566003F7C70 /* ProfileTableViewCell.xib */; };
 		C18A1CE222112D2A002CAF4C /* RegisterGoldstep2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18A1CE122112D2A002CAF4C /* RegisterGoldstep2ViewController.swift */; };
 		C18A1CE422113712002CAF4C /* RegisterGoldstep3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18A1CE322113712002CAF4C /* RegisterGoldstep3ViewController.swift */; };
+		C18A1CE622118BC9002CAF4C /* GoldSWRevealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18A1CE522118BC9002CAF4C /* GoldSWRevealViewController.swift */; };
 		C197FEDA21DC5616002F24E8 /* PopUpRegisterSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FED921DC5616002F24E8 /* PopUpRegisterSuccessViewController.swift */; };
 		C197FEDE21DC8E98002F24E8 /* ResetNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FEDD21DC8E98002F24E8 /* ResetNav.swift */; };
 		C197FEE121E5D225002F24E8 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FEE021E5D225002F24E8 /* UserInfo.swift */; };
@@ -264,6 +265,7 @@
 		C181F069220D8566003F7C70 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
 		C18A1CE122112D2A002CAF4C /* RegisterGoldstep2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGoldstep2ViewController.swift; sourceTree = "<group>"; };
 		C18A1CE322113712002CAF4C /* RegisterGoldstep3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGoldstep3ViewController.swift; sourceTree = "<group>"; };
+		C18A1CE522118BC9002CAF4C /* GoldSWRevealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldSWRevealViewController.swift; sourceTree = "<group>"; };
 		C197FED921DC5616002F24E8 /* PopUpRegisterSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpRegisterSuccessViewController.swift; sourceTree = "<group>"; };
 		C197FEDD21DC8E98002F24E8 /* ResetNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetNav.swift; sourceTree = "<group>"; };
 		C197FEE021E5D225002F24E8 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
@@ -379,6 +381,7 @@
 		C106BEA4220ABF6900E2331E /* GoldBase */ = {
 			isa = PBXGroup;
 			children = (
+				C18A1CE522118BC9002CAF4C /* GoldSWRevealViewController.swift */,
 				C197FF2722082046002F24E8 /* GoldBaseViewController.swift */,
 				C197FF2522081C72002F24E8 /* GoldPageViewController.swift */,
 				C10D94AA22094AAF0083FA47 /* RegisterGoldViewController.swift */,
@@ -1180,6 +1183,7 @@
 				C1E7B17D21AFCD7E00DA8B82 /* ResultTransferNav.swift in Sources */,
 				C11B740B21BF67F700D0E769 /* DataController.swift in Sources */,
 				C10CA19D21914B1B00316DF3 /* AccountViewController.swift in Sources */,
+				C18A1CE622118BC9002CAF4C /* GoldSWRevealViewController.swift in Sources */,
 				C169FF9E21C25C9200F9D354 /* EmailViewController.swift in Sources */,
 				C106BEA6220AC01400E2331E /* ConfirmSavingViewController.swift in Sources */,
 				C115FA4A219EC511008E7844 /* ResultTransferViewController.swift in Sources */,

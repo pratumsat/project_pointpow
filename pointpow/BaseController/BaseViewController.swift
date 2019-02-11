@@ -284,7 +284,8 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         
     }
     func showGoldPage(_ animated:Bool){
-        if let vc:SWRevealViewController = self.storyboard?.instantiateViewController(withIdentifier: "GoldSWRevealViewController") as? SWRevealViewController {
+        if let vc:GoldSWRevealViewController = self.storyboard?.instantiateViewController(withIdentifier: "GoldSWRevealViewController") as? GoldSWRevealViewController {
+            
             self.present(vc, animated: animated, completion: nil)
         }
     }

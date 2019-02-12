@@ -21,6 +21,12 @@ class RegisterGoldstep3ViewController: BaseViewController {
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
     
+    
+    
+    
+    @IBOutlet weak var previewImageView: UIImageView!
+    var tupleModel:(image : UIImage?, firstname : String,lastname: String , email: String,mobile: String,idcard: String)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,6 +57,13 @@ class RegisterGoldstep3ViewController: BaseViewController {
         self.mobileTextField.delegate = self
         self.idcardTextField.delegate = self
         
+        self.firstNameTextField.isEnabled = false
+        self.lastNameTextField.isEnabled = false
+        self.emailTextField.isEnabled = false
+        self.mobileTextField.isEnabled = false
+        self.idcardTextField.isEnabled = false
+        
+        
         self.firstNameTextField.autocorrectionType = .no
         self.lastNameTextField.autocorrectionType = .no
         self.emailTextField.autocorrectionType = .no
@@ -63,10 +76,47 @@ class RegisterGoldstep3ViewController: BaseViewController {
         self.mobileTextField.setLeftPaddingPoints(40)
         self.idcardTextField.setLeftPaddingPoints(40)
         
+        
+        let back1 = UITapGestureRecognizer(target: self, action: #selector(backToStep1Tapped))
+        self.step1Label.isUserInteractionEnabled = true
+        self.step1Label.addGestureRecognizer(back1)
+        
+        
+        let back2 = UITapGestureRecognizer(target: self, action: #selector(backToStep2Tapped))
+        self.step2Label.isUserInteractionEnabled = true
+        self.step2Label.addGestureRecognizer(back2)
+    
+        
+        if let tp = self.tupleModel {
+            self.firstNameTextField.text = tp.firstname
+            self.lastNameTextField.text = tp.lastname
+            self.mobileTextField.text = tp.mobile
+            self.emailTextField.text = tp.email
+            self.idcardTextField.text = tp.idcard
+            
+            if tp.image != nil{
+                self.previewImageView.image = tp.image
+                self.previewImageView.isHidden = false
+            }else{
+                self.previewImageView.image = tp.image
+                self.previewImageView.isHidden = true
+            }
+
+        }
+    }
+    
+    @objc func backToStep1Tapped(){
+        
+        self.navigationController?.popToViewController(self.navigationController!.viewControllers[1], animated: true)
+    }
+    @objc func backToStep2Tapped(){
+        self.navigationController?.popViewController(animated: true)
     }
     
     override func viewWillLayoutSubviews(){
         super.viewWillLayoutSubviews()
+        
+        self.previewImageView.borderClearProperties(borderWidth: 0, radius: 10)
         
         self.registerButton.borderClearProperties(borderWidth: 1)
         self.registerButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
@@ -77,6 +127,11 @@ class RegisterGoldstep3ViewController: BaseViewController {
     }
     
     @IBAction func registerTapped(_ sender: Any) {
+        self.showPenddingVerifyModalView(true , dismissCallback: {
+            (self.navigationController?.viewControllers[0] as? GoldPageViewController)?.isRegistered = true
+            self.navigationController?.popToRootViewController(animated: true)
+            
+        })
     }
     
     /*

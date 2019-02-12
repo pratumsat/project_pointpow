@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		16B23D162FFAF9446F2A6DA2 /* Pods_pointpowTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397FA4B92F56CF5C6AC3D5E5 /* Pods_pointpowTests.framework */; };
 		A8335B1A06016D739FCCD24A /* Pods_pointpowUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71C5AF1196142AE070221A8 /* Pods_pointpowUITests.framework */; };
+		C103113C2212C932004396E0 /* GoldPendingVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C103113B2212C932004396E0 /* GoldPendingVerifyViewController.swift */; };
+		C103113F2212CBAC004396E0 /* GoldPenddingVerifyNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = C103113E2212CBAC004396E0 /* GoldPenddingVerifyNav.swift */; };
 		C106BEA6220AC01400E2331E /* ConfirmSavingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C106BEA5220AC01400E2331E /* ConfirmSavingViewController.swift */; };
 		C106BEAE220BEB3000E2331E /* GoldItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C106BEAC220BEB3000E2331E /* GoldItemCell.swift */; };
 		C106BEAF220BEB3000E2331E /* GoldItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C106BEAD220BEB3000E2331E /* GoldItemCell.xib */; };
@@ -172,6 +174,8 @@
 		397FA4B92F56CF5C6AC3D5E5 /* Pods_pointpowTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pointpowTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E353ACA4AAA10E36B259268 /* Pods-pointpowUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pointpowUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pointpowUITests/Pods-pointpowUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		AB6FAB2B79444F6CC167E5C8 /* Pods-pointpow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pointpow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pointpow/Pods-pointpow.debug.xcconfig"; sourceTree = "<group>"; };
+		C103113B2212C932004396E0 /* GoldPendingVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldPendingVerifyViewController.swift; sourceTree = "<group>"; };
+		C103113E2212CBAC004396E0 /* GoldPenddingVerifyNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldPenddingVerifyNav.swift; sourceTree = "<group>"; };
 		C106BEA5220AC01400E2331E /* ConfirmSavingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmSavingViewController.swift; sourceTree = "<group>"; };
 		C106BEAC220BEB3000E2331E /* GoldItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldItemCell.swift; sourceTree = "<group>"; };
 		C106BEAD220BEB3000E2331E /* GoldItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoldItemCell.xib; sourceTree = "<group>"; };
@@ -370,6 +374,18 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C103113D2212CB70004396E0 /* GoldRegister */ = {
+			isa = PBXGroup;
+			children = (
+				C10D94AA22094AAF0083FA47 /* RegisterGoldViewController.swift */,
+				C18A1CE122112D2A002CAF4C /* RegisterGoldstep2ViewController.swift */,
+				C18A1CE322113712002CAF4C /* RegisterGoldstep3ViewController.swift */,
+				C103113B2212C932004396E0 /* GoldPendingVerifyViewController.swift */,
+				C103113E2212CBAC004396E0 /* GoldPenddingVerifyNav.swift */,
+			);
+			path = GoldRegister;
+			sourceTree = "<group>";
+		};
 		C106BEA3220ABF5700E2331E /* GoldSaving */ = {
 			isa = PBXGroup;
 			children = (
@@ -384,9 +400,6 @@
 				C18A1CE522118BC9002CAF4C /* GoldSWRevealViewController.swift */,
 				C197FF2722082046002F24E8 /* GoldBaseViewController.swift */,
 				C197FF2522081C72002F24E8 /* GoldPageViewController.swift */,
-				C10D94AA22094AAF0083FA47 /* RegisterGoldViewController.swift */,
-				C18A1CE122112D2A002CAF4C /* RegisterGoldstep2ViewController.swift */,
-				C18A1CE322113712002CAF4C /* RegisterGoldstep3ViewController.swift */,
 				C10D94AC22095EA20083FA47 /* GoldMenuTableViewController.swift */,
 				C10D94B32209717E0083FA47 /* NavGoldPage.swift */,
 				C10D94B72209719F0083FA47 /* NavProfile.swift */,
@@ -669,6 +682,7 @@
 		C197FF2422081C3F002F24E8 /* Gold */ = {
 			isa = PBXGroup;
 			children = (
+				C103113D2212CB70004396E0 /* GoldRegister */,
 				C181F067220C0399003F7C70 /* GoldHistory */,
 				C106BEAA220BE8A100E2331E /* GoldWithdraw */,
 				C106BEA7220BE6F000E2331E /* GoldProfile */,
@@ -1146,6 +1160,7 @@
 				C10CA19A21914AF900316DF3 /* TransactionViewController.swift in Sources */,
 				C11A93B3218BF6D200627B44 /* IntroViewController.swift in Sources */,
 				C10CA19421914A3B00316DF3 /* HomeViewController.swift in Sources */,
+				C103113F2212CBAC004396E0 /* GoldPenddingVerifyNav.swift in Sources */,
 				C18A1CE422113712002CAF4C /* RegisterGoldstep3ViewController.swift in Sources */,
 				C10CA1A021914B8900316DF3 /* PointManageViewController.swift in Sources */,
 				C181F063220C00B8003F7C70 /* SaveButtonProfileCell.swift in Sources */,
@@ -1204,6 +1219,7 @@
 				C11A93C0218C2AD900627B44 /* ForgotPasswordViewController.swift in Sources */,
 				C11A93BE218C20D100627B44 /* RegisterViewController.swift in Sources */,
 				C10D94B1220960940083FA47 /* NameTableViewCell.swift in Sources */,
+				C103113C2212C932004396E0 /* GoldPendingVerifyViewController.swift in Sources */,
 				C1817DA1219C1934009507DB /* SwitchCell.swift in Sources */,
 				C106BEAE220BEB3000E2331E /* GoldItemCell.swift in Sources */,
 				C13D99822199755B001A4794 /* ProfileViewController.swift in Sources */,

@@ -10,6 +10,7 @@ import UIKit
 
 class RegisterGoldstep3ViewController: BaseViewController {
 
+    @IBOutlet weak var backgroundPreviewView: UIView!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var step1Label: UILabel!
     @IBOutlet weak var step2Label: UILabel!
@@ -76,6 +77,7 @@ class RegisterGoldstep3ViewController: BaseViewController {
         self.mobileTextField.setLeftPaddingPoints(40)
         self.idcardTextField.setLeftPaddingPoints(40)
         
+        self.previewImageView.contentMode = .scaleAspectFit
         
         let back1 = UITapGestureRecognizer(target: self, action: #selector(backToStep1Tapped))
         self.step1Label.isUserInteractionEnabled = true
@@ -117,6 +119,7 @@ class RegisterGoldstep3ViewController: BaseViewController {
         super.viewWillLayoutSubviews()
         
         self.previewImageView.borderClearProperties(borderWidth: 0, radius: 10)
+        self.backgroundPreviewView.borderClearProperties(borderWidth: 0, radius: 10)
         
         self.registerButton.borderClearProperties(borderWidth: 1)
         self.registerButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])

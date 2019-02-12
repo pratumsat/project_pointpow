@@ -348,7 +348,7 @@ class RegisterGoldViewController: BaseViewController {
         }
         if lastName.isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-lastname", comment: "")
-            self.errorLastnamelLabel =  self.lastNameTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
+            self.errorLastnamelLabel =  self.lastNameTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 10 )
             errorEmpty += 1
             
         }

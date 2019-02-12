@@ -46,7 +46,7 @@ class RegisterGoldstep2ViewController: BaseViewController ,UIImagePickerControll
         self.backgroundImage?.image = nil
         self.checkBox.isChecked = true
         
-        
+        self.hiddenIdCardPhotoImageView.contentMode = .scaleAspectFit
       
         self.backgroundIdCardPhotoImageView.layer.cornerRadius = 10
         vborder.strokeColor = UIColor.lightGray.cgColor
@@ -104,10 +104,24 @@ class RegisterGoldstep2ViewController: BaseViewController ,UIImagePickerControll
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         let chosenImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+       
+        
+        if let imageData = chosenImage.pngData() {
+            let bytes = imageData.count
+            let KB = Double(bytes) / 1024.0 // Note the difference
+            print("size of image in KB: \(KB)")
+        }
         
         // square for profile
         let resizeImage = chosenImage.resizeUIImage(targetSize: CGSize(width: 400.0, height: 400.0))
         self.idCardPhoto = resizeImage
+       
+        if let imageData = resizeImage.pngData() {
+            let bytes = imageData.count
+            let KB = Double(bytes) / 1024.0 // Note the difference
+            print("size of image in KB: \(KB)")
+        }
+        
         
         //reload data
         self.hiddenIdCardPhotoImageView.image = resizeImage

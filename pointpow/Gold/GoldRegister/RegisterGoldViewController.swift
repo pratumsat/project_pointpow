@@ -14,6 +14,11 @@ class RegisterGoldViewController: BaseViewController {
     @IBOutlet weak var step2Label: UILabel!
     @IBOutlet weak var step3Label: UILabel!
     
+    @IBOutlet weak var fview: UIView!
+    @IBOutlet weak var lview: UIView!
+    @IBOutlet weak var eview: UIView!
+    @IBOutlet weak var mview: UIView!
+    @IBOutlet weak var idview: UIView!
     
     @IBOutlet weak var idcardTextField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
@@ -114,6 +119,9 @@ class RegisterGoldViewController: BaseViewController {
     
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        self.addColorLineView(textField)
+        
         if textField  == self.firstNameTextField {
             let startingLength = textField.text?.count ?? 0
             let lengthToAdd = string.count
@@ -210,6 +218,49 @@ class RegisterGoldViewController: BaseViewController {
         }
         return true
         
+    }
+    
+    func addColorLineView(_ textField:UITextField){
+        switch textField {
+        case firstNameTextField:
+            fview.backgroundColor = UIColor.darkGray
+            lview.backgroundColor = UIColor.groupTableViewBackground
+            eview.backgroundColor = UIColor.groupTableViewBackground
+            mview.backgroundColor = UIColor.groupTableViewBackground
+            idview.backgroundColor = UIColor.groupTableViewBackground
+            break
+            case lastNameTextField:
+                fview.backgroundColor = UIColor.groupTableViewBackground
+                lview.backgroundColor = UIColor.darkGray
+                eview.backgroundColor = UIColor.groupTableViewBackground
+                mview.backgroundColor = UIColor.groupTableViewBackground
+                idview.backgroundColor = UIColor.groupTableViewBackground
+            break
+                case emailTextField:
+                    fview.backgroundColor = UIColor.groupTableViewBackground
+                    lview.backgroundColor = UIColor.groupTableViewBackground
+                    eview.backgroundColor = UIColor.darkText
+                    mview.backgroundColor = UIColor.groupTableViewBackground
+                    idview.backgroundColor = UIColor.groupTableViewBackground
+                break
+                    case mobileTextField:
+                        fview.backgroundColor = UIColor.groupTableViewBackground
+                        lview.backgroundColor = UIColor.groupTableViewBackground
+                        eview.backgroundColor = UIColor.groupTableViewBackground
+                        mview.backgroundColor = UIColor.darkText
+                        idview.backgroundColor = UIColor.groupTableViewBackground
+                    break
+                        case idcardTextField:
+                            fview.backgroundColor = UIColor.groupTableViewBackground
+                            lview.backgroundColor = UIColor.groupTableViewBackground
+                            eview.backgroundColor = UIColor.groupTableViewBackground
+                            mview.backgroundColor = UIColor.groupTableViewBackground
+                            idview.backgroundColor = UIColor.darkText
+                        break
+            
+        default:
+            break
+        }
     }
     
     @objc func clearFirstNameTapped(){

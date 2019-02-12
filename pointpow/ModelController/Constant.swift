@@ -373,7 +373,8 @@ extension UIImage{
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return  cropToBounds(image: newImage!, size: CGSize(width: targetSize.width/2, height: targetSize.height/2))
+        return  newImage!
+        //cropToBounds(image: newImage!, size: CGSize(width: targetSize.width/2, height: targetSize.height/2))
     }
     private func cropToBounds(image: UIImage, size: CGSize) -> UIImage {
         guard let cgimage = image.cgImage else { return image }

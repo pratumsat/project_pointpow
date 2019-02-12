@@ -79,7 +79,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gic-26-3fP">
-                        <rect key="frame" x="157" y="187.5" width="70.5" height="20"/>
+                        <rect key="frame" x="103.5" y="187.5" width="177.5" height="20"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="สถานะ :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ek-XR-9Os">
                                 <rect key="frame" x="0.0" y="0.0" width="37.5" height="20"/>
@@ -87,8 +87,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="อนุมัติ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NmB-4a-CTF">
-                                <rect key="frame" x="42.5" y="0.0" width="28" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="กำลังอยู่ระหว่างการตรวจสอบ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NmB-4a-CTF">
+                                <rect key="frame" x="42.5" y="0.0" width="135" height="20"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>

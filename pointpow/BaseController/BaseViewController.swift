@@ -284,7 +284,8 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         
     }
     func showGoldPage(_ animated:Bool){
-        if let vc:SWRevealViewController = self.storyboard?.instantiateViewController(withIdentifier: "GoldSWRevealViewController") as? SWRevealViewController {
+        if let vc:GoldSWRevealViewController = self.storyboard?.instantiateViewController(withIdentifier: "GoldSWRevealViewController") as? GoldSWRevealViewController {
+            
             self.present(vc, animated: animated, completion: nil)
         }
     }
@@ -330,16 +331,18 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         }
     }
    
-    func showRegisterGoldStep2Saving(_ animated:Bool){
+    func showRegisterGoldStep2Saving(_ animated:Bool, tupleModel:(image : UIImage?, firstname : String,lastname: String , email: String,mobile: String,idcard: String)?){
         if let vc:RegisterGoldstep2ViewController = self.storyboard?.instantiateViewController(withIdentifier: "RegisterGoldstep2ViewController") as? RegisterGoldstep2ViewController {
             
+            vc.tupleModel = tupleModel
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
     
-    func showRegisterGoldStep3Saving(_ animated:Bool){
+    func showRegisterGoldStep3Saving(_ animated:Bool, tupleModel:(image : UIImage?, firstname : String,lastname: String , email: String,mobile: String,idcard: String)?){
         if let vc:RegisterGoldstep3ViewController = self.storyboard?.instantiateViewController(withIdentifier: "RegisterGoldstep3ViewController") as? RegisterGoldstep3ViewController {
             
+            vc.tupleModel = tupleModel
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
@@ -509,6 +512,37 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         
         customPresentViewController(presenter, viewController: navController, animated: true, completion: nil)
     }
+    
+    
+    
+    func showPenddingVerifyModalView(_ animated:Bool , dismissCallback:(()->Void)?){
+        
+        let presenter: Presentr = {
+            let w = self.view.frame.width
+            let h = self.view.frame.height
+            
+            let width = ModalSize.custom(size: Float(w))
+            let height = ModalSize.custom(size: Float(h))
+            
+            let center = ModalCenterPosition.center
+            let customType = PresentationType.custom(width: width, height: height, center: center)
+            
+            let customPresenter = Presentr(presentationType: customType)
+            customPresenter.dismissOnTap = false
+            
+            return customPresenter
+        }()
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "GoldPenddingVerifyNav") as? GoldPenddingVerifyNav {
+            
+            vc.dismissCallback = {
+                dismissCallback?()
+            }
+            customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)
+        }
+        
+    }
+    
+    
     
     
     func showSettingPassCodeModalView(_ title:String = NSLocalizedString("title-set-passcode", comment: "")){

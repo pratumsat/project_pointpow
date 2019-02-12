@@ -16,7 +16,16 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
     let arrayItem_registered = ["goldprice","goldbalance","saving", "logo"]
     let arrayItem_no_registered = ["goldprice","register", "logo"]
     var arrayItem:[String] = []
-    var isRegistered  = false
+    var isRegistered  = false {
+        didSet{
+            if isRegistered {
+                self.arrayItem = self.arrayItem_registered
+            }else{
+                self.arrayItem = self.arrayItem_no_registered
+            }
+            self.homeCollectionView.reloadData()
+        }
+    }
     
     
     override func viewDidLoad() {
@@ -25,9 +34,10 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         self.title = NSLocalizedString("string-title-gold-page", comment: "")
         self.setUp()
     }
+    
     func setUp(){
-        self.isRegistered = true
-        self.arrayItem = self.arrayItem_registered
+        self.isRegistered = false
+        self.arrayItem = self.arrayItem_no_registered
         
         self.backgroundImage?.image = nil
     

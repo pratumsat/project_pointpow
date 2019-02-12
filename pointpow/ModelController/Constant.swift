@@ -255,12 +255,13 @@ extension UIView {
         self.layer.borderColor = UIColor.groupTableViewBackground.cgColor
         self.layer.masksToBounds = true
     }
-    func borderLightGrayColorProperties(borderWidth:CGFloat = 1.0){
-        self.layer.cornerRadius = self.frame.size.height/2;
+    func borderLightGrayColorProperties(borderWidth:CGFloat = 1.0 ,  radius:CGFloat? = nil){
+        self.layer.cornerRadius = radius ?? self.frame.size.height/2;
         self.layer.borderWidth = borderWidth
         self.layer.borderColor = UIColor.lightGray.cgColor
         self.layer.masksToBounds = true
     }
+    
     func borderDarkGrayColorProperties(borderWidth:CGFloat = 1.0){
         self.layer.cornerRadius = self.frame.size.height/2;
         self.layer.borderWidth = borderWidth
@@ -512,7 +513,7 @@ extension NSLayoutConstraint {
 struct Constant {
     struct PointPowAPI {
         // UAT http://103.27.201.106/dev-pointpow/pointpow-api/public/api/v1/
-        static let HOST = "http://103.27.201.106/dev-pointpow/pointpow-api/public/api/"
+        static let HOST = "http://103.27.201.106/dev-pointpow/api/public/api/"
         static let POINTPOW_VERSION1 = "v1/"
         static let loginWithEmailORMobile  = "\(HOST)\(POINTPOW_VERSION1)login"
         static let registerWithEmail  = "\(HOST)\(POINTPOW_VERSION1)register-email"

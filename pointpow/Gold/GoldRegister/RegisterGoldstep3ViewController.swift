@@ -71,7 +71,7 @@ class RegisterGoldstep3ViewController: BaseViewController {
         self.idcardTextField.autocorrectionType = .no
         
         self.firstNameTextField.setLeftPaddingPoints(40)
-        self.lastNameTextField.setLeftPaddingPoints(20)
+        self.lastNameTextField.setLeftPaddingPoints(10)
         self.emailTextField.setLeftPaddingPoints(40)
         self.mobileTextField.setLeftPaddingPoints(40)
         self.idcardTextField.setLeftPaddingPoints(40)

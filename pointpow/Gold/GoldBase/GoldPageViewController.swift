@@ -34,10 +34,14 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         self.title = NSLocalizedString("string-title-gold-page", comment: "")
         self.setUp()
     }
-    
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.getUserInfo(){
+            self.updateView()
+        }
+    }
     func setUp(){
-        self.isRegistered = false
-        self.arrayItem = self.arrayItem_no_registered
         
         self.backgroundImage?.image = nil
     
@@ -53,12 +57,29 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         self.registerNib(self.homeCollectionView, "RegisterGoldCell")
         self.registerNib(self.homeCollectionView, "LogoGoldCell")
         
+       
     }
     
-//    override func reloadData() {
-//        super.reloadData()
-//        //reload data
-//    }
+    override func reloadData() {
+        self.getUserInfo(){
+            self.updateView()
+            
+        }
+    }
+    
+    func updateView(){
+        if let data  = self.userData as? [String:AnyObject] {
+            //let pointBalance = data["member_point"]?["total"] as? String ?? "0.00"
+            //let profileImage = data["picture_data"] as? String ?? ""
+            let registerGold = data["gold_saving_acc"] as? NSNumber ?? 0
+            if registerGold.boolValue {
+                self.isRegistered = true
+            }else{
+                self.isRegistered = false
+            }
+           
+        }
+    }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return arrayItem.count
@@ -109,7 +130,7 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
                 cell = item
                 
                 item.registerCallback = {
-                    self.showRegisterGoldSaving(true)
+                    self.showRegisterGoldSaving(true , userData: self.userData)
                 }
                
             }

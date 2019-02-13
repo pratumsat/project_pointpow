@@ -15,11 +15,10 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
     let sizeArray = 9
     var picker:UIImagePickerController?
     
-    var profileImage:UIImage?
-    var profileBackgroundImage:UIImage?
     var chooseProfile = false
     var userData:AnyObject?
     
+    var isUploadProfile = false
      var upload:UploadRequest?
     
     @IBOutlet weak var profileCollectionView: UICollectionView!
@@ -46,6 +45,10 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if DataController.sharedInstance.isLogin() {
+            if isUploadProfile {
+                isUploadProfile = false
+               return
+            }
             self.getUserInfo()
         }
     }
@@ -128,29 +131,24 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
                     let parthProfileImage = "\(Constant.PathImages.profile)\(profileImage)"
                     let parthBackgroundImage = "\(Constant.PathImages.background)\(backgroundProfileImage)"
                     
-                    modelCtrl.loadImage(parthProfileImage , Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER) { (image) in
-                        
-                        profileCell.profileImageView.image = image
-                    }
+                   
                     
-                    modelCtrl.loadImage(parthBackgroundImage , Constant.DefaultConstansts.DefaultImaege.PROFILE_BACKGROUND_PLACEHOLDER)
-                    { (image) in
-                        
-                        profileCell.backgroundImageView.image = image
-                    }
-
+                   
                     profileCell.pointBalanceLabel.text = pointBalance
                     profileCell.displayNameLabel.text = displayName
                     profileCell.pointpowIdLabel.text = pointpowId
                     
-                }
+                    modelCtrl.loadImage(parthProfileImage , Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER) { (image) in
+                        
+                        profileCell.profileImageView.image = image
+                    }
+                    modelCtrl.loadImage(parthBackgroundImage , Constant.DefaultConstansts.DefaultImaege.PROFILE_BACKGROUND_PLACEHOLDER)
+                    { (image) in
+                        
+                        profileCell.backgroundImageView.image = image
+                    }                }
                 
-                if let pi = self.profileImage {
-                    profileCell.profileImageView.image = pi
-                }
-                if let pbi = self.profileBackgroundImage {
-                    profileCell.backgroundImageView.image = pbi
-                }
+              
                 
                 
                 profileCell.backgroundTappedCallback = {
@@ -300,18 +298,17 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
         if chooseProfile {
             // square for profile
             let resizeImage = chosenImage.resizeUIImage(targetSize: CGSize(width: 400.0, height: 400.0))
-            self.profileImage = resizeImage
+            
             self.uploadProfileImage(resizeImage)
             
         }else{
             // square for background
             let resizeImage = chosenImage.resizeUIImage(targetSize: CGSize(width: 370, height: 300))
-            self.profileBackgroundImage = resizeImage
+           
             self.uploadBackgroundImage(resizeImage)
         }
         
-        //reload data
-        self.profileCollectionView.reloadData()
+        
         dismiss(animated: true, completion: nil)
     }
     
@@ -386,18 +383,24 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
     func uploadProfileImage(_ image:UIImage){
         self.modelCtrl.uploadImageProfile(image, true, succeeded: { (result) in
             print("print")
+            //reload data
+           
         }, error: { (error) in
             if let mError = error as? [String:AnyObject]{
                 let message = mError["message"] as? String ?? ""
                 print(message)
+                
                 //self.showMessagePrompt(message)
             }
         }, failure: { (messageError) in
             self.handlerMessageError(messageError)
+            
         }, inprogress: { (progress) in
             if progress >= 1.0 {
                 //hide
-                print("progress : \(progress)")
+                self.isUploadProfile = true
+                self.getUserInfo()
+                
             }
         }) { (upload) in
             self.upload = upload
@@ -406,6 +409,8 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
     func uploadBackgroundImage(_ image:UIImage){
         self.modelCtrl.uploadImageBackground(image, true, succeeded: { (result) in
             print("print")
+            //reload data
+            self.profileCollectionView.reloadData()
         }, error: { (error) in
             if let mError = error as? [String:AnyObject]{
                 let message = mError["message"] as? String ?? ""
@@ -417,7 +422,8 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
         }, inprogress: { (progress) in
             if progress >= 1.0 {
                 //hide
-                print("progress : \(progress)")
+                self.isUploadProfile = true
+                self.getUserInfo()
             }
         }) { (upload) in
             self.upload = upload

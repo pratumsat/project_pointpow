@@ -513,7 +513,7 @@ extension NSLayoutConstraint {
 
 struct Constant {
     struct PointPowAPI {
-        // UAT http://103.27.201.106/dev-pointpow/pointpow-api/public/api/v1/
+        
         static let HOST = "http://103.27.201.106/dev-pointpow/api/public/api/"
         static let POINTPOW_VERSION1 = "v1/"
         static let loginWithEmailORMobile  = "\(HOST)\(POINTPOW_VERSION1)login"
@@ -527,6 +527,7 @@ struct Constant {
         static let userData = "\(HOST)\(POINTPOW_VERSION1)member/get"
         static let addImageProfile = "\(HOST)\(POINTPOW_VERSION1)member/upload-profile-image"
         static let addBackgroundImageProfile = "\(HOST)\(POINTPOW_VERSION1)member/upload-background-image"
+        static let registerGoldMember = "\(HOST)\(POINTPOW_VERSION1)gold-saving/register"
         
     }
     struct PathImages {
@@ -581,6 +582,7 @@ struct Constant {
         static let GRADIENT_1 = UIColor(rgb: 0xFF2158) //top
         static let GRADIENT_2 = UIColor(rgb: 0xFE2222) //bottom
         static let GREEN = UIColor(rgb: 0x43922B)
+        static let ORANGE = UIColor(rgb: 0xF4B55A)
     }
     struct Fonts {
         struct Size {

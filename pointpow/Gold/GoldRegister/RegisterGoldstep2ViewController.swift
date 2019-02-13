@@ -55,6 +55,18 @@ class RegisterGoldstep2ViewController: BaseViewController ,UIImagePickerControll
         self.backgroundIdCardPhotoImageView.layer.addSublayer(vborder)
         
         
+        let browse = UITapGestureRecognizer(target: self, action: #selector(browseTapped))
+        self.backgroundIdCardPhotoImageView.isUserInteractionEnabled = true
+        self.backgroundIdCardPhotoImageView.addGestureRecognizer(browse)
+        
+        let browse2 = UITapGestureRecognizer(target: self, action: #selector(browseTapped))
+        self.uploadView.isUserInteractionEnabled = true
+        self.uploadView.addGestureRecognizer(browse2)
+        
+        let back = UITapGestureRecognizer(target: self, action: #selector(backToStep1Tapped))
+        self.step1Label.isUserInteractionEnabled = true
+        self.step1Label.addGestureRecognizer(back)
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -77,18 +89,7 @@ class RegisterGoldstep2ViewController: BaseViewController ,UIImagePickerControll
         self.step2Label.ovalColorClearProperties()
         self.step3Label.ovalColorClearProperties()
         
-        
-        let browse = UITapGestureRecognizer(target: self, action: #selector(browseTapped))
-        self.backgroundIdCardPhotoImageView.isUserInteractionEnabled = true
-        self.backgroundIdCardPhotoImageView.addGestureRecognizer(browse)
-        
-        let browse2 = UITapGestureRecognizer(target: self, action: #selector(browseTapped))
-        self.uploadView.isUserInteractionEnabled = true
-        self.uploadView.addGestureRecognizer(browse2)
-        
-        let back = UITapGestureRecognizer(target: self, action: #selector(backToStep1Tapped))
-        self.step1Label.isUserInteractionEnabled = true
-        self.step1Label.addGestureRecognizer(back)
+      
     }
     
     @objc func backToStep1Tapped(){

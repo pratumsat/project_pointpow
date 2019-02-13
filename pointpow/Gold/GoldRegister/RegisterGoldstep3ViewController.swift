@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class RegisterGoldstep3ViewController: BaseViewController {
 
@@ -23,7 +24,7 @@ class RegisterGoldstep3ViewController: BaseViewController {
     @IBOutlet weak var firstNameTextField: UITextField!
     
     
-    
+     var upload:UploadRequest?
     
     @IBOutlet weak var previewImageView: UIImageView!
     var tupleModel:(image : UIImage?, firstname : String,lastname: String , email: String,mobile: String,idcard: String)?
@@ -34,6 +35,12 @@ class RegisterGoldstep3ViewController: BaseViewController {
         self.title = NSLocalizedString("string-title-gold-register1", comment: "")
         self.setUp()
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.upload?.cancel()
+    }
+    
     func setUp(){
         self.backgroundImage?.image = nil
        
@@ -90,11 +97,16 @@ class RegisterGoldstep3ViewController: BaseViewController {
     
         
         if let tp = self.tupleModel {
+            let newText = String((tp.idcard).filter({ $0 != "-" }).prefix(13))
+            self.idcardTextField.text = newText.chunkFormattedPersonalID()
+            
+            let newMText = String((tp.mobile).filter({ $0 != "-" }).prefix(10))
+            self.mobileTextField.text =  newMText.chunkFormatted()
+            
             self.firstNameTextField.text = tp.firstname
             self.lastNameTextField.text = tp.lastname
-            self.mobileTextField.text = tp.mobile
             self.emailTextField.text = tp.email
-            self.idcardTextField.text = tp.idcard
+            
             
             if tp.image != nil{
                 self.previewImageView.image = tp.image
@@ -130,11 +142,40 @@ class RegisterGoldstep3ViewController: BaseViewController {
     }
     
     @IBAction func registerTapped(_ sender: Any) {
-        self.showPenddingVerifyModalView(true , dismissCallback: {
-            (self.navigationController?.viewControllers[0] as? GoldPageViewController)?.isRegistered = true
-            self.navigationController?.popToRootViewController(animated: true)
+        
+        if let tp = self.tupleModel {
+            let params:Parameters = [//"email" : tp.email,
+                                     //"mobile": tp.mobile,
+                                     "laser_id" : "asada",
+                                     "firstname": tp.firstname,
+                                     "lastname" : tp.lastname,
+                                     "pid" : tp.idcard]
             
-        })
+            
+            modelCtrl.registerGoldMember(params, tp.image!, true, succeeded: { (result) in
+                print("print")
+                self.showPenddingVerifyModalView(true , dismissCallback: {
+                    self.navigationController?.popToRootViewController(animated: true)
+                })
+            }, error: { (error) in
+                if let mError = error as? [String:AnyObject]{
+                    let message = mError["message"] as? String ?? ""
+                    print(message)
+                    self.showMessagePrompt(message)
+                }
+            }, failure: { (messageError) in
+                self.handlerMessageError(messageError)
+                
+            }, inprogress: { (progress) in
+                if progress >= 1.0 {
+                    //hide
+                    //success
+                   
+                }
+            }) { (upload) in
+                self.upload = upload
+            }
+        }
     }
     
     /*

@@ -324,9 +324,10 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
-    func showRegisterGoldSaving(_ animated:Bool){
+    func showRegisterGoldSaving(_ animated:Bool, userData:AnyObject?){
         if let vc:RegisterGoldViewController = self.storyboard?.instantiateViewController(withIdentifier: "RegisterGoldViewController") as? RegisterGoldViewController {
             
+            vc.userData = userData
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }

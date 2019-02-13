@@ -42,6 +42,7 @@ class RegisterGoldViewController: BaseViewController {
     var errorEmailLabel:UILabel?
     var errorMobileLabel:UILabel?
     
+    var userData:AnyObject?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,10 +118,40 @@ class RegisterGoldViewController: BaseViewController {
         self.clearImageView5?.addGestureRecognizer(tap5)
         self.clearImageView5?.isHidden = true
     
+        
+        //Fill Data
+        if let data  = self.userData as? [String:AnyObject] {
+            //let pointBalance = data["member_point"]?["total"] as? String ?? "0.00"
+            //let profileImage = data["picture_data"] as? String ?? ""
+            let first_name = data["first_name"] as? String ?? ""
+            let last_name = data["last_name"]as? String ?? ""
+            let email = data["email"]as? String ?? ""
+            let mobile = data["mobile"]as? String ?? ""
+            let pid = data["pid"]as? String ?? ""
+            
+           
+            
+            self.firstNameTextField.text = first_name
+            self.lastNameTextField.text = last_name
+            self.emailTextField.text = email
+            
+            let newText = String((pid).filter({ $0 != "-" }).prefix(13))
+            self.idcardTextField.text = newText.chunkFormattedPersonalID()
+            
+            let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
+            self.mobileTextField.text =  newMText.chunkFormatted()
+            
+            
+        }
+        
+    }
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        self.addColorLineView(textField)
+        return true
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        self.addColorLineView(textField)
+     
         
         if textField  == self.firstNameTextField {
             let startingLength = textField.text?.count ?? 0
@@ -371,11 +402,11 @@ class RegisterGoldViewController: BaseViewController {
         if isValidEmail(email) {
             //pass
             self.tupleModel = (image : nil,
-                               firstname : self.firstNameTextField.text!,
-                               lastname: self.lastNameTextField.text! ,
-                               email: self.emailTextField.text!,
-                               mobile: self.mobileTextField.text!,
-                               idcard: self.idcardTextField.text!)
+                               firstname : firstName,
+                               lastname: lastName ,
+                               email: email,
+                               mobile: mobile.replace(target: "-", withString: ""),
+                               idcard: personalID.replace(target: "-", withString: ""))
             self.showRegisterGoldStep2Saving(true, tupleModel: tupleModel)
         }else{
             let emailNotValid = NSLocalizedString("string-error-invalid-email", comment: "")

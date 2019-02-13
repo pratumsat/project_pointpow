@@ -10,6 +10,7 @@ import UIKit
 import SWRevealViewController
 class GoldBaseViewController: BaseViewController {
 
+    var userData:AnyObject?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,8 +20,37 @@ class GoldBaseViewController: BaseViewController {
             self.navigationItem.rightBarButtonItem?.target = revealViewController()
             self.navigationItem.rightBarButtonItem?.action = #selector(SWRevealViewController.rightRevealToggle(_:))
         }
+        
+        
     }
     
+    func getUserInfo(_ avaliable:(()->Void)?  = nil){
+        var isLoading:Bool = true
+        if self.userData != nil {
+            isLoading = false
+        }else{
+            isLoading = true
+        }
+        
+        modelCtrl.getUserData(params: nil , isLoading , succeeded: { (result) in
+            self.userData = result
+            avaliable?()
+         
+            self.refreshControl?.endRefreshing()
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                //self.showMessagePrompt(message)
+            }
+            self.refreshControl?.endRefreshing()
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            self.refreshControl?.endRefreshing()
+        }
+    }
 
     /*
     // MARK: - Navigation

@@ -32,7 +32,7 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
     @IBOutlet weak var firstNameTextField: UITextField!
   
     @IBOutlet weak var uploadView: UIView!
-    @IBOutlet weak var icCardPhotoImageView: UIImageView!
+    
     @IBOutlet weak var backgroundIdCardPhotoImageView: UIView!
     
     @IBOutlet weak var hiddenIdCardPhotoImageView: UIImageView!
@@ -63,7 +63,91 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
 
         self.title = NSLocalizedString("string-title-profile", comment: "")
         self.setUp()
+        
+        self.getUserInfo(){
+            self.updateView()
+        }
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+   
+    func updateView(){
+        //Fill Data
+        if let data  = self.userData as? [String:AnyObject] {
+            let first_name = data["goldsaving_member"]?["firstname"] as? String ?? ""
+            let last_name = data["goldsaving_member"]?["lastname"]as? String ?? ""
+            let email = data["goldsaving_member"]?["email"]as? String ?? ""
+            let mobile = data["goldsaving_member"]?["mobile"]as? String ?? ""
+            let pid = data["goldsaving_member"]?["citizen_id"]as? String ?? ""
+            let status = data["goldsaving_member"]?["status"] as? String ?? ""
+            
+          
+            
+            self.firstNameTextField.text = first_name
+            self.lastNameTextField.text = last_name
+            self.emailTextField.text = email
+            
+            let newText = String((pid).filter({ $0 != "-" }).prefix(13))
+            self.idcardTextField.text = newText.chunkFormattedPersonalID()
+            
+            let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
+            self.mobileTextField.text =  newMText.chunkFormatted()
+            
+            let pathIdCard = "\(Constant.PathImages.idCard)"
+            modelCtrl.loadImage(pathIdCard , Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER) { (image) in
+                self.hiddenIdCardPhotoImageView.image = image
+                
+            }
+            
+            switch status {
+            case "waiting":
+                self.statusLabel.text = NSLocalizedString("string-dailog-gold-profile-status-waitting", comment: "")
+                self.statusView.backgroundColor = Constant.Colors.ORANGE
+                self.emailTextField.isEnabled = false
+                self.mobileTextField.isEnabled = false
+                self.firstNameTextField.isEnabled = false
+                self.lastNameTextField.isEnabled = false
+                self.idcardTextField.isEnabled = false
+                self.uploadView.isUserInteractionEnabled = false
+                self.uploadView.borderLightGrayColorProperties()
+                self.backgroundIdCardPhotoImageView.isUserInteractionEnabled = false
+                self.iconCameraImageView.image = UIImage(named: "ic-camera")
+                
+                break
+            case "approve" :
+                self.statusLabel.text = NSLocalizedString("string-dailog-gold-profile-status-approve", comment: "")
+                self.statusView.backgroundColor = Constant.Colors.GREEN
+                self.emailTextField.isEnabled = false
+                self.mobileTextField.isEnabled = false
+                self.firstNameTextField.isEnabled = true
+                self.lastNameTextField.isEnabled = true
+                self.idcardTextField.isEnabled = false
+                self.uploadView.isUserInteractionEnabled = true
+                self.uploadView.borderRedColorProperties(borderWidth: 1.0)
+                self.iconCameraImageView.image = UIImage(named: "ic-camera-1")
+                
+                break
+            case "fail" :
+                self.statusLabel.text = NSLocalizedString("string-dailog-gold-profile-status-fail", comment: "")
+                self.statusView.backgroundColor = Constant.Colors.PRIMARY_COLOR
+                self.emailTextField.isEnabled = false
+                self.mobileTextField.isEnabled = false
+                self.firstNameTextField.isEnabled = true
+                self.lastNameTextField.isEnabled = true
+                self.idcardTextField.isEnabled = true
+                self.uploadView.isUserInteractionEnabled = true
+                self.uploadView.borderRedColorProperties(borderWidth: 1.0)
+                self.iconCameraImageView.image = UIImage(named: "ic-camera-1")
+                
+                break
+            default:
+                break
+            }
+        }
+    }
+    
     
     func setUp(){
         self.backgroundImage?.image = nil
@@ -151,38 +235,7 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
         self.uploadView.addGestureRecognizer(browse2)
         
         
-        //status green
-        //self.statusView.backgroundColor = Constant.Colors.GREEN
-        //self.idcardTextField.isEnabled = false
-        //self.emailTextField.isEnabled = false
-        //self.mobileTextField.isEnabled = false
-        //self.firstNameTextField.isEnabled = true
-        //self.lastNameTextField.isEnabled = true
-        //self.uploadView.isUserInteractionEnabled = true
-        //self.uploadView.borderRedColorProperties(borderWidth: 1.0)
-        //self.iconCameraImageView.image = UIImage(named: "ic-camera-1")
-        //status pendding to appove
-        self.statusView.backgroundColor = Constant.Colors.ORANGE
-        self.idcardTextField.isEnabled = false
-        self.emailTextField.isEnabled = false
-        self.mobileTextField.isEnabled = false
-        self.firstNameTextField.isEnabled = false
-        self.lastNameTextField.isEnabled = false
-        self.uploadView.isUserInteractionEnabled = false
-        self.backgroundIdCardPhotoImageView.isUserInteractionEnabled = false
         
-        self.uploadView.borderLightGrayColorProperties(borderWidth: 1.0)
-        self.iconCameraImageView.image = UIImage(named: "ic-camera")
-        
-        let newText = String(("1489900090467").filter({ $0 != "-" }).prefix(13))
-        self.idcardTextField.text = newText.chunkFormattedPersonalID()
-        
-        let newMText = String(("0999999999").filter({ $0 != "-" }).prefix(10))
-        self.mobileTextField.text =  newMText.chunkFormatted()
-        
-        self.firstNameTextField.text = "oopppoo"
-        self.lastNameTextField.text = "pppoooo"
-        self.emailTextField.text = "pppoooo@popa.com"
         
         
        //disable
@@ -451,7 +504,7 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
         
         //reload data
         self.hiddenIdCardPhotoImageView.image = resizeImage
-        self.icCardPhotoImageView.isHidden = true
+        
         self.enableButton()
         
         dismiss(animated: true, completion: nil)
@@ -594,9 +647,54 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
             let okButton = UIAlertAction(title: NSLocalizedString("string-dailog-gold-button-confirm", comment: ""), style: .default, handler: {
                 (alert) in
                 
-                self.clearColorLineView()
-                self.disableButton()
-                self.clearImageViewTextField()
+                
+                let params:Parameters = ["firstname": firstName,
+                                         "lastname" : lastName,
+                                         "pid" : personalID]
+                
+                var image = self.idCardPhoto
+                if self.idCardPhoto != nil {
+                    image = self.idCardPhoto
+                }else{
+                    image = self.hiddenIdCardPhotoImageView.image
+                }
+                
+                self.modelCtrl.updateGoldMember(params, image, true, succeeded: { (result) in
+                    print("print")
+                    self.clearColorLineView()
+                    self.disableButton()
+                    self.clearImageViewTextField()
+                    
+                    self.showPenddingVerifyModalView(true , dismissCallback: {
+                        self.getUserInfo(){
+                            self.updateView()
+                        }
+                    })
+                }, error: { (error) in
+                    if let mError = error as? [String:AnyObject]{
+                        let message = mError["message"] as? String ?? ""
+                        print(message)
+                        self.showMessagePrompt(message)
+                        
+                    }
+                    
+                    
+                }, failure: { (messageError) in
+                    self.handlerMessageError(messageError)
+                    self.refreshControl?.endRefreshing()
+                }, inprogress: { (progress) in
+                    if progress >= 1.0 {
+                        //hide
+                        //success
+                        self.clearColorLineView()
+                        self.disableButton()
+                        self.clearImageViewTextField()
+                        
+                    }
+                }) { (upload) in
+                    self.upload = upload
+                }
+
                
             })
             let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-gold-button-cancel", comment: ""), style: .default, handler: nil)

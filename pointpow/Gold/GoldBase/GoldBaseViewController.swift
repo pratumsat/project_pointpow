@@ -11,6 +11,7 @@ import SWRevealViewController
 class GoldBaseViewController: BaseViewController {
 
     var userData:AnyObject?
+    var memberGoldData:AnyObject?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,7 +52,7 @@ class GoldBaseViewController: BaseViewController {
             self.refreshControl?.endRefreshing()
         }
     }
-
+    
     /*
     // MARK: - Navigation
 

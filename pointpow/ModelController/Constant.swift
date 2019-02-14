@@ -528,11 +528,13 @@ struct Constant {
         static let addImageProfile = "\(HOST)\(POINTPOW_VERSION1)member/upload-profile-image"
         static let addBackgroundImageProfile = "\(HOST)\(POINTPOW_VERSION1)member/upload-background-image"
         static let registerGoldMember = "\(HOST)\(POINTPOW_VERSION1)gold-saving/register"
-        
+        static let updateGoldMember = "\(HOST)\(POINTPOW_VERSION1)gold-saving/update"
+       
     }
     struct PathImages {
-        static let profile = "\(PointPowAPI.HOST)\(PointPowAPI.POINTPOW_VERSION1)member/image/profile/"
-        static let background = "\(PointPowAPI.HOST)\(PointPowAPI.POINTPOW_VERSION1)member/image/profile-background/"
+        static let profile = "\(PointPowAPI.HOST)\(PointPowAPI.POINTPOW_VERSION1)member/image/profile"
+        static let background = "\(PointPowAPI.HOST)\(PointPowAPI.POINTPOW_VERSION1)member/image/profile-background"
+        static let idCard = "\(PointPowAPI.HOST)\(PointPowAPI.POINTPOW_VERSION1)gold-saving/get/id-card"
     }
     struct TopViewController{
         static var top: UIViewController? {
@@ -571,7 +573,7 @@ struct Constant {
         static let NotificationGoogleSigInFailure = "NotificationGoogleSigInFailure"
         
             struct DefaultImaege{
-                static let PROFILE_PLACEHOLDER = "bg-profile-image"
+                static let PROFILE_PLACEHOLDER = "ic-gold-profile"
                 static let PROFILE_BACKGROUND_PLACEHOLDER = "bg-profile-image"
         }
     }

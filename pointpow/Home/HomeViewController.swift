@@ -108,10 +108,10 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
             if let data  = result as? [String:AnyObject] {
                 
                 let pointBalance = data["member_point"]?["total"] as? String ?? "0.00"
-                let  profileImage = data["picture_data"] as? String ?? ""
+                //let  profileImage = data["picture_data"] as? String ?? ""
                 self.pointBalanceLabel.text = pointBalance
                 
-                let parthProfileImage = "\(Constant.PathImages.profile)\(profileImage)"
+                let parthProfileImage = "\(Constant.PathImages.profile)"
                 self.modelCtrl.loadImage(parthProfileImage , Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER) { (image) in
                     
                     self.profileImageView.image = image
@@ -146,8 +146,6 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.profileImageView.ovalColorWhiteProperties(borderWidth: 2.0)
-        self.notiView.ovalColorClearProperties()
         
         if shadowImageView == nil {
             shadowImageView = findShadowImage(under: navigationController!.navigationBar)
@@ -160,6 +158,12 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         shadowImageView?.isHidden = false
     }
    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        self.profileImageView.ovalColorWhiteProperties(borderWidth: 2.0)
+        self.notiView.ovalColorClearProperties()
+    }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2

@@ -128,8 +128,19 @@ class RegisterGoldViewController: BaseViewController {
             let email = data["email"]as? String ?? ""
             let mobile = data["mobile"]as? String ?? ""
             let pid = data["pid"]as? String ?? ""
+            let  regis_by = data["regis_by"]as? String ?? ""
             
-           
+            if regis_by == "email" {
+                self.emailTextField.isEnabled = false
+            }else{
+                self.emailTextField.isEnabled = true
+            }
+            
+            if regis_by == "mobile" {
+                self.mobileTextField.isEnabled = false
+            }else{
+                self.mobileTextField.isEnabled = true
+            }
             
             self.firstNameTextField.text = first_name
             self.lastNameTextField.text = last_name

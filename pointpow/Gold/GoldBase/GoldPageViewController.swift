@@ -16,6 +16,7 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
     let arrayItem_registered = ["goldprice","goldbalance","saving", "logo"]
     let arrayItem_no_registered = ["goldprice","register", "logo"]
     var arrayItem:[String] = []
+    var statusMemberGold = ""
     var isRegistered  = false {
         didSet{
             if isRegistered {
@@ -27,6 +28,8 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         }
     }
     
+    var goldamountLabel:UILabel?
+    var pointpowTextField:UITextField?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +75,8 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
             //let pointBalance = data["member_point"]?["total"] as? String ?? "0.00"
             //let profileImage = data["picture_data"] as? String ?? ""
             let registerGold = data["gold_saving_acc"] as? NSNumber ?? 0
+            let status = data["goldsaving_member"]?["status"] as? String ?? ""
+            self.statusMemberGold = status
             if registerGold.boolValue {
                 self.isRegistered = true
             }else{
@@ -94,6 +99,24 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         self.positionYTextField = pointInTable?.y ?? 600
         
     }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if textField == self.pointpowTextField {
+            let textRange = Range(range, in: textField.text!)!
+            let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
+
+            if !updatedText.isEmpty {
+                let goldprice = 20000.00
+                let gramToPoint = Double(goldprice/15.244)
+                let point = Double(updatedText)!
+                
+                let sum = point/gramToPoint
+                self.goldamountLabel?.text = "\(sum)"
+            }
+        }
+        
+        return true
+    }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell:UICollectionViewCell?
         
@@ -109,17 +132,41 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "MyGoldCell", for: indexPath) as? MyGoldCell {
                 cell = item
                
+                if let data  = self.userData as? [String:AnyObject] {
+                    let gold_balance = data["goldsaving_member"]?["gold_balance"] as? String ?? "xx.xx"
+                    
+                    item.goldBalanceLabel.text = gold_balance
+                    
+                }
             }
             
         }
         if menu == "saving" {
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "SavingCell", for: indexPath) as? SavingCell {
                 cell = item
+                self.pointpowTextField = item.pointpowTextField
+                self.goldamountLabel = item.goldamountLabel
+                
                 item.pointpowTextField.autocorrectionType = .no
                 item.pointpowTextField.delegate = self
+                
+                if let data  = self.userData as? [String:AnyObject] {
+                    let pointBalance = data["member_point"]?["total"] as? String ?? "xx.xx"
+                    
+                    item.pointBalanceLabel.text = pointBalance
+                }
+                
                 item.savingCallback = {
                     print("saving")
                     self.confirmGoldSavingPage(true)
+                    
+//                    if self.statusMemberGold == "waiting"{
+//                        self.showMessagePrompt(NSLocalizedString("string-dailog-gold-profile-status-waitting", comment: ""))
+//                    }else if self.statusMemberGold == "fail"{
+//                        self.showMessagePrompt(NSLocalizedString("string-dailog-gold-profile-status-fail", comment: ""))
+//                    }else if self.statusMemberGold == "approve"{
+//                        self.confirmGoldSavingPage(true)
+//                    }
                 }
                
             }
@@ -130,6 +177,7 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
                 cell = item
                 
                 item.registerCallback = {
+                    
                     self.showRegisterGoldSaving(true , userData: self.userData)
                 }
                

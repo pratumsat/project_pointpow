@@ -122,17 +122,18 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
             if let profileCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileCell", for: indexPath) as? ProfileCell{
                 
                 if let userData = self.userData as? [String:AnyObject] {
-                    let profileImage = userData["picture_data"] as? String ?? ""
-                    let backgroundProfileImage = userData["picture_background"] as? String ?? ""
+                    //let profileImage = userData["picture_data"] as? String ?? ""
+                    //let backgroundProfileImage = userData["picture_background"] as? String ?? ""
                     let pointpowId = userData["pointpow_id"] as? String ?? "-"
                     let displayName = userData["display_name"] as? String ?? "-"
                     let pointBalance = userData["member_point"]?["total"] as? String ?? "0.00"
                     
-                    let parthProfileImage = "\(Constant.PathImages.profile)\(profileImage)"
-                    let parthBackgroundImage = "\(Constant.PathImages.background)\(backgroundProfileImage)"
+                    let parthProfileImage = "\(Constant.PathImages.profile)"
+                    let parthBackgroundImage = "\(Constant.PathImages.background)"
                     
                    
-                    
+                   // profileCell.profileImageView.image = nil
+                   // profileCell.backgroundImageView.image = nil
                    
                     profileCell.pointBalanceLabel.text = pointBalance
                     profileCell.displayNameLabel.text = displayName
@@ -299,12 +300,14 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
             // square for profile
             let resizeImage = chosenImage.resizeUIImage(targetSize: CGSize(width: 400.0, height: 400.0))
             
+            self.isUploadProfile = true
             self.uploadProfileImage(resizeImage)
             
         }else{
             // square for background
             let resizeImage = chosenImage.resizeUIImage(targetSize: CGSize(width: 370, height: 300))
            
+            self.isUploadProfile = true
             self.uploadBackgroundImage(resizeImage)
         }
         
@@ -384,7 +387,8 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
         self.modelCtrl.uploadImageProfile(image, true, succeeded: { (result) in
             print("print")
             //reload data
-           
+            self.profileCollectionView.reloadData()
+            
         }, error: { (error) in
             if let mError = error as? [String:AnyObject]{
                 let message = mError["message"] as? String ?? ""
@@ -398,8 +402,6 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
         }, inprogress: { (progress) in
             if progress >= 1.0 {
                 //hide
-                self.isUploadProfile = true
-                self.getUserInfo()
                 
             }
         }) { (upload) in
@@ -411,6 +413,7 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
             print("print")
             //reload data
             self.profileCollectionView.reloadData()
+            
         }, error: { (error) in
             if let mError = error as? [String:AnyObject]{
                 let message = mError["message"] as? String ?? ""
@@ -422,8 +425,6 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
         }, inprogress: { (progress) in
             if progress >= 1.0 {
                 //hide
-                self.isUploadProfile = true
-                self.getUserInfo()
             }
         }) { (upload) in
             self.upload = upload

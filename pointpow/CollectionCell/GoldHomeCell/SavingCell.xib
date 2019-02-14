@@ -73,7 +73,7 @@
                         <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="799,000.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="uJG-wA-ZYz">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="uJG-wA-ZYz">
                         <rect key="frame" x="123" y="56" width="227.5" height="32.5"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="25"/>
                         <nil key="textColor"/>
@@ -85,7 +85,7 @@
                         <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="9000" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eNv-21-EAw">
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eNv-21-EAw">
                         <rect key="frame" x="141.5" y="108.5" width="209" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="bcK-8q-ZMD"/>
@@ -176,6 +176,7 @@
                 <outlet property="goldamountLabel" destination="Hr5-Rp-ang" id="PeX-I4-Ruq"/>
                 <outlet property="goldamountView" destination="cS6-eU-lbA" id="7e3-Ra-gAG"/>
                 <outlet property="headView" destination="jEm-vk-tA5" id="nm4-Q1-MDT"/>
+                <outlet property="pointBalanceLabel" destination="uJG-wA-ZYz" id="qUq-MP-ofC"/>
                 <outlet property="pointpowTextField" destination="eNv-21-EAw" id="KlF-Xw-2P8"/>
                 <outlet property="savingButton" destination="etu-RZ-ygw" id="pou-l7-Up5"/>
             </connections>

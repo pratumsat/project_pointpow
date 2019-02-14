@@ -894,6 +894,14 @@ extension BaseViewController {
         collectionView.alwaysBounceVertical = true
         collectionView.addSubview(self.refreshControl!)
     }
+    func addRefreshTableViewController(_ tableView:UITableView){
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl!.addTarget(self, action: #selector(reloadData), for: .valueChanged)
+        tableView.isScrollEnabled = true
+        tableView.alwaysBounceVertical = true
+        tableView.addSubview(self.refreshControl!)
+    }
+    
     func addCloseWhiteView(){
         let x = CGFloat(self.view.frame.maxX) - 2
         let y = CGFloat(self.view.frame.minY) - 12

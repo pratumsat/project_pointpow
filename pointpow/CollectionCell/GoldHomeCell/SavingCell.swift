@@ -8,8 +8,9 @@
 
 import UIKit
 
-class SavingCell: UICollectionViewCell {
+class SavingCell: UICollectionViewCell , UITextFieldDelegate{
 
+    @IBOutlet weak var pointBalanceLabel: UILabel!
     @IBOutlet weak var headView: UIView!
     @IBOutlet weak var goldamountLabel: UILabel!
     @IBOutlet weak var goldamountView: UIView!
@@ -24,6 +25,8 @@ class SavingCell: UICollectionViewCell {
         self.updateLayerCornerRadiusProperties()
         self.contentView.updateLayerCornerRadiusProperties()
         self.shadowCellProperties()
+        
+     
     }
 
     override var bounds : CGRect {
@@ -42,6 +45,9 @@ class SavingCell: UICollectionViewCell {
         self.pointpowTextField.borderRedColorProperties(borderWidth: 1)
         self.pointpowTextField.setRightPaddingPoints(10)
     }
+    
+  
+    
     @IBAction func savingTapped(_ sender: Any) {
         self.savingCallback?()
     }

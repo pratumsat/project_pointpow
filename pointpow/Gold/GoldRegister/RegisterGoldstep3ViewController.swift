@@ -144,9 +144,9 @@ class RegisterGoldstep3ViewController: BaseViewController {
     @IBAction func registerTapped(_ sender: Any) {
         
         if let tp = self.tupleModel {
-            let params:Parameters = [//"email" : tp.email,
-                                     //"mobile": tp.mobile,
-                                     "laser_id" : "asada",
+            let params:Parameters = ["email" : tp.email,
+                                     "mobile": tp.mobile,
+                                     "laser_id" : "ME0-1113123112",
                                      "firstname": tp.firstname,
                                      "lastname" : tp.lastname,
                                      "pid" : tp.idcard]

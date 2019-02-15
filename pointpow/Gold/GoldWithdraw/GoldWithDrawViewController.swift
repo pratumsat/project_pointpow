@@ -8,25 +8,26 @@
 
 import UIKit
 
-class GoldWithDrawViewController: GoldBaseViewController {
+class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 
-    @IBOutlet weak var pLabel1: UILabel!
-    @IBOutlet weak var pLabel2: UILabel!
-    @IBOutlet weak var bTextfield: UITextField!
-    @IBOutlet weak var sTextfield: UITextField!
+    @IBOutlet weak var withDrawCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.sTextfield.delegate = self
-        self.bTextfield.delegate = self
+        
+        self.title  = NSLocalizedString("string-title-gold-page-withdraw", comment: "")
         
         setUp()
      
     }
-    
     func setUp(){
+        self.backgroundImage?.image = nil
+        self.withDrawCollectionView.delegate = self
+        self.withDrawCollectionView.dataSource = self
         
+        self.registerNib(self.withDrawCollectionView, "WithDrawMyGoldCell")
+        self.registerNib(self.withDrawCollectionView, "LogoGoldCell")
     }
+    
     @IBAction func bViewTapped(_ sender: Any) {
         if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
             self.revealViewController()?.pushFrontViewController(saving, animated: true)
@@ -34,30 +35,89 @@ class GoldWithDrawViewController: GoldBaseViewController {
         }
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-       
-        if textField == self.sTextfield {
-            let textRange = Range(range, in: textField.text!)!
-            let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
-            cal1(updatedText)
-        }
-        if textField == self.bTextfield {
-            let textRange = Range(range, in: textField.text!)!
-            let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
-            cal2(updatedText)
-        }
-        return true
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
     }
     
-    // 1 salueng = premium 100
-    // 2 salueng = premium 130
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
     
-    // 1 baht = premium 150
-    // 2 baht = premium 200
-    // 5 baht = premium 250
-    // 10 baht = premium 399
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        var cell:UICollectionViewCell?
+        
+        
+        if indexPath.section == 0 {
+            if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "WithDrawMyGoldCell", for: indexPath) as? WithDrawMyGoldCell {
+                cell = item
+                
+            }
+        } else  {
+            if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "LogoGoldCell", for: indexPath) as? LogoGoldCell {
+                cell = item
+                
+            }
+        }
+
+        
+        if cell == nil {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as UICollectionViewCell
+        }
+        
+        
+        return cell!
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+        
+        return CGSize(width: collectionView.frame.width, height: 20)
+        
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        
+        return CGSize.zero
+    }
     
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        
+        if indexPath.section == 0 {
+            
+            let width = collectionView.frame.width - 40
+            let height = width/360*140
+            return CGSize(width: width, height: height)
+        }
+        else {
+            let width = collectionView.frame.width
+            let cheight = collectionView.frame.height
+            let height = abs((cheight) - (((width/360*140))+40))
+            
+            return CGSize(width: width, height: height)
+        }
+        
+        
+        
+    }
+    
+
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+       
+//        if textField == self.sTextfield {
+//            let textRange = Range(range, in: textField.text!)!
+//            let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
+//            cal1(updatedText)
+//        }
+//        if textField == self.bTextfield {
+//            let textRange = Range(range, in: textField.text!)!
+//            let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
+//            cal2(updatedText)
+//        }
+        return true
+    }
+   
     func cal1(_ s:String){
         if let amount = Int(s) {
             var text = ""
@@ -86,7 +146,7 @@ class GoldWithDrawViewController: GoldBaseViewController {
             
             text += "ค่าพรีเมียม: \(premium)"
             
-            self.pLabel1.text = text
+            //self.pLabel1.text = text
         }
        
     }
@@ -108,7 +168,7 @@ class GoldWithDrawViewController: GoldBaseViewController {
             let premium = ( ((amount/10)*300)+((difference10/5)*250)+((difference5/2)*200)+((difference2%2)*150))
             text += "ค่าพรีเมียม: \(premium)"
             
-            self.pLabel2.text = text
+            //self.pLabel2.text = text
         }
         
     }

@@ -28,9 +28,10 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.isTapped = false
-        self.getUserInfo() {
-            self.menuTableView.reloadData()
-        }
+        
+//        self.getUserInfo() {
+//            self.menuTableView.reloadData()
+//        }
     }
     
     func getUserInfo(_ avaliable:(()->Void)?  = nil){

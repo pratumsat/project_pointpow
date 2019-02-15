@@ -33,7 +33,7 @@ class ConfirmSavingViewController: BaseViewController , UICollectionViewDelegate
         self.summaryCollectionView.dataSource = self
         
         
-        self.addRefreshViewController(self.summaryCollectionView)
+       
         
         self.registerNib(self.summaryCollectionView, "SavingConfirmCell")
         self.registerNib(self.summaryCollectionView, "SavingSummaryCell")

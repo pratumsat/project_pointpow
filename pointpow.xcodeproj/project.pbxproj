@@ -155,6 +155,8 @@
 		C1F761022216BB95000A2CA9 /* SavingResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F761012216BB95000A2CA9 /* SavingResultViewController.swift */; };
 		C1F761052216C261000A2CA9 /* SavingResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F761032216C261000A2CA9 /* SavingResultCell.swift */; };
 		C1F761062216C261000A2CA9 /* SavingResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1F761042216C261000A2CA9 /* SavingResultCell.xib */; };
+		C1F7610A2216E357000A2CA9 /* WithDrawMyGoldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F761082216E357000A2CA9 /* WithDrawMyGoldCell.swift */; };
+		C1F7610B2216E357000A2CA9 /* WithDrawMyGoldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1F761092216E357000A2CA9 /* WithDrawMyGoldCell.xib */; };
 		DFFFDC067D70DA3C98143BF4 /* Pods_pointpow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31B9DAB23EC121F58205F612 /* Pods_pointpow.framework */; };
 /* End PBXBuildFile section */
 
@@ -340,6 +342,8 @@
 		C1F761012216BB95000A2CA9 /* SavingResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingResultViewController.swift; sourceTree = "<group>"; };
 		C1F761032216C261000A2CA9 /* SavingResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingResultCell.swift; sourceTree = "<group>"; };
 		C1F761042216C261000A2CA9 /* SavingResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavingResultCell.xib; sourceTree = "<group>"; };
+		C1F761082216E357000A2CA9 /* WithDrawMyGoldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawMyGoldCell.swift; sourceTree = "<group>"; };
+		C1F761092216E357000A2CA9 /* WithDrawMyGoldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithDrawMyGoldCell.xib; sourceTree = "<group>"; };
 		F71C5AF1196142AE070221A8 /* Pods_pointpowUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pointpowUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -607,6 +611,7 @@
 		C11A93B4218C00A000627B44 /* CollectionCell */ = {
 			isa = PBXGroup;
 			children = (
+				C1F761072216E2DB000A2CA9 /* GoldWithdrawCell */,
 				C1F760F22216922F000A2CA9 /* GoldSavingCell */,
 				C106BEAB220BEAF500E2331E /* GoldProfileCell */,
 				C197FF2F22083A3D002F24E8 /* GoldHomeCell */,
@@ -893,6 +898,15 @@
 			path = GoldSavingCell;
 			sourceTree = "<group>";
 		};
+		C1F761072216E2DB000A2CA9 /* GoldWithdrawCell */ = {
+			isa = PBXGroup;
+			children = (
+				C1F761082216E357000A2CA9 /* WithDrawMyGoldCell.swift */,
+				C1F761092216E357000A2CA9 /* WithDrawMyGoldCell.xib */,
+			);
+			path = GoldWithdrawCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1046,6 +1060,7 @@
 				C1F761062216C261000A2CA9 /* SavingResultCell.xib in Resources */,
 				C1DEBE992188337500CBB95F /* ThaiSansNeue-Regular.ttf in Resources */,
 				C120D7D321955BC900F9EEBB /* ItemProfileCell.xib in Resources */,
+				C1F7610B2216E357000A2CA9 /* WithDrawMyGoldCell.xib in Resources */,
 				C13D998B21997AD6001A4794 /* HeadCell.xib in Resources */,
 				C1AD507F2187F45600F74415 /* Main.storyboard in Resources */,
 				C13D998621997938001A4794 /* LogoutCell.xib in Resources */,
@@ -1254,6 +1269,7 @@
 				C169FFC821C4F10100F9D354 /* FavorCell.swift in Sources */,
 				C1AD50A92187F7B500F74415 /* BaseViewController.swift in Sources */,
 				C11BDFB821A2B95D00443D2D /* ItemFriendSummaryCell.swift in Sources */,
+				C1F7610A2216E357000A2CA9 /* WithDrawMyGoldCell.swift in Sources */,
 				C1817D92219BF61E009507DB /* ItemFriendCell.swift in Sources */,
 				C11A93B1218BF69700627B44 /* MainNav.swift in Sources */,
 				C11A93C4218FF3E200627B44 /* VerifyViewController.swift in Sources */,

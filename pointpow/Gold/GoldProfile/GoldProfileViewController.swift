@@ -72,7 +72,13 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
         super.viewDidAppear(animated)
         
     }
-   
+    @IBAction func bViewTapped(_ sender: Any) {
+        if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
+            self.revealViewController()?.pushFrontViewController(saving, animated: true)
+            
+        }
+    }
+    
     func updateView(){
         //Fill Data
         if let data  = self.userData as? [String:AnyObject] {
@@ -83,8 +89,7 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
             let pid = data["goldsaving_member"]?["citizen_id"]as? String ?? ""
             let status = data["goldsaving_member"]?["status"] as? String ?? ""
             
-          
-            
+           
             self.firstNameTextField.text = first_name
             self.lastNameTextField.text = last_name
             self.emailTextField.text = email

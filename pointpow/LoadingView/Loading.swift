@@ -25,7 +25,7 @@ class Loading {
             loadingView?.startAnimating()
             
             backgroundView = UIView(frame: self.mRootView.frame)
-            backgroundView?.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+            backgroundView?.backgroundColor = UIColor.clear//UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
             
             self.mRootView.addSubview(backgroundView!)
             self.mRootView.addSubview(loadingView!)

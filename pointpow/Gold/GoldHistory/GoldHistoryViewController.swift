@@ -15,7 +15,12 @@ class GoldHistoryViewController: GoldBaseViewController {
 
         // Do any additional setup after loading the view.
     }
-    
+    @IBAction func bViewTapped(_ sender: Any) {
+        if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
+            self.revealViewController()?.pushFrontViewController(saving, animated: true)
+            
+        }
+    }
 
 
 }

@@ -122,8 +122,6 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
             if let profileCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileCell", for: indexPath) as? ProfileCell{
                 
                 if let userData = self.userData as? [String:AnyObject] {
-                    //let profileImage = userData["picture_data"] as? String ?? ""
-                    //let backgroundProfileImage = userData["picture_background"] as? String ?? ""
                     let pointpowId = userData["pointpow_id"] as? String ?? "-"
                     let displayName = userData["display_name"] as? String ?? "-"
                     let pointBalance = userData["member_point"]?["total"] as? String ?? "0.00"
@@ -131,10 +129,7 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
                     let parthProfileImage = "\(Constant.PathImages.profile)"
                     let parthBackgroundImage = "\(Constant.PathImages.background)"
                     
-                   
-                   // profileCell.profileImageView.image = nil
-                   // profileCell.backgroundImageView.image = nil
-                   
+              
                     profileCell.pointBalanceLabel.text = pointBalance
                     profileCell.displayNameLabel.text = displayName
                     profileCell.pointpowIdLabel.text = pointpowId

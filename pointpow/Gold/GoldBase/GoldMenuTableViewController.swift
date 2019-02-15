@@ -13,15 +13,21 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
     var userData:AnyObject?
     @IBOutlet weak var menuTableView: UITableView!
     var memberGoldData:AnyObject?
+    
+    var isTapped = false
+    var timer:Timer?
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-     
         setUp()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.isTapped = false
         self.getUserInfo() {
             self.menuTableView.reloadData()
         }
@@ -167,7 +173,18 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
         return cell!
     }
     
+    @objc func disableCountDown(){
+        isTapped = false
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if isTapped {
+             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(disableCountDown), userInfo: nil, repeats: false)
+            
+            return
+        }
+        isTapped = true
+        
         if indexPath.section == 0 {
             // "Profile"
             if let data  = self.userData as? [String:AnyObject] {
@@ -177,6 +194,7 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
                 
                 if registerGold.boolValue {
                     if let profile = self.storyboard?.instantiateViewController(withIdentifier: "GoldAccount") as? UINavigationController {
+                        
                         self.revealViewController()?.pushFrontViewController(profile, animated: true)
                     }
                 }else{
@@ -189,12 +207,15 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
             if indexPath.row == 0 {
                 // "Saving"
                 if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
+                    
                     self.revealViewController()?.pushFrontViewController(saving, animated: true)
+                    
                 }
             }
             if indexPath.row == 1 {
                 // "Withdraw"
                 if let withdraw = self.storyboard?.instantiateViewController(withIdentifier: "GoldWithdraw") as? UINavigationController {
+                    
                     self.revealViewController()?.pushFrontViewController(withdraw, animated: true)
                 }
             }

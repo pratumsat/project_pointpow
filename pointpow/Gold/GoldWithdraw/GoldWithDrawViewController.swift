@@ -19,7 +19,19 @@ class GoldWithDrawViewController: GoldBaseViewController {
 
         self.sTextfield.delegate = self
         self.bTextfield.delegate = self
+        
+        setUp()
      
+    }
+    
+    func setUp(){
+        
+    }
+    @IBAction func bViewTapped(_ sender: Any) {
+        if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
+            self.revealViewController()?.pushFrontViewController(saving, animated: true)
+            
+        }
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

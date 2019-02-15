@@ -41,7 +41,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="เลขที่อ้างอิง" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="iEH-GK-QZA">
-                                <rect key="frame" x="40" y="101" width="205" height="23.5"/>
+                                <rect key="frame" x="40" y="101" width="211" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                 <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -59,7 +59,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="รายการ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gYm-90-Hex">
-                                <rect key="frame" x="40" y="138.5" width="166.5" height="23.5"/>
+                                <rect key="frame" x="40" y="138.5" width="172.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                 <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -71,7 +71,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="ผู้โอน" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="90e-wt-wPi">
-                                <rect key="frame" x="40" y="176" width="240.5" height="23.5"/>
+                                <rect key="frame" x="40" y="176" width="246.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                 <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -83,7 +83,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="ผู้รับโอน" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="IGP-Nu-drn">
-                                <rect key="frame" x="40" y="213.5" width="231.5" height="23.5"/>
+                                <rect key="frame" x="40" y="213.5" width="237.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                 <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -95,7 +95,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="จำนวน" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="pHA-VG-Hsx">
-                                <rect key="frame" x="40" y="251" width="166" height="23.5"/>
+                                <rect key="frame" x="40" y="251" width="172" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                 <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -107,7 +107,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="เวลาทำรายการ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bmw-JN-pp8">
-                                <rect key="frame" x="40" y="288.5" width="161.5" height="23.5"/>
+                                <rect key="frame" x="40" y="288.5" width="167.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                 <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -179,15 +179,15 @@
                             <constraint firstItem="8ty-FM-Yxg" firstAttribute="trailing" secondItem="z2n-2N-k6I" secondAttribute="trailing" constant="30" id="1XR-Ki-9Pa"/>
                             <constraint firstItem="iEH-GK-QZA" firstAttribute="top" secondItem="IOg-Ps-ssb" secondAttribute="bottom" constant="10" id="1YS-HR-BaX"/>
                             <constraint firstItem="PDb-Vg-VZS" firstAttribute="leading" secondItem="iEH-GK-QZA" secondAttribute="leading" constant="-30" id="4tB-gd-RmO"/>
-                            <constraint firstItem="5yv-et-SWb" firstAttribute="leading" secondItem="iEH-GK-QZA" secondAttribute="trailing" constant="16" id="5yf-am-ubr"/>
+                            <constraint firstItem="5yv-et-SWb" firstAttribute="leading" secondItem="iEH-GK-QZA" secondAttribute="trailing" constant="10" id="5yf-am-ubr"/>
                             <constraint firstItem="IOg-Ps-ssb" firstAttribute="centerX" secondItem="Kr0-3W-NWf" secondAttribute="centerX" id="608-5L-byR"/>
                             <constraint firstItem="bmw-JN-pp8" firstAttribute="top" secondItem="pHA-VG-Hsx" secondAttribute="bottom" constant="14" id="6Hd-kz-34f"/>
                             <constraint firstItem="wte-b6-nSI" firstAttribute="bottom" secondItem="bmw-JN-pp8" secondAttribute="bottom" constant="8" id="6Hv-he-22u"/>
                             <constraint firstItem="90e-wt-wPi" firstAttribute="leading" secondItem="gYm-90-Hex" secondAttribute="leading" id="6yS-kT-hVz"/>
                             <constraint firstItem="pHA-VG-Hsx" firstAttribute="leading" secondItem="IGP-Nu-drn" secondAttribute="leading" id="8Ij-oe-0Dt"/>
-                            <constraint firstItem="Zsi-do-r3V" firstAttribute="leading" secondItem="IGP-Nu-drn" secondAttribute="trailing" constant="16" id="8pY-cg-159"/>
+                            <constraint firstItem="Zsi-do-r3V" firstAttribute="leading" secondItem="IGP-Nu-drn" secondAttribute="trailing" constant="10" id="8pY-cg-159"/>
                             <constraint firstItem="wte-b6-nSI" firstAttribute="trailing" secondItem="Apl-8U-1LR" secondAttribute="trailing" constant="30" id="9lu-nf-a7I"/>
-                            <constraint firstItem="Apl-8U-1LR" firstAttribute="leading" secondItem="bmw-JN-pp8" secondAttribute="trailing" constant="16" id="B5g-AB-2G0"/>
+                            <constraint firstItem="Apl-8U-1LR" firstAttribute="leading" secondItem="bmw-JN-pp8" secondAttribute="trailing" constant="10" id="B5g-AB-2G0"/>
                             <constraint firstItem="kdO-Hr-V4O" firstAttribute="trailing" secondItem="w3x-a6-42j" secondAttribute="trailing" id="B6E-gu-ufS"/>
                             <constraint firstItem="Kr0-3W-NWf" firstAttribute="top" secondItem="Y4V-KM-xYL" secondAttribute="top" constant="10" id="D4F-sy-4rX"/>
                             <constraint firstItem="YYr-7T-Hq9" firstAttribute="top" secondItem="bmw-JN-pp8" secondAttribute="bottom" constant="14" id="DGR-d1-IKn"/>
@@ -201,17 +201,17 @@
                             <constraint firstItem="Zaz-hh-m8S" firstAttribute="bottom" secondItem="gYm-90-Hex" secondAttribute="bottom" constant="8" id="JQ6-Vt-feN"/>
                             <constraint firstItem="5yv-et-SWb" firstAttribute="baseline" secondItem="iEH-GK-QZA" secondAttribute="baseline" id="KfG-bA-9u4"/>
                             <constraint firstItem="IGP-Nu-drn" firstAttribute="top" secondItem="90e-wt-wPi" secondAttribute="bottom" constant="14" id="L1C-uD-gBM"/>
-                            <constraint firstItem="kdO-Hr-V4O" firstAttribute="leading" secondItem="90e-wt-wPi" secondAttribute="trailing" constant="16" id="L5X-Xq-Rh8"/>
+                            <constraint firstItem="kdO-Hr-V4O" firstAttribute="leading" secondItem="90e-wt-wPi" secondAttribute="trailing" constant="10" id="L5X-Xq-Rh8"/>
                             <constraint firstItem="PDb-Vg-VZS" firstAttribute="trailing" secondItem="5yv-et-SWb" secondAttribute="trailing" constant="30" id="LJ3-Lb-OgT"/>
                             <constraint firstItem="YYr-7T-Hq9" firstAttribute="leading" secondItem="bmw-JN-pp8" secondAttribute="leading" id="LaT-BO-r5p"/>
                             <constraint firstItem="gYm-90-Hex" firstAttribute="leading" secondItem="iEH-GK-QZA" secondAttribute="leading" id="N8F-Jc-rXV"/>
                             <constraint firstItem="Onf-hO-L7y" firstAttribute="trailing" secondItem="kdO-Hr-V4O" secondAttribute="trailing" constant="30" id="OcA-in-YBi"/>
                             <constraint firstItem="8ty-FM-Yxg" firstAttribute="leading" secondItem="pHA-VG-Hsx" secondAttribute="leading" constant="-30" id="OgE-fW-kK7"/>
-                            <constraint firstItem="w3x-a6-42j" firstAttribute="leading" secondItem="gYm-90-Hex" secondAttribute="trailing" constant="16" id="Oxq-ke-0VN"/>
+                            <constraint firstItem="w3x-a6-42j" firstAttribute="leading" secondItem="gYm-90-Hex" secondAttribute="trailing" constant="10" id="Oxq-ke-0VN"/>
                             <constraint firstItem="Kr0-3W-NWf" firstAttribute="width" secondItem="Y4V-KM-xYL" secondAttribute="width" multiplier="0.16" id="PSP-I5-Aks"/>
                             <constraint firstItem="8ty-FM-Yxg" firstAttribute="bottom" secondItem="pHA-VG-Hsx" secondAttribute="bottom" constant="8" id="PUN-Xo-EBq"/>
                             <constraint firstItem="Zaz-hh-m8S" firstAttribute="trailing" secondItem="w3x-a6-42j" secondAttribute="trailing" constant="30" id="PZT-ze-ws5"/>
-                            <constraint firstItem="z2n-2N-k6I" firstAttribute="leading" secondItem="pHA-VG-Hsx" secondAttribute="trailing" constant="16" id="QT3-ok-Cgx"/>
+                            <constraint firstItem="z2n-2N-k6I" firstAttribute="leading" secondItem="pHA-VG-Hsx" secondAttribute="trailing" constant="10" id="QT3-ok-Cgx"/>
                             <constraint firstItem="Onf-hO-L7y" firstAttribute="leading" secondItem="90e-wt-wPi" secondAttribute="leading" constant="-30" id="Qoh-qW-Fpx"/>
                             <constraint firstItem="Onf-hO-L7y" firstAttribute="bottom" secondItem="90e-wt-wPi" secondAttribute="bottom" constant="8" id="Tu4-QP-7lZ"/>
                             <constraint firstItem="PDb-Vg-VZS" firstAttribute="bottom" secondItem="iEH-GK-QZA" secondAttribute="bottom" constant="8" id="Uok-je-Bm7"/>

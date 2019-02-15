@@ -50,20 +50,20 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
             self.pointBalanceConstraintHeight.constant = height*0.15
         }
         
-        if DataController.sharedInstance.isLogin() {
-            print("isLogin")
-
-            self.getUserInfo() { //validate
-                if !self.isFirst {
-                    self.showPoPup(true) {   //dismissView
-                        self.isFirst = true
-                    }
-                }
-            }
-        }else{
-            print("notLogin")
-            self.showIntroduce(false)
-        }
+//        if DataController.sharedInstance.isLogin() {
+//            print("isLogin")
+//
+//            self.getUserInfo() { //validate
+//                if !self.isFirst {
+//                    self.showPoPup(true) {   //dismissView
+//                        self.isFirst = true
+//                    }
+//                }
+//            }
+//        }else{
+//            print("notLogin")
+//            self.showIntroduce(false)
+//        }
     }
     
     func setUp(){

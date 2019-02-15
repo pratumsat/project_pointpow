@@ -471,6 +471,16 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
     }
     
     
+    func showGoldSavingResult(_ animated:Bool , finish:(()->Void)? = nil){
+        if let vc:SavingResultNav  = self.storyboard?.instantiateViewController(withIdentifier: "SavingResultNav") as? SavingResultNav {
+            vc.callbackFinish = {
+                finish?()
+            }
+            self.present(vc, animated: animated, completion: nil)
+        }
+    }
+    
+    
     func showPointFriendTransferView(_ animated:Bool){
         if let vc:PointFriendTransferViewController  = self.storyboard?.instantiateViewController(withIdentifier: "PointFriendTransferViewController") as? PointFriendTransferViewController {
             

@@ -40,9 +40,11 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.getUserInfo(){
-            self.updateView()
-        }
+//        self.getDataMember(){
+//            self.updateView()
+//        }
+        self.isRegistered = true
+        
     }
     func setUp(){
         
@@ -64,13 +66,15 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
     }
     
     override func reloadData() {
-        self.getUserInfo(){
+        self.getDataMember(){
             self.updateView()
-            
         }
     }
     
     func updateView(){
+        if let data  = self.goldPrice as? [String:AnyObject] {
+            print(data)
+        }
         if let data  = self.userData as? [String:AnyObject] {
             //let pointBalance = data["member_point"]?["total"] as? String ?? "0.00"
             //let profileImage = data["picture_data"] as? String ?? ""
@@ -82,7 +86,6 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
             }else{
                 self.isRegistered = false
             }
-           
         }
     }
     
@@ -105,14 +108,21 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
             let textRange = Range(range, in: textField.text!)!
             let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
 
-            if !updatedText.isEmpty {
-                let goldprice = 20000.00
-                let gramToPoint = Double(goldprice/15.244)
-                let point = Double(updatedText)!
-                
-                let sum = String(format: "%.04f", point/gramToPoint)
-                self.goldamountLabel?.text = "\(sum)"
+            if let point = Int(updatedText) {
+                if !updatedText.isEmpty {
+                    let goldprice = 20000.00
+                    let gramToPoint = Double(goldprice/15.244)
+                    
+                    
+                    let sum = String(format: "%.04f", Double(point)/gramToPoint)
+                    self.goldamountLabel?.text = "\(sum)"
+                }else{
+                    self.goldamountLabel?.text = "0.0000"
+                }
+            }else{
+                return false
             }
+            
         }
         
         return true

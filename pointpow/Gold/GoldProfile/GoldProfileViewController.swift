@@ -88,8 +88,9 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
             let mobile = data["goldsaving_member"]?["mobile"]as? String ?? ""
             let pid = data["goldsaving_member"]?["citizen_id"]as? String ?? ""
             let status = data["goldsaving_member"]?["status"] as? String ?? ""
+            let account_id = data["goldsaving_member"]?["account_id"] as? String ?? ""
             
-           
+            self.goldIdLabel.text = "\(account_id)"
             self.firstNameTextField.text = first_name
             self.lastNameTextField.text = last_name
             self.emailTextField.text = email

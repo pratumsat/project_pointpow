@@ -527,8 +527,10 @@ struct Constant {
         static let userData = "\(HOST)\(POINTPOW_VERSION1)member/get"
         static let addImageProfile = "\(HOST)\(POINTPOW_VERSION1)member/upload-profile-image"
         static let addBackgroundImageProfile = "\(HOST)\(POINTPOW_VERSION1)member/upload-background-image"
+        
         static let registerGoldMember = "\(HOST)\(POINTPOW_VERSION1)gold-saving/register"
         static let updateGoldMember = "\(HOST)\(POINTPOW_VERSION1)gold-saving/update"
+        static let goldPrice = "\(HOST)\(POINTPOW_VERSION1)gold-saving/get/gold-price"
        
     }
     struct PathImages {

@@ -27,7 +27,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TT6-7w-bVu">
                         <rect key="frame" x="137" y="33.5" width="110" height="110"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-gold-profile" translatesAutoresizingMaskIntoConstraints="NO" id="KTi-GO-xGJ">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KTi-GO-xGJ">
                                 <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -131,7 +131,4 @@
             <point key="canvasLocation" x="137.59999999999999" y="62.518740629685162"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="ic-gold-profile" width="402" height="403"/>
-    </resources>
 </document>

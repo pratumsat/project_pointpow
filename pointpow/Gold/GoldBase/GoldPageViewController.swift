@@ -110,7 +110,7 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
                 let gramToPoint = Double(goldprice/15.244)
                 let point = Double(updatedText)!
                 
-                let sum = point/gramToPoint
+                let sum = String(format: "%.04f", point/gramToPoint)
                 self.goldamountLabel?.text = "\(sum)"
             }
         }

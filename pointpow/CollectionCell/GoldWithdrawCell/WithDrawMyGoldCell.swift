@@ -10,6 +10,8 @@ import UIKit
 
 class WithDrawMyGoldCell: UICollectionViewCell {
 
+    @IBOutlet weak var goldAverageLabel: UILabel!
+    @IBOutlet weak var goldBalanceLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
      

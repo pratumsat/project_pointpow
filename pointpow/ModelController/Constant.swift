@@ -737,6 +737,16 @@ func heightForView(text:String, font:UIFont, width:CGFloat, lineHeight:Bool = fa
     
     return label.frame.height
 }
+func heightForViewWithDraw(_ countViewResult:Int, width:CGFloat) -> CGFloat{
+    let view = UIView(frame : CGRect(x: 0, y: 0, width: width, height: 250))
+
+    var sumheight = CGFloat(0)
+    for _ in 0..<countViewResult {
+        sumheight += 40
+    }
+    
+    return view.frame.height + sumheight
+}
 
 
 

@@ -11,6 +11,18 @@ import UIKit
 class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 
     @IBOutlet weak var withDrawCollectionView: UICollectionView!
+    
+    var goldamountTextField:UITextField?
+    var goldUnit:Int = 0 {
+        didSet{
+            if self.goldUnit == 0 {
+                calSalueng(goldamountTextField?.text ?? "")
+            }else{
+                calBaht(goldamountTextField?.text ?? "")
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,6 +37,7 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
         self.withDrawCollectionView.dataSource = self
         
         self.registerNib(self.withDrawCollectionView, "WithDrawMyGoldCell")
+        self.registerNib(self.withDrawCollectionView, "WithdrawCell")
         self.registerNib(self.withDrawCollectionView, "LogoGoldCell")
     }
     
@@ -36,7 +49,7 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -51,6 +64,19 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "WithDrawMyGoldCell", for: indexPath) as? WithDrawMyGoldCell {
                 cell = item
                 
+                item.goldBalanceLabel.text = "15.3323"
+                item.goldAverageLabel.text = "23,000"
+                
+            }
+        } else if indexPath.section == 1 {
+            if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "WithdrawCell", for: indexPath) as? WithdrawCell {
+                cell = item
+                self.goldamountTextField = item.amountTextField
+                item.unitCallback = { (unit) in
+                    self.goldUnit = unit
+                }
+                
+                self.goldamountTextField?.delegate = self
             }
         } else  {
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "LogoGoldCell", for: indexPath) as? LogoGoldCell {
@@ -88,8 +114,12 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
             let width = collectionView.frame.width - 40
             let height = width/360*140
             return CGSize(width: width, height: height)
-        }
-        else {
+        } else if indexPath.section == 1 {
+           
+            let width = collectionView.frame.width - 40
+            let height = heightForViewWithDraw(6, width: width)
+            return CGSize(width: width, height: height)
+        } else {
             let width = collectionView.frame.width
             let cheight = collectionView.frame.height
             let height = abs((cheight) - (((width/360*140))+40))
@@ -97,28 +127,27 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
             return CGSize(width: width, height: height)
         }
         
-        
-        
     }
     
 
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
        
-//        if textField == self.sTextfield {
-//            let textRange = Range(range, in: textField.text!)!
-//            let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
-//            cal1(updatedText)
-//        }
-//        if textField == self.bTextfield {
-//            let textRange = Range(range, in: textField.text!)!
-//            let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
-//            cal2(updatedText)
-//        }
+        if textField == self.goldamountTextField {
+            let textRange = Range(range, in: textField.text!)!
+            let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
+            if self.goldUnit == 0 {
+                calSalueng(updatedText)
+            }else{
+                calBaht(updatedText)
+            }
+            
+        }
+        
         return true
     }
    
-    func cal1(_ s:String){
+    func calSalueng(_ s:String){
         if let amount = Int(s) {
             var text = ""
         
@@ -146,11 +175,11 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
             
             text += "ค่าพรีเมียม: \(premium)"
             
-            //self.pLabel1.text = text
+            print(text)
         }
        
     }
-    func cal2(_ s:String){
+    func calBaht(_ s:String){
         if let amount = Int(s) {
             var text = ""
             
@@ -168,7 +197,7 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
             let premium = ( ((amount/10)*300)+((difference10/5)*250)+((difference5/2)*200)+((difference2%2)*150))
             text += "ค่าพรีเมียม: \(premium)"
             
-            //self.pLabel2.text = text
+            print(text)
         }
         
     }

@@ -64,6 +64,8 @@
 		C120D7CF21955BB500F9EEBB /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C120D7CD21955BB500F9EEBB /* ProfileCell.xib */; };
 		C120D7D221955BC900F9EEBB /* ItemProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120D7D021955BC900F9EEBB /* ItemProfileCell.swift */; };
 		C120D7D321955BC900F9EEBB /* ItemProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C120D7D121955BC900F9EEBB /* ItemProfileCell.xib */; };
+		C1247C5122191898005D6F7A /* WithdrawCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1247C4F22191898005D6F7A /* WithdrawCell.swift */; };
+		C1247C5222191898005D6F7A /* WithdrawCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1247C5022191898005D6F7A /* WithdrawCell.xib */; };
 		C13D99822199755B001A4794 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D99812199755B001A4794 /* ProfileViewController.swift */; };
 		C13D998521997938001A4794 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D998321997938001A4794 /* LogoutCell.swift */; };
 		C13D998621997938001A4794 /* LogoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13D998421997938001A4794 /* LogoutCell.xib */; };
@@ -242,6 +244,8 @@
 		C120D7CD21955BB500F9EEBB /* ProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
 		C120D7D021955BC900F9EEBB /* ItemProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemProfileCell.swift; sourceTree = "<group>"; };
 		C120D7D121955BC900F9EEBB /* ItemProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemProfileCell.xib; sourceTree = "<group>"; };
+		C1247C4F22191898005D6F7A /* WithdrawCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawCell.swift; sourceTree = "<group>"; };
+		C1247C5022191898005D6F7A /* WithdrawCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithdrawCell.xib; sourceTree = "<group>"; };
 		C13D99812199755B001A4794 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C13D998321997938001A4794 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		C13D998421997938001A4794 /* LogoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutCell.xib; sourceTree = "<group>"; };
@@ -903,6 +907,8 @@
 			children = (
 				C1F761082216E357000A2CA9 /* WithDrawMyGoldCell.swift */,
 				C1F761092216E357000A2CA9 /* WithDrawMyGoldCell.xib */,
+				C1247C4F22191898005D6F7A /* WithdrawCell.swift */,
+				C1247C5022191898005D6F7A /* WithdrawCell.xib */,
 			);
 			path = GoldWithdrawCell;
 			sourceTree = "<group>";
@@ -1042,6 +1048,7 @@
 				C10CA1BF219429D500316DF3 /* ImageCell.xib in Resources */,
 				C11BDFBD21A2BB3C00443D2D /* ItemConfirmSummaryCell.xib in Resources */,
 				C1AD50812187F45900F74415 /* Assets.xcassets in Resources */,
+				C1247C5222191898005D6F7A /* WithdrawCell.xib in Resources */,
 				C197FEE52207E4F9002F24E8 /* NotoSansThai-Regular.ttf in Resources */,
 				C10CA1BA2193E1D100316DF3 /* PromotionCampainCell.xib in Resources */,
 				C169FFC921C4F10100F9D354 /* FavorCell.xib in Resources */,
@@ -1267,6 +1274,7 @@
 				C10CA1BE219429D500316DF3 /* ImageCell.swift in Sources */,
 				C115FA5521A2A40F008E7844 /* PointFriendTransferViewController.swift in Sources */,
 				C169FFC821C4F10100F9D354 /* FavorCell.swift in Sources */,
+				C1247C5122191898005D6F7A /* WithdrawCell.swift in Sources */,
 				C1AD50A92187F7B500F74415 /* BaseViewController.swift in Sources */,
 				C11BDFB821A2B95D00443D2D /* ItemFriendSummaryCell.swift in Sources */,
 				C1F7610A2216E357000A2CA9 /* WithDrawMyGoldCell.swift in Sources */,

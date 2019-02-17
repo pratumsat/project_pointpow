@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="ThaiSansNeue-Bold.ttf">
+            <string>ThaiSansNeue-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NextButtonCell" id="DfD-A1-W4F" customClass="NextButtonCell" customModule="pointpow" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="399" height="120"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="399" height="120"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zdi-wb-AjK">
+                        <rect key="frame" x="0.0" y="40" width="399" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="jLn-uq-Yle"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
+                        <state key="normal" title="ถัดไป">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <connections>
+                            <action selector="nextTapped:" destination="DfD-A1-W4F" eventType="touchUpInside" id="ial-VJ-lwZ"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="zdi-wb-AjK" firstAttribute="centerY" secondItem="DfD-A1-W4F" secondAttribute="centerY" id="8dF-sG-GSw"/>
+                <constraint firstItem="zdi-wb-AjK" firstAttribute="leading" secondItem="DfD-A1-W4F" secondAttribute="leading" id="Cfq-h4-htA"/>
+                <constraint firstAttribute="trailing" secondItem="zdi-wb-AjK" secondAttribute="trailing" id="Sil-oI-OTB"/>
+                <constraint firstItem="zdi-wb-AjK" firstAttribute="centerX" secondItem="DfD-A1-W4F" secondAttribute="centerX" id="eDD-58-ubI"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="JVl-6e-XgD"/>
+            <size key="customSize" width="399" height="120"/>
+            <connections>
+                <outlet property="nextButton" destination="zdi-wb-AjK" id="5yb-er-yjA"/>
+            </connections>
+            <point key="canvasLocation" x="156" y="21"/>
+        </collectionViewCell>
+    </objects>
+</document>

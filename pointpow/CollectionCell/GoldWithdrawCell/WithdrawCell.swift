@@ -8,8 +8,11 @@
 
 import UIKit
 
-class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDataSource, UIGestureRecognizerDelegate {
+class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDataSource, UIGestureRecognizerDelegate ,UITextFieldDelegate{
    
+    @IBOutlet weak var infoImageView: UIImageView!
+    @IBOutlet weak var heightPremiumConstraint: NSLayoutConstraint!
+    @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var premiumLabel: UILabel!
     @IBOutlet weak var premiumView: UIView!
     @IBOutlet weak var result2saluengLabel: UILabel!
@@ -56,32 +59,288 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var unitTextField: UITextField!
     
-    var defaultHeight = 30
+    var defaultHeight = CGFloat(40)
     
-     var pickerView:UIPickerView?
+    var pickerView:UIPickerView?
     var units = [NSLocalizedString("unit-salueng", comment: ""),NSLocalizedString("unit-baht", comment: "")]
     var selectedUnits:Int = 0 {
         didSet{
-            unitCallback?(selectedUnits)
+            if self.selectedUnits == 0 {
+                calSalueng(amountTextField?.text ?? "")
+            }else{
+                calBaht(amountTextField?.text ?? "")
+            }
         }
     }
-    var unitCallback:((_ unit:Int)->Void)?
+    var goldSpendCallback:((_ amount:Int ,_ unit:Int)->Void)?
+    var infoCallback:(()->Void)?
+    
+    var withDrawData : (premium:String , goldReceive:[(amount:Int,unit:String)] )?{
+        didSet{
+            updateView()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
         self.updateLayerCornerRadiusProperties()
         self.contentView.updateLayerCornerRadiusProperties()
         self.shadowCellProperties()
         
+        
+        premiumView.borderClearProperties(borderWidth: 1)
+        
+        result2salueng1View.borderClearProperties(borderWidth: 1)
+        result2salueng2View.borderClearProperties(borderWidth: 1)
+        
+        result1salueng1View.borderClearProperties(borderWidth: 1)
+        result1salueng2View.borderClearProperties(borderWidth: 1)
+        
+        result10baht1View.borderClearProperties(borderWidth: 1)
+        result10baht2View.borderClearProperties(borderWidth: 1)
+        
+        result5baht1View.borderClearProperties(borderWidth: 1)
+        result5baht2View.borderClearProperties(borderWidth: 1)
+        
+        result2baht1View.borderClearProperties(borderWidth: 1)
+        result2baht2View.borderClearProperties(borderWidth: 1)
+        
+        result1baht1View.borderClearProperties(borderWidth: 1)
+        result1baht2View.borderClearProperties(borderWidth: 1)
+        
+        
+        self.amountTextField.delegate = self
+    
         self.setUpPicker()
         self.updateView()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(infoTapped))
+        self.infoImageView.isUserInteractionEnabled = true
+        self.infoImageView.addGestureRecognizer(tap)
+        
     }
+    
+    @objc func infoTapped(){
+        self.infoCallback?()
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if textField == self.amountTextField {
+            let textRange = Range(range, in: textField.text!)!
+            let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
+        
+            if updatedText.isEmpty {
+                self.amountTextField?.text = "0"
+                self.premiumLabel.text = "0"
+                
+                self.withDrawData = (premium : "\(0)" , goldReceive: [])
+                self.goldSpendCallback?(0 , self.selectedUnits)
+                return true
+            }
+            
+            if let _ = Int(updatedText) {
+                if self.selectedUnits == 0 {
+                    calSalueng(updatedText)
+                }else{
+                    calBaht(updatedText)
+                }
+            }else{
+                return false
+            }
+            
+        }
+        
+        return true
+    }
+
+    
     func updateView(){
-        //height defau
-        //height2saluengConstraint.constant = 0
-        //height1saluengConstraint.constant = 0
+        
+        self.height10bahtConstraint.constant = 0
+        self.height5bahtConstraint.constant = 0
+        self.height2bahtConstraint.constant = 0
+        self.height1bahtConstraint.constant = 0
+        self.height2saluengConstraint.constant = 0
+        self.height1saluengConstraint.constant = 0
+        
+        if selectedUnits == 0 {
+            //salueng
+            self.height2saluengConstraint.constant = self.defaultHeight
+            self.height1saluengConstraint.constant = self.defaultHeight
+            
+            
+            if let data = self.withDrawData {
+                self.premiumLabel.text = data.premium
+                
+                if data.goldReceive.count == 0 {
+                    self.result2saluengLabel.text = "0"
+                    self.result1saluengLabel.text = "0"
+                    return
+                }
+                for item in data.goldReceive {
+                    if item.unit  == "2salueng" {
+                        if item.amount > 0 {
+                            self.height2saluengConstraint.constant = self.defaultHeight
+                            self.result2saluengLabel.text = "\(item.amount)"
+                        }else{
+                            self.height2saluengConstraint.constant = 0
+                        }
+                    }
+                    if item.unit  == "1salueng" {
+                        if item.amount > 0 {
+                            self.height1saluengConstraint.constant = self.defaultHeight
+                            self.result1saluengLabel.text = "\(item.amount)"
+                        }else{
+                            self.height1saluengConstraint.constant = 0
+                        }
+                    }
+                }
+            }
+        }else{
+            //baht
+            self.height10bahtConstraint.constant = self.defaultHeight
+            self.height5bahtConstraint.constant = self.defaultHeight
+            self.height2bahtConstraint.constant = self.defaultHeight
+            self.height1bahtConstraint.constant = self.defaultHeight
+            
+            
+            if let data = self.withDrawData {
+                self.premiumLabel.text = data.premium
+                
+                if data.goldReceive.count == 0 {
+                    self.result10bahtLabel.text = "0"
+                    self.result5bahtLabel.text = "0"
+                    self.result2bahtLabel.text = "0"
+                    self.result1bahtLabel.text = "0"
+                    return
+                }
+                
+                for item in data.goldReceive {
+                    if item.unit  == "10baht" {
+                        if item.amount > 0 {
+                            self.height10bahtConstraint.constant = self.defaultHeight
+                            self.result10bahtLabel.text = "\(item.amount)"
+                        }else{
+                            self.height10bahtConstraint.constant = 0
+                        }
+                    }
+                    if item.unit  == "5baht" {
+                        if item.amount > 0 {
+                            self.height5bahtConstraint.constant = self.defaultHeight
+                            self.result5bahtLabel.text = "\(item.amount)"
+                        }else{
+                            self.height5bahtConstraint.constant = 0
+                        }
+                    }
+                    if item.unit  == "2baht" {
+                        if item.amount > 0 {
+                            self.height2bahtConstraint.constant = self.defaultHeight
+                            self.result2bahtLabel.text = "\(item.amount)"
+                        }else{
+                            self.height2bahtConstraint.constant = 0
+                        }
+                    }
+                    if item.unit  == "1baht" {
+                        if item.amount > 0 {
+                            self.height1bahtConstraint.constant = self.defaultHeight
+                            self.result1bahtLabel.text = "\(item.amount)"
+                        }else{
+                            self.height1bahtConstraint.constant = 0
+                        }
+                    }
+                }
+            }
+        }
+       
+       
     }
+    func calSalueng(_ s:String){
+        if let amount = Int(s) {
+            self.goldSpendCallback?(amount , self.selectedUnits)
+            //var text = ""
+            //            text += "จำนวนทองที่ได้รับ 10 บาท \(amount/40) แท่ง พรีเมียม:\((amount/40)*300)\n"
+            //            let difference10 = amount%40
+            //
+            //            text += "จำนวนทองที่ได้รับ 5 บาท \(difference10/20) แท่ง พรีเมียม:\((difference10/20)*250)\n"
+            //            let difference5 = difference10%20
+            //
+            //            text += "จำนวนทองที่ได้รับ 2 บาท \(difference5/8) แท่ง พรีเมียม:\((difference5/8)*200)\n"
+            //            let difference2 = difference5%8
+            //
+            //            text += "จำนวนทองที่ได้รับ 1 บาท \(difference2/4) แท่ง พรีเมียม:\((difference2/4)*150)\n"
+            //            let difference1 = difference2%4
+            //
+            //            text += "จำนวนทองที่ได้รับ 2 สลึง \(difference1/2) แท่ง พรีเมียม:\((difference1/2)*130)\n"
+            //            text += "จำนวนทองที่ได้รับ 1 สลึง \(difference1%2) แท่ง พรีเมียม:\((difference1%2)*100)\n"
+            //
+            //            let premium = ( ((amount/40)*300)+((difference10/20)*250)+((difference5/8)*200)+((difference2/4)*150)+((difference1/2)*130)+((difference1%2)*100))
+            
+            //            text += "จำนวนทองที่ได้รับ 2 สลึง \(amount/2) เส้น พรีเมียม:\((amount/2)*130)\n"
+            //            text += "จำนวนทองที่ได้รับ 1 สลึง \(amount%2) เส้น พรีเมียม:\((amount%2)*100)\n"
+            //            text += "ค่าพรีเมียม: \((((amount/2)*130)+(amount%2)*100))"
+            //            print(text)
+            
+            let gold2salueng = amount/2
+            let gold1salueng = amount%2
+            let _premium = (((amount/2)*130)+(amount%2)*100)
+            
+            var _goldReceive:[(amount:Int,unit:String)] = []
+            _goldReceive.append((amount: gold2salueng, unit: "2salueng"))
+            _goldReceive.append((amount: gold1salueng, unit: "1salueng"))
+            
+            
+           
+            
+            
+            self.withDrawData = (premium : "\(_premium)" , goldReceive: _goldReceive)
+        }else{
+            updateView()
+        }
+    }
+    
+    func calBaht(_ s:String){
+        if let amount = Int(s) {
+            self.goldSpendCallback?(amount , self.selectedUnits)
+//            var text = ""
+//            text += "จำนวนทองที่ได้รับ 10 บาท \(amount/10) แท่ง พรีเมียม:\((amount/10)*300)\n"
+            //let difference10 = amount%10
+//
+//            text += "จำนวนทองที่ได้รับ 5 บาท \(difference10/5) แท่ง พรีเมียม:\((difference10/5)*250)\n"
+            //let difference5 = difference10%5
+//
+//            text += "จำนวนทองที่ได้รับ 2 บาท \(difference5/2) แท่ง พรีเมียม:\((difference5/2)*200)\n"
+            //let difference2 = difference5%2
+//
+//            text += "จำนวนทองที่ได้รับ 1 บาท \(difference2%2) แท่ง พรีเมียม:\((difference2%2)*150)\n"
+//            text += "ค่าพรีเมียม: \(_premium)"
+            
+            let difference10 = amount%10
+            let difference5 = difference10%5
+            let difference2 = difference5%2
+            
+            let gold10baht = amount/10
+            let gold5baht = difference10/5
+            let gold2baht = difference5/2
+            let gold1baht = difference2%2
+            let _premium = ( ((amount/10)*300)+((difference10/5)*250)+((difference5/2)*200)+((difference2%2)*150))
+            
+            var _goldReceive:[(amount:Int,unit:String)] = []
+            
+            _goldReceive.append((amount: gold10baht, unit: "10baht"))
+            _goldReceive.append((amount: gold5baht, unit: "5baht"))
+            _goldReceive.append((amount: gold2baht, unit: "2baht"))
+            _goldReceive.append((amount: gold1baht, unit: "1baht"))
+            
+            self.withDrawData = (premium : "\(_premium)" , goldReceive: _goldReceive)
+            
+        }else{
+            updateView()
+        }
+        
+    }
+    
     
     func setUpPicker(){
         
@@ -150,25 +409,8 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
         self.unitTextField.setRightPaddingPoints(40)
         
         
-        premiumView.borderClearProperties(borderWidth: 1)
         
-        result2salueng1View.borderClearProperties(borderWidth: 1)
-        result2salueng2View.borderClearProperties(borderWidth: 1)
-        
-        result1salueng1View.borderClearProperties(borderWidth: 1)
-        result1salueng2View.borderClearProperties(borderWidth: 1)
-        
-        result10baht1View.borderClearProperties(borderWidth: 1)
-        result10baht2View.borderClearProperties(borderWidth: 1)
-        
-        result5baht1View.borderClearProperties(borderWidth: 1)
-        result5baht2View.borderClearProperties(borderWidth: 1)
-        
-        result2baht1View.borderClearProperties(borderWidth: 1)
-        result2baht2View.borderClearProperties(borderWidth: 1)
-        
-        result1baht1View.borderClearProperties(borderWidth: 1)
-        result1baht2View.borderClearProperties(borderWidth: 1)
+       
 
     }
 }

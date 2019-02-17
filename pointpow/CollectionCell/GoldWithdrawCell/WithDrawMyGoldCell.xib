@@ -50,19 +50,19 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QgL-cD-sqn">
-                        <rect key="frame" x="341" y="75" width="11" height="32.5"/>
+                        <rect key="frame" x="341" y="70" width="11" height="32.5"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="25"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="บาท" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cui-u5-fKm">
-                        <rect key="frame" x="357" y="81.5" width="23" height="23.5"/>
+                        <rect key="frame" x="357" y="76.5" width="23" height="23.5"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                         <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ราคาเฉลี่ยทองคำ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTq-hw-j9X">
-                        <rect key="frame" x="10" y="79.5" width="93.5" height="23.5"/>
+                        <rect key="frame" x="10" y="74.5" width="93.5" height="23.5"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -73,7 +73,7 @@
                 <constraint firstItem="7wE-BL-qsB" firstAttribute="leading" secondItem="Xm5-M4-Noi" secondAttribute="trailing" constant="5" id="0Zh-kV-Omw"/>
                 <constraint firstItem="7wE-BL-qsB" firstAttribute="centerY" secondItem="Xm5-M4-Noi" secondAttribute="centerY" constant="2" id="CJn-r8-mQo"/>
                 <constraint firstItem="PM5-8k-gEM" firstAttribute="leading" secondItem="M6h-qs-zmp" secondAttribute="leading" id="FVm-XK-usJ"/>
-                <constraint firstItem="QTq-hw-j9X" firstAttribute="top" secondItem="PM5-8k-gEM" secondAttribute="bottom" constant="15" id="P4T-oy-hK1"/>
+                <constraint firstItem="QTq-hw-j9X" firstAttribute="top" secondItem="PM5-8k-gEM" secondAttribute="bottom" constant="10" id="P4T-oy-hK1"/>
                 <constraint firstAttribute="trailing" secondItem="Cui-u5-fKm" secondAttribute="trailing" constant="10" id="ZHh-Zl-lF7"/>
                 <constraint firstItem="QTq-hw-j9X" firstAttribute="leading" secondItem="PM5-8k-gEM" secondAttribute="leading" id="Zn7-PS-gkT"/>
                 <constraint firstItem="QgL-cD-sqn" firstAttribute="centerY" secondItem="QTq-hw-j9X" secondAttribute="centerY" id="drH-yi-N2n"/>

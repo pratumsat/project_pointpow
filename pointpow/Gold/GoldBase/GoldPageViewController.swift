@@ -108,17 +108,19 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
             let textRange = Range(range, in: textField.text!)!
             let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
 
+            if updatedText.isEmpty {
+                self.goldamountLabel?.text = "0.0000"
+                return true
+            }
             if let point = Int(updatedText) {
-                if !updatedText.isEmpty {
-                    let goldprice = 20000.00
-                    let gramToPoint = Double(goldprice/15.244)
-                    
-                    
-                    let sum = String(format: "%.04f", Double(point)/gramToPoint)
-                    self.goldamountLabel?.text = "\(sum)"
-                }else{
-                    self.goldamountLabel?.text = "0.0000"
-                }
+
+                let goldprice = 20000.00
+                let gramToPoint = Double(goldprice/15.244)
+                
+                
+                let sum = String(format: "%.04f", Double(point)/gramToPoint)
+                self.goldamountLabel?.text = "\(sum)"
+
             }else{
                 return false
             }

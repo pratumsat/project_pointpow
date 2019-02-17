@@ -766,6 +766,37 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         }
     }
     
+    
+    func showInfoGoldPremiumPopup(_ animated:Bool , nextStepCallback:(()->Void)? = nil ){
+        let presenter: Presentr = {
+            
+            let w = self.view.frame.width * 0.8
+            let h = w/275*479
+            let width = ModalSize.custom(size: Float(w))
+            let height = ModalSize.custom(size: Float(h))
+            
+            let center = ModalCenterPosition.center
+            let customType = PresentationType.custom(width: width, height: height, center: center)
+            
+            let customPresenter = Presentr(presentationType: customType)
+            customPresenter.roundCorners = true
+            customPresenter.cornerRadius = 10
+            customPresenter.dismissOnSwipe = false
+            customPresenter.dismissOnTap = false
+            
+            
+            return customPresenter
+        }()
+        
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "PopupGoldPremiumViewController") as? PopupGoldPremiumViewController{
+            
+            customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)
+            
+        }
+    }
+    
+    
+    
     func handlerMessageError(_ messageError:String ,  title:String =  "Error"){
         if messageError == "-1009"{
             self.AlertMessageDialogOK(NSLocalizedString("error-connect-server-internet", comment: ""))

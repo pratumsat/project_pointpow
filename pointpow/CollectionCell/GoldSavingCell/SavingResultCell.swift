@@ -10,6 +10,11 @@ import UIKit
 
 class SavingResultCell: UICollectionViewCell {
 
+    @IBOutlet weak var goldReceiveLabel: UILabel!
+    @IBOutlet weak var pointpowLabel: UILabel!
+    @IBOutlet weak var goldPriceLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var transactionNumberLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         

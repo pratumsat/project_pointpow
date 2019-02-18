@@ -15,6 +15,9 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
     var amountGoldWeight:Double?
     var goldBalanceLabel:UILabel?
     
+    var drawCount = 0
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,6 +27,10 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
      
     }
     func setUp(){
+        //self.dummyview = UITextField(frame: CGRect.zero)
+        //self.view.addSubview(dummyview!)
+        
+        
         self.backgroundImage?.image = nil
         self.withDrawCollectionView.delegate = self
         self.withDrawCollectionView.dataSource = self
@@ -40,6 +47,8 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
             
         }
     }
+    
+    
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 4
@@ -70,12 +79,20 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
                 item.infoCallback = {
                     self.showInfoGoldPremiumPopup(true) 
                 }
+                item.drawCountCallback = { (count) in
+                    self.drawCount = count
+                
+                    self.withDrawCollectionView.performBatchUpdates({
+                        collectionView.reloadInputViews()
+                    }, completion: { (true) in
+                        item.amountTextField.becomeFirstResponder()
+                    })
+                }
                 item.goldSpendCallback = { (amount, unit) in
                     if unit == 0 {
                        //salueng
                         let weightToSalueng = 15.244/4
                         let stg = weightToSalueng*Double(amount)
-                        
                         
                         
                         let sumWeight = 15.3323 - stg
@@ -135,7 +152,7 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
         } else if indexPath.section == 1 {
            
             let width = collectionView.frame.width - 40
-            let height = width/360*430
+            let height = heightForViewWithDraw(self.drawCount, width: width) //width/360*430
             return CGSize(width: width, height: height)
         } else if indexPath.section == 2 {
             

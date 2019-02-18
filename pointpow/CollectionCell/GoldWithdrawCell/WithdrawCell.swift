@@ -10,6 +10,9 @@ import UIKit
 
 class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDataSource, UIGestureRecognizerDelegate ,UITextFieldDelegate{
    
+    @IBOutlet weak var unitView: UIView!
+    @IBOutlet weak var goldReceiveInfoLabel: UILabel!
+    @IBOutlet weak var dropDownImageView: UIImageView!
     @IBOutlet weak var infoImageView: UIImageView!
     @IBOutlet weak var heightPremiumConstraint: NSLayoutConstraint!
     @IBOutlet weak var weightLabel: UILabel!
@@ -65,13 +68,21 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
     var units = [NSLocalizedString("unit-salueng", comment: ""),NSLocalizedString("unit-baht", comment: "")]
     var selectedUnits:Int = 0 {
         didSet{
-            if self.selectedUnits == 0 {
-                calSalueng(amountTextField?.text ?? "")
-            }else{
-                calBaht(amountTextField?.text ?? "")
-            }
+            self.amountTextField.text = ""
+            self.premiumLabel.text = ""
+            self.withDrawData = (premium : "\(0)" , goldReceive: [])
+            self.goldSpendCallback?(0 , self.selectedUnits)
+            
+//            if self.selectedUnits == 0 {
+//                calSalueng(amountTextField?.text ?? "")
+//            }else{
+//                calBaht(amountTextField?.text ?? "")
+//            }
+            
         }
     }
+    
+    var drawCountCallback:((_ count:Int)->Void)?
     var goldSpendCallback:((_ amount:Int ,_ unit:Int)->Void)?
     var infoCallback:(()->Void)?
     
@@ -119,8 +130,15 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
         self.infoImageView.isUserInteractionEnabled = true
         self.infoImageView.addGestureRecognizer(tap)
         
+        let dropdownTap = UITapGestureRecognizer(target: self, action: #selector(dropdownTapped))
+        self.unitView.isUserInteractionEnabled = true
+        self.unitView.addGestureRecognizer(dropdownTap)
+        
     }
     
+    @objc func dropdownTapped(){
+        self.unitTextField.becomeFirstResponder()
+    }
     @objc func infoTapped(){
         self.infoCallback?()
     }
@@ -132,7 +150,7 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
             let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
         
             if updatedText.isEmpty {
-                self.amountTextField?.text = "0"
+                self.amountTextField.text = "0"
                 self.premiumLabel.text = "0"
                 
                 self.withDrawData = (premium : "\(0)" , goldReceive: [])
@@ -140,11 +158,26 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
                 return true
             }
             
-            if let _ = Int(updatedText) {
+            if let amount = Int(updatedText) {
+               
                 if self.selectedUnits == 0 {
-                    calSalueng(updatedText)
+                    if amount > 200 {
+                        self.amountTextField?.text = "200"
+                        calSalueng("200")
+                        return false
+                    }else{
+                        calSalueng(updatedText)
+                    }
+                   
                 }else{
-                    calBaht(updatedText)
+                    if amount > 50 {
+                        self.amountTextField?.text = "50"
+                        calBaht("50")
+                        return false
+                    }else{
+                        calBaht(updatedText)
+                    }
+                    
                 }
             }else{
                 return false
@@ -157,6 +190,11 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
 
     
     func updateView(){
+
+        
+        self.weightLabel.isHidden = true
+        self.goldReceiveInfoLabel.isHidden = true
+        self.heightPremiumConstraint.constant = 0
         
         self.height10bahtConstraint.constant = 0
         self.height5bahtConstraint.constant = 0
@@ -167,21 +205,27 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
         
         if selectedUnits == 0 {
             //salueng
-            self.height2saluengConstraint.constant = self.defaultHeight
-            self.height1saluengConstraint.constant = self.defaultHeight
-            
-            
             if let data = self.withDrawData {
                 self.premiumLabel.text = data.premium
+                
+                if data.premium != "0" {
+                    self.heightPremiumConstraint.constant = self.defaultHeight
+                    self.weightLabel.isHidden = false
+                    self.goldReceiveInfoLabel.isHidden = false
+                    
+                }
                 
                 if data.goldReceive.count == 0 {
                     self.result2saluengLabel.text = "0"
                     self.result1saluengLabel.text = "0"
                     return
                 }
+               
+                var drawCount = 0
                 for item in data.goldReceive {
                     if item.unit  == "2salueng" {
                         if item.amount > 0 {
+                            drawCount += 1
                             self.height2saluengConstraint.constant = self.defaultHeight
                             self.result2saluengLabel.text = "\(item.amount)"
                         }else{
@@ -190,6 +234,7 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
                     }
                     if item.unit  == "1salueng" {
                         if item.amount > 0 {
+                            drawCount += 1
                             self.height1saluengConstraint.constant = self.defaultHeight
                             self.result1saluengLabel.text = "\(item.amount)"
                         }else{
@@ -197,17 +242,18 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
                         }
                     }
                 }
+                self.drawCountCallback?(drawCount)
             }
         }else{
-            //baht
-            self.height10bahtConstraint.constant = self.defaultHeight
-            self.height5bahtConstraint.constant = self.defaultHeight
-            self.height2bahtConstraint.constant = self.defaultHeight
-            self.height1bahtConstraint.constant = self.defaultHeight
-            
             
             if let data = self.withDrawData {
                 self.premiumLabel.text = data.premium
+                
+                if data.premium != "0" {
+                    self.heightPremiumConstraint.constant = self.defaultHeight
+                    self.weightLabel.isHidden = false
+                    self.goldReceiveInfoLabel.isHidden = false
+                }
                 
                 if data.goldReceive.count == 0 {
                     self.result10bahtLabel.text = "0"
@@ -217,9 +263,11 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
                     return
                 }
                 
+                var drawCount = 0
                 for item in data.goldReceive {
                     if item.unit  == "10baht" {
                         if item.amount > 0 {
+                            drawCount += 1
                             self.height10bahtConstraint.constant = self.defaultHeight
                             self.result10bahtLabel.text = "\(item.amount)"
                         }else{
@@ -228,6 +276,7 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
                     }
                     if item.unit  == "5baht" {
                         if item.amount > 0 {
+                            drawCount += 1
                             self.height5bahtConstraint.constant = self.defaultHeight
                             self.result5bahtLabel.text = "\(item.amount)"
                         }else{
@@ -236,6 +285,7 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
                     }
                     if item.unit  == "2baht" {
                         if item.amount > 0 {
+                            drawCount += 1
                             self.height2bahtConstraint.constant = self.defaultHeight
                             self.result2bahtLabel.text = "\(item.amount)"
                         }else{
@@ -244,6 +294,7 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
                     }
                     if item.unit  == "1baht" {
                         if item.amount > 0 {
+                            drawCount += 1
                             self.height1bahtConstraint.constant = self.defaultHeight
                             self.result1bahtLabel.text = "\(item.amount)"
                         }else{
@@ -251,6 +302,7 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
                         }
                     }
                 }
+                self.drawCountCallback?(drawCount)
             }
         }
        
@@ -386,6 +438,8 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
         return self.units.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+      
         
         self.selectedUnits = row
         self.unitTextField.text = "\(self.units[row])"

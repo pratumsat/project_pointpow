@@ -11,6 +11,8 @@ import UIKit
 class SavingResultNav: BaseNavigationViewController {
     
     var callbackFinish:(()->Void)?
+    
+    var transactionId:String?
 
     override func viewDidLoad() {
         super.viewDidLoad()

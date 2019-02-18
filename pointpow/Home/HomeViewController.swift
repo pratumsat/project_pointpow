@@ -50,20 +50,20 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
             self.pointBalanceConstraintHeight.constant = height*0.15
         }
         
-//        if DataController.sharedInstance.isLogin() {
-//            print("isLogin")
-//
-//            self.getUserInfo() { //validate
-//                if !self.isFirst {
-//                    self.showPoPup(true) {   //dismissView
-//                        self.isFirst = true
-//                    }
-//                }
-//            }
-//        }else{
-//            print("notLogin")
-//            self.showIntroduce(false)
-//        }
+        if DataController.sharedInstance.isLogin() {
+            print("isLogin")
+
+            self.getUserInfo() { //validate
+                if !self.isFirst {
+                    self.showPoPup(true) {   //dismissView
+                        self.isFirst = true
+                    }
+                }
+            }
+        }else{
+            print("notLogin")
+            self.showIntroduce(false)
+        }
     }
     
     func setUp(){
@@ -107,9 +107,9 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
             avaliable?()
             if let data  = result as? [String:AnyObject] {
                 
-                let pointBalance = data["member_point"]?["total"] as? String ?? "0.00"
+                //let pointBalance = data["member_point"]?["total"] as? NSNumber ?? 0.00
                 //let  profileImage = data["picture_data"] as? String ?? ""
-                self.pointBalanceLabel.text = pointBalance
+                //self.pointBalanceLabel.text = "pointBalance"
                 
                 let parthProfileImage = "\(Constant.PathImages.profile)"
                 self.modelCtrl.loadImage(parthProfileImage , Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER) { (image) in

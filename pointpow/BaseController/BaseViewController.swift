@@ -290,9 +290,10 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         }
     }
     
-    func confirmGoldSavingPage(_ animated:Bool){
+    func confirmGoldSavingPage(_ animated:Bool, modelSaving:(pointBalance:Double?, pointSpend:Double?, goldReceive:Double?, currentGoldprice:Double?)){
         if let vc:ConfirmSavingViewController  = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmSavingViewController") as? ConfirmSavingViewController {
-            
+        
+            vc.modelSaving = modelSaving
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
@@ -471,8 +472,10 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
     }
     
     
-    func showGoldSavingResult(_ animated:Bool , finish:(()->Void)? = nil){
+    func showGoldSavingResult(_ animated:Bool, transactionId:String, finish:(()->Void)? = nil){
         if let vc:SavingResultNav  = self.storyboard?.instantiateViewController(withIdentifier: "SavingResultNav") as? SavingResultNav {
+            vc.transactionId = transactionId
+            
             vc.callbackFinish = {
                 finish?()
             }

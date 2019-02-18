@@ -85,8 +85,8 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*ราคาอ้างอิงจากสมาคมค้าทองคำไทย" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNZ-Ib-X9d">
-                        <rect key="frame" x="10" y="221.5" width="160" height="18.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*ราคาอ้างอิงจากสมาคมค้าทองคำ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNZ-Ib-X9d">
+                        <rect key="frame" x="10" y="221.5" width="144.5" height="18.5"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="14"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -116,11 +116,11 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-gold-value-more" translatesAutoresizingMaskIntoConstraints="NO" id="g96-ur-6av">
-                        <rect key="frame" x="319.5" y="167" width="16" height="16"/>
+                        <rect key="frame" x="323.5" y="169" width="12" height="12"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="g96-ur-6av" secondAttribute="height" multiplier="1:1" id="Kaf-yg-eRg"/>
-                            <constraint firstAttribute="width" constant="16" id="zMd-az-aPA"/>
+                            <constraint firstAttribute="width" constant="12" id="zMd-az-aPA"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKy-QY-HVM">
@@ -171,7 +171,12 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="461" height="342"/>
             <connections>
+                <outlet property="buyPriceLabel" destination="E7r-Gd-Tzb" id="Z5G-mu-jbl"/>
+                <outlet property="dateLabel" destination="bXp-NT-CTa" id="LTa-bW-hqP"/>
+                <outlet property="diffImageView" destination="g96-ur-6av" id="qul-9c-23w"/>
+                <outlet property="diffLabel" destination="NKy-QY-HVM" id="Krz-rG-8HL"/>
                 <outlet property="headView" destination="djn-Dx-rUT" id="CAe-0m-eCe"/>
+                <outlet property="sellPriceLabel" destination="Kvk-Gm-6mv" id="CkQ-qr-11v"/>
             </connections>
             <point key="canvasLocation" x="86.400000000000006" y="23.388305847076463"/>
         </collectionViewCell>

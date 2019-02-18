@@ -40,10 +40,10 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        self.getDataMember(){
-//            self.updateView()
-//        }
-        self.isRegistered = true
+        self.getDataMember(){
+            self.updateView()
+        }
+       
         
     }
     func setUp(){
@@ -69,12 +69,11 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         self.getDataMember(){
             self.updateView()
         }
+       
+        
     }
     
     func updateView(){
-        if let data  = self.goldPrice as? [String:AnyObject] {
-            print(data)
-        }
         if let data  = self.userData as? [String:AnyObject] {
             //let pointBalance = data["member_point"]?["total"] as? String ?? "0.00"
             //let profileImage = data["picture_data"] as? String ?? ""
@@ -86,6 +85,11 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
             }else{
                 self.isRegistered = false
             }
+            
+            self.pointpowTextField?.text = ""
+            self.goldamountLabel?.text = "0.0000"
+            
+            
         }
     }
     
@@ -108,18 +112,23 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
             let textRange = Range(range, in: textField.text!)!
             let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
 
+            
             if updatedText.isEmpty {
                 self.goldamountLabel?.text = "0.0000"
                 return true
             }
             if let point = Int(updatedText) {
 
-                let goldprice = 20000.00
-                let gramToPoint = Double(goldprice/15.244)
+                if let data  = self.goldPrice as? [String:AnyObject] {
+                    
+                    let goldprice = data["open_sell_price"] as? NSNumber ?? 0
+                    let gramToPoint = Double(goldprice.intValue)/15.244
+                    
+                    
+                    let sum = String(format: "%.04f", Double(point)/gramToPoint)
+                    self.goldamountLabel?.text = "\(sum)"
+                }
                 
-                
-                let sum = String(format: "%.04f", Double(point)/gramToPoint)
-                self.goldamountLabel?.text = "\(sum)"
 
             }else{
                 return false
@@ -137,7 +146,38 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "GoldPriceCell", for: indexPath) as? GoldPriceCell{
                 cell = item
                 
-                
+                if let data  = self.goldPrice as? [String:AnyObject] {
+                    let buyPrice = data["open_buy_price"] as? NSNumber ?? 0
+                    let sellPrice = data["open_sell_price"] as? NSNumber ?? 0
+                    let diff = data["diff"] as? NSNumber ?? 0
+                    let created_at = data["created_at"] as? String ?? ""
+                    
+                    item.dateLabel.text  = created_at
+                    
+                    let numberFormatter = NumberFormatter()
+                    numberFormatter.numberStyle = .decimal
+                 
+                    item.buyPriceLabel.text  = numberFormatter.string(from: buyPrice)
+                    item.sellPriceLabel.text = numberFormatter.string(from: sellPrice)
+                    
+                    
+                    if diff == 0 {
+                         item.diffLabel.text = numberFormatter.string(from: diff)
+                        item.diffLabel.textColor = UIColor.darkGray
+                        item.diffImageView.image = nil
+                    }
+                    if diff.intValue > 0 {
+                         item.diffLabel.text = numberFormatter.string(from: diff)
+                        item.diffLabel.textColor = Constant.Colors.GREEN
+                        item.diffImageView.image = UIImage(named: "ic-gold-value-more")
+                    }
+                    if diff.intValue < 0 {
+                        let newValue = numberFormatter.string(from: diff)!
+                        item.diffLabel.text = newValue.substring(start: 1, end: newValue.count)
+                        item.diffLabel.textColor = Constant.Colors.PRIMARY_COLOR
+                        item.diffImageView.image = UIImage(named: "ic-gold-value-less")
+                    }
+                }
             }
         }
         if menu == "goldbalance" {
@@ -145,9 +185,14 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
                 cell = item
                
                 if let data  = self.userData as? [String:AnyObject] {
-                    let gold_balance = data["goldsaving_member"]?["gold_balance"] as? String ?? "xx.xx"
+                    let gold_balance = data["goldsaving_member"]?["gold_balance"] as? NSNumber ?? 0
                     
-                    item.goldBalanceLabel.text = gold_balance
+                    let numberFormatter = NumberFormatter()
+                    numberFormatter.numberStyle = .decimal
+                    numberFormatter.minimumFractionDigits = 4
+                   
+                    
+                    item.goldBalanceLabel.text = numberFormatter.string(from: gold_balance)
                     
                 }
             }
@@ -163,22 +208,75 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
                 item.pointpowTextField.delegate = self
                 
                 if let data  = self.userData as? [String:AnyObject] {
-                    let pointBalance = data["member_point"]?["total"] as? String ?? "xx.xx"
+                    let pointBalance = data["member_point"]?["total"] as? NSNumber ?? 0
                     
-                    item.pointBalanceLabel.text = pointBalance
+                    let numberFormatter = NumberFormatter()
+                    numberFormatter.numberStyle = .decimal
+                    numberFormatter.minimumFractionDigits = 2
+                    
+                    item.pointBalanceLabel.text = numberFormatter.string(from: pointBalance )
                 }
                 
                 item.savingCallback = {
                     print("saving")
-                    self.confirmGoldSavingPage(true)
                     
-//                    if self.statusMemberGold == "waiting"{
-//                        self.showMessagePrompt(NSLocalizedString("string-dailog-gold-profile-status-waitting", comment: ""))
-//                    }else if self.statusMemberGold == "fail"{
-//                        self.showMessagePrompt(NSLocalizedString("string-dailog-gold-profile-status-fail", comment: ""))
-//                    }else if self.statusMemberGold == "approve"{
-//                        self.confirmGoldSavingPage(true)
-//                    }
+                    var modelSaving:(pointBalance:Double?, pointSpend:Double?, goldReceive:Double?, currentGoldprice:Double?) = (pointBalance:nil, pointSpend:nil, goldReceive:nil, currentGoldprice:nil)
+                    
+                    var pointBalance:NSNumber = NSNumber(value: 0.0)
+                    var currentGoldprice:NSNumber = NSNumber(value: 0)
+                    var pointSpend:NSNumber = NSNumber(value: 0)
+                    var goldReceive:NSNumber = NSNumber(value: 0.0)
+                    
+                  
+                    
+                    if let data  = self.userData as? [String:AnyObject] {
+                        pointBalance = data["member_point"]?["total"] as? NSNumber ?? 0
+                        
+                        modelSaving.pointBalance = pointBalance.doubleValue
+                    }
+                    
+                    if let data  = self.goldPrice as? [String:AnyObject] {
+                        currentGoldprice = data["open_sell_price"] as? NSNumber ?? 0
+                        
+                        
+                        let ppspend = self.pointpowTextField?.text! ?? ""
+                        if ppspend.isEmpty {
+                            self.showMessagePrompt(NSLocalizedString("string-dailog-saving-point-pointspend-empty", comment: ""))
+                            return
+                        }
+                        
+                        
+                        if (Double(ppspend)!) < 100 {
+                            self.showMessagePrompt(NSLocalizedString("string-dailog-saving-point-pointspend-min", comment: ""))
+                            return
+                        }
+                        
+                        goldReceive = NSNumber(value: Double(self.goldamountLabel?.text ?? "0")!)
+                        pointSpend =  NSNumber(value: Double(self.pointpowTextField?.text! ?? "0")!)
+                        
+                        modelSaving.pointSpend = pointSpend.doubleValue
+                        modelSaving.goldReceive = goldReceive.doubleValue
+                        modelSaving.currentGoldprice  = currentGoldprice.doubleValue
+                        
+                        if (pointSpend.doubleValue) > (pointBalance.doubleValue) {
+                            self.showMessagePrompt(NSLocalizedString("string-dailog-saving-point-not-enough", comment: ""))
+                        }else{
+                            self.confirmGoldSavingPage(true, modelSaving: modelSaving)
+                        }
+                    }
+                    
+                    
+                    
+                    
+                    if self.statusMemberGold == "waiting"{
+                        self.showMessagePrompt(NSLocalizedString("string-dailog-gold-profile-status-waitting", comment: ""))
+                    }else if self.statusMemberGold == "fail"{
+                        self.showMessagePrompt(NSLocalizedString("string-dailog-gold-profile-status-fail", comment: ""))
+                    }else if self.statusMemberGold == "approve"{
+                        
+                       
+                        
+                    }
                 }
                
             }

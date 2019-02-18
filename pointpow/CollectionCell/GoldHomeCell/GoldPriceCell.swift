@@ -10,6 +10,11 @@ import UIKit
 
 class GoldPriceCell: UICollectionViewCell {
 
+    @IBOutlet weak var diffImageView: UIImageView!
+    @IBOutlet weak var diffLabel: UILabel!
+    @IBOutlet weak var sellPriceLabel: UILabel!
+    @IBOutlet weak var buyPriceLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var headView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()

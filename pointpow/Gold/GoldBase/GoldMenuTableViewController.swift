@@ -29,9 +29,9 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
         super.viewDidAppear(animated)
         self.isTapped = false
         
-//        self.getUserInfo() {
-//            self.menuTableView.reloadData()
-//        }
+        self.getUserInfo() {
+            self.menuTableView.reloadData()
+        }
     }
     
     func getUserInfo(_ avaliable:(()->Void)?  = nil){

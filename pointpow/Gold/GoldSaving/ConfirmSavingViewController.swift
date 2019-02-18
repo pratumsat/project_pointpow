@@ -7,10 +7,18 @@
 //
 
 import UIKit
+import Alamofire
 
 class ConfirmSavingViewController: BaseViewController , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 
     @IBOutlet weak var summaryCollectionView: UICollectionView!
+    
+    var modelSaving:(pointBalance:Double?, pointSpend:Double?, goldReceive:Double?, currentGoldprice:Double?){
+        didSet{
+            print(modelSaving)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,9 +29,35 @@ class ConfirmSavingViewController: BaseViewController , UICollectionViewDelegate
     func setUp(){
         
         self.handlerEnterSuccess = {
-            self.showGoldSavingResult(true) {
-                self.navigationController?.popToRootViewController(animated: true)
+            
+            let params:Parameters = ["current_gold_price": self.modelSaving.currentGoldprice ?? "0",
+                                     "pointpow_spend": self.modelSaving.pointSpend ?? "0",
+                                     "gold_received": self.modelSaving.goldReceive ?? "0.0000"]
+            
+            self.modelCtrl.savingGold(params: params, true , succeeded: { (result) in
+                if let data = result as? [String:AnyObject]{
+                    let transactionId = data["saving"]?["transaction_no"] as? String ?? ""
+                    
+                    self.showGoldSavingResult(true , transactionId:  transactionId) {
+                        self.navigationController?.popToRootViewController(animated: true)
+                    }
+                    
+                }
+                
+            }, error: { (error) in
+                if let mError = error as? [String:AnyObject]{
+                    let message = mError["message"] as? String ?? ""
+                    print(message)
+                    self.showMessagePrompt(message)
+                }
+               
+                print(error)
+            }) { (messageError) in
+                print("messageError")
+                self.handlerMessageError(messageError)
+             
             }
+            
         }
         
         
@@ -60,11 +94,43 @@ class ConfirmSavingViewController: BaseViewController , UICollectionViewDelegate
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "SavingConfirmCell", for: indexPath) as? SavingConfirmCell{
                 cell = item
                 
+                
+                var numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                
+                item.goldPriceLabel.text = numberFormatter.string(from: NSNumber(value: self.modelSaving.currentGoldprice!))
+               
+                numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                numberFormatter.minimumFractionDigits = 2
+                
+                item.pointPowSpanLabel.text = numberFormatter.string(from: NSNumber(value: self.modelSaving.pointSpend!))
+                
+                
+                numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                numberFormatter.minimumFractionDigits = 4
+                
+                item.goldReceiveLabel.text = numberFormatter.string(from: NSNumber(value: self.modelSaving.goldReceive!))
+                
+                
             }
         }else if indexPath.section == 1 {
             
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "SavingSummaryCell", for: indexPath) as? SavingSummaryCell{
                 cell = item
+                
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                numberFormatter.minimumFractionDigits = 2
+            
+                item.pointPowSpanLabel.text  =  numberFormatter.string(from: NSNumber(value: self.modelSaving.pointSpend!))
+                
+                let pointbalance = self.modelSaving.pointBalance!
+                let pointspend = self.modelSaving.pointSpend!
+                let result = pointbalance - pointspend
+                item.pointpowBalance.text = numberFormatter.string(from: NSNumber(value: result))
+                
             }
         } else if indexPath.section == 2 {
        

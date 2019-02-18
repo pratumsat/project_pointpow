@@ -8,9 +8,19 @@
 
 import UIKit
 
+
 class SavingResultViewController: BaseViewController , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var resultCollectionView: UICollectionView!
+    
+    var transactionId:String?{
+        didSet{
+            print("updateView")
+            print("transactionId \(transactionId)")
+            self.getDetail()
+        }
+    }
+    var savingResult:AnyObject?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +43,31 @@ class SavingResultViewController: BaseViewController , UICollectionViewDelegate 
         
         self.registerNib(self.resultCollectionView, "SavingResultCell")
         self.registerNib(self.resultCollectionView, "LogoGoldCell")
-       
+     
+        
+        self.transactionId = (self.navigationController as? SavingResultNav)?.transactionId
+        
+    }
+    
+    func getDetail(){
+        
+        self.modelCtrl.detailSavingGold(transactionNumber: self.transactionId ?? "" ,true , succeeded: { (result) in
+            self.savingResult = result
+            self.resultCollectionView.reloadData()
+            
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                self.showMessagePrompt(message)
+            }
+            
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            
+        }
     }
     
     @objc func dismissTapped(){
@@ -57,8 +91,35 @@ class SavingResultViewController: BaseViewController , UICollectionViewDelegate 
         
         if indexPath.section == 0 {
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "SavingResultCell", for: indexPath) as? SavingResultCell {
-                
                 cell = item
+                if let data = self.savingResult as? [String:AnyObject]{
+                    let transaction_number = data["transaction_no"] as? String ?? ""
+                    let created_at = data["created_at"] as? String ?? ""
+                    let gold_price = data["gold_price"] as? NSNumber ?? 0
+                    let pointpow_total = data["pointpow_total"] as? NSNumber ?? 0
+                    let gold_received = data["gold_received"] as? NSNumber ?? 0
+                    
+                    item.dateLabel.text = created_at
+                    item.transactionNumberLabel.text = transaction_number
+                    
+                    
+                    var numberFormatter = NumberFormatter()
+                    numberFormatter.numberStyle = .decimal
+                    
+                    item.goldPriceLabel.text = numberFormatter.string(from: gold_price)
+                    
+                    
+                    numberFormatter = NumberFormatter()
+                    numberFormatter.numberStyle = .decimal
+                    numberFormatter.minimumFractionDigits = 2
+                    item.pointpowLabel.text = numberFormatter.string(from: pointpow_total)
+                   
+                    numberFormatter = NumberFormatter()
+                    numberFormatter.numberStyle = .decimal
+                    numberFormatter.minimumFractionDigits = 4
+                    item.goldReceiveLabel.text = numberFormatter.string(from: gold_received)
+                }
+                
             }
         }else{
             

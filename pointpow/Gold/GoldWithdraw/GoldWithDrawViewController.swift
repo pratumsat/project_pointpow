@@ -14,6 +14,7 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
     
     var amountGoldWeight:Double?
     var goldBalanceLabel:UILabel?
+    var gold_balance:NSNumber = NSNumber(value: 0.0)
     
     var drawCount = 0
     
@@ -25,7 +26,21 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
         
         setUp()
      
+        getUserInfo() {
+            self.updateView()
+        }
+        
     }
+    func updateView(){
+        if let data  = self.userData as? [String:AnyObject] {
+            let gold_balance = data["goldsaving_member"]?["gold_balance"] as? NSNumber ?? 0
+            
+            self.gold_balance = gold_balance
+            
+        }
+        self.withDrawCollectionView.reloadData()
+    }
+    
     func setUp(){
         //self.dummyview = UITextField(frame: CGRect.zero)
         //self.view.addSubview(dummyview!)
@@ -66,12 +81,21 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "WithDrawMyGoldCell", for: indexPath) as? WithDrawMyGoldCell {
                 cell = item
                 
+                
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                numberFormatter.minimumFractionDigits = 4
+                
+                
+                item.goldBalanceLabel.text = numberFormatter.string(from: self.gold_balance)
+                
+                
+                item.goldAverageLabel.text = "0"
+                
+                
                 self.goldBalanceLabel = item.goldBalanceLabel
-                
-                item.goldBalanceLabel.text = "15.3323"
-                item.goldAverageLabel.text = "23,000"
-                
             }
+            
         } else if indexPath.section == 1 {
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "WithdrawCell", for: indexPath) as? WithdrawCell {
                 cell = item
@@ -79,6 +103,7 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
                 item.infoCallback = {
                     self.showInfoGoldPremiumPopup(true) 
                 }
+                
                 item.drawCountCallback = { (count) in
                     self.drawCount = count
                 
@@ -88,20 +113,22 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
                         item.amountTextField.becomeFirstResponder()
                     })
                 }
+                
                 item.goldSpendCallback = { (amount, unit) in
+                    
                     if unit == 0 {
                        //salueng
                         let weightToSalueng = 15.244/4
                         let stg = weightToSalueng*Double(amount)
                         
                         
-                        let sumWeight = 15.3323 - stg
+                        let sumWeight = self.gold_balance.doubleValue - stg
                         self.goldBalanceLabel?.text = String(format: "%.04f", sumWeight)
                     }else{
                        //baht
                         let btg = Double(amount)*15.244
                         
-                        let sumWeight = 15.3323 - btg
+                        let sumWeight = self.gold_balance.doubleValue - btg
                         self.goldBalanceLabel?.text = String(format: "%.04f", sumWeight)
                     }
                 }

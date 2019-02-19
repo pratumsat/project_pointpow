@@ -59,6 +59,9 @@
 "string-dailog-saving-point-pointspend-empty"= "กรุณาใส่จำนวนพ้อย";
 "string-dailog-saving-point-pointspend-min"= "ออมทองได้ตั้งแต่ 100 Point Pow ขึ้นไป";
 
+"string-dailog-saving-gold-amount-empty" = "กรุณาใส่จำนวนทองคำ";
+"string-dailog-saving-gold-pointspend-not-enogh" = "คุณมีทองคำไม่พอ";
+
 /*Reset Password*/
 "string-title-cancel-reset-pwd" = "ยกเลิก";
 "string-verify-password-send-email" = "สมัครสมาชิกเรียบร้อยแล้ว\nกรุณาตรวจเช็คอีเมลของท่าน";
@@ -211,12 +214,16 @@
 /* PopUp */
 "string-item-popup-profile-mobile" = "เบอร์มือถือ";
 "string-item-popup-profile-email" = "อีเมล";
-"string-error-empty-firstname" = "กรุณากรอกชื่อ";
-"string-error-empty-lastname" = "กรุณากรอกนามสกุล";
-"string-error-empty-email" = "กรุณากรอกอีเมล";
-"string-error-empty-mobile" = "กรุณากรอกเบอร์มือถือ";
-"string-error-empty-personal-id" = "กรุณากรอกเลขบัตรประชาชน";
-
+"string-error-empty-firstname" = "กรุณาใส่ชื่อ";
+"string-error-empty-lastname" = "กรุณาใส่นามสกุล";
+"string-error-empty-email" = "กรุณาใส่อีเมล";
+"string-error-empty-mobile" = "กรุณาใส่เบอร์มือถือ";
+"string-error-empty-personal-id" = "กรุณาใส่เลขบัตรประชาชน";
+"string-error-empty-address" = "กรุณาใส่ที่อยู่";
+"string-error-empty-province" = "กรุณาใส่จังหวัด";
+"string-error-empty-sub-district" = "กรุณาใส่แขวง/ตำบล";
+"string-error-empty-district" = "กรุณาใส่เขต/อำเภอ";
+"string-error-empty-postcode" = "กรุณาใส่รหัสไปรษณีย์";
 
 /*error*/
 "error-connect-server" = "ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้, กรุณาลองใหม่อีกครั้ง";

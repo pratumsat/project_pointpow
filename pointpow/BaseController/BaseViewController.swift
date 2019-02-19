@@ -298,6 +298,16 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         }
     }
     
+
+    func chooseShippingPage(_ animated:Bool, withdrawData:(premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int))?){
+        if let vc:GoldWithDrawChooseShippingViewController  = self.storyboard?.instantiateViewController(withIdentifier: "GoldWithDrawChooseShippingViewController") as? GoldWithDrawChooseShippingViewController {
+    
+            vc.withdrawData = withdrawData
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    
+
     
     func showIntroduce(_ animated:Bool){
         if let vc:IntroNav = self.storyboard?.instantiateViewController(withIdentifier: "IntroNav") as? IntroNav {
@@ -709,7 +719,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
     func showPersonalPopup(_ animated:Bool , nextStepCallback:(()->Void)? = nil ){
         let presenter: Presentr = {
             
-            let w = self.view.frame.width * 0.8
+            let w = self.view.frame.width * 0.9
             let h = w/275*479
             let width = ModalSize.custom(size: Float(w))
             let height = ModalSize.custom(size: Float(h))
@@ -731,6 +741,38 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             
             vc.nextStep =  {
                 nextStepCallback?()
+            }
+            
+            customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)
+            
+        }
+    }
+    
+    func showShippingPopup(_ animated:Bool , nextStepCallback:((_ address:String)->Void)? = nil ){
+        let presenter: Presentr = {
+            
+            let w = self.view.frame.width * 0.9
+            let h = w/275*479
+            let width = ModalSize.custom(size: Float(w))
+            let height = ModalSize.custom(size: Float(h))
+            
+            let center = ModalCenterPosition.center
+            let customType = PresentationType.custom(width: width, height: height, center: center)
+            
+            let customPresenter = Presentr(presentationType: customType)
+            customPresenter.roundCorners = true
+            customPresenter.cornerRadius = 10
+            customPresenter.dismissOnSwipe = false
+            customPresenter.dismissOnTap = false
+            
+            
+            return customPresenter
+        }()
+        
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "PopupShippingAddressViewController") as? PopupShippingAddressViewController{
+            
+            vc.nextStep =  { (address) in
+                nextStepCallback?(address)
             }
             
             customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)

@@ -60,6 +60,14 @@
 		C11BDFBC21A2BB3C00443D2D /* ItemConfirmSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11BDFBA21A2BB3C00443D2D /* ItemConfirmSummaryCell.swift */; };
 		C11BDFBD21A2BB3C00443D2D /* ItemConfirmSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C11BDFBB21A2BB3C00443D2D /* ItemConfirmSummaryCell.xib */; };
 		C11BDFBF21A2C17600443D2D /* PopUpTransferSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11BDFBE21A2C17600443D2D /* PopUpTransferSuccessViewController.swift */; };
+		C11BFCA4221BC5D900F066DE /* GoldWithDrawChooseShippingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11BFCA3221BC5D900F066DE /* GoldWithDrawChooseShippingViewController.swift */; };
+		C11BFCA7221BE72000F066DE /* WithDrawChooseShippingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11BFCA5221BE72000F066DE /* WithDrawChooseShippingCell.swift */; };
+		C11BFCA8221BE72000F066DE /* WithDrawChooseShippingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C11BFCA6221BE72000F066DE /* WithDrawChooseShippingCell.xib */; };
+		C11BFCAB221BEEF200F066DE /* WidthDrawShippingPointPowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11BFCA9221BEEF200F066DE /* WidthDrawShippingPointPowCell.swift */; };
+		C11BFCAC221BEEF200F066DE /* WidthDrawShippingPointPowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C11BFCAA221BEEF200F066DE /* WidthDrawShippingPointPowCell.xib */; };
+		C11BFCAF221BF70300F066DE /* WithDrawShippingThaiPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11BFCAD221BF70300F066DE /* WithDrawShippingThaiPostCell.swift */; };
+		C11BFCB0221BF70300F066DE /* WithDrawShippingThaiPostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C11BFCAE221BF70300F066DE /* WithDrawShippingThaiPostCell.xib */; };
+		C11BFCB3221C0CB700F066DE /* PopupShippingAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11BFCB2221C0CB700F066DE /* PopupShippingAddressViewController.swift */; };
 		C120D7CE21955BB500F9EEBB /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120D7CC21955BB500F9EEBB /* ProfileCell.swift */; };
 		C120D7CF21955BB500F9EEBB /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C120D7CD21955BB500F9EEBB /* ProfileCell.xib */; };
 		C120D7D221955BC900F9EEBB /* ItemProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120D7D021955BC900F9EEBB /* ItemProfileCell.swift */; };
@@ -243,6 +251,14 @@
 		C11BDFBA21A2BB3C00443D2D /* ItemConfirmSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemConfirmSummaryCell.swift; sourceTree = "<group>"; };
 		C11BDFBB21A2BB3C00443D2D /* ItemConfirmSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemConfirmSummaryCell.xib; sourceTree = "<group>"; };
 		C11BDFBE21A2C17600443D2D /* PopUpTransferSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpTransferSuccessViewController.swift; sourceTree = "<group>"; };
+		C11BFCA3221BC5D900F066DE /* GoldWithDrawChooseShippingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldWithDrawChooseShippingViewController.swift; sourceTree = "<group>"; };
+		C11BFCA5221BE72000F066DE /* WithDrawChooseShippingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawChooseShippingCell.swift; sourceTree = "<group>"; };
+		C11BFCA6221BE72000F066DE /* WithDrawChooseShippingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithDrawChooseShippingCell.xib; sourceTree = "<group>"; };
+		C11BFCA9221BEEF200F066DE /* WidthDrawShippingPointPowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidthDrawShippingPointPowCell.swift; sourceTree = "<group>"; };
+		C11BFCAA221BEEF200F066DE /* WidthDrawShippingPointPowCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WidthDrawShippingPointPowCell.xib; sourceTree = "<group>"; };
+		C11BFCAD221BF70300F066DE /* WithDrawShippingThaiPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawShippingThaiPostCell.swift; sourceTree = "<group>"; };
+		C11BFCAE221BF70300F066DE /* WithDrawShippingThaiPostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithDrawShippingThaiPostCell.xib; sourceTree = "<group>"; };
+		C11BFCB2221C0CB700F066DE /* PopupShippingAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupShippingAddressViewController.swift; sourceTree = "<group>"; };
 		C120D7CC21955BB500F9EEBB /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		C120D7CD21955BB500F9EEBB /* ProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
 		C120D7D021955BC900F9EEBB /* ItemProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemProfileCell.swift; sourceTree = "<group>"; };
@@ -457,6 +473,7 @@
 			isa = PBXGroup;
 			children = (
 				C197FF2B22082527002F24E8 /* GoldWithDrawViewController.swift */,
+				C11BFCA3221BC5D900F066DE /* GoldWithDrawChooseShippingViewController.swift */,
 			);
 			path = GoldWithdraw;
 			sourceTree = "<group>";
@@ -836,6 +853,7 @@
 		C1AD50AD2187FE7F00F74415 /* Popup */ = {
 			isa = PBXGroup;
 			children = (
+				C11BFCB2221C0CB700F066DE /* PopupShippingAddressViewController.swift */,
 				C1247C532219B126005D6F7A /* PopupGoldPremiumViewController.swift */,
 				C11BDFBE21A2C17600443D2D /* PopUpTransferSuccessViewController.swift */,
 				C10CA1A32191755C00316DF3 /* PersonalPopupViewController.swift */,
@@ -918,6 +936,12 @@
 				C1247C5022191898005D6F7A /* WithdrawCell.xib */,
 				C1247C552219B2E7005D6F7A /* NextButtonCell.swift */,
 				C1247C562219B2E7005D6F7A /* NextButtonCell.xib */,
+				C11BFCA5221BE72000F066DE /* WithDrawChooseShippingCell.swift */,
+				C11BFCA6221BE72000F066DE /* WithDrawChooseShippingCell.xib */,
+				C11BFCA9221BEEF200F066DE /* WidthDrawShippingPointPowCell.swift */,
+				C11BFCAA221BEEF200F066DE /* WidthDrawShippingPointPowCell.xib */,
+				C11BFCAD221BF70300F066DE /* WithDrawShippingThaiPostCell.swift */,
+				C11BFCAE221BF70300F066DE /* WithDrawShippingThaiPostCell.xib */,
 			);
 			path = GoldWithdrawCell;
 			sourceTree = "<group>";
@@ -1047,9 +1071,11 @@
 				C181F064220C00B8003F7C70 /* SaveButtonProfileCell.xib in Resources */,
 				C197FEE72207EA18002F24E8 /* NotoSansThai-SemiBold.ttf in Resources */,
 				C1817D97219BFCDE009507DB /* FriendCollectionCell.xib in Resources */,
+				C11BFCA8221BE72000F066DE /* WithDrawChooseShippingCell.xib in Resources */,
 				C1AD50842187F45900F74415 /* LaunchScreen.storyboard in Resources */,
 				C10CA1B22193E01200316DF3 /* ItemServiceCell.xib in Resources */,
 				C106BEB3220BED4E00E2331E /* BrowseImageCell.xib in Resources */,
+				C11BFCB0221BF70300F066DE /* WithDrawShippingThaiPostCell.xib in Resources */,
 				C169FFBF21C36E1300F9D354 /* Localizable.strings in Resources */,
 				C197FEE42207E4F6002F24E8 /* NotoSansThai-Bold.ttf in Resources */,
 				C106BEAF220BEB3000E2331E /* GoldItemCell.xib in Resources */,
@@ -1077,6 +1103,7 @@
 				C1F761062216C261000A2CA9 /* SavingResultCell.xib in Resources */,
 				C1DEBE992188337500CBB95F /* ThaiSansNeue-Regular.ttf in Resources */,
 				C120D7D321955BC900F9EEBB /* ItemProfileCell.xib in Resources */,
+				C11BFCAC221BEEF200F066DE /* WidthDrawShippingPointPowCell.xib in Resources */,
 				C1F7610B2216E357000A2CA9 /* WithDrawMyGoldCell.xib in Resources */,
 				C13D998B21997AD6001A4794 /* HeadCell.xib in Resources */,
 				C1AD507F2187F45600F74415 /* Main.storyboard in Resources */,
@@ -1258,12 +1285,14 @@
 				C11BDFBF21A2C17600443D2D /* PopUpTransferSuccessViewController.swift in Sources */,
 				C1817DAA219E7F18009507DB /* BankPointTransferViewController.swift in Sources */,
 				C10CA1A221914F2E00316DF3 /* MainTabbarViewController.swift in Sources */,
+				C11BFCAF221BF70300F066DE /* WithDrawShippingThaiPostCell.swift in Sources */,
 				C181F06A220D8566003F7C70 /* ProfileTableViewCell.swift in Sources */,
 				C1F761022216BB95000A2CA9 /* SavingResultViewController.swift in Sources */,
 				C197FF3E22093D9B002F24E8 /* RegisterGoldCell.swift in Sources */,
 				C10CA1A42191755C00316DF3 /* PersonalPopupViewController.swift in Sources */,
 				C197FF2622081C72002F24E8 /* GoldPageViewController.swift in Sources */,
 				C1817D99219C041F009507DB /* PointTransferViewController.swift in Sources */,
+				C11BFCA4221BC5D900F066DE /* GoldWithDrawChooseShippingViewController.swift in Sources */,
 				C197FF2A22082503002F24E8 /* GoldProfileViewController.swift in Sources */,
 				C197FEDE21DC8E98002F24E8 /* ResetNav.swift in Sources */,
 				C1F760FD22169B6D000A2CA9 /* ConfirmButtonCell.swift in Sources */,
@@ -1302,11 +1331,13 @@
 				C103113C2212C932004396E0 /* GoldPendingVerifyViewController.swift in Sources */,
 				C1247C542219B126005D6F7A /* PopupGoldPremiumViewController.swift in Sources */,
 				C1817DA1219C1934009507DB /* SwitchCell.swift in Sources */,
+				C11BFCAB221BEEF200F066DE /* WidthDrawShippingPointPowCell.swift in Sources */,
 				C106BEAE220BEB3000E2331E /* GoldItemCell.swift in Sources */,
 				C13D99822199755B001A4794 /* ProfileViewController.swift in Sources */,
 				C1817DA8219E7BFE009507DB /* CheckBox.swift in Sources */,
 				C169FF9C21C25C8500F9D354 /* MobileViewController.swift in Sources */,
 				C120D7D221955BC900F9EEBB /* ItemProfileCell.swift in Sources */,
+				C11BFCA7221BE72000F066DE /* WithDrawChooseShippingCell.swift in Sources */,
 				C1817D96219BFCDE009507DB /* FriendCollectionCell.swift in Sources */,
 				C115FA5721A2B3EB008E7844 /* PointFriendSummaryViewController.swift in Sources */,
 				C11BDFBC21A2BB3C00443D2D /* ItemConfirmSummaryCell.swift in Sources */,
@@ -1335,6 +1366,7 @@
 				C142741D21A68154003CC246 /* ResetPasswordViewController.swift in Sources */,
 				C197FEE121E5D225002F24E8 /* UserInfo.swift in Sources */,
 				C10D94B42209717E0083FA47 /* NavGoldPage.swift in Sources */,
+				C11BFCB3221C0CB700F066DE /* PopupShippingAddressViewController.swift in Sources */,
 				C13D998A21997AD6001A4794 /* HeadCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

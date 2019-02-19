@@ -311,28 +311,6 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
     func calSalueng(_ s:String){
         if let amount = Int(s) {
             self.goldSpendCallback?(amount , self.selectedUnits)
-            //var text = ""
-            //            text += "จำนวนทองที่ได้รับ 10 บาท \(amount/40) แท่ง พรีเมียม:\((amount/40)*300)\n"
-            //            let difference10 = amount%40
-            //
-            //            text += "จำนวนทองที่ได้รับ 5 บาท \(difference10/20) แท่ง พรีเมียม:\((difference10/20)*250)\n"
-            //            let difference5 = difference10%20
-            //
-            //            text += "จำนวนทองที่ได้รับ 2 บาท \(difference5/8) แท่ง พรีเมียม:\((difference5/8)*200)\n"
-            //            let difference2 = difference5%8
-            //
-            //            text += "จำนวนทองที่ได้รับ 1 บาท \(difference2/4) แท่ง พรีเมียม:\((difference2/4)*150)\n"
-            //            let difference1 = difference2%4
-            //
-            //            text += "จำนวนทองที่ได้รับ 2 สลึง \(difference1/2) แท่ง พรีเมียม:\((difference1/2)*130)\n"
-            //            text += "จำนวนทองที่ได้รับ 1 สลึง \(difference1%2) แท่ง พรีเมียม:\((difference1%2)*100)\n"
-            //
-            //            let premium = ( ((amount/40)*300)+((difference10/20)*250)+((difference5/8)*200)+((difference2/4)*150)+((difference1/2)*130)+((difference1%2)*100))
-            
-            //            text += "จำนวนทองที่ได้รับ 2 สลึง \(amount/2) เส้น พรีเมียม:\((amount/2)*130)\n"
-            //            text += "จำนวนทองที่ได้รับ 1 สลึง \(amount%2) เส้น พรีเมียม:\((amount%2)*100)\n"
-            //            text += "ค่าพรีเมียม: \((((amount/2)*130)+(amount%2)*100))"
-            //            print(text)
             
             var p2salueng = 0
             var p1salueng = 0
@@ -374,18 +352,6 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
     func calBaht(_ s:String){
         if let amount = Int(s) {
             self.goldSpendCallback?(amount , self.selectedUnits)
-//            var text = ""
-//            text += "จำนวนทองที่ได้รับ 10 บาท \(amount/10) แท่ง พรีเมียม:\((amount/10)*300)\n"
-            //let difference10 = amount%10
-//
-//            text += "จำนวนทองที่ได้รับ 5 บาท \(difference10/5) แท่ง พรีเมียม:\((difference10/5)*250)\n"
-            //let difference5 = difference10%5
-//
-//            text += "จำนวนทองที่ได้รับ 2 บาท \(difference5/2) แท่ง พรีเมียม:\((difference5/2)*200)\n"
-            //let difference2 = difference5%2
-//
-//            text += "จำนวนทองที่ได้รับ 1 บาท \(difference2%2) แท่ง พรีเมียม:\((difference2%2)*150)\n"
-//            text += "ค่าพรีเมียม: \(_premium)"
             
             var p1baht = 0
             var p2baht = 0
@@ -514,3 +480,29 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
 
     }
 }
+
+
+
+
+//var text = ""
+//            text += "จำนวนทองที่ได้รับ 10 บาท \(amount/40) แท่ง พรีเมียม:\((amount/40)*300)\n"
+//            let difference10 = amount%40
+//
+//            text += "จำนวนทองที่ได้รับ 5 บาท \(difference10/20) แท่ง พรีเมียม:\((difference10/20)*250)\n"
+//            let difference5 = difference10%20
+//
+//            text += "จำนวนทองที่ได้รับ 2 บาท \(difference5/8) แท่ง พรีเมียม:\((difference5/8)*200)\n"
+//            let difference2 = difference5%8
+//
+//            text += "จำนวนทองที่ได้รับ 1 บาท \(difference2/4) แท่ง พรีเมียม:\((difference2/4)*150)\n"
+//            let difference1 = difference2%4
+//
+//            text += "จำนวนทองที่ได้รับ 2 สลึง \(difference1/2) แท่ง พรีเมียม:\((difference1/2)*130)\n"
+//            text += "จำนวนทองที่ได้รับ 1 สลึง \(difference1%2) แท่ง พรีเมียม:\((difference1%2)*100)\n"
+//
+//            let premium = ( ((amount/40)*300)+((difference10/20)*250)+((difference5/8)*200)+((difference2/4)*150)+((difference1/2)*130)+((difference1%2)*100))
+
+//            text += "จำนวนทองที่ได้รับ 2 สลึง \(amount/2) เส้น พรีเมียม:\((amount/2)*130)\n"
+//            text += "จำนวนทองที่ได้รับ 1 สลึง \(amount%2) เส้น พรีเมียม:\((amount%2)*100)\n"
+//            text += "ค่าพรีเมียม: \((((amount/2)*130)+(amount%2)*100))"
+//            print(text)

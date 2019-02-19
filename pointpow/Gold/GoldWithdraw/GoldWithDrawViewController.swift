@@ -12,12 +12,14 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
 
     @IBOutlet weak var withDrawCollectionView: UICollectionView!
     
-    var amountGoldWeight:Double?
+    var premiumLabel:UILabel?
+    var amountTextField:UITextField?
     var goldBalanceLabel:UILabel?
     var gold_balance:NSNumber = NSNumber(value: 0.0)
     
     var drawCount = 0
-    
+    var amountToUnit:(amount:Int, unit:Int)?
+    var withdrawData:(premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int))?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,6 +102,9 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "WithdrawCell", for: indexPath) as? WithdrawCell {
                 cell = item
                 
+                self.amountTextField = item.amountTextField
+                self.premiumLabel = item.premiumLabel
+                
                 item.infoCallback = {
                     self.showInfoGoldPremiumPopup(true) 
                 }
@@ -115,7 +120,7 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
                 }
                 
                 item.goldSpendCallback = { (amount, unit) in
-                    
+                    self.amountToUnit = (amount: amount, unit: unit)
                     if unit == 0 {
                        //salueng
                         let weightToSalueng = 15.244/4
@@ -138,6 +143,43 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
         } else if indexPath.section == 2 {
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "NextButtonCell", for: indexPath) as? NextButtonCell {
                 cell = item
+                
+                item.nextCallback = {
+                    let amount = self.amountTextField?.text ?? ""
+                    let goldbalance = Double(self.goldBalanceLabel?.text ?? "0.00") ?? 0
+                    let premium = Int(self.premiumLabel?.text ?? "") ?? 0
+                   
+                    
+                        if amount.isEmpty {
+                            
+                          self.showMessagePrompt(NSLocalizedString("string-dailog-saving-gold-amount-empty", comment: ""))
+                        
+                        }else{
+                         
+                            if goldbalance < 0 {
+                                self.showMessagePrompt(NSLocalizedString("string-dailog-saving-gold-pointspend-not-enogh", comment: ""))
+                            }else{
+                                
+                                if let amountunit = self.amountToUnit {
+                                
+                                    self.withdrawData = (premium: premium, goldbalance: goldbalance,  goldAmountToUnit: amountunit)
+                                    
+                                   
+                                    self.chooseShippingPage(true ,withdrawData:  self.withdrawData!)
+                                    
+                                }
+                                
+                                
+                            }
+                            
+                            
+                        }
+                        
+                        
+                    
+                    
+                    
+                }
                 
             }
         } else  {

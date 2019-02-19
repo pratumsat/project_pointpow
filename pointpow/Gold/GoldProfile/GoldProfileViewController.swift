@@ -116,6 +116,13 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
                 self.firstNameTextField.isEnabled = false
                 self.lastNameTextField.isEnabled = false
                 self.idcardTextField.isEnabled = false
+                
+                self.emailTextField.textColor = UIColor.lightGray
+                self.mobileTextField.textColor = UIColor.lightGray
+                self.firstNameTextField.textColor = UIColor.lightGray
+                self.lastNameTextField.textColor = UIColor.lightGray
+                self.idcardTextField.textColor = UIColor.lightGray
+                
                 self.uploadView.isUserInteractionEnabled = false
                 self.uploadView.borderLightGrayColorProperties()
                 self.backgroundIdCardPhotoImageView.isUserInteractionEnabled = false
@@ -130,6 +137,13 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
                 self.firstNameTextField.isEnabled = true
                 self.lastNameTextField.isEnabled = true
                 self.idcardTextField.isEnabled = false
+                
+                self.emailTextField.textColor = UIColor.lightGray
+                self.mobileTextField.textColor = UIColor.lightGray
+                self.firstNameTextField.textColor = UIColor.black
+                self.lastNameTextField.textColor = UIColor.black
+                self.idcardTextField.textColor = UIColor.lightGray
+                
                 self.uploadView.isUserInteractionEnabled = true
                 self.uploadView.borderRedColorProperties(borderWidth: 1.0)
                 self.iconCameraImageView.image = UIImage(named: "ic-camera-1")
@@ -143,6 +157,14 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
                 self.firstNameTextField.isEnabled = true
                 self.lastNameTextField.isEnabled = true
                 self.idcardTextField.isEnabled = true
+                
+                self.emailTextField.textColor = UIColor.lightGray
+                self.mobileTextField.textColor = UIColor.lightGray
+                self.firstNameTextField.textColor = UIColor.black
+                self.lastNameTextField.textColor = UIColor.black
+                self.idcardTextField.textColor = UIColor.black
+                
+                
                 self.uploadView.isUserInteractionEnabled = true
                 self.uploadView.borderRedColorProperties(borderWidth: 1.0)
                 self.iconCameraImageView.image = UIImage(named: "ic-camera-1")

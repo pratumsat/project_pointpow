@@ -334,9 +334,28 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
             //            text += "ค่าพรีเมียม: \((((amount/2)*130)+(amount%2)*100))"
             //            print(text)
             
+            var p2salueng = 0
+            var p1salueng = 0
+            if let premium = DataController.sharedInstance.getDataGoldPremium(){
+                if let premiums = premium as? [[String:AnyObject]]{
+                    for item in premiums {
+                        let unit = item["unit"] as? String ?? ""
+                        let weight = (item["weight"] as? NSNumber)?.intValue ?? 0
+                        let price = (item["premium"] as? NSNumber)?.intValue ?? 0
+                        if unit == "salueng"{
+                            if weight == 2 {
+                                p2salueng = price
+                            }
+                            if weight == 1 {
+                                p1salueng = price
+                            }
+                        }
+                    }
+                }
+            }
             let gold2salueng = amount/2
             let gold1salueng = amount%2
-            let _premium = (((amount/2)*130)+(amount%2)*100)
+            let _premium = (((amount/2)*p2salueng)+(amount%2)*p1salueng)
             
             var _goldReceive:[(amount:Int,unit:String)] = []
             _goldReceive.append((amount: gold2salueng, unit: "2salueng"))
@@ -368,6 +387,33 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
 //            text += "จำนวนทองที่ได้รับ 1 บาท \(difference2%2) แท่ง พรีเมียม:\((difference2%2)*150)\n"
 //            text += "ค่าพรีเมียม: \(_premium)"
             
+            var p1baht = 0
+            var p2baht = 0
+            var p5baht = 0
+            var p10baht = 0
+            if let premium = DataController.sharedInstance.getDataGoldPremium(){
+                if let premiums = premium as? [[String:AnyObject]]{
+                    for item in premiums {
+                        let unit = item["unit"] as? String ?? ""
+                        let weight = (item["weight"] as? NSNumber)?.intValue ?? 0
+                        let price = (item["premium"] as? NSNumber)?.intValue ?? 0
+                        if unit != "salueng"{
+                            if weight == 1 {
+                                p1baht = price
+                            }
+                            if weight == 2 {
+                                p2baht = price
+                            }
+                            if weight == 5 {
+                                p5baht = price
+                            }
+                            if weight == 10 {
+                                p10baht = price
+                            }
+                        }
+                    }
+                }
+            }
             let difference10 = amount%10
             let difference5 = difference10%5
             let difference2 = difference5%2
@@ -376,7 +422,7 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
             let gold5baht = difference10/5
             let gold2baht = difference5/2
             let gold1baht = difference2%2
-            let _premium = ( ((amount/10)*300)+((difference10/5)*250)+((difference5/2)*200)+((difference2%2)*150))
+            let _premium = ( ((amount/10)*p10baht)+((difference10/5)*p5baht)+((difference5/2)*p2baht)+((difference2%2)*p1baht))
             
             var _goldReceive:[(amount:Int,unit:String)] = []
             

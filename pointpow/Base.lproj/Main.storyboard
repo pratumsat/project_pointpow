@@ -4517,6 +4517,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QUt-3e-0vz"/>
                     </view>
+                    <connections>
+                        <outlet property="p10baht" destination="J2W-Cv-61x" id="kl3-hd-X5a"/>
+                        <outlet property="p1baht" destination="hK7-nE-A3S" id="Vuj-d1-c5J"/>
+                        <outlet property="p1salueng" destination="wh1-cQ-7uo" id="7JT-vb-0YF"/>
+                        <outlet property="p2baht" destination="YNH-N6-4GW" id="yZm-gq-Irq"/>
+                        <outlet property="p2salueng" destination="dw8-7B-OCp" id="GoJ-pp-KDp"/>
+                        <outlet property="p5baht" destination="tGk-L6-nqx" id="q3m-Tb-0jF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iCU-UN-VUn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

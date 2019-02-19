@@ -532,7 +532,7 @@ struct Constant {
         static let updateGoldMember = "\(HOST)\(POINTPOW_VERSION1)gold-saving/update"
         static let goldPrice = "\(HOST)\(POINTPOW_VERSION1)gold-saving/get/gold-price"
         static let savingGold = "\(HOST)\(POINTPOW_VERSION1)gold-saving/saving"
-        
+        static let goldPremiumPrice = "\(HOST)\(POINTPOW_VERSION1)gold-saving/get/premium-price"
        
     }
     struct PathImages {

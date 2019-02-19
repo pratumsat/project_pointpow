@@ -30,7 +30,13 @@ class DataController {
             }
         }
     }
-    
+    func setDataGoldPremium(_ data:AnyObject){
+        UserDefaults.standard.set(data, forKey: "dataGoldPremiumPrice")
+        UserDefaults.standard.synchronize()
+    }
+    func getDataGoldPremium() -> AnyObject? {
+        return UserDefaults.standard.object(forKey: "dataGoldPremiumPrice") as AnyObject
+    }
     func getDefaultLanguage() -> Bool{
         let defaultLanguage = UserDefaults.standard.object(forKey: "defaultAppLanguage") as? Bool ?? false
         return defaultLanguage

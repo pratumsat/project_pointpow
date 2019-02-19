@@ -12,6 +12,8 @@ class GoldBaseViewController: BaseViewController {
 
     var userData:AnyObject?
     var goldPrice:AnyObject?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,10 +40,30 @@ class GoldBaseViewController: BaseViewController {
                 loadSuccess?()
             }
         }
+        getGoldPremiumPrice() {
+            print("premium avaliable" )
+        }
         
         
     }
     
+    func getGoldPremiumPrice(_ avaliable:(()->Void)?  = nil){
+        modelCtrl.getPremiumGoldPrice(params: nil , false , succeeded: { (result) in
+            print("get premium success")
+            avaliable?()
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                //self.showMessagePrompt(message)
+            }
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+ 
+        }
+    }
     func getGoldPrice(_ avaliable:(()->Void)?  = nil){
         var isLoading:Bool = true
         if self.goldPrice != nil {

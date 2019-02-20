@@ -299,7 +299,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
     }
     
 
-    func chooseShippingPage(_ animated:Bool, withdrawData:(premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int))?){
+    func chooseShippingPage(_ animated:Bool, withdrawData:(premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double))?){
         if let vc:GoldWithDrawChooseShippingViewController  = self.storyboard?.instantiateViewController(withIdentifier: "GoldWithDrawChooseShippingViewController") as? GoldWithDrawChooseShippingViewController {
     
             vc.withdrawData = withdrawData
@@ -492,6 +492,19 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             self.present(vc, animated: animated, completion: nil)
         }
     }
+    
+    
+    func showGoldWithDrawResult(_ animated:Bool, transactionId:String, finish:(()->Void)? = nil){
+        if let vc:WithDrawResultNav  = self.storyboard?.instantiateViewController(withIdentifier: "WithDrawResultNav") as? WithDrawResultNav {
+            vc.transactionId = transactionId
+            
+            vc.callbackFinish = {
+                finish?()
+            }
+            self.present(vc, animated: animated, completion: nil)
+        }
+    }
+    
     
     
     func showPointFriendTransferView(_ animated:Bool){
@@ -748,7 +761,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         }
     }
     
-    func showShippingPopup(_ animated:Bool , nextStepCallback:((_ address:String)->Void)? = nil ){
+    func showShippingPopup(_ animated:Bool , addOnNew:Bool ,nextStepCallback:((_ address:String)->Void)? = nil ){
         let presenter: Presentr = {
             
             let w = self.view.frame.width * 0.9
@@ -771,6 +784,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "PopupShippingAddressViewController") as? PopupShippingAddressViewController{
             
+            vc.addOnNewAddress = addOnNew
             vc.nextStep =  { (address) in
                 nextStepCallback?(address)
             }

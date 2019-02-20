@@ -37,11 +37,56 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
     var districtPickerView:UIPickerView?
     var subDistrictPickerView:UIPickerView?
     
+    var provinces:[[String:AnyObject]]?
+    var userData:AnyObject?
+    var language = "th"
+
+    var addOnNewAddress:Bool = true
+    var selectedProvince:String = "" {
+        didSet{
+            //will nexstep load district
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       self.setUp()
+        self.language = DataController.sharedInstance.getLanguage()
+        
+        self.setUp()
+        
+        
+        
+        getUserInfo(){
+            if let data  = self.userData as? [String:AnyObject] {
+                
+                let first_name = data["goldsaving_member"]?["firstname"] as? String ?? ""
+                let last_name = data["goldsaving_member"]?["lastname"]as? String ?? ""
+                let mobile = data["goldsaving_member"]?["mobile"]as? String ?? ""
+                
+                self.nameTextField.text = "\(first_name) \(last_name)"
+                
+                let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
+                self.numberPhoneTextField.text =  newMText.chunkFormatted()
+            
+                self.nameTextField.isEnabled = false
+                self.numberPhoneTextField.isEnabled = false
+                self.nameTextField.textColor = UIColor.lightGray
+                self.numberPhoneTextField.textColor = UIColor.lightGray
+                
+            }
+        }
+        
+        
+        self.getProvinces(){
+            self.provincePickerView = UIPickerView()
+            self.provincePickerView!.delegate = self
+            self.provincePickerView!.dataSource = self
+            
+            self.provinceTextField.tintColor = UIColor.clear
+            self.provinceTextField.isUserInteractionEnabled = true
+            self.provinceTextField.inputView = self.provincePickerView
+        }
     }
     
     func setUp(){
@@ -68,6 +113,10 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
         self.numberPhoneTextField.delegate = self
         self.addressTextField.delegate = self
         
+        self.provinceTextField.delegate = self
+        self.districtTextField.delegate = self
+        self.subDistrictTextField.delegate = self
+        
         self.nameTextField.autocorrectionType = .no
         self.numberPhoneTextField.autocorrectionType = .no
         self.addressTextField.autocorrectionType = .no
@@ -92,16 +141,57 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
         
         self.setPicker()
     }
+    func getUserInfo(_ avaliable:(()->Void)?  = nil){
+        
+        var isLoading:Bool = true
+        if self.userData != nil {
+            isLoading = false
+        }else{
+            isLoading = true
+        }
+        modelCtrl.getUserData(params: nil , isLoading , succeeded: { (result) in
+            self.userData = result
+            avaliable?()
+            
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                self.showMessagePrompt(message)
+            }
+            
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            
+        }
+    }
+
+    func getProvinces(_ avaliable:(()->Void)? = nil){
+        modelCtrl.getProvince(params: nil , false , succeeded: { (result) in
+            print("get premium success")
+            
+            if let data = result as? [[String:AnyObject]]{
+                self.provinces = data
+            }
+            avaliable?()
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                //self.showMessagePrompt(message)
+            }
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            
+        }
+    }
     
     
     func setPicker(){
-        provincePickerView = UIPickerView()
-        provincePickerView!.delegate = self
-        provincePickerView!.dataSource = self
-        
-        self.provinceTextField.tintColor = UIColor.clear
-        self.provinceTextField.isUserInteractionEnabled = true
-        self.provinceTextField.inputView = provincePickerView
         
         districtPickerView = UIPickerView()
         districtPickerView!.delegate = self
@@ -127,7 +217,7 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == self.provincePickerView{
-            return 1
+            return self.provinces?.count ?? 0
         }
         if pickerView == self.districtPickerView{
             return 1
@@ -140,8 +230,9 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == self.provincePickerView{
-            return "province"
+            return self.getValueFromLanguage(self.provinces?[row])
         }
+        
         if pickerView == self.districtPickerView{
             return "district"
         }
@@ -151,7 +242,34 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
         
         return ""
     }
-    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView == self.provincePickerView{
+            self.selectedProvince = self.getValueFromLanguage(self.provinces?[row])
+            self.provinceTextField.text = selectedProvince
+        }
+    }
+    override func textFieldDidBeginEditing(_ textField: UITextField) {    //delegate method
+        super.textFieldDidBeginEditing(textField)
+        
+        if textField  == self.provinceTextField {
+            if textField.text!.isEmpty {
+                if let first = self.self.provinces?.first {
+                    self.provinceTextField.text = self.getValueFromLanguage(first)
+                }
+            }
+        }
+    }
+
+    func getValueFromLanguage(_ item:[String:AnyObject]?) -> String {
+        
+        var province = ""
+        if language == "en"{
+            province = item?["name_in_english"] as? String ?? ""
+        }else{
+            province =  item?["name_in_thai"] as? String ?? ""
+        }
+        return province
+    }
     @IBAction func saveTapped(_ sender: Any) {
         
         errorNamelLabel?.removeFromSuperview()

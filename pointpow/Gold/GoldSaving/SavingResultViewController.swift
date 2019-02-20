@@ -51,7 +51,7 @@ class SavingResultViewController: BaseViewController , UICollectionViewDelegate 
     
     func getDetail(){
         
-        self.modelCtrl.detailSavingGold(transactionNumber: self.transactionId ?? "" ,true , succeeded: { (result) in
+        self.modelCtrl.detailTransactionGold(transactionNumber: self.transactionId ?? "" ,true , succeeded: { (result) in
             self.savingResult = result
             self.resultCollectionView.reloadData()
             
@@ -93,11 +93,11 @@ class SavingResultViewController: BaseViewController , UICollectionViewDelegate 
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "SavingResultCell", for: indexPath) as? SavingResultCell {
                 cell = item
                 if let data = self.savingResult as? [String:AnyObject]{
-                    let transaction_number = data["transaction_no"] as? String ?? ""
-                    let created_at = data["created_at"] as? String ?? ""
-                    let gold_price = data["gold_price"] as? NSNumber ?? 0
-                    let pointpow_total = data["pointpow_total"] as? NSNumber ?? 0
-                    let gold_received = data["gold_received"] as? NSNumber ?? 0
+                    let transaction_number = data["saving_transaction"]?["transaction_no"] as? String ?? ""
+                    let created_at = data["saving_transaction"]?["created_at"] as? String ?? ""
+                    let gold_price = data["saving_transaction"]?["gold_price"] as? NSNumber ?? 0
+                    let pointpow_total = data["saving_transaction"]?["pointpow_total"] as? NSNumber ?? 0
+                    let gold_received = data["saving_transaction"]?["gold_received"] as? NSNumber ?? 0
                     
                     item.dateLabel.text = created_at
                     item.transactionNumberLabel.text = transaction_number

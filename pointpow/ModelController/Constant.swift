@@ -261,6 +261,12 @@ extension UIView {
         self.layer.borderColor = UIColor.lightGray.cgColor
         self.layer.masksToBounds = true
     }
+    func borderBlackolorProperties(borderWidth:CGFloat = 1.0 ,  radius:CGFloat? = nil){
+        self.layer.cornerRadius = radius ?? self.frame.size.height/2;
+        self.layer.borderWidth = borderWidth
+        self.layer.borderColor = UIColor.black.cgColor
+        self.layer.masksToBounds = true
+    }
     
     func borderDarkGrayColorProperties(borderWidth:CGFloat = 1.0){
         self.layer.cornerRadius = self.frame.size.height/2;
@@ -532,8 +538,13 @@ struct Constant {
         static let updateGoldMember = "\(HOST)\(POINTPOW_VERSION1)gold-saving/update"
         static let goldPrice = "\(HOST)\(POINTPOW_VERSION1)gold-saving/get/gold-price"
         static let savingGold = "\(HOST)\(POINTPOW_VERSION1)gold-saving/saving"
+        static let withdrawGold = "\(HOST)\(POINTPOW_VERSION1)gold-saving/withdraw"
         static let goldPremiumPrice = "\(HOST)\(POINTPOW_VERSION1)gold-saving/get/premium-price"
        
+        static let transectionGold = "\(HOST)\(POINTPOW_VERSION1)gold-saving/get/history"
+        
+         static let province = "\(HOST)\(POINTPOW_VERSION1)provinces"
+    
     }
     struct PathImages {
         static let profile = "\(PointPowAPI.HOST)\(PointPowAPI.POINTPOW_VERSION1)member/image/profile"
@@ -739,19 +750,29 @@ func heightForView(text:String, font:UIFont, width:CGFloat, lineHeight:Bool = fa
     
     return label.frame.height
 }
-func heightForViewWithDraw(_ countViewResult:Int, width:CGFloat) -> CGFloat{
-    let view = UIView(frame : CGRect(x: 0, y: 0, width: width, height: 250))
+func heightForViewWithDraw(_ countViewResult:Int, width:CGFloat  ,height:CGFloat = 250, rowHeight:CGFloat = CGFloat(40)) -> CGFloat{
+    let view = UIView(frame : CGRect(x: 0, y: 0, width: width, height: height))
 
     var sumheight = CGFloat(0)
     for _ in 0..<countViewResult {
-        sumheight += 40
+        sumheight += rowHeight
     }
     
     return view.frame.height + sumheight
 }
 
 
-
+func base64Convert(base64String: String?) -> UIImage?{
+    if (base64String?.isEmpty)! {
+        return nil
+    }else {
+        // !!! Separation part is optional, depends on your Base64String !!!
+        let temp = base64String?.components(separatedBy: ",")
+        let dataDecoded : Data = Data(base64Encoded: temp![1], options: .ignoreUnknownCharacters)!
+        let decodedimage = UIImage(data: dataDecoded)
+        return decodedimage!
+    }
+}
 func convertDateOfDay(_ dateString:String) -> String {
     //2017-03-29 20:15:25.000+00:00
     let dateFormatter = DateFormatter()

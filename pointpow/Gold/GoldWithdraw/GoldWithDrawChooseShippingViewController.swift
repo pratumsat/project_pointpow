@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import Alamofire
 
 class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    var withdrawData:(premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int))?{
+    var withdrawData:(premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double))?{
         didSet{
             print(withdrawData!)
         }
@@ -36,6 +37,63 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
     
 
     func setUp(){
+        self.handlerEnterSuccess = {
+            
+            if self.option == 0 {
+
+                
+             
+
+
+                //get at pointpow
+                let withdrawAmount = self.withdrawData!.goldAmountToUnit.amount
+                var unit = ""
+                var pick = ""
+                if self.withdrawData!.goldAmountToUnit.unit == 0 {
+                    unit = "salueng"
+                    pick = "office"
+                }else{
+                    unit = "baht"
+                    pick = "thaipost"
+                }
+                let params:Parameters = ["withdraw_amount": withdrawAmount,
+                                         "unit": unit,
+                                         "pick": pick]
+                print(params)
+            
+                self.modelCtrl.withdrawGold(params: params, true , succeeded: { (result) in
+                    if let data = result as? [String:AnyObject]{
+                        let transactionId = data["withdraw"]?["transaction_no"] as? String ?? ""
+
+                        self.showGoldWithDrawResult(true , transactionId:  transactionId) {
+                            if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
+                                self.revealViewController()?.pushFrontViewController(saving, animated: true)
+                                
+                            }
+                        }
+
+                    }
+
+                }, error: { (error) in
+                    if let mError = error as? [String:AnyObject]{
+                        let message = mError["message"] as? String ?? ""
+                        print(message)
+                        self.showMessagePrompt(message)
+                    }
+
+                    print(error)
+                }) { (messageError) in
+                    print("messageError")
+                    self.handlerMessageError(messageError)
+
+                }
+            }else{
+                //thai post
+            }
+            
+            
+        }
+        
         self.backgroundImage?.image = nil
         self.shippingCollectionView.dataSource = self
         self.shippingCollectionView.delegate = self
@@ -107,9 +165,11 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
                 item.nextCallback = {
                     if self.option == 0 {
                         //next
+                        self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
+                        
                     }else{
                         //choose address
-                        self.showShippingPopup(true) { (address) in
+                        self.showShippingPopup(true , addOnNew: true) { (address) in
                             //nextstep
                         }
                         //self.shippingAddress = "ธนัซมน์ ประทุมเศษ 112/88 สวนหลวงวิว ดอกไม้ ประเวศ กทม 10250 0817555989"

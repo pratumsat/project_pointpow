@@ -150,7 +150,7 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
                     let buyPrice = data["open_buy_price"] as? NSNumber ?? 0
                     let sellPrice = data["open_sell_price"] as? NSNumber ?? 0
                     let diff = data["diff"] as? NSNumber ?? 0
-                    let created_at = data["created_at"] as? String ?? ""
+                    let created_at = data["updated_at"] as? String ?? ""
                     
                     item.dateLabel.text  = created_at
                     
@@ -159,21 +159,17 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
                  
                     item.buyPriceLabel.text  = numberFormatter.string(from: buyPrice)
                     item.sellPriceLabel.text = numberFormatter.string(from: sellPrice)
-                    
+                    item.diffLabel.text = numberFormatter.string(from: NSNumber(value: abs(diff.intValue)))
                     
                     if diff == 0 {
-                         item.diffLabel.text = numberFormatter.string(from: diff)
                         item.diffLabel.textColor = UIColor.darkGray
                         item.diffImageView.image = nil
                     }
                     if diff.intValue > 0 {
-                         item.diffLabel.text = numberFormatter.string(from: diff)
                         item.diffLabel.textColor = Constant.Colors.GREEN
                         item.diffImageView.image = UIImage(named: "ic-gold-value-more")
                     }
                     if diff.intValue < 0 {
-                        let newValue = numberFormatter.string(from: diff)!
-                        item.diffLabel.text = newValue.substring(start: 1, end: newValue.count)
                         item.diffLabel.textColor = Constant.Colors.PRIMARY_COLOR
                         item.diffImageView.image = UIImage(named: "ic-gold-value-less")
                     }

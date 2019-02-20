@@ -18,8 +18,8 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
     var gold_balance:NSNumber = NSNumber(value: 0.0)
     
     var drawCount = 0
-    var amountToUnit:(amount:Int, unit:Int)?
-    var withdrawData:(premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int))?
+    var amountToUnit:(amount:Int, unit:Int , price:Double)?
+    var withdrawData:(premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double))?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
         
         setUp()
      
-        getUserInfo() {
+        getDataMember() {
             self.updateView()
         }
         
@@ -120,7 +120,7 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
                 }
                 
                 item.goldSpendCallback = { (amount, unit) in
-                    self.amountToUnit = (amount: amount, unit: unit)
+                    self.amountToUnit = (amount: amount, unit: unit, price: 0.0)
                     if unit == 0 {
                        //salueng
                         let weightToSalueng = 15.244/4
@@ -129,12 +129,35 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
                         
                         let sumWeight = self.gold_balance.doubleValue - stg
                         self.goldBalanceLabel?.text = String(format: "%.04f", sumWeight)
+                        
+                        if let data  = self.goldPrice as? [String:AnyObject] {
+                            
+                            let goldprice = data["open_sell_price"] as? NSNumber ?? 0
+                            let gramToBaht = Double(goldprice.intValue)/15.244
+                            
+                            
+                            
+                            self.amountToUnit?.price = Double(stg)*gramToBaht
+                        }
+                        
+                       
                     }else{
                        //baht
                         let btg = Double(amount)*15.244
                         
                         let sumWeight = self.gold_balance.doubleValue - btg
                         self.goldBalanceLabel?.text = String(format: "%.04f", sumWeight)
+                        
+                        
+                        if let data  = self.goldPrice as? [String:AnyObject] {
+                            
+                            let goldprice = data["open_sell_price"] as? NSNumber ?? 0
+                            let gramToBaht = Double(goldprice.intValue)/15.244
+                            
+                            
+                           
+                            self.amountToUnit?.price = Double(btg)*gramToBaht
+                        }
                     }
                 }
                 

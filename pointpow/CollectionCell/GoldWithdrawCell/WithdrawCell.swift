@@ -9,7 +9,8 @@
 import UIKit
 
 class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDataSource, UIGestureRecognizerDelegate ,UITextFieldDelegate{
-   
+    @IBOutlet weak var headView: UIView!
+    
     @IBOutlet weak var unitView: UIView!
     @IBOutlet weak var goldReceiveInfoLabel: UILabel!
     @IBOutlet weak var dropDownImageView: UIImageView!
@@ -467,6 +468,9 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
     }
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        self.headView.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
+
         
         self.amountTextField.borderRedColorProperties(borderWidth: 1)
         self.amountTextField.setRightPaddingPoints(10)

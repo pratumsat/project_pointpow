@@ -17,6 +17,11 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
     }
     var option = 0 {
         didSet{
+            if option == 1{
+                self.showShippingPopup(true , editData: nil) { (address) in
+                    //nextstep
+                }
+            }
             self.shippingCollectionView.reloadData()
         }
     }
@@ -148,7 +153,12 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
                     item.infoThaipostCallback = {
                         //info thaipost
                     }
-                    
+                    item.editCallback = {
+                        //choose address
+                        self.showShippingPopup(true , editData: nil) { (address) in
+                            //nextstep
+                        }
+                    }
                     
                     let numberFormatter = NumberFormatter()
                     numberFormatter.numberStyle = .decimal
@@ -169,9 +179,9 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
                         
                     }else{
                         //choose address
-                        self.showShippingPopup(true , addOnNew: true) { (address) in
-                            //nextstep
-                        }
+//                        self.showShippingPopup(true , editData: nil) { (address) in
+//                            //nextstep
+//                        }
                         //self.shippingAddress = "ธนัซมน์ ประทุมเศษ 112/88 สวนหลวงวิว ดอกไม้ ประเวศ กทม 10250 0817555989"
                     }
                 }

@@ -10,6 +10,7 @@ import UIKit
 
 class WithDrawMyGoldCell: UICollectionViewCell {
 
+    @IBOutlet weak var headView: UIView!
     @IBOutlet weak var goldAverageLabel: UILabel!
     @IBOutlet weak var goldBalanceLabel: UILabel!
     override func awakeFromNib() {
@@ -28,6 +29,7 @@ class WithDrawMyGoldCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
     
+            self.headView.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
     }
 
 }

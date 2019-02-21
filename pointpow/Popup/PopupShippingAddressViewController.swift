@@ -38,13 +38,55 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
     var subDistrictPickerView:UIPickerView?
     
     var provinces:[[String:AnyObject]]?
+    var districts:[[String:AnyObject]]?
+    var subDistricts:[[String:AnyObject]]?
     var userData:AnyObject?
     var language = "th"
 
-    var addOnNewAddress:Bool = true
-    var selectedProvince:String = "" {
+    var editData:AnyObject?
+    
+    var selectedProvinceId:Int = 0 {
         didSet{
             //will nexstep load district
+            getDistrict() {
+                self.districtPickerView = UIPickerView()
+                self.districtPickerView!.delegate = self
+                self.districtPickerView!.dataSource = self
+                
+                self.districtTextField.isEnabled = true
+                self.districtTextField.tintColor = UIColor.clear
+                self.districtTextField.isUserInteractionEnabled = true
+                self.districtTextField.inputView = self.districtPickerView
+                
+                self.districtTextField.text = ""
+                self.subDistrictTextField.text = ""
+                self.postCodeTextField.text = ""
+            }
+        }
+    }
+    var selectedDistrictId:Int = 0 {
+        didSet{
+            getSubDistrict() {
+                self.subDistrictPickerView = UIPickerView()
+                self.subDistrictPickerView!.delegate = self
+                self.subDistrictPickerView!.dataSource = self
+                
+                
+                
+                self.subDistrictTextField.isEnabled = true
+                self.subDistrictTextField.tintColor = UIColor.clear
+                self.subDistrictTextField.isUserInteractionEnabled = true
+                self.subDistrictTextField.inputView = self.subDistrictPickerView
+                
+                self.subDistrictTextField.text = ""
+                self.postCodeTextField.text = ""
+            }
+           
+        }
+    }
+    var selectedSubDistrictId:Int = 0 {
+        didSet{
+            
         }
     }
     
@@ -116,6 +158,11 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
         self.provinceTextField.delegate = self
         self.districtTextField.delegate = self
         self.subDistrictTextField.delegate = self
+        
+        self.provinceTextField.isEnabled = true
+        self.districtTextField.isEnabled = false
+        self.subDistrictTextField.isEnabled = false
+        self.postCodeTextField.isEnabled = false
         
         self.nameTextField.autocorrectionType = .no
         self.numberPhoneTextField.autocorrectionType = .no
@@ -189,26 +236,53 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
             
         }
     }
+    func getDistrict(_ avaliable:(()->Void)? = nil){
+        
+        modelCtrl.getDistrict(params: nil ,id: selectedProvinceId, false , succeeded: { (result) in
+            print("get premium success")
+            
+            if let data = result as? [[String:AnyObject]]{
+                self.districts = data
+            }
+            avaliable?()
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                //self.showMessagePrompt(message)
+            }
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            
+        }
+    }
+    func getSubDistrict(_ avaliable:(()->Void)? = nil){
+        modelCtrl.getSubDistrict(params: nil ,id: selectedDistrictId, false , succeeded: { (result) in
+            print("get premium success")
+            
+            if let data = result as? [[String:AnyObject]]{
+                self.subDistricts = data
+            }
+            avaliable?()
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                //self.showMessagePrompt(message)
+            }
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            
+        }
+    }
     
     
     func setPicker(){
         
-        districtPickerView = UIPickerView()
-        districtPickerView!.delegate = self
-        districtPickerView!.dataSource = self
-        
-        self.districtTextField.tintColor = UIColor.clear
-        self.districtTextField.isUserInteractionEnabled = true
-        self.districtTextField.inputView = districtPickerView
-        
-        
-        subDistrictPickerView = UIPickerView()
-        subDistrictPickerView!.delegate = self
-        subDistrictPickerView!.dataSource = self
-        
-        self.subDistrictTextField.tintColor = UIColor.clear
-        self.subDistrictTextField.isUserInteractionEnabled = true
-        self.subDistrictTextField.inputView = subDistrictPickerView
     }
     
     
@@ -220,10 +294,10 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
             return self.provinces?.count ?? 0
         }
         if pickerView == self.districtPickerView{
-            return 1
+            return self.districts?.count ?? 0
         }
         if pickerView == self.subDistrictPickerView{
-            return 1
+            return self.subDistricts?.count ?? 0
         }
         return 1
         
@@ -234,18 +308,27 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
         }
         
         if pickerView == self.districtPickerView{
-            return "district"
+            return self.getValueFromLanguage(self.districts?[row])
         }
         if pickerView == self.subDistrictPickerView{
-            return "sub_district"
+            return self.getValueFromLanguage(self.subDistricts?[row])
         }
         
         return ""
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == self.provincePickerView{
-            self.selectedProvince = self.getValueFromLanguage(self.provinces?[row])
-            self.provinceTextField.text = selectedProvince
+            self.selectedProvinceId = self.getIdFromLanguage(self.provinces?[row])
+            self.provinceTextField.text = self.getValueFromLanguage(self.provinces?[row])
+        }
+        if pickerView == self.districtPickerView{
+            self.selectedDistrictId = self.getIdFromLanguage(self.districts?[row])
+            self.districtTextField.text = self.getValueFromLanguage(self.districts?[row])
+        }
+        if pickerView == self.subDistrictPickerView{
+            self.selectedSubDistrictId = self.getIdFromLanguage(self.subDistricts?[row])
+            self.subDistrictTextField.text = self.getValueFromLanguage(self.subDistricts?[row])
+            self.postCodeTextField.text = (self.subDistricts?[row]["zip_code"] as? NSNumber)?.stringValue ?? ""
         }
     }
     override func textFieldDidBeginEditing(_ textField: UITextField) {    //delegate method
@@ -253,13 +336,34 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
         
         if textField  == self.provinceTextField {
             if textField.text!.isEmpty {
-                if let first = self.self.provinces?.first {
+                if let first = self.provinces?.first {
+                    self.selectedProvinceId = self.getIdFromLanguage(first)
                     self.provinceTextField.text = self.getValueFromLanguage(first)
                 }
             }
         }
+        if textField  == self.districtTextField {
+            if textField.text!.isEmpty {
+                if let first = self.districts?.first {
+                    self.selectedDistrictId = self.getIdFromLanguage(first)
+                    self.districtTextField.text = self.getValueFromLanguage(first)
+                }
+            }
+        }
+        if textField  == self.subDistrictTextField {
+            if textField.text!.isEmpty {
+                if let first = self.subDistricts?.first {
+                    self.selectedSubDistrictId = self.getIdFromLanguage(first)
+                    self.subDistrictTextField.text = self.getValueFromLanguage(first)
+                    self.postCodeTextField.text = (first["zip_code"] as? NSNumber)?.stringValue ?? ""
+                }
+            }
+        }
     }
-
+    
+    func getIdFromLanguage(_ item:[String:AnyObject]?) -> Int {
+        return (item?["id"] as? NSNumber)?.intValue ?? 0
+    }
     func getValueFromLanguage(_ item:[String:AnyObject]?) -> String {
         
         var province = ""

@@ -543,7 +543,9 @@ struct Constant {
        
         static let transectionGold = "\(HOST)\(POINTPOW_VERSION1)gold-saving/get/history"
         
-         static let province = "\(HOST)\(POINTPOW_VERSION1)provinces"
+        static let province = "\(HOST)\(POINTPOW_VERSION1)provinces"
+        static let districts = "\(HOST)\(POINTPOW_VERSION1)districts"
+        static let subdistricts = "\(HOST)\(POINTPOW_VERSION1)subdistricts"
     
     }
     struct PathImages {

@@ -178,8 +178,12 @@ class WithDrawResultViewController: BaseViewController  , UICollectionViewDelega
                     let qrbase64 = data["withdraw_transaction"]?["qr_code"] as? String ?? ""
                     let gold_unit = data["withdraw_transaction"]?["gold_unit"] as? String ?? ""
                     let gold_withdraw = data["withdraw_transaction"]?["gold_withdraw"] as? NSNumber ?? 0
-                    let gold_received = data["withdraw_transaction"]?["gold_received"] as? [[String:AnyObject]] ?? [[:]]
+                    let gold_received = data["withdraw_transaction"]?["gold_received"] as? [[String:AnyObject]] ??
+                        [[:]]
                     let premium = data["withdraw_transaction"]?["premium"] as? NSNumber ?? 0
+                    let status = data["status"] as? String ?? ""
+                    
+                    
                     
                     let unitSalueng = NSLocalizedString("unit-salueng", comment: "")
                     let unitBaht = NSLocalizedString("unit-baht", comment: "")
@@ -230,9 +234,24 @@ class WithDrawResultViewController: BaseViewController  , UICollectionViewDelega
                     item.premiumLabel.text = numberFormatter.string(from: premium)
                     item.dateLabel.text = created_at
                     item.transactionLabel.text = transaction_number
+                 
+                    item.qrCodeImageView.image  = base64Convert(base64String: qrbase64)
                     
                     
-                    //item.qrCodeImageView.image  = base64Convert(base64String: qrbase64)
+                    switch status {
+                    case "waiting":
+                        item.statusLabel.text = NSLocalizedString("string-dailog-gold-transaction-status-waitting", comment: "")
+                        break
+                    case "success":
+                        item.statusLabel.text = NSLocalizedString("string-dailog-gold-transaction-status-cancel", comment: "")
+                        break
+                    case "cancel":
+                        item.statusLabel.text = NSLocalizedString("string-dailog-gold-transaction-status-success", comment: "")
+                        break
+                    default:
+                        break
+                    }
+                   
                 }
                 
                 

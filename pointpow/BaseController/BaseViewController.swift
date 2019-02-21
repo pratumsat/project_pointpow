@@ -761,7 +761,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         }
     }
     
-    func showShippingPopup(_ animated:Bool , addOnNew:Bool ,nextStepCallback:((_ address:String)->Void)? = nil ){
+    func showShippingPopup(_ animated:Bool , editData:AnyObject? ,nextStepCallback:((_ address:String)->Void)? = nil ){
         let presenter: Presentr = {
             
             let w = self.view.frame.width * 0.9
@@ -784,7 +784,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "PopupShippingAddressViewController") as? PopupShippingAddressViewController{
             
-            vc.addOnNewAddress = addOnNew
+            vc.editData = editData
             vc.nextStep =  { (address) in
                 nextStepCallback?(address)
             }

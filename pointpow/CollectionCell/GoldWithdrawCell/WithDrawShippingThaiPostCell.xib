@@ -40,23 +40,32 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHC-qr-gGo">
-                                <rect key="frame" x="10" y="54" width="370" height="47"/>
+                                <rect key="frame" x="10" y="54" width="330" height="70.5"/>
                                 <string key="text">ที่อยู่ในการจัดส่งไปรษณีย์ที่อยู่ในการจัดส่งไปรษณีย์ที่อยู่ในการจัดส่งไปรษณีย์ที่อยู่ในการจัดส่งไปรษณีย์ที่อยู่ในการจัดส่งไปรษณีย์</string>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-fav-edit" translatesAutoresizingMaskIntoConstraints="NO" id="xAI-fN-Jz2">
+                                <rect key="frame" x="350" y="60" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="XF2-na-gjl"/>
+                                    <constraint firstAttribute="width" secondItem="xAI-fN-Jz2" secondAttribute="height" multiplier="1:1" id="a7Q-Ta-Xbj"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="xAI-fN-Jz2" secondAttribute="trailing" constant="10" id="KPf-Cs-orc"/>
                             <constraint firstItem="sOc-KI-Hvt" firstAttribute="top" secondItem="Xbj-40-Ew9" secondAttribute="top" constant="20" id="Knj-Fk-HSl"/>
                             <constraint firstItem="YtN-m5-5MH" firstAttribute="leading" secondItem="Xbj-40-Ew9" secondAttribute="leading" id="Nyp-bk-V0h"/>
+                            <constraint firstItem="xAI-fN-Jz2" firstAttribute="leading" secondItem="fHC-qr-gGo" secondAttribute="trailing" constant="10" id="SCS-B9-Q3S"/>
                             <constraint firstAttribute="trailing" secondItem="YtN-m5-5MH" secondAttribute="trailing" id="a2n-QA-nQ4"/>
                             <constraint firstAttribute="height" constant="150" id="bZm-CM-7K0"/>
                             <constraint firstItem="sOc-KI-Hvt" firstAttribute="leading" secondItem="Xbj-40-Ew9" secondAttribute="leading" constant="10" id="lFe-5L-DRV"/>
                             <constraint firstItem="fHC-qr-gGo" firstAttribute="leading" secondItem="Xbj-40-Ew9" secondAttribute="leading" constant="10" id="m5i-cn-Lmt"/>
                             <constraint firstAttribute="bottom" secondItem="YtN-m5-5MH" secondAttribute="bottom" id="sih-uP-60S"/>
                             <constraint firstItem="fHC-qr-gGo" firstAttribute="top" secondItem="sOc-KI-Hvt" secondAttribute="bottom" constant="10" id="vcM-Xo-7KM"/>
-                            <constraint firstAttribute="trailing" secondItem="fHC-qr-gGo" secondAttribute="trailing" constant="10" id="xlS-jD-WEl"/>
+                            <constraint firstItem="xAI-fN-Jz2" firstAttribute="centerY" secondItem="Xbj-40-Ew9" secondAttribute="centerY" id="xOv-9b-bB4"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5nY-EE-QYj">
@@ -156,6 +165,7 @@
             <viewLayoutGuide key="safeArea" id="Jbr-RX-xUd"/>
             <size key="customSize" width="461" height="500"/>
             <connections>
+                <outlet property="editImageView" destination="xAI-fN-Jz2" id="3pE-a3-CP9"/>
                 <outlet property="emsLabel" destination="294-cn-cI1" id="63p-le-oPD"/>
                 <outlet property="heightAddressConstrainst" destination="bZm-CM-7K0" id="4QU-5v-Qgi"/>
                 <outlet property="infoThaiPostImageView" destination="keK-ih-XZT" id="Hfs-rW-mZR"/>
@@ -168,6 +178,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="ic-fav-edit" width="100" height="99"/>
         <image name="ic-info" width="40" height="40"/>
     </resources>
 </document>

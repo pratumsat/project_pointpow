@@ -36,6 +36,8 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
 
         self.title = NSLocalizedString("string-title-gold-page", comment: "")
         self.setUp()
+        
+     
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -79,6 +81,7 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
             //let profileImage = data["picture_data"] as? String ?? ""
             let registerGold = data["gold_saving_acc"] as? NSNumber ?? 0
             let status = data["goldsaving_member"]?["status"] as? String ?? ""
+            
             self.statusMemberGold = status
             if registerGold.boolValue {
                 self.isRegistered = true
@@ -182,13 +185,43 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
                
                 if let data  = self.userData as? [String:AnyObject] {
                     let gold_balance = data["goldsaving_member"]?["gold_balance"] as? NSNumber ?? 0
+                    let gold_cost = data["goldsaving_member"]?["gold_cost"] as? NSNumber ?? 0
                     
-                    let numberFormatter = NumberFormatter()
+                    var numberFormatter = NumberFormatter()
                     numberFormatter.numberStyle = .decimal
                     numberFormatter.minimumFractionDigits = 4
                    
                     
                     item.goldBalanceLabel.text = numberFormatter.string(from: gold_balance)
+                    
+                    
+                    numberFormatter = NumberFormatter()
+                    numberFormatter.numberStyle = .decimal
+                    numberFormatter.minimumFractionDigits = 2
+                    
+                    
+                    item.goldpriceAverage.text = numberFormatter.string(from: gold_cost)
+                   
+                    if let data  = self.goldPrice as? [String:AnyObject] {
+                        let sellPrice = data["open_sell_price"] as? NSNumber ?? 0
+                        
+                        numberFormatter = NumberFormatter()
+                        numberFormatter.numberStyle = .decimal
+                        item.goldPresentLabel.text = numberFormatter.string(from: sellPrice)
+                        
+                        //let diff = sellPrice.intValue - gold_cost.intValue
+                        //item.goldDiffLabel.text = numberFormatter.string(from: NSNumber(value:diff))
+                        
+//                        if diff == 0 {
+//                            item.goldDiffLabel.textColor = UIColor.darkGray
+//                        }
+//                        if diff > 0 {
+//                            item.goldDiffLabel.textColor = Constant.Colors.GREEN
+//                        }
+//                        if diff < 0 {
+//                            item.goldDiffLabel.textColor = Constant.Colors.PRIMARY_COLOR
+//                        }
+                    }
                     
                 }
             }

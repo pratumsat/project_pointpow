@@ -132,7 +132,7 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
                         
                         if let data  = self.goldPrice as? [String:AnyObject] {
                             
-                            let goldprice = data["open_sell_price"] as? NSNumber ?? 0
+                            let goldprice = data["open_buy_price"] as? NSNumber ?? 0
                             let gramToBaht = Double(goldprice.intValue)/15.244
                             
                             
@@ -151,7 +151,7 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
                         
                         if let data  = self.goldPrice as? [String:AnyObject] {
                             
-                            let goldprice = data["open_sell_price"] as? NSNumber ?? 0
+                            let goldprice = data["open_buy_price"] as? NSNumber ?? 0
                             let gramToBaht = Double(goldprice.intValue)/15.244
                             
                             
@@ -239,7 +239,7 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
         if indexPath.section == 0 {
             
             let width = collectionView.frame.width - 40
-            let height = width/360*130
+            let height = width/360*190
             return CGSize(width: width, height: height)
         } else if indexPath.section == 1 {
            
@@ -254,7 +254,7 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
         } else {
             let width = collectionView.frame.width
             let cheight = collectionView.frame.height
-            let height = abs((cheight) - (((width/360*130))+(width/360*430)+80))
+            let height = abs((cheight) - (((width/360*190))+(250)+(150)))
             
             return CGSize(width: width, height: height)
         }

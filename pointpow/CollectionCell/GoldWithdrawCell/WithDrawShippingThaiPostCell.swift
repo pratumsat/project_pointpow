@@ -9,6 +9,7 @@
 import UIKit
 
 class WithDrawShippingThaiPostCell: UICollectionViewCell {
+    @IBOutlet weak var editImageView: UIImageView!
     @IBOutlet weak var shippingAddressLabel: UILabel!
     
     @IBOutlet weak var titleShippingLabel: UILabel!
@@ -19,6 +20,7 @@ class WithDrawShippingThaiPostCell: UICollectionViewCell {
     @IBOutlet weak var premiumLabel: UILabel!
     
     var infoThaipostCallback:(()->Void)?
+    var editCallback:(()->Void)?
     var address:String?{
         didSet{
             if address == nil{
@@ -27,6 +29,8 @@ class WithDrawShippingThaiPostCell: UICollectionViewCell {
             self.shippingAddressLabel.text = address
             self.titleShippingLabel.isHidden = false
             self.shippingAddressLabel.isHidden = false
+            self.editImageView.isHidden = false
+            
             
             
             let height = heightForView(text: address!, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 18)!, width: self.frame.width) + 80
@@ -46,14 +50,24 @@ class WithDrawShippingThaiPostCell: UICollectionViewCell {
         self.infoThaiPostImageView.isUserInteractionEnabled  = true
         self.infoThaiPostImageView.addGestureRecognizer(info)
         
+        
+        let edit = UITapGestureRecognizer(target: self, action: #selector(editTapped))
+        self.editImageView.isUserInteractionEnabled  = true
+        self.editImageView.addGestureRecognizer(edit)
+        
         self.initView()
     }
     func initView(){
+        self.editImageView.isHidden = true
         self.titleShippingLabel.isHidden = true
         self.shippingAddressLabel.isHidden = true
         self.heightAddressConstrainst.constant = 0
     }
     
+    @objc func editTapped(){
+        self.editCallback?()
+    
+    }
     @objc func infoTapped(){
         self.infoThaipostCallback?()
     }

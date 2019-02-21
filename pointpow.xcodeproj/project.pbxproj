@@ -117,12 +117,17 @@
 		C1892E05221CFD3300F5412F /* WithDrawResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1892E04221CFD3300F5412F /* WithDrawResultViewController.swift */; };
 		C1892E08221D0ED300F5412F /* WithDrawResultPointPowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1892E06221D0ED300F5412F /* WithDrawResultPointPowCell.swift */; };
 		C1892E09221D0ED400F5412F /* WithDrawResultPointPowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1892E07221D0ED300F5412F /* WithDrawResultPointPowCell.xib */; };
+		C1892E0D221E900900F5412F /* TransactionGoldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1892E0B221E900900F5412F /* TransactionGoldCell.swift */; };
+		C1892E0E221E900900F5412F /* TransactionGoldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1892E0C221E900900F5412F /* TransactionGoldCell.xib */; };
+		C1892E11221E92BE00F5412F /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1892E0F221E92BE00F5412F /* HeaderCollectionReusableView.swift */; };
+		C1892E12221E92BE00F5412F /* HeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1892E10221E92BE00F5412F /* HeaderCollectionReusableView.xib */; };
+		C1892E14221E9CCC00F5412F /* GoldHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1892E13221E9CCC00F5412F /* GoldHistory.swift */; };
+		C1892E18221EB9DC00F5412F /* PopupGoldHistoryFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1892E17221EB9DC00F5412F /* PopupGoldHistoryFilterViewController.swift */; };
 		C18A1CE222112D2A002CAF4C /* RegisterGoldstep2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18A1CE122112D2A002CAF4C /* RegisterGoldstep2ViewController.swift */; };
 		C18A1CE422113712002CAF4C /* RegisterGoldstep3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18A1CE322113712002CAF4C /* RegisterGoldstep3ViewController.swift */; };
 		C18A1CE622118BC9002CAF4C /* GoldSWRevealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18A1CE522118BC9002CAF4C /* GoldSWRevealViewController.swift */; };
 		C197FEDA21DC5616002F24E8 /* PopUpRegisterSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FED921DC5616002F24E8 /* PopUpRegisterSuccessViewController.swift */; };
 		C197FEDE21DC8E98002F24E8 /* ResetNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FEDD21DC8E98002F24E8 /* ResetNav.swift */; };
-		C197FEE121E5D225002F24E8 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FEE021E5D225002F24E8 /* UserInfo.swift */; };
 		C197FEE42207E4F6002F24E8 /* NotoSansThai-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C197FEE32207E497002F24E8 /* NotoSansThai-Bold.ttf */; };
 		C197FEE52207E4F9002F24E8 /* NotoSansThai-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C197FEE22207E485002F24E8 /* NotoSansThai-Regular.ttf */; };
 		C197FEE72207EA18002F24E8 /* NotoSansThai-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C197FEE62207EA09002F24E8 /* NotoSansThai-SemiBold.ttf */; };
@@ -313,12 +318,17 @@
 		C1892E04221CFD3300F5412F /* WithDrawResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawResultViewController.swift; sourceTree = "<group>"; };
 		C1892E06221D0ED300F5412F /* WithDrawResultPointPowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawResultPointPowCell.swift; sourceTree = "<group>"; };
 		C1892E07221D0ED300F5412F /* WithDrawResultPointPowCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithDrawResultPointPowCell.xib; sourceTree = "<group>"; };
+		C1892E0B221E900900F5412F /* TransactionGoldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionGoldCell.swift; sourceTree = "<group>"; };
+		C1892E0C221E900900F5412F /* TransactionGoldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionGoldCell.xib; sourceTree = "<group>"; };
+		C1892E0F221E92BE00F5412F /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		C1892E10221E92BE00F5412F /* HeaderCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCollectionReusableView.xib; sourceTree = "<group>"; };
+		C1892E13221E9CCC00F5412F /* GoldHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldHistory.swift; sourceTree = "<group>"; };
+		C1892E17221EB9DC00F5412F /* PopupGoldHistoryFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupGoldHistoryFilterViewController.swift; sourceTree = "<group>"; };
 		C18A1CE122112D2A002CAF4C /* RegisterGoldstep2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGoldstep2ViewController.swift; sourceTree = "<group>"; };
 		C18A1CE322113712002CAF4C /* RegisterGoldstep3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGoldstep3ViewController.swift; sourceTree = "<group>"; };
 		C18A1CE522118BC9002CAF4C /* GoldSWRevealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldSWRevealViewController.swift; sourceTree = "<group>"; };
 		C197FED921DC5616002F24E8 /* PopUpRegisterSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpRegisterSuccessViewController.swift; sourceTree = "<group>"; };
 		C197FEDD21DC8E98002F24E8 /* ResetNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetNav.swift; sourceTree = "<group>"; };
-		C197FEE021E5D225002F24E8 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		C197FEE22207E485002F24E8 /* NotoSansThai-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansThai-Regular.ttf"; sourceTree = "<group>"; };
 		C197FEE32207E497002F24E8 /* NotoSansThai-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansThai-Bold.ttf"; sourceTree = "<group>"; };
 		C197FEE62207EA09002F24E8 /* NotoSansThai-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansThai-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -648,6 +658,7 @@
 		C11A93B4218C00A000627B44 /* CollectionCell */ = {
 			isa = PBXGroup;
 			children = (
+				C1892E0A221E8FDB00F5412F /* GoldHistroryCell */,
 				C1F761072216E2DB000A2CA9 /* GoldWithdrawCell */,
 				C1F760F22216922F000A2CA9 /* GoldSavingCell */,
 				C106BEAB220BEAF500E2331E /* GoldProfileCell */,
@@ -736,10 +747,21 @@
 			path = GoldHistory;
 			sourceTree = "<group>";
 		};
+		C1892E0A221E8FDB00F5412F /* GoldHistroryCell */ = {
+			isa = PBXGroup;
+			children = (
+				C1892E0B221E900900F5412F /* TransactionGoldCell.swift */,
+				C1892E0C221E900900F5412F /* TransactionGoldCell.xib */,
+				C1892E0F221E92BE00F5412F /* HeaderCollectionReusableView.swift */,
+				C1892E10221E92BE00F5412F /* HeaderCollectionReusableView.xib */,
+			);
+			path = GoldHistroryCell;
+			sourceTree = "<group>";
+		};
 		C197FEDF21E5D20B002F24E8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C197FEE021E5D225002F24E8 /* UserInfo.swift */,
+				C1892E13221E9CCC00F5412F /* GoldHistory.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -871,6 +893,7 @@
 				C169FFCA21C7939E00F9D354 /* FavorPopupViewController.swift */,
 				C197FED921DC5616002F24E8 /* PopUpRegisterSuccessViewController.swift */,
 				C197FEDD21DC8E98002F24E8 /* ResetNav.swift */,
+				C1892E17221EB9DC00F5412F /* PopupGoldHistoryFilterViewController.swift */,
 			);
 			path = Popup;
 			sourceTree = "<group>";
@@ -1089,6 +1112,7 @@
 				C10CA1B22193E01200316DF3 /* ItemServiceCell.xib in Resources */,
 				C106BEB3220BED4E00E2331E /* BrowseImageCell.xib in Resources */,
 				C11BFCB0221BF70300F066DE /* WithDrawShippingThaiPostCell.xib in Resources */,
+				C1892E0E221E900900F5412F /* TransactionGoldCell.xib in Resources */,
 				C169FFBF21C36E1300F9D354 /* Localizable.strings in Resources */,
 				C197FEE42207E4F6002F24E8 /* NotoSansThai-Bold.ttf in Resources */,
 				C106BEAF220BEB3000E2331E /* GoldItemCell.xib in Resources */,
@@ -1101,6 +1125,7 @@
 				C197FEE52207E4F9002F24E8 /* NotoSansThai-Regular.ttf in Resources */,
 				C10CA1BA2193E1D100316DF3 /* PromotionCampainCell.xib in Resources */,
 				C169FFC921C4F10100F9D354 /* FavorCell.xib in Resources */,
+				C1892E12221E92BE00F5412F /* HeaderCollectionReusableView.xib in Resources */,
 				C11BDFB921A2B95D00443D2D /* ItemFriendSummaryCell.xib in Resources */,
 				C1F760F6221692FD000A2CA9 /* SavingConfirmCell.xib in Resources */,
 				C10D94B2220960940083FA47 /* NameTableViewCell.xib in Resources */,
@@ -1305,6 +1330,7 @@
 				C197FF3E22093D9B002F24E8 /* RegisterGoldCell.swift in Sources */,
 				C10CA1A42191755C00316DF3 /* PersonalPopupViewController.swift in Sources */,
 				C197FF2622081C72002F24E8 /* GoldPageViewController.swift in Sources */,
+				C1892E0D221E900900F5412F /* TransactionGoldCell.swift in Sources */,
 				C1817D99219C041F009507DB /* PointTransferViewController.swift in Sources */,
 				C11BFCA4221BC5D900F066DE /* GoldWithDrawChooseShippingViewController.swift in Sources */,
 				C197FF2A22082503002F24E8 /* GoldProfileViewController.swift in Sources */,
@@ -1362,6 +1388,7 @@
 				C1B542DD219ABE9A0040DDE6 /* SettingViewController.swift in Sources */,
 				C1F761052216C261000A2CA9 /* SavingResultCell.swift in Sources */,
 				C10CA1B92193E1D100316DF3 /* PromotionCampainCell.swift in Sources */,
+				C1892E14221E9CCC00F5412F /* GoldHistory.swift in Sources */,
 				C106BEB2220BED4E00E2331E /* BrowseImageCell.swift in Sources */,
 				C11A93B7218C00C800627B44 /* IntroCell1.swift in Sources */,
 				C1247C572219B2E7005D6F7A /* NextButtonCell.swift in Sources */,
@@ -1377,10 +1404,11 @@
 				C197FF2C22082527002F24E8 /* GoldWithDrawViewController.swift in Sources */,
 				C10D94AB22094AAF0083FA47 /* RegisterGoldViewController.swift in Sources */,
 				C1F761002216BB70000A2CA9 /* SavingResultNav.swift in Sources */,
+				C1892E11221E92BE00F5412F /* HeaderCollectionReusableView.swift in Sources */,
 				C169FFCB21C7939E00F9D354 /* FavorPopupViewController.swift in Sources */,
+				C1892E18221EB9DC00F5412F /* PopupGoldHistoryFilterViewController.swift in Sources */,
 				C13D998D21997EF7001A4794 /* PersonalViewController.swift in Sources */,
 				C142741D21A68154003CC246 /* ResetPasswordViewController.swift in Sources */,
-				C197FEE121E5D225002F24E8 /* UserInfo.swift in Sources */,
 				C10D94B42209717E0083FA47 /* NavGoldPage.swift in Sources */,
 				C11BFCB3221C0CB700F066DE /* PopupShippingAddressViewController.swift in Sources */,
 				C13D998A21997AD6001A4794 /* HeadCell.swift in Sources */,

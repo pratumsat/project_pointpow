@@ -185,7 +185,10 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
                
                 if let data  = self.userData as? [String:AnyObject] {
                     let gold_balance = data["goldsaving_member"]?["gold_balance"] as? NSNumber ?? 0
-                    let gold_cost = data["goldsaving_member"]?["gold_cost"] as? NSNumber ?? 0
+                    let gold_cost = data["goldsaving_member"]?["gold_cost"] as? [String:AnyObject] ?? [:]
+                    let present_value = gold_cost["present_value"] as? NSNumber ?? 0
+                    let tolal_point = gold_cost["tolal_point"] as? NSNumber ?? 0
+                    let profit = gold_cost["profit"] as? NSNumber ?? 0
                     
                     var numberFormatter = NumberFormatter()
                     numberFormatter.numberStyle = .decimal
@@ -199,29 +202,23 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
                     numberFormatter.numberStyle = .decimal
                     numberFormatter.minimumFractionDigits = 2
                     
+                    item.goldpriceAverage.text = numberFormatter.string(from: present_value)
                     
-                    item.goldpriceAverage.text = numberFormatter.string(from: gold_cost)
-                   
-                    if let data  = self.goldPrice as? [String:AnyObject] {
-                        let sellPrice = data["open_sell_price"] as? NSNumber ?? 0
-                        
-                        numberFormatter = NumberFormatter()
-                        numberFormatter.numberStyle = .decimal
-                        item.goldPresentLabel.text = numberFormatter.string(from: sellPrice)
-                        
-                        //let diff = sellPrice.intValue - gold_cost.intValue
-                        //item.goldDiffLabel.text = numberFormatter.string(from: NSNumber(value:diff))
-                        
-//                        if diff == 0 {
-//                            item.goldDiffLabel.textColor = UIColor.darkGray
-//                        }
-//                        if diff > 0 {
-//                            item.goldDiffLabel.textColor = Constant.Colors.GREEN
-//                        }
-//                        if diff < 0 {
-//                            item.goldDiffLabel.textColor = Constant.Colors.PRIMARY_COLOR
-//                        }
+                    numberFormatter = NumberFormatter()
+                    numberFormatter.numberStyle = .decimal
+                    item.goldPresentLabel.text = numberFormatter.string(from: tolal_point)
+                    
+                     item.goldDiffLabel.text = numberFormatter.string(from: profit)
+                    if profit == 0 {
+                        item.goldDiffLabel.textColor = UIColor.darkGray
                     }
+                    if profit.doubleValue > 0 {
+                        item.goldDiffLabel.textColor = Constant.Colors.GREEN
+                    }
+                    if profit.doubleValue < 0 {
+                        item.goldDiffLabel.textColor = Constant.Colors.PRIMARY_COLOR
+                    }
+
                     
                 }
             }

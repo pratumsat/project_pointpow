@@ -240,7 +240,7 @@
                                                 <color key="textColor" white="0.25126340209621273" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-sms" translatesAutoresizingMaskIntoConstraints="NO" id="CSA-dc-WS6">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-save-slip" translatesAutoresizingMaskIntoConstraints="NO" id="CSA-dc-WS6">
                                                 <rect key="frame" x="0.0" y="0.0" width="18" height="18"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -381,7 +381,7 @@
     </objects>
     <resources>
         <image name="bg-transfer-success" width="1001" height="1179"/>
-        <image name="ic-sms" width="60" height="62"/>
-        <image name="ic-status-success2" width="300" height="299"/>
+        <image name="ic-save-slip" width="60" height="55"/>
+        <image name="ic-status-success2" width="100" height="100"/>
     </resources>
 </document>

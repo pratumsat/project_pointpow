@@ -18,10 +18,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WithDrawChooseShippingCell" id="bBJ-3l-eH5" customClass="WithDrawChooseShippingCell" customModule="pointpow" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="448" height="146"/>
+            <rect key="frame" x="0.0" y="0.0" width="368" height="146"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="448" height="146"/>
+                <rect key="frame" x="0.0" y="0.0" width="368" height="146"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="วิธีการรับทองคำ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k2b-i5-rF4">
@@ -30,7 +30,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gif-Mc-DMY">
-                        <rect key="frame" x="110" y="14" width="328" height="36"/>
+                        <rect key="frame" x="110" y="14" width="220" height="36"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-choose-2" translatesAutoresizingMaskIntoConstraints="NO" id="W60-ev-aLq">
                                 <rect key="frame" x="10" y="3" width="30" height="30"/>
@@ -61,10 +61,11 @@
                             <constraint firstItem="Ts9-Gr-Jnc" firstAttribute="centerY" secondItem="ejI-eX-fAG" secondAttribute="centerY" id="ay5-mw-xaL"/>
                             <constraint firstItem="W60-ev-aLq" firstAttribute="leading" secondItem="Gif-Mc-DMY" secondAttribute="leading" constant="10" id="cNJ-mW-grh"/>
                             <constraint firstItem="ejI-eX-fAG" firstAttribute="centerY" secondItem="Gif-Mc-DMY" secondAttribute="centerY" id="elJ-FX-b87"/>
+                            <constraint firstAttribute="trailing" secondItem="Ts9-Gr-Jnc" secondAttribute="trailing" constant="10" id="l4B-js-3X8"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2jx-KB-dgz">
-                        <rect key="frame" x="110" y="50" width="328" height="36"/>
+                        <rect key="frame" x="110" y="50" width="220" height="36"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-choose-1" translatesAutoresizingMaskIntoConstraints="NO" id="6Y4-2E-ZcH">
                                 <rect key="frame" x="10" y="3" width="30" height="30"/>
@@ -94,7 +95,6 @@
             <constraints>
                 <constraint firstItem="k2b-i5-rF4" firstAttribute="top" secondItem="bBJ-3l-eH5" secondAttribute="top" constant="20" id="9iq-YH-rhi"/>
                 <constraint firstItem="Gif-Mc-DMY" firstAttribute="leading" secondItem="k2b-i5-rF4" secondAttribute="trailing" constant="10" id="GVM-k0-7T5"/>
-                <constraint firstAttribute="trailing" secondItem="Gif-Mc-DMY" secondAttribute="trailing" constant="10" id="M7k-ct-6uP"/>
                 <constraint firstItem="k2b-i5-rF4" firstAttribute="leading" secondItem="bBJ-3l-eH5" secondAttribute="leading" constant="10" id="fxX-4f-Qeo"/>
                 <constraint firstItem="2jx-KB-dgz" firstAttribute="trailing" secondItem="Gif-Mc-DMY" secondAttribute="trailing" id="lNg-Uq-WTQ"/>
                 <constraint firstItem="2jx-KB-dgz" firstAttribute="leading" secondItem="Gif-Mc-DMY" secondAttribute="leading" id="rbe-LL-3ch"/>
@@ -102,13 +102,13 @@
                 <constraint firstItem="Gif-Mc-DMY" firstAttribute="centerY" secondItem="k2b-i5-rF4" secondAttribute="centerY" id="yuz-ZO-RlE"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="MR1-9J-99l"/>
-            <size key="customSize" width="519" height="238"/>
+            <size key="customSize" width="439" height="238"/>
             <connections>
                 <outlet property="infoPointPowImageView" destination="Ts9-Gr-Jnc" id="hw3-4u-Ox4"/>
                 <outlet property="spPointpowImageView" destination="W60-ev-aLq" id="QlH-yv-m9Y"/>
                 <outlet property="spThaipostImageView" destination="6Y4-2E-ZcH" id="QM1-IX-Nvo"/>
             </connections>
-            <point key="canvasLocation" x="235.19999999999999" y="-35.982008995502248"/>
+            <point key="canvasLocation" x="171.19999999999999" y="-35.982008995502248"/>
         </collectionViewCell>
     </objects>
     <resources>

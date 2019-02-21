@@ -69,7 +69,15 @@ class WithDrawResultViewController: BaseViewController  , UICollectionViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        snapView = UIView(frame: self.view.frame)
+        snapView!.backgroundColor = UIColor.clear
+        
+        self.view.addSubview(snapView!)
+        self.view.sendSubviewToBack(snapView!)
+        
+        
+        //load background image from api
+        self.bgSlip = UIImage(named: "bg-slip")
        
         self.title = NSLocalizedString("string-title-gold-page", comment: "")
         let finishButton = UIBarButtonItem(title: NSLocalizedString("string-title-finish-transfer", comment: ""), style: .plain, target: self, action: #selector(dismissTapped))
@@ -134,9 +142,9 @@ class WithDrawResultViewController: BaseViewController  , UICollectionViewDelega
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if let slip = self.slipView {
-            slipImageView = UIImageView(image: slip.snapshotImage())
-        }
+//        if let slip = self.slipView {
+//            slipImageView = UIImageView(image: slip.snapshotImage())
+//        }
     }
     
     
@@ -240,23 +248,34 @@ class WithDrawResultViewController: BaseViewController  , UICollectionViewDelega
                     
                     switch status {
                     case "waiting":
+                        item.statusImageView.image = UIImage(named: "ic-status-waitting")
+                        item.statusLabel.textColor = Constant.Colors.ORANGE
                         item.statusLabel.text = NSLocalizedString("string-dailog-gold-transaction-status-waitting", comment: "")
                         break
                     case "success":
-                        item.statusLabel.text = NSLocalizedString("string-dailog-gold-transaction-status-cancel", comment: "")
+                        item.statusImageView.image = UIImage(named: "ic-status-success2")
+                        item.statusLabel.textColor = Constant.Colors.GREEN
+                        item.statusLabel.text = NSLocalizedString("string-dailog-gold-transaction-status-success", comment: "")
                         break
                     case "cancel":
-                        item.statusLabel.text = NSLocalizedString("string-dailog-gold-transaction-status-success", comment: "")
+                        item.statusImageView.image = UIImage(named: "ic-status-cancel")
+                        item.statusLabel.textColor = Constant.Colors.PRIMARY_COLOR
+                        item.statusLabel.text = NSLocalizedString("string-dailog-gold-transaction-status-cancel", comment: "")
                         break
                     default:
                         break
                     }
                    
                 }
+                item.saveSlipCallback = {
+                    self.slipImageView = UIImageView(image: item.mView.snapshotImage())
+                    self.showMessagePrompt(NSLocalizedString("string-dialog-saved-slip", comment: ""))
+                }
+                
+                self.slipView =  item.mView
                 
                 
-                
-                //self.slipView = item.mView
+               
                 
                 
             }

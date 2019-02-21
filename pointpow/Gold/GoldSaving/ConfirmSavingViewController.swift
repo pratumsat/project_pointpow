@@ -181,7 +181,7 @@ class ConfirmSavingViewController: BaseViewController , UICollectionViewDelegate
         }else if indexPath.section == 1 {
          
             let width = collectionView.frame.width - 40
-            let height = width/375*180
+            let height = width/375*220
             return CGSize(width: width, height: height)
         }else if indexPath.section == 2 {
           
@@ -192,7 +192,7 @@ class ConfirmSavingViewController: BaseViewController , UICollectionViewDelegate
         }else {
             let width = collectionView.frame.width
             let cheight = collectionView.frame.height
-            let height = abs((cheight) - (((width/375*240))+((width/375*180))+100))
+            let height = abs((cheight) - (((width/375*240))+((width/375*220))+100))
             
             return CGSize(width: width, height: height)
         }

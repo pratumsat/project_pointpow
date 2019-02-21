@@ -546,6 +546,8 @@ struct Constant {
         static let province = "\(HOST)\(POINTPOW_VERSION1)provinces"
         static let districts = "\(HOST)\(POINTPOW_VERSION1)districts"
         static let subdistricts = "\(HOST)\(POINTPOW_VERSION1)subdistricts"
+        
+        static let goldhistory = "\(HOST)\(POINTPOW_VERSION1)gold-saving/get/history"
     
     }
     struct PathImages {
@@ -602,6 +604,7 @@ struct Constant {
         static let GRADIENT_2 = UIColor(rgb: 0xFE2222) //bottom
         static let GREEN = UIColor(rgb: 0x43922B)
         static let ORANGE = UIColor(rgb: 0xF4B55A)
+        static let COLOR_LLGRAY = UIColor(rgb: 0xEEEEEE)
     }
     struct Fonts {
         struct Size {
@@ -624,7 +627,7 @@ struct Constant {
             static let TAB = CGFloat(13.0)
             static let FREIND_RECENT = CGFloat(15.0)
             static let FRIEND_HEADER_RECENT = CGFloat(20.0)
-            
+            static let SEGMENT = CGFloat(18.0)
         }
        
         //Noto Sans Thai

@@ -41,14 +41,14 @@
                             <constraint firstAttribute="height" constant="50" id="ylL-e3-QbZ"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4S-P3-eh0">
-                        <rect key="frame" x="340" y="65.5" width="11.5" height="32.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="P4S-P3-eh0">
+                        <rect key="frame" x="87" y="65.5" width="264.5" height="32.5"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="25"/>
                         <color key="textColor" red="0.26274509800000001" green="0.57254901960000004" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3h-tn-hRY">
-                        <rect key="frame" x="340" y="99" width="11.5" height="32.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="t3h-tn-hRY">
+                        <rect key="frame" x="123" y="99" width="228.5" height="32.5"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="25"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -73,8 +73,8 @@
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="roz-nj-Mea">
-                        <rect key="frame" x="340" y="132.5" width="11.5" height="32.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="roz-nj-Mea">
+                        <rect key="frame" x="133.5" y="132.5" width="218" height="32.5"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="25"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -98,12 +98,14 @@
                 <constraint firstAttribute="trailing" secondItem="4T4-as-cfJ" secondAttribute="trailing" constant="10" id="45L-cP-BBx"/>
                 <constraint firstItem="roz-nj-Mea" firstAttribute="centerY" secondItem="sNx-29-jST" secondAttribute="centerY" id="58c-h2-yMe"/>
                 <constraint firstItem="eZ5-vx-Ynq" firstAttribute="leading" secondItem="8Dq-2G-hMV" secondAttribute="leading" constant="10" id="8Df-7S-qAT"/>
+                <constraint firstItem="P4S-P3-eh0" firstAttribute="leading" secondItem="eZ5-vx-Ynq" secondAttribute="trailing" constant="10" id="AvL-qX-XYY"/>
                 <constraint firstItem="5b8-lo-gFS" firstAttribute="leading" secondItem="eZ5-vx-Ynq" secondAttribute="leading" id="Bdn-J9-Skf"/>
                 <constraint firstItem="4T4-as-cfJ" firstAttribute="centerY" secondItem="P4S-P3-eh0" secondAttribute="centerY" constant="2" id="DQG-cG-6JM"/>
                 <constraint firstItem="t3h-tn-hRY" firstAttribute="centerY" secondItem="5b8-lo-gFS" secondAttribute="centerY" id="DZ4-MU-a4T"/>
                 <constraint firstItem="sNx-29-jST" firstAttribute="top" secondItem="5b8-lo-gFS" secondAttribute="bottom" constant="10" id="DlS-F0-cYJ"/>
                 <constraint firstAttribute="trailing" secondItem="Wna-DT-fXo" secondAttribute="trailing" constant="10" id="E2W-eC-gZe"/>
                 <constraint firstItem="Wna-DT-fXo" firstAttribute="leading" secondItem="cbO-Cq-ATa" secondAttribute="leading" id="Guw-nd-a1O"/>
+                <constraint firstItem="t3h-tn-hRY" firstAttribute="leading" secondItem="5b8-lo-gFS" secondAttribute="trailing" constant="10" id="H88-3k-keU"/>
                 <constraint firstAttribute="trailing" secondItem="Ksk-ol-xEj" secondAttribute="trailing" id="IqR-pD-9G6"/>
                 <constraint firstAttribute="trailing" secondItem="cbO-Cq-ATa" secondAttribute="trailing" constant="10" id="Osk-8R-fa3"/>
                 <constraint firstItem="sNx-29-jST" firstAttribute="leading" secondItem="5b8-lo-gFS" secondAttribute="leading" id="e56-se-y94"/>
@@ -114,6 +116,7 @@
                 <constraint firstItem="5b8-lo-gFS" firstAttribute="top" secondItem="eZ5-vx-Ynq" secondAttribute="bottom" constant="10" id="m5U-S1-rIT"/>
                 <constraint firstItem="cbO-Cq-ATa" firstAttribute="centerY" secondItem="t3h-tn-hRY" secondAttribute="centerY" constant="2" id="mA3-0u-p2M"/>
                 <constraint firstItem="Ksk-ol-xEj" firstAttribute="leading" secondItem="8Dq-2G-hMV" secondAttribute="leading" id="pyx-db-ET2"/>
+                <constraint firstItem="roz-nj-Mea" firstAttribute="leading" secondItem="sNx-29-jST" secondAttribute="trailing" constant="10" id="rAF-Wm-yWh"/>
                 <constraint firstItem="cbO-Cq-ATa" firstAttribute="leading" secondItem="4T4-as-cfJ" secondAttribute="leading" id="rJ7-08-lWo"/>
                 <constraint firstItem="P4S-P3-eh0" firstAttribute="centerY" secondItem="eZ5-vx-Ynq" secondAttribute="centerY" id="ws4-B9-zUs"/>
             </constraints>

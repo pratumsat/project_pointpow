@@ -483,26 +483,54 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
     
     
     func showGoldSavingResult(_ animated:Bool, transactionId:String, finish:(()->Void)? = nil){
-        if let vc:SavingResultNav  = self.storyboard?.instantiateViewController(withIdentifier: "SavingResultNav") as? SavingResultNav {
-            vc.transactionId = transactionId
-            
-            vc.callbackFinish = {
-                finish?()
+       
+        if finish != nil {
+            if let vc:SavingResultNav  = self.storyboard?.instantiateViewController(withIdentifier: "SavingResultNav") as? SavingResultNav {
+                vc.transactionId = transactionId
+                
+                
+                vc.callbackFinish = {
+                    finish?()
+                }
+                self.present(vc, animated: animated, completion: nil)
+                
             }
-            self.present(vc, animated: animated, completion: nil)
+            
+        }else{
+            if let vc:SavingResultViewController  = self.storyboard?.instantiateViewController(withIdentifier: "SavingResultViewController") as? SavingResultViewController {
+                
+                vc.transactionId = transactionId
+                vc.hideFinishButton = true
+                self.navigationController?.pushViewController(vc, animated: animated)
+            }
+            
         }
+        
+        
     }
     
     
     func showGoldWithDrawResult(_ animated:Bool, transactionId:String, finish:(()->Void)? = nil){
-        if let vc:WithDrawResultNav  = self.storyboard?.instantiateViewController(withIdentifier: "WithDrawResultNav") as? WithDrawResultNav {
-            vc.transactionId = transactionId
-            
-            vc.callbackFinish = {
-                finish?()
+        
+        if finish != nil{
+            if let vc:WithDrawResultNav  = self.storyboard?.instantiateViewController(withIdentifier: "WithDrawResultNav") as? WithDrawResultNav {
+                vc.transactionId = transactionId
+                
+                vc.callbackFinish = {
+                    finish?()
+                }
+                self.present(vc, animated: animated, completion: nil)
             }
-            self.present(vc, animated: animated, completion: nil)
+        }else{
+            if let vc:WithDrawResultViewController  = self.storyboard?.instantiateViewController(withIdentifier: "WithDrawResultViewController") as? WithDrawResultViewController {
+                
+                vc.transactionId = transactionId
+                vc.hideFinishButton = true
+                self.navigationController?.pushViewController(vc, animated: animated)
+            }
         }
+        
+       
     }
     
     

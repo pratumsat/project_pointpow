@@ -54,7 +54,12 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
     override func reloadData() {
         self.getDataHistory(clearData: false)
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if self.goldHistory != nil {
+            self.getDataHistory(clearData: false)
+        }
+    }
     func getHistory(_ avaliable:(()->Void)?  = nil){
         
         var isLoading:Bool = true
@@ -189,6 +194,7 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
         self.filterStatus = ""
         self.startDate = ""
         self.endDate = ""
+        self.tupleFilter = nil
         
         
     }
@@ -212,7 +218,8 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.goldHistory?[section].items?.count ?? 0
     }
-    //var constraint:NSLayoutConstraint?
+
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell:UICollectionViewCell?
         
@@ -221,28 +228,75 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
             cell = transCell
             
             
-            if let item = self.goldHistory?[indexPath.section].items?[indexPath.row] {
-                let status = item["status"] as? String ?? ""
-                let type = item["type"] as? String ?? ""
-                let date = item["created_at"] as? String ?? ""
+            if let items = self.goldHistory?[indexPath.section].items?[indexPath.row] {
+                let status = items["status"] as? String ?? ""
+                let type = items["type"] as? String ?? ""
+                let date = items["created_at"] as? String ?? ""
                 
                 transCell.dateLabel.text = date
                 
+                var numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                numberFormatter.minimumFractionDigits = 2
+                
+                
+                
                 if type == "saving" {
+                    let gold_price = items["saving_transaction"]?["gold_price"] as? NSNumber ?? 0
+                    
+                    transCell.amountLabel.text  = numberFormatter.string(from: gold_price)
                     transCell.titleLabel.text = NSLocalizedString("string-title-history-saving", comment: "")
                     transCell.statusImageView.image = UIImage(named: "ic-saving")
+                    transCell.shippingLabel.isHidden  = true
+                    transCell.unitLabel.text = "PP"
                 }else{
+                    let gold_unit = items["withdraw_transaction"]?["gold_unit"] as? String ?? ""
+                    let gold_withdraw = items["withdraw_transaction"]?["gold_withdraw"] as? NSNumber ?? 0
+                    let shipping = items["withdraw_transaction"]?["shipping"] as? [String:AnyObject] ?? [:]
+                    let statusShipping = shipping["status"] as? String ?? ""
+                    let type = shipping["type"] as? String ?? ""
+                    
+                    transCell.shippingLabel.isHidden  = false
+                    
+             
+                    switch type.lowercased() {
+                    case "office" :
+                        if statusShipping == "waiting" {
+                            transCell.shippingLabel.text = NSLocalizedString("string-dailog-gold-shipping-office-status-waiting", comment: "")
+                        }else{
+                            transCell.shippingLabel.text = NSLocalizedString("string-dailog-gold-shipping-office-status-success", comment: "")
+                        }
+                        break
+                    case "thaipost" :
+                        if statusShipping == "waiting" {
+                            transCell.shippingLabel.text = NSLocalizedString("string-dailog-gold-shipping-thaipost-status-waiting", comment: "")
+                        }else{
+                            transCell.shippingLabel.text = NSLocalizedString("string-dailog-gold-shipping-thaipost-status-success", comment: "")
+                        }
+                        break
+                        
+                    default:
+                        break
+                    }
+                    
+                  
+                  
+                    
+                    if gold_unit.lowercased() == "salueng" {
+                        transCell.unitLabel.text = NSLocalizedString("unit-salueng", comment: "")
+                    }else{
+                        transCell.unitLabel.text = NSLocalizedString("unit-baht", comment: "")
+                    }
+                    
+                    numberFormatter = NumberFormatter()
+                    numberFormatter.numberStyle = .decimal
+                    
+                    transCell.amountLabel.text = numberFormatter.string(from: gold_withdraw)
                     transCell.titleLabel.text = NSLocalizedString("string-title-history-withdraw", comment: "")
                     transCell.statusImageView.image = UIImage(named: "ic-withdraw")
                 }
                 
-                
-                
-                
-                if status.lowercased() == "waiting" {
-                    transCell.statusLabel.textColor = Constant.Colors.ORANGE
-                    transCell.statusLabel.text = NSLocalizedString("string-status-gold-history-waiting", comment: "")
-                }
+             
                 if status.lowercased() == "success" {
                     transCell.statusLabel.textColor = Constant.Colors.GREEN
                     transCell.statusLabel.text = NSLocalizedString("string-status-gold-history-success", comment: "")
@@ -312,5 +366,18 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
         print("\(indexPath.row)")
         
      
+        
+        if let item = self.goldHistory?[indexPath.section].items?[indexPath.row] {
+            let transaction_ref_id  = item["transaction_ref_id"] as? String ?? ""
+            let type = item["type"] as? String ?? ""
+         
+            if type == "saving" {
+                self.showGoldSavingResult(true, transactionId: transaction_ref_id)
+            }else{
+                self.showGoldWithDrawResult(true, transactionId: transaction_ref_id)
+            }
+            
+            
+        }
     }
 }

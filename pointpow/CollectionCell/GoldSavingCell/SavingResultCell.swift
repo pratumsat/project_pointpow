@@ -10,6 +10,7 @@ import UIKit
 
 class SavingResultCell: UICollectionViewCell {
 
+    @IBOutlet weak var bgSuccessImageView: UIImageView!
     @IBOutlet weak var goldReceiveLabel: UILabel!
     @IBOutlet weak var pointpowLabel: UILabel!
     @IBOutlet weak var goldPriceLabel: UILabel!

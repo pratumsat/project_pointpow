@@ -12,7 +12,7 @@ import UIKit
 class SavingResultViewController: BaseViewController , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var resultCollectionView: UICollectionView!
-    
+    var hideFinishButton:Bool = false
     var transactionId:String?{
         didSet{
             print("updateView")
@@ -27,13 +27,18 @@ class SavingResultViewController: BaseViewController , UICollectionViewDelegate 
 
 
         self.title = NSLocalizedString("string-title-gold-page", comment: "")
-        let finishButton = UIBarButtonItem(title: NSLocalizedString("string-title-finish-transfer", comment: ""), style: .plain, target: self, action: #selector(dismissTapped))
-        finishButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white,
-                                             NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.ITEM_TITLE )!]
-            , for: .normal)
         
-        self.navigationItem.rightBarButtonItem = finishButton
         
+        if !hideFinishButton {
+            let finishButton = UIBarButtonItem(title: NSLocalizedString("string-title-finish-transfer", comment: ""), style: .plain, target: self, action: #selector(dismissTapped))
+            finishButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white,
+                                                 NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.ITEM_TITLE )!]
+                , for: .normal)
+            
+            self.navigationItem.rightBarButtonItem = finishButton
+             self.transactionId = (self.navigationController as? SavingResultNav)?.transactionId
+        }
+       
         self.setUp()
     }
     func setUp(){
@@ -45,7 +50,7 @@ class SavingResultViewController: BaseViewController , UICollectionViewDelegate 
         self.registerNib(self.resultCollectionView, "LogoGoldCell")
      
         
-        self.transactionId = (self.navigationController as? SavingResultNav)?.transactionId
+       
         
     }
     
@@ -92,6 +97,11 @@ class SavingResultViewController: BaseViewController , UICollectionViewDelegate 
         if indexPath.section == 0 {
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "SavingResultCell", for: indexPath) as? SavingResultCell {
                 cell = item
+                
+                if hideFinishButton {
+                    item.bgSuccessImageView.image = nil
+                }
+                
                 if let data = self.savingResult as? [String:AnyObject]{
                     let transaction_number = data["saving_transaction"]?["transaction_no"] as? String ?? ""
                     let created_at = data["saving_transaction"]?["created_at"] as? String ?? ""
@@ -161,7 +171,14 @@ class SavingResultViewController: BaseViewController , UICollectionViewDelegate 
             let cheight = collectionView.frame.height
             let height = abs((cheight) - (((width/360*330))+30))
             
-            return CGSize(width: width, height: height)
+            if height > cheight {
+                let vheight = CGFloat(80)
+                return CGSize(width: width, height: vheight)
+            }else{
+                let vheight = abs((cheight) - (((height))+40))
+                return CGSize(width: width, height: vheight)
+            }
+            //return CGSize(width: width, height: height)
         }
         
     }

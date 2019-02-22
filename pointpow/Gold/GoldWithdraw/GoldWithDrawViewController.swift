@@ -256,6 +256,7 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
             let cheight = collectionView.frame.height
             let height = abs((cheight) - (((width/360*190))+(250)+(150)))
             
+            
             return CGSize(width: width, height: height)
         }
         

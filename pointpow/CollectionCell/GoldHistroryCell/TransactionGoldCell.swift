@@ -10,6 +10,7 @@ import UIKit
 
 class TransactionGoldCell: UICollectionViewCell {
 
+    @IBOutlet weak var unitLabel: UILabel!
     @IBOutlet weak var shippingLabel: UILabel!
     @IBOutlet weak var statusShippingLabel: UILabel!
     @IBOutlet weak var heightLogoConstraint: NSLayoutConstraint!

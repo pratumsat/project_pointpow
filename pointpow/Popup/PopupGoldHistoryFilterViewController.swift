@@ -24,7 +24,7 @@ class PopupGoldHistoryFilterViewController: BaseViewController  ,UIPickerViewDel
     var statusPickerView:UIPickerView?
 
     var slectedStatus:String = ""
-    let status = ["all","success","waiting","cancel"]
+    let status = ["all","success","cancel"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,6 +103,39 @@ class PopupGoldHistoryFilterViewController: BaseViewController  ,UIPickerViewDel
         self.statusTextField.tintColor = UIColor.clear
         self.statusTextField.isUserInteractionEnabled = true
         self.statusTextField.inputView = self.statusPickerView
+        
+        
+        if let data:(startDate:String , endDate:String, status:String) = self.editData as? (startDate:String , endDate:String, status:String){
+            
+            self.startDateTextField.text = data.startDate
+            self.endDateTextField.text = data.endDate
+            
+            if data.status == "all"{
+                self.slectedStatus = "all"
+                self.statusTextField.text = NSLocalizedString("string-status-gold-history-all", comment: "")
+            }
+            if data.status == "cancel" {
+                self.slectedStatus = "cancel"
+                self.statusTextField.text = NSLocalizedString("string-status-gold-history-cancel", comment: "")
+            }
+            if data.status == "success" {
+                self.slectedStatus = "success"
+                self.statusTextField.text = NSLocalizedString("string-status-gold-history-success", comment: "")
+            }
+        }else{
+            
+            let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: "en")
+            formatter.dateFormat = "dd-MM-yyyy"
+            
+            self.startDateTextField.text = formatter.string(from: Date())
+            self.endDateTextField.text = formatter.string(from: Date())
+            
+            self.slectedStatus = "all"
+            self.statusTextField.text = NSLocalizedString("string-status-gold-history-all", comment: "")
+        }
+        
+        
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -116,9 +149,6 @@ class PopupGoldHistoryFilterViewController: BaseViewController  ,UIPickerViewDel
         if pickerView == self.statusPickerView{
             if status[row] == "all"{
                 return NSLocalizedString("string-status-gold-history-all", comment: "")
-            }
-            if status[row] == "waiting"{
-                return NSLocalizedString("string-status-gold-history-waiting", comment: "")
             }
             if status[row] == "cancel" {
                 return NSLocalizedString("string-status-gold-history-cancel", comment: "")
@@ -136,10 +166,6 @@ class PopupGoldHistoryFilterViewController: BaseViewController  ,UIPickerViewDel
             if status[row] == "all"{
                 self.slectedStatus = "all"
                 self.statusTextField.text = NSLocalizedString("string-status-gold-history-all", comment: "")
-            }
-            if status[row] == "waiting"{
-                self.slectedStatus = "waiting"
-                self.statusTextField.text = NSLocalizedString("string-status-gold-history-waiting", comment: "")
             }
             if status[row] == "cancel" {
                 self.slectedStatus = "cancel"

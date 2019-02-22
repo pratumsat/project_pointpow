@@ -549,6 +549,7 @@ struct Constant {
         
         static let goldhistory = "\(HOST)\(POINTPOW_VERSION1)gold-saving/get/history"
     
+        static let cancelTransectionGold = "\(HOST)\(POINTPOW_VERSION1)gold-saving/withdraw/cancel"
     }
     struct PathImages {
         static let profile = "\(PointPowAPI.HOST)\(PointPowAPI.POINTPOW_VERSION1)member/image/profile"
@@ -831,6 +832,32 @@ func convertDate(_ dateString:String , pattern:String = "haveSecond") -> String 
     
     return "-"
 }
+
+func validateTransactionTime(_ dateString:String) -> Bool {
+    //2017-03-29 20:15
+    let dateFormatter = DateFormatter()
+    //dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+    if let d1 = dateFormatter.date(from: dateString){
+        
+        let calendar = NSCalendar.current
+        let unitFlags: Set<Calendar.Component> = [.minute, .hour, .day, .weekOfYear, .month, .year, .second]
+        let components = calendar.dateComponents(unitFlags, from: d1)
+        
+        print(components.hour!)
+        print(components.minute!)
+
+        let minnute = components.minute! + (components.hour!*60)
+        
+        if minnute < 1440 {
+            return true
+        }
+        
+    }
+    
+    return false
+}
+
 func dateNow() -> String {
     let d1 = Date()
     

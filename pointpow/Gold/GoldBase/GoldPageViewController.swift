@@ -202,11 +202,11 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
                     numberFormatter.numberStyle = .decimal
                     numberFormatter.minimumFractionDigits = 2
                     
-                    item.goldpriceAverage.text = numberFormatter.string(from: present_value)
+                    item.goldPresentLabel.text = numberFormatter.string(from: present_value)
                     
                     numberFormatter = NumberFormatter()
                     numberFormatter.numberStyle = .decimal
-                    item.goldPresentLabel.text = numberFormatter.string(from: tolal_point)
+                    item.goldpriceAverage.text = numberFormatter.string(from: tolal_point)
                     
                      item.goldDiffLabel.text = numberFormatter.string(from: profit)
                     if profit == 0 {

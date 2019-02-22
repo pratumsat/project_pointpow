@@ -10,6 +10,10 @@ import UIKit
 
 class WithDrawResultPointPowCell: UICollectionViewCell {
 
+    @IBOutlet weak var cancelLabel: UILabel!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var shippingStatusLabel: UILabel!
+    @IBOutlet weak var bgSuccessImageView: UIImageView!
     @IBOutlet weak var mView: UIView!
     @IBOutlet weak var qrCodeImageView: UIImageView!
     @IBOutlet weak var premiumLabel: UILabel!
@@ -28,6 +32,7 @@ class WithDrawResultPointPowCell: UICollectionViewCell {
     
     var saveSlipCallback:(()->Void)?
     var viewMapCallback:(()->Void)?
+    var cancelCallback:(()->Void)?
     
     
     override func awakeFromNib() {
@@ -40,12 +45,12 @@ class WithDrawResultPointPowCell: UICollectionViewCell {
         
         
         let saveslip = UITapGestureRecognizer(target: self, action: #selector(saveSlipTapped))
-        self.saveSlipView.isUserInteractionEnabled = true
-        self.saveSlipView.addGestureRecognizer(saveslip)
+        self.saveSlipView?.isUserInteractionEnabled = true
+        self.saveSlipView?.addGestureRecognizer(saveslip)
         
         let viewMap = UITapGestureRecognizer(target: self, action: #selector(viewMapTapped))
-        self.viewMapView.isUserInteractionEnabled = true
-        self.viewMapView.addGestureRecognizer(viewMap)
+        self.viewMapView?.isUserInteractionEnabled = true
+        self.viewMapView?.addGestureRecognizer(viewMap)
     }
     
     @objc func viewMapTapped(){
@@ -63,10 +68,17 @@ class WithDrawResultPointPowCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.qrCodeImageView.updateLayerCornerRadiusProperties()
-        self.qrCodeImageView.shadowCellProperties()
-        self.viewMapView.borderBlackolorProperties(borderWidth: 0.5)
-        self.saveSlipView.borderBlackolorProperties(borderWidth: 0.5)
+        self.cancelButton?.borderClearProperties(borderWidth: 1)
+        self.cancelButton?.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
+        
+        
+        self.qrCodeImageView?.updateLayerCornerRadiusProperties()
+        self.qrCodeImageView?.shadowCellProperties()
+        self.viewMapView?.borderBlackolorProperties(borderWidth: 0.5)
+        self.saveSlipView?.borderBlackolorProperties(borderWidth: 0.5)
     }
 
+    @IBAction func cancelTapped(_ sender: Any) {
+        self.cancelCallback?()
+    }
 }

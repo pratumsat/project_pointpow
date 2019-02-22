@@ -81,7 +81,7 @@ class WithDrawResultViewController: BaseViewController  , UICollectionViewDelega
         
         //load background image from api
         self.bgSlip = UIImage(named: "bg-slip")
-        self.title = NSLocalizedString("string-title-gold-page", comment: "")
+        self.title = NSLocalizedString("string-title-gold-page-withdraw", comment: "")
         
         if !hideFinishButton {
            
@@ -149,9 +149,9 @@ class WithDrawResultViewController: BaseViewController  , UICollectionViewDelega
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-//        if let slip = self.slipView {
-//            slipImageView = UIImageView(image: slip.snapshotImage())
-//        }
+        if let slip = self.slipView {
+            slipImageView = UIImageView(image: slip.snapshotImage())
+        }
     }
     
     

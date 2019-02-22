@@ -60,6 +60,9 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
             self.getDataHistory(clearData: false)
         }
     }
+    
+    
+    
     func getHistory(_ avaliable:(()->Void)?  = nil){
         
         var isLoading:Bool = true
@@ -68,14 +71,19 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
         }else{
             isLoading = true
         }
+     
+        
+        
+        
+    
         
         var parameter = "type=\(type)"
         
         if !startDate.isEmpty {
-            parameter += "&startdate=\(startDate)"
+            parameter += "&startdate=\(convertBuddhaToChris(startDate))"
         }
         if !endDate.isEmpty{
-            parameter += "&enddate=\(endDate)"
+            parameter += "&enddate=\(convertBuddhaToChris(endDate))"
         }
         if !filterStatus.isEmpty{
             parameter += "&status=\(filterStatus)"

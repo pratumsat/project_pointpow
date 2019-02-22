@@ -36,14 +36,20 @@ class PopupGoldHistoryFilterViewController: BaseViewController  ,UIPickerViewDel
     
     @objc func donedatePicker(){
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en")
+        formatter.locale = Locale(identifier: "th")
         formatter.dateFormat = "dd-MM-yyyy"
         self.startDateTextField.text = formatter.string(from: pickerView!.date)
+        
+        if pickerView!.date.timeIntervalSinceReferenceDate > pickerView2!.date.timeIntervalSinceReferenceDate {
+            self.endDateTextField.text = formatter.string(from: pickerView!.date)
+        }
+        pickerView2?.minimumDate = pickerView!.date
+        
         self.view.endEditing(true)
     }
     @objc func donedatePicker2(){
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en")
+        formatter.locale = Locale(identifier: "th")
         formatter.dateFormat = "dd-MM-yyyy"
         self.endDateTextField.text = formatter.string(from: pickerView2!.date)
         self.view.endEditing(true)
@@ -58,6 +64,7 @@ class PopupGoldHistoryFilterViewController: BaseViewController  ,UIPickerViewDel
         pickerView = UIDatePicker()
         pickerView!.datePickerMode = .date
         pickerView!.calendar = Calendar(identifier: .buddhist)
+        
         
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
@@ -110,6 +117,9 @@ class PopupGoldHistoryFilterViewController: BaseViewController  ,UIPickerViewDel
             self.startDateTextField.text = data.startDate
             self.endDateTextField.text = data.endDate
             
+            self.pickerView?.date = convertToDate(data.startDate, "dd-MM-yyyy")
+            self.pickerView2?.date = convertToDate(data.endDate, "dd-MM-yyyy")
+            
             if data.status == "all"{
                 self.slectedStatus = "all"
                 self.statusTextField.text = NSLocalizedString("string-status-gold-history-all", comment: "")
@@ -125,7 +135,7 @@ class PopupGoldHistoryFilterViewController: BaseViewController  ,UIPickerViewDel
         }else{
             
             let formatter = DateFormatter()
-            formatter.locale = Locale(identifier: "en")
+            formatter.locale = Locale(identifier: "th")
             formatter.dateFormat = "dd-MM-yyyy"
             
             self.startDateTextField.text = formatter.string(from: Date())

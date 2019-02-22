@@ -833,11 +833,46 @@ func convertDate(_ dateString:String , pattern:String = "haveSecond") -> String 
     return "-"
 }
 
+
+func convertBuddhaToChris(_ dateString:String, _ format:String = "dd-MM-yyyy HH:mm") -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.locale = Locale(identifier: "th")
+    dateFormatter.dateFormat = "dd-MM-yyyy"
+    
+    if let d1 = dateFormatter.date(from: dateString){
+        let calendar = NSCalendar.current
+        let unitFlags: Set<Calendar.Component> = [.day, .month, .year, .hour, .minute]
+        let components = calendar.dateComponents(unitFlags, from: d1)
+        
+        let dateString = "\(components.day!)-\(components.month!)-\(components.year!)"
+        return dateString
+    }
+    
+    return ""
+}
+
+func convertToDate(_ dateString:String, _ format:String = "dd-MM-yyyy HH:mm") -> Date {
+    let dateFormatter = DateFormatter()
+    dateFormatter.locale = Locale(identifier: "th")
+    dateFormatter.dateFormat = format
+    
+    if let d1 = dateFormatter.date(from: dateString){
+        
+        let calendar = NSCalendar.current
+        let unitFlags: Set<Calendar.Component> = [.day, .month, .year, .hour, .minute]
+        let components = calendar.dateComponents(unitFlags, from: d1)
+       
+        return calendar.date(from: components) ?? Date()
+    }
+    
+    return Date()
+}
+
 func validateTransactionTime(_ dateString:String) -> Bool {
     //2017-03-29 20:15
     let dateFormatter = DateFormatter()
     //dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+    dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
     if let d1 = dateFormatter.date(from: dateString){
         
         let calendar = NSCalendar.current

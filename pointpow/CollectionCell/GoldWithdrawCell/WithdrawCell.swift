@@ -340,10 +340,6 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
             _goldReceive.append((amount: gold2salueng, unit: "2salueng"))
             _goldReceive.append((amount: gold1salueng, unit: "1salueng"))
             
-            
-           
-            
-            
             self.withDrawData = (premium : "\(_premium)" , goldReceive: _goldReceive)
         }else{
             updateView()

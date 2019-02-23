@@ -21,6 +21,8 @@
 		C107CF2D221FD52800C50B8C /* WithDrawResultPointPowSuccessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C107CF2B221FD52800C50B8C /* WithDrawResultPointPowSuccessCell.swift */; };
 		C107CF2E221FD52800C50B8C /* WithDrawResultPointPowSuccessCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C107CF2C221FD52800C50B8C /* WithDrawResultPointPowSuccessCell.xib */; };
 		C107CF30222157E900C50B8C /* WithDrawSummaryOfficeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C107CF2F222157E900C50B8C /* WithDrawSummaryOfficeViewController.swift */; };
+		C107CF3322218FE400C50B8C /* WithDrawOfficeSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C107CF3122218FE400C50B8C /* WithDrawOfficeSummaryCell.swift */; };
+		C107CF3422218FE400C50B8C /* WithDrawOfficeSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C107CF3222218FE400C50B8C /* WithDrawOfficeSummaryCell.xib */; };
 		C10CA19421914A3B00316DF3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA19321914A3B00316DF3 /* HomeViewController.swift */; };
 		C10CA19721914AD500316DF3 /* PromotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA19621914AD500316DF3 /* PromotionViewController.swift */; };
 		C10CA19A21914AF900316DF3 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA19921914AF900316DF3 /* TransactionViewController.swift */; };
@@ -225,6 +227,8 @@
 		C107CF2B221FD52800C50B8C /* WithDrawResultPointPowSuccessCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawResultPointPowSuccessCell.swift; sourceTree = "<group>"; };
 		C107CF2C221FD52800C50B8C /* WithDrawResultPointPowSuccessCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithDrawResultPointPowSuccessCell.xib; sourceTree = "<group>"; };
 		C107CF2F222157E900C50B8C /* WithDrawSummaryOfficeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawSummaryOfficeViewController.swift; sourceTree = "<group>"; };
+		C107CF3122218FE400C50B8C /* WithDrawOfficeSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawOfficeSummaryCell.swift; sourceTree = "<group>"; };
+		C107CF3222218FE400C50B8C /* WithDrawOfficeSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithDrawOfficeSummaryCell.xib; sourceTree = "<group>"; };
 		C10CA19321914A3B00316DF3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C10CA19621914AD500316DF3 /* PromotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionViewController.swift; sourceTree = "<group>"; };
 		C10CA19921914AF900316DF3 /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
@@ -992,6 +996,8 @@
 				C107CF28221FC92200C50B8C /* WidthDrawResultPointPow2Cell.xib */,
 				C107CF2B221FD52800C50B8C /* WithDrawResultPointPowSuccessCell.swift */,
 				C107CF2C221FD52800C50B8C /* WithDrawResultPointPowSuccessCell.xib */,
+				C107CF3122218FE400C50B8C /* WithDrawOfficeSummaryCell.swift */,
+				C107CF3222218FE400C50B8C /* WithDrawOfficeSummaryCell.xib */,
 			);
 			path = GoldWithdrawCell;
 			sourceTree = "<group>";
@@ -1143,6 +1149,7 @@
 				C1892E12221E92BE00F5412F /* HeaderCollectionReusableView.xib in Resources */,
 				C11BDFB921A2B95D00443D2D /* ItemFriendSummaryCell.xib in Resources */,
 				C1F760F6221692FD000A2CA9 /* SavingConfirmCell.xib in Resources */,
+				C107CF3422218FE400C50B8C /* WithDrawOfficeSummaryCell.xib in Resources */,
 				C10D94B2220960940083FA47 /* NameTableViewCell.xib in Resources */,
 				C142741B21A553EE003CC246 /* ItemFavorCell.xib in Resources */,
 				C197FF3722083AA6002F24E8 /* MyGoldCell.xib in Resources */,
@@ -1397,6 +1404,7 @@
 				C120D7D221955BC900F9EEBB /* ItemProfileCell.swift in Sources */,
 				C11BFCA7221BE72000F066DE /* WithDrawChooseShippingCell.swift in Sources */,
 				C1817D96219BFCDE009507DB /* FriendCollectionCell.swift in Sources */,
+				C107CF3322218FE400C50B8C /* WithDrawOfficeSummaryCell.swift in Sources */,
 				C107CF29221FC92200C50B8C /* WidthDrawResultPointPow2Cell.swift in Sources */,
 				C115FA5721A2B3EB008E7844 /* PointFriendSummaryViewController.swift in Sources */,
 				C11BDFBC21A2BB3C00443D2D /* ItemConfirmSummaryCell.swift in Sources */,

@@ -141,6 +141,9 @@ class PopupGoldHistoryFilterViewController: BaseViewController  ,UIPickerViewDel
             self.startDateTextField.text = formatter.string(from: Date())
             self.endDateTextField.text = formatter.string(from: Date())
             
+            
+            
+            
             self.slectedStatus = "all"
             self.statusTextField.text = NSLocalizedString("string-status-gold-history-all", comment: "")
         }

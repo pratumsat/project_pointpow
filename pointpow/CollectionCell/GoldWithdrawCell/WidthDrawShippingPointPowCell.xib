@@ -40,12 +40,12 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ชำระที่บริษัท Point Power" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxM-XG-adu">
-                        <rect key="frame" x="239" y="63.5" width="141" height="23.5"/>
+                        <rect key="frame" x="239" y="53.5" width="141" height="23.5"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="วิธีการชำระเงิน" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rvR-x3-u5W">
-                        <rect key="frame" x="10" y="63.5" width="81.5" height="23.5"/>
+                        <rect key="frame" x="10" y="53.5" width="81.5" height="23.5"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -58,7 +58,7 @@
                 <constraint firstAttribute="trailing" secondItem="pxM-XG-adu" secondAttribute="trailing" constant="10" id="A8C-6F-cVM"/>
                 <constraint firstItem="rvR-x3-u5W" firstAttribute="leading" secondItem="2wu-K5-H6a" secondAttribute="leading" id="IJH-1q-rIm"/>
                 <constraint firstItem="pxM-XG-adu" firstAttribute="centerY" secondItem="rvR-x3-u5W" secondAttribute="centerY" id="NAN-6k-jR9"/>
-                <constraint firstItem="rvR-x3-u5W" firstAttribute="top" secondItem="2wu-K5-H6a" secondAttribute="bottom" constant="20" id="VJc-Rp-cw3"/>
+                <constraint firstItem="rvR-x3-u5W" firstAttribute="top" secondItem="2wu-K5-H6a" secondAttribute="bottom" constant="10" id="VJc-Rp-cw3"/>
                 <constraint firstItem="1yn-Qa-0xe" firstAttribute="centerY" secondItem="2wu-K5-H6a" secondAttribute="centerY" id="Ylu-kc-tny"/>
                 <constraint firstItem="7jq-nO-m0p" firstAttribute="centerY" secondItem="1yn-Qa-0xe" secondAttribute="centerY" constant="1" id="Zzg-Xm-PEU"/>
                 <constraint firstItem="2wu-K5-H6a" firstAttribute="leading" secondItem="5tc-0v-SV3" secondAttribute="leading" constant="10" id="n2N-RG-VZx"/>

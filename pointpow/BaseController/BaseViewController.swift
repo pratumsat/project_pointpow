@@ -307,6 +307,13 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         }
     }
     
+    func showWithDrawSummaryOfficeView(_ animated:Bool, withdrawData:(premium:Int,  goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double))?){
+        
+        if let vc:WithDrawSummaryOfficeViewController  = self.storyboard?.instantiateViewController(withIdentifier: "WithDrawSummaryOfficeViewController") as? WithDrawSummaryOfficeViewController {
+            vc.withdrawData  = withdrawData
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
 
     
     func showIntroduce(_ animated:Bool){
@@ -509,6 +516,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         
     }
     
+   
     
     func showGoldWithDrawResult(_ animated:Bool, transactionId:String, finish:(()->Void)? = nil){
         

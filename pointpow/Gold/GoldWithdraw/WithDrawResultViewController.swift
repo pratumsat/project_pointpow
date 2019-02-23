@@ -359,7 +359,7 @@ extension WithDrawResultViewController {
                 item.qrCodeImageView.image  = base64Convert(base64String: qrbase64)
                 
                 
-                print("validatetime = \(validateTransactionTime(created_at))")
+              
                 
                 if validateTransactionTime(created_at) {
                     item.cancelLabel.isHidden = false
@@ -486,7 +486,7 @@ extension WithDrawResultViewController {
                 let unitBar = NSLocalizedString("unit-bar", comment: "")
                 
                 
-                print("validatetime = \(validateTransactionTime(created_at))")
+            
                 
                 if validateTransactionTime(created_at) {
                     item.cancelLabel.isHidden = false

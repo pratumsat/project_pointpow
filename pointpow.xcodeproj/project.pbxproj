@@ -20,6 +20,7 @@
 		C107CF2A221FC92200C50B8C /* WidthDrawResultPointPow2Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C107CF28221FC92200C50B8C /* WidthDrawResultPointPow2Cell.xib */; };
 		C107CF2D221FD52800C50B8C /* WithDrawResultPointPowSuccessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C107CF2B221FD52800C50B8C /* WithDrawResultPointPowSuccessCell.swift */; };
 		C107CF2E221FD52800C50B8C /* WithDrawResultPointPowSuccessCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C107CF2C221FD52800C50B8C /* WithDrawResultPointPowSuccessCell.xib */; };
+		C107CF30222157E900C50B8C /* WithDrawSummaryOfficeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C107CF2F222157E900C50B8C /* WithDrawSummaryOfficeViewController.swift */; };
 		C10CA19421914A3B00316DF3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA19321914A3B00316DF3 /* HomeViewController.swift */; };
 		C10CA19721914AD500316DF3 /* PromotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA19621914AD500316DF3 /* PromotionViewController.swift */; };
 		C10CA19A21914AF900316DF3 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA19921914AF900316DF3 /* TransactionViewController.swift */; };
@@ -223,6 +224,7 @@
 		C107CF28221FC92200C50B8C /* WidthDrawResultPointPow2Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WidthDrawResultPointPow2Cell.xib; sourceTree = "<group>"; };
 		C107CF2B221FD52800C50B8C /* WithDrawResultPointPowSuccessCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawResultPointPowSuccessCell.swift; sourceTree = "<group>"; };
 		C107CF2C221FD52800C50B8C /* WithDrawResultPointPowSuccessCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithDrawResultPointPowSuccessCell.xib; sourceTree = "<group>"; };
+		C107CF2F222157E900C50B8C /* WithDrawSummaryOfficeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawSummaryOfficeViewController.swift; sourceTree = "<group>"; };
 		C10CA19321914A3B00316DF3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C10CA19621914AD500316DF3 /* PromotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionViewController.swift; sourceTree = "<group>"; };
 		C10CA19921914AF900316DF3 /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
@@ -502,6 +504,7 @@
 				C11BFCA3221BC5D900F066DE /* GoldWithDrawChooseShippingViewController.swift */,
 				C1892E02221CFCD500F5412F /* WithDrawResultNav.swift */,
 				C1892E04221CFD3300F5412F /* WithDrawResultViewController.swift */,
+				C107CF2F222157E900C50B8C /* WithDrawSummaryOfficeViewController.swift */,
 			);
 			path = GoldWithdraw;
 			sourceTree = "<group>";
@@ -1412,6 +1415,7 @@
 				C197FF3622083AA6002F24E8 /* MyGoldCell.swift in Sources */,
 				C197FF3222083A6F002F24E8 /* GoldPriceCell.swift in Sources */,
 				C120D7CE21955BB500F9EEBB /* ProfileCell.swift in Sources */,
+				C107CF30222157E900C50B8C /* WithDrawSummaryOfficeViewController.swift in Sources */,
 				C10CA1AC219298C500316DF3 /* EmptyViewController.swift in Sources */,
 				C13D998521997938001A4794 /* LogoutCell.swift in Sources */,
 				C1DEBE902188297B00CBB95F /* ScannerViewController.swift in Sources */,

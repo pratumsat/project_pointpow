@@ -879,18 +879,73 @@ func validateTransactionTime(_ dateString:String) -> Bool {
         let unitFlags: Set<Calendar.Component> = [.minute, .hour, .day, .weekOfYear, .month, .year, .second]
         let components = calendar.dateComponents(unitFlags, from: d1)
         
-        print(components.hour!)
-        print(components.minute!)
-
-        let minnute = components.minute! + (components.hour!*60)
         
-        if minnute < 1440 {
+        let minnute = components.minute! + (components.hour!*60)
+        let difminute = abs(1440 - minnute)
+        let diffTime = "\(Int(difminute/60)):\(Int(difminute%60)):00"
+        
+        var str = "\(String(format: "%02d", components.hour!))"
+            str += ":\(String(format: "%02d", components.minute!))"
+            str += ":\(String(format: "%02d", components.second!))"
+        
+        //print(str)
+        
+        let diffT1 = parseDuration(timeString: diffTime)
+        let timeInter = d1.timeIntervalSinceReferenceDate
+        let diff24 =  timeInter + diffT1
+        
+        
+        let diffDate =  Date(timeIntervalSinceReferenceDate: diff24)
+        print(diffDate)
+        
+        let currentDate = Date()
+        let currentTime = currentDate.timeIntervalSinceReferenceDate
+        print(currentDate)
+        
+        if diff24 > currentTime {
             return true
+        }else{
+            return false
         }
+        
+        //let difference = calendar.dateComponents(unitFlags, from: diffDate)
+        
+        //var str2 = "\(String(format: "%02d", difference.hour!))"
+        //str2 += ":\(String(format: "%02d", difference.minute!))"
+        //str2 += ":\(String(format: "%02d", difference.second!))"
+        
+        //print(str2)
+        
+       
         
     }
     
     return false
+}
+
+func parseDuration(timeString:String) -> TimeInterval {
+    guard !timeString.isEmpty else {
+        return 0
+    }
+    
+    var interval:Double = 0
+    
+    let parts = timeString.components(separatedBy: ":")
+    for (index, part) in parts.reversed().enumerated() {
+        interval += (Double(part) ?? 0) * pow(Double(60), Double(index))
+    }
+    
+    return interval
+}
+func stringFromTimeInterval(_ timeInterval:TimeInterval) -> String {
+    
+    let time = NSInteger(timeInterval)
+    let seconds = time % 60
+    let minutes = (time / 60) % 60
+    let hours = (time / 3600)
+    
+    return String(format: "%0.2d:%0.2d:%0.2d",hours,minutes,seconds)
+    
 }
 
 func dateNow() -> String {

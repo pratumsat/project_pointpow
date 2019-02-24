@@ -6399,6 +6399,61 @@
             </objects>
             <point key="canvasLocation" x="-2639" y="6370"/>
         </scene>
+        <!--Popup Shipping My Address View Controller-->
+        <scene sceneID="iuT-KM-zIq">
+            <objects>
+                <viewController storyboardIdentifier="PopupShippingMyAddressViewController" id="GTf-TJ-FFK" customClass="PopupShippingMyAddressViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="O7x-24-y2W">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Seo-Hc-Xvk">
+                                <rect key="frame" x="0.0" y="118" width="414" height="778"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Uev-82-mPf">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="vOg-vu-Q66">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="กรุณาเลือกที่อยู่ในการจัดส่ง" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gaH-79-ggr">
+                                <rect key="frame" x="97" y="64" width="220" height="34"/>
+                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gaH-79-ggr" firstAttribute="top" secondItem="AQi-M7-iP4" secondAttribute="top" constant="20" id="3Ai-2W-Fy6"/>
+                            <constraint firstAttribute="bottom" secondItem="Seo-Hc-Xvk" secondAttribute="bottom" id="T0z-Be-cKi"/>
+                            <constraint firstItem="Seo-Hc-Xvk" firstAttribute="top" secondItem="gaH-79-ggr" secondAttribute="bottom" constant="20" id="cCj-Ao-ff8"/>
+                            <constraint firstItem="gaH-79-ggr" firstAttribute="centerX" secondItem="O7x-24-y2W" secondAttribute="centerX" id="iug-Cb-jql"/>
+                            <constraint firstItem="Seo-Hc-Xvk" firstAttribute="leading" secondItem="AQi-M7-iP4" secondAttribute="leading" id="mId-rt-qEA"/>
+                            <constraint firstAttribute="trailing" secondItem="Seo-Hc-Xvk" secondAttribute="trailing" id="zTC-4v-Bhn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="AQi-M7-iP4"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="aUP-TV-aRC"/>
+                    <connections>
+                        <outlet property="addressCollectionView" destination="Seo-Hc-Xvk" id="bfU-Jz-T40"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ScS-Wj-fqb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1078.2608695652175" y="5651.7857142857138"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ic-arrow-transfer" width="300" height="83"/>

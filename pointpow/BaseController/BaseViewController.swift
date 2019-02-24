@@ -830,6 +830,36 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         }
     }
     
+    func showShippingAddressPopup(_ animated:Bool , selectCallback:((_ selectedAddress:AnyObject)->Void)? = nil ){
+        let presenter: Presentr = {
+            
+            let w = self.view.frame.width * 0.9
+            let h = w/275*275
+            let width = ModalSize.custom(size: Float(w))
+            let height = ModalSize.custom(size: Float(h))
+            
+            let center = ModalCenterPosition.center
+            let customType = PresentationType.custom(width: width, height: height, center: center)
+            
+            let customPresenter = Presentr(presentationType: customType)
+            customPresenter.roundCorners = true
+            customPresenter.cornerRadius = 10
+            customPresenter.dismissOnSwipe = false
+            customPresenter.dismissOnTap = false
+            
+            
+            return customPresenter
+        }()
+        
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "PopupShippingMyAddressViewController") as? PopupShippingMyAddressViewController{
+            vc.selectedAddressCallback = { (selectedAddress) in
+                selectCallback?(selectedAddress)
+            }
+            customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)
+            
+        }
+    }
+    
     
     func showFilterHistoryPopup(_ animated:Bool , editData:AnyObject? ,nextStepCallback:((_ data:AnyObject)->Void)? = nil ){
         let presenter: Presentr = {

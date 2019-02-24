@@ -9,17 +9,30 @@
 import UIKit
 
 class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    
+    var myAddress:[[String:AnyObject]]?
+    
     var withdrawData:(premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double))?{
         didSet{
             print(withdrawData!)
         }
     }
+    
+    
     var option = 0 {
         didSet{
             if option == 1{
-                self.showShippingPopup(true , editData: nil) { (address) in
-                    //nextstep
+                if let _ = self.myAddress?.count {
+                    self.showShippingAddressPopup(true) { (selectedAddress) in
+                        print(selectedAddress)
+                    }
+                }else{
+                    self.showShippingPopup(true , editData: nil) { (address) in
+                        //nextstep
+                    }
                 }
+                
             }
             self.shippingCollectionView.reloadData()
         }
@@ -37,8 +50,44 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
         self.title = NSLocalizedString("string-title-gold-page-withdraw", comment: "")
         
         self.setUp()
+        
+        self.getUserInfo(){
+            print("get my address")
+            print(self.myAddress!)
+        }
     }
-    
+    func getUserInfo(_ avaliable:(()->Void)?  = nil){
+        
+        var isLoading:Bool = true
+        if self.myAddress != nil {
+            isLoading = false
+        }else{
+            isLoading = true
+        }
+        
+        
+        modelCtrl.getUserData(params: nil , isLoading , succeeded: { (result) in
+            if let data = result as? [String:AnyObject] {
+                let member_addresses = data["member_addresses"] as? [[String:AnyObject]] ?? [[:]]
+                self.myAddress = member_addresses
+            }
+           
+            avaliable?()
+            
+            
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                //self.showMessagePrompt(message)
+            }
+            
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+        }
+    }
 
     func setUp(){
 //        self.handlerEnterSuccess = {

@@ -23,6 +23,9 @@
 		C107CF30222157E900C50B8C /* WithDrawSummaryOfficeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C107CF2F222157E900C50B8C /* WithDrawSummaryOfficeViewController.swift */; };
 		C107CF3322218FE400C50B8C /* WithDrawOfficeSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C107CF3122218FE400C50B8C /* WithDrawOfficeSummaryCell.swift */; };
 		C107CF3422218FE400C50B8C /* WithDrawOfficeSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C107CF3222218FE400C50B8C /* WithDrawOfficeSummaryCell.xib */; };
+		C107CF36222263AD00C50B8C /* PopupShippingMyAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C107CF35222263AD00C50B8C /* PopupShippingMyAddressViewController.swift */; };
+		C107CF3A222269E000C50B8C /* AddressViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C107CF38222269E000C50B8C /* AddressViewCell.swift */; };
+		C107CF3B222269E000C50B8C /* AddressViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C107CF39222269E000C50B8C /* AddressViewCell.xib */; };
 		C10CA19421914A3B00316DF3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA19321914A3B00316DF3 /* HomeViewController.swift */; };
 		C10CA19721914AD500316DF3 /* PromotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA19621914AD500316DF3 /* PromotionViewController.swift */; };
 		C10CA19A21914AF900316DF3 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA19921914AF900316DF3 /* TransactionViewController.swift */; };
@@ -229,6 +232,9 @@
 		C107CF2F222157E900C50B8C /* WithDrawSummaryOfficeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawSummaryOfficeViewController.swift; sourceTree = "<group>"; };
 		C107CF3122218FE400C50B8C /* WithDrawOfficeSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawOfficeSummaryCell.swift; sourceTree = "<group>"; };
 		C107CF3222218FE400C50B8C /* WithDrawOfficeSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithDrawOfficeSummaryCell.xib; sourceTree = "<group>"; };
+		C107CF35222263AD00C50B8C /* PopupShippingMyAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupShippingMyAddressViewController.swift; sourceTree = "<group>"; };
+		C107CF38222269E000C50B8C /* AddressViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewCell.swift; sourceTree = "<group>"; };
+		C107CF39222269E000C50B8C /* AddressViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressViewCell.xib; sourceTree = "<group>"; };
 		C10CA19321914A3B00316DF3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C10CA19621914AD500316DF3 /* PromotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionViewController.swift; sourceTree = "<group>"; };
 		C10CA19921914AF900316DF3 /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
@@ -526,6 +532,15 @@
 			path = GoldProfileCell;
 			sourceTree = "<group>";
 		};
+		C107CF37222269B400C50B8C /* AddressCell */ = {
+			isa = PBXGroup;
+			children = (
+				C107CF38222269E000C50B8C /* AddressViewCell.swift */,
+				C107CF39222269E000C50B8C /* AddressViewCell.xib */,
+			);
+			path = AddressCell;
+			sourceTree = "<group>";
+		};
 		C10CA19221914A2800316DF3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -673,6 +688,7 @@
 		C11A93B4218C00A000627B44 /* CollectionCell */ = {
 			isa = PBXGroup;
 			children = (
+				C107CF37222269B400C50B8C /* AddressCell */,
 				C1892E0A221E8FDB00F5412F /* GoldHistroryCell */,
 				C1F761072216E2DB000A2CA9 /* GoldWithdrawCell */,
 				C1F760F22216922F000A2CA9 /* GoldSavingCell */,
@@ -901,6 +917,7 @@
 			isa = PBXGroup;
 			children = (
 				C1892E17221EB9DC00F5412F /* PopupGoldHistoryFilterViewController.swift */,
+				C107CF35222263AD00C50B8C /* PopupShippingMyAddressViewController.swift */,
 				C11BFCB2221C0CB700F066DE /* PopupShippingAddressViewController.swift */,
 				C1247C532219B126005D6F7A /* PopupGoldPremiumViewController.swift */,
 				C11BDFBE21A2C17600443D2D /* PopUpTransferSuccessViewController.swift */,
@@ -1145,6 +1162,7 @@
 				C1247C5222191898005D6F7A /* WithdrawCell.xib in Resources */,
 				C197FEE52207E4F9002F24E8 /* NotoSansThai-Regular.ttf in Resources */,
 				C10CA1BA2193E1D100316DF3 /* PromotionCampainCell.xib in Resources */,
+				C107CF3B222269E000C50B8C /* AddressViewCell.xib in Resources */,
 				C169FFC921C4F10100F9D354 /* FavorCell.xib in Resources */,
 				C1892E12221E92BE00F5412F /* HeaderCollectionReusableView.xib in Resources */,
 				C11BDFB921A2B95D00443D2D /* ItemFriendSummaryCell.xib in Resources */,
@@ -1319,6 +1337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1AD50B72188000B00F74415 /* Constant.swift in Sources */,
+				C107CF36222263AD00C50B8C /* PopupShippingMyAddressViewController.swift in Sources */,
 				C197FF2822082046002F24E8 /* GoldBaseViewController.swift in Sources */,
 				C10CA19A21914AF900316DF3 /* TransactionViewController.swift in Sources */,
 				C11A93B3218BF6D200627B44 /* IntroViewController.swift in Sources */,
@@ -1374,6 +1393,7 @@
 				C106BEA6220AC01400E2331E /* ConfirmSavingViewController.swift in Sources */,
 				C115FA4A219EC511008E7844 /* ResultTransferViewController.swift in Sources */,
 				C18A1CE222112D2A002CAF4C /* RegisterGoldstep2ViewController.swift in Sources */,
+				C107CF3A222269E000C50B8C /* AddressViewCell.swift in Sources */,
 				C10CA1BE219429D500316DF3 /* ImageCell.swift in Sources */,
 				C115FA5521A2A40F008E7844 /* PointFriendTransferViewController.swift in Sources */,
 				C169FFC821C4F10100F9D354 /* FavorCell.swift in Sources */,

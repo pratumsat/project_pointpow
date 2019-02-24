@@ -797,7 +797,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         }
     }
     
-    func showShippingPopup(_ animated:Bool , editData:AnyObject? ,nextStepCallback:((_ address:String)->Void)? = nil ){
+    func showShippingPopup(_ animated:Bool , editData:AnyObject? , fromPopup:Bool = false ,nextStepCallback:((_ address:AnyObject)->Void)? = nil ){
         let presenter: Presentr = {
             
             let w = self.view.frame.width * 0.9
@@ -819,7 +819,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         }()
         
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "PopupShippingAddressViewController") as? PopupShippingAddressViewController{
-            
+            vc.fromPopup = fromPopup
             vc.editData = editData
             vc.nextStep =  { (address) in
                 nextStepCallback?(address)
@@ -830,11 +830,11 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         }
     }
     
-    func showShippingAddressPopup(_ animated:Bool , selectCallback:((_ selectedAddress:AnyObject)->Void)? = nil ){
+    func showShippingAddressPopup(_ animated:Bool, selectCallback:((_ selectedAddress:AnyObject)->Void)? = nil ){
         let presenter: Presentr = {
             
             let w = self.view.frame.width * 0.9
-            let h = w/275*275
+            let h = w/275*320
             let width = ModalSize.custom(size: Float(w))
             let height = ModalSize.custom(size: Float(h))
             
@@ -852,8 +852,15 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         }()
         
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "PopupShippingMyAddressViewController") as? PopupShippingMyAddressViewController{
+            
+            
             vc.selectedAddressCallback = { (selectedAddress) in
                 selectCallback?(selectedAddress)
+            }
+            vc.addAddressCallback = {
+                self.showShippingPopup(true , editData: nil , fromPopup: true) { (address) in
+                    selectCallback?(address)
+                }
             }
             customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)
             

@@ -9,7 +9,7 @@
 import UIKit
 
 class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelegate , UIPickerViewDataSource {
-    var nextStep:((_ address:String)->Void)?
+    var nextStep:((_ address:AnyObject)->Void)?
     
     @IBOutlet weak var postCodeTextField: UITextField!
     @IBOutlet weak var districtTextField: UITextField!
@@ -44,6 +44,8 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
     var language = "th"
 
     var editData:AnyObject?
+    var fromPopup = false
+    
     
     var selectedProvinceId:Int = 0 {
         didSet{
@@ -446,13 +448,13 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
         
         
         guard validateMobile(mobile) else { return }
-        print("pass pass pass")
-//
-//        self.dismiss(animated: true) {
-//            self.windowSubview?.removeFromSuperview()
-//            self.windowSubview = nil
-//            self.nextStep?()
-//        }
+       
+
+        self.dismiss(animated: true) {
+            self.windowSubview?.removeFromSuperview()
+            self.windowSubview = nil
+            self.nextStep?([(address:"test addeess")] as AnyObject)
+        }
         
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -540,7 +542,11 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
     
     override func dismissPoPup() {
         super.dismissPoPup()
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: {
+            if self.fromPopup {
+                self.nextStep?("showViewAddress" as AnyObject)
+            }
+        })
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

@@ -19,14 +19,34 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
         }
     }
     
-    
+    func showShippinhAddress(){
+        self.showShippingAddressPopup(true) { (address) in
+            if !self.repeatView(address){
+                print(address)
+            }
+        }
+    }
+    func repeatView (_ address:AnyObject) -> Bool{
+        if let message = address as? String {
+            if message == "showViewAddress" {
+                
+                self.showShippingAddressPopup(true) { (address) in
+                    _ = self.repeatView(address)
+                }
+                
+                return true
+            }else{
+                return false
+            }
+        }else{
+          return false
+        }
+    }
     var option = 0 {
         didSet{
             if option == 1{
                 if let _ = self.myAddress?.count {
-                    self.showShippingAddressPopup(true) { (selectedAddress) in
-                        print(selectedAddress)
-                    }
+                   self.showShippinhAddress()
                 }else{
                     self.showShippingPopup(true , editData: nil) { (address) in
                         //nextstep
@@ -152,6 +172,10 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
         self.registerNib(self.shippingCollectionView, "NextButtonCell")
         self.registerNib(self.shippingCollectionView, "LogoGoldCell")
     }
+    
+    
+    
+   
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 4
@@ -198,9 +222,8 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
                     }
                     item.editCallback = {
                         //choose address
-                        self.showShippingPopup(true , editData: nil) { (address) in
-                            //nextstep
-                        }
+                        
+                       
                     }
                     
                     let numberFormatter = NumberFormatter()

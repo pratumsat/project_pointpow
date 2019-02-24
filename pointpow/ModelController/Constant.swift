@@ -598,6 +598,7 @@ struct Constant {
         }
     }
     struct Colors {
+        static let SELECTED_RED = UIColor(rgb: 0xFCE2E6)
         static let PRIMARY_COLOR = UIColor(rgb: 0xFF002F)
         static let LINE_COLOR = UIColor.groupTableViewBackground
         static let LINE_PROFILE = UIColor(rgb: 0xCCCCCC)

@@ -19,6 +19,8 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
     var isShowKeyBoard = false
     var loadingView:Loading?
    
+    var viewPopup: UIView?
+    
     var windowSubview:UIImageView?
     var socialLoginSucces:Bool?
     var isExist:Bool = false
@@ -79,6 +81,9 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
+        
+        
+        
         
         //keyboard show / hide
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -730,6 +735,8 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             vc.dismissView = {
                 nextStepCallback?()
             }
+            
+            self.viewPopup = vc.view
             customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)
             
         }
@@ -761,6 +768,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
                 savedCallback?()
             }
             
+            self.viewPopup = vc.view
             customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)
             
         }
@@ -792,6 +800,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
                 nextStepCallback?()
             }
             
+            self.viewPopup = vc.view
             customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)
             
         }
@@ -824,7 +833,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             vc.nextStep =  { (address) in
                 nextStepCallback?(address)
             }
-            
+            self.viewPopup = vc.view
             customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)
             
         }
@@ -862,6 +871,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
                     selectCallback?(address)
                 }
             }
+            self.viewPopup = vc.view
             customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)
             
         }
@@ -886,6 +896,16 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             customPresenter.cornerRadius = 10
             customPresenter.dismissOnSwipe = false
             customPresenter.dismissOnTap = false
+            
+            let view = UIView(frame: self.view.frame)
+            customPresenter.customBackgroundView = view
+            
+            
+            let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboardPopup))
+            view.isUserInteractionEnabled = true
+            view.addGestureRecognizer(tap)
+            
+            
             return customPresenter
         }()
         
@@ -896,7 +916,8 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
                 nextStepCallback?(data)
             }
             
-            customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)
+            self.viewPopup = vc.view
+           customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)
             
         }
     }
@@ -927,6 +948,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             vc.dismissView = {
                 dismissCallback?()
             }
+            self.viewPopup = vc.view
             customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)
             
         }
@@ -947,14 +969,16 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             let customPresenter = Presentr(presentationType: customType)
             customPresenter.roundCorners = true
             customPresenter.cornerRadius = 10
-            customPresenter.dismissOnSwipe = false
-            customPresenter.dismissOnTap = false
+            customPresenter.dismissOnSwipe = true
+            customPresenter.dismissOnTap = true
             
             
             return customPresenter
         }()
         
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "PopupGoldPremiumViewController") as? PopupGoldPremiumViewController{
+            
+            self.viewPopup = vc.view
             
             customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)
             
@@ -1083,6 +1107,11 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
     @objc func dismissKeyboard(){
         view.endEditing(true)
     }
+    
+    
+    @objc func dismissKeyboardPopup(){
+        viewPopup?.endEditing(true)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -1122,7 +1151,7 @@ extension BaseViewController {
         
         let window = UIApplication.shared.keyWindow!
         window.addSubview(windowSubview!);
-        
+       
     }
     func addCloseBlackView(){
         let x = CGFloat(self.view.frame.maxX) - 12.5

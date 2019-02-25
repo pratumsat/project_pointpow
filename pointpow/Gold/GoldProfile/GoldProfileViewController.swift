@@ -60,7 +60,9 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.navigationItem.rightBarButtonItem?.action = #selector(SWRevealViewController.rightRevealToggle(_:))
+        
         self.title = NSLocalizedString("string-title-profile", comment: "")
         self.setUp()
         
@@ -89,6 +91,8 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
             let pid = data["goldsaving_member"]?["citizen_id"]as? String ?? ""
             let status = data["goldsaving_member"]?["status"] as? String ?? ""
             let account_id = data["goldsaving_member"]?["account_id"] as? String ?? ""
+            let attachment = data["goldsaving_member"]?["attachment"] as? [String:AnyObject]? ?? [:]
+            let idCardPhoto = attachment?["path"] as? String ?? ""
             
             self.goldIdLabel.text = "\(account_id)"
             self.firstNameTextField.text = first_name
@@ -100,12 +104,8 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
             
             let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
             self.mobileTextField.text =  newMText.chunkFormatted()
-            
-            let pathIdCard = "\(Constant.PathImages.idCard)"
-            modelCtrl.loadImage(pathIdCard , Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER) { (image) in
-                self.hiddenIdCardPhotoImageView.image = image
-                
-            }
+        
+            self.hiddenIdCardPhotoImageView.sd_setImage(with: URL(string: idCardPhoto)!, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER))
             
             switch status {
             case "waiting":
@@ -180,6 +180,12 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
     func setUp(){
         self.backgroundImage?.image = nil
        
+        self.mobileTextField.addDoneButtonToKeyboard(myAction:
+            #selector(self.mobileTextField.resignFirstResponder))
+        
+        self.idcardTextField.addDoneButtonToKeyboard(myAction:
+            #selector(self.idcardTextField.resignFirstResponder))
+        
         if #available(iOS 10.0, *) {
             self.firstNameTextField.textContentType = UITextContentType(rawValue: "")
             self.lastNameTextField.textContentType = UITextContentType(rawValue: "")
@@ -505,10 +511,11 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
+        picker.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
         
         let chosenImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         
@@ -535,11 +542,29 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
         
         self.enableButton()
         
-        dismiss(animated: true, completion: nil)
     }
     
     @objc func browseTapped(){
         self.addFileTapped()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        if textField == self.firstNameTextField {
+            self.lastNameTextField.becomeFirstResponder()
+        }
+        if textField == self.lastNameTextField {
+            self.emailTextField.becomeFirstResponder()
+        }
+        if textField == self.emailTextField {
+            self.mobileTextField.becomeFirstResponder()
+        }
+        if textField == self.mobileTextField {
+            self.idcardTextField.becomeFirstResponder()
+        }
+        
+        return true
     }
     
     func addFileTapped() {

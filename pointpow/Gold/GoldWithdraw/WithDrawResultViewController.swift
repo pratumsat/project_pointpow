@@ -253,16 +253,24 @@ extension WithDrawResultViewController {
                 
                 
                 
-                switch statusTransaction {
+                switch statusTransaction.lowercased() {
                 case "success":
                     item.statusImageView.image = UIImage(named: "ic-status-success2")
                     item.statusLabel.textColor = Constant.Colors.GREEN
                     item.statusLabel.text = NSLocalizedString("string-dailog-gold-transaction-status-success", comment: "")
+                    
+                    item.shippingStatusLabel.isHidden = false
+                    item.shippingStatusTitleLabel.isHidden = false
+                    item.shippingLineView.isHidden = false
                     break
                 case "cancel":
                     item.statusImageView.image = UIImage(named: "ic-status-cancel")
                     item.statusLabel.textColor = Constant.Colors.PRIMARY_COLOR
                     item.statusLabel.text = NSLocalizedString("string-dailog-gold-transaction-status-cancel", comment: "")
+                    
+                    item.shippingStatusLabel.isHidden = true
+                    item.shippingStatusTitleLabel.isHidden = true
+                    item.shippingLineView.isHidden = true
                     break
                 default:
                     break
@@ -374,11 +382,16 @@ extension WithDrawResultViewController {
                     item.statusImageView.image = UIImage(named: "ic-status-success2")
                     item.statusLabel.textColor = Constant.Colors.GREEN
                     item.statusLabel.text = NSLocalizedString("string-dailog-gold-transaction-status-success", comment: "")
+                    
+                  
+                    
                     break
                 case "cancel":
                     item.statusImageView.image = UIImage(named: "ic-status-cancel")
                     item.statusLabel.textColor = Constant.Colors.PRIMARY_COLOR
                     item.statusLabel.text = NSLocalizedString("string-dailog-gold-transaction-status-cancel", comment: "")
+                    
+                    
                     break
                 default:
                     break
@@ -547,11 +560,14 @@ extension WithDrawResultViewController {
                     item.statusImageView.image = UIImage(named: "ic-status-success2")
                     item.statusLabel.textColor = Constant.Colors.GREEN
                     item.statusLabel.text = NSLocalizedString("string-dailog-gold-transaction-status-success", comment: "")
+                    
+                    
                     break
                 case "cancel":
                     item.statusImageView.image = UIImage(named: "ic-status-cancel")
                     item.statusLabel.textColor = Constant.Colors.PRIMARY_COLOR
                     item.statusLabel.text = NSLocalizedString("string-dailog-gold-transaction-status-cancel", comment: "")
+                    
                     break
                 default:
                     break
@@ -699,11 +715,14 @@ extension WithDrawResultViewController {
                     item.statusImageView.image = UIImage(named: "ic-status-success2")
                     item.statusLabel.textColor = Constant.Colors.GREEN
                     item.statusLabel.text = NSLocalizedString("string-dailog-gold-transaction-status-success", comment: "")
+                    
+                    
                     break
                 case "cancel":
                     item.statusImageView.image = UIImage(named: "ic-status-cancel")
                     item.statusLabel.textColor = Constant.Colors.PRIMARY_COLOR
                     item.statusLabel.text = NSLocalizedString("string-dailog-gold-transaction-status-cancel", comment: "")
+                    
                     break
                 default:
                     break
@@ -832,7 +851,7 @@ extension WithDrawResultViewController{
                 case "office" :
                     if statusShipping == "waiting" {
                         if statusTransaction.lowercased() == "cancel" {
-                            height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*450 , rowHeight: 20.0)
+                            height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*420 , rowHeight: 20.0)
 
                         }else{
                             height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*800 , rowHeight: 20.0)
@@ -872,8 +891,8 @@ extension WithDrawResultViewController{
                     if statusShipping == "waiting" {
                         if statusTransaction.lowercased() == "cancel" {
                             
-                            height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*450 , rowHeight: 20.0)
-                            
+                            height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*420 , rowHeight: 20.0)
+                        
                         }else{
                             height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*800 , rowHeight: 20.0)
                             

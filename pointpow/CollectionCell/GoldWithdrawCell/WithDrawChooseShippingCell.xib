@@ -30,7 +30,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gif-Mc-DMY">
-                        <rect key="frame" x="110" y="14" width="220" height="36"/>
+                        <rect key="frame" x="110" y="14" width="238" height="36"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-choose-2" translatesAutoresizingMaskIntoConstraints="NO" id="W60-ev-aLq">
                                 <rect key="frame" x="10" y="3" width="30" height="30"/>
@@ -39,7 +39,7 @@
                                     <constraint firstAttribute="width" secondItem="W60-ev-aLq" secondAttribute="height" multiplier="1:1" id="et2-cM-87Z"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="รับที่บริษัท Point Power" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejI-eX-fAG">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="รับที่บริษัท Point Power" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ejI-eX-fAG">
                                 <rect key="frame" x="50" y="6" width="130" height="24"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                 <nil key="highlightedColor"/>
@@ -61,11 +61,10 @@
                             <constraint firstItem="Ts9-Gr-Jnc" firstAttribute="centerY" secondItem="ejI-eX-fAG" secondAttribute="centerY" id="ay5-mw-xaL"/>
                             <constraint firstItem="W60-ev-aLq" firstAttribute="leading" secondItem="Gif-Mc-DMY" secondAttribute="leading" constant="10" id="cNJ-mW-grh"/>
                             <constraint firstItem="ejI-eX-fAG" firstAttribute="centerY" secondItem="Gif-Mc-DMY" secondAttribute="centerY" id="elJ-FX-b87"/>
-                            <constraint firstAttribute="trailing" secondItem="Ts9-Gr-Jnc" secondAttribute="trailing" constant="10" id="l4B-js-3X8"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2jx-KB-dgz">
-                        <rect key="frame" x="110" y="50" width="220" height="36"/>
+                        <rect key="frame" x="110" y="50" width="238" height="36"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-choose-1" translatesAutoresizingMaskIntoConstraints="NO" id="6Y4-2E-ZcH">
                                 <rect key="frame" x="10" y="3" width="30" height="30"/>
@@ -74,11 +73,18 @@
                                     <constraint firstAttribute="width" secondItem="6Y4-2E-ZcH" secondAttribute="height" multiplier="1:1" id="yzL-KD-kDk"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="จัดส่งทางไปรษณีย์ (EMS)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYq-MG-G9R">
-                                <rect key="frame" x="50" y="6" width="140.5" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="จัดส่งทางไปรษณีย์ (EMS)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xYq-MG-G9R">
+                                <rect key="frame" x="50" y="6" width="140.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-info" translatesAutoresizingMaskIntoConstraints="NO" id="0w0-Z9-Afc">
+                                <rect key="frame" x="200.5" y="8" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="0w0-Z9-Afc" secondAttribute="height" multiplier="1:1" id="G6e-MD-YdL"/>
+                                    <constraint firstAttribute="height" constant="20" id="zao-GV-zaH"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -87,12 +93,15 @@
                             <constraint firstItem="6Y4-2E-ZcH" firstAttribute="leading" secondItem="2jx-KB-dgz" secondAttribute="leading" constant="10" id="Y4R-rz-2Ok"/>
                             <constraint firstItem="6Y4-2E-ZcH" firstAttribute="centerY" secondItem="xYq-MG-G9R" secondAttribute="centerY" id="YDw-hO-kng"/>
                             <constraint firstAttribute="height" constant="36" id="hSq-P8-2uI"/>
+                            <constraint firstItem="0w0-Z9-Afc" firstAttribute="leading" secondItem="xYq-MG-G9R" secondAttribute="trailing" constant="10" id="jFy-Ms-fq3"/>
+                            <constraint firstItem="0w0-Z9-Afc" firstAttribute="centerY" secondItem="xYq-MG-G9R" secondAttribute="centerY" id="p9C-Rd-scc"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="Gif-Mc-DMY" secondAttribute="trailing" constant="20" id="4gY-Or-gvd"/>
                 <constraint firstItem="k2b-i5-rF4" firstAttribute="top" secondItem="bBJ-3l-eH5" secondAttribute="top" constant="20" id="9iq-YH-rhi"/>
                 <constraint firstItem="Gif-Mc-DMY" firstAttribute="leading" secondItem="k2b-i5-rF4" secondAttribute="trailing" constant="10" id="GVM-k0-7T5"/>
                 <constraint firstItem="k2b-i5-rF4" firstAttribute="leading" secondItem="bBJ-3l-eH5" secondAttribute="leading" constant="10" id="fxX-4f-Qeo"/>
@@ -105,6 +114,7 @@
             <size key="customSize" width="439" height="238"/>
             <connections>
                 <outlet property="infoPointPowImageView" destination="Ts9-Gr-Jnc" id="hw3-4u-Ox4"/>
+                <outlet property="infoThaiPostImageView" destination="0w0-Z9-Afc" id="YKF-l3-d8I"/>
                 <outlet property="spPointpowImageView" destination="W60-ev-aLq" id="QlH-yv-m9Y"/>
                 <outlet property="spThaipostImageView" destination="6Y4-2E-ZcH" id="QM1-IX-Nvo"/>
             </connections>

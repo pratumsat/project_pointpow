@@ -68,6 +68,10 @@ class PopupGoldPremiumViewController: BaseViewController {
         super.viewDidAppear(animated)
         self.addCloseBlackView()
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.dismissPoPup()
+    }
 
    
 

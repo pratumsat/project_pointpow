@@ -29,14 +29,29 @@ class AddressViewCell: UICollectionViewCell {
         }
     }
     
+    
+    var editCallback:(()->Void)?
+    var deleteCallback:(()->Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        let select = UITapGestureRecognizer(target: self, action: #selector(selectTapped))
-        self.selectImageView.isUserInteractionEnabled  = true
-        self.selectImageView.addGestureRecognizer(select)
+        let edit = UITapGestureRecognizer(target: self, action: #selector(editTapped))
+        self.editImageView.isUserInteractionEnabled  = true
+        self.editImageView.addGestureRecognizer(edit)
         
+        let delete = UITapGestureRecognizer(target: self, action: #selector(deleteTapped))
+        self.deleteImageView.isUserInteractionEnabled  = true
+        self.deleteImageView.addGestureRecognizer(delete)
         
+    }
+    
+    @objc func editTapped(){
+        self.editCallback?()
+    }
+    
+    @objc func deleteTapped(){
+        self.deleteCallback?()
     }
     
     

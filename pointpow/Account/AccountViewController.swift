@@ -21,6 +21,9 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
     var isUploadProfile = false
      var upload:UploadRequest?
     
+    var profileImageView:UIImage?
+    var bgProfileImageView:UIImage?
+    
     @IBOutlet weak var profileCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +43,9 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.upload?.cancel()
+        profileImageView = nil
+        bgProfileImageView = nil
+        
     }
   
     override func viewDidAppear(_ animated: Bool) {
@@ -125,27 +131,32 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
                     let pointpowId = userData["pointpow_id"] as? String ?? "-"
                     let displayName = userData["display_name"] as? String ?? "-"
                     let pointBalance = userData["member_point"]?["total"] as? String ?? "0.00"
+                    let picture_data = userData["picture_data"] as? String ?? ""
+                    let picture_background = userData["picture_background"] as? String ?? ""
                     
-                    let parthProfileImage = "\(Constant.PathImages.profile)"
-                    let parthBackgroundImage = "\(Constant.PathImages.background)"
+                    if let image = self.profileImageView {
+                        profileCell.profileImageView.image = image
+                    }else{
+                        profileCell.profileImageView.sd_setImage(with: URL(string: picture_data)!, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER))
+                        
+                    }
                     
-              
+                    if let image = self.bgProfileImageView {
+                        profileCell.backgroundImageView.image = image
+                    }else{
+                        
+                        profileCell.backgroundImageView.sd_setImage(with: URL(string: picture_background)!, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_BACKGROUND_PLACEHOLDER))
+                        
+                    }
+                    
+                    
+                    
                     profileCell.pointBalanceLabel.text = pointBalance
                     profileCell.displayNameLabel.text = displayName
                     profileCell.pointpowIdLabel.text = pointpowId
                     
-                    modelCtrl.loadImage(parthProfileImage , Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER) { (image) in
-                        
-                        profileCell.profileImageView.image = image
-                    }
-                    modelCtrl.loadImage(parthBackgroundImage , Constant.DefaultConstansts.DefaultImaege.PROFILE_BACKGROUND_PLACEHOLDER)
-                    { (image) in
-                        
-                        profileCell.backgroundImageView.image = image
-                    }                }
-                
               
-                
+                }
                 
                 profileCell.backgroundTappedCallback = {
                     self.chooseProfile = false
@@ -285,10 +296,11 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
     }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
+        picker.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
         
         let chosenImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         if chooseProfile {
@@ -298,16 +310,21 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
             self.isUploadProfile = true
             self.uploadProfileImage(resizeImage)
             
+            self.profileImageView = resizeImage
+            
+            
         }else{
             // square for background
             let resizeImage = chosenImage.resizeUIImage(targetSize: CGSize(width: 370, height: 300))
            
             self.isUploadProfile = true
             self.uploadBackgroundImage(resizeImage)
+            
+            self.bgProfileImageView = resizeImage
         }
         
         
-        dismiss(animated: true, completion: nil)
+        
     }
     
     

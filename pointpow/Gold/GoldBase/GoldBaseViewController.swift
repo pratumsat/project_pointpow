@@ -21,11 +21,10 @@ class GoldBaseViewController: BaseViewController {
             self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
             self.navigationItem.rightBarButtonItem?.target = revealViewController()
-            self.navigationItem.rightBarButtonItem?.action = #selector(SWRevealViewController.rightRevealToggle(_:))
+            
         }
-        
-        
     }
+    
     func getDataMember(_ loadSuccess:(()->Void)?  = nil){
         var success = 0
         getGoldPrice() {
@@ -40,30 +39,12 @@ class GoldBaseViewController: BaseViewController {
                 loadSuccess?()
             }
         }
-        getGoldPremiumPrice() {
-            print("premium avaliable" )
-        }
+       
         
         
     }
     
-    func getGoldPremiumPrice(_ avaliable:(()->Void)?  = nil){
-        modelCtrl.getPremiumGoldPrice(params: nil , false , succeeded: { (result) in
-            print("get premium success")
-            avaliable?()
-        }, error: { (error) in
-            if let mError = error as? [String:AnyObject]{
-                let message = mError["message"] as? String ?? ""
-                print(message)
-                //self.showMessagePrompt(message)
-            }
-            print(error)
-        }) { (messageError) in
-            print("messageError")
-            self.handlerMessageError(messageError)
- 
-        }
-    }
+   
     func getGoldPrice(_ avaliable:(()->Void)?  = nil){
         var isLoading:Bool = true
         if self.goldPrice != nil {
@@ -122,14 +103,5 @@ class GoldBaseViewController: BaseViewController {
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

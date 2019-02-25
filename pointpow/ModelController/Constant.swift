@@ -339,7 +339,24 @@ public extension UIWindow {
 }
 
 
-
+extension UITextField{
+    func addDoneButtonToKeyboard(myAction:Selector?){
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 300, height: 40))
+        doneToolbar.barStyle = UIBarStyle.default
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: myAction)
+        
+        var items = [UIBarButtonItem]()
+        items.append(flexSpace)
+        items.append(done)
+        
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+        
+        self.inputAccessoryView = doneToolbar
+    }
+}
 extension UIImage{
     class func colorForNavBar(color: UIColor) -> UIImage {
         let rect = CGRect(x: 0.0, y: 0.0, width: 1.0, height: 1.0)
@@ -837,15 +854,17 @@ func convertDate(_ dateString:String , pattern:String = "haveSecond") -> String 
 
 func convertBuddhaToChris(_ dateString:String, _ format:String = "dd-MM-yyyy HH:mm") -> String {
     let dateFormatter = DateFormatter()
-    dateFormatter.locale = Locale(identifier: "th")
+    //dateFormatter.locale = Locale(identifier: "en_US_POSIX")
     dateFormatter.dateFormat = "dd-MM-yyyy"
     
     if let d1 = dateFormatter.date(from: dateString){
+        print(d1)
         let calendar = NSCalendar.current
         let unitFlags: Set<Calendar.Component> = [.day, .month, .year, .hour, .minute]
         let components = calendar.dateComponents(unitFlags, from: d1)
         
-        let dateString = "\(components.day!)-\(components.month!)-\(components.year!)"
+        let year  = components.year! - 543
+        let dateString = "\(components.day!)-\(components.month!)-\(year)"
         return dateString
     }
     
@@ -854,10 +873,10 @@ func convertBuddhaToChris(_ dateString:String, _ format:String = "dd-MM-yyyy HH:
 
 func convertToDate(_ dateString:String, _ format:String = "dd-MM-yyyy HH:mm") -> Date {
     let dateFormatter = DateFormatter()
-    dateFormatter.locale = Locale(identifier: "th")
+    //dateFormatter.locale = Locale(identifier: "en_US_POSIX")
     dateFormatter.dateFormat = format
     
-    if let d1 = dateFormatter.date(from: dateString){
+    if let d1 = dateFormatter.date(from: convertBuddhaToChris(dateString)){
         
         let calendar = NSCalendar.current
         let unitFlags: Set<Calendar.Component> = [.day, .month, .year, .hour, .minute]

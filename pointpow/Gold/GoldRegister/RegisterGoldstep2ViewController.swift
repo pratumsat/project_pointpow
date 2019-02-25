@@ -99,14 +99,14 @@ class RegisterGoldstep2ViewController: BaseViewController ,UIImagePickerControll
    
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
+        picker.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
+        picker.dismiss(animated: true, completion: nil)
+       
         let chosenImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
        
-        
         if let imageData = chosenImage.pngData() {
             let bytes = imageData.count
             let KB = Double(bytes) / 1024.0 // Note the difference
@@ -123,12 +123,11 @@ class RegisterGoldstep2ViewController: BaseViewController ,UIImagePickerControll
             print("size of image in KB: \(KB)")
         }
         
-        
         //reload data
         self.hiddenIdCardPhotoImageView.image = resizeImage
         self.icCardPhotoImageView.isHidden = true
         
-        dismiss(animated: true, completion: nil)
+        
     }
     
     @objc func browseTapped(){
@@ -158,14 +157,12 @@ class RegisterGoldstep2ViewController: BaseViewController ,UIImagePickerControll
             self.photoFromGallery()
         }
         
-        
         actionSheetController.addAction(takePictureAction)
         actionSheetController.addAction(choosePictureAction)
         actionSheetController.addAction(cancelAction)
         
         self.present(actionSheetController, animated: true)
-        
-        
+    
     }
     
     

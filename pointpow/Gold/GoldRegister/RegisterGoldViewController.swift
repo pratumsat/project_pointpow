@@ -53,6 +53,11 @@ class RegisterGoldViewController: BaseViewController {
     func setUp(){
         self.backgroundImage?.image = nil
         
+        self.mobileTextField.addDoneButtonToKeyboard(myAction:
+            #selector(self.mobileTextField.resignFirstResponder))
+        
+        self.idcardTextField.addDoneButtonToKeyboard(myAction:
+            #selector(self.idcardTextField.resignFirstResponder))
         
         if #available(iOS 10.0, *) {
             self.firstNameTextField.textContentType = UITextContentType(rawValue: "")
@@ -160,6 +165,26 @@ class RegisterGoldViewController: BaseViewController {
         self.addColorLineView(textField)
         return true
     }
+   
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        if textField == self.firstNameTextField {
+            self.lastNameTextField.becomeFirstResponder()
+        }
+        if textField == self.lastNameTextField {
+            self.emailTextField.becomeFirstResponder()
+        }
+        if textField == self.emailTextField {
+            self.mobileTextField.becomeFirstResponder()
+        }
+        if textField == self.mobileTextField {
+            self.idcardTextField.becomeFirstResponder()
+        }
+        
+        return true
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
      

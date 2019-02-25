@@ -17,7 +17,7 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
     var isTapped = false
     var timer:Timer?
     
-    
+    var statusMemberGold = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +44,15 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
         
         modelCtrl.getUserData(params: nil , isLoading , succeeded: { (result) in
             self.userData = result
+            
+            if let data  = self.userData as? [String:AnyObject] {
+                let registerGold = data["gold_saving_acc"] as? NSNumber ?? 0
+                let status = data["goldsaving_member"]?["status"] as? String ?? ""
+                
+                self.statusMemberGold = status
+                
+            }
+            
             avaliable?()
             
             self.refreshControl?.endRefreshing()
@@ -69,18 +78,13 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
         self.menuTableView.dataSource = self
         self.menuTableView.delegate = self
         
-        self.addRefreshTableViewController(self.menuTableView)
+       
         
         self.menuTableView.tableFooterView = UIView()
         self.registerTableViewNib(self.menuTableView, "NameTableViewCell")
         self.registerTableViewNib(self.menuTableView, "ProfileTableViewCell")
     }
-    
-    override func reloadData() {
-        self.getUserInfo() {
-            self.menuTableView.reloadData()
-        }
-    }
+   
    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -119,13 +123,10 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
                     let last_name = data["last_name"] as? String ?? ""
                     let account_id = data["goldsaving_member"]?["account_id"] as? String ?? ""
                     let status = data["goldsaving_member"]?["status"] as? String ?? ""
+                    let picture_data = data["picture_data"] as? String ?? ""
                     
-                     let parthProfileImage = "\(Constant.PathImages.profile)"
+                    head.profileImageView.sd_setImage(with: URL(string: picture_data)!, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER))
                     
-                    modelCtrl.loadImage(parthProfileImage , Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER) { (image) in
-                        
-                        head.profileImageView.image = image
-                    }
                     
                     head.nameLabel.text = "\(first_name) \(last_name)"
                     head.goldIdLabel.text = "\(account_id)"
@@ -179,31 +180,38 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
         if isTapped {
-             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(disableCountDown), userInfo: nil, repeats: false)
+            timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(disableCountDown), userInfo: nil, repeats: false)
             
             return
         }
         isTapped = true
         
+       
         if indexPath.section == 0 {
             // "Profile"
-            if let data  = self.userData as? [String:AnyObject] {
-                //let pointBalance = data["member_point"]?["total"] as? String ?? "0.00"
-                //let profileImage = data["picture_data"] as? String ?? ""
-                let registerGold = data["gold_saving_acc"] as? NSNumber ?? 0
+            if let profile = self.storyboard?.instantiateViewController(withIdentifier: "GoldAccount") as? UINavigationController {
                 
-                if registerGold.boolValue {
-                    if let profile = self.storyboard?.instantiateViewController(withIdentifier: "GoldAccount") as? UINavigationController {
-                        
-                        self.revealViewController()?.pushFrontViewController(profile, animated: true)
-                    }
-                }else{
-                    self.showMessagePrompt(NSLocalizedString("string-dailog-gold-profile-no-register", comment: ""))
-                }
-            
+                self.revealViewController()?.pushFrontViewController(profile, animated: true)
             }
+            
         }
+        
+        
+        if self.statusMemberGold == "waiting"{
+            return
+            
+        }else if self.statusMemberGold == "fail"{
+            return
+            
+        }
+        
+        
+      
+        
+       
         if indexPath.section == 1 {
             if indexPath.row == 0 {
                 // "Saving"

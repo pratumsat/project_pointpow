@@ -24,6 +24,9 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.rightBarButtonItem?.action = #selector(SWRevealViewController.rightRevealToggle(_:))
+        
+        
         self.title  = NSLocalizedString("string-title-gold-page-withdraw", comment: "")
         
         setUp()
@@ -92,7 +95,7 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
                 item.goldBalanceLabel.text = numberFormatter.string(from: self.gold_balance)
                 
                 
-                item.goldAverageLabel.text = "0"
+                //item.goldAverageLabel.text = "0"
                 
                 
                 self.goldBalanceLabel = item.goldBalanceLabel

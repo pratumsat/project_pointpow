@@ -14,12 +14,12 @@ class WithDrawShippingThaiPostCell: UICollectionViewCell {
     
     @IBOutlet weak var titleShippingLabel: UILabel!
     @IBOutlet weak var heightAddressConstrainst: NSLayoutConstraint!
-    @IBOutlet weak var infoThaiPostImageView: UIImageView!
+    
     @IBOutlet weak var sumLabel: UILabel!
     @IBOutlet weak var emsLabel: UILabel!
     @IBOutlet weak var premiumLabel: UILabel!
     
-    var infoThaipostCallback:(()->Void)?
+    
     var editCallback:(()->Void)?
     var address:String?{
         didSet{
@@ -46,10 +46,6 @@ class WithDrawShippingThaiPostCell: UICollectionViewCell {
         self.contentView.updateLayerCornerRadiusProperties()
         self.shadowCellProperties()
         
-        let info = UITapGestureRecognizer(target: self, action: #selector(infoTapped))
-        self.infoThaiPostImageView.isUserInteractionEnabled  = true
-        self.infoThaiPostImageView.addGestureRecognizer(info)
-        
         
         let edit = UITapGestureRecognizer(target: self, action: #selector(editTapped))
         self.editImageView.isUserInteractionEnabled  = true
@@ -68,9 +64,7 @@ class WithDrawShippingThaiPostCell: UICollectionViewCell {
         self.editCallback?()
     
     }
-    @objc func infoTapped(){
-        self.infoThaipostCallback?()
-    }
+    
     override var bounds : CGRect {
         didSet {
             self.layoutIfNeeded()

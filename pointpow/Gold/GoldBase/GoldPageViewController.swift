@@ -12,7 +12,7 @@ import UIKit
 class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var homeCollectionView: UICollectionView!
     
-    
+    let arrayItem_registered_waiting = ["goldprice", "logo"]
     let arrayItem_registered = ["goldprice","goldbalance","saving", "logo"]
     let arrayItem_no_registered = ["goldprice","register", "logo"]
     var arrayItem:[String] = []
@@ -20,7 +20,20 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
     var isRegistered  = false {
         didSet{
             if isRegistered {
-                self.arrayItem = self.arrayItem_registered
+                //open menu click
+                self.navigationItem.rightBarButtonItem?.action = #selector(SWRevealViewController.rightRevealToggle(_:))
+                
+                if self.statusMemberGold == "waiting"{
+                   self.arrayItem = self.arrayItem_registered_waiting
+                
+                }else if self.statusMemberGold == "fail"{
+                   self.arrayItem = self.arrayItem_registered_waiting
+                
+                }else if self.statusMemberGold == "approve"{
+                    self.arrayItem = self.arrayItem_registered
+                
+                }
+                
             }else{
                 self.arrayItem = self.arrayItem_no_registered
             }
@@ -245,62 +258,57 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
                 
                 item.savingCallback = {
                     print("saving")
-                    
-                    var modelSaving:(pointBalance:Double?, pointSpend:Double?, goldReceive:Double?, currentGoldprice:Double?) = (pointBalance:nil, pointSpend:nil, goldReceive:nil, currentGoldprice:nil)
-                    
-                    var pointBalance:NSNumber = NSNumber(value: 0.0)
-                    var currentGoldprice:NSNumber = NSNumber(value: 0)
-                    var pointSpend:NSNumber = NSNumber(value: 0)
-                    var goldReceive:NSNumber = NSNumber(value: 0.0)
-                    
-                  
-                    
-                    if let data  = self.userData as? [String:AnyObject] {
-                        pointBalance = data["member_point"]?["total"] as? NSNumber ?? 0
-                        
-                        modelSaving.pointBalance = pointBalance.doubleValue
-                    }
-                    
-                    if let data  = self.goldPrice as? [String:AnyObject] {
-                        currentGoldprice = data["open_sell_price"] as? NSNumber ?? 0
-                        
-                        
-                        let ppspend = self.pointpowTextField?.text! ?? ""
-                        if ppspend.isEmpty {
-                            self.showMessagePrompt(NSLocalizedString("string-dailog-saving-point-pointspend-empty", comment: ""))
-                            return
-                        }
-                        
-                        
-                        if (Double(ppspend)!) < 100 {
-                            self.showMessagePrompt(NSLocalizedString("string-dailog-saving-point-pointspend-min", comment: ""))
-                            return
-                        }
-                        
-                        goldReceive = NSNumber(value: Double(self.goldamountLabel?.text ?? "0")!)
-                        pointSpend =  NSNumber(value: Double(self.pointpowTextField?.text! ?? "0")!)
-                        
-                        modelSaving.pointSpend = pointSpend.doubleValue
-                        modelSaving.goldReceive = goldReceive.doubleValue
-                        modelSaving.currentGoldprice  = currentGoldprice.doubleValue
-                        
-                        if (pointSpend.doubleValue) > (pointBalance.doubleValue) {
-                            self.showMessagePrompt(NSLocalizedString("string-dailog-saving-point-not-enough", comment: ""))
-                        }else{
-                            self.confirmGoldSavingPage(true, modelSaving: modelSaving)
-                        }
-                    }
-                    
-                    
-                    
-                    
+                 
                     if self.statusMemberGold == "waiting"{
                         self.showMessagePrompt(NSLocalizedString("string-dailog-gold-profile-status-waitting", comment: ""))
                     }else if self.statusMemberGold == "fail"{
                         self.showMessagePrompt(NSLocalizedString("string-dailog-gold-profile-status-fail", comment: ""))
                     }else if self.statusMemberGold == "approve"{
                         
-                       
+                        var modelSaving:(pointBalance:Double?, pointSpend:Double?, goldReceive:Double?, currentGoldprice:Double?) = (pointBalance:nil, pointSpend:nil, goldReceive:nil, currentGoldprice:nil)
+                        
+                        var pointBalance:NSNumber = NSNumber(value: 0.0)
+                        var currentGoldprice:NSNumber = NSNumber(value: 0)
+                        var pointSpend:NSNumber = NSNumber(value: 0)
+                        var goldReceive:NSNumber = NSNumber(value: 0.0)
+                        
+                        
+                        
+                        if let data  = self.userData as? [String:AnyObject] {
+                            pointBalance = data["member_point"]?["total"] as? NSNumber ?? 0
+                            
+                            modelSaving.pointBalance = pointBalance.doubleValue
+                        }
+                        
+                        if let data  = self.goldPrice as? [String:AnyObject] {
+                            currentGoldprice = data["open_sell_price"] as? NSNumber ?? 0
+                            
+                            
+                            let ppspend = self.pointpowTextField?.text! ?? ""
+                            if ppspend.isEmpty {
+                                self.showMessagePrompt(NSLocalizedString("string-dailog-saving-point-pointspend-empty", comment: ""))
+                                return
+                            }
+                            
+                            
+                            if (Double(ppspend)!) < 100 {
+                                self.showMessagePrompt(NSLocalizedString("string-dailog-saving-point-pointspend-min", comment: ""))
+                                return
+                            }
+                            
+                            goldReceive = NSNumber(value: Double(self.goldamountLabel?.text ?? "0")!)
+                            pointSpend =  NSNumber(value: Double(self.pointpowTextField?.text! ?? "0")!)
+                            
+                            modelSaving.pointSpend = pointSpend.doubleValue
+                            modelSaving.goldReceive = goldReceive.doubleValue
+                            modelSaving.currentGoldprice  = currentGoldprice.doubleValue
+                            
+                            if (pointSpend.doubleValue) > (pointBalance.doubleValue) {
+                                self.showMessagePrompt(NSLocalizedString("string-dailog-saving-point-not-enough", comment: ""))
+                            }else{
+                                self.confirmGoldSavingPage(true, modelSaving: modelSaving)
+                            }
+                        }
                         
                     }
                 }

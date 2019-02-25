@@ -110,9 +110,9 @@ class WithDrawSummaryOfficeViewController: BaseViewController, UICollectionViewD
                 let unit = self.withdrawData!.goldAmountToUnit.unit
                 
                 if unit == 0 {
-                    item.unitLabel.text =  NSLocalizedString("unit-baht", comment: "")
+                    item.unitLabel.text =  NSLocalizedString("unit-salueng", comment: "")
                 }else{
-                    item.unitLabel.text = NSLocalizedString("unit-bar", comment: "")
+                    item.unitLabel.text = NSLocalizedString("unit-baht", comment: "")
                 }
                 
                 var numberFormatter = NumberFormatter()

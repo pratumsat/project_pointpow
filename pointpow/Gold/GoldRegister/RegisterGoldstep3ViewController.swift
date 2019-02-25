@@ -42,6 +42,44 @@ class RegisterGoldstep3ViewController: BaseViewController {
     }
     
     func setUp(){
+        
+        self.hendleSetPasscodeSuccess = { (passcode) in
+            print("new passcode= \(passcode)")
+            if let tp = self.tupleModel {
+                let params:Parameters = ["email" : tp.email,
+                                         "mobile": tp.mobile,
+                                         "laser_id" : "ME0-1113123112",
+                                         "firstname": tp.firstname,
+                                         "lastname" : tp.lastname,
+                                         "pid" : tp.idcard]
+                
+                
+                self.modelCtrl.registerGoldMember(params, tp.image!, true, succeeded: { (result) in
+                    print("print")
+                    self.showPenddingVerifyModalView(true , dismissCallback: {
+                        self.navigationController?.popToRootViewController(animated: true)
+                    })
+                }, error: { (error) in
+                    if let mError = error as? [String:AnyObject]{
+                        let message = mError["message"] as? String ?? ""
+                        print(message)
+                        self.showMessagePrompt(message)
+                    }
+                }, failure: { (messageError) in
+                    self.handlerMessageError(messageError)
+                    
+                }, inprogress: { (progress) in
+                    if progress >= 1.0 {
+                        //hide
+                        //success
+                        
+                    }
+                }) { (upload) in
+                    self.upload = upload
+                }
+            }
+        }
+        
         self.backgroundImage?.image = nil
        
         if #available(iOS 10.0, *) {
@@ -142,40 +180,8 @@ class RegisterGoldstep3ViewController: BaseViewController {
     }
     
     @IBAction func registerTapped(_ sender: Any) {
+        self.showSettingPassCodeModalView()
         
-        if let tp = self.tupleModel {
-            let params:Parameters = ["email" : tp.email,
-                                     "mobile": tp.mobile,
-                                     "laser_id" : "ME0-1113123112",
-                                     "firstname": tp.firstname,
-                                     "lastname" : tp.lastname,
-                                     "pid" : tp.idcard]
-            
-            
-            modelCtrl.registerGoldMember(params, tp.image!, true, succeeded: { (result) in
-                print("print")
-                self.showPenddingVerifyModalView(true , dismissCallback: {
-                    self.navigationController?.popToRootViewController(animated: true)
-                })
-            }, error: { (error) in
-                if let mError = error as? [String:AnyObject]{
-                    let message = mError["message"] as? String ?? ""
-                    print(message)
-                    self.showMessagePrompt(message)
-                }
-            }, failure: { (messageError) in
-                self.handlerMessageError(messageError)
-                
-            }, inprogress: { (progress) in
-                if progress >= 1.0 {
-                    //hide
-                    //success
-                   
-                }
-            }) { (upload) in
-                self.upload = upload
-            }
-        }
     }
     
     /*

@@ -12,7 +12,9 @@ class WithDrawResultPointPowCell: UICollectionViewCell {
 
     @IBOutlet weak var cancelLabel: UILabel!
     @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var shippingStatusTitleLabel: UILabel!
     @IBOutlet weak var shippingStatusLabel: UILabel!
+    @IBOutlet weak var shippingLineView: UIView!
     @IBOutlet weak var bgSuccessImageView: UIImageView!
     @IBOutlet weak var mView: UIView!
     @IBOutlet weak var qrCodeImageView: UIImageView!

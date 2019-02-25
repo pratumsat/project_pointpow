@@ -10,12 +10,14 @@ import UIKit
 
 class WithDrawChooseShippingCell: UICollectionViewCell {
 
+    @IBOutlet weak var infoThaiPostImageView: UIImageView!
     @IBOutlet weak var infoPointPowImageView: UIImageView!
     @IBOutlet weak var spThaipostImageView: UIImageView!
     @IBOutlet weak var spPointpowImageView: UIImageView!
     
     var shippingCallback:((_ type:Int)->Void)?
     var infoCallback:(()->Void)?
+    var infoThaipostCallback:(()->Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,6 +33,16 @@ class WithDrawChooseShippingCell: UICollectionViewCell {
         let info = UITapGestureRecognizer(target: self, action: #selector(infoTapped))
         self.infoPointPowImageView.isUserInteractionEnabled  = true
         self.infoPointPowImageView.addGestureRecognizer(info)
+        
+        let infothaipost = UITapGestureRecognizer(target: self, action: #selector(infoThaiPostTapped))
+        self.infoThaiPostImageView.isUserInteractionEnabled  = true
+        self.infoThaiPostImageView.addGestureRecognizer(infothaipost)
+        
+        
+        
+    }
+    @objc func infoThaiPostTapped(){
+        self.infoThaipostCallback?()
     }
 
     @objc func infoTapped(){

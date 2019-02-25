@@ -120,6 +120,7 @@ class PopupGoldHistoryFilterViewController: BaseViewController  ,UIPickerViewDel
             self.pickerView?.date = convertToDate(data.startDate, "dd-MM-yyyy")
             self.pickerView2?.date = convertToDate(data.endDate, "dd-MM-yyyy")
             
+            
             if data.status == "all"{
                 self.slectedStatus = "all"
                 self.statusTextField.text = NSLocalizedString("string-status-gold-history-all", comment: "")
@@ -140,13 +141,12 @@ class PopupGoldHistoryFilterViewController: BaseViewController  ,UIPickerViewDel
             
             self.startDateTextField.text = formatter.string(from: Date())
             self.endDateTextField.text = formatter.string(from: Date())
-            
-            
-            
-            
+           
             self.slectedStatus = "all"
             self.statusTextField.text = NSLocalizedString("string-status-gold-history-all", comment: "")
         }
+        
+        self.pickerView2?.minimumDate = self.pickerView?.date
         
         
     }

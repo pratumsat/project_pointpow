@@ -26,7 +26,8 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
         self.title = NSLocalizedString("string-title-history", comment: "")
         self.setUp()
     }
@@ -72,10 +73,6 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
             isLoading = true
         }
      
-        
-        
-        
-    
         
         var parameter = "type=\(type)"
         
@@ -215,7 +212,29 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
         
         self.getHistory() {
             //updateview
+            guard let count = self.goldHistory?.count, count > 0 else {
+                
+                let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+                var centerpoint = view.center
+                centerpoint.y -= self.view.frame.height*0.2
+                
+                let sorry = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 30))
+                sorry.center = centerpoint
+                sorry.textAlignment = .center
+                sorry.font = UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.CONTENT )
+                sorry.text = NSLocalizedString("string-not-found-item-transaction", comment: "")
+                sorry.textColor = UIColor.lightGray
+                view.addSubview(sorry)
+                
+                self.historyCollectionView.reloadData()
+                self.historyCollectionView.backgroundView = view
+                return
+            }
+            
+            self.historyCollectionView.backgroundView  = nil
             self.historyCollectionView.reloadData()
+            
+           
         }
     }
     
@@ -250,7 +269,7 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
                 
                 
                 if type == "saving" {
-                    let gold_price = items["saving_transaction"]?["gold_price"] as? NSNumber ?? 0
+                    let gold_price = items["saving_transaction"]?["pointpow_total"] as? NSNumber ?? 0
                     
                     transCell.amountLabel.text  = numberFormatter.string(from: gold_price)
                     transCell.titleLabel.text = NSLocalizedString("string-title-history-saving", comment: "")

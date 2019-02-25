@@ -123,13 +123,6 @@
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-info" translatesAutoresizingMaskIntoConstraints="NO" id="keK-ih-XZT">
-                        <rect key="frame" x="167" y="240" width="20" height="20"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20" id="PaU-vo-dri"/>
-                            <constraint firstAttribute="width" secondItem="keK-ih-XZT" secondAttribute="height" multiplier="1:1" id="war-Ge-MFN"/>
-                        </constraints>
-                    </imageView>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -138,7 +131,6 @@
                 <constraint firstItem="Xbj-40-Ew9" firstAttribute="leading" secondItem="seA-xF-XTw" secondAttribute="leading" id="7ZM-3F-Vee"/>
                 <constraint firstItem="Va2-OY-zpJ" firstAttribute="centerY" secondItem="5nY-EE-QYj" secondAttribute="centerY" constant="1" id="9jF-uf-LWs"/>
                 <constraint firstItem="294-cn-cI1" firstAttribute="centerY" secondItem="pYP-na-HEE" secondAttribute="centerY" id="BKn-Dv-UBx"/>
-                <constraint firstItem="keK-ih-XZT" firstAttribute="centerY" secondItem="pYP-na-HEE" secondAttribute="centerY" id="DqJ-aU-CP8"/>
                 <constraint firstItem="kEf-af-LSg" firstAttribute="centerY" secondItem="JKn-m1-X6h" secondAttribute="centerY" constant="1" id="GbN-hQ-Rp7"/>
                 <constraint firstAttribute="trailing" secondItem="Va2-OY-zpJ" secondAttribute="trailing" constant="10" id="Hf2-1o-kzh"/>
                 <constraint firstItem="5nY-EE-QYj" firstAttribute="centerY" secondItem="zO6-CO-LAQ" secondAttribute="centerY" id="IJg-2S-uDw"/>
@@ -146,7 +138,6 @@
                 <constraint firstItem="zO6-CO-LAQ" firstAttribute="leading" secondItem="seA-xF-XTw" secondAttribute="leading" constant="10" id="QLd-TA-zvy"/>
                 <constraint firstItem="JKn-m1-X6h" firstAttribute="centerY" secondItem="o2t-Tg-xPc" secondAttribute="centerY" id="Rz2-tD-FPZ"/>
                 <constraint firstAttribute="trailing" secondItem="Lcv-GE-GwB" secondAttribute="trailing" constant="10" id="Uji-Rw-EI2"/>
-                <constraint firstItem="keK-ih-XZT" firstAttribute="leading" secondItem="pYP-na-HEE" secondAttribute="trailing" constant="10" id="VnW-q8-fwr"/>
                 <constraint firstItem="o2t-Tg-xPc" firstAttribute="top" secondItem="pYP-na-HEE" secondAttribute="bottom" constant="10" id="Zyi-Vc-dqQ"/>
                 <constraint firstItem="Lcv-GE-GwB" firstAttribute="leading" secondItem="294-cn-cI1" secondAttribute="trailing" constant="5" id="brW-yg-fQd"/>
                 <constraint firstItem="pYP-na-HEE" firstAttribute="top" secondItem="zO6-CO-LAQ" secondAttribute="bottom" constant="10" id="bxB-ok-rQd"/>
@@ -168,7 +159,6 @@
                 <outlet property="editImageView" destination="xAI-fN-Jz2" id="3pE-a3-CP9"/>
                 <outlet property="emsLabel" destination="294-cn-cI1" id="63p-le-oPD"/>
                 <outlet property="heightAddressConstrainst" destination="bZm-CM-7K0" id="4QU-5v-Qgi"/>
-                <outlet property="infoThaiPostImageView" destination="keK-ih-XZT" id="Hfs-rW-mZR"/>
                 <outlet property="premiumLabel" destination="5nY-EE-QYj" id="OAQ-fL-3Ia"/>
                 <outlet property="shippingAddressLabel" destination="fHC-qr-gGo" id="zr0-jO-yMx"/>
                 <outlet property="sumLabel" destination="JKn-m1-X6h" id="72d-fV-Etf"/>
@@ -179,6 +169,5 @@
     </objects>
     <resources>
         <image name="ic-fav-edit" width="100" height="99"/>
-        <image name="ic-info" width="40" height="40"/>
     </resources>
 </document>

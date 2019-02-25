@@ -57,6 +57,8 @@
 "string-status-gold-history-waiting" = "กำลังดำเนินการ";
 "string-title-history-saving" = "ออมทอง";
 "string-title-history-withdraw" = "ถอนทอง";
+//transaction sorry
+"string-not-found-item-transaction" = "ไม่พบข้อมูลการทำรายการ";
 
 //gold register
 "string-message-alert-please-choose-image" = "กรุณาอัพโหลดรูป";
@@ -75,12 +77,13 @@
 "string-dailog-gold-profile-no-register"= "กรุณาเปิดบัญชีออมทอง";
 
 
-"string-dailog-saving-point-not-enough"= "คุณมีพ้อยท์ไม่พอ";
+"string-dailog-saving-point-not-enough"= "พ้อยท์ของท่านไม่เพียงพอ สำหรับทำรายการนี้";
 "string-dailog-saving-point-pointspend-empty"= "กรุณาใส่จำนวนพ้อย";
 "string-dailog-saving-point-pointspend-min"= "ออมทองได้ตั้งแต่ 100 Point Pow ขึ้นไป";
 
 "string-dailog-saving-gold-amount-empty" = "กรุณาใส่จำนวนทองคำ";
-"string-dailog-saving-gold-pointspend-not-enogh" = "คุณมีทองคำไม่พอ";
+
+"string-dailog-saving-gold-pointspend-not-enogh" = "คุณมีทองคำไม่เพียงพอ สำหรับทำรายการนี้";
 
 /*Reset Password*/
 "string-title-cancel-reset-pwd" = "ยกเลิก";
@@ -183,7 +186,8 @@
 
 "string-dailog-title-cancel-withdraw" = "ยืนยันการยกเลิก\nรายการถอนทองคำ";
 
-
+// address
+"string-dailog-title-delete-address" = "ยืนยันในการลบ\nที่อยู่ในการจัดส่งนี้";
 
 
 

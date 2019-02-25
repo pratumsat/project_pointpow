@@ -35,6 +35,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         }
         
         self.setUp()
+        self.getGoldPremiumPrice()
         
         fontList()
         
@@ -93,6 +94,23 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
     override func reloadData() {
         self.getUserInfo()
     }
+    func getGoldPremiumPrice(_ avaliable:(()->Void)?  = nil){
+        modelCtrl.getPremiumGoldPrice(params: nil , false , succeeded: { (result) in
+            print("get premium success")
+            avaliable?()
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                //self.showMessagePrompt(message)
+            }
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            
+        }
+    }
     
     func getUserInfo(_ avaliable:(()->Void)?  = nil){
         var isLoading:Bool = true
@@ -106,16 +124,12 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
             self.userData = result
             avaliable?()
             if let data  = result as? [String:AnyObject] {
+              
+                let picture_data = data["picture_data"] as? String ?? ""
                 
-                //let pointBalance = data["member_point"]?["total"] as? NSNumber ?? 0.00
-                //let  profileImage = data["picture_data"] as? String ?? ""
-                //self.pointBalanceLabel.text = "pointBalance"
+                self.profileImageView.sd_setImage(with: URL(string: picture_data)!, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER))
                 
-                let parthProfileImage = "\(Constant.PathImages.profile)"
-                self.modelCtrl.loadImage(parthProfileImage , Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER) { (image) in
-                    
-                    self.profileImageView.image = image
-                }
+                
                 
             }
             

@@ -165,6 +165,47 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
                 }
                 
                 
+                item.editCallback = {
+                    print("edit address")
+                }
+                item.deleteCallback = {
+                    let alert = UIAlertController(title: NSLocalizedString("string-dailog-title-delete-address", comment: ""),
+                                                  message: "", preferredStyle: .alert)
+                    
+                    let okButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-ok", comment: ""), style: .default, handler: {
+                        (alert) in
+                        
+// call cancel api
+//                        let params:Parameters = ["transaction_ref_id": self.transactionId ?? ""]
+//
+//                        self.modelCtrl.cancelTransactionGold(params: params, true, succeeded: { (result) in
+//                            print(result)
+//                            self.getDetail()
+//                        }, error: { (error) in
+//                            if let mError = error as? [String:AnyObject]{
+//                                let message = mError["message"] as? String ?? ""
+//                                print(message)
+//                                self.showMessagePrompt(message)
+//                            }
+//
+//                            print(error)
+//                        }) { (messageError) in
+//                            print("messageError")
+//                            self.handlerMessageError(messageError)
+//
+//                        }
+                        
+                    })
+                    let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: nil)
+                    
+                    
+                    
+                    alert.addAction(cancelButton)
+                    alert.addAction(okButton)
+                    self.present(alert, animated: true, completion: nil)
+                }
+                
+                
                 cell = item
             }
             

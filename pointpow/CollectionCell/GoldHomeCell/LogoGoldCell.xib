@@ -19,11 +19,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="465" height="483"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-gold-logo-pp" translatesAutoresizingMaskIntoConstraints="NO" id="JnS-tZ-fgH">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JnS-tZ-fgH">
                         <rect key="frame" x="244" y="416.5" width="139.5" height="46.5"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-gold-logo-hsh" translatesAutoresizingMaskIntoConstraints="NO" id="ybw-bp-rH9">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ybw-bp-rH9">
                         <rect key="frame" x="81.5" y="416.5" width="139.5" height="46.5"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -46,8 +46,4 @@
             <point key="canvasLocation" x="-440.80000000000001" y="14.842578710644679"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="ic-gold-logo-hsh" width="275" height="89"/>
-        <image name="ic-gold-logo-pp" width="340" height="89"/>
-    </resources>
 </document>

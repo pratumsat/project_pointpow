@@ -194,7 +194,10 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
                 cell = item
                 
                 item.infoCallback = {
-                    //info pointpow
+                    //info show popup pointpow
+                }
+                item.infoThaipostCallback = {
+                    //info show popup thaipost
                 }
                 item.shippingCallback = {(option) in
                     self.option = option
@@ -217,9 +220,7 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
                     
                     cell = item
                     item.address = self.shippingAddress
-                    item.infoThaipostCallback = {
-                        //info thaipost
-                    }
+                    
                     item.editCallback = {
                         //choose address
                         

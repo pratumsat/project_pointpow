@@ -224,6 +224,9 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
         return cell!
     }
     
+    
+    
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         
         

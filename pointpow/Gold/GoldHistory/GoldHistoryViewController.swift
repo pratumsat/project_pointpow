@@ -149,7 +149,11 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
     }
     
     @IBAction func filterTapped(_ sender: Any) {
-        self.showFilterHistoryPopup(true, editData: self.tupleFilter) { (dataFilter) in
+        var saving = false
+        if self.indexSelected == 1 {
+            saving = true
+        }
+        self.showFilterHistoryPopup(true, editData: self.tupleFilter , selectedSaving: saving) { (dataFilter) in
             self.tupleFilter = dataFilter
             
             if let data:(startDate:String , endDate:String, status:String) = dataFilter as? (startDate:String , endDate:String, status:String){
@@ -327,10 +331,14 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
                 if status.lowercased() == "success" {
                     transCell.statusLabel.textColor = Constant.Colors.GREEN
                     transCell.statusLabel.text = NSLocalizedString("string-status-gold-history-success", comment: "")
+                    
+                    transCell.shippingLabel.isHidden = false
                 }
                 if status.lowercased() == "cancel" {
                     transCell.statusLabel.textColor = Constant.Colors.PRIMARY_COLOR
                     transCell.statusLabel.text = NSLocalizedString("string-status-gold-history-cancel", comment: "")
+                    
+                    transCell.shippingLabel.isHidden = true
                 }
                 
             }

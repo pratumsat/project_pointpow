@@ -87,6 +87,7 @@
 		C1247C542219B126005D6F7A /* PopupGoldPremiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1247C532219B126005D6F7A /* PopupGoldPremiumViewController.swift */; };
 		C1247C572219B2E7005D6F7A /* NextButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1247C552219B2E7005D6F7A /* NextButtonCell.swift */; };
 		C1247C582219B2E7005D6F7A /* NextButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1247C562219B2E7005D6F7A /* NextButtonCell.xib */; };
+		C1249EB22223F71D00F56FA0 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1249EB12223F71C00F56FA0 /* PrivacyPolicyViewController.swift */; };
 		C13D99822199755B001A4794 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D99812199755B001A4794 /* ProfileViewController.swift */; };
 		C13D998521997938001A4794 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D998321997938001A4794 /* LogoutCell.swift */; };
 		C13D998621997938001A4794 /* LogoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13D998421997938001A4794 /* LogoutCell.xib */; };
@@ -297,6 +298,7 @@
 		C1247C532219B126005D6F7A /* PopupGoldPremiumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupGoldPremiumViewController.swift; sourceTree = "<group>"; };
 		C1247C552219B2E7005D6F7A /* NextButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButtonCell.swift; sourceTree = "<group>"; };
 		C1247C562219B2E7005D6F7A /* NextButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NextButtonCell.xib; sourceTree = "<group>"; };
+		C1249EB12223F71C00F56FA0 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
 		C13D99812199755B001A4794 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C13D998321997938001A4794 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		C13D998421997938001A4794 /* LogoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutCell.xib; sourceTree = "<group>"; };
@@ -470,6 +472,7 @@
 				C18A1CE322113712002CAF4C /* RegisterGoldstep3ViewController.swift */,
 				C103113B2212C932004396E0 /* GoldPendingVerifyViewController.swift */,
 				C103113E2212CBAC004396E0 /* GoldPenddingVerifyNav.swift */,
+				C1249EB12223F71C00F56FA0 /* PrivacyPolicyViewController.swift */,
 			);
 			path = GoldRegister;
 			sourceTree = "<group>";
@@ -1413,6 +1416,7 @@
 				C11A93BE218C20D100627B44 /* RegisterViewController.swift in Sources */,
 				C10D94B1220960940083FA47 /* NameTableViewCell.swift in Sources */,
 				C103113C2212C932004396E0 /* GoldPendingVerifyViewController.swift in Sources */,
+				C1249EB22223F71D00F56FA0 /* PrivacyPolicyViewController.swift in Sources */,
 				C1892E03221CFCD500F5412F /* WithDrawResultNav.swift in Sources */,
 				C1247C542219B126005D6F7A /* PopupGoldPremiumViewController.swift in Sources */,
 				C1817DA1219C1934009507DB /* SwitchCell.swift in Sources */,

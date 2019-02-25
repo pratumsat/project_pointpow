@@ -8,7 +8,8 @@
 
 import UIKit
 
-class PopupGoldHistoryFilterViewController: BaseViewController  ,UIPickerViewDelegate , UIPickerViewDataSource{
+class PopupGoldHistoryFilterViewController: BaseViewController  ,UIPickerViewDelegate , UIPickerViewDataSource, UIGestureRecognizerDelegate {
+    
     @IBOutlet weak var startDateTextField: UITextField!
     @IBOutlet weak var endDateTextField: UITextField!
     
@@ -24,7 +25,10 @@ class PopupGoldHistoryFilterViewController: BaseViewController  ,UIPickerViewDel
     var statusPickerView:UIPickerView?
 
     var slectedStatus:String = ""
-    let status = ["all","success","cancel"]
+    var status = ["all","success","cancel"]
+    let status_saving = ["success"]
+    
+    var selectedSaving : Bool  = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -148,6 +152,13 @@ class PopupGoldHistoryFilterViewController: BaseViewController  ,UIPickerViewDel
         
         self.pickerView2?.minimumDate = self.pickerView?.date
         
+        if selectedSaving {
+            self.statusTextField.text = NSLocalizedString("string-status-gold-history-success", comment: "")
+            self.status = status_saving
+        }
+        let tap = UITapGestureRecognizer(target: self, action: #selector(pickerTapped))
+        tap.delegate = self
+        statusPickerView!.addGestureRecognizer(tap)
         
     }
     
@@ -191,7 +202,35 @@ class PopupGoldHistoryFilterViewController: BaseViewController  ,UIPickerViewDel
             
         }
     }
-    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    @objc func pickerTapped(_ tapRecognizer:UITapGestureRecognizer){
+        if tapRecognizer.state == .ended {
+            let rowHeight = self.statusPickerView!.rowSize(forComponent: 0).height
+            let selectedRowFrame = self.statusPickerView!.bounds.insetBy(dx: 0, dy: (self.statusPickerView!.frame.height - rowHeight) / 2)
+            let userTappedOnSelectedRow = selectedRowFrame.contains(tapRecognizer.location(in: self.statusPickerView))
+            if userTappedOnSelectedRow {
+                let selectedRow = self.statusPickerView!.selectedRow(inComponent: 0)
+                
+                
+                if self.status[selectedRow] == "all"{
+                    self.slectedStatus = "all"
+                    self.statusTextField.text = NSLocalizedString("string-status-gold-history-all", comment: "")
+                }
+                if self.status[selectedRow] == "cancel" {
+                    self.slectedStatus = "cancel"
+                    self.statusTextField.text = NSLocalizedString("string-status-gold-history-cancel", comment: "")
+                }
+                if self.status[selectedRow] == "success" {
+                    self.slectedStatus = "success"
+                    self.statusTextField.text = NSLocalizedString("string-status-gold-history-success", comment: "")
+                }
+                
+                self.statusTextField.resignFirstResponder()
+            }
+        }
+    }
     override func textFieldDidBeginEditing(_ textField: UITextField) {    //delegate method
         //super.textFieldDidBeginEditing(textField)
         

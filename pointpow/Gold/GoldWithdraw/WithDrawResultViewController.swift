@@ -16,45 +16,53 @@ class WithDrawResultViewController: BaseViewController  , UICollectionViewDelega
     var hideFinishButton:Bool = false
     
     
-    var slipImageView:UIImageView? {
-        didSet{
-            if let snap = self.snapView {
-                let backgroundImage = UIImageView(image: bgSlip)
-                backgroundImage.contentMode = .scaleAspectFill
-                backgroundImage.clipsToBounds = true
-                backgroundImage.translatesAutoresizingMaskIntoConstraints = false
-                snap.addSubview(backgroundImage)
-                snap.sendSubviewToBack(backgroundImage)
-                
-                backgroundImage.leftAnchor.constraint(equalTo: snap.leftAnchor).isActive = true
-                backgroundImage.rightAnchor.constraint(equalTo: snap.rightAnchor).isActive = true
-                backgroundImage.topAnchor.constraint(equalTo: snap.topAnchor).isActive = true
-                backgroundImage.bottomAnchor.constraint(equalTo: snap.bottomAnchor).isActive = true
-                
-                
-                slipImageView!.center = snap.center
-                slipImageView!.updateLayerCornerRadiusProperties()
-                slipImageView!.drawLightningView()
-                snap.addSubview(slipImageView!)
-                
-                
-                let logo = UIImageView(image: UIImage(named: "ic-logo"))
-                logo.contentMode = .scaleAspectFit
-                logo.translatesAutoresizingMaskIntoConstraints = false
-                snap.addSubview(logo)
-                
-                logo.centerXAnchor.constraint(equalTo: snap.centerXAnchor, constant: 0).isActive = true
-                logo.widthAnchor.constraint(equalTo: snap.widthAnchor, multiplier: 0.5).isActive = true
-                logo.bottomAnchor.constraint(equalTo: slipImageView!.topAnchor, constant: 0).isActive = true
-                
-                print("add image slip")
-                
-                self.countDownForSnapShot(1)
-            }
+    func  addSlipImageView() {
+        
+        if let snap = self.snapView {
+            let backgroundImage = UIImageView(image: bgSlip)
+            backgroundImage.contentMode = .scaleAspectFill
+            backgroundImage.clipsToBounds = true
+            backgroundImage.translatesAutoresizingMaskIntoConstraints = false
+            snap.addSubview(backgroundImage)
+            snap.sendSubviewToBack(backgroundImage)
+            
+            backgroundImage.leftAnchor.constraint(equalTo: snap.leftAnchor).isActive = true
+            backgroundImage.rightAnchor.constraint(equalTo: snap.rightAnchor).isActive = true
+            backgroundImage.topAnchor.constraint(equalTo: snap.topAnchor).isActive = true
+            backgroundImage.bottomAnchor.constraint(equalTo: snap.bottomAnchor).isActive = true
+            
+            
+            slipView!.updateLayerCornerRadiusProperties()
+            
+            slipView!.translatesAutoresizingMaskIntoConstraints = false
+            snap.addSubview(slipView!)
+            
+            
+            slipView!.centerXAnchor.constraint(equalTo: snap.centerXAnchor, constant: 0).isActive = true
+            slipView!.centerYAnchor.constraint(equalTo: snap.centerYAnchor, constant: 0).isActive = true
+            slipView!.widthAnchor.constraint(equalToConstant: 450).isActive = true
+            slipView!.heightAnchor.constraint(equalToConstant: 770).isActive = true
+            
+            let logo = UIImageView(image: UIImage(named: "ic-logo"))
+            logo.contentMode = .scaleAspectFit
+            logo.translatesAutoresizingMaskIntoConstraints = false
+            snap.addSubview(logo)
+            
+            logo.centerXAnchor.constraint(equalTo: snap.centerXAnchor, constant: 0).isActive = true
+            logo.widthAnchor.constraint(equalTo: snap.widthAnchor, multiplier: 0.5).isActive = true
+            logo.bottomAnchor.constraint(equalTo: slipView!.topAnchor, constant: 0).isActive = true
+            
+
+            slipView!.drawLightningView(width : CGFloat(450), height: CGFloat(770))
+            print("add image slip")
+            
+            self.countDownForSnapShot(1)
         }
+    
     }
     var slipView:UIView?
     var snapView:UIView?
+    
     var countDown:Int = 3
     var timer:Timer?
     
@@ -72,15 +80,17 @@ class WithDrawResultViewController: BaseViewController  , UICollectionViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        snapView = UIView(frame: self.view.frame)
+        //load background image from api
+        self.bgSlip = UIImage(named: "bg-slip")
+        
+        
+        snapView = UIView(frame: CGRect(x: 0, y: 0, width: 600, height: 1200))
         snapView!.backgroundColor = UIColor.clear
         
         self.view.addSubview(snapView!)
         self.view.sendSubviewToBack(snapView!)
         
         
-        //load background image from api
-        self.bgSlip = UIImage(named: "bg-slip")
         self.title = NSLocalizedString("string-title-gold-page-withdraw", comment: "")
         
         if !hideFinishButton {
@@ -149,8 +159,8 @@ class WithDrawResultViewController: BaseViewController  , UICollectionViewDelega
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if let slip = self.slipView {
-            slipImageView = UIImageView(image: slip.snapshotImage())
+        if self.slipView != nil {
+            self.addSlipImageView()
         }
     }
     
@@ -367,8 +377,6 @@ extension WithDrawResultViewController {
                 item.qrCodeImageView.image  = base64Convert(base64String: qrbase64)
                 
                 
-              
-                
                 if validateTransactionTime(created_at) {
                     item.cancelLabel.isHidden = false
                     item.cancelButton.isHidden = false
@@ -382,8 +390,6 @@ extension WithDrawResultViewController {
                     item.statusImageView.image = UIImage(named: "ic-status-success2")
                     item.statusLabel.textColor = Constant.Colors.GREEN
                     item.statusLabel.text = NSLocalizedString("string-dailog-gold-transaction-status-success", comment: "")
-                    
-                  
                     
                     break
                 case "cancel":
@@ -410,13 +416,13 @@ extension WithDrawResultViewController {
                 
             }
             
-            
-            
-            
-            
             item.saveSlipCallback = {
-                self.slipImageView = UIImageView(image: item.mView.snapshotImage())
-                self.showMessagePrompt(NSLocalizedString("string-dialog-saved-slip", comment: ""))
+                if let snapImage = self.snapView?.snapshotImage() {
+                    UIImageWriteToSavedPhotosAlbum(snapImage, nil, nil, nil)
+                    print("created slip")
+                    self.showMessagePrompt(NSLocalizedString("string-dialog-saved-slip", comment: ""))
+                }
+
             }
             
             item.cancelCallback = {
@@ -458,7 +464,15 @@ extension WithDrawResultViewController {
                 self.present(alert, animated: true, completion: nil)
             }
             
-            self.slipView =  item.mView
+            self.slipView = item.mView.copyView()
+            let allSubView = slipView!.allSubViewsOf(type: UIView.self)
+
+            for itemView  in  allSubView {
+                if let itemTag = itemView.viewWithTag(1) {
+                    itemTag.isHidden = true
+                }
+            }
+            
             
         }
         if cell == nil {
@@ -586,6 +600,7 @@ extension WithDrawResultViewController {
                 
             }
             
+          
             item.cancelCallback = {
                 
                 let alert = UIAlertController(title: NSLocalizedString("string-dailog-title-cancel-withdraw", comment: ""),
@@ -624,6 +639,10 @@ extension WithDrawResultViewController {
                 alert.addAction(okButton)
                 self.present(alert, animated: true, completion: nil)
             }
+            
+            
+        
+            
             
             
             

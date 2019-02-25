@@ -146,8 +146,35 @@ extension UITextField {
         self.rightViewMode = .always
     }
 }
+extension UIView {
+    func copyView<T: UIView>() -> T {
+        return NSKeyedUnarchiver.unarchiveObject(with: NSKeyedArchiver.archivedData(withRootObject: self)) as! T
+    }
+    func subViews<T : UIView>(type : T.Type) -> [T]{
+        var all = [T]()
+        for view in self.subviews {
+            if let aView = view as? T{
+                all.append(aView)
+            }
+        }
+        return all
+    }
+    func allSubViewsOf<T : UIView>(type : T.Type) -> [T]{
+        var all = [T]()
+        func getSubview(view: UIView) {
+            if let aView = view as? T{
+                all.append(aView)
+            }
+            guard view.subviews.count>0 else { return }
+            view.subviews.forEach{ getSubview(view: $0) }
+        }
+        getSubview(view: self)
+        return all
+    }
+}
 
 extension UIView {
+    
     func animationTapped(_ completed:(()->Void)? = nil){
         self.alpha = 0
         UIView.animate(withDuration: 0.1) {
@@ -156,9 +183,9 @@ extension UIView {
         }
     }
     
-    func drawLightningView(){
-        let height = self.frame.height
-        let width = self.frame.width
+    func drawLightningView(width:CGFloat, height:CGFloat){
+        let height = height
+        let width = width
         //draw crop
         let path = UIBezierPath()
         let linePath = UIBezierPath()
@@ -820,11 +847,11 @@ func convertDateOfDay(_ dateString:String) -> String {
     
     return "-"
 }
-func convertDate(_ dateString:String , pattern:String = "haveSecond") -> String {
+func convertDate(_ dateString:String) -> String {
     //2017-03-29 20:15:25.000+00:00
     let dateFormatter = DateFormatter()
-    dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSz"
+    dateFormatter.locale = Locale(identifier: "th")
+    dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
     if let d1 = dateFormatter.date(from: dateString){
         
         let calendar = NSCalendar.current
@@ -834,13 +861,9 @@ func convertDate(_ dateString:String , pattern:String = "haveSecond") -> String 
         
         var newStringDate = String(format: "%02d", components.day!)
         newStringDate += "-\(String(format: "%02d", components.month!))"
-        newStringDate += "-\(String(format: "%02d", components.year!))"
+        newStringDate += "-\(String(format: "%02d", components.year! - 543))"
         newStringDate += " \(String(format: "%02d", components.hour!))"
         newStringDate += ":\(String(format: "%02d", components.minute!))"
-        
-        if pattern == "haveSecond" {
-            newStringDate += ":\(String(format: "%02d", components.second!))"
-        }
         
         
         print("\(newStringDate)")
@@ -891,9 +914,10 @@ func convertToDate(_ dateString:String, _ format:String = "dd-MM-yyyy HH:mm") ->
 func validateTransactionTime(_ dateString:String) -> Bool {
     //2017-03-29 20:15
     let dateFormatter = DateFormatter()
-    //dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+    dateFormatter.locale = Locale(identifier: "en")
     dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
-    if let d1 = dateFormatter.date(from: dateString){
+    let nDate = convertDate(dateString)
+    if let d1 = dateFormatter.date(from: nDate){
         
         let calendar = NSCalendar.current
         let unitFlags: Set<Calendar.Component> = [.minute, .hour, .day, .weekOfYear, .month, .year, .second]
@@ -917,6 +941,7 @@ func validateTransactionTime(_ dateString:String) -> Bool {
         
         let diffDate =  Date(timeIntervalSinceReferenceDate: diff24)
         print(diffDate)
+        
         
         let currentDate = Date()
         let currentTime = currentDate.timeIntervalSinceReferenceDate

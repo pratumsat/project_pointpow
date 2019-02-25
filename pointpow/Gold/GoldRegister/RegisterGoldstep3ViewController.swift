@@ -32,7 +32,7 @@ class RegisterGoldstep3ViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = NSLocalizedString("string-title-gold-register1", comment: "")
+        self.title = NSLocalizedString("string-title-gold-register3", comment: "")
         self.setUp()
     }
     
@@ -153,6 +153,14 @@ class RegisterGoldstep3ViewController: BaseViewController {
                 self.previewImageView.image = tp.image
                 self.previewImageView.isHidden = true
             }
+            
+         
+            self.emailTextField.textColor = UIColor.lightGray
+            self.mobileTextField.textColor = UIColor.lightGray
+            self.firstNameTextField.textColor = UIColor.lightGray
+            self.lastNameTextField.textColor = UIColor.lightGray
+            self.idcardTextField.textColor = UIColor.lightGray
+            
 
         }
     }

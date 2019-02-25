@@ -67,6 +67,12 @@ class RegisterGoldstep2ViewController: BaseViewController ,UIImagePickerControll
         self.step1Label.isUserInteractionEnabled = true
         self.step1Label.addGestureRecognizer(back)
         
+        
+        let privacyPolicy = UITapGestureRecognizer(target: self, action: #selector(privacyPolicyTapped))
+        self.privacyPolicyLabel.isUserInteractionEnabled =  true
+        self.privacyPolicyLabel.addGestureRecognizer(privacyPolicy)
+        
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -89,7 +95,11 @@ class RegisterGoldstep2ViewController: BaseViewController ,UIImagePickerControll
         self.step2Label.ovalColorClearProperties()
         self.step3Label.ovalColorClearProperties()
         
+        
       
+    }
+    @objc func privacyPolicyTapped(){
+        self.showPrivacyPolicy(true)
     }
     
     @objc func backToStep1Tapped(){

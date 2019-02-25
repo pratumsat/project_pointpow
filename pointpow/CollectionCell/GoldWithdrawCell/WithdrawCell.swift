@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDataSource, UIGestureRecognizerDelegate ,UITextFieldDelegate{
+class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDataSource, UIGestureRecognizerDelegate ,UITextFieldDelegate {
     @IBOutlet weak var headView: UIView!
     
     @IBOutlet weak var unitView: UIView!
@@ -123,7 +123,9 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
         
         
         self.amountTextField.delegate = self
-    
+        self.amountTextField.addDoneButtonToKeyboard(myAction:
+                #selector(self.amountTextField.resignFirstResponder))
+        
         self.setUpPicker()
         self.updateView()
         
@@ -422,6 +424,7 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
         self.selectedUnits = 0
         
         
+        
     }
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
@@ -436,6 +439,7 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
                 
                 self.selectedUnits = selectedRow
                 self.unitTextField.text = "\(self.units[selectedRow])"
+                self.unitTextField.resignFirstResponder()
             }
         }
     }
@@ -455,7 +459,7 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
         
         return "\(self.units[row])"
     }
-    
+
     
     override var bounds : CGRect {
         didSet {

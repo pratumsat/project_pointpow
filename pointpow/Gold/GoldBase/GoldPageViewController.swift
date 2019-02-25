@@ -246,6 +246,9 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
                 item.pointpowTextField.autocorrectionType = .no
                 item.pointpowTextField.delegate = self
                 
+                item.pointpowTextField.addDoneButtonToKeyboard(myAction:
+                        #selector(item.pointpowTextField.resignFirstResponder))
+                
                 if let data  = self.userData as? [String:AnyObject] {
                     let pointBalance = data["member_point"]?["total"] as? NSNumber ?? 0
                     

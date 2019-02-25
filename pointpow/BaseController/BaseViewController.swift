@@ -347,6 +347,13 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
+    func showPrivacyPolicy(_ animated:Bool){
+        if let vc:PrivacyPolicyViewController = self.storyboard?.instantiateViewController(withIdentifier: "PrivacyPolicyViewController") as? PrivacyPolicyViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    
     func showRegisterGoldSaving(_ animated:Bool, userData:AnyObject?){
         if let vc:RegisterGoldViewController = self.storyboard?.instantiateViewController(withIdentifier: "RegisterGoldViewController") as? RegisterGoldViewController {
             
@@ -878,7 +885,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
     }
     
     
-    func showFilterHistoryPopup(_ animated:Bool , editData:AnyObject? ,nextStepCallback:((_ data:AnyObject)->Void)? = nil ){
+    func showFilterHistoryPopup(_ animated:Bool , editData:AnyObject? , selectedSaving:Bool ,nextStepCallback:((_ data:AnyObject)->Void)? = nil ){
         let presenter: Presentr = {
             
             let w = self.view.frame.width * 0.9
@@ -915,6 +922,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             vc.nextStep = {(data) in
                 nextStepCallback?(data)
             }
+            vc.selectedSaving = selectedSaving
             
             self.viewPopup = vc.view
            customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)

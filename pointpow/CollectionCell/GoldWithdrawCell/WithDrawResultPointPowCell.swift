@@ -40,6 +40,12 @@ class WithDrawResultPointPowCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.cancelButton?.tag = 1
+        self.cancelLabel?.tag = 1
+        self.saveSlipView?.tag = 1
+        self.viewMapView?.tag  = 1
+        
+        
         self.updateLayerCornerRadiusProperties()
         self.contentView.updateLayerCornerRadiusProperties()
         self.shadowCellProperties()

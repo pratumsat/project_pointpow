@@ -347,6 +347,12 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
+    func showMapFullViewController(_ animated:Bool){
+        if let vc:WebViewMapViewController = self.storyboard?.instantiateViewController(withIdentifier: "WebViewMapViewController") as? WebViewMapViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
     func showPrivacyPolicy(_ animated:Bool){
         if let vc:PrivacyPolicyViewController = self.storyboard?.instantiateViewController(withIdentifier: "PrivacyPolicyViewController") as? PrivacyPolicyViewController {
             
@@ -992,6 +998,42 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             
         }
     }
+    
+    
+    
+    
+    func showInfoMapOfficePopup(_ animated:Bool , openMap:(()->Void)? = nil ){
+        let presenter: Presentr = {
+            
+            let w = self.view.frame.width * 0.8
+            let h = w/275*315
+            let width = ModalSize.custom(size: Float(w))
+            let height = ModalSize.custom(size: Float(h))
+            
+            let center = ModalCenterPosition.center
+            let customType = PresentationType.custom(width: width, height: height, center: center)
+            
+            let customPresenter = Presentr(presentationType: customType)
+            customPresenter.roundCorners = true
+            customPresenter.cornerRadius = 10
+            customPresenter.dismissOnSwipe = true
+            customPresenter.dismissOnTap = true
+            
+            
+            return customPresenter
+        }()
+        
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "PopUpMapOfficeViewController") as? PopUpMapOfficeViewController{
+            
+            self.viewPopup = vc.view
+            
+            vc.openMap = openMap
+            
+            customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)
+            
+        }
+    }
+    
     
     
     

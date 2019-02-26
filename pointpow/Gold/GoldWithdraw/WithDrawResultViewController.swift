@@ -415,7 +415,11 @@ extension WithDrawResultViewController {
                 }
                 
             }
-            
+            item.viewMapCallback = {
+                self.showInfoMapOfficePopup(true){
+                    self.showMapFullViewController(true)
+                }
+            }
             item.saveSlipCallback = {
                 if let snapImage = self.snapView?.snapshotImage() {
                     UIImageWriteToSavedPhotosAlbum(snapImage, nil, nil, nil)
@@ -600,7 +604,12 @@ extension WithDrawResultViewController {
                 
             }
             
-          
+            item.viewMapCallback = {
+                self.showInfoMapOfficePopup(true){
+                    self.showMapFullViewController(true)
+                    
+                }
+            }
             item.cancelCallback = {
                 
                 let alert = UIAlertController(title: NSLocalizedString("string-dailog-title-cancel-withdraw", comment: ""),

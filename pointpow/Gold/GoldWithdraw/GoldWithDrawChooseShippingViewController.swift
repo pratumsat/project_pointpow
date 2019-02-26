@@ -195,6 +195,9 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
                 
                 item.infoCallback = {
                     //info show popup pointpow
+                    self.showInfoMapOfficePopup(true) {
+                        self.showMapFullViewController(true)
+                    }
                 }
                 item.infoThaipostCallback = {
                     //info show popup thaipost

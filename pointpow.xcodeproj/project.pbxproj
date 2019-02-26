@@ -88,6 +88,10 @@
 		C1247C572219B2E7005D6F7A /* NextButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1247C552219B2E7005D6F7A /* NextButtonCell.swift */; };
 		C1247C582219B2E7005D6F7A /* NextButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1247C562219B2E7005D6F7A /* NextButtonCell.xib */; };
 		C1249EB22223F71D00F56FA0 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1249EB12223F71C00F56FA0 /* PrivacyPolicyViewController.swift */; };
+		C1249EB42224E2CD00F56FA0 /* PopUpMapOfficeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1249EB32224E2CD00F56FA0 /* PopUpMapOfficeViewController.swift */; };
+		C1249EB72224EE0900F56FA0 /* WebViewMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1249EB62224EE0900F56FA0 /* WebViewMapViewController.swift */; };
+		C1249EB92224F03900F56FA0 /* map.html in Resources */ = {isa = PBXBuildFile; fileRef = C1249EB82224F03900F56FA0 /* map.html */; };
+		C1249EBB2224F04D00F56FA0 /* map.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1249EBA2224F04D00F56FA0 /* map.jpg */; };
 		C13D99822199755B001A4794 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D99812199755B001A4794 /* ProfileViewController.swift */; };
 		C13D998521997938001A4794 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D998321997938001A4794 /* LogoutCell.swift */; };
 		C13D998621997938001A4794 /* LogoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13D998421997938001A4794 /* LogoutCell.xib */; };
@@ -299,6 +303,10 @@
 		C1247C552219B2E7005D6F7A /* NextButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButtonCell.swift; sourceTree = "<group>"; };
 		C1247C562219B2E7005D6F7A /* NextButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NextButtonCell.xib; sourceTree = "<group>"; };
 		C1249EB12223F71C00F56FA0 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
+		C1249EB32224E2CD00F56FA0 /* PopUpMapOfficeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpMapOfficeViewController.swift; sourceTree = "<group>"; };
+		C1249EB62224EE0900F56FA0 /* WebViewMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewMapViewController.swift; sourceTree = "<group>"; };
+		C1249EB82224F03900F56FA0 /* map.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = map.html; sourceTree = "<group>"; };
+		C1249EBA2224F04D00F56FA0 /* map.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = map.jpg; sourceTree = "<group>"; };
 		C13D99812199755B001A4794 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C13D998321997938001A4794 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		C13D998421997938001A4794 /* LogoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutCell.xib; sourceTree = "<group>"; };
@@ -735,6 +743,14 @@
 			path = AccountCell;
 			sourceTree = "<group>";
 		};
+		C1249EB52224EDF900F56FA0 /* MapOffice */ = {
+			isa = PBXGroup;
+			children = (
+				C1249EB62224EE0900F56FA0 /* WebViewMapViewController.swift */,
+			);
+			path = MapOffice;
+			sourceTree = "<group>";
+		};
 		C13D998721997AC4001A4794 /* HeadCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -803,6 +819,7 @@
 		C197FF2422081C3F002F24E8 /* Gold */ = {
 			isa = PBXGroup;
 			children = (
+				C1249EB52224EDF900F56FA0 /* MapOffice */,
 				C103113D2212CB70004396E0 /* GoldRegister */,
 				C181F067220C0399003F7C70 /* GoldHistory */,
 				C106BEAA220BE8A100E2331E /* GoldWithdraw */,
@@ -882,6 +899,8 @@
 				C1AD50802187F45900F74415 /* Assets.xcassets */,
 				C1AD50822187F45900F74415 /* LaunchScreen.storyboard */,
 				C1AD50852187F45900F74415 /* Info.plist */,
+				C1249EBA2224F04D00F56FA0 /* map.jpg */,
+				C1249EB82224F03900F56FA0 /* map.html */,
 				C1AD50AA2187F7FF00F74415 /* Bridging-Header.h */,
 				C1DEBE8B2188115D00CBB95F /* GoogleService-Info.plist */,
 			);
@@ -919,6 +938,7 @@
 		C1AD50AD2187FE7F00F74415 /* Popup */ = {
 			isa = PBXGroup;
 			children = (
+				C1249EB32224E2CD00F56FA0 /* PopUpMapOfficeViewController.swift */,
 				C1892E17221EB9DC00F5412F /* PopupGoldHistoryFilterViewController.swift */,
 				C107CF35222263AD00C50B8C /* PopupShippingMyAddressViewController.swift */,
 				C11BFCB2221C0CB700F066DE /* PopupShippingAddressViewController.swift */,
@@ -1144,6 +1164,7 @@
 				C1817D9E219C07DF009507DB /* ItemBankCell.xib in Resources */,
 				C1247C582219B2E7005D6F7A /* NextButtonCell.xib in Resources */,
 				C1DEBE8C2188115D00CBB95F /* GoogleService-Info.plist in Resources */,
+				C1249EBB2224F04D00F56FA0 /* map.jpg in Resources */,
 				C181F064220C00B8003F7C70 /* SaveButtonProfileCell.xib in Resources */,
 				C197FEE72207EA18002F24E8 /* NotoSansThai-SemiBold.ttf in Resources */,
 				C1817D97219BFCDE009507DB /* FriendCollectionCell.xib in Resources */,
@@ -1177,6 +1198,7 @@
 				C1817DA2219C1934009507DB /* SwitchCell.xib in Resources */,
 				C120D7CF21955BB500F9EEBB /* ProfileCell.xib in Resources */,
 				C115FA4F219ECB85008E7844 /* ItemListResultCell.xib in Resources */,
+				C1249EB92224F03900F56FA0 /* map.html in Resources */,
 				C181F06B220D8566003F7C70 /* ProfileTableViewCell.xib in Resources */,
 				C1817D93219BF61F009507DB /* ItemFriendCell.xib in Resources */,
 				C197FF3B22083AE9002F24E8 /* SavingCell.xib in Resources */,
@@ -1377,6 +1399,7 @@
 				C10CA1A42191755C00316DF3 /* PersonalPopupViewController.swift in Sources */,
 				C197FF2622081C72002F24E8 /* GoldPageViewController.swift in Sources */,
 				C1892E0D221E900900F5412F /* TransactionGoldCell.swift in Sources */,
+				C1249EB42224E2CD00F56FA0 /* PopUpMapOfficeViewController.swift in Sources */,
 				C1817D99219C041F009507DB /* PointTransferViewController.swift in Sources */,
 				C11BFCA4221BC5D900F066DE /* GoldWithDrawChooseShippingViewController.swift in Sources */,
 				C197FF2A22082503002F24E8 /* GoldProfileViewController.swift in Sources */,
@@ -1432,6 +1455,7 @@
 				C107CF29221FC92200C50B8C /* WidthDrawResultPointPow2Cell.swift in Sources */,
 				C115FA5721A2B3EB008E7844 /* PointFriendSummaryViewController.swift in Sources */,
 				C11BDFBC21A2BB3C00443D2D /* ItemConfirmSummaryCell.swift in Sources */,
+				C1249EB72224EE0900F56FA0 /* WebViewMapViewController.swift in Sources */,
 				C1DEBE92218829D900CBB95F /* Scanner2ViewController.swift in Sources */,
 				C197FF422209401D002F24E8 /* LogoGoldCell.swift in Sources */,
 				C11A93AE218BF67F00627B44 /* IntroNav.swift in Sources */,

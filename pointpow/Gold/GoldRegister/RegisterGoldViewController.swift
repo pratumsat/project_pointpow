@@ -136,14 +136,19 @@ class RegisterGoldViewController: BaseViewController {
             let  regis_by = data["regis_by"]as? String ?? ""
             
             if regis_by == "email" {
+                
+                self.emailTextField.textColor = UIColor.lightGray
                 self.emailTextField.isEnabled = false
             }else{
+                self.emailTextField.textColor = UIColor.black
                 self.emailTextField.isEnabled = true
             }
             
             if regis_by == "mobile" {
+                self.mobileTextField.textColor = UIColor.lightGray
                 self.mobileTextField.isEnabled = false
             }else{
+                self.mobileTextField.textColor = UIColor.black
                 self.mobileTextField.isEnabled = true
             }
             

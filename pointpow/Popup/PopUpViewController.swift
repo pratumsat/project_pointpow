@@ -32,6 +32,11 @@ class PopUpViewController: BaseViewController {
         super.viewDidAppear(animated)
         self.addCloseWhiteView()
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.dismissPoPup()
+    }
+
     /*
     // MARK: - Navigation
 

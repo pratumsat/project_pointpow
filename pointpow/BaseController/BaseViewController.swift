@@ -951,8 +951,8 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             let customPresenter = Presentr(presentationType: customType)
             customPresenter.roundCorners = true
             customPresenter.cornerRadius = 10
-            customPresenter.dismissOnSwipe = false
-            customPresenter.dismissOnTap = false
+            customPresenter.dismissOnSwipe = true
+            customPresenter.dismissOnTap = true
             
             return customPresenter
         }()

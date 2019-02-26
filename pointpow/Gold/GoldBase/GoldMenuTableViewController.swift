@@ -201,9 +201,19 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
         
         
         if self.statusMemberGold == "waiting"{
+            if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
+                
+                self.revealViewController()?.pushFrontViewController(saving, animated: true)
+                
+            }
             return
             
         }else if self.statusMemberGold == "fail"{
+            if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
+                
+                self.revealViewController()?.pushFrontViewController(saving, animated: true)
+                
+            }
             return
             
         }

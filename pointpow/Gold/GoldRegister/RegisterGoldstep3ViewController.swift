@@ -57,7 +57,12 @@ class RegisterGoldstep3ViewController: BaseViewController {
                 self.modelCtrl.registerGoldMember(params, tp.image!, true, succeeded: { (result) in
                     print("print")
                     self.showPenddingVerifyModalView(true , dismissCallback: {
-                        self.navigationController?.popToRootViewController(animated: true)
+                        
+                        if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
+                            self.revealViewController()?.pushFrontViewController(saving, animated: true)
+                            
+                        }
+                    
                     })
                 }, error: { (error) in
                     if let mError = error as? [String:AnyObject]{

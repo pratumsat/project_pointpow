@@ -18,7 +18,7 @@ class GoldPendingVerifyViewController: BaseViewController {
     }
     
     @IBAction func dismissTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: {
+        self.dismiss(animated: false, completion: {
             (self.navigationController as? GoldPenddingVerifyNav)?.dismissCallback?()
         })
     }

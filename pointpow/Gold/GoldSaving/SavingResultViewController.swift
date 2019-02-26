@@ -76,7 +76,7 @@ class SavingResultViewController: BaseViewController , UICollectionViewDelegate 
     }
     
     @objc func dismissTapped(){
-        self.dismiss(animated: true) {
+        self.dismiss(animated: false) {
             (self.navigationController as? SavingResultNav)?.callbackFinish?()
         }
     }

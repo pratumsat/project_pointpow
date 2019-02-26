@@ -137,7 +137,7 @@ class WithDrawResultViewController: BaseViewController  , UICollectionViewDelega
     
     
     @objc func dismissTapped(){
-        self.dismiss(animated: true) {
+        self.dismiss(animated: false) {
             (self.navigationController as? WithDrawResultNav)?.callbackFinish?()
         }
     }

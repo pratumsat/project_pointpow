@@ -280,6 +280,7 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
                     transCell.statusImageView.image = UIImage(named: "ic-saving")
                     transCell.shippingLabel.isHidden  = true
                     transCell.unitLabel.text = "PP"
+                    
                 }else{
                     let gold_unit = items["withdraw_transaction"]?["gold_unit"] as? String ?? ""
                     let gold_withdraw = items["withdraw_transaction"]?["gold_withdraw"] as? NSNumber ?? 0
@@ -325,22 +326,21 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
                     transCell.amountLabel.text = numberFormatter.string(from: gold_withdraw)
                     transCell.titleLabel.text = NSLocalizedString("string-title-history-withdraw", comment: "")
                     transCell.statusImageView.image = UIImage(named: "ic-withdraw")
-                }
-                
-             
-                if status.lowercased() == "success" {
-                    transCell.statusLabel.textColor = Constant.Colors.GREEN
-                    transCell.statusLabel.text = NSLocalizedString("string-status-gold-history-success", comment: "")
                     
-                    transCell.shippingLabel.isHidden = false
-                }
-                if status.lowercased() == "cancel" {
-                    transCell.statusLabel.textColor = Constant.Colors.PRIMARY_COLOR
-                    transCell.statusLabel.text = NSLocalizedString("string-status-gold-history-cancel", comment: "")
                     
-                    transCell.shippingLabel.isHidden = true
+                    if status.lowercased() == "success" {
+                        transCell.statusLabel.textColor = Constant.Colors.GREEN
+                        transCell.statusLabel.text = NSLocalizedString("string-status-gold-history-success", comment: "")
+                        
+                        transCell.shippingLabel.isHidden = false
+                    }
+                    if status.lowercased() == "cancel" {
+                        transCell.statusLabel.textColor = Constant.Colors.PRIMARY_COLOR
+                        transCell.statusLabel.text = NSLocalizedString("string-status-gold-history-cancel", comment: "")
+                        
+                        transCell.shippingLabel.isHidden = true
+                    }
                 }
-                
             }
             
            

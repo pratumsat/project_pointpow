@@ -11,6 +11,7 @@ import UIKit
 class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDataSource, UIGestureRecognizerDelegate ,UITextFieldDelegate {
     @IBOutlet weak var headView: UIView!
     
+    @IBOutlet weak var underLineView: UIView!
     @IBOutlet weak var unitView: UIView!
     @IBOutlet weak var goldReceiveInfoLabel: UILabel!
     @IBOutlet weak var dropDownImageView: UIImageView!
@@ -62,6 +63,12 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
     
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var unitTextField: UITextField!
+    
+    var gold_balance:NSNumber = NSNumber(value: 0.0){
+        didSet{
+            setUpPicker()
+        }
+    }
     
     var defaultHeight = CGFloat(40)
     
@@ -126,7 +133,7 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
         self.amountTextField.addDoneButtonToKeyboard(myAction:
                 #selector(self.amountTextField.resignFirstResponder))
         
-        self.setUpPicker()
+        
         self.updateView()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(infoTapped))
@@ -158,6 +165,7 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
                 
                 self.withDrawData = (premium : "\(0)" , goldReceive: [])
                 self.goldSpendCallback?(0 , self.selectedUnits)
+                
                 return true
             }
             
@@ -193,8 +201,10 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
 
     
     func updateView(){
-
         
+        self.drawCountCallback?(0)
+        
+        self.underLineView.isHidden = true
         self.weightLabel.isHidden = true
         self.goldReceiveInfoLabel.isHidden = true
         self.heightPremiumConstraint.constant = 0
@@ -216,6 +226,7 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
                     self.weightLabel.isHidden = false
                     self.goldReceiveInfoLabel.isHidden = false
                     
+                    self.underLineView.isHidden = false
                 }
                 
                 if data.goldReceive.count == 0 {
@@ -256,6 +267,8 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
                     self.heightPremiumConstraint.constant = self.defaultHeight
                     self.weightLabel.isHidden = false
                     self.goldReceiveInfoLabel.isHidden = false
+                    
+                    self.underLineView.isHidden = false
                 }
                 
                 if data.goldReceive.count == 0 {
@@ -407,28 +420,43 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
     
     func setUpPicker(){
         
-        pickerView = UIPickerView()
-        pickerView!.delegate = self
-        pickerView!.dataSource = self
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(pickerTapped))
-        tap.delegate = self
-        pickerView!.addGestureRecognizer(tap)
-   
-        
-        self.unitTextField.tintColor = UIColor.clear
-        self.unitTextField.isUserInteractionEnabled = true
-        self.unitTextField.inputView = pickerView
-        
-        self.unitTextField.text = self.units[0]
-        self.selectedUnits = 0
-        
-        
-        
+        if self.gold_balance.doubleValue >= 15.244 {
+            pickerView = UIPickerView()
+            pickerView!.delegate = self
+            pickerView!.dataSource = self
+
+            let tap = UITapGestureRecognizer(target: self, action: #selector(pickerTapped))
+            tap.delegate = self
+            pickerView!.addGestureRecognizer(tap)
+
+            
+            self.unitTextField.tintColor = UIColor.clear
+            self.unitTextField.isUserInteractionEnabled = true
+            self.unitTextField.inputView = pickerView
+
+            self.unitTextField.borderRedColorProperties(borderWidth: 1)
+            self.unitTextField.isEnabled = true
+            self.unitTextField.text = self.units[0]
+            self.unitTextField.textColor = UIColor.black
+            self.selectedUnits = 0
+
+            
+            self.dropDownImageView.image = UIImage(named: "ic-dropdown-2")
+        }else{
+            self.unitTextField.borderLightGrayColorProperties()
+            self.unitTextField.isEnabled = false
+            self.unitTextField.text = self.units[0]
+            self.unitTextField.textColor = UIColor.lightGray
+            self.selectedUnits = 0
+            
+            self.dropDownImageView.image = UIImage(named: "ic-dropdown-1")
+        }
     }
+    
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
+    
     @objc func pickerTapped(_ tapRecognizer:UITapGestureRecognizer){
         if tapRecognizer.state == .ended {
             let rowHeight = self.pickerView!.rowSize(forComponent: 0).height
@@ -475,9 +503,8 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
         self.amountTextField.borderRedColorProperties(borderWidth: 1)
         self.amountTextField.setRightPaddingPoints(10)
         
-        self.unitTextField.borderRedColorProperties(borderWidth: 1)
+        //self.unitTextField.borderRedColorProperties(borderWidth: 1)
         self.unitTextField.setRightPaddingPoints(40)
-        
         
         
        

@@ -105,7 +105,10 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
             let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
             self.mobileTextField.text =  newMText.chunkFormatted()
         
-            self.hiddenIdCardPhotoImageView.sd_setImage(with: URL(string: idCardPhoto)!, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER))
+            //self.hiddenIdCardPhotoImageView.sd_setImage(with: URL(string: idCardPhoto)!, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER))
+            
+            self.hiddenIdCardPhotoImageView.image = UIImage(named: "ic-img-placeholder-verify-idcard")
+            
             
             switch status {
             case "waiting":

@@ -13,6 +13,7 @@ class PopupGoldHistoryFilterViewController: BaseViewController  ,UIPickerViewDel
     @IBOutlet weak var startDateTextField: UITextField!
     @IBOutlet weak var endDateTextField: UITextField!
     
+    @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var statusTextField: UITextField!
     @IBOutlet weak var statusDropdownImageView: UIImageView!
     var tupleFilter:(startDate:String , endDate:String, status:String)?
@@ -121,8 +122,17 @@ class PopupGoldHistoryFilterViewController: BaseViewController  ,UIPickerViewDel
             self.startDateTextField.text = data.startDate
             self.endDateTextField.text = data.endDate
             
-            self.pickerView?.date = convertToDate(data.startDate, "dd-MM-yyyy")
-            self.pickerView2?.date = convertToDate(data.endDate, "dd-MM-yyyy")
+            let dateFormatter = DateFormatter()
+            //dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            dateFormatter.dateFormat = "dd-MM-yyyy"
+            print(dateFormatter.date(from: data.startDate))
+            print(dateFormatter.date(from: data.endDate))
+            
+            print(dateFormatter.date(from: convertBuddhaToChris(data.startDate)))
+            print(dateFormatter.date(from: convertBuddhaToChris(data.endDate)))
+            
+            self.pickerView?.date = dateFormatter.date(from: data.startDate)!
+            self.pickerView2?.date = dateFormatter.date(from: data.endDate)!
             
             
             if data.status == "all"{
@@ -155,6 +165,15 @@ class PopupGoldHistoryFilterViewController: BaseViewController  ,UIPickerViewDel
         if selectedSaving {
             self.statusTextField.text = NSLocalizedString("string-status-gold-history-success", comment: "")
             self.status = status_saving
+        
+            self.statusTextField.isHidden = true
+            self.statusLabel.isHidden = true
+            self.statusDropdownImageView.isHidden = true
+        }else{
+            self.statusTextField.isHidden = false
+            self.statusLabel.isHidden = false
+            self.statusDropdownImageView.isHidden = false
+            
         }
         let tap = UITapGestureRecognizer(target: self, action: #selector(pickerTapped))
         tap.delegate = self

@@ -54,7 +54,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="จำนวนทองคำที่จะได้รับ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lfa-t7-AaP">
-                        <rect key="frame" x="10" y="176" width="125.5" height="23.5"/>
+                        <rect key="frame" x="10" y="196" width="125.5" height="23.5"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                         <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -66,7 +66,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="กรัม" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hY-sn-egu">
-                        <rect key="frame" x="360.5" y="178" width="23.5" height="23.5"/>
+                        <rect key="frame" x="360.5" y="198" width="23.5" height="23.5"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                         <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -99,7 +99,7 @@
                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                     </textField>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="etu-RZ-ygw">
-                        <rect key="frame" x="39.5" y="227.5" width="315" height="40"/>
+                        <rect key="frame" x="39.5" y="247.5" width="315" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="H0J-WN-9QX"/>
                         </constraints>
@@ -112,7 +112,7 @@
                         </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cS6-eU-lbA">
-                        <rect key="frame" x="141.5" y="167.5" width="209" height="40"/>
+                        <rect key="frame" x="141.5" y="187.5" width="209" height="40"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="0.0000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hr5-Rp-ang">
                                 <rect key="frame" x="10" y="0.0" width="189" height="40"/>
@@ -135,6 +135,12 @@
                         <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*ออมทองคำขั้นต่ำ 100 pp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EkJ-Tg-Gxu">
+                        <rect key="frame" x="10" y="149.5" width="122" height="20"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -155,6 +161,7 @@
                 <constraint firstItem="4hY-sn-egu" firstAttribute="leading" secondItem="cS6-eU-lbA" secondAttribute="trailing" constant="10" id="Hn9-Hn-3Ji"/>
                 <constraint firstItem="JB1-Iu-fzj" firstAttribute="leading" secondItem="DwH-MY-4BG" secondAttribute="leading" id="Ie7-sR-P3i"/>
                 <constraint firstItem="VYY-yR-BYP" firstAttribute="centerY" secondItem="eNv-21-EAw" secondAttribute="centerY" constant="2" id="JU0-18-5vd"/>
+                <constraint firstItem="EkJ-Tg-Gxu" firstAttribute="top" secondItem="dWI-hz-CWO" secondAttribute="bottom" id="JyT-KY-eXM"/>
                 <constraint firstItem="xk3-88-6Xe" firstAttribute="leading" secondItem="4hY-sn-egu" secondAttribute="leading" id="K7V-aC-Svf"/>
                 <constraint firstItem="JB1-Iu-fzj" firstAttribute="top" secondItem="DwH-MY-4BG" secondAttribute="bottom" constant="-5" id="Mdp-2O-MBj"/>
                 <constraint firstItem="jEm-vk-tA5" firstAttribute="top" secondItem="ba1-lG-ap1" secondAttribute="top" id="N4Y-Sj-sHO"/>
@@ -169,8 +176,9 @@
                 <constraint firstAttribute="trailing" secondItem="4hY-sn-egu" secondAttribute="trailing" constant="10" id="jBD-kM-aCO"/>
                 <constraint firstItem="DwH-MY-4BG" firstAttribute="leading" secondItem="ba1-lG-ap1" secondAttribute="leading" constant="10" id="qWm-yo-0tc"/>
                 <constraint firstItem="xk3-88-6Xe" firstAttribute="leading" secondItem="uJG-wA-ZYz" secondAttribute="trailing" constant="10" id="vls-kN-Zhd"/>
+                <constraint firstItem="EkJ-Tg-Gxu" firstAttribute="leading" secondItem="OeG-Ps-qTQ" secondAttribute="leading" id="xC1-Y8-qEK"/>
                 <constraint firstItem="VYY-yR-BYP" firstAttribute="leading" secondItem="4hY-sn-egu" secondAttribute="leading" id="yGM-u9-8v7"/>
-                <constraint firstItem="cS6-eU-lbA" firstAttribute="top" secondItem="eNv-21-EAw" secondAttribute="bottom" constant="20" id="zkj-yi-svX"/>
+                <constraint firstItem="cS6-eU-lbA" firstAttribute="top" secondItem="eNv-21-EAw" secondAttribute="bottom" constant="40" id="zkj-yi-svX"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Uje-4R-HRt"/>
             <size key="customSize" width="465" height="399"/>

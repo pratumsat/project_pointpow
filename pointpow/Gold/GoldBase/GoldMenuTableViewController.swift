@@ -49,8 +49,8 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
                 let registerGold = data["gold_saving_acc"] as? NSNumber ?? 0
                 let status = data["goldsaving_member"]?["status"] as? String ?? ""
                 
-                self.statusMemberGold = status
                 
+                self.statusMemberGold = status
             }
             
             avaliable?()
@@ -72,6 +72,9 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
     }
    
     func setUp(){
+        self.handlerEnterSuccess = {
+            
+        }
         
         self.backgroundImage?.image = nil
         
@@ -192,24 +195,53 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
        
         if indexPath.section == 0 {
             // "Profile"
-            if let profile = self.storyboard?.instantiateViewController(withIdentifier: "GoldAccount") as? UINavigationController {
-                
-                self.revealViewController()?.pushFrontViewController(profile, animated: true)
-            }
-            
+//            if let profile = self.storyboard?.instantiateViewController(withIdentifier: "GoldAccount") as? UINavigationController {
+//
+//                self.revealViewController()?.pushFrontViewController(profile, animated: true)
+//
+//            }
+            let userInfo = ["profile":"showEnterPassCode"]
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "messageAlert"), object: nil, userInfo: userInfo as [String:AnyObject])
+            return
         }
-        
         
         if self.statusMemberGold == "waiting"{
             if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
+                
+                let userInfo = ["message":NSLocalizedString("string-dailog-gold-profile-status-waitting", comment: "")]
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "messageAlert"), object: nil, userInfo: userInfo as [String:AnyObject])
+
+                self.revealViewController()?.pushFrontViewController(saving, animated: true)
+                
+                
+            }
+            return
+            
+        }
+        
+
+        
+        if self.statusMemberGold == "fail"{
+            if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
+                
+                
+                let userInfo = ["message":NSLocalizedString("string-dailog-gold-profile-status-fail", comment: "")]
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "messageAlert"), object: nil, userInfo: userInfo as [String:AnyObject])
                 
                 self.revealViewController()?.pushFrontViewController(saving, animated: true)
                 
             }
             return
             
-        }else if self.statusMemberGold == "fail"{
+        }
+        
+        if self.statusMemberGold == "edit"{
             if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
+                
+                
+                let userInfo = ["message":NSLocalizedString("string-dailog-gold-profile-status-waitting", comment: "")]
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "messageAlert"), object: nil, userInfo: userInfo as [String:AnyObject])
+                
                 
                 self.revealViewController()?.pushFrontViewController(saving, animated: true)
                 
@@ -240,11 +272,10 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
             }
             if indexPath.row == 2 {
                 // "History"
-                
                 if let history = self.storyboard?.instantiateViewController(withIdentifier: "GoldHistory") as? UINavigationController {
                     self.revealViewController()?.pushFrontViewController(history, animated: true)
                 }
-                
+             
             }
         }
         

@@ -262,7 +262,7 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
             if let items = self.goldHistory?[indexPath.section].items?[indexPath.row] {
                 let status = items["status"] as? String ?? ""
                 let type = items["type"] as? String ?? ""
-                let date = items["created_at"] as? String ?? ""
+                let date = items["updated_at"] as? String ?? ""
                 
                 transCell.dateLabel.text = date
                 
@@ -281,6 +281,22 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
                     transCell.shippingLabel.isHidden  = true
                     transCell.unitLabel.text = "PP"
                     
+                    
+                    transCell.shippingLabel.isHidden = true
+                    
+                    if status.lowercased() == "success" {
+                        transCell.statusLabel.textColor = Constant.Colors.GREEN
+                        transCell.statusLabel.text = NSLocalizedString("string-status-gold-history-success", comment: "")
+                        
+                        
+                    }
+                    if status.lowercased() == "cancel" {
+                        transCell.statusLabel.textColor = Constant.Colors.PRIMARY_COLOR
+                        transCell.statusLabel.text = NSLocalizedString("string-status-gold-history-cancel", comment: "")
+                        
+                        
+                    }
+                    
                 }else{
                     let gold_unit = items["withdraw_transaction"]?["gold_unit"] as? String ?? ""
                     let gold_withdraw = items["withdraw_transaction"]?["gold_withdraw"] as? NSNumber ?? 0
@@ -294,15 +310,19 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
                     switch type.lowercased() {
                     case "office" :
                         if statusShipping == "waiting" {
+                            transCell.shippingLabel.textColor = Constant.Colors.ORANGE
                             transCell.shippingLabel.text = NSLocalizedString("string-dailog-gold-shipping-office-status-waiting", comment: "")
                         }else{
+                            transCell.shippingLabel.textColor = Constant.Colors.GREEN
                             transCell.shippingLabel.text = NSLocalizedString("string-dailog-gold-shipping-office-status-success", comment: "")
                         }
                         break
                     case "thaipost" :
                         if statusShipping == "waiting" {
+                            transCell.shippingLabel.textColor = Constant.Colors.ORANGE
                             transCell.shippingLabel.text = NSLocalizedString("string-dailog-gold-shipping-thaipost-status-waiting", comment: "")
                         }else{
+                            transCell.shippingLabel.textColor = Constant.Colors.GREEN
                             transCell.shippingLabel.text = NSLocalizedString("string-dailog-gold-shipping-thaipost-status-success", comment: "")
                         }
                         break
@@ -310,9 +330,6 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
                     default:
                         break
                     }
-                    
-                  
-                  
                     
                     if gold_unit.lowercased() == "salueng" {
                         transCell.unitLabel.text = NSLocalizedString("unit-salueng", comment: "")
@@ -342,10 +359,6 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
                     }
                 }
             }
-            
-           
-
-            
             
             let heightOfView = transCell.bounds.height
             transCell.heightConstraint.constant = heightOfView

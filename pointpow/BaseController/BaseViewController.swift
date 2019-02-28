@@ -95,6 +95,9 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         NotificationCenter.default.addObserver(self, selector: #selector(GoogleSigInFailure), name: NSNotification.Name(rawValue: Constant.DefaultConstansts.NotificationGoogleSigInFailure), object: nil)
         
         
+        
+     
+        
         backgroundImage = UIImageView()
         backgroundImage!.image = UIImage(named: "background_image")
         backgroundImage!.frame = self.view.frame
@@ -124,6 +127,8 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             self.loadingView?.hideLoading()
         }
     }
+    
+
     
     
     @objc func GoogleSigInSuccess(notification: NSNotification){
@@ -347,9 +352,10 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
-    func showMapFullViewController(_ animated:Bool){
+    func showMapFullViewController(_ animated:Bool , dissmissCallback:(()->Void)?){
         if let vc:WebViewMapViewController = self.storyboard?.instantiateViewController(withIdentifier: "WebViewMapViewController") as? WebViewMapViewController {
             
+            vc.dissmissCallback = dissmissCallback
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
@@ -1009,6 +1015,9 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             let h = w/275*315
             let width = ModalSize.custom(size: Float(w))
             let height = ModalSize.custom(size: Float(h))
+            
+            print("w = \(width)")
+            print("h = \(height)")
             
             let center = ModalCenterPosition.center
             let customType = PresentationType.custom(width: width, height: height, center: center)

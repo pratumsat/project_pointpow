@@ -156,13 +156,8 @@ class WithDrawResultViewController: BaseViewController  , UICollectionViewDelega
         timer?.invalidate()
         timer = nil
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        if self.slipView != nil {
-            self.addSlipImageView()
-        }
-    }
+    
+    
     
     
     
@@ -176,15 +171,35 @@ class WithDrawResultViewController: BaseViewController  , UICollectionViewDelega
         self.registerNib(self.resultCollectionView, "WithDrawResultPointPowSuccessCell")
         self.registerNib(self.resultCollectionView, "LogoGoldCell")
         
-        
-        
-        
-        
     }
     
     
-}
+    func showMap(){
+        self.showInfoMapOfficePopup(true) {
+            self.showMapFullViewController(true){
+                Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(self.showMapPopup), userInfo: nil, repeats: false)
 
+                //self.showMap()
+            }
+        }
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+       
+        
+        if self.slipView != nil {
+            self.addSlipImageView()
+        }
+    }
+    
+    @objc func showMapPopup(){
+        showMap()
+    }
+    
+    
+    
+   
+}
 
 extension WithDrawResultViewController {
     func sectionWithDrawCancelTransactionFromHistory(_ collectionView:UICollectionView, _ indexPath:IndexPath) -> UICollectionViewCell {
@@ -199,7 +214,7 @@ extension WithDrawResultViewController {
             
             
             if let data = self.withDrawResult as? [String:AnyObject]{
-                let created_at = data["created_at"] as? String ?? ""
+                let created_at = data["updated_at"] as? String ?? ""
                 let transaction_number = data["withdraw_transaction"]?["transaction_no"] as? String ?? ""
                 let gold_unit = data["withdraw_transaction"]?["gold_unit"] as? String ?? ""
                 let gold_withdraw = data["withdraw_transaction"]?["gold_withdraw"] as? NSNumber ?? 0
@@ -288,9 +303,11 @@ extension WithDrawResultViewController {
                 
                 switch statusShipping {
                 case "success":
+                    item.shippingStatusLabel.textColor = Constant.Colors.GREEN
                     item.shippingStatusLabel.text = NSLocalizedString("string-dailog-gold-shipping-office-status-success", comment: "")
                     break
                 case "waiting":
+                    item.shippingStatusLabel.textColor = Constant.Colors.ORANGE
                     item.shippingStatusLabel.text = NSLocalizedString("string-dailog-gold-shipping-office-status-waiting", comment: "")
                     break
                 default:
@@ -312,7 +329,7 @@ extension WithDrawResultViewController {
             cell = item
             
             if let data = self.withDrawResult as? [String:AnyObject]{
-                let created_at = data["created_at"] as? String ?? ""
+                let created_at = data["updated_at"] as? String ?? ""
                 let transaction_number = data["withdraw_transaction"]?["transaction_no"] as? String ?? ""
                 let qrbase64 = data["withdraw_transaction"]?["qr_code"] as? String ?? ""
                 let gold_unit = data["withdraw_transaction"]?["gold_unit"] as? String ?? ""
@@ -405,9 +422,11 @@ extension WithDrawResultViewController {
                 
                 switch statusShipping.lowercased() {
                 case "success":
+                    item.shippingStatusLabel.textColor = Constant.Colors.GREEN
                     item.shippingStatusLabel.text = NSLocalizedString("string-dailog-gold-shipping-office-status-success", comment: "")
                     break
                 case "waiting":
+                    item.shippingStatusLabel.textColor = Constant.Colors.ORANGE
                     item.shippingStatusLabel.text = NSLocalizedString("string-dailog-gold-shipping-office-status-waiting", comment: "")
                     break
                 default:
@@ -416,9 +435,7 @@ extension WithDrawResultViewController {
                 
             }
             item.viewMapCallback = {
-                self.showInfoMapOfficePopup(true){
-                    self.showMapFullViewController(true)
-                }
+                self.showMap()
             }
             item.saveSlipCallback = {
                 if let snapImage = self.snapView?.snapshotImage() {
@@ -498,7 +515,7 @@ extension WithDrawResultViewController {
             
             
             if let data = self.withDrawResult as? [String:AnyObject]{
-                let created_at = data["created_at"] as? String ?? ""
+                let created_at = data["updated_at"] as? String ?? ""
                 let transaction_number = data["withdraw_transaction"]?["transaction_no"] as? String ?? ""
                 let qrbase64 = data["withdraw_transaction"]?["qr_code"] as? String ?? ""
                 let gold_unit = data["withdraw_transaction"]?["gold_unit"] as? String ?? ""
@@ -593,9 +610,11 @@ extension WithDrawResultViewController {
                 
                 switch statusShipping.lowercased() {
                 case "success":
+                    item.shippingStatusLabel.textColor = Constant.Colors.GREEN
                     item.shippingStatusLabel.text = NSLocalizedString("string-dailog-gold-shipping-office-status-success", comment: "")
                     break
                 case "waiting":
+                    item.shippingStatusLabel.textColor = Constant.Colors.ORANGE
                     item.shippingStatusLabel.text = NSLocalizedString("string-dailog-gold-shipping-office-status-waiting", comment: "")
                     break
                 default:
@@ -605,10 +624,7 @@ extension WithDrawResultViewController {
             }
             
             item.viewMapCallback = {
-                self.showInfoMapOfficePopup(true){
-                    self.showMapFullViewController(true)
-                    
-                }
+                self.showMap()
             }
             item.cancelCallback = {
                 
@@ -674,7 +690,7 @@ extension WithDrawResultViewController {
             
             
             if let data = self.withDrawResult as? [String:AnyObject]{
-                let created_at = data["created_at"] as? String ?? ""
+                let created_at = data["updated_at"] as? String ?? ""
                 let transaction_number = data["withdraw_transaction"]?["transaction_no"] as? String ?? ""
                 let gold_unit = data["withdraw_transaction"]?["gold_unit"] as? String ?? ""
                 let gold_withdraw = data["withdraw_transaction"]?["gold_withdraw"] as? NSNumber ?? 0
@@ -758,15 +774,16 @@ extension WithDrawResultViewController {
                 
                 switch statusShipping.lowercased() {
                 case "success":
+                    item.shippingStatusLabel.textColor = Constant.Colors.GREEN
                     item.shippingStatusLabel.text = NSLocalizedString("string-dailog-gold-shipping-office-status-success", comment: "")
                     break
                 case "waiting":
+                    item.shippingStatusLabel.textColor = Constant.Colors.ORANGE
                     item.shippingStatusLabel.text = NSLocalizedString("string-dailog-gold-shipping-office-status-waiting", comment: "")
                     break
                 default:
                     break
                 }
-                
             }
           
             
@@ -879,7 +896,7 @@ extension WithDrawResultViewController{
                 case "office" :
                     if statusShipping == "waiting" {
                         if statusTransaction.lowercased() == "cancel" {
-                            height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*420 , rowHeight: 20.0)
+                            height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*400 , rowHeight: 20.0)
 
                         }else{
                             height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*800 , rowHeight: 20.0)
@@ -919,7 +936,7 @@ extension WithDrawResultViewController{
                     if statusShipping == "waiting" {
                         if statusTransaction.lowercased() == "cancel" {
                             
-                            height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*420 , rowHeight: 20.0)
+                            height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*400 , rowHeight: 20.0)
                         
                         }else{
                             height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*800 , rowHeight: 20.0)

@@ -10,6 +10,7 @@ import UIKit
 
 class WebViewMapViewController: BaseViewController {
 
+    var dissmissCallback:(()->Void)?
     @IBOutlet weak var webView: UIWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +31,15 @@ class WebViewMapViewController: BaseViewController {
         
         
     }
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.dissmissCallback?()
+    }
 
     /*
     // MARK: - Navigation

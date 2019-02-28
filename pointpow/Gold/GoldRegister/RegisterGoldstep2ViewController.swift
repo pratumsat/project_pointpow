@@ -44,7 +44,7 @@ class RegisterGoldstep2ViewController: BaseViewController ,UIImagePickerControll
     }
     func setUp(){
         self.backgroundImage?.image = nil
-        self.checkBox.isChecked = true
+        self.checkBox.isChecked = false
         
         self.hiddenIdCardPhotoImageView.contentMode = .scaleAspectFit
       

@@ -13,10 +13,13 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
     @IBOutlet weak var homeCollectionView: UICollectionView!
     
     let arrayItem_registered_waiting = ["goldprice", "logo"]
+    let arrayItem_registered_waiting_edit = ["goldprice", "goldbalance", "logo"]
     let arrayItem_registered = ["goldprice","goldbalance","saving", "logo"]
     let arrayItem_no_registered = ["goldprice","register", "logo"]
     var arrayItem:[String] = []
     var statusMemberGold = ""
+    var gold_balance = NSNumber(value: 0.00)
+    
     var isRegistered  = false {
         didSet{
             if isRegistered {
@@ -24,15 +27,22 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
                 self.navigationItem.rightBarButtonItem?.action = #selector(SWRevealViewController.rightRevealToggle(_:))
                 
                 if self.statusMemberGold == "waiting"{
-                   self.arrayItem = self.arrayItem_registered_waiting
+                   self.arrayItem = self.arrayItem_registered_waiting_edit
                 
+                }else if self.statusMemberGold == "edit"{
+                    self.arrayItem = self.arrayItem_registered_waiting_edit
+                    
                 }else if self.statusMemberGold == "fail"{
-                   self.arrayItem = self.arrayItem_registered_waiting
+                   self.arrayItem = self.arrayItem_registered_waiting_edit
                 
                 }else if self.statusMemberGold == "approve"{
                     self.arrayItem = self.arrayItem_registered
-                
                 }
+                
+                if self.gold_balance.doubleValue <= 0 {
+                    self.arrayItem.remove(at: 1)
+                }
+                
                 
             }else{
                 self.arrayItem = self.arrayItem_no_registered
@@ -43,6 +53,7 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
     
     var goldamountLabel:UILabel?
     var pointpowTextField:UITextField?
+    var savingUpdateButton:UIButton?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +61,14 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         self.title = NSLocalizedString("string-title-gold-page", comment: "")
         self.setUp()
         
+        self.handlerEnterSuccess  = {
+            // "Profile"
+            if let profile = self.storyboard?.instantiateViewController(withIdentifier: "GoldAccount") as? UINavigationController {
+                
+                self.revealViewController()?.pushFrontViewController(profile, animated: true)
+                
+            }
+        }
      
     }
 
@@ -58,9 +77,28 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         self.getDataMember(){
             self.updateView()
         }
-       
+        NotificationCenter.default.addObserver(self, selector: #selector(messageAlert), name: NSNotification.Name(rawValue: "messageAlert"), object: nil)
         
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "messageAlert"), object: nil)
+        
+    }
+    @objc func messageAlert(notification: NSNotification){
+        if let userInfo = notification.userInfo as? [String:AnyObject]{
+            let profile = userInfo["profile"] as? String  ?? ""
+            if !profile.isEmpty{
+                self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
+            }
+            
+        }
+        
+    }
+    
+    
+    
     func setUp(){
         
         self.backgroundImage?.image = nil
@@ -94,8 +132,13 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
             //let profileImage = data["picture_data"] as? String ?? ""
             let registerGold = data["gold_saving_acc"] as? NSNumber ?? 0
             let status = data["goldsaving_member"]?["status"] as? String ?? ""
+            let gold_balance = data["goldsaving_member"]?["gold_balance"] as? NSNumber ?? 0
             
+            
+            self.gold_balance = gold_balance
             self.statusMemberGold = status
+            
+            
             if registerGold.boolValue {
                 self.isRegistered = true
             }else{
@@ -119,7 +162,8 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
     override func textFieldDidBeginEditing(_ textField: UITextField) {
         //let y = textField.frame.origin.y + (textField.superview?.frame.origin.y)!;
         let pointInTable = textField.superview?.convert(textField.frame.origin, to: self.homeCollectionView)
-        self.positionYTextField = pointInTable?.y ?? 600
+        let y =  pointInTable?.y ?? 600
+        self.positionYTextField = y + 60
         
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -133,15 +177,29 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
                 self.goldamountLabel?.text = "0.0000"
                 return true
             }
+            
             if let point = Int(updatedText) {
 
+                if point >= 100 {
+                    self.enableButton()
+                }else{
+                    self.disableButton()
+                }
+                
                 if let data  = self.goldPrice as? [String:AnyObject] {
                     
                     let goldprice = data["open_sell_price"] as? NSNumber ?? 0
                     let gramToPoint = Double(goldprice.intValue)/15.244
                     
                     
-                    let sum = String(format: "%.04f", Double(point)/gramToPoint)
+                    let sum = String(format: "%.04f", floor(Double(point)/gramToPoint * 10000) / 10000)
+                    
+                    
+                    print(Double(point)/gramToPoint)
+                    print(String(format: "%.04f", floor(Double(point)/gramToPoint * 10000) / 10000))
+                    
+                    
+                    
                     self.goldamountLabel?.text = "\(sum)"
                 }
                 
@@ -242,6 +300,8 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
                 cell = item
                 self.pointpowTextField = item.pointpowTextField
                 self.goldamountLabel = item.goldamountLabel
+                self.savingUpdateButton = item.savingButton
+                self.disableButton()
                 
                 item.pointpowTextField.autocorrectionType = .no
                 item.pointpowTextField.delegate = self
@@ -402,6 +462,30 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
  
     @IBAction func dismissTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+ 
+    
+    func enableButton(){
+        if let count = self.savingUpdateButton?.layer.sublayers?.count {
+            if count > 1 {
+                self.savingUpdateButton?.layer.sublayers?.removeFirst()
+            }
+        }
+        
+        self.savingUpdateButton?.borderClearProperties(borderWidth: 1)
+        self.savingUpdateButton?.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
+        self.savingUpdateButton?.isEnabled = true
+    }
+    func disableButton(){
+        if let count = self.savingUpdateButton?.layer.sublayers?.count {
+            if count > 1 {
+                self.savingUpdateButton?.layer.sublayers?.removeFirst()
+            }
+        }
+        self.savingUpdateButton?.borderClearProperties(borderWidth: 1)
+        self.savingUpdateButton?.applyGradient(colours: [UIColor.lightGray, UIColor.lightGray])
+        
+        self.savingUpdateButton?.isEnabled = false
     }
     
 }

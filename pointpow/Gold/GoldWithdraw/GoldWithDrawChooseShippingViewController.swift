@@ -185,6 +185,24 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
         return 1
     }
     
+    
+    func showMap(){
+        self.showInfoMapOfficePopup(true) {
+            self.showMapFullViewController(true){
+                Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(self.showMapPopup), userInfo: nil, repeats: false)
+                
+                //self.showMap()
+            }
+        }
+    }
+    @objc func showMapPopup(){
+        showMap()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell:UICollectionViewCell?
         
@@ -195,9 +213,7 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
                 
                 item.infoCallback = {
                     //info show popup pointpow
-                    self.showInfoMapOfficePopup(true) {
-                        self.showMapFullViewController(true)
-                    }
+                    self.showMap()
                 }
                 item.infoThaipostCallback = {
                     //info show popup thaipost

@@ -14,12 +14,15 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
     
     var premiumLabel:UILabel?
     var amountTextField:UITextField?
-    var goldBalanceLabel:UILabel?
+    //var goldBalanceLabel:UILabel?
     var gold_balance:NSNumber = NSNumber(value: 0.0)
+    var gold_price_average:NSNumber = NSNumber(value: 0.0)
     
     var drawCount = 0
     var amountToUnit:(amount:Int, unit:Int , price:Double)?
     var withdrawData:(premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double))?
+    
+    var sumWeight:Double = 0.00
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,9 +42,10 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
     func updateView(){
         if let data  = self.userData as? [String:AnyObject] {
             let gold_balance = data["goldsaving_member"]?["gold_balance"] as? NSNumber ?? 0
+            let gold_price_average = data["goldsaving_member"]?["gold_price_average"] as? NSNumber ?? 0
             
             self.gold_balance = gold_balance
-            
+            self.gold_price_average = gold_price_average
         }
         self.withDrawCollectionView.reloadData()
     }
@@ -87,23 +91,29 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
                 cell = item
                 
                 
-                let numberFormatter = NumberFormatter()
+                var numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal
                 numberFormatter.minimumFractionDigits = 4
                 
                 
                 item.goldBalanceLabel.text = numberFormatter.string(from: self.gold_balance)
                 
+                numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                numberFormatter.minimumFractionDigits = 2
                 
-                //item.goldAverageLabel.text = "0"
+                
+                item.goldAverageLabel.text = numberFormatter.string(from: self.gold_price_average)
                 
                 
-                self.goldBalanceLabel = item.goldBalanceLabel
+                //self.goldBalanceLabel = item.goldBalanceLabel
             }
             
         } else if indexPath.section == 1 {
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "WithdrawCell", for: indexPath) as? WithdrawCell {
                 cell = item
+                
+                item.gold_balance = self.gold_balance
                 
                 self.amountTextField = item.amountTextField
                 self.premiumLabel = item.premiumLabel
@@ -118,11 +128,12 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
                     self.withDrawCollectionView.performBatchUpdates({
                         collectionView.reloadInputViews()
                     }, completion: { (true) in
-                        item.amountTextField.becomeFirstResponder()
+                        //item.amountTextField.becomeFirstResponder()
                     })
                 }
                 
                 item.goldSpendCallback = { (amount, unit) in
+                    
                     self.amountToUnit = (amount: amount, unit: unit, price: 0.0)
                     if unit == 0 {
                        //salueng
@@ -130,8 +141,8 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
                         let stg = weightToSalueng*Double(amount)
                         
                         
-                        let sumWeight = self.gold_balance.doubleValue - stg
-                        self.goldBalanceLabel?.text = String(format: "%.04f", sumWeight)
+                        self.sumWeight = self.gold_balance.doubleValue - stg
+                        //self.goldBalanceLabel?.text = String(format: "%.04f", sumWeight)
                         
                         if let data  = self.goldPrice as? [String:AnyObject] {
                             
@@ -148,8 +159,8 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
                        //baht
                         let btg = Double(amount)*15.244
                         
-                        let sumWeight = self.gold_balance.doubleValue - btg
-                        self.goldBalanceLabel?.text = String(format: "%.04f", sumWeight)
+                        self.sumWeight = self.gold_balance.doubleValue - btg
+                        //self.goldBalanceLabel?.text = String(format: "%.04f", sumWeight)
                         
                         
                         if let data  = self.goldPrice as? [String:AnyObject] {
@@ -172,7 +183,7 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
                 
                 item.nextCallback = {
                     let amount = self.amountTextField?.text ?? ""
-                    let goldbalance = Double(self.goldBalanceLabel?.text ?? "0.00") ?? 0
+                    let goldbalance = self.sumWeight
                     let premium = Int(self.premiumLabel?.text ?? "") ?? 0
                    
                     
@@ -250,8 +261,14 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
         } else if indexPath.section == 1 {
            
             let width = collectionView.frame.width - 40
-            let height = heightForViewWithDraw(self.drawCount, width: width) //width/360*430
-            return CGSize(width: width, height: height)
+            var h2 = CGFloat(0)
+            if self.drawCount > 0 {
+                h2 = heightForViewWithDraw(self.drawCount, width: width , height: 250)
+            }else{
+                h2 = heightForViewWithDraw(self.drawCount, width: width , height: 130)
+            }
+            
+            return CGSize(width: width, height: h2)
         } else if indexPath.section == 2 {
             
             let width = collectionView.frame.width - 40

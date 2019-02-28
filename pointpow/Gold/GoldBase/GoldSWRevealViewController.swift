@@ -15,9 +15,29 @@ class GoldSWRevealViewController: SWRevealViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NotificationCenter.default.addObserver(self, selector: #selector(messageAlert), name: NSNotification.Name(rawValue: "messageAlert"), object: nil)
         
     }
-    
+  
+    @objc func messageAlert(notification: NSNotification){
+        if let userInfo = notification.userInfo as? [String:AnyObject]{
+            let message = userInfo["message"] as? String  ?? ""
+            let profile = userInfo["profile"] as? String  ?? ""
+            
+            if !message.isEmpty {
+                let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+                let ok = UIAlertAction(title: NSLocalizedString("string-button-ok", comment: ""), style: .cancel, handler: nil)
+                alert.addAction(ok)
+                
+                self.present(alert, animated: true, completion: nil)
+            }
+            if !profile.isEmpty{
+               
+            }
+           
+        }
+        
+    }
     var isHiddenStatusBar:Bool = false {
         didSet{
             self.setNeedsStatusBarAppearanceUpdate()

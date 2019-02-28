@@ -15,6 +15,8 @@ class GoldPendingVerifyViewController: BaseViewController {
         super.viewDidLoad()
 
         self.title = NSLocalizedString("title-gold-pendding-verify", comment: "")
+        self.backgroundImage?.image = nil
+        
     }
     
     @IBAction func dismissTapped(_ sender: Any) {

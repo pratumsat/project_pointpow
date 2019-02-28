@@ -1992,9 +1992,9 @@ class ModelController {
                     upload.uploadProgress(closure: { (progress) in
                         print(progress.fractionCompleted)
                         if progress.fractionCompleted >= 1 {
-                            if isLoading {
-                                self.loadingFinish?()
-                            }
+//                            if isLoading {
+//                                self.loadingFinish?()
+//                            }
                         }
                         inprogress?(progress.fractionCompleted)
                     })

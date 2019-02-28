@@ -75,10 +75,34 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
         
     }
     @IBAction func bViewTapped(_ sender: Any) {
-        if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
-            self.revealViewController()?.pushFrontViewController(saving, animated: true)
+        if self.saveButton.isEnabled {
+            let alert = UIAlertController(title:
+                NSLocalizedString("string-dailog-back-view-profile", comment: ""),
+                                          message: "", preferredStyle: .alert)
             
+            let okButton = UIAlertAction(title: NSLocalizedString("string-dailog-gold-button-confirm", comment: ""), style: .default, handler: {
+                (alert) in
+                
+                
+                if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
+                    self.revealViewController()?.pushFrontViewController(saving, animated: true)
+                    
+                }
+                
+            })
+            let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-gold-button-cancel", comment: ""), style: .default, handler: nil)
+            
+            
+            alert.addAction(cancelButton)
+            alert.addAction(okButton)
+            self.present(alert, animated: true, completion: nil)
+        }else{
+            if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
+                self.revealViewController()?.pushFrontViewController(saving, animated: true)
+                
+            }
         }
+        
     }
     
     func updateView(){

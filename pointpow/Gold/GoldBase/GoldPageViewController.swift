@@ -61,14 +61,7 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         self.title = NSLocalizedString("string-title-gold-page", comment: "")
         self.setUp()
         
-        self.handlerEnterSuccess  = {
-            // "Profile"
-            if let profile = self.storyboard?.instantiateViewController(withIdentifier: "GoldAccount") as? UINavigationController {
-                
-                self.revealViewController()?.pushFrontViewController(profile, animated: true)
-                
-            }
-        }
+        
      
     }
 
@@ -77,25 +70,10 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         self.getDataMember(){
             self.updateView()
         }
-        NotificationCenter.default.addObserver(self, selector: #selector(messageAlert), name: NSNotification.Name(rawValue: "messageAlert"), object: nil)
         
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "messageAlert"), object: nil)
-        
-    }
-    @objc func messageAlert(notification: NSNotification){
-        if let userInfo = notification.userInfo as? [String:AnyObject]{
-            let profile = userInfo["profile"] as? String  ?? ""
-            if !profile.isEmpty{
-                self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
-            }
-            
-        }
-        
-    }
+   
     
     
     

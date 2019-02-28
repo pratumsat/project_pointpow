@@ -2122,7 +2122,7 @@ class ModelController {
                         print(progress.fractionCompleted)
                         if progress.fractionCompleted >= 1 {
                             if isLoading {
-                                self.loadingFinish?()
+                                //self.loadingFinish?()
                             }
                         }
                         inprogress?(progress.fractionCompleted)

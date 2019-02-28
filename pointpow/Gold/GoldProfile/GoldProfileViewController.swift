@@ -690,9 +690,17 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
             return
         }
         
+       
+        
         
         guard validateIDcard(personalID) else { return }
         guard validateMobile(mobile) else { return }
+        
+        guard (self.idCardPhoto != nil) else {
+            showMessagePrompt(NSLocalizedString("string-message-alert-please-choose-image", comment: ""))
+            return
+        }
+       
         
         if isValidEmail(email) {
             //pass
@@ -714,6 +722,8 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
                 }else{
                     image = self.hiddenIdCardPhotoImageView.image
                 }
+                
+               
                 
                 self.modelCtrl.updateGoldMember(params, image, true, succeeded: { (result) in
                     print("print")

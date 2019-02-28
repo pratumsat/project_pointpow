@@ -39,6 +39,9 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
         }
         
     }
+    
+   
+    
     func updateView(){
         if let data  = self.userData as? [String:AnyObject] {
             let gold_balance = data["goldsaving_member"]?["gold_balance"] as? NSNumber ?? 0

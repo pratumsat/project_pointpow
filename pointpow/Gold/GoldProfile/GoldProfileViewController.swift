@@ -305,13 +305,53 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
         
     }
 
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        if textField == self.firstNameTextField {
+            if let data  = self.userData as? [String:AnyObject] {
+                let first_name = data["goldsaving_member"]?["firstname"] as? String ?? ""
+                //let last_name = data["goldsaving_member"]?["lastname"]as? String ?? ""
+                
+                if (textField.text!) != first_name {
+                    self.enableButton()
+                }else{
+                    self.disableButton()
+                }
+            }
+        }
+        if textField == self.lastNameTextField {
+            
+            if let data  = self.userData as? [String:AnyObject] {
+                let last_name = data["goldsaving_member"]?["lastname"]as? String ?? ""
+                
+                if (textField.text!) != last_name {
+                    self.enableButton()
+                }else{
+                    self.disableButton()
+                }
+            }
+        }
+        
+        if textField == self.idcardTextField {
+            if let data  = self.userData as? [String:AnyObject] {
+                let citizen_id = data["goldsaving_member"]?["citizen_id"]as? String ?? ""
+                
+                if (textField.text!) != citizen_id {
+                    self.enableButton()
+                }else{
+                    self.disableButton()
+                }
+            }
+        }
+        
+    }
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         self.addColorLineView(textField)
         return true
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        self.enableButton()
+        
         
         if textField  == self.firstNameTextField {
             let startingLength = textField.text?.count ?? 0
@@ -326,6 +366,7 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
             }else{
                 self.clearImageView?.isHidden = false
             }
+
         }
         if textField  == self.lastNameTextField {
             let startingLength = textField.text?.count ?? 0
@@ -340,6 +381,8 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
             }else{
                 self.clearImageView2?.isHidden = false
             }
+           
+  
         }
         if textField  == self.idcardTextField {
             let startingLength = textField.text?.count ?? 0
@@ -355,6 +398,8 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
                 self.clearImageView3?.isHidden = false
             }
             
+
+            
             let text = textField.text ?? ""
             
             if string.count == 0 {
@@ -363,6 +408,8 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
                 let newText = String((text + string).filter({ $0 != "-" }).prefix(13))
                 textField.text = newText.chunkFormattedPersonalID()
             }
+            
+            
             return false
             
         }
@@ -473,12 +520,14 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
         self.clearImageView?.animationTapped({
             self.firstNameTextField.text = ""
             self.clearImageView?.isHidden = true
+            self.enableButton()
         })
     }
     @objc func clearLastNameTapped(){
         self.clearImageView2?.animationTapped({
             self.lastNameTextField.text = ""
             self.clearImageView2?.isHidden = true
+            self.enableButton()
         })
         
     }
@@ -486,6 +535,7 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
         self.clearImageView3?.animationTapped({
             self.idcardTextField.text = ""
             self.clearImageView3?.isHidden = true
+            self.enableButton()
         })
     }
     @objc func clearMobileTapped(){

@@ -910,12 +910,6 @@ func validateTransactionTime(_ dateString:String) -> Bool {
         let difminute = abs(1440 - minnute)
         let diffTime = "\(Int(difminute/60)):\(Int(difminute%60)):00"
         
-        var str = "\(String(format: "%02d", components.hour!))"
-            str += ":\(String(format: "%02d", components.minute!))"
-            str += ":\(String(format: "%02d", components.second!))"
-        
-        //print(str)
-        
         let diffT1 = parseDuration(timeString: diffTime)
         let timeInter = d1.timeIntervalSinceReferenceDate
         let diff24 =  timeInter + diffT1

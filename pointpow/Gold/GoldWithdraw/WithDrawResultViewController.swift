@@ -830,23 +830,28 @@ extension WithDrawResultViewController{
                 
                 switch type.lowercased() {
                 case "office" :
-                    if statusShipping == "waiting" {
-                        if statusTransaction.lowercased() == "cancel" {
-                            cell = sectionWithDrawCancelTransactionFromHistory(collectionView, indexPath)
-                        }else{
+                    if statusTransaction.lowercased() == "cancel" {
+                        //transaction cancel
+                        
+                        cell = sectionWithDrawCancelTransactionFromHistory(collectionView, indexPath)
+                    }else{
+                        //transaction success
+                        
+                        if statusShipping == "waiting" {
                             if self.hideFinishButton {
                                 cell = sectionWithDrawShipOfficeWaitingFromHistory(collectionView, indexPath)
                             }else{
                                 cell = sectionWithDrawShipOfficeWaiting(collectionView, indexPath)
                             }
+                        }else{
+                            if self.hideFinishButton {
+                                cell = sectionWithDrawShipOfficeSuccessFromHistory(collectionView, indexPath)
+                            }
                         }
                         
-                    }else{
-                        //success
-                        if self.hideFinishButton {
-                            cell = sectionWithDrawShipOfficeSuccessFromHistory(collectionView, indexPath)
-                        }
                     }
+                    
+                  
                     break
                 case "thaipost" : break
                 default:
@@ -894,17 +899,21 @@ extension WithDrawResultViewController{
                 
                 switch type.lowercased() {
                 case "office" :
-                    if statusShipping == "waiting" {
-                        if statusTransaction.lowercased() == "cancel" {
-                            height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*400 , rowHeight: 20.0)
-
-                        }else{
+                    if statusTransaction.lowercased() == "cancel" {
+                        //transaction cancel
+                        
+                        height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*400 , rowHeight: 20.0)
+                    }else{
+                        //transaction success
+                        
+                        if statusShipping == "waiting" {
                             height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*800 , rowHeight: 20.0)
+                        }else{
+                            if self.hideFinishButton {
+                                height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*450 , rowHeight: 20.0)
+                            }
                         }
                         
-                    }else{
-                        //success
-                        height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*450 , rowHeight: 20.0)
                     }
                     break
                 case "thaipost" : break
@@ -933,19 +942,21 @@ extension WithDrawResultViewController{
                 
                 switch type.lowercased() {
                 case "office" :
-                    if statusShipping == "waiting" {
-                        if statusTransaction.lowercased() == "cancel" {
-                            
-                            height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*400 , rowHeight: 20.0)
+                    if statusTransaction.lowercased() == "cancel" {
+                        //transaction cancel
                         
-                        }else{
+                        height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*400 , rowHeight: 20.0)
+                    }else{
+                        //transaction success
+                        
+                        if statusShipping == "waiting" {
                             height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*800 , rowHeight: 20.0)
-                            
+                        }else{
+                            if self.hideFinishButton {
+                                height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*450 , rowHeight: 20.0)
+                            }
                         }
                         
-                    }else{
-                        //success
-                        height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*450 , rowHeight: 20.0)
                     }
                     break
                 case "thaipost" : break

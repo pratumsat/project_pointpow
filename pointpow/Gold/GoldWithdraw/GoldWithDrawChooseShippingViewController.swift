@@ -166,6 +166,8 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
         self.shippingCollectionView.dataSource = self
         self.shippingCollectionView.delegate = self
         
+        self.shippingCollectionView.showsVerticalScrollIndicator = false
+        
         self.registerNib(self.shippingCollectionView, "WithDrawChooseShippingCell")
         self.registerNib(self.shippingCollectionView, "WidthDrawShippingPointPowCell")
         self.registerNib(self.shippingCollectionView, "WithDrawShippingThaiPostCell")

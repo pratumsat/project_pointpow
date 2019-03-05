@@ -21,6 +21,7 @@ class FavoriteViewController: BaseViewController, UICollectionViewDelegate , UIC
     func setUp(){
         self.favCollectionView.delegate = self
         self.favCollectionView.dataSource = self
+        self.favCollectionView.showsVerticalScrollIndicator = false
         
         self.registerNib(self.favCollectionView, "FavorCell")
     }

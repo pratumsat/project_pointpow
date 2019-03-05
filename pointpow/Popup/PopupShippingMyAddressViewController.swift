@@ -98,6 +98,7 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
         
         self.addressCollectionView.dataSource = self
         self.addressCollectionView.delegate = self
+        self.addressCollectionView.showsVerticalScrollIndicator = false
         
         self.registerNib(self.addressCollectionView, "AddressViewCell")
         

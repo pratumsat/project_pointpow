@@ -38,6 +38,7 @@ class ResultTransferViewController: BaseViewController  , UICollectionViewDelega
         
         self.resultCollectionView.dataSource = self
         self.resultCollectionView.delegate = self
+        self.resultCollectionView.showsVerticalScrollIndicator = false
         
         self.registerNib(self.resultCollectionView, "ItemListResultCell")
         self.registerNib(self.resultCollectionView, "ItemFavorCell")

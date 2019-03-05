@@ -24,13 +24,13 @@ class ItemFriendCell: UICollectionViewCell {
         didSet{
             self.nameLabel.font = UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.FREIND_RECENT)!
             self.heightConstraintButton.constant = 20
-            self.marginTopConstraintButton.constant = 8
+            self.marginTopConstraintButton.constant = 5
             
             let newC = self.heightConstraintImageView.constraintWithMultiplier(0.55)
             self.removeConstraint(self.heightConstraintButton)
             self.addConstraint(newC)
             
-            let newConstaint = self.widthConstraintButton.constraintWithMultiplier(0.6)
+            let newConstaint = self.widthConstraintButton.constraintWithMultiplier(0.8)
             self.removeConstraint(self.widthConstraintButton)
             self.addConstraint(newConstaint)
             

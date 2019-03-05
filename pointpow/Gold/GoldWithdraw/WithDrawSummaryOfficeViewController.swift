@@ -80,6 +80,7 @@ class WithDrawSummaryOfficeViewController: BaseViewController, UICollectionViewD
         self.summaryCollectionView.delegate = self
         self.summaryCollectionView.dataSource = self
         
+        self.summaryCollectionView.showsVerticalScrollIndicator = false
         
         self.registerNib(self.summaryCollectionView, "WithDrawOfficeSummaryCell")
         self.registerNib(self.summaryCollectionView, "ConfirmButtonCell")

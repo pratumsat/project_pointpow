@@ -74,7 +74,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         
         self.homeCollectionView.delegate = self
         self.homeCollectionView.dataSource = self
-        
+        self.homeCollectionView.showsVerticalScrollIndicator = false
         
         self.addRefreshViewController(self.homeCollectionView)
         

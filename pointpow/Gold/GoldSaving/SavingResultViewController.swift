@@ -45,6 +45,7 @@ class SavingResultViewController: BaseViewController , UICollectionViewDelegate 
         self.backgroundImage?.image = nil
         self.resultCollectionView.dataSource = self
         self.resultCollectionView.delegate = self
+        self.resultCollectionView.showsVerticalScrollIndicator = false
         
         self.registerNib(self.resultCollectionView, "SavingResultCell")
         self.registerNib(self.resultCollectionView, "LogoGoldCell")

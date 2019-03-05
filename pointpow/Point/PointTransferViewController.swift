@@ -23,7 +23,8 @@ class PointTransferViewController: BaseViewController , UICollectionViewDelegate
         
         self.pointCollectionView.dataSource = self
         self.pointCollectionView.delegate = self
-
+        self.pointCollectionView.showsVerticalScrollIndicator = false
+        
         self.registerNib(self.pointCollectionView, "ItemBankCell")
         
     }

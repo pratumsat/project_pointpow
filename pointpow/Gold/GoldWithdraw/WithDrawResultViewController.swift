@@ -166,6 +166,8 @@ class WithDrawResultViewController: BaseViewController  , UICollectionViewDelega
         self.resultCollectionView.dataSource = self
         self.resultCollectionView.delegate = self
         
+        self.resultCollectionView.showsVerticalScrollIndicator = false
+        
         self.registerNib(self.resultCollectionView, "WithDrawResultPointPowCell")
         self.registerNib(self.resultCollectionView, "WidthDrawResultPointPow2Cell")
         self.registerNib(self.resultCollectionView, "WithDrawResultPointPowSuccessCell")

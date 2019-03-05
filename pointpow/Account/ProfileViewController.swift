@@ -48,6 +48,7 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
         
         self.profileCollectionView.dataSource = self
         self.profileCollectionView.delegate = self
+        self.profileCollectionView.showsVerticalScrollIndicator = false
         
         self.registerNib(self.profileCollectionView, "ItemProfileCell")
         self.registerNib(self.profileCollectionView, "LogoutCell")

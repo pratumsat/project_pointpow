@@ -104,6 +104,7 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
         self.profileCollectionView.dataSource = self
         self.profileCollectionView.delegate = self
         
+        self.profileCollectionView.showsVerticalScrollIndicator = false
         
         self.addRefreshViewController(self.profileCollectionView)
         

@@ -40,6 +40,7 @@ class SettingViewController: BaseViewController, UICollectionViewDelegate , UICo
         
         self.settingCollectionView.dataSource = self
         self.settingCollectionView.delegate = self
+        self.settingCollectionView.showsVerticalScrollIndicator = false
         
         self.registerNib(self.settingCollectionView, "SwitchCell")
         self.registerNib(self.settingCollectionView, "ItemProfileCell")

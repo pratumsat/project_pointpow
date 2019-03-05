@@ -11,62 +11,10 @@ import UIKit
 class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var resultCollectionView: UICollectionView!
     
-    var slipImageView:UIImageView? {
-        didSet{
-            if let snap = self.snapView {
-//                let backgroundImage = UIImageView(image: bgSlip)
-//                backgroundImage.contentMode = .scaleAspectFill
-//                backgroundImage.clipsToBounds = true
-//                backgroundImage.translatesAutoresizingMaskIntoConstraints = false
-//                snap.addSubview(backgroundImage)
-//                snap.sendSubviewToBack(backgroundImage)
-//
-//                backgroundImage.leftAnchor.constraint(equalTo: snap.leftAnchor).isActive = true
-//                backgroundImage.rightAnchor.constraint(equalTo: snap.rightAnchor).isActive = true
-//                backgroundImage.topAnchor.constraint(equalTo: snap.topAnchor).isActive = true
-//                backgroundImage.bottomAnchor.constraint(equalTo: snap.bottomAnchor).isActive = true
-//
-//
-//                slipImageView!.center = snap.center
-//                slipImageView!.updateLayerCornerRadiusProperties()
-//                slipImageView!.drawLightningView()
-//                snap.addSubview(slipImageView!)
-//
-//
-//                let logo = UIImageView(image: UIImage(named: "ic-logo"))
-//                logo.contentMode = .scaleAspectFit
-//                logo.translatesAutoresizingMaskIntoConstraints = false
-//                snap.addSubview(logo)
-//
-//                logo.centerXAnchor.constraint(equalTo: snap.centerXAnchor, constant: 0).isActive = true
-//                logo.widthAnchor.constraint(equalTo: snap.widthAnchor, multiplier: 0.5).isActive = true
-//                logo.bottomAnchor.constraint(equalTo: slipImageView!.topAnchor, constant: 0).isActive = true
-//
-//                print("add image slip")
-//
-//                self.countDownForSnapShot(1)
-            }
-        }
-    }
-    var slipView:UIView?
-    var snapView:UIView?
-    var countDown:Int = 3
-    var timer:Timer?
-    
-    var bgSlip:UIImage?
-    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        snapView = UIView(frame: self.view.frame)
-//        snapView!.backgroundColor = UIColor.clear
-//
-//        self.view.addSubview(snapView!)
-//        self.view.sendSubviewToBack(snapView!)
-//
-//
-//        //load background image from api
-//        self.bgSlip = UIImage(named: "bg-slip")
         
         
         self.title = NSLocalizedString("string-title-freind-transfer", comment: "")
@@ -79,34 +27,10 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
         
         self.setUp()
     }
-    func countDownForSnapShot(_ time: Double){
-        timer = Timer.scheduledTimer(timeInterval: time, target: self, selector: #selector(updateCountDown), userInfo: nil, repeats: true)
-    }
-    @objc func updateCountDown() {
-        if let snapImage = self.snapView?.snapshotImage() {
-            UIImageWriteToSavedPhotosAlbum(snapImage, nil, nil, nil)
-            print("created slip")
-            self.removeCountDown()
-        }
-    }
-    func removeCountDown() {
-        timer?.invalidate()
-        timer = nil
-    }
-
+   
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-//        if let slip = self.slipView {
-//            slipImageView = UIImageView(image: slip.snapshotImage())
-//        }
-        
-    /*
-         if let snapImage = snapView?.snapshotImage() {
-         UIImageWriteToSavedPhotosAlbum(snapImage, nil, nil, nil)
-         print("created slip")
-         }
-         */
+
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -124,10 +48,11 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
         self.backgroundImage?.image = nil
         self.resultCollectionView.dataSource = self
         self.resultCollectionView.delegate = self
-        
+        self.resultCollectionView.showsVerticalScrollIndicator = false
         self.registerNib(self.resultCollectionView, "ItemFriendSummaryCell")
         self.registerNib(self.resultCollectionView, "ItemConfirmSummaryCell")
         self.registerHeaderNib(self.resultCollectionView, "HeadCell")
+    
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -158,12 +83,12 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
             if let confirmCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemConfirmSummaryCell", for: indexPath) as? ItemConfirmSummaryCell {
                 
                 confirmCell.shareCallback = {
-                    if let snapImage = self.snapView?.snapshotImage() {
-                        let imageShare = [ snapImage ]
-                        let activityViewController = UIActivityViewController(activityItems: imageShare, applicationActivities: nil)
-                        activityViewController.popoverPresentationController?.sourceView = self.view
-                        self.present(activityViewController, animated: true, completion: nil)
-                    }
+//                    if let snapImage = self.snapView?.snapshotImage() {
+//                        let imageShare = [ snapImage ]
+//                        let activityViewController = UIActivityViewController(activityItems: imageShare, applicationActivities: nil)
+//                        activityViewController.popoverPresentationController?.sourceView = self.view
+//                        self.present(activityViewController, animated: true, completion: nil)
+//                    }
                 }
                 confirmCell.favorCallback = {
                     //add favorit
@@ -201,7 +126,13 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
         
         return CGSize.zero
     }
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        if section == 1 {
+            return CGSize(width: collectionView.frame.width, height: 20)
+        }
+        
+        return CGSize.zero
+    }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
@@ -215,7 +146,7 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
         
         if indexPath.section == 0 {
             let width = collectionView.frame.width - 40
-            let height = width/360*420
+            let height = (width/280*360) + addOnHeightModelDevice()
             return CGSize(width: width, height: height)
             
         }else if indexPath.section == 1 {

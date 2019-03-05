@@ -70,7 +70,7 @@ class ConfirmSavingViewController: BaseViewController , UICollectionViewDelegate
         self.summaryCollectionView.dataSource = self
         
         
-       
+       self.summaryCollectionView.showsVerticalScrollIndicator = false
         
         self.registerNib(self.summaryCollectionView, "SavingConfirmCell")
         self.registerNib(self.summaryCollectionView, "SavingSummaryCell")

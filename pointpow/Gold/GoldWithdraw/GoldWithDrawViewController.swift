@@ -61,6 +61,7 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
         self.backgroundImage?.image = nil
         self.withDrawCollectionView.delegate = self
         self.withDrawCollectionView.dataSource = self
+        self.withDrawCollectionView.showsVerticalScrollIndicator = false
         
         self.registerNib(self.withDrawCollectionView, "WithDrawMyGoldCell")
         self.registerNib(self.withDrawCollectionView, "WithdrawCell")

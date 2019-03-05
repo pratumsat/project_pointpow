@@ -39,6 +39,7 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
         
         self.friendCollectionView.delegate = self
         self.friendCollectionView.dataSource = self
+        self.friendCollectionView.showsVerticalScrollIndicator = false
         
         self.registerNib(self.friendCollectionView, "ItemFriendCell")
         self.registerHeaderNib(self.friendCollectionView, "HeadCell")
@@ -122,7 +123,7 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         if section == 1 {
-            return UIEdgeInsets(top: 0, left: 35, bottom: 0, right: 35)
+            return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         }
         return UIEdgeInsets.zero
     }
@@ -132,10 +133,10 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
         
         if indexPath.section == 0 {
             let width = collectionView.frame.width
-            let height = width/155*115
+            let height = width/155*125
             return CGSize(width: width, height: height)
         }
-        let width = (collectionView.frame.width-70)/3
+        let width = (collectionView.frame.width-40)/3
         let height = width/110*170
         return CGSize(width: width, height: height)
         

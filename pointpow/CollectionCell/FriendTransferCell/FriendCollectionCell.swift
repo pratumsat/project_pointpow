@@ -20,6 +20,7 @@ class FriendCollectionCell: UICollectionViewCell , UICollectionViewDelegate , UI
     func setUp(){
         self.friendCollectionView.delegate = self
         self.friendCollectionView.dataSource = self
+        self.friendCollectionView.showsVerticalScrollIndicator = false
         
         let nibName = "ItemFriendCell"
         let nib = UINib(nibName: nibName, bundle: nil)

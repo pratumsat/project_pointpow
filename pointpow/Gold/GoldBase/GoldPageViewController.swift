@@ -12,6 +12,7 @@ import UIKit
 class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var homeCollectionView: UICollectionView!
     
+    @IBOutlet weak var menuBarButton: UIBarButtonItem!
     let arrayItem_registered_waiting = ["goldprice", "logo"]
     let arrayItem_registered_waiting_edit = ["goldprice", "goldbalance", "logo"]
     let arrayItem_registered = ["goldprice","goldbalance","saving", "logo"]
@@ -23,6 +24,9 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
     var isRegistered  = false {
         didSet{
             if isRegistered {
+                self.navigationItem.rightBarButtonItem = self.menuBarButton
+                self.revealViewController()?.panGestureRecognizer()?.isEnabled = true
+                
                 //open menu click
                 self.navigationItem.rightBarButtonItem?.action = #selector(SWRevealViewController.rightRevealToggle(_:))
                 
@@ -45,6 +49,9 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
                 
                 
             }else{
+                self.navigationItem.rightBarButtonItem = nil
+                self.revealViewController()?.panGestureRecognizer()?.isEnabled = false
+                
                 self.arrayItem = self.arrayItem_no_registered
             }
             self.homeCollectionView.reloadData()
@@ -122,6 +129,7 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
             }else{
                 self.isRegistered = false
             }
+
             
             self.pointpowTextField?.text = ""
             self.goldamountLabel?.text = "0.0000"

@@ -135,7 +135,7 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
             
             
             switch status {
-            case "waiting":
+            case "waiting", "edit":
                 self.statusLabel.text = NSLocalizedString("string-dailog-gold-profile-status-waitting", comment: "")
                 self.statusView.backgroundColor = Constant.Colors.ORANGE
                 self.emailTextField.isEnabled = false

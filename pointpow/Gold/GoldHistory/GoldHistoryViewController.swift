@@ -309,7 +309,7 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
              
                     switch type.lowercased() {
                     case "office" :
-                        if statusShipping == "waiting" {
+                        if statusShipping != "success" {
                             transCell.shippingLabel.textColor = Constant.Colors.ORANGE
                             transCell.shippingLabel.text = NSLocalizedString("string-dailog-gold-shipping-office-status-waiting", comment: "")
                         }else{
@@ -318,7 +318,7 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
                         }
                         break
                     case "thaipost" :
-                        if statusShipping == "waiting" {
+                        if statusShipping != "success" {
                             transCell.shippingLabel.textColor = Constant.Colors.ORANGE
                             transCell.shippingLabel.text = NSLocalizedString("string-dailog-gold-shipping-thaipost-status-waiting", comment: "")
                         }else{

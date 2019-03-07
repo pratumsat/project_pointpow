@@ -302,19 +302,15 @@ extension WithDrawResultViewController {
                 default:
                     break
                 }
-                
-                switch statusShipping {
-                case "success":
-                    item.shippingStatusLabel.textColor = Constant.Colors.GREEN
-                    item.shippingStatusLabel.text = NSLocalizedString("string-dailog-gold-shipping-office-status-success", comment: "")
-                    break
-                case "waiting":
+                if statusShipping != "success" {
                     item.shippingStatusLabel.textColor = Constant.Colors.ORANGE
                     item.shippingStatusLabel.text = NSLocalizedString("string-dailog-gold-shipping-office-status-waiting", comment: "")
-                    break
-                default:
-                    break
+                }else{
+                    item.shippingStatusLabel.textColor = Constant.Colors.GREEN
+                    item.shippingStatusLabel.text = NSLocalizedString("string-dailog-gold-shipping-office-status-success", comment: "")
                 }
+
+         
                 
             }
             
@@ -422,18 +418,14 @@ extension WithDrawResultViewController {
                     break
                 }
                 
-                switch statusShipping.lowercased() {
-                case "success":
-                    item.shippingStatusLabel.textColor = Constant.Colors.GREEN
-                    item.shippingStatusLabel.text = NSLocalizedString("string-dailog-gold-shipping-office-status-success", comment: "")
-                    break
-                case "waiting":
+                if statusShipping != "success" {
                     item.shippingStatusLabel.textColor = Constant.Colors.ORANGE
                     item.shippingStatusLabel.text = NSLocalizedString("string-dailog-gold-shipping-office-status-waiting", comment: "")
-                    break
-                default:
-                    break
+                }else{
+                    item.shippingStatusLabel.textColor = Constant.Colors.GREEN
+                    item.shippingStatusLabel.text = NSLocalizedString("string-dailog-gold-shipping-office-status-success", comment: "")
                 }
+
                 
             }
             item.viewMapCallback = {
@@ -610,18 +602,14 @@ extension WithDrawResultViewController {
                     break
                 }
                 
-                switch statusShipping.lowercased() {
-                case "success":
-                    item.shippingStatusLabel.textColor = Constant.Colors.GREEN
-                    item.shippingStatusLabel.text = NSLocalizedString("string-dailog-gold-shipping-office-status-success", comment: "")
-                    break
-                case "waiting":
+                if statusShipping != "success" {
                     item.shippingStatusLabel.textColor = Constant.Colors.ORANGE
                     item.shippingStatusLabel.text = NSLocalizedString("string-dailog-gold-shipping-office-status-waiting", comment: "")
-                    break
-                default:
-                    break
+                }else{
+                    item.shippingStatusLabel.textColor = Constant.Colors.GREEN
+                    item.shippingStatusLabel.text = NSLocalizedString("string-dailog-gold-shipping-office-status-success", comment: "")
                 }
+
                 
             }
             
@@ -774,18 +762,14 @@ extension WithDrawResultViewController {
                     break
                 }
                 
-                switch statusShipping.lowercased() {
-                case "success":
-                    item.shippingStatusLabel.textColor = Constant.Colors.GREEN
-                    item.shippingStatusLabel.text = NSLocalizedString("string-dailog-gold-shipping-office-status-success", comment: "")
-                    break
-                case "waiting":
+                if statusShipping != "success" {
                     item.shippingStatusLabel.textColor = Constant.Colors.ORANGE
                     item.shippingStatusLabel.text = NSLocalizedString("string-dailog-gold-shipping-office-status-waiting", comment: "")
-                    break
-                default:
-                    break
+                }else{
+                    item.shippingStatusLabel.textColor = Constant.Colors.GREEN
+                    item.shippingStatusLabel.text = NSLocalizedString("string-dailog-gold-shipping-office-status-success", comment: "")
                 }
+
             }
           
             
@@ -839,7 +823,7 @@ extension WithDrawResultViewController{
                     }else{
                         //transaction success
                         
-                        if statusShipping == "waiting" {
+                        if statusShipping != "success" {
                             if self.hideFinishButton {
                                 cell = sectionWithDrawShipOfficeWaitingFromHistory(collectionView, indexPath)
                             }else{
@@ -908,7 +892,7 @@ extension WithDrawResultViewController{
                     }else{
                         //transaction success
                         
-                        if statusShipping == "waiting" {
+                        if statusShipping != "success" {
                             height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*800 , rowHeight: 20.0)
                         }else{
                             if self.hideFinishButton {
@@ -951,7 +935,7 @@ extension WithDrawResultViewController{
                     }else{
                         //transaction success
                         
-                        if statusShipping == "waiting" {
+                        if statusShipping != "success" {
                             height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*800 , rowHeight: 20.0)
                         }else{
                             if self.hideFinishButton {

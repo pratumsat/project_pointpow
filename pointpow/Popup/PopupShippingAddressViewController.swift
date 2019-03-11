@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelegate , UIPickerViewDataSource {
     var nextStep:((_ address:AnyObject)->Void)?
@@ -442,19 +443,46 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
         
         
         if errorEmpty > 0 {
-            self.showMessagePrompt(emptyMessage)
+            self.showMessagePrompt(NSLocalizedString("string-error-empty-fill", comment: ""))
             return
         }
         
         
         guard validateMobile(mobile) else { return }
        
+       
+        
+        let params:Parameters = [
+            "title" : "address1",
+            "name" : name,
+            "address" : address,
+            "province_id" : self.selectedProvinceId,
+            "district_id" : self.selectedDistrictId,
+            "subdistrict_id" : self.selectedSubDistrictId,
+            "postcode" : postcode
+        ]
+        print(params)
 
-        self.dismiss(animated: true) {
-            self.windowSubview?.removeFromSuperview()
-            self.windowSubview = nil
-            self.nextStep?([(address:"test addeess")] as AnyObject)
+        self.modelCtrl.createMemberAddress(params: params, true, succeeded: { (result) in
+            print(result)
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                self.showMessagePrompt(message)
+            }
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+
         }
+        
+//        self.dismiss(animated: true) {
+//            self.windowSubview?.removeFromSuperview()
+//            self.windowSubview = nil
+//            self.nextStep?([(address:"test addeess")] as AnyObject)
+//        }
         
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

@@ -634,6 +634,8 @@ struct Constant {
         static let userData = "\(HOST)\(POINTPOW_VERSION1)member/get"
         static let addImageProfile = "\(HOST)\(POINTPOW_VERSION1)member/upload-profile-image"
         static let addBackgroundImageProfile = "\(HOST)\(POINTPOW_VERSION1)member/upload-background-image"
+        static let memberAddress = "\(HOST)\(POINTPOW_VERSION1)member/address"
+        
         
         static let registerGoldMember = "\(HOST)\(POINTPOW_VERSION1)gold-saving/register"
         static let updateGoldMember = "\(HOST)\(POINTPOW_VERSION1)gold-saving/update"
@@ -641,16 +643,14 @@ struct Constant {
         static let savingGold = "\(HOST)\(POINTPOW_VERSION1)gold-saving/saving"
         static let withdrawGold = "\(HOST)\(POINTPOW_VERSION1)gold-saving/withdraw"
         static let goldPremiumPrice = "\(HOST)\(POINTPOW_VERSION1)gold-saving/get/premium-price"
-       
         static let transectionGold = "\(HOST)\(POINTPOW_VERSION1)gold-saving/get/history"
+        static let goldhistory = "\(HOST)\(POINTPOW_VERSION1)gold-saving/get/history"
+        static let cancelTransectionGold = "\(HOST)\(POINTPOW_VERSION1)gold-saving/withdraw/cancel"
         
         static let province = "\(HOST)\(POINTPOW_VERSION1)provinces"
         static let districts = "\(HOST)\(POINTPOW_VERSION1)districts"
         static let subdistricts = "\(HOST)\(POINTPOW_VERSION1)subdistricts"
         
-        static let goldhistory = "\(HOST)\(POINTPOW_VERSION1)gold-saving/get/history"
-    
-        static let cancelTransectionGold = "\(HOST)\(POINTPOW_VERSION1)gold-saving/withdraw/cancel"
     }
     struct PathImages {
         static let profile = "\(PointPowAPI.HOST)\(PointPowAPI.POINTPOW_VERSION1)member/image/profile"

@@ -760,7 +760,7 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
         
         
         if errorEmpty > 0 {
-            self.showMessagePrompt(emptyMessage)
+            self.showMessagePrompt(NSLocalizedString("string-error-empty-fill", comment: ""))
             return
         }
         

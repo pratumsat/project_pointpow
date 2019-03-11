@@ -18,6 +18,7 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
     var addAddressCallback:(()->Void)?
     @IBOutlet weak var addressCollectionView: UICollectionView!
     
+    var selectItem:Int?
     
     var name:String = ""
     var mobile:String = ""
@@ -147,22 +148,29 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "AddressViewCell", for: indexPath) as? AddressViewCell {
                 
                 if let data = modelAddreses?[indexPath.row] {
-                    //let address = data["address"] as? String ?? ""
+                    let full_address = data["full_address"] as? String ?? ""
+                    let latest_shipping = data["latest_shipping"] as? NSNumber ?? 0
                     
-                    var rawAddress = "\(self.name)"
-                    rawAddress += " xxxxxx xxxxx xxxxxx xxxx xxxx  xxxxxx xxxxx xxxxxx xxxx xxxx  xxxxxx xxxxx xxxxxx xxxx xxxx"
+                    var rawAddress = full_address
                     rawAddress += " \(self.mobile)"
 
-                   
-                    
                     item.addressLabel.text = rawAddress
                     
                     
-                    if indexPath.row == 0 {
+                    if latest_shipping.boolValue  {
                         item.selectedAddress = true
                     }else{
                         item.selectedAddress = false
                     }
+                }
+                
+                if let select = selectItem {
+                    if indexPath.row == select {
+                       item.selectedAddress = true
+                    }else{
+                        item.selectedAddress = false
+                    }
+                    
                 }
                 
                 
@@ -220,7 +228,10 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
         return cell!
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    
+        self.selectItem = indexPath.row
         
+        self.addressCollectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -241,9 +252,8 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
             
             let width = collectionView.frame.width
             if let data = modelAddreses?[indexPath.row] {
-                //let address = data["address"] as? String ?? ""
-                var rawAddress = "\(self.name)"
-                rawAddress += " xxxxxx xxxxx xxxxxx xxxx xxxx  xxxxxx xxxxx xxxxxx xxxx xxxx  xxxxxx xxxxx xxxxxx xxxx xxxx"
+                let full_address = data["full_address"] as? String ?? ""
+                var rawAddress = full_address
                 rawAddress += " \(self.mobile)"
                 
                 let height = heightForView(text: rawAddress, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 16)!, width: width) +  50

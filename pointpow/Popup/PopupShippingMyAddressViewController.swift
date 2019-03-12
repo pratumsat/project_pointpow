@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class PopupShippingMyAddressViewController: BaseViewController  , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     @IBOutlet weak var addView: UIView!
@@ -15,10 +16,12 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
     var userData:AnyObject?
     var modelAddreses:[[String:AnyObject]]?
     var selectedAddressCallback:((_ selectedAddress:AnyObject)->Void)?
-    var addAddressCallback:(()->Void)?
+    var addAddressCallback:((_ modelAddress:AnyObject?)->Void)?
+    var editAddressCallback:((_ modelAddress:AnyObject?)->Void)?
     @IBOutlet weak var addressCollectionView: UICollectionView!
     
     var selectItem:Int?
+    var selectedAddress:AnyObject?
     
     var name:String = ""
     var mobile:String = ""
@@ -57,6 +60,8 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
                 
                 let member_addresses = data["member_addresses"] as? [[String:AnyObject]] ?? [[:]]
                 self.modelAddreses = member_addresses
+                
+                self.selectedAddress = nil
             }
             avaliable?()
             
@@ -112,18 +117,24 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
     }
     
     @IBAction func submitTapped(_ sender: Any) {
-        self.dismiss(animated: true) {
-            self.windowSubview?.removeFromSuperview()
-            self.windowSubview = nil
-            self.selectedAddressCallback?([(address:"test addeess")] as AnyObject)
+        if let model = self.selectedAddress {
+            self.dismiss(animated: true) {
+                self.windowSubview?.removeFromSuperview()
+                self.windowSubview = nil
+                
+                self.selectedAddressCallback?(model)
+            }
+        }else{
+            self.showMessagePrompt(NSLocalizedString("string-dailog-title-please-choose-address", comment: ""))
         }
+        
     }
     
     @objc func addTapped(){
         self.dismiss(animated: false) {
             self.windowSubview?.removeFromSuperview()
             self.windowSubview = nil
-            self.addAddressCallback?()
+            self.addAddressCallback?(nil)
         }
         
     }
@@ -148,10 +159,16 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "AddressViewCell", for: indexPath) as? AddressViewCell {
                 
                 if let data = modelAddreses?[indexPath.row] {
-                    let full_address = data["full_address"] as? String ?? ""
+                    let id = data["id"] as? NSNumber ?? 0
+                    let address = data["address"] as? String ?? ""
+                    let districtName = data["district"]?["name_in_thai"] as? String ?? ""
+                    let subdistrictName = data["subdistrict"]?["name_in_thai"] as? String ?? ""
+                    let provinceName = data["province"]?["name_in_thai"] as? String ?? ""
+                    let zip_code = data["subdistrict"]?["zip_code"] as? NSNumber ?? 0
                     let latest_shipping = data["latest_shipping"] as? NSNumber ?? 0
                     
-                    var rawAddress = full_address
+                    var rawAddress = "\(self.name)"
+                    rawAddress += " \(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
                     rawAddress += " \(self.mobile)"
 
                     item.addressLabel.text = rawAddress
@@ -166,7 +183,7 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
                 
                 if let select = selectItem {
                     if indexPath.row == select {
-                       item.selectedAddress = true
+                        item.selectedAddress = true
                     }else{
                         item.selectedAddress = false
                     }
@@ -176,6 +193,11 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
                 
                 item.editCallback = {
                     print("edit address")
+                    self.dismiss(animated: false) {
+                        self.windowSubview?.removeFromSuperview()
+                        self.windowSubview = nil
+                        self.editAddressCallback?(self.modelAddreses?[indexPath.row] as AnyObject)
+                    }
                 }
                 item.deleteCallback = {
                     let alert = UIAlertController(title: NSLocalizedString("string-dailog-title-delete-address", comment: ""),
@@ -184,25 +206,31 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
                     let okButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-ok", comment: ""), style: .default, handler: {
                         (alert) in
                         
-// call cancel api
-//                        let params:Parameters = ["transaction_ref_id": self.transactionId ?? ""]
-//
-//                        self.modelCtrl.cancelTransactionGold(params: params, true, succeeded: { (result) in
-//                            print(result)
-//                            self.getDetail()
-//                        }, error: { (error) in
-//                            if let mError = error as? [String:AnyObject]{
-//                                let message = mError["message"] as? String ?? ""
-//                                print(message)
-//                                self.showMessagePrompt(message)
-//                            }
-//
-//                            print(error)
-//                        }) { (messageError) in
-//                            print("messageError")
-//                            self.handlerMessageError(messageError)
-//
-//                        }
+                        if let data = self.modelAddreses?[indexPath.row] {
+                            let id = data["id"] as? NSNumber ?? 0
+                            
+                            self.modelCtrl.deleteMemberAddress(id: id.intValue, true, succeeded: { (result) in
+                                
+                                self.getUserInfo(){
+                                    self.addressCollectionView.reloadData()
+                                }
+                                                                
+                            }, error: { (error) in
+                                if let mError = error as? [String:AnyObject]{
+                                    let message = mError["message"] as? String ?? ""
+                                    print(message)
+                                    self.showMessagePrompt(message)
+                                }
+                                
+                                print(error)
+                            }) { (messageError) in
+                                print("messageError")
+                                self.handlerMessageError(messageError)
+                                
+                            }
+                        }
+
+                        
                         
                     })
                     let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: nil)
@@ -230,6 +258,7 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     
         self.selectItem = indexPath.row
+        self.selectedAddress = self.modelAddreses?[indexPath.row] as AnyObject
         
         self.addressCollectionView.reloadData()
     }
@@ -252,8 +281,14 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
             
             let width = collectionView.frame.width
             if let data = modelAddreses?[indexPath.row] {
-                let full_address = data["full_address"] as? String ?? ""
-                var rawAddress = full_address
+                let address = data["address"] as? String ?? ""
+                let districtName = data["district"]?["name_in_thai"] as? String ?? ""
+                let subdistrictName = data["subdistrict"]?["name_in_thai"] as? String ?? ""
+                let provinceName = data["province"]?["name_in_thai"] as? String ?? ""
+                let zip_code = data["subdistrict"]?["zip_code"] as? NSNumber ?? 0
+                
+                var rawAddress = "\(self.name)"
+                rawAddress += " \(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
                 rawAddress += " \(self.mobile)"
                 
                 let height = heightForView(text: rawAddress, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 16)!, width: width) +  50

@@ -19,11 +19,13 @@ class WithDrawShippingThaiPostCell: UICollectionViewCell {
     @IBOutlet weak var emsLabel: UILabel!
     @IBOutlet weak var premiumLabel: UILabel!
     
+    @IBOutlet weak var addressView: UIView!
     
     var editCallback:(()->Void)?
     var address:String?{
         didSet{
             if address == nil{
+                self.initView()
                 return
             }
             self.shippingAddressLabel.text = address
@@ -33,7 +35,7 @@ class WithDrawShippingThaiPostCell: UICollectionViewCell {
             
             
             
-            let height = heightForView(text: address!, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 18)!, width: self.frame.width) + 80
+            let height = heightForView(text: address!, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 18)!, width: self.frame.width) + 100
             
             self.heightAddressConstrainst.constant = height
         }
@@ -48,8 +50,8 @@ class WithDrawShippingThaiPostCell: UICollectionViewCell {
         
         
         let edit = UITapGestureRecognizer(target: self, action: #selector(editTapped))
-        self.editImageView.isUserInteractionEnabled  = true
-        self.editImageView.addGestureRecognizer(edit)
+        self.addressView.isUserInteractionEnabled  = true
+        self.addressView.addGestureRecognizer(edit)
         
         self.initView()
     }

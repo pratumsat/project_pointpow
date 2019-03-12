@@ -44,14 +44,18 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
     var userData:AnyObject?
     var language = "th"
 
-    var editData:AnyObject?
+    var modelAddress:AnyObject?
     var fromPopup = false
     
+    var id:Int = 0
+    var provinceId:Int = 0
+    var districtId:Int = 0
+    var subDistrictId:Int = 0
     
     var selectedProvinceId:Int = 0 {
         didSet{
             //will nexstep load district
-            getDistrict() {
+            getDistrict(selectedProvinceId) {
                 self.districtPickerView = UIPickerView()
                 self.districtPickerView!.delegate = self
                 self.districtPickerView!.dataSource = self
@@ -69,7 +73,8 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
     }
     var selectedDistrictId:Int = 0 {
         didSet{
-            getSubDistrict() {
+            
+            getSubDistrict(selectedDistrictId) {
                 self.subDistrictPickerView = UIPickerView()
                 self.subDistrictPickerView!.delegate = self
                 self.subDistrictPickerView!.dataSource = self
@@ -100,8 +105,6 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
         
         self.setUp()
         
-        
-        
         getUserInfo(){
             if let data  = self.userData as? [String:AnyObject] {
                 
@@ -113,7 +116,7 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
                 
                 let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
                 self.numberPhoneTextField.text =  newMText.chunkFormatted()
-            
+                
                 self.nameTextField.isEnabled = false
                 self.numberPhoneTextField.isEnabled = false
                 self.nameTextField.textColor = UIColor.lightGray
@@ -121,7 +124,6 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
                 
             }
         }
-        
         
         self.getProvinces(){
             self.provincePickerView = UIPickerView()
@@ -132,7 +134,62 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
             self.provinceTextField.isUserInteractionEnabled = true
             self.provinceTextField.inputView = self.provincePickerView
         }
+        
+        
+        
+        if let data = self.modelAddress as? [String: AnyObject] {
+            let id = data["id"] as? NSNumber ?? 0
+            let address = data["address"] as? String ?? ""
+            let districtName = data["district"]?["name_in_thai"] as? String ?? ""
+            let subdistrictName = data["subdistrict"]?["name_in_thai"] as? String ?? ""
+            let provinceName = data["province"]?["name_in_thai"] as? String ?? ""
+            let zip_code = data["subdistrict"]?["zip_code"] as? NSNumber ?? 0
+            
+            let idDistrict = data["district"]?["id"] as? NSNumber ?? 0
+            let idSubdistrict = data["subdistrict"]?["id"] as? NSNumber ?? 0
+            let idProvince = data["province"]?["id"] as? NSNumber ?? 0
+            
+            
+            self.addressTextField.text = address
+            self.districtTextField.text = districtName
+            self.subDistrictTextField.text = subdistrictName
+            self.provinceTextField.text = provinceName
+            self.postCodeTextField.text = "\(zip_code)"
+            
+            self.provinceId = idProvince.intValue
+            self.districtId = idDistrict.intValue
+            self.subDistrictId = idSubdistrict.intValue
+            
+            self.id = id.intValue
+            
+            getDistrict(idProvince.intValue) {
+                self.districtPickerView = UIPickerView()
+                self.districtPickerView!.delegate = self
+                self.districtPickerView!.dataSource = self
+                
+                self.districtTextField.isEnabled = true
+                self.districtTextField.tintColor = UIColor.clear
+                self.districtTextField.isUserInteractionEnabled = true
+                self.districtTextField.inputView = self.districtPickerView
+                
+            }
+            
+            getSubDistrict(idDistrict.intValue) {
+                self.subDistrictPickerView = UIPickerView()
+                self.subDistrictPickerView!.delegate = self
+                self.subDistrictPickerView!.dataSource = self
+                
+                self.subDistrictTextField.isEnabled = true
+                self.subDistrictTextField.tintColor = UIColor.clear
+                self.subDistrictTextField.isUserInteractionEnabled = true
+                self.subDistrictTextField.inputView = self.subDistrictPickerView
+                
+            }
+            
+            
+        }
     }
+    
     
     func setUp(){
         self.backgroundImage?.image = nil
@@ -239,9 +296,9 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
             
         }
     }
-    func getDistrict(_ avaliable:(()->Void)? = nil){
+    func getDistrict(_ id:Int, _ avaliable:(()->Void)? = nil){
         
-        modelCtrl.getDistrict(params: nil ,id: selectedProvinceId, false , succeeded: { (result) in
+        modelCtrl.getDistrict(params: nil ,id: id, false , succeeded: { (result) in
             print("get premium success")
             
             if let data = result as? [[String:AnyObject]]{
@@ -261,8 +318,8 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
             
         }
     }
-    func getSubDistrict(_ avaliable:(()->Void)? = nil){
-        modelCtrl.getSubDistrict(params: nil ,id: selectedDistrictId, false , succeeded: { (result) in
+    func getSubDistrict(_ id:Int, _ avaliable:(()->Void)? = nil){
+        modelCtrl.getSubDistrict(params: nil ,id: id, false , succeeded: { (result) in
             print("get premium success")
             
             if let data = result as? [[String:AnyObject]]{
@@ -322,14 +379,17 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == self.provincePickerView{
             self.selectedProvinceId = self.getIdFromLanguage(self.provinces?[row])
+            self.provinceId = self.getIdFromLanguage(self.provinces?[row])
             self.provinceTextField.text = self.getValueFromLanguage(self.provinces?[row])
         }
         if pickerView == self.districtPickerView{
             self.selectedDistrictId = self.getIdFromLanguage(self.districts?[row])
+            self.districtId = self.getIdFromLanguage(self.districts?[row])
             self.districtTextField.text = self.getValueFromLanguage(self.districts?[row])
         }
         if pickerView == self.subDistrictPickerView{
             self.selectedSubDistrictId = self.getIdFromLanguage(self.subDistricts?[row])
+            self.subDistrictId = self.getIdFromLanguage(self.subDistricts?[row])
             self.subDistrictTextField.text = self.getValueFromLanguage(self.subDistricts?[row])
             self.postCodeTextField.text = (self.subDistricts?[row]["zip_code"] as? NSNumber)?.stringValue ?? ""
         }
@@ -341,6 +401,7 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
             if textField.text!.isEmpty {
                 if let first = self.provinces?.first {
                     self.selectedProvinceId = self.getIdFromLanguage(first)
+                    self.provinceId = self.getIdFromLanguage(first)
                     self.provinceTextField.text = self.getValueFromLanguage(first)
                 }
             }
@@ -349,6 +410,7 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
             if textField.text!.isEmpty {
                 if let first = self.districts?.first {
                     self.selectedDistrictId = self.getIdFromLanguage(first)
+                    self.districtId = self.getIdFromLanguage(first)
                     self.districtTextField.text = self.getValueFromLanguage(first)
                 }
             }
@@ -357,6 +419,7 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
             if textField.text!.isEmpty {
                 if let first = self.subDistricts?.first {
                     self.selectedSubDistrictId = self.getIdFromLanguage(first)
+                    self.subDistrictId = self.getIdFromLanguage(first)
                     self.subDistrictTextField.text = self.getValueFromLanguage(first)
                     self.postCodeTextField.text = (first["zip_code"] as? NSNumber)?.stringValue ?? ""
                 }
@@ -377,6 +440,7 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
         }
         return province
     }
+    
     @IBAction func saveTapped(_ sender: Any) {
         
         errorNamelLabel?.removeFromSuperview()
@@ -452,19 +516,26 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
        
        
         
+        
         let params:Parameters = [
             "title" : "address1",
             "name" : name,
             "address" : address,
-            "province_id" : self.selectedProvinceId,
-            "district_id" : self.selectedDistrictId,
-            "subdistrict_id" : self.selectedSubDistrictId,
+            "province_id" : self.provinceId,
+            "district_id" : self.districtId,
+            "subdistrict_id" : self.subDistrictId,
             "postcode" : postcode
         ]
         print(params)
 
         self.modelCtrl.createMemberAddress(params: params, true, succeeded: { (result) in
             print(result)
+            self.dismiss(animated: true) {
+                self.windowSubview?.removeFromSuperview()
+                self.windowSubview = nil
+                //self.nextStep?(result as AnyObject)
+                self.nextStep?("showViewAddress" as AnyObject)
+            }
         }, error: { (error) in
             if let mError = error as? [String:AnyObject]{
                 let message = mError["message"] as? String ?? ""
@@ -478,11 +549,7 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
 
         }
         
-//        self.dismiss(animated: true) {
-//            self.windowSubview?.removeFromSuperview()
-//            self.windowSubview = nil
-//            self.nextStep?([(address:"test addeess")] as AnyObject)
-//        }
+
         
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

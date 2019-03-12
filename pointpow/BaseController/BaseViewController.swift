@@ -848,7 +848,41 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "PopupShippingAddressViewController") as? PopupShippingAddressViewController{
             vc.fromPopup = fromPopup
-            vc.editData = editData
+            vc.modelAddress = editData
+            vc.nextStep =  { (address) in
+                nextStepCallback?(address)
+            }
+            self.viewPopup = vc.view
+            customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)
+            
+        }
+    }
+    
+    
+    func showEditShippingPopup(_ animated:Bool , editData:AnyObject? , fromPopup:Bool = false ,nextStepCallback:((_ address:AnyObject)->Void)? = nil ){
+        let presenter: Presentr = {
+            
+            let w = self.view.frame.width * 0.9
+            let h = w/275*479
+            let width = ModalSize.custom(size: Float(w))
+            let height = ModalSize.custom(size: Float(h))
+            
+            let center = ModalCenterPosition.center
+            let customType = PresentationType.custom(width: width, height: height, center: center)
+            
+            let customPresenter = Presentr(presentationType: customType)
+            customPresenter.roundCorners = true
+            customPresenter.cornerRadius = 10
+            customPresenter.dismissOnSwipe = false
+            customPresenter.dismissOnTap = false
+            
+            
+            return customPresenter
+        }()
+        
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "PopupEditAddressViewController") as? PopupEditAddressViewController{
+            vc.fromPopup = fromPopup
+            vc.modelAddress = editData
             vc.nextStep =  { (address) in
                 nextStepCallback?(address)
             }
@@ -885,8 +919,13 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             vc.selectedAddressCallback = { (selectedAddress) in
                 selectCallback?(selectedAddress)
             }
-            vc.addAddressCallback = {
-                self.showShippingPopup(true , editData: nil , fromPopup: true) { (address) in
+            vc.addAddressCallback = { (modelAddress) in
+                self.showShippingPopup(true , editData: modelAddress , fromPopup: true) { (address) in
+                    selectCallback?(address)
+                }
+            }
+            vc.editAddressCallback = { (modelAddress) in
+                self.showEditShippingPopup(true , editData: modelAddress , fromPopup: true) { (address) in
                     selectCallback?(address)
                 }
             }

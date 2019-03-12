@@ -10,7 +10,8 @@ import UIKit
 
 class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    
+    var name:String = ""
+    var mobile:String = ""
     var myAddress:[[String:AnyObject]]?
     
     var withdrawData:(premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double))?{
@@ -23,6 +24,9 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
         self.showShippingAddressPopup(true) { (address) in
             if !self.repeatView(address){
                 print(address)
+                
+                self.updateUI(address)
+                
             }
         }
     }
@@ -31,7 +35,12 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
             if message == "showViewAddress" {
                 
                 self.showShippingAddressPopup(true) { (address) in
-                    _ = self.repeatView(address)
+                    if !self.repeatView(address){
+                        print(address)
+                        
+                        self.updateUI(address)
+                        
+                    }
                 }
                 
                 return true
@@ -44,12 +53,14 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
     }
     var option = 0 {
         didSet{
-            if option == 1{
+            self.shippingAddress = nil
+            if option == 1 {
                 if let _ = self.myAddress?.count {
                    self.showShippinhAddress()
                 }else{
                     self.showShippingPopup(true , editData: nil) { (address) in
                         //nextstep
+                        self.updateUI(address)
                     }
                 }
                 
@@ -63,6 +74,23 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
         }
     }
     
+    func updateUI(_ address:AnyObject){
+        if let data = address as? [String:AnyObject] {
+            
+            let address = data["address"] as? String ?? ""
+            let districtName = data["district"]?["name_in_thai"] as? String ?? ""
+            let subdistrictName = data["subdistrict"]?["name_in_thai"] as? String ?? ""
+            let provinceName = data["province"]?["name_in_thai"] as? String ?? ""
+            let zip_code = data["subdistrict"]?["zip_code"] as? NSNumber ?? 0
+            
+            var rawAddress = "\(self.name)"
+            rawAddress += " \(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
+            rawAddress += " \(self.mobile)"
+            
+            self.shippingAddress = rawAddress
+        }
+    }
+    
     @IBOutlet weak var shippingCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +101,7 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
         
         self.getUserInfo(){
             print("get my address")
-            print(self.myAddress!)
+            print("get my data")
         }
     }
     func getUserInfo(_ avaliable:(()->Void)?  = nil){
@@ -88,7 +116,15 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
         
         modelCtrl.getUserData(params: nil , isLoading , succeeded: { (result) in
             if let data = result as? [String:AnyObject] {
+                let first_name = data["goldsaving_member"]?["firstname"] as? String ?? ""
+                let last_name = data["goldsaving_member"]?["lastname"]as? String ?? ""
+                let mobile = data["goldsaving_member"]?["mobile"]as? String ?? ""
+                
+                self.name = "\(first_name) \(last_name)"
+                self.mobile = mobile
+                
                 let member_addresses = data["member_addresses"] as? [[String:AnyObject]] ?? [[:]]
+                
                 self.myAddress = member_addresses
             }
            
@@ -110,57 +146,6 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
     }
 
     func setUp(){
-//        self.handlerEnterSuccess = {
-//
-//            if self.option == 0 {
-//                //get at pointpow
-//                let withdrawAmount = self.withdrawData!.goldAmountToUnit.amount
-//                var unit = ""
-//                var pick = ""
-//                if self.withdrawData!.goldAmountToUnit.unit == 0 {
-//                    unit = "salueng"
-//                    pick = "office"
-//                }else{
-//                    unit = "baht"
-//                    pick = "thaipost"
-//                }
-//                let params:Parameters = ["withdraw_amount": withdrawAmount,
-//                                         "unit": unit,
-//                                         "pick": pick]
-//                print(params)
-//
-//                self.modelCtrl.withdrawGold(params: params, true , succeeded: { (result) in
-//                    if let data = result as? [String:AnyObject]{
-//                        let transactionId = data["withdraw"]?["transaction_no"] as? String ?? ""
-//
-//                        self.showGoldWithDrawResult(true , transactionId:  transactionId) {
-//                            if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
-//                                self.revealViewController()?.pushFrontViewController(saving, animated: true)
-//
-//                            }
-//                        }
-//
-//                    }
-//
-//                }, error: { (error) in
-//                    if let mError = error as? [String:AnyObject]{
-//                        let message = mError["message"] as? String ?? ""
-//                        print(message)
-//                        self.showMessagePrompt(message)
-//                    }
-//
-//                    print(error)
-//                }) { (messageError) in
-//                    print("messageError")
-//                    self.handlerMessageError(messageError)
-//
-//                }
-//            }else{
-//                //thai post
-//            }
-//
-//
-//        }
         
         self.backgroundImage?.image = nil
         self.shippingCollectionView.dataSource = self
@@ -245,7 +230,7 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
                     item.editCallback = {
                         //choose address
                         
-                       
+                       self.showShippinhAddress()
                     }
                     
                     let numberFormatter = NumberFormatter()
@@ -339,7 +324,7 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
                 return CGSize(width: width, height: height)
             }else{
                 if self.shippingAddress != nil{
-                    let addOnHeight = heightForView(text: self.shippingAddress!, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 18)!, width: width) + 80
+                    let addOnHeight = heightForView(text: self.shippingAddress!, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 18)!, width: width) + 100
                     
                     let height = abs((cheight) - (((width/360*110))+((width/360*230 + addOnHeight))+120))
                     return CGSize(width: width, height: height)

@@ -94,6 +94,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
     override func reloadData() {
         self.getUserInfo()
     }
+    
     func getGoldPremiumPrice(_ avaliable:(()->Void)?  = nil){
         modelCtrl.getPremiumGoldPrice(params: nil , false , succeeded: { (result) in
             print("get premium success")

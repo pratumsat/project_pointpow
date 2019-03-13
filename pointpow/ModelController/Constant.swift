@@ -643,6 +643,7 @@ struct Constant {
         static let savingGold = "\(HOST)\(POINTPOW_VERSION1)gold-saving/saving"
         static let withdrawGold = "\(HOST)\(POINTPOW_VERSION1)gold-saving/withdraw"
         static let goldPremiumPrice = "\(HOST)\(POINTPOW_VERSION1)gold-saving/get/premium-price"
+        static let servicePriceThaiPost = "\(HOST)\(POINTPOW_VERSION1)gold-saving/get/shipping-price"
         static let transectionGold = "\(HOST)\(POINTPOW_VERSION1)gold-saving/get/history"
         static let goldhistory = "\(HOST)\(POINTPOW_VERSION1)gold-saving/get/history"
         static let cancelTransectionGold = "\(HOST)\(POINTPOW_VERSION1)gold-saving/withdraw/cancel"

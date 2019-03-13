@@ -204,6 +204,7 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
                 }
                 item.infoThaipostCallback = {
                     //info show popup thaipost
+                    self.showInfoThaiPostPopup(true)
                 }
                 item.shippingCallback = {(option) in
                     self.option = option

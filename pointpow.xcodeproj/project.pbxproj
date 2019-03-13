@@ -93,6 +93,7 @@
 		C1249EB92224F03900F56FA0 /* map.html in Resources */ = {isa = PBXBuildFile; fileRef = C1249EB82224F03900F56FA0 /* map.html */; };
 		C1249EBB2224F04D00F56FA0 /* map.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1249EBA2224F04D00F56FA0 /* map.jpg */; };
 		C1249EBD22378DBB00F56FA0 /* PopupEditAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1249EBC22378DBB00F56FA0 /* PopupEditAddressViewController.swift */; };
+		C1249EBF2238B25D00F56FA0 /* PopUpInfoThaiPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1249EBE2238B25D00F56FA0 /* PopUpInfoThaiPostViewController.swift */; };
 		C13D99822199755B001A4794 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D99812199755B001A4794 /* ProfileViewController.swift */; };
 		C13D998521997938001A4794 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D998321997938001A4794 /* LogoutCell.swift */; };
 		C13D998621997938001A4794 /* LogoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13D998421997938001A4794 /* LogoutCell.xib */; };
@@ -309,6 +310,7 @@
 		C1249EB82224F03900F56FA0 /* map.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = map.html; sourceTree = "<group>"; };
 		C1249EBA2224F04D00F56FA0 /* map.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = map.jpg; sourceTree = "<group>"; };
 		C1249EBC22378DBB00F56FA0 /* PopupEditAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupEditAddressViewController.swift; sourceTree = "<group>"; };
+		C1249EBE2238B25D00F56FA0 /* PopUpInfoThaiPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpInfoThaiPostViewController.swift; sourceTree = "<group>"; };
 		C13D99812199755B001A4794 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C13D998321997938001A4794 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		C13D998421997938001A4794 /* LogoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutCell.xib; sourceTree = "<group>"; };
@@ -943,7 +945,6 @@
 				C1249EB32224E2CD00F56FA0 /* PopUpMapOfficeViewController.swift */,
 				C1892E17221EB9DC00F5412F /* PopupGoldHistoryFilterViewController.swift */,
 				C107CF35222263AD00C50B8C /* PopupShippingMyAddressViewController.swift */,
-				C1247C532219B126005D6F7A /* PopupGoldPremiumViewController.swift */,
 				C11BDFBE21A2C17600443D2D /* PopUpTransferSuccessViewController.swift */,
 				C10CA1A32191755C00316DF3 /* PersonalPopupViewController.swift */,
 				C1AD50AE2187FE9000F74415 /* PopUpViewController.swift */,
@@ -952,6 +953,8 @@
 				C197FEDD21DC8E98002F24E8 /* ResetNav.swift */,
 				C11BFCB2221C0CB700F066DE /* PopupShippingAddressViewController.swift */,
 				C1249EBC22378DBB00F56FA0 /* PopupEditAddressViewController.swift */,
+				C1247C532219B126005D6F7A /* PopupGoldPremiumViewController.swift */,
+				C1249EBE2238B25D00F56FA0 /* PopUpInfoThaiPostViewController.swift */,
 			);
 			path = Popup;
 			sourceTree = "<group>";
@@ -1452,6 +1455,7 @@
 				C1817DA8219E7BFE009507DB /* CheckBox.swift in Sources */,
 				C169FF9C21C25C8500F9D354 /* MobileViewController.swift in Sources */,
 				C120D7D221955BC900F9EEBB /* ItemProfileCell.swift in Sources */,
+				C1249EBF2238B25D00F56FA0 /* PopUpInfoThaiPostViewController.swift in Sources */,
 				C11BFCA7221BE72000F066DE /* WithDrawChooseShippingCell.swift in Sources */,
 				C1817D96219BFCDE009507DB /* FriendCollectionCell.swift in Sources */,
 				C107CF3322218FE400C50B8C /* WithDrawOfficeSummaryCell.swift in Sources */,

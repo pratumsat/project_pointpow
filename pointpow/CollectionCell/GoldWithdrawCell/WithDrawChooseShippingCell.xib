@@ -18,10 +18,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WithDrawChooseShippingCell" id="bBJ-3l-eH5" customClass="WithDrawChooseShippingCell" customModule="pointpow" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="368" height="146"/>
+            <rect key="frame" x="0.0" y="0.0" width="403" height="146"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="368" height="146"/>
+                <rect key="frame" x="0.0" y="0.0" width="403" height="146"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="วิธีการรับทองคำ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k2b-i5-rF4">
@@ -30,22 +30,22 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gif-Mc-DMY">
-                        <rect key="frame" x="110" y="14" width="238" height="36"/>
+                        <rect key="frame" x="110" y="14" width="283" height="36"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-choose-2" translatesAutoresizingMaskIntoConstraints="NO" id="W60-ev-aLq">
-                                <rect key="frame" x="10" y="3" width="30" height="30"/>
+                                <rect key="frame" x="0.0" y="3" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="K4g-lj-QWE"/>
                                     <constraint firstAttribute="width" secondItem="W60-ev-aLq" secondAttribute="height" multiplier="1:1" id="et2-cM-87Z"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="รับที่บริษัท Point Power" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ejI-eX-fAG">
-                                <rect key="frame" x="50" y="6" width="130" height="24"/>
+                                <rect key="frame" x="40" y="6" width="130" height="24"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-info" translatesAutoresizingMaskIntoConstraints="NO" id="Ts9-Gr-Jnc">
-                                <rect key="frame" x="190" y="8" width="20" height="20"/>
+                                <rect key="frame" x="180" y="8" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Ts9-Gr-Jnc" secondAttribute="height" multiplier="1:1" id="DcG-JA-Bw8"/>
                                     <constraint firstAttribute="height" constant="20" id="XrE-PF-JVJ"/>
@@ -59,27 +59,27 @@
                             <constraint firstItem="W60-ev-aLq" firstAttribute="centerY" secondItem="ejI-eX-fAG" secondAttribute="centerY" id="70H-JK-33B"/>
                             <constraint firstItem="Ts9-Gr-Jnc" firstAttribute="leading" secondItem="ejI-eX-fAG" secondAttribute="trailing" constant="10" id="XeE-Ag-Vq9"/>
                             <constraint firstItem="Ts9-Gr-Jnc" firstAttribute="centerY" secondItem="ejI-eX-fAG" secondAttribute="centerY" id="ay5-mw-xaL"/>
-                            <constraint firstItem="W60-ev-aLq" firstAttribute="leading" secondItem="Gif-Mc-DMY" secondAttribute="leading" constant="10" id="cNJ-mW-grh"/>
+                            <constraint firstItem="W60-ev-aLq" firstAttribute="leading" secondItem="Gif-Mc-DMY" secondAttribute="leading" id="cNJ-mW-grh"/>
                             <constraint firstItem="ejI-eX-fAG" firstAttribute="centerY" secondItem="Gif-Mc-DMY" secondAttribute="centerY" id="elJ-FX-b87"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2jx-KB-dgz">
-                        <rect key="frame" x="110" y="50" width="238" height="36"/>
+                        <rect key="frame" x="110" y="50" width="283" height="36"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-choose-1" translatesAutoresizingMaskIntoConstraints="NO" id="6Y4-2E-ZcH">
-                                <rect key="frame" x="10" y="3" width="30" height="30"/>
+                                <rect key="frame" x="0.0" y="3" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="mBA-JK-YfA"/>
                                     <constraint firstAttribute="width" secondItem="6Y4-2E-ZcH" secondAttribute="height" multiplier="1:1" id="yzL-KD-kDk"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="จัดส่งทางไปรษณีย์ (EMS)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xYq-MG-G9R">
-                                <rect key="frame" x="50" y="6" width="140.5" height="23.5"/>
+                                <rect key="frame" x="40" y="6" width="140.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-info" translatesAutoresizingMaskIntoConstraints="NO" id="0w0-Z9-Afc">
-                                <rect key="frame" x="200.5" y="8" width="20" height="20"/>
+                                <rect key="frame" x="190.5" y="8" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="0w0-Z9-Afc" secondAttribute="height" multiplier="1:1" id="G6e-MD-YdL"/>
                                     <constraint firstAttribute="height" constant="20" id="zao-GV-zaH"/>
@@ -90,7 +90,7 @@
                         <constraints>
                             <constraint firstItem="xYq-MG-G9R" firstAttribute="leading" secondItem="6Y4-2E-ZcH" secondAttribute="trailing" constant="10" id="SSq-20-JPB"/>
                             <constraint firstItem="xYq-MG-G9R" firstAttribute="centerY" secondItem="2jx-KB-dgz" secondAttribute="centerY" id="XA6-XL-Fvo"/>
-                            <constraint firstItem="6Y4-2E-ZcH" firstAttribute="leading" secondItem="2jx-KB-dgz" secondAttribute="leading" constant="10" id="Y4R-rz-2Ok"/>
+                            <constraint firstItem="6Y4-2E-ZcH" firstAttribute="leading" secondItem="2jx-KB-dgz" secondAttribute="leading" id="Y4R-rz-2Ok"/>
                             <constraint firstItem="6Y4-2E-ZcH" firstAttribute="centerY" secondItem="xYq-MG-G9R" secondAttribute="centerY" id="YDw-hO-kng"/>
                             <constraint firstAttribute="height" constant="36" id="hSq-P8-2uI"/>
                             <constraint firstItem="0w0-Z9-Afc" firstAttribute="leading" secondItem="xYq-MG-G9R" secondAttribute="trailing" constant="10" id="jFy-Ms-fq3"/>
@@ -101,24 +101,24 @@
             </view>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="Gif-Mc-DMY" secondAttribute="trailing" constant="20" id="4gY-Or-gvd"/>
+                <constraint firstAttribute="trailing" secondItem="Gif-Mc-DMY" secondAttribute="trailing" constant="10" id="4gY-Or-gvd"/>
                 <constraint firstItem="k2b-i5-rF4" firstAttribute="top" secondItem="bBJ-3l-eH5" secondAttribute="top" constant="20" id="9iq-YH-rhi"/>
                 <constraint firstItem="Gif-Mc-DMY" firstAttribute="leading" secondItem="k2b-i5-rF4" secondAttribute="trailing" constant="10" id="GVM-k0-7T5"/>
+                <constraint firstAttribute="trailing" secondItem="2jx-KB-dgz" secondAttribute="trailing" constant="10" id="Yx4-qU-Tua"/>
                 <constraint firstItem="k2b-i5-rF4" firstAttribute="leading" secondItem="bBJ-3l-eH5" secondAttribute="leading" constant="10" id="fxX-4f-Qeo"/>
-                <constraint firstItem="2jx-KB-dgz" firstAttribute="trailing" secondItem="Gif-Mc-DMY" secondAttribute="trailing" id="lNg-Uq-WTQ"/>
                 <constraint firstItem="2jx-KB-dgz" firstAttribute="leading" secondItem="Gif-Mc-DMY" secondAttribute="leading" id="rbe-LL-3ch"/>
                 <constraint firstItem="2jx-KB-dgz" firstAttribute="top" secondItem="Gif-Mc-DMY" secondAttribute="bottom" id="xtb-sb-Azr"/>
                 <constraint firstItem="Gif-Mc-DMY" firstAttribute="centerY" secondItem="k2b-i5-rF4" secondAttribute="centerY" id="yuz-ZO-RlE"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="MR1-9J-99l"/>
-            <size key="customSize" width="439" height="238"/>
+            <size key="customSize" width="474" height="238"/>
             <connections>
                 <outlet property="infoPointPowImageView" destination="Ts9-Gr-Jnc" id="hw3-4u-Ox4"/>
                 <outlet property="infoThaiPostImageView" destination="0w0-Z9-Afc" id="YKF-l3-d8I"/>
                 <outlet property="spPointpowImageView" destination="W60-ev-aLq" id="QlH-yv-m9Y"/>
                 <outlet property="spThaipostImageView" destination="6Y4-2E-ZcH" id="QM1-IX-Nvo"/>
             </connections>
-            <point key="canvasLocation" x="171.19999999999999" y="-35.982008995502248"/>
+            <point key="canvasLocation" x="199.19999999999999" y="-35.982008995502248"/>
         </collectionViewCell>
     </objects>
     <resources>

@@ -172,6 +172,7 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
                 self.districtTextField.isUserInteractionEnabled = true
                 self.districtTextField.inputView = self.districtPickerView
                 
+                
             }
             
             getSubDistrict(idDistrict.intValue) {
@@ -189,7 +190,6 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
             
         }
     }
-    
     
     func setUp(){
         self.backgroundImage?.image = nil
@@ -223,6 +223,13 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
         self.districtTextField.isEnabled = false
         self.subDistrictTextField.isEnabled = false
         self.postCodeTextField.isEnabled = false
+        
+            self.provinceTextField.addDoneButtonToKeyboard(myAction:
+                #selector(self.provinceTextField.resignFirstResponder))
+            self.districtTextField.addDoneButtonToKeyboard(myAction:
+                #selector(self.districtTextField.resignFirstResponder))
+            self.subDistrictTextField.addDoneButtonToKeyboard(myAction:
+                #selector(self.subDistrictTextField.resignFirstResponder))
         
         self.nameTextField.autocorrectionType = .no
         self.numberPhoneTextField.autocorrectionType = .no
@@ -682,5 +689,22 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
         return true
     }
     
-   
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        if textField == self.addressTextField {
+            self.provinceTextField.becomeFirstResponder()
+        }
+        if textField == self.provinceTextField {
+            self.districtTextField.becomeFirstResponder()
+        }
+        if textField == self.districtTextField {
+            self.subDistrictTextField.becomeFirstResponder()
+        }
+        if textField == self.subDistrictTextField {
+            self.postCodeTextField.becomeFirstResponder()
+        }
+        
+        return true
+    }
 }

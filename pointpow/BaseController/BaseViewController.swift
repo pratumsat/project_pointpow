@@ -246,43 +246,41 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         
         
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            print(self.view.bounds.origin.y)
+        
             if self.view.bounds.origin.y == 0 {
                 if !self.isShowKeyBoard {
                     self.isShowKeyBoard = true
-                    //self.view.frame.origin.y -= (keyboardSize.height - self.positionYTextField)
-                    self.balanceHeightKeyboard = abs(500.0 - self.positionYTextField)
                     
-                    print(self.balanceHeightKeyboard)
+                    self.gapHeightKeyboard  += self.positionYTextField - hH
                     
-                    self.view.frame.origin.y -= abs(500.0 - self.positionYTextField)
+                    self.view.frame.origin.y -= self.gapHeightKeyboard
                     self.windowSubview?.isHidden = true
+                    
                 }
                 //self.view.frame.origin.y -= (keyboardSize.height)
             }
         }
     }
+    var gapHeightKeyboard = CGFloat(0)
     
     @objc func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            print(self.view.frame.origin.y)
+            
             //if self.view.frame.origin.y < 0 {
-                if  self.isShowKeyBoard {
+                print(self.view.frame.origin.y)
+                if self.isShowKeyBoard {
                     self.isShowKeyBoard = false
-                    
-                    print(self.positionYTextField)
-                    print(self.balanceHeightKeyboard)
-                    let gap = self.balanceHeightKeyboard - abs(500.0 - self.positionYTextField)
-                    let size = abs(500.0 - self.positionYTextField + gap)
-                    self.view.frame.origin.y += CGFloat(size)
+                
+                    self.view.frame.origin.y += self.gapHeightKeyboard
                     self.windowSubview?.isHidden = false
+                    self.gapHeightKeyboard = 0
                 }
                 //self.view.frame.origin.y += (keyboardSize.height)
             //}
         }
     }
     
-    var balanceHeightKeyboard = CGFloat(0.0)
+    
     
     func showScanBarcode(resultScan:((_ model:AnyObject,_ barcode:String)->Void)?){
         if AVCaptureDevice.authorizationStatus(for: .video) !=  .denied {
@@ -1449,9 +1447,7 @@ extension BaseViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         let y = textField.frame.origin.y + (textField.superview?.frame.origin.y)!;
         
-        if !self.isShowKeyBoard {
-            self.positionYTextField = y
-        }
+        self.positionYTextField = y
     }
 }
 extension BaseViewController:GIDSignInUIDelegate {

@@ -144,7 +144,8 @@ class SettingViewController: BaseViewController, UICollectionViewDelegate , UICo
         
         dummyview.inputView = pickerView
         dummyview.becomeFirstResponder()
-        
+            dummyview.addDoneButtonToKeyboard(myAction:
+                #selector(dummyview.resignFirstResponder))
         
         var i = 0
         for lang  in language {

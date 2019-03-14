@@ -433,6 +433,8 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
             self.unitTextField.tintColor = UIColor.clear
             self.unitTextField.isUserInteractionEnabled = true
             self.unitTextField.inputView = pickerView
+                self.unitTextField.addDoneButtonToKeyboard(myAction:
+                    #selector(self.unitTextField.resignFirstResponder))
 
             self.unitTextField.borderRedColorProperties(borderWidth: 1)
             self.unitTextField.isEnabled = true

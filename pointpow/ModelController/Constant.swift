@@ -383,6 +383,7 @@ extension UITextField{
         
         self.inputAccessoryView = doneToolbar
     }
+    
 }
 extension UIImage{
     class func colorForNavBar(color: UIColor) -> UIImage {

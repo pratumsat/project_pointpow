@@ -128,7 +128,17 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         }
     }
     
-
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        //keyboard show / hide
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+//
+        
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object : nil)
+        
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object : nil)
+    }
     
     
     @objc func GoogleSigInSuccess(notification: NSNotification){
@@ -173,6 +183,8 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
 //        }
         
     }
+   
+    
     @objc func GoogleSigInFailure(notification: NSNotification){
         if let userInfo = notification.userInfo as? [String:AnyObject]{
             self.showMessagePrompt(userInfo["error"] as? String ?? "unknow")
@@ -234,13 +246,16 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         
         
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            
+            print(self.view.bounds.origin.y)
             if self.view.bounds.origin.y == 0 {
                 if !self.isShowKeyBoard {
                     self.isShowKeyBoard = true
                     //self.view.frame.origin.y -= (keyboardSize.height - self.positionYTextField)
-                    print((keyboardSize.height - self.positionYTextField))
-                    self.view.frame.origin.y -= (keyboardSize.height)
+                    self.balanceHeightKeyboard = abs(500.0 - self.positionYTextField)
+                    
+                    print(self.balanceHeightKeyboard)
+                    
+                    self.view.frame.origin.y -= abs(500.0 - self.positionYTextField)
                     self.windowSubview?.isHidden = true
                 }
                 //self.view.frame.origin.y -= (keyboardSize.height)
@@ -250,18 +265,24 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
     
     @objc func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y < 0 {
+            print(self.view.frame.origin.y)
+            //if self.view.frame.origin.y < 0 {
                 if  self.isShowKeyBoard {
                     self.isShowKeyBoard = false
                     
-                    print((keyboardSize.height - self.positionYTextField))
-                    self.view.frame.origin.y += (keyboardSize.height)
+                    print(self.positionYTextField)
+                    print(self.balanceHeightKeyboard)
+                    let gap = self.balanceHeightKeyboard - abs(500.0 - self.positionYTextField)
+                    let size = abs(500.0 - self.positionYTextField + gap)
+                    self.view.frame.origin.y += CGFloat(size)
                     self.windowSubview?.isHidden = false
                 }
                 //self.view.frame.origin.y += (keyboardSize.height)
-            }
+            //}
         }
     }
+    
+    var balanceHeightKeyboard = CGFloat(0.0)
     
     func showScanBarcode(resultScan:((_ model:AnyObject,_ barcode:String)->Void)?){
         if AVCaptureDevice.authorizationStatus(for: .video) !=  .denied {
@@ -1427,8 +1448,10 @@ extension BaseViewController {
 extension BaseViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         let y = textField.frame.origin.y + (textField.superview?.frame.origin.y)!;
-        self.positionYTextField = y
         
+        if !self.isShowKeyBoard {
+            self.positionYTextField = y
+        }
     }
 }
 extension BaseViewController:GIDSignInUIDelegate {

@@ -48,7 +48,7 @@ class RegisterGoldstep3ViewController: BaseViewController {
             if let tp = self.tupleModel {
                 let params:Parameters = ["email" : tp.email,
                                          "mobile": tp.mobile,
-                                         "laser_id" : "ME0-1113123112",
+                                         "laser_id" : "ME01113123112",
                                          "firstname": tp.firstname,
                                          "lastname" : tp.lastname,
                                          "pid" : tp.idcard]

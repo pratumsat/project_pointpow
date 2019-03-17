@@ -162,6 +162,55 @@ class WithDrawSummaryThaiPostViewController: BaseViewController, UICollectionVie
 
                 }
                 
+                var arrayBox:[[String:AnyObject]] = []
+                let premium = self.withdrawData!.premium
+                let price = Int(self.withdrawData!.goldAmountToUnit.price)
+                let emsfee = self.ems! + self.fee!
+                var totalServicePrice = 0
+                var amountBox = price/50000  // 50,000 max delivery to amount
+                if amountBox > 0 {
+                    for n in 1...amountBox {
+                        var insurance = 50000/500
+                        insurance = insurance*10
+                        
+                        totalServicePrice += emsfee + insurance
+                        arrayBox.append(["order" : n as AnyObject, "price": (emsfee + insurance) as AnyObject])
+                    }
+                }
+                
+                let diffAmountBox = price%50000 // diff
+                if diffAmountBox > 0 {
+                    amountBox += 1
+                    
+                    var insurance = diffAmountBox/500
+                    if diffAmountBox%500 > 0 {
+                        insurance += 1
+                    }
+                    if diffAmountBox <= 20000 {
+                        insurance = insurance*5
+                    }else{
+                        insurance = insurance*10
+                    }
+                    totalServicePrice += emsfee + insurance
+                    arrayBox.append(["order" : amountBox as AnyObject, "price": (emsfee + insurance) as AnyObject])
+                }
+                let totalPrice = premium + totalServicePrice
+                
+                print(arrayBox)
+                print(totalServicePrice)
+                print(totalPrice)
+                
+                
+                numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                
+                item.amountBoxLabel.text = "(\(arrayBox.count) \(NSLocalizedString("string-thaipost-delivery-box", comment: "")))"
+                
+                item.serviceLabel.text = numberFormatter.string(from: NSNumber(value: totalServicePrice))
+                item.totalLabel.text = numberFormatter.string(from: NSNumber(value: totalPrice))
+                
+                
+                
                 
                 cell = item
             }

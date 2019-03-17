@@ -272,38 +272,57 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
                     cell = item
                     item.address = self.shippingAddress
                     
-                    /*
-                     (premium: 100, goldbalance: 0.1947000000000001,
-                     goldAmountToUnit: (amount: 1, unit: 0, price: 4862.5))
-                     */
-                    //let unitBaht = NSLocalizedString("unit-baht", comment: "")
+                    let numberFormatter = NumberFormatter()
+                    numberFormatter.numberStyle = .decimal
+                    
+                    item.premiumLabel.text = numberFormatter.string(from: NSNumber(value: self.withdrawData!.premium))
+                    
                     let premium = self.withdrawData!.premium
                     let price = Int(self.withdrawData!.goldAmountToUnit.price)
                     let emsfee = self.ems_price + self.fee_price
-                    var insurance = price/500
-                    if price%500 != 0 {
-                        insurance += 1
-                    }
-                    if price <= 20000 {
-                        insurance = insurance*5
-                    }else{
-                        insurance = insurance*10
-                    }
-                    let servicePrice = emsfee + insurance
-                    let totalPrice = premium + servicePrice
+                    var totalServicePrice = 0
                     
-                    item.emsLabel.text  = "\(servicePrice)"
-                    item.sumLabel.text = "\(totalPrice)"
+                    
+                    var amountBox = price/50000  // 50,000 max delivery to amount
+                    
+                    if amountBox > 0 {
+                        for _ in 1...amountBox {
+                            var insurance = 50000/500
+                            insurance = insurance*10
+                            
+                            totalServicePrice += emsfee + insurance
+                            
+                        }
+                        
+                    }
+                    let diffAmountBox = price%50000 // diff
+                    if diffAmountBox > 0 {
+                        amountBox += 1
+                        
+                        var insurance = diffAmountBox/500
+                        if diffAmountBox%500 > 0 {
+                            insurance += 1
+                        }
+                        if diffAmountBox <= 20000 {
+                            insurance = insurance*5
+                        }else{
+                            insurance = insurance*10
+                        }
+                        totalServicePrice += emsfee + insurance
+                        
+                    }
+                    
+                    let totalPrice = premium + totalServicePrice
+                    
+                    item.emsLabel.text  = numberFormatter.string(from: NSNumber(value: totalServicePrice))
+                    item.sumLabel.text = numberFormatter.string(from: NSNumber(value: totalPrice))
                     
                     item.editCallback = {
                         //choose address
                        self.showShippinhAddress()
                     }
                     
-                    let numberFormatter = NumberFormatter()
-                    numberFormatter.numberStyle = .decimal
                     
-                    item.premiumLabel.text = numberFormatter.string(from: NSNumber(value: self.withdrawData!.premium))
                 }
             }
            

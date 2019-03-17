@@ -41,9 +41,18 @@ class WithDrawThaiPostSummaryCell: UICollectionViewCell {
         self.expandImageView.isUserInteractionEnabled = true
         self.expandImageView.addGestureRecognizer(expand)
         
-        
-        self.heightContainerConstraints.constant = 0
+        self.updateView()
     }
+    
+    
+    func updateView(){
+        self.heightContainerConstraints.constant = 0
+        
+        let unitBaht = NSLocalizedString("unit-baht", comment: "")
+        
+    }
+    
+    
     
     @objc func expandableTapped(){
         self.expandableCallback?(on ? heightView : hideView)

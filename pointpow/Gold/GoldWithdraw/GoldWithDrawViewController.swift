@@ -200,7 +200,7 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
                             if goldbalance < 0 {
                                 self.showMessagePrompt(NSLocalizedString("string-dailog-saving-gold-pointspend-not-enogh", comment: ""))
                             }else{
-                                
+                            
                                 if let amountunit = self.amountToUnit {
                                 
                                     self.withdrawData = (premium: premium, goldbalance: goldbalance,  goldAmountToUnit: amountunit)

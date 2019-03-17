@@ -16,6 +16,14 @@ class WithDrawSummaryThaiPostViewController: BaseViewController, UICollectionVie
             print(withdrawData!)
         }
     }
+    var addressModel: [String:AnyObject]?
+    var ems:Int?
+    var fee:Int?
+    var name:String?
+    var mobile:String?
+    var shippingAddress = ""
+    var heightExpand = CGFloat(0)
+    
     @IBOutlet weak var summaryCollectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -27,6 +35,24 @@ class WithDrawSummaryThaiPostViewController: BaseViewController, UICollectionVie
     }
     
     func setUp(){
+        
+        if let data = self.addressModel {
+            self.addressModel = data
+            
+            let address = data["address"] as? String ?? ""
+            let districtName = data["district"]?["name_in_thai"] as? String ?? ""
+            let subdistrictName = data["subdistrict"]?["name_in_thai"] as? String ?? ""
+            let provinceName = data["province"]?["name_in_thai"] as? String ?? ""
+            let zip_code = data["subdistrict"]?["zip_code"] as? NSNumber ?? 0
+            
+            var rawAddress = "\(self.name!)"
+            rawAddress += " \(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
+            rawAddress += " \(self.mobile!)"
+            
+            self.shippingAddress = rawAddress
+        }
+        
+        
         self.handlerEnterSuccess = {
             
             //get at pointpow
@@ -74,14 +100,17 @@ class WithDrawSummaryThaiPostViewController: BaseViewController, UICollectionVie
         
         self.backgroundImage?.image = nil
         
-//        self.summaryCollectionView.delegate = self
-//        self.summaryCollectionView.dataSource = self
-//        
-//        self.summaryCollectionView.showsVerticalScrollIndicator = false
-//
-//        self.registerNib(self.summaryCollectionView, "WithDrawOfficeSummaryCell")
-//        self.registerNib(self.summaryCollectionView, "ConfirmButtonCell")
-//        self.registerNib(self.summaryCollectionView, "LogoGoldCell")
+        self.summaryCollectionView.delegate = self
+        self.summaryCollectionView.dataSource = self
+        
+        self.summaryCollectionView.showsVerticalScrollIndicator = false
+        
+        self.registerNib(self.summaryCollectionView, "WithDrawThaiPostSummaryCell")
+        self.registerNib(self.summaryCollectionView, "ConfirmButtonCell")
+        self.registerNib(self.summaryCollectionView, "LogoGoldCell")
+        
+        
+      
         
     }
     
@@ -98,31 +127,44 @@ class WithDrawSummaryThaiPostViewController: BaseViewController, UICollectionVie
         
         
         if indexPath.section == 0 {
-//            if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "WithDrawOfficeSummaryCell", for: indexPath) as? WithDrawOfficeSummaryCell {
-//
-//                item.amountLabel.text = "\(self.withdrawData!.goldAmountToUnit.amount)"
-//
-//                let unit = self.withdrawData!.goldAmountToUnit.unit
-//
-//                if unit == 0 {
-//                    item.unitLabel.text =  NSLocalizedString("unit-salueng", comment: "")
-//                }else{
-//                    item.unitLabel.text = NSLocalizedString("unit-baht", comment: "")
-//                }
-//
-//                var numberFormatter = NumberFormatter()
-//                numberFormatter.numberStyle = .decimal
-//
-//                item.premiumLabel.text = numberFormatter.string(from: NSNumber(value: self.withdrawData!.premium))
-//
-//                numberFormatter = NumberFormatter()
-//                numberFormatter.numberStyle = .decimal
-//                numberFormatter.minimumFractionDigits = 4
-//
-//                item.goldBalanceLabel.text = numberFormatter.string(from: NSNumber(value: self.withdrawData!.goldbalance))
-//
-//                cell = item
-//            }
+            if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "WithDrawThaiPostSummaryCell", for: indexPath) as? WithDrawThaiPostSummaryCell {
+
+                item.goldAmountLabel.text = "\(self.withdrawData!.goldAmountToUnit.amount)"
+                
+                let unit = self.withdrawData!.goldAmountToUnit.unit
+
+                if unit == 0 {
+                    item.unitLabel.text =  NSLocalizedString("unit-salueng", comment: "")
+                }else{
+                    item.unitLabel.text = NSLocalizedString("unit-baht", comment: "")
+                }
+
+                var numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+
+                item.premiumLabel.text = numberFormatter.string(from: NSNumber(value: self.withdrawData!.premium))
+
+                numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                numberFormatter.minimumFractionDigits = 4
+
+                item.goldBalanceLabel.text = numberFormatter.string(from: NSNumber(value: self.withdrawData!.goldbalance))
+
+                item.addressLabel.text = shippingAddress
+                
+                item.expandableCallback = { (height) in
+                    self.heightExpand = height
+                    self.summaryCollectionView.performBatchUpdates({
+                        collectionView.reloadInputViews()
+                    }, completion: { (true) in
+                        //item.amountTextField.becomeFirstResponder()
+                    })
+
+                }
+                
+                
+                cell = item
+            }
             
         }else if indexPath.section == 1 {
             
@@ -168,8 +210,10 @@ class WithDrawSummaryThaiPostViewController: BaseViewController, UICollectionVie
         if indexPath.section == 0 {
             
             let width = collectionView.frame.width - 40
-            let height = width/375*320
+            let height = heightForView(text: self.shippingAddress, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 18)!,
+                                       width: width - 20) + 470 + self.heightExpand
             return CGSize(width: width, height: height)
+            
         }else if indexPath.section == 1 {
             
             let height = CGFloat(40.0)
@@ -178,10 +222,7 @@ class WithDrawSummaryThaiPostViewController: BaseViewController, UICollectionVie
             
         }else {
             let width = collectionView.frame.width
-            let cheight = collectionView.frame.height
-            let height = abs((cheight) - (((width/375*240))+100))
-            
-            return CGSize(width: width, height: height)
+            return CGSize(width: width, height: CGFloat(60))
         }
         
         

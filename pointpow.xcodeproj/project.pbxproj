@@ -95,6 +95,8 @@
 		C1249EBD22378DBB00F56FA0 /* PopupEditAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1249EBC22378DBB00F56FA0 /* PopupEditAddressViewController.swift */; };
 		C1249EBF2238B25D00F56FA0 /* PopUpInfoThaiPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1249EBE2238B25D00F56FA0 /* PopUpInfoThaiPostViewController.swift */; };
 		C1249EC1223E18B600F56FA0 /* WithDrawSummaryThaiPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1249EC0223E18B600F56FA0 /* WithDrawSummaryThaiPostViewController.swift */; };
+		C1249EC4223E6FC600F56FA0 /* WithDrawThaiPostSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1249EC2223E6FC600F56FA0 /* WithDrawThaiPostSummaryCell.swift */; };
+		C1249EC5223E6FC600F56FA0 /* WithDrawThaiPostSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1249EC3223E6FC600F56FA0 /* WithDrawThaiPostSummaryCell.xib */; };
 		C13D99822199755B001A4794 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D99812199755B001A4794 /* ProfileViewController.swift */; };
 		C13D998521997938001A4794 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D998321997938001A4794 /* LogoutCell.swift */; };
 		C13D998621997938001A4794 /* LogoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13D998421997938001A4794 /* LogoutCell.xib */; };
@@ -313,6 +315,8 @@
 		C1249EBC22378DBB00F56FA0 /* PopupEditAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupEditAddressViewController.swift; sourceTree = "<group>"; };
 		C1249EBE2238B25D00F56FA0 /* PopUpInfoThaiPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpInfoThaiPostViewController.swift; sourceTree = "<group>"; };
 		C1249EC0223E18B600F56FA0 /* WithDrawSummaryThaiPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawSummaryThaiPostViewController.swift; sourceTree = "<group>"; };
+		C1249EC2223E6FC600F56FA0 /* WithDrawThaiPostSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawThaiPostSummaryCell.swift; sourceTree = "<group>"; };
+		C1249EC3223E6FC600F56FA0 /* WithDrawThaiPostSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithDrawThaiPostSummaryCell.xib; sourceTree = "<group>"; };
 		C13D99812199755B001A4794 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C13D998321997938001A4794 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		C13D998421997938001A4794 /* LogoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutCell.xib; sourceTree = "<group>"; };
@@ -1047,6 +1051,8 @@
 				C107CF2C221FD52800C50B8C /* WithDrawResultPointPowSuccessCell.xib */,
 				C107CF3122218FE400C50B8C /* WithDrawOfficeSummaryCell.swift */,
 				C107CF3222218FE400C50B8C /* WithDrawOfficeSummaryCell.xib */,
+				C1249EC2223E6FC600F56FA0 /* WithDrawThaiPostSummaryCell.swift */,
+				C1249EC3223E6FC600F56FA0 /* WithDrawThaiPostSummaryCell.xib */,
 			);
 			path = GoldWithdrawCell;
 			sourceTree = "<group>";
@@ -1187,6 +1193,7 @@
 				C169FFBF21C36E1300F9D354 /* Localizable.strings in Resources */,
 				C197FEE42207E4F6002F24E8 /* NotoSansThai-Bold.ttf in Resources */,
 				C106BEAF220BEB3000E2331E /* GoldItemCell.xib in Resources */,
+				C1249EC5223E6FC600F56FA0 /* WithDrawThaiPostSummaryCell.xib in Resources */,
 				C1DEBE982188337500CBB95F /* ThaiSansNeue-Bold.ttf in Resources */,
 				C11A93B8218C00C800627B44 /* IntroCell1.xib in Resources */,
 				C10CA1BF219429D500316DF3 /* ImageCell.xib in Resources */,
@@ -1387,6 +1394,7 @@
 				C1B542DB219A85590040DDE6 /* ChangePasswordViewController.swift in Sources */,
 				C1AD507C2187F45600F74415 /* ViewController.swift in Sources */,
 				C169FFC421C4D66600F9D354 /* FavoriteViewController.swift in Sources */,
+				C1249EC4223E6FC600F56FA0 /* WithDrawThaiPostSummaryCell.swift in Sources */,
 				C11A93BC218C20C700627B44 /* LoginViewController.swift in Sources */,
 				C10D94BA220971B10083FA47 /* NavHistory.swift in Sources */,
 				C1AD50B22187FEE300F74415 /* ModelController.swift in Sources */,

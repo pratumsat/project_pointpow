@@ -326,7 +326,7 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
                             self.showWithDrawSummaryThaiPostView(true,
                                                                  withdrawData: self.withdrawData,
                                                                  addressModel: address,
-                                                                 ems: self.ems_price, fee: self.fee_price)
+                                                                 ems: self.ems_price, fee: self.fee_price, name: self.name, mobile: self.mobile)
                         }else{
                             self.showShippinhAddress()
                         }
@@ -377,7 +377,7 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
             }else{
                 if self.shippingAddress != nil{
                     let width = collectionView.frame.width - 40
-                    let height = width/360*230 + 150
+                    let height = width/360*230 + 120
                     return CGSize(width: width, height: height)
                 }else{
                     let width = collectionView.frame.width - 40
@@ -394,24 +394,7 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
             return CGSize(width: width, height: height)
         } else {
             let width = collectionView.frame.width
-            let cheight = collectionView.frame.height
-            
-            if option == 0 {
-                let height = abs((cheight) - (((width/360*110))+((width/360*120))+120))
-                return CGSize(width: width, height: height)
-            }else{
-                if self.shippingAddress != nil{
-                    let addOnHeight = heightForView(text: self.shippingAddress!, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 18)!, width: width) + 100
-                    
-                    let height = abs((cheight) - (((width/360*110))+((width/360*230 + addOnHeight))+120))
-                    return CGSize(width: width, height: height)
-                }else{
-                    let height = abs((cheight) - (((width/360*110))+((width/360*230))+120))
-                    return CGSize(width: width, height: height)
-                }
-                
-            }
-            
+            return CGSize(width: width, height: CGFloat(60))
         }
         
     }

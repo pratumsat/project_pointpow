@@ -346,10 +346,15 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
     
     func showWithDrawSummaryThaiPostView(_ animated:Bool,
                                          withdrawData:(premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double))?,
-                                         addressModel: [String:AnyObject] , ems:Int ,fee: Int){
+                                         addressModel: [String:AnyObject] , ems:Int ,fee: Int, name:String, mobile:String){
         
         if let vc:WithDrawSummaryThaiPostViewController  = self.storyboard?.instantiateViewController(withIdentifier: "WithDrawSummaryThaiPostViewController") as? WithDrawSummaryThaiPostViewController {
             vc.withdrawData  = withdrawData
+            vc.addressModel = addressModel
+            vc.ems = ems
+            vc.fee = fee
+            vc.name = name
+            vc.mobile = mobile
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }

@@ -6468,12 +6468,12 @@
                                 <rect key="frame" x="0.0" y="742" width="414" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="เพิ่มที่อยู่ในการจัดส่ง" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHR-nB-Ph1">
-                                        <rect key="frame" x="40.000000000000007" y="13.333333333333373" width="111.66666666666669" height="23.666666666666671"/>
+                                        <rect key="frame" x="50.000000000000007" y="13.333333333333373" width="111.66666666666669" height="23.666666666666671"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-add-address" translatesAutoresizingMaskIntoConstraints="NO" id="Cr6-3K-7p4">
-                                        <rect key="frame" x="10" y="15" width="20" height="20"/>
+                                        <rect key="frame" x="20" y="15" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="zwp-vW-AjN"/>
                                         </constraints>
@@ -6485,7 +6485,7 @@
                                     <constraint firstItem="yHR-nB-Ph1" firstAttribute="centerY" secondItem="Uwe-7p-5JS" secondAttribute="centerY" id="X6s-vl-4ML"/>
                                     <constraint firstAttribute="height" constant="50" id="ZAn-Ln-4pb"/>
                                     <constraint firstItem="Cr6-3K-7p4" firstAttribute="width" secondItem="Cr6-3K-7p4" secondAttribute="height" multiplier="1:1" id="ggq-Sl-Lyu"/>
-                                    <constraint firstItem="Cr6-3K-7p4" firstAttribute="leading" secondItem="Uwe-7p-5JS" secondAttribute="leading" constant="10" id="igg-wh-jFc"/>
+                                    <constraint firstItem="Cr6-3K-7p4" firstAttribute="leading" secondItem="Uwe-7p-5JS" secondAttribute="leading" constant="20" id="igg-wh-jFc"/>
                                     <constraint firstItem="Cr6-3K-7p4" firstAttribute="centerY" secondItem="Uwe-7p-5JS" secondAttribute="centerY" id="qif-hc-ICt"/>
                                 </constraints>
                             </view>
@@ -6970,45 +6970,57 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5nD-NH-4uk">
-                                        <rect key="frame" x="20.666666666666657" y="66" width="372.66666666666674" height="60"/>
+                                        <rect key="frame" x="20.666666666666657" y="66" width="372.66666666666674" height="100"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ค่าประกัน" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7oF-AL-UYw">
-                                                <rect key="frame" x="166.33333333333334" y="11.66666666666667" width="40" height="18.333333333333329"/>
-                                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="14"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ค่าประกัน ไม่เกิน 20,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7oF-AL-UYw">
+                                                <rect key="frame" x="129" y="15.000000000000002" width="115" height="19.666666666666671"/>
+                                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
                                                 <color key="textColor" red="0.68235294120000001" green="0.54117647059999996" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tVa-Bb-ud3">
-                                                <rect key="frame" x="22.999999999999996" y="11.66666666666667" width="58.333333333333329" height="18.333333333333329"/>
+                                                <rect key="frame" x="20.999999999999996" y="30.333333333333343" width="62.333333333333329" height="19.666666666666671"/>
                                                 <string key="text">วงเงินประกัน*
 </string>
-                                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
                                                 <color key="textColor" red="0.68235294120000001" green="0.54117647059999996" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pje-ZF-EUV">
-                                                <rect key="frame" x="21.999999999999996" y="30" width="60.666666666666657" height="18.333333333333329"/>
+                                                <rect key="frame" x="23.999999999999996" y="45" width="56.333333333333329" height="17"/>
                                                 <string key="text">(มูลค่าทองคำ)
 </string>
-                                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="13"/>
                                                 <color key="textColor" red="0.68235294120000001" green="0.54117647059999996" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(5 บาท ต่อทุกๆ 500 บาท)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D1M-1k-uZw">
-                                                <rect key="frame" x="129.33333333333334" y="30" width="114" height="18.333333333333329"/>
-                                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="14"/>
+                                                <rect key="frame" x="133.33333333333334" y="29.666666666666657" width="106" height="17"/>
+                                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="13"/>
                                                 <color key="textColor" red="0.68235294120000001" green="0.54117647059999996" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ค่าบริการและ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypu-V7-cfC">
-                                                <rect key="frame" x="292.66666666666663" y="11.66666666666667" width="55.333333333333314" height="18.333333333333329"/>
-                                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="14"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(10 บาท ต่อทุกๆ 500 บาท)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8Q-wi-uv1">
+                                                <rect key="frame" x="131.33333333333334" y="66.333333333333343" width="110.33333333333334" height="17"/>
+                                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="13"/>
                                                 <color key="textColor" red="0.68235294120000001" green="0.54117647059999996" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="และค่าดำเนินการ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZP-KN-11s">
-                                                <rect key="frame" x="285.33333333333331" y="30" width="70.333333333333314" height="18.333333333333329"/>
-                                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="14"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ค่าจัดส่งและ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypu-V7-cfC">
+                                                <rect key="frame" x="293.33333333333331" y="30.333333333333343" width="54.333333333333314" height="19.666666666666671"/>
+                                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
+                                                <color key="textColor" red="0.68235294120000001" green="0.54117647059999996" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ค่าดำเนินการ**" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZP-KN-11s">
+                                                <rect key="frame" x="286.33333333333331" y="45" width="68" height="19.666666666666671"/>
+                                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
+                                                <color key="textColor" red="0.68235294120000001" green="0.54117647059999996" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="เกิน 20,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DYq-xt-dKV">
+                                                <rect key="frame" x="158.66666666666669" y="51.666666666666657" width="55.666666666666657" height="19.666666666666671"/>
+                                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
                                                 <color key="textColor" red="0.68235294120000001" green="0.54117647059999996" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -7016,37 +7028,41 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="tVa-Bb-ud3" firstAttribute="centerX" secondItem="5nD-NH-4uk" secondAttribute="centerX" multiplier="0.28" id="28v-IX-3EC"/>
-                                            <constraint firstItem="PZP-KN-11s" firstAttribute="top" secondItem="ypu-V7-cfC" secondAttribute="bottom" id="4q8-ma-vPq"/>
+                                            <constraint firstItem="PZP-KN-11s" firstAttribute="top" secondItem="ypu-V7-cfC" secondAttribute="bottom" constant="-5" id="4q8-ma-vPq"/>
                                             <constraint firstItem="D1M-1k-uZw" firstAttribute="centerX" secondItem="5nD-NH-4uk" secondAttribute="centerX" id="D2i-mr-Eal"/>
-                                            <constraint firstItem="D1M-1k-uZw" firstAttribute="top" secondItem="7oF-AL-UYw" secondAttribute="bottom" id="GMb-H5-GJY"/>
+                                            <constraint firstItem="D1M-1k-uZw" firstAttribute="top" secondItem="7oF-AL-UYw" secondAttribute="bottom" constant="-5" id="GMb-H5-GJY"/>
                                             <constraint firstItem="ypu-V7-cfC" firstAttribute="bottom" secondItem="5nD-NH-4uk" secondAttribute="centerY" id="HN1-fY-zTL"/>
                                             <constraint firstItem="PZP-KN-11s" firstAttribute="centerX" secondItem="ypu-V7-cfC" secondAttribute="centerX" id="Kbo-Yx-r8s"/>
                                             <constraint firstItem="PZP-KN-11s" firstAttribute="centerX" secondItem="5nD-NH-4uk" secondAttribute="centerX" multiplier="1.72" id="MsO-cT-kQm"/>
                                             <constraint firstItem="tVa-Bb-ud3" firstAttribute="bottom" secondItem="5nD-NH-4uk" secondAttribute="centerY" id="SQG-Oq-igy"/>
-                                            <constraint firstAttribute="height" constant="60" id="aTt-Zp-ILq"/>
+                                            <constraint firstAttribute="height" constant="100" id="aTt-Zp-ILq"/>
+                                            <constraint firstItem="7oF-AL-UYw" firstAttribute="top" secondItem="5nD-NH-4uk" secondAttribute="top" constant="15" id="diw-gg-Olf"/>
+                                            <constraint firstItem="b8Q-wi-uv1" firstAttribute="centerX" secondItem="7oF-AL-UYw" secondAttribute="centerX" id="ehB-IN-ICp"/>
                                             <constraint firstItem="D1M-1k-uZw" firstAttribute="centerX" secondItem="7oF-AL-UYw" secondAttribute="centerX" id="hM9-MS-vsg"/>
                                             <constraint firstItem="pje-ZF-EUV" firstAttribute="centerX" secondItem="tVa-Bb-ud3" secondAttribute="centerX" id="og9-Wr-Vgv"/>
-                                            <constraint firstItem="7oF-AL-UYw" firstAttribute="bottom" secondItem="5nD-NH-4uk" secondAttribute="centerY" id="qvT-a5-2Hc"/>
-                                            <constraint firstItem="pje-ZF-EUV" firstAttribute="top" secondItem="tVa-Bb-ud3" secondAttribute="bottom" id="sD8-rJ-5Qr"/>
+                                            <constraint firstItem="b8Q-wi-uv1" firstAttribute="top" secondItem="DYq-xt-dKV" secondAttribute="bottom" constant="-5" id="qNU-Y6-fbs"/>
+                                            <constraint firstItem="pje-ZF-EUV" firstAttribute="top" secondItem="tVa-Bb-ud3" secondAttribute="bottom" constant="-5" id="sD8-rJ-5Qr"/>
+                                            <constraint firstItem="DYq-xt-dKV" firstAttribute="top" secondItem="D1M-1k-uZw" secondAttribute="bottom" constant="5" id="uZV-8V-TRu"/>
+                                            <constraint firstItem="DYq-xt-dKV" firstAttribute="centerX" secondItem="7oF-AL-UYw" secondAttribute="centerX" id="xIa-Zs-eII"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eME-Fw-QTz">
-                                        <rect key="frame" x="20.666666666666657" y="126" width="372.66666666666674" height="30"/>
+                                        <rect key="frame" x="20.666666666666657" y="166" width="372.66666666666674" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1UN-6H-8IG">
-                                                <rect key="frame" x="162" y="3.3333333333333428" width="49" height="23.666666666666668"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1UN-6H-8IG">
+                                                <rect key="frame" x="168" y="3.3333333333333428" width="36.666666666666657" height="23.666666666666668"/>
                                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 สลึง" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VeD-tP-Iwy">
-                                                <rect key="frame" x="36" y="3.3333333333333428" width="32.666666666666657" height="23.666666666666668"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5,000 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VeD-tP-Iwy">
+                                                <rect key="frame" x="21.333333333333332" y="3.3333333333333428" width="61.666666666666671" height="23.666666666666668"/>
                                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AO7-ES-OFr">
-                                                <rect key="frame" x="296" y="3.3333333333333428" width="49" height="23.666666666666668"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AO7-ES-OFr">
+                                                <rect key="frame" x="302" y="3.3333333333333428" width="36.666666666666686" height="23.666666666666668"/>
                                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -7061,16 +7077,16 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z8T-st-kC0">
-                                        <rect key="frame" x="20.666666666666657" y="156" width="372.66666666666674" height="30"/>
+                                        <rect key="frame" x="20.666666666666657" y="196" width="372.66666666666674" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="130 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AUQ-CF-2D9">
-                                                <rect key="frame" x="162.33333333333334" y="3.3333333333333428" width="48" height="23.666666666666668"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AUQ-CF-2D9">
+                                                <rect key="frame" x="168" y="3.3333333333333428" width="36.666666666666657" height="23.666666666666668"/>
                                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 สลึง" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9N-lP-3lY">
-                                                <rect key="frame" x="35" y="3.3333333333333428" width="34.666666666666657" height="23.666666666666668"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10,000 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9N-lP-3lY">
+                                                <rect key="frame" x="18.333333333333329" y="3.3333333333333428" width="68" height="23.666666666666668"/>
                                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -7082,23 +7098,23 @@
                                             <constraint firstItem="AUQ-CF-2D9" firstAttribute="centerY" secondItem="Z8T-st-kC0" secondAttribute="centerY" id="Fqj-dQ-INW"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TXc-7A-sS4">
-                                        <rect key="frame" x="316.66666666666669" y="159.33333333333334" width="49" height="23.666666666666657"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TXc-7A-sS4">
+                                        <rect key="frame" x="322.66666666666669" y="199.33333333333334" width="36.666666666666686" height="23.666666666666657"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lYy-dJ-lUh">
-                                        <rect key="frame" x="20.666666666666657" y="186" width="372.66666666666674" height="30"/>
+                                        <rect key="frame" x="20.666666666666657" y="226" width="372.66666666666674" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ga9-CM-a5X">
-                                                <rect key="frame" x="35.666666666666671" y="3.3333333333333428" width="33.333333333333329" height="23.666666666666668"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15,000 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ga9-CM-a5X">
+                                                <rect key="frame" x="18.999999999999993" y="3.3333333333333144" width="66.333333333333314" height="23.666666666666668"/>
                                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="150 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5tf-ho-8tb">
-                                                <rect key="frame" x="162.66666666666669" y="3.3333333333333428" width="47.666666666666657" height="23.666666666666668"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5tf-ho-8tb">
+                                                <rect key="frame" x="168" y="3.3333333333333144" width="36.666666666666657" height="23.666666666666668"/>
                                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -7110,23 +7126,23 @@
                                             <constraint firstItem="5tf-ho-8tb" firstAttribute="centerY" secondItem="lYy-dJ-lUh" secondAttribute="centerY" id="lGC-AP-MTH"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ph4-51-Vji">
-                                        <rect key="frame" x="316.66666666666669" y="189.33333333333334" width="49" height="23.666666666666657"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ph4-51-Vji">
+                                        <rect key="frame" x="322.66666666666669" y="229.33333333333331" width="36.666666666666686" height="23.666666666666657"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4uH-Qn-6rV">
-                                        <rect key="frame" x="20.666666666666657" y="216" width="372.66666666666674" height="30"/>
+                                        <rect key="frame" x="20.666666666666657" y="256" width="372.66666666666674" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qkk-8D-cyw">
-                                                <rect key="frame" x="161" y="3.3333333333333144" width="51" height="23.666666666666668"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qkk-8D-cyw">
+                                                <rect key="frame" x="168" y="3.3333333333333144" width="36.666666666666657" height="23.666666666666668"/>
                                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXZ-hS-81d">
-                                                <rect key="frame" x="34.666666666666671" y="3.3333333333333144" width="35.333333333333329" height="23.666666666666668"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20,000 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXZ-hS-81d">
+                                                <rect key="frame" x="17.333333333333329" y="3.3333333333333144" width="70" height="23.666666666666668"/>
                                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -7138,23 +7154,23 @@
                                             <constraint firstItem="JXZ-hS-81d" firstAttribute="centerY" secondItem="4uH-Qn-6rV" secondAttribute="centerY" id="soE-zv-Ifn"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCF-nH-IpJ">
-                                        <rect key="frame" x="316.66666666666669" y="219.33333333333331" width="49" height="23.666666666666657"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCF-nH-IpJ">
+                                        <rect key="frame" x="322.66666666666669" y="259.33333333333331" width="36.666666666666686" height="23.666666666666686"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Da0-ZP-BlX">
-                                        <rect key="frame" x="20.666666666666657" y="246" width="372.66666666666674" height="30"/>
+                                        <rect key="frame" x="20.666666666666657" y="286" width="372.66666666666674" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="250 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b71-Cm-eJh">
-                                                <rect key="frame" x="161.66666666666669" y="3.3333333333333144" width="49.666666666666657" height="23.666666666666668"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b71-Cm-eJh">
+                                                <rect key="frame" x="168" y="3.3333333333333144" width="36.666666666666657" height="23.666666666666668"/>
                                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HpF-CH-KRF">
-                                                <rect key="frame" x="34.666666666666671" y="3.3333333333333144" width="35" height="23.666666666666668"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25,000 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HpF-CH-KRF">
+                                                <rect key="frame" x="17.999999999999993" y="3.3333333333333144" width="68.333333333333314" height="23.666666666666668"/>
                                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -7166,23 +7182,23 @@
                                             <constraint firstItem="HpF-CH-KRF" firstAttribute="centerY" secondItem="Da0-ZP-BlX" secondAttribute="centerY" id="dRX-6H-QZZ"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ufc-hE-pko">
-                                        <rect key="frame" x="316.66666666666669" y="249.33333333333329" width="49" height="23.666666666666657"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ufc-hE-pko">
+                                        <rect key="frame" x="322.66666666666669" y="289.33333333333331" width="36.666666666666686" height="23.666666666666686"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g5i-bz-1Ma">
-                                        <rect key="frame" x="20.666666666666657" y="276" width="372.66666666666674" height="30"/>
+                                        <rect key="frame" x="20.666666666666657" y="316" width="372.66666666666674" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="300 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZN-eW-wyv">
-                                                <rect key="frame" x="160.66666666666669" y="3.3333333333333144" width="51.333333333333343" height="23.666666666666668"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZN-eW-wyv">
+                                                <rect key="frame" x="168" y="3.3333333333333144" width="36.666666666666657" height="23.666666666666668"/>
                                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gun-F4-O56">
-                                                <rect key="frame" x="31.666666666666671" y="3.3333333333333144" width="41" height="23.666666666666668"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30,000 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gun-F4-O56">
+                                                <rect key="frame" x="17.333333333333329" y="3.3333333333333144" width="70" height="23.666666666666668"/>
                                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -7194,14 +7210,14 @@
                                             <constraint firstItem="gun-F4-O56" firstAttribute="centerY" secondItem="g5i-bz-1Ma" secondAttribute="centerY" id="u86-HX-069"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mmb-Fx-F6X">
-                                        <rect key="frame" x="316.66666666666669" y="279.33333333333331" width="49" height="23.666666666666686"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mmb-Fx-F6X">
+                                        <rect key="frame" x="322.66666666666669" y="319.33333333333331" width="36.666666666666686" height="23.666666666666686"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Osb-H2-9Mm">
-                                        <rect key="frame" x="20.666666666666657" y="125" width="372.66666666666674" height="1"/>
+                                        <rect key="frame" x="20.666666666666657" y="165" width="372.66666666666674" height="1"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="GXv-RV-aYy"/>
@@ -7215,16 +7231,16 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LV5-RL-LfO">
-                                        <rect key="frame" x="20.666666666666657" y="306" width="372.66666666666674" height="30"/>
+                                        <rect key="frame" x="20.666666666666657" y="346" width="372.66666666666674" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="250 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sP4-2R-Gpd">
-                                                <rect key="frame" x="161.66666666666669" y="3.3333333333333144" width="49.666666666666657" height="23.666666666666668"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sP4-2R-Gpd">
+                                                <rect key="frame" x="168" y="3.3333333333333144" width="36.666666666666657" height="23.666666666666668"/>
                                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRH-s1-CMn">
-                                                <rect key="frame" x="34.666666666666671" y="3.3333333333333144" width="35" height="23.666666666666668"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="35,000 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRH-s1-CMn">
+                                                <rect key="frame" x="17.999999999999993" y="3.3333333333333144" width="68.666666666666657" height="23.666666666666668"/>
                                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -7236,23 +7252,23 @@
                                             <constraint firstItem="sP4-2R-Gpd" firstAttribute="centerY" secondItem="LV5-RL-LfO" secondAttribute="centerY" id="ubG-XT-Kta"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cI9-bU-38Z">
-                                        <rect key="frame" x="316.66666666666669" y="309.33333333333331" width="49" height="23.666666666666686"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cI9-bU-38Z">
+                                        <rect key="frame" x="322.66666666666669" y="349.33333333333331" width="36.666666666666686" height="23.666666666666686"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VCQ-1i-KBr">
-                                        <rect key="frame" x="20.666666666666657" y="336" width="372.66666666666674" height="30"/>
+                                        <rect key="frame" x="20.666666666666657" y="376" width="372.66666666666674" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="300 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7c-vt-YvL">
-                                                <rect key="frame" x="160.66666666666669" y="3.3333333333333144" width="51.333333333333343" height="23.666666666666668"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7c-vt-YvL">
+                                                <rect key="frame" x="168" y="3.3333333333333144" width="36.666666666666657" height="23.666666666666668"/>
                                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kb1-5J-tQn">
-                                                <rect key="frame" x="31.666666666666671" y="3.3333333333333144" width="41" height="23.666666666666668"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40,000 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kb1-5J-tQn">
+                                                <rect key="frame" x="16.999999999999993" y="3.3333333333333144" width="70.333333333333314" height="23.666666666666668"/>
                                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -7264,40 +7280,46 @@
                                             <constraint firstItem="kb1-5J-tQn" firstAttribute="centerY" secondItem="VCQ-1i-KBr" secondAttribute="centerY" id="kTE-cC-jkG"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IN7-dI-kzM">
-                                        <rect key="frame" x="316.66666666666669" y="339.33333333333331" width="49" height="23.666666666666686"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IN7-dI-kzM">
+                                        <rect key="frame" x="322.66666666666669" y="379.33333333333331" width="36.666666666666686" height="23.666666666666686"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0GV-9u-plI">
-                                        <rect key="frame" x="139" y="66" width="1" height="300"/>
+                                        <rect key="frame" x="143" y="66" width="1" height="340"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="1" id="2M1-hm-zPP"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w3U-1r-UKy">
-                                        <rect key="frame" x="274" y="66" width="1" height="300"/>
+                                        <rect key="frame" x="270" y="66" width="1" height="340"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="1" id="Ahe-ua-uy1"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*มูลค่าทองขึ้นอยู่กับราคาทอง (ขายออก) ณ วันที่ทำรายการถอน" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcs-71-gRz">
-                                        <rect key="frame" x="20.666666666666657" y="376" width="272.33333333333337" height="19.666666666666686"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*มูลค่าทองคำขึ้นอยู่กับราคาทองคำ (ขายออก) ณ วันที่ทำรายการถอน" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcs-71-gRz">
+                                        <rect key="frame" x="20.666666666666657" y="416" width="295.33333333333337" height="19.666666666666686"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="15"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="**ค่าดำเนินการในการประกันของไปรษณีย์ไทย 15 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJl-hs-aL6">
-                                        <rect key="frame" x="20.666666666666671" y="395.66666666666669" width="224.33333333333331" height="19.666666666666686"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="**ค่าดำเนินการในการประกันของไปรษณีย์ไทย" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJl-hs-aL6">
+                                        <rect key="frame" x="20.666666666666671" y="435.66666666666669" width="188.66666666666663" height="19.666666666666686"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="15"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="***บริษัทจะจัดส่งสินค้ามูลค่าไม่เกิน 50,000 บาท ต่อ 1 กล่องไปรษณีย์" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0td-2t-ynq">
-                                        <rect key="frame" x="20.666666666666657" y="415.33333333333331" width="294" height="19.666666666666686"/>
+                                        <rect key="frame" x="20.666666666666657" y="455.33333333333331" width="294" height="19.666666666666686"/>
+                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="15"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b58-80-Ss3">
+                                        <rect key="frame" x="214.33333333333334" y="435.66666666666669" width="31" height="20"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="15"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -7349,6 +7371,7 @@
                                     <constraint firstItem="LV5-RL-LfO" firstAttribute="width" secondItem="eME-Fw-QTz" secondAttribute="width" id="SfO-RD-THd"/>
                                     <constraint firstItem="lYy-dJ-lUh" firstAttribute="width" secondItem="eME-Fw-QTz" secondAttribute="width" id="USq-l7-BJM"/>
                                     <constraint firstItem="cI9-bU-38Z" firstAttribute="centerY" secondItem="LV5-RL-LfO" secondAttribute="centerY" id="Uge-Rm-Jjr"/>
+                                    <constraint firstItem="b58-80-Ss3" firstAttribute="leading" secondItem="NJl-hs-aL6" secondAttribute="trailing" constant="5" id="VW8-co-V5B"/>
                                     <constraint firstItem="Ufc-hE-pko" firstAttribute="centerY" secondItem="Da0-ZP-BlX" secondAttribute="centerY" id="X5a-pf-n4w"/>
                                     <constraint firstItem="GCF-nH-IpJ" firstAttribute="centerY" secondItem="4uH-Qn-6rV" secondAttribute="centerY" id="XGN-ao-bEw"/>
                                     <constraint firstItem="0GV-9u-plI" firstAttribute="bottom" secondItem="VCQ-1i-KBr" secondAttribute="bottom" id="YLB-C5-fxm"/>
@@ -7358,6 +7381,7 @@
                                     <constraint firstItem="TXc-7A-sS4" firstAttribute="centerX" secondItem="ypu-V7-cfC" secondAttribute="centerX" id="b2g-2w-sox"/>
                                     <constraint firstItem="Reh-di-NQO" firstAttribute="centerX" secondItem="yiz-XR-GRS" secondAttribute="centerX" id="bMg-2g-HdM"/>
                                     <constraint firstItem="Osb-H2-9Mm" firstAttribute="bottom" secondItem="5nD-NH-4uk" secondAttribute="bottom" id="bkZ-bM-1K4"/>
+                                    <constraint firstItem="b58-80-Ss3" firstAttribute="centerY" secondItem="NJl-hs-aL6" secondAttribute="centerY" id="bxa-12-LnI"/>
                                     <constraint firstItem="Ga9-CM-a5X" firstAttribute="centerX" secondItem="M9N-lP-3lY" secondAttribute="centerX" id="dLh-14-BJt"/>
                                     <constraint firstItem="1UN-6H-8IG" firstAttribute="centerX" secondItem="7oF-AL-UYw" secondAttribute="centerX" id="eFE-2p-ls9"/>
                                     <constraint firstItem="IN7-dI-kzM" firstAttribute="centerY" secondItem="VCQ-1i-KBr" secondAttribute="centerY" id="eL9-5U-VNd"/>
@@ -7403,6 +7427,25 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nv1-3Z-K5l"/>
                     </view>
+                    <connections>
+                        <outlet property="fee1Label" destination="AO7-ES-OFr" id="Z13-Pm-nH4"/>
+                        <outlet property="fee2Label" destination="TXc-7A-sS4" id="BhR-jy-DSP"/>
+                        <outlet property="fee3Label" destination="ph4-51-Vji" id="mNu-eA-DEJ"/>
+                        <outlet property="fee4Label" destination="GCF-nH-IpJ" id="hQr-AX-2UK"/>
+                        <outlet property="fee5Label" destination="Ufc-hE-pko" id="MQw-bv-GZv"/>
+                        <outlet property="fee6Label" destination="Mmb-Fx-F6X" id="PwB-f1-P7w"/>
+                        <outlet property="fee7Label" destination="cI9-bU-38Z" id="zkX-aT-ERq"/>
+                        <outlet property="fee8Label" destination="IN7-dI-kzM" id="3z6-HN-QwH"/>
+                        <outlet property="insurance1Label" destination="1UN-6H-8IG" id="sSP-CG-c7n"/>
+                        <outlet property="insurance2Label" destination="AUQ-CF-2D9" id="MIg-Lb-vkb"/>
+                        <outlet property="insurance3Label" destination="5tf-ho-8tb" id="hJQ-J2-rF9"/>
+                        <outlet property="insurance4Label" destination="qkk-8D-cyw" id="e9B-8h-o9b"/>
+                        <outlet property="insurance5Label" destination="b71-Cm-eJh" id="jVP-jP-pEn"/>
+                        <outlet property="insurance6Label" destination="gZN-eW-wyv" id="CSU-SZ-qMY"/>
+                        <outlet property="insurance7Label" destination="sP4-2R-Gpd" id="4eh-E4-UE9"/>
+                        <outlet property="insurance8Label" destination="f7c-vt-YvL" id="m66-Tr-4OF"/>
+                        <outlet property="serviceLabel" destination="b58-80-Ss3" id="1eW-7V-YGW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eDZ-Id-8oy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

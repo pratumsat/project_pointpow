@@ -291,7 +291,7 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
                 rawAddress += " \(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
                 rawAddress += " \(self.mobile)"
                 
-                let height = heightForView(text: rawAddress, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 16)!, width: width) +  50
+                let height = heightForView(text: rawAddress, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 16)!, width: width) +  60
                 
                 return CGSize(width: width, height: height)
             }

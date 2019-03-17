@@ -13,6 +13,9 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
     var name:String = ""
     var mobile:String = ""
     var myAddress:[[String:AnyObject]]?
+    var ems_price:Int = 0
+    var fee_price:Int = 0
+    
     
     var withdrawData:(premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double))?{
         didSet{
@@ -68,11 +71,7 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
             self.shippingCollectionView.reloadData()
         }
     }
-    var shippingAddress:String?{
-        didSet{
-            self.shippingCollectionView.reloadData()
-        }
-    }
+    var shippingAddress:String?
     
     func updateUI(_ address:AnyObject){
         if let data = address as? [String:AnyObject] {
@@ -88,6 +87,13 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
             rawAddress += " \(self.mobile)"
             
             self.shippingAddress = rawAddress
+            
+            self.getPriceThaiPost(){
+                print("ems_price = \(self.ems_price)")
+                print("fee_price = \(self.fee_price)")
+                
+                self.shippingCollectionView.reloadData()
+            }
         }
     }
     
@@ -103,7 +109,41 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
             print("get my address")
             print("get my data")
         }
+        self.getPriceThaiPost(){
+            print("ems_price = \(self.ems_price)")
+            print("fee_price = \(self.fee_price)")
+        }
     }
+    
+    func getPriceThaiPost(_ avaliable:(()->Void)?  = nil){
+        modelCtrl.getServicePriceThaiPost(params: nil , true , succeeded: { (result) in
+            print("get price thaipost")
+            if let data = result as? [String:AnyObject] {
+                let shipping = data["shipping"] as? [[String:AnyObject]] ?? []
+                if shipping.count > 0 {
+                    let ems_price = shipping[0]["ems_price"] as? NSNumber ?? 0
+                    let fee_price = shipping[0]["fee_price"] as? NSNumber ?? 0
+                    
+                    self.ems_price = ems_price.intValue
+                    self.fee_price = fee_price.intValue
+                    
+                }
+            }
+            avaliable?()
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                //self.showMessagePrompt(message)
+            }
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            
+        }
+    }
+    
     func getUserInfo(_ avaliable:(()->Void)?  = nil){
         
         var isLoading:Bool = true
@@ -228,9 +268,31 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
                     cell = item
                     item.address = self.shippingAddress
                     
+                    /*
+                     (premium: 100, goldbalance: 0.1947000000000001,
+                     goldAmountToUnit: (amount: 1, unit: 0, price: 4862.5))
+                     */
+                    //let unitBaht = NSLocalizedString("unit-baht", comment: "")
+                    let premium = self.withdrawData!.premium
+                    let price = Int(self.withdrawData!.goldAmountToUnit.price)
+                    let emsfee = self.ems_price + self.fee_price
+                    var insurance = price/500
+                    if price%500 != 0 {
+                        insurance += 1
+                    }
+                    if price <= 20000 {
+                        insurance = insurance*5
+                    }else{
+                        insurance = insurance*10
+                    }
+                    let servicePrice = emsfee + insurance
+                    let totalPrice = premium + servicePrice
+                    
+                    item.emsLabel.text  = "\(servicePrice)"
+                    item.sumLabel.text = "\(totalPrice)"
+                    
                     item.editCallback = {
                         //choose address
-                        
                        self.showShippinhAddress()
                     }
                     
@@ -255,6 +317,13 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
                         
                     }else{
                         print("summary thaipost")
+                        
+                        if let  address = self.shippingAddress{
+                            
+                        }else{
+                            self.showShippinhAddress()
+                        }
+                       
                     }
                 }
             }

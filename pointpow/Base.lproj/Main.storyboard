@@ -7451,6 +7451,53 @@
             </objects>
             <point key="canvasLocation" x="-4959.420289855073" y="5651.7857142857138"/>
         </scene>
+        <!--With Draw Summary Thai Post View Controller-->
+        <scene sceneID="qFz-cB-ZML">
+            <objects>
+                <viewController storyboardIdentifier="WithDrawSummaryThaiPostViewController" id="JCr-hh-l2D" customClass="WithDrawSummaryThaiPostViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3UB-bE-97Z">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Zxq-zu-95S">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Lwb-2D-fUD">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="DDA-vz-x02">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Zxq-zu-95S" firstAttribute="leading" secondItem="ZIm-7H-Isf" secondAttribute="leading" id="HmT-QC-9uV"/>
+                            <constraint firstAttribute="trailing" secondItem="Zxq-zu-95S" secondAttribute="trailing" id="Id7-SL-rLU"/>
+                            <constraint firstItem="Zxq-zu-95S" firstAttribute="top" secondItem="ZIm-7H-Isf" secondAttribute="top" id="peh-14-qKh"/>
+                            <constraint firstAttribute="bottom" secondItem="Zxq-zu-95S" secondAttribute="bottom" id="tRH-A1-WyZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ZIm-7H-Isf"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="FEg-D0-ev5"/>
+                    <connections>
+                        <outlet property="summaryCollectionView" destination="Zxq-zu-95S" id="0e9-cb-urk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="28R-QD-Ag6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1939" y="6370"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bg-office-map" width="1138" height="800"/>

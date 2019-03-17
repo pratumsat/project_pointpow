@@ -13,8 +13,10 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
     var name:String = ""
     var mobile:String = ""
     var myAddress:[[String:AnyObject]]?
+    
     var ems_price:Int = 0
     var fee_price:Int = 0
+    var addressModel:[String:AnyObject]?
     
     
     var withdrawData:(premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double))?{
@@ -75,6 +77,7 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
     
     func updateUI(_ address:AnyObject){
         if let data = address as? [String:AnyObject] {
+            self.addressModel = data
             
             let address = data["address"] as? String ?? ""
             let districtName = data["district"]?["name_in_thai"] as? String ?? ""
@@ -156,6 +159,7 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
         
         modelCtrl.getUserData(params: nil , isLoading , succeeded: { (result) in
             if let data = result as? [String:AnyObject] {
+                
                 let first_name = data["goldsaving_member"]?["firstname"] as? String ?? ""
                 let last_name = data["goldsaving_member"]?["lastname"]as? String ?? ""
                 let mobile = data["goldsaving_member"]?["mobile"]as? String ?? ""
@@ -318,8 +322,11 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
                     }else{
                         print("summary thaipost")
                         
-                        if let  address = self.shippingAddress{
-                            
+                        if let  address = self.addressModel {
+                            self.showWithDrawSummaryThaiPostView(true,
+                                                                 withdrawData: self.withdrawData,
+                                                                 addressModel: address,
+                                                                 ems: self.ems_price, fee: self.fee_price)
                         }else{
                             self.showShippinhAddress()
                         }

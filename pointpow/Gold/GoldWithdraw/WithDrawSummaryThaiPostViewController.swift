@@ -11,7 +11,7 @@ import Alamofire
 
 class WithDrawSummaryThaiPostViewController: BaseViewController, UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    var withdrawData:(premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double))?{
+    var withdrawData:(premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double, goldPrice:Int))?{
         didSet{
             print(withdrawData!)
         }
@@ -165,20 +165,45 @@ class WithDrawSummaryThaiPostViewController: BaseViewController, UICollectionVie
                 var arrayBox:[[String:AnyObject]] = []
                 let premium = self.withdrawData!.premium
                 let price = Int(self.withdrawData!.goldAmountToUnit.price)
+                let goldPrice = Int(self.withdrawData!.goldAmountToUnit.goldPrice)
+                let goldUnit = self.withdrawData!.goldAmountToUnit.unit
                 let emsfee = self.ems! + self.fee!
                 var totalServicePrice = 0
-                var amountBox = price/50000  // 50,000 max delivery to amount
+                
+                var goldToBaht = 0
+                if goldUnit == 0 {
+                    goldToBaht = goldPrice/4  //salueng
+                }else{
+                    goldToBaht = goldPrice  //baht
+                }
+                var priceToBox = price
+                
+                while priceToBox > 50000 { // 50,000 max delivery to amount
+                    priceToBox -= goldToBaht
+                }
+                
+                var amountBox = price/priceToBox
+                
+                
                 if amountBox > 0 {
                     for n in 1...amountBox {
-                        var insurance = 50000/500
-                        insurance = insurance*10
+                        var insurance = priceToBox/500
+                        if priceToBox%500 > 0 {
+                            insurance += 1
+                        }
+                        if priceToBox <= 20000 {
+                            insurance = insurance*5
+                        }else{
+                            insurance = insurance*10
+                        }
+                        
                         
                         totalServicePrice += emsfee + insurance
                         arrayBox.append(["order" : n as AnyObject, "price": (emsfee + insurance) as AnyObject])
                     }
                 }
                 
-                let diffAmountBox = price%50000 // diff
+                let diffAmountBox = price%priceToBox // diff
                 if diffAmountBox > 0 {
                     amountBox += 1
                     

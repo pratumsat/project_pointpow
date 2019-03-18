@@ -910,59 +910,10 @@ extension WithDrawResultViewController{
                 
                 
             }
-            
-            
-            
             return CGSize(width: width, height: height)
         }else{
             let width = collectionView.frame.width
-            let cheight = collectionView.frame.height
-            var height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*800 , rowHeight: 20.0)
-            
-            if let data = self.withDrawResult as? [String:AnyObject]{
-                let statusTransaction = data["status"] as? String ?? ""
-                let shipping = data["withdraw_transaction"]?["shipping"] as? [String:AnyObject] ?? [:]
-                let statusShipping = shipping["status"] as? String ?? ""
-                let type = shipping["type"] as? String ?? ""
-                
-                
-                switch type.lowercased() {
-                case "office" :
-                    if statusTransaction.lowercased() == "cancel" {
-                        //transaction cancel
-                        
-                        height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*400 , rowHeight: 20.0)
-                    }else{
-                        //transaction success
-                        
-                        if statusShipping != "success" {
-                            height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*800 , rowHeight: 20.0)
-                        }else{
-                            if self.hideFinishButton {
-                                height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*450 , rowHeight: 20.0)
-                            }
-                        }
-                        
-                    }
-                    break
-                case "thaipost" : break
-                    
-                default:
-                    break
-                }
-                
-                
-            }
-            if height > cheight {
-                let vheight = CGFloat(80)
-                return CGSize(width: width, height: vheight)
-            }else{
-                let vheight = abs((cheight) - (((height))+40))
-                return CGSize(width: width, height: vheight)
-            }
-            
-            
-            
+            return CGSize(width: width, height: CGFloat(60))
         }
         
     }

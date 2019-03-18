@@ -68,14 +68,13 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         self.title = NSLocalizedString("string-title-gold-page", comment: "")
         self.setUp()
         
-        
-     
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.getDataMember(){
             self.updateView()
+            
         }
         
     }
@@ -407,19 +406,10 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         
         let menu = self.arrayItem[indexPath.section]
         
-        let cheight = collectionView.frame.height
+        
         if menu == "logo" {
-            if isRegistered {
-                let width = collectionView.frame.width
-                let height = abs((cheight+(80)) - (((width/375*260))+((width/375*250))+(width/375*355)))
-                
-                return CGSize(width: width, height: height)
-            }else{
-                let width = collectionView.frame.width
-                let height = abs(cheight - (((width/375*260))+(40+80)))
-                
-                return CGSize(width: width, height: height)
-            }
+            let width = collectionView.frame.width
+            return CGSize(width: width, height: CGFloat(60))
         }
         if menu == "register" {
             let height = CGFloat(40.0)

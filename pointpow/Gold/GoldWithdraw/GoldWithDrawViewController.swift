@@ -19,8 +19,8 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
     var gold_price_average:NSNumber = NSNumber(value: 0.0)
     
     var drawCount = 0
-    var amountToUnit:(amount:Int, unit:Int , price:Double)?
-    var withdrawData:(premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double))?
+    var amountToUnit:(amount:Int, unit:Int , price:Double , goldPrice:Int)?
+    var withdrawData:(premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double, goldPrice:Int))?
     
     var sumWeight:Double = 0.00
     
@@ -117,7 +117,7 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "WithdrawCell", for: indexPath) as? WithdrawCell {
                 cell = item
                 
-                item.gold_balance = self.gold_balance
+                item.gold_balance = 2000000//self.gold_balance
                 
                 self.amountTextField = item.amountTextField
                 self.premiumLabel = item.premiumLabel
@@ -138,7 +138,7 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
                 
                 item.goldSpendCallback = { (amount, unit) in
                     
-                    self.amountToUnit = (amount: amount, unit: unit, price: 0.0)
+                    self.amountToUnit = (amount: amount, unit: unit, price: 0.0 , goldPrice: 0)
                     if unit == 0 {
                        //salueng
                         let weightToSalueng = 15.244/4
@@ -156,6 +156,7 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
                             
                             
                             self.amountToUnit?.price = Double(stg)*gramToBaht
+                            self.amountToUnit?.goldPrice = goldprice.intValue
                         }
                         
                        
@@ -175,6 +176,7 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
                             
                            
                             self.amountToUnit?.price = Double(btg)*gramToBaht
+                            self.amountToUnit?.goldPrice = goldprice.intValue
                         }
                     }
                 }
@@ -280,11 +282,7 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
             return CGSize(width: width, height: height)
         } else {
             let width = collectionView.frame.width
-            let cheight = collectionView.frame.height
-            let height = abs((cheight) - (((width/360*190))+(250)+(150)))
-            
-            
-            return CGSize(width: width, height: height)
+            return CGSize(width: width, height: CGFloat(60))
         }
         
     }

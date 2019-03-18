@@ -11,7 +11,7 @@ import Alamofire
 
 class WithDrawSummaryOfficeViewController: BaseViewController, UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    var withdrawData:(premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double))?{
+    var withdrawData:(premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double, goldPrice:Int))?{
         didSet{
             print(withdrawData!)
         }
@@ -183,10 +183,7 @@ class WithDrawSummaryOfficeViewController: BaseViewController, UICollectionViewD
             
         }else {
             let width = collectionView.frame.width
-            let cheight = collectionView.frame.height
-            let height = abs((cheight) - (((width/375*240))+100))
-            
-            return CGSize(width: width, height: height)
+            return CGSize(width: width, height: CGFloat(60))
         }
         
         

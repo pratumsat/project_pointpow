@@ -169,17 +169,7 @@ class SavingResultViewController: BaseViewController , UICollectionViewDelegate 
             return CGSize(width: width, height: height)
         }else{
             let width = collectionView.frame.width
-            let cheight = collectionView.frame.height
-            let height = abs((cheight) - (((width/360*330))+30))
-            
-            if height > cheight {
-                let vheight = CGFloat(80)
-                return CGSize(width: width, height: vheight)
-            }else{
-                let vheight = abs((cheight) - (((height))+40))
-                return CGSize(width: width, height: vheight)
-            }
-            //return CGSize(width: width, height: height)
+            return CGSize(width: width, height: CGFloat(60))
         }
         
     }

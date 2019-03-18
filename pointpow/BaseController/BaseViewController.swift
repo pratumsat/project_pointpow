@@ -328,7 +328,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
     }
     
 
-    func chooseShippingPage(_ animated:Bool, withdrawData:(premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double))?){
+    func chooseShippingPage(_ animated:Bool, withdrawData:(premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double, goldPrice:Int))?){
         if let vc:GoldWithDrawChooseShippingViewController  = self.storyboard?.instantiateViewController(withIdentifier: "GoldWithDrawChooseShippingViewController") as? GoldWithDrawChooseShippingViewController {
     
             vc.withdrawData = withdrawData
@@ -336,7 +336,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         }
     }
     
-    func showWithDrawSummaryOfficeView(_ animated:Bool, withdrawData:(premium:Int,  goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double))?){
+    func showWithDrawSummaryOfficeView(_ animated:Bool, withdrawData:(premium:Int,  goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double, goldPrice:Int))?){
         
         if let vc:WithDrawSummaryOfficeViewController  = self.storyboard?.instantiateViewController(withIdentifier: "WithDrawSummaryOfficeViewController") as? WithDrawSummaryOfficeViewController {
             vc.withdrawData  = withdrawData
@@ -345,7 +345,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
     }
     
     func showWithDrawSummaryThaiPostView(_ animated:Bool,
-                                         withdrawData:(premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double))?,
+                                         withdrawData:(premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double, goldPrice:Int))?,
                                          addressModel: [String:AnyObject] , ems:Int ,fee: Int, name:String, mobile:String){
         
         if let vc:WithDrawSummaryThaiPostViewController  = self.storyboard?.instantiateViewController(withIdentifier: "WithDrawSummaryThaiPostViewController") as? WithDrawSummaryThaiPostViewController {

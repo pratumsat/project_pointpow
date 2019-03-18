@@ -8,7 +8,7 @@
 
 import UIKit
 import SWRevealViewController
-class GoldBaseViewController: BaseViewController {
+class GoldBaseViewController: BaseViewController{
 
     var userData:AnyObject?
     var goldPrice:AnyObject?
@@ -17,6 +17,7 @@ class GoldBaseViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         if (self.revealViewController() != nil) {
             self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())

@@ -94,11 +94,16 @@ class PopUpInfoThaiPostViewController: BaseViewController {
             if let data = result as? [String:AnyObject] {
                 let shipping = data["shipping"] as? [[String:AnyObject]] ?? []
                 if shipping.count > 0 {
-                    let ems_price = shipping[0]["ems_price"] as? NSNumber ?? 0
-                    let fee_price = shipping[0]["fee_price"] as? NSNumber ?? 0
-                    
-                    self.ems_price = ems_price.intValue
-                    self.fee_price = fee_price.intValue
+                    for item in shipping {
+                        let name = item["name"] as? String ?? ""
+                        let ems_price = item["ems_price"] as? NSNumber ?? 0
+                        let fee_price = item["fee_price"] as? NSNumber ?? 0
+                        
+                        if name.lowercased() == "thaipost"{
+                            self.ems_price = ems_price.intValue
+                            self.fee_price = fee_price.intValue
+                        }
+                    }
                     
                 }
             }

@@ -210,6 +210,7 @@ class WithDrawSummaryThaiPostViewController: BaseViewController, UICollectionVie
                 item.totalLabel.text = numberFormatter.string(from: NSNumber(value: totalPrice))
                 
                 
+                item.arrayBox = arrayBox
                 
                 
                 cell = item

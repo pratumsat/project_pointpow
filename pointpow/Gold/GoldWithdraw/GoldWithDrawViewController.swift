@@ -197,9 +197,9 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
                         
                         }else{
                          
-                            if goldbalance < 0 {
-                                self.showMessagePrompt(NSLocalizedString("string-dailog-saving-gold-pointspend-not-enogh", comment: ""))
-                            }else{
+                            //if goldbalance < 0 {
+                           //     self.showMessagePrompt(NSLocalizedString("string-dailog-saving-gold-pointspend-not-enogh", comment: ""))
+                            //}else{
                             
                                 if let amountunit = self.amountToUnit {
                                 
@@ -210,8 +210,8 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
                                     
                                 }
                                 
-                                
-                            }
+                            
+                           // }
                             
                             
                         }

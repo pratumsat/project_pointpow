@@ -733,6 +733,8 @@ struct Constant {
             static let FREIND_RECENT = CGFloat(15.0)
             static let FRIEND_HEADER_RECENT = CGFloat(20.0)
             static let SEGMENT = CGFloat(18.0)
+            static let VALUE_EXPEND = CGFloat(18.0)
+            static let VALUE_EXPEND2 = CGFloat(22.0)
         }
        
         //Noto Sans Thai

@@ -25,9 +25,15 @@ class WithDrawThaiPostSummaryCell: UICollectionViewCell {
     
     var expandableCallback:((_ height:CGFloat)->Void)?
     
+    var arrayBox:[[String:AnyObject]]?{
+        didSet{
+            updateView()
+        }
+    }
+    
     var on = true
     
-    var heightView = CGFloat(100.0)
+    var heightView = CGFloat(0.0)
     var hideView = CGFloat(0.0)
     
     override func awakeFromNib() {
@@ -47,16 +53,75 @@ class WithDrawThaiPostSummaryCell: UICollectionViewCell {
     
     func updateView(){
         self.heightContainerConstraints.constant = 0
+        self.containerView.isHidden = true
         
+        
+        if let array = arrayBox {
+            for item in array {
+                addView(item)
+            }
+        }
+        
+    }
+    
+    func addView(_ item:[String:AnyObject]) {
+        let order = item["order"] as? NSNumber ?? 0
+        let price = item["price"] as? NSNumber ?? 0
+        let word = NSLocalizedString("string-thaipost-delivery-value", comment: "")
         let unitBaht = NSLocalizedString("unit-baht", comment: "")
         
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        let valuelabel = UILabel()
+        valuelabel.translatesAutoresizingMaskIntoConstraints = false
+        valuelabel.lineBreakMode = .byWordWrapping
+        valuelabel.font = UIFont(name: Constant.Fonts.THAI_SANS_REGULAR, size: Constant.Fonts.Size.VALUE_EXPEND)!
+        valuelabel.text = "\(word) \(order)"
+        valuelabel.textColor = UIColor.darkGray
+        valuelabel.sizeToFit()
+        view.addSubview(valuelabel)
+        
+        valuelabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
+        valuelabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        let pricelabel = UILabel()
+        pricelabel.translatesAutoresizingMaskIntoConstraints = false
+        pricelabel.lineBreakMode = .byWordWrapping
+        pricelabel.font = UIFont(name: Constant.Fonts.THAI_SANS_REGULAR, size: Constant.Fonts.Size.VALUE_EXPEND2)!
+        pricelabel.text = "\(price) \(unitBaht)"
+        pricelabel.textColor = UIColor.darkGray
+        pricelabel.sizeToFit()
+        view.addSubview(pricelabel)
+        
+        pricelabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
+        pricelabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        if let lastView = self.containerView.subviews.last {
+            self.containerView.addSubview(view)
+            view.leftAnchor.constraint(equalTo: self.containerView.leftAnchor, constant: 0).isActive = true
+            view.rightAnchor.constraint(equalTo: self.containerView.rightAnchor, constant: 0).isActive = true
+            view.topAnchor.constraint(equalTo: lastView.bottomAnchor, constant: 0).isActive = true
+            view.heightAnchor.constraint(equalTo: pricelabel.heightAnchor, constant: 0).isActive = true
+        }else{
+            self.containerView.addSubview(view)
+            view.leftAnchor.constraint(equalTo: self.containerView.leftAnchor, constant: 0).isActive = true
+            view.rightAnchor.constraint(equalTo: self.containerView.rightAnchor, constant: 0).isActive = true
+            view.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 0).isActive = true
+            view.heightAnchor.constraint(equalTo: pricelabel.heightAnchor, constant: 0).isActive = true
+        }
+        
+        self.heightView += 30
     }
     
     
     
     @objc func expandableTapped(){
         self.expandableCallback?(on ? heightView : hideView)
+        self.containerView.isHidden = on ? false : true
         self.heightContainerConstraints.constant = on ? heightView : hideView
+        
         
         self.setNeedsUpdateConstraints()
        

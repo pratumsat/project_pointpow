@@ -56,12 +56,14 @@ class PointManageViewController: BaseViewController {
         let okButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-ok", comment: ""), style: .default, handler: {
             (alert) in
             
-            self.showPersonalPopup(true) {
-                self.isFriend = false
-                self.showSettingPassCodeModalView()
-            }
-          
+//            self.showPersonalPopup(true) {
+//                self.isFriend = false
+//
+//            }
+//            self.showSettingPassCodeModalView()
+            self.showPointTransferView(true)
         })
+        
         let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: nil)
         
         

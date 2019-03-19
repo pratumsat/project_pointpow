@@ -360,7 +360,7 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
                         
                     }
                 }
-               
+
             }
             
         }

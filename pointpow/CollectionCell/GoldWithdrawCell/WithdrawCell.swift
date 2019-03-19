@@ -127,6 +127,14 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
         
         result1baht1View.borderClearProperties(borderWidth: 1)
         result1baht2View.borderClearProperties(borderWidth: 1)
+     
+        
+        self.amountTextField.borderRedColorProperties(borderWidth: 1)
+        self.amountTextField.setRightPaddingPoints(10)
+        
+        //self.unitTextField.borderRedColorProperties(borderWidth: 1)
+        self.unitTextField.setRightPaddingPoints(40)
+        
         
         
         self.amountTextField.delegate = self
@@ -502,11 +510,6 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
         self.headView.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
 
         
-        self.amountTextField.borderRedColorProperties(borderWidth: 1)
-        self.amountTextField.setRightPaddingPoints(10)
-        
-        //self.unitTextField.borderRedColorProperties(borderWidth: 1)
-        self.unitTextField.setRightPaddingPoints(40)
         
         
        

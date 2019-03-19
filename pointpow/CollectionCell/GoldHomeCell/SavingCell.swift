@@ -26,7 +26,9 @@ class SavingCell: UICollectionViewCell , UITextFieldDelegate{
         self.contentView.updateLayerCornerRadiusProperties()
         self.shadowCellProperties()
         
-     
+        self.goldamountView.borderClearProperties(borderWidth: 1)
+        self.pointpowTextField.borderRedColorProperties(borderWidth: 1)
+        self.pointpowTextField.setRightPaddingPoints(10)
     }
 
     override var bounds : CGRect {
@@ -39,9 +41,7 @@ class SavingCell: UICollectionViewCell , UITextFieldDelegate{
         self.headView.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
         
         
-        self.goldamountView.borderClearProperties(borderWidth: 1)
-        self.pointpowTextField.borderRedColorProperties(borderWidth: 1)
-        self.pointpowTextField.setRightPaddingPoints(10)
+
         
         
        

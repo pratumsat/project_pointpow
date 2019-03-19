@@ -42,11 +42,12 @@ class ResultTransferViewController: BaseViewController  , UICollectionViewDelega
         
         self.registerNib(self.resultCollectionView, "ItemListResultCell")
         self.registerNib(self.resultCollectionView, "ItemFavorCell")
+        self.registerNib(self.resultCollectionView, "LogoGoldCell")
         self.registerHeaderNib(self.resultCollectionView, "HeadCell")
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -77,6 +78,11 @@ class ResultTransferViewController: BaseViewController  , UICollectionViewDelega
                     })
                 }
                 cell = favCell
+            }
+        }else{
+            if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "LogoGoldCell", for: indexPath) as? LogoGoldCell {
+                cell = item
+                
             }
         }
      
@@ -114,7 +120,7 @@ class ResultTransferViewController: BaseViewController  , UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0 {
             let width = collectionView.frame.width - 40
-            let height = width/360*400
+            let height = CGFloat(400) //width/360*400
             return CGSize(width: width, height: height)
             
         }else if indexPath.section == 1 {
@@ -123,6 +129,10 @@ class ResultTransferViewController: BaseViewController  , UICollectionViewDelega
             let height = CGFloat(40)
             return CGSize(width: width, height: height)
             
+        }else{
+            let width = collectionView.frame.width
+            let height = CGFloat(60)
+            return CGSize(width: width, height: height)
         }
         return CGSize.zero
     }

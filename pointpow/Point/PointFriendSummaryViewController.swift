@@ -51,12 +51,13 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
         self.resultCollectionView.showsVerticalScrollIndicator = false
         self.registerNib(self.resultCollectionView, "ItemFriendSummaryCell")
         self.registerNib(self.resultCollectionView, "ItemConfirmSummaryCell")
+        self.registerNib(self.resultCollectionView, "LogoGoldCell")
         self.registerHeaderNib(self.resultCollectionView, "HeadCell")
     
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -77,9 +78,7 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
                 
                 
             }
-        }
-        
-        if indexPath.section == 1 {
+        } else if indexPath.section == 1 {
             if let confirmCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemConfirmSummaryCell", for: indexPath) as? ItemConfirmSummaryCell {
                 
                 confirmCell.shareCallback = {
@@ -98,6 +97,11 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
                 }
                 
                 cell = confirmCell
+            }
+        }else{
+            if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "LogoGoldCell", for: indexPath) as? LogoGoldCell {
+                cell = item
+                
             }
         }
       
@@ -146,7 +150,7 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
         
         if indexPath.section == 0 {
             let width = collectionView.frame.width - 40
-            let height = (width/280*360) + addOnHeightModelDevice()
+            let height = CGFloat(420) //(width/280*360) + addOnHeightModelDevice()
             return CGSize(width: width, height: height)
             
         }else if indexPath.section == 1 {
@@ -155,6 +159,10 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
             let height = CGFloat(40)
             return CGSize(width: width, height: height)
             
+        }else{
+            let width = collectionView.frame.width
+            let height = CGFloat(60)
+            return CGSize(width: width, height: height)
         }
         return CGSize.zero
     }

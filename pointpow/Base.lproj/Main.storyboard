@@ -3401,11 +3401,11 @@
             <objects>
                 <viewController storyboardIdentifier="FavorPopupViewController" id="che-H4-VDX" customClass="FavorPopupViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hbi-sd-2aG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="350"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Klt-H6-0Mr">
-                                <rect key="frame" x="0.0" y="44" width="414" height="522"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="272"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ตั้งชื่อรายการโปรด" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8T3-f2-te5">
                                         <rect key="frame" x="134" y="30" width="146" height="34"/>
@@ -3471,7 +3471,7 @@
                         <viewLayoutGuide key="safeArea" id="ItS-Tu-hEA"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="414" height="600"/>
+                    <size key="freeformSize" width="414" height="350"/>
                     <connections>
                         <outlet property="nameTextField" destination="oaY-34-nia" id="73l-8p-Svb"/>
                         <outlet property="saveButton" destination="bDt-vF-oLM" id="4t1-w6-vM4"/>

@@ -798,7 +798,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         let presenter: Presentr = {
             
             let w = self.view.frame.width * 0.8
-            let h = w/390*300
+            let h =  CGFloat(250) //w/390*300
             let width = ModalSize.custom(size: Float(w))
             let height = ModalSize.custom(size: Float(h))
             

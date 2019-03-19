@@ -207,11 +207,9 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
     func setUp(){
         self.backgroundImage?.image = nil
        
-        self.mobileTextField.addDoneButtonToKeyboard(myAction:
-            #selector(self.mobileTextField.resignFirstResponder))
+        self.mobileTextField.addDoneButtonToKeyboard()
         
-        self.idcardTextField.addDoneButtonToKeyboard(myAction:
-            #selector(self.idcardTextField.resignFirstResponder))
+        self.idcardTextField.addDoneButtonToKeyboard()
         
         if #available(iOS 10.0, *) {
             self.firstNameTextField.textContentType = UITextContentType(rawValue: "")

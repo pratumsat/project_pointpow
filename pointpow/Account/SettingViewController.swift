@@ -13,11 +13,11 @@ class SettingViewController: BaseViewController, UICollectionViewDelegate , UICo
     
     var language = [(id:"en" ,lang:"English"),
                     (id:"th",lang:"ไทย")]
-    
+    var selectedRow = 0
     var languageId =  "en"
     var textLanguage = "English"
     var pickerView:UIPickerView?
-    
+    var dummyview:UITextField?
     
     
     override func viewDidLoad() {
@@ -139,24 +139,38 @@ class SettingViewController: BaseViewController, UICollectionViewDelegate , UICo
         
         
         
-        let dummyview  = UITextField(frame: CGRect.zero)
-        self.view.addSubview(dummyview)
+        dummyview  = UITextField(frame: CGRect.zero)
+        dummyview!.delegate = self
+        dummyview!.returnKeyType = .done
         
-        dummyview.inputView = pickerView
-        dummyview.becomeFirstResponder()
-            dummyview.addDoneButtonToKeyboard(myAction:
-                #selector(dummyview.resignFirstResponder))
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(selectLanguage))
+        
+        dummyview!.addDoneButtonToKeyboard(doneButton : done)
+        
+        self.view.addSubview(dummyview!)
+        
+        dummyview!.inputView = pickerView
+        dummyview!.becomeFirstResponder()
         
         var i = 0
         for lang  in language {
             if DataController.sharedInstance.getLanguage() == lang.id {
                 self.languageId = lang.id
                 self.textLanguage = lang.lang
+                self.selectedRow = i
                 pickerView!.selectRow(i, inComponent: 0, animated: true)
                 break
             }
             i += 1
         }
+        
+    }
+    @objc func selectLanguage(){
+        if DataController.sharedInstance.getLanguage() == self.language[selectedRow].id {
+            dummyview?.resignFirstResponder()
+            return
+        }
+        self.confirmSetLanguage(self.language[selectedRow].id)
         
     }
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -169,6 +183,10 @@ class SettingViewController: BaseViewController, UICollectionViewDelegate , UICo
             let userTappedOnSelectedRow = selectedRowFrame.contains(tapRecognizer.location(in: self.pickerView))
             if userTappedOnSelectedRow {
                 let selectedRow = self.pickerView!.selectedRow(inComponent: 0)
+                if DataController.sharedInstance.getLanguage() == self.language[selectedRow].id {
+                    dummyview?.resignFirstResponder()
+                    return
+                }
                 self.confirmSetLanguage(self.language[selectedRow].id)
              
             }
@@ -182,6 +200,7 @@ class SettingViewController: BaseViewController, UICollectionViewDelegate , UICo
         return self.language.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        self.selectedRow = row
         return "\(self.language[row].lang)"
     }
 

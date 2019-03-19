@@ -138,8 +138,7 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
         
         
         self.amountTextField.delegate = self
-        self.amountTextField.addDoneButtonToKeyboard(myAction:
-                #selector(self.amountTextField.resignFirstResponder))
+        self.amountTextField.addDoneButtonToKeyboard()
         
         
         self.updateView()
@@ -441,8 +440,7 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
             self.unitTextField.tintColor = UIColor.clear
             self.unitTextField.isUserInteractionEnabled = true
             self.unitTextField.inputView = pickerView
-                self.unitTextField.addDoneButtonToKeyboard(myAction:
-                    #selector(self.unitTextField.resignFirstResponder))
+                self.unitTextField.addDoneButtonToKeyboard()
 
             self.unitTextField.borderRedColorProperties(borderWidth: 1)
             self.unitTextField.isEnabled = true

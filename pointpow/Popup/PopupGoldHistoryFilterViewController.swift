@@ -86,8 +86,6 @@ class PopupGoldHistoryFilterViewController: BaseViewController  ,UIPickerViewDel
         self.startDateTextField.inputView = pickerView
         self.startDateTextField.inputAccessoryView = toolbar
         
-            self.startDateTextField.addDoneButtonToKeyboard(myAction:
-                #selector(self.startDateTextField.resignFirstResponder))
         
         let toolbar2 = UIToolbar();
         toolbar2.sizeToFit()
@@ -109,8 +107,6 @@ class PopupGoldHistoryFilterViewController: BaseViewController  ,UIPickerViewDel
         self.endDateTextField.inputView = pickerView2
         self.endDateTextField.inputAccessoryView = toolbar2
         
-            self.endDateTextField.addDoneButtonToKeyboard(myAction:
-                #selector(self.endDateTextField.resignFirstResponder))
         
         self.statusPickerView = UIPickerView()
         self.statusPickerView!.delegate = self

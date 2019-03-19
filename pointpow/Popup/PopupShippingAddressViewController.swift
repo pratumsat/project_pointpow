@@ -224,12 +224,9 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
         self.subDistrictTextField.isEnabled = false
         self.postCodeTextField.isEnabled = false
         
-            self.provinceTextField.addDoneButtonToKeyboard(myAction:
-                #selector(self.provinceTextField.resignFirstResponder))
-            self.districtTextField.addDoneButtonToKeyboard(myAction:
-                #selector(self.districtTextField.resignFirstResponder))
-            self.subDistrictTextField.addDoneButtonToKeyboard(myAction:
-                #selector(self.subDistrictTextField.resignFirstResponder))
+            self.provinceTextField.addDoneButtonToKeyboard()
+            self.districtTextField.addDoneButtonToKeyboard()
+            self.subDistrictTextField.addDoneButtonToKeyboard()
         
         self.nameTextField.autocorrectionType = .no
         self.numberPhoneTextField.autocorrectionType = .no

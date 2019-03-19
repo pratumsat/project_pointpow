@@ -69,9 +69,7 @@ class PersonalViewController: BaseViewController  {
         self.birthdayTextField.inputView = pickerView
         self.birthdayTextField.inputAccessoryView = toolbar
         
-            self.birthdayTextField.addDoneButtonToKeyboard(myAction:
-                #selector(self.birthdayTextField.resignFirstResponder))
-        
+          
         self.backgroundImage?.image = nil
         self.nextButton.borderClearProperties(borderWidth: 1)
         

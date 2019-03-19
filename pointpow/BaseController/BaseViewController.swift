@@ -251,7 +251,12 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
                 if !self.isShowKeyBoard {
                     self.isShowKeyBoard = true
                     
-                    self.gapHeightKeyboard  += self.positionYTextField - hH
+                    if (self.positionYTextField - hH)  > hH{
+                        self.gapHeightKeyboard  += 200
+                    }else{
+                        self.gapHeightKeyboard  += self.positionYTextField - hH
+                    }
+                    
                     
                     self.view.frame.origin.y -= self.gapHeightKeyboard
                     self.windowSubview?.isHidden = true

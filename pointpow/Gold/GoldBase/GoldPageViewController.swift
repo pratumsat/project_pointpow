@@ -148,7 +148,7 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         //let y = textField.frame.origin.y + (textField.superview?.frame.origin.y)!;
         let pointInTable = textField.superview?.convert(textField.frame.origin, to: self.homeCollectionView)
         let y =  pointInTable?.y ?? 600
-        self.positionYTextField = y + 60
+        self.positionYTextField = y
         
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -417,17 +417,17 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         }
         if menu == "goldprice" {
             let width = collectionView.frame.width - 40
-            let height = width/375*260
+            let height = CGFloat(250) //width/375*260
             return CGSize(width: width, height: height)
         }
         if menu == "goldbalance"{
             let width = collectionView.frame.width - 40
-            let height = width/375*250
+            let height = CGFloat(200) //width/375*250
             return CGSize(width: width, height: height)
         }
         if menu == "saving"{
             let width = collectionView.frame.width - 40
-            let height = width/375*355
+            let height =   CGFloat(300) //width/375*355
             return CGSize(width: width, height: height)
         }
         

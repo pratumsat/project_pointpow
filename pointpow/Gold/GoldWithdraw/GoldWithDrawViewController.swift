@@ -99,7 +99,6 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
                 numberFormatter.numberStyle = .decimal
                 numberFormatter.minimumFractionDigits = 4
                 
-                
                 item.goldBalanceLabel.text = numberFormatter.string(from: self.gold_balance)
                 
                 numberFormatter = NumberFormatter()

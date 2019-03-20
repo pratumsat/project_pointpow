@@ -148,7 +148,7 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         //let y = textField.frame.origin.y + (textField.superview?.frame.origin.y)!;
         let pointInTable = textField.superview?.convert(textField.frame.origin, to: self.homeCollectionView)
         let y =  pointInTable?.y ?? 600
-        self.positionYTextField = y
+        self.positionYTextField = y + 50
         
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

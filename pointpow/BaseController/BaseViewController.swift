@@ -236,6 +236,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             bottomSafeArea = bottomLayoutGuide.length
         }
         self.positionYTextField -= bottomSafeArea
+        self.positionYTextField += 50
         
         print("positionTextField y \(self.positionYTextField)")
         print("half height \(hH)")

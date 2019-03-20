@@ -179,6 +179,10 @@
 		C1AD50B72188000B00F74415 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AD50B62188000B00F74415 /* Constant.swift */; };
 		C1B542DB219A85590040DDE6 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B542DA219A85590040DDE6 /* ChangePasswordViewController.swift */; };
 		C1B542DD219ABE9A0040DDE6 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B542DC219ABE9A0040DDE6 /* SettingViewController.swift */; };
+		C1DA27C3224200C2000C0715 /* WithDrawResultThaiPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DA27C1224200C2000C0715 /* WithDrawResultThaiPostCell.swift */; };
+		C1DA27C4224200C2000C0715 /* WithDrawResultThaiPostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1DA27C2224200C2000C0715 /* WithDrawResultThaiPostCell.xib */; };
+		C1DA27C722421C3B000C0715 /* WithDrawResultThaiPostSuccessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DA27C522421C3B000C0715 /* WithDrawResultThaiPostSuccessCell.swift */; };
+		C1DA27C822421C3B000C0715 /* WithDrawResultThaiPostSuccessCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1DA27C622421C3B000C0715 /* WithDrawResultThaiPostSuccessCell.xib */; };
 		C1DEBE8C2188115D00CBB95F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1DEBE8B2188115D00CBB95F /* GoogleService-Info.plist */; };
 		C1DEBE902188297B00CBB95F /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DEBE8F2188297A00CBB95F /* ScannerViewController.swift */; };
 		C1DEBE92218829D900CBB95F /* Scanner2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DEBE91218829D900CBB95F /* Scanner2ViewController.swift */; };
@@ -407,6 +411,10 @@
 		C1AD50B62188000B00F74415 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		C1B542DA219A85590040DDE6 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		C1B542DC219ABE9A0040DDE6 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		C1DA27C1224200C2000C0715 /* WithDrawResultThaiPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawResultThaiPostCell.swift; sourceTree = "<group>"; };
+		C1DA27C2224200C2000C0715 /* WithDrawResultThaiPostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithDrawResultThaiPostCell.xib; sourceTree = "<group>"; };
+		C1DA27C522421C3B000C0715 /* WithDrawResultThaiPostSuccessCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawResultThaiPostSuccessCell.swift; sourceTree = "<group>"; };
+		C1DA27C622421C3B000C0715 /* WithDrawResultThaiPostSuccessCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithDrawResultThaiPostSuccessCell.xib; sourceTree = "<group>"; };
 		C1DEBE8B2188115D00CBB95F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C1DEBE8D2188178B00CBB95F /* pointpow.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = pointpow.entitlements; sourceTree = "<group>"; };
 		C1DEBE8F2188297A00CBB95F /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
@@ -1053,6 +1061,10 @@
 				C107CF3222218FE400C50B8C /* WithDrawOfficeSummaryCell.xib */,
 				C1249EC2223E6FC600F56FA0 /* WithDrawThaiPostSummaryCell.swift */,
 				C1249EC3223E6FC600F56FA0 /* WithDrawThaiPostSummaryCell.xib */,
+				C1DA27C1224200C2000C0715 /* WithDrawResultThaiPostCell.swift */,
+				C1DA27C2224200C2000C0715 /* WithDrawResultThaiPostCell.xib */,
+				C1DA27C522421C3B000C0715 /* WithDrawResultThaiPostSuccessCell.swift */,
+				C1DA27C622421C3B000C0715 /* WithDrawResultThaiPostSuccessCell.xib */,
 			);
 			path = GoldWithdrawCell;
 			sourceTree = "<group>";
@@ -1183,6 +1195,7 @@
 				C181F064220C00B8003F7C70 /* SaveButtonProfileCell.xib in Resources */,
 				C197FEE72207EA18002F24E8 /* NotoSansThai-SemiBold.ttf in Resources */,
 				C1817D97219BFCDE009507DB /* FriendCollectionCell.xib in Resources */,
+				C1DA27C822421C3B000C0715 /* WithDrawResultThaiPostSuccessCell.xib in Resources */,
 				C11BFCA8221BE72000F066DE /* WithDrawChooseShippingCell.xib in Resources */,
 				C1892E09221D0ED400F5412F /* WithDrawResultPointPowCell.xib in Resources */,
 				C1AD50842187F45900F74415 /* LaunchScreen.storyboard in Resources */,
@@ -1227,6 +1240,7 @@
 				C1F7610B2216E357000A2CA9 /* WithDrawMyGoldCell.xib in Resources */,
 				C107CF2A221FC92200C50B8C /* WidthDrawResultPointPow2Cell.xib in Resources */,
 				C13D998B21997AD6001A4794 /* HeadCell.xib in Resources */,
+				C1DA27C4224200C2000C0715 /* WithDrawResultThaiPostCell.xib in Resources */,
 				C1AD507F2187F45600F74415 /* Main.storyboard in Resources */,
 				C13D998621997938001A4794 /* LogoutCell.xib in Resources */,
 				C197FF3322083A6F002F24E8 /* GoldPriceCell.xib in Resources */,
@@ -1505,8 +1519,10 @@
 				C13D998D21997EF7001A4794 /* PersonalViewController.swift in Sources */,
 				C142741D21A68154003CC246 /* ResetPasswordViewController.swift in Sources */,
 				C10D94B42209717E0083FA47 /* NavGoldPage.swift in Sources */,
+				C1DA27C3224200C2000C0715 /* WithDrawResultThaiPostCell.swift in Sources */,
 				C11BFCB3221C0CB700F066DE /* PopupShippingAddressViewController.swift in Sources */,
 				C1249EBD22378DBB00F56FA0 /* PopupEditAddressViewController.swift in Sources */,
+				C1DA27C722421C3B000C0715 /* WithDrawResultThaiPostSuccessCell.swift in Sources */,
 				C13D998A21997AD6001A4794 /* HeadCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

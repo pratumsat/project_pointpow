@@ -59,6 +59,7 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
     var option = 0 {
         didSet{
             self.shippingAddress = nil
+            self.addressModel = nil
             if option == 1 {
                 if let _ = self.myAddress?.count {
                    self.showShippinhAddress()

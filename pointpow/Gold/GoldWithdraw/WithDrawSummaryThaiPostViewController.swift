@@ -37,8 +37,6 @@ class WithDrawSummaryThaiPostViewController: BaseViewController, UICollectionVie
     func setUp(){
         
         if let data = self.addressModel {
-            self.addressModel = data
-            
             let address = data["address"] as? String ?? ""
             let districtName = data["district"]?["name_in_thai"] as? String ?? ""
             let subdistrictName = data["subdistrict"]?["name_in_thai"] as? String ?? ""
@@ -58,7 +56,7 @@ class WithDrawSummaryThaiPostViewController: BaseViewController, UICollectionVie
             //get at pointpow
             let withdrawAmount = self.withdrawData!.goldAmountToUnit.amount
             var unit = ""
-            var pick = "thaipost" //
+            let pick = "thaipost" //
             if self.withdrawData!.goldAmountToUnit.unit == 0 {
                 unit = "salueng"
             }else{
@@ -67,35 +65,40 @@ class WithDrawSummaryThaiPostViewController: BaseViewController, UICollectionVie
             }
             let params:Parameters = ["withdraw_amount": withdrawAmount,
                                      "unit": unit,
-                                     "pick": pick]
+                                     "pick": pick,
+                                     "address_id": (self.addressModel?["id"] as? NSNumber)?.intValue ?? 0]
             print(params)
             
-//            self.modelCtrl.withdrawGold(params: params, true , succeeded: { (result) in
-//                if let data = result as? [String:AnyObject]{
-//                    let transactionId = data["withdraw"]?["transaction_no"] as? String ?? ""
-//
-//                    self.showGoldWithDrawResult(true , transactionId:  transactionId) {
-//                        if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
-//                            self.revealViewController()?.pushFrontViewController(saving, animated: true)
-//
-//                        }
-//                    }
-//
-//                }
-//
-//            }, error: { (error) in
-//                if let mError = error as? [String:AnyObject]{
-//                    let message = mError["message"] as? String ?? ""
-//                    print(message)
-//                    self.showMessagePrompt(message)
-//                }
-//
-//                print(error)
-//            }) { (messageError) in
-//                print("messageError")
-//                self.handlerMessageError(messageError)
-//
-//            }
+            
+         
+            self.modelCtrl.withdrawGold(params: params, true , succeeded: { (result) in
+                if let data = result as? [String:AnyObject]{
+                    let transactionId = data["withdraw"]?["transaction_no"] as? String ?? ""
+
+                    self.showGoldWithDrawResult(true , transactionId:  transactionId) {
+                        if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
+                            self.revealViewController()?.pushFrontViewController(saving, animated: true)
+
+                        }
+                    }
+
+                }
+
+            }, error: { (error) in
+                if let mError = error as? [String:AnyObject]{
+                    let message = mError["message"] as? String ?? ""
+                    print(message)
+                    self.showMessagePrompt(message)
+                }
+
+                print(error)
+            }) { (messageError) in
+                print("messageError")
+                self.handlerMessageError(messageError)
+
+            }
+            
+            
         }
         
         self.backgroundImage?.image = nil

@@ -168,9 +168,12 @@ class WithDrawResultViewController: BaseViewController  , UICollectionViewDelega
         
         self.resultCollectionView.showsVerticalScrollIndicator = false
         
+        self.registerNib(self.resultCollectionView, "WithDrawResultThaiPostSuccessCell")
+        self.registerNib(self.resultCollectionView, "WithDrawResultThaiPostCell")
         self.registerNib(self.resultCollectionView, "WithDrawResultPointPowCell")
         self.registerNib(self.resultCollectionView, "WidthDrawResultPointPow2Cell")
         self.registerNib(self.resultCollectionView, "WithDrawResultPointPowSuccessCell")
+        
         self.registerNib(self.resultCollectionView, "LogoGoldCell")
         
     }
@@ -214,7 +217,6 @@ extension WithDrawResultViewController {
                 item.bgSuccessImageView.image = nil
             }
             
-            
             if let data = self.withDrawResult as? [String:AnyObject]{
                 let created_at = data["updated_at"] as? String ?? ""
                 let transaction_number = data["withdraw_transaction"]?["transaction_no"] as? String ?? ""
@@ -225,49 +227,8 @@ extension WithDrawResultViewController {
                 let premium = data["withdraw_transaction"]?["premium"] as? NSNumber ?? 0
                 let statusTransaction = data["status"] as? String ?? ""
                 
-                let shipping = data["withdraw_transaction"]?["shipping"] as? [String:AnyObject] ?? [:]
-                let statusShipping = shipping["status"] as? String ?? ""
-                
-                
-                let unitSalueng = NSLocalizedString("unit-salueng", comment: "")
-                let unitBaht = NSLocalizedString("unit-baht", comment: "")
-                let unitBar = NSLocalizedString("unit-bar", comment: "")
-                print(gold_received)
-                
-                var txt = ""
-                for item in gold_received {
-                    let unit = item["unit"] as? String ?? ""
-                    let amount = item["amount"] as? NSNumber ?? 0
-                    
-                    if unit.lowercased() == "1salueng"{
-                        txt += "1 \(unitSalueng)"
-                    }
-                    if unit.lowercased() == "2salueng"{
-                        txt += "2 \(unitSalueng)"
-                    }
-                    if unit.lowercased() == "1baht"{
-                        txt += "1 \(unitBaht)"
-                    }
-                    if unit.lowercased() == "2baht"{
-                        txt += "2 \(unitBaht)"
-                    }
-                    if unit.lowercased() == "5baht"{
-                        txt += "5 \(unitBaht)"
-                    }
-                    if unit.lowercased() == "10baht"{
-                        txt += "10 \(unitBaht)"
-                    }
-                    txt +=  " \(amount) \(unitBar)\n"
-                }
-                txt = txt.substring(start: 0, end: (txt.count) - "\n".count)
-                item.formatGoldReceiveLabel.text = txt
-                
-                
-                if gold_unit.lowercased() == "salueng" {
-                    item.withdrawUnitLabel.text = NSLocalizedString("unit-salueng", comment: "")
-                }else{
-                    item.withdrawUnitLabel.text = NSLocalizedString("unit-baht", comment: "")
-                }
+                item.formatGoldReceiveLabel.text = self.goldFormat(gold_received: gold_received)
+                item.withdrawUnitLabel.text = self.goldUnitString(gold_unit: gold_unit)
                 
                 let numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal
@@ -278,18 +239,7 @@ extension WithDrawResultViewController {
                 item.transactionLabel.text = transaction_number
                 
                 
-                
-                
                 switch statusTransaction.lowercased() {
-                case "success":
-                    item.statusImageView.image = UIImage(named: "ic-status-success2")
-                    item.statusLabel.textColor = Constant.Colors.GREEN
-                    item.statusLabel.text = NSLocalizedString("string-dailog-gold-transaction-status-success", comment: "")
-                    
-                    item.shippingStatusLabel.isHidden = false
-                    item.shippingStatusTitleLabel.isHidden = false
-                    item.shippingLineView.isHidden = false
-                    break
                 case "cancel":
                     item.statusImageView.image = UIImage(named: "ic-status-cancel")
                     item.statusLabel.textColor = Constant.Colors.PRIMARY_COLOR
@@ -302,16 +252,6 @@ extension WithDrawResultViewController {
                 default:
                     break
                 }
-                if statusShipping != "success" {
-                    item.shippingStatusLabel.textColor = Constant.Colors.ORANGE
-                    item.shippingStatusLabel.text = NSLocalizedString("string-dailog-gold-shipping-office-status-waiting", comment: "")
-                }else{
-                    item.shippingStatusLabel.textColor = Constant.Colors.GREEN
-                    item.shippingStatusLabel.text = NSLocalizedString("string-dailog-gold-shipping-office-status-success", comment: "")
-                }
-
-         
-                
             }
             
         }
@@ -320,6 +260,7 @@ extension WithDrawResultViewController {
         }
         return cell!
     }
+    
     func sectionWithDrawShipOfficeWaiting(_ collectionView:UICollectionView, _ indexPath:IndexPath) -> UICollectionViewCell {
         var cell:UICollectionViewCell?
         
@@ -340,46 +281,8 @@ extension WithDrawResultViewController {
                 let shipping = data["withdraw_transaction"]?["shipping"] as? [String:AnyObject] ?? [:]
                 let statusShipping = shipping["status"] as? String ?? ""
                 
-                
-                let unitSalueng = NSLocalizedString("unit-salueng", comment: "")
-                let unitBaht = NSLocalizedString("unit-baht", comment: "")
-                let unitBar = NSLocalizedString("unit-bar", comment: "")
-                
-                
-                var txt = ""
-                for item in gold_received {
-                    let unit = item["unit"] as? String ?? ""
-                    let amount = item["amount"] as? NSNumber ?? 0
-                    
-                    if unit.lowercased() == "1salueng"{
-                        txt += "1 \(unitSalueng)"
-                    }
-                    if unit.lowercased() == "2salueng"{
-                        txt += "2 \(unitSalueng)"
-                    }
-                    if unit.lowercased() == "1baht"{
-                        txt += "1 \(unitBaht)"
-                    }
-                    if unit.lowercased() == "2baht"{
-                        txt += "2 \(unitBaht)"
-                    }
-                    if unit.lowercased() == "5baht"{
-                        txt += "5 \(unitBaht)"
-                    }
-                    if unit.lowercased() == "10baht"{
-                        txt += "10 \(unitBaht)"
-                    }
-                    txt +=  " \(amount) \(unitBar)\n"
-                }
-                txt = txt.substring(start: 0, end: (txt.count) - "\n".count)
-                item.formatGoldReceiveLabel.text = txt
-                
-                
-                if gold_unit.lowercased() == "salueng" {
-                    item.withdrawUnitLabel.text = NSLocalizedString("unit-salueng", comment: "")
-                }else{
-                    item.withdrawUnitLabel.text = NSLocalizedString("unit-baht", comment: "")
-                }
+                item.formatGoldReceiveLabel.text = self.goldFormat(gold_received: gold_received)
+                item.withdrawUnitLabel.text = self.goldUnitString(gold_unit: gold_unit)
                 
                 let numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal
@@ -523,13 +426,6 @@ extension WithDrawResultViewController {
                 let statusShipping = shipping["status"] as? String ?? ""
                 
                 
-                let unitSalueng = NSLocalizedString("unit-salueng", comment: "")
-                let unitBaht = NSLocalizedString("unit-baht", comment: "")
-                let unitBar = NSLocalizedString("unit-bar", comment: "")
-                
-                
-            
-                
                 if validateTransactionTime(created_at) {
                     item.cancelLabel.isHidden = false
                     item.cancelButton.isHidden = false
@@ -538,40 +434,8 @@ extension WithDrawResultViewController {
                     item.cancelButton.isHidden = true
                 }
                 
-                var txt = ""
-                for item in gold_received {
-                    let unit = item["unit"] as? String ?? ""
-                    let amount = item["amount"] as? NSNumber ?? 0
-                    
-                    if unit.lowercased() == "1salueng"{
-                        txt += "1 \(unitSalueng)"
-                    }
-                    if unit.lowercased() == "2salueng"{
-                        txt += "2 \(unitSalueng)"
-                    }
-                    if unit.lowercased() == "1baht"{
-                        txt += "1 \(unitBaht)"
-                    }
-                    if unit.lowercased() == "2baht"{
-                        txt += "2 \(unitBaht)"
-                    }
-                    if unit.lowercased() == "5baht"{
-                        txt += "5 \(unitBaht)"
-                    }
-                    if unit.lowercased() == "10baht"{
-                        txt += "10 \(unitBaht)"
-                    }
-                    txt +=  " \(amount) \(unitBar)\n"
-                }
-                txt = txt.substring(start: 0, end: (txt.count) - "\n".count)
-                item.formatGoldReceiveLabel.text = txt
-                
-                
-                if gold_unit.lowercased() == "salueng" {
-                    item.withdrawUnitLabel.text = NSLocalizedString("unit-salueng", comment: "")
-                }else{
-                    item.withdrawUnitLabel.text = NSLocalizedString("unit-baht", comment: "")
-                }
+                item.formatGoldReceiveLabel.text = self.goldFormat(gold_received: gold_received)
+                item.withdrawUnitLabel.text = self.goldUnitString(gold_unit: gold_unit)
                 
                 let numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal
@@ -624,7 +488,6 @@ extension WithDrawResultViewController {
                 let okButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-ok", comment: ""), style: .default, handler: {
                     (alert) in
                     
-                    // call cancel api
                     // call cancel api
                     let params:Parameters = ["transaction_ref_id": self.transactionId ?? ""]
                     
@@ -693,45 +556,8 @@ extension WithDrawResultViewController {
                 let statusShipping = shipping["status"] as? String ?? ""
                 
                 
-                let unitSalueng = NSLocalizedString("unit-salueng", comment: "")
-                let unitBaht = NSLocalizedString("unit-baht", comment: "")
-                let unitBar = NSLocalizedString("unit-bar", comment: "")
-                print(gold_received)
-                
-                var txt = ""
-                for item in gold_received {
-                    let unit = item["unit"] as? String ?? ""
-                    let amount = item["amount"] as? NSNumber ?? 0
-                    
-                    if unit.lowercased() == "1salueng"{
-                        txt += "1 \(unitSalueng)"
-                    }
-                    if unit.lowercased() == "2salueng"{
-                        txt += "2 \(unitSalueng)"
-                    }
-                    if unit.lowercased() == "1baht"{
-                        txt += "1 \(unitBaht)"
-                    }
-                    if unit.lowercased() == "2baht"{
-                        txt += "2 \(unitBaht)"
-                    }
-                    if unit.lowercased() == "5baht"{
-                        txt += "5 \(unitBaht)"
-                    }
-                    if unit.lowercased() == "10baht"{
-                        txt += "10 \(unitBaht)"
-                    }
-                    txt +=  " \(amount) \(unitBar)\n"
-                }
-                txt = txt.substring(start: 0, end: (txt.count) - "\n".count)
-                item.formatGoldReceiveLabel.text = txt
-                
-                
-                if gold_unit.lowercased() == "salueng" {
-                    item.withdrawUnitLabel.text = NSLocalizedString("unit-salueng", comment: "")
-                }else{
-                    item.withdrawUnitLabel.text = NSLocalizedString("unit-baht", comment: "")
-                }
+                item.formatGoldReceiveLabel.text = self.goldFormat(gold_received: gold_received)
+                item.withdrawUnitLabel.text = self.goldUnitString(gold_unit: gold_unit)
                 
                 let numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal
@@ -742,8 +568,6 @@ extension WithDrawResultViewController {
                 item.transactionLabel.text = transaction_number
                 
                
-                
-                
                 switch statusTransaction.lowercased() {
                 case "success":
                     item.statusImageView.image = UIImage(named: "ic-status-success2")
@@ -752,23 +576,17 @@ extension WithDrawResultViewController {
                     
                     
                     break
-                case "cancel":
-                    item.statusImageView.image = UIImage(named: "ic-status-cancel")
-                    item.statusLabel.textColor = Constant.Colors.PRIMARY_COLOR
-                    item.statusLabel.text = NSLocalizedString("string-dailog-gold-transaction-status-cancel", comment: "")
-                    
-                    break
+               
                 default:
                     break
                 }
                 
-                if statusShipping != "success" {
-                    item.shippingStatusLabel.textColor = Constant.Colors.ORANGE
-                    item.shippingStatusLabel.text = NSLocalizedString("string-dailog-gold-shipping-office-status-waiting", comment: "")
-                }else{
+                if statusShipping == "success" {
                     item.shippingStatusLabel.textColor = Constant.Colors.GREEN
                     item.shippingStatusLabel.text = NSLocalizedString("string-dailog-gold-shipping-office-status-success", comment: "")
+                    
                 }
+                
 
             }
           
@@ -778,6 +596,359 @@ extension WithDrawResultViewController {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as UICollectionViewCell
         }
         return cell!
+    }
+    
+    
+    
+    func sectionWithDrawShipThaiPostWaiting(_ collectionView:UICollectionView, _ indexPath:IndexPath) -> UICollectionViewCell {
+        var cell:UICollectionViewCell?
+        
+        if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "WithDrawResultThaiPostCell", for: indexPath) as? WithDrawResultThaiPostCell {
+            cell = item
+           
+            if hideFinishButton {
+                item.bgSuccessImageView.image = nil
+            }
+            
+            if let data = self.withDrawResult as? [String:AnyObject]{
+                let created_at = data["updated_at"] as? String ?? ""
+                let transaction_number = data["withdraw_transaction"]?["transaction_no"] as? String ?? ""
+                let gold_unit = data["withdraw_transaction"]?["gold_unit"] as? String ?? ""
+                let gold_withdraw = data["withdraw_transaction"]?["gold_withdraw"] as? NSNumber ?? 0
+                let gold_received = data["withdraw_transaction"]?["gold_received"] as? [[String:AnyObject]] ??
+                    [[:]]
+                let premium = data["withdraw_transaction"]?["premium"] as? NSNumber ?? 0
+                let statusTransaction = data["status"] as? String ?? ""
+                
+                let shipping = data["withdraw_transaction"]?["shipping"] as? [String:AnyObject] ?? [:]
+                let statusShipping = shipping["status"] as? String ?? ""
+                
+                let shipping_and_insurance = data["withdraw_transaction"]?["shipping_and_insurance"] as? [[String:AnyObject]] ?? [[:]]
+                let address = data["withdraw_transaction"]?["address"] as? [String:AnyObject] ?? [:]
+                let full_address = address["full_address"] as? String ?? ""
+                let total_shipping_price = data["withdraw_transaction"]?["total_shipping_price"] as? NSNumber ?? 0
+                let tracking_number = data["withdraw_transaction"]?["tracking_number"] as? [[String:AnyObject]] ?? [[:]]
+                
+                
+                item.addressLabel.text = full_address
+                item.arrayBox = shipping_and_insurance
+                item.amountBoxLabel.text = "\(shipping_and_insurance.count) \(NSLocalizedString("string-thaipost-delivery-box", comment: ""))"
+                item.serviceLabel.text = "\(total_shipping_price)"
+                item.totalLabel.text = "\(total_shipping_price.intValue + premium.intValue)"
+                
+                item.formatGoldReceiveLabel.text = self.goldFormat(gold_received: gold_received)
+                item.withdrawUnitLabel.text = self.goldUnitString(gold_unit: gold_unit)
+                
+                
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                
+                item.withdrawAmountLabel.text = numberFormatter.string(from: gold_withdraw)
+                item.premiumLabel.text = numberFormatter.string(from: premium)
+                item.dateLabel.text = created_at
+                item.transactionLabel.text = transaction_number
+                
+                
+                if validateTransactionTime(created_at) {
+                    item.cancelLabel.isHidden = false
+                    item.cancelButton.isHidden = false
+                }else{
+                    item.cancelLabel.isHidden = true
+                    item.cancelButton.isHidden = true
+                }
+                
+                switch statusTransaction.lowercased() {
+                case "success":
+                    item.statusImageView.image = UIImage(named: "ic-status-success2")
+                    item.statusLabel.textColor = Constant.Colors.GREEN
+                    item.statusLabel.text = NSLocalizedString("string-dailog-gold-transaction-status-success", comment: "")
+                    
+                    break
+                case "cancel":
+                    item.statusImageView.image = UIImage(named: "ic-status-cancel")
+                    item.statusLabel.textColor = Constant.Colors.PRIMARY_COLOR
+                    item.statusLabel.text = NSLocalizedString("string-dailog-gold-transaction-status-cancel", comment: "")
+                    
+                    
+                    break
+                default:
+                    break
+                }
+                
+                if statusShipping != "success" {
+                    item.shippingStatusLabel.textColor = Constant.Colors.ORANGE
+                    item.shippingStatusLabel.text = NSLocalizedString("string-dailog-gold-shipping-thaipost-status-waiting", comment: "")
+                }else{
+                    item.shippingStatusLabel.textColor = Constant.Colors.GREEN
+                    item.shippingStatusLabel.text = NSLocalizedString("string-dailog-gold-shipping-thaipost-status-success", comment: "")
+                }
+                
+            }
+           item.cancelCallback = {
+                
+                let alert = UIAlertController(title: NSLocalizedString("string-dailog-title-cancel-withdraw", comment: ""),
+                                              message: "", preferredStyle: .alert)
+                
+                let okButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-ok", comment: ""), style: .default, handler: {
+                    (alert) in
+                    
+                    // call cancel api
+                    // call cancel api
+                    let params:Parameters = ["transaction_ref_id": self.transactionId ?? ""]
+                    
+                    self.modelCtrl.cancelTransactionGold(params: params, true, succeeded: { (result) in
+                        print(result)
+                        self.getDetail()
+                    }, error: { (error) in
+                        if let mError = error as? [String:AnyObject]{
+                            let message = mError["message"] as? String ?? ""
+                            print(message)
+                            self.showMessagePrompt(message)
+                        }
+                        
+                        print(error)
+                    }) { (messageError) in
+                        print("messageError")
+                        self.handlerMessageError(messageError)
+                        
+                    }
+                    
+                })
+                let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: nil)
+                
+                
+                
+                alert.addAction(cancelButton)
+                alert.addAction(okButton)
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+        
+        if cell == nil {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as UICollectionViewCell
+        }
+        return cell!
+    }
+    
+    
+    
+    func sectionWithDrawShipThaiPostShippingSuccess(_ collectionView:UICollectionView, _ indexPath:IndexPath) -> UICollectionViewCell {
+        var cell:UICollectionViewCell?
+        
+        if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "WithDrawResultThaiPostSuccessCell", for: indexPath) as? WithDrawResultThaiPostSuccessCell {
+            cell = item
+            
+            
+            if let data = self.withDrawResult as? [String:AnyObject]{
+                let created_at = data["updated_at"] as? String ?? ""
+                let transaction_number = data["withdraw_transaction"]?["transaction_no"] as? String ?? ""
+                let gold_unit = data["withdraw_transaction"]?["gold_unit"] as? String ?? ""
+                let gold_withdraw = data["withdraw_transaction"]?["gold_withdraw"] as? NSNumber ?? 0
+                let gold_received = data["withdraw_transaction"]?["gold_received"] as? [[String:AnyObject]] ??
+                    [[:]]
+                let premium = data["withdraw_transaction"]?["premium"] as? NSNumber ?? 0
+                let statusTransaction = data["status"] as? String ?? ""
+                
+                let shipping = data["withdraw_transaction"]?["shipping"] as? [String:AnyObject] ?? [:]
+                let statusShipping = shipping["status"] as? String ?? ""
+                
+                
+                let shipping_and_insurance = data["withdraw_transaction"]?["shipping_and_insurance"] as? [[String:AnyObject]] ?? [[:]]
+                let address = data["withdraw_transaction"]?["address"] as? [String:AnyObject] ?? [:]
+                let full_address = address["full_address"] as? String ?? ""
+                let total_shipping_price = data["withdraw_transaction"]?["total_shipping_price"] as? NSNumber ?? 0
+                let tracking_number = data["withdraw_transaction"]?["tracking_number"] as? [[String:AnyObject]] ?? [[:]]
+                
+                item.parcelNumberLabel?.text = self.tackingNumberString(tacking: tracking_number)
+                
+                item.addressLabel.text = full_address
+                item.arrayBox = shipping_and_insurance
+                item.amountBoxLabel.text = "\(shipping_and_insurance.count) \(NSLocalizedString("string-thaipost-delivery-box", comment: ""))"
+                item.serviceLabel.text = "\(total_shipping_price)"
+                item.totalLabel.text = "\(total_shipping_price.intValue + premium.intValue)"
+                
+             
+            
+             
+                item.formatGoldReceiveLabel.text = self.goldFormat(gold_received: gold_received)
+                item.withdrawUnitLabel.text = self.goldUnitString(gold_unit: gold_unit)
+                
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                
+                item.withdrawAmountLabel.text = numberFormatter.string(from: gold_withdraw)
+                item.premiumLabel.text = numberFormatter.string(from: premium)
+                item.dateLabel.text = created_at
+                item.transactionLabel.text = transaction_number
+                
+           
+                switch statusTransaction.lowercased() {
+                case "success":
+                    item.statusImageView.image = UIImage(named: "ic-status-success2")
+                    item.statusLabel.textColor = Constant.Colors.GREEN
+                    item.statusLabel.text = NSLocalizedString("string-dailog-gold-transaction-status-success", comment: "")
+                    
+                    break
+                default:
+                    break
+                }
+                
+                if statusShipping == "success" {
+                    item.shippingStatusLabel.textColor = Constant.Colors.GREEN
+                    item.shippingStatusLabel.text = NSLocalizedString("string-dailog-gold-shipping-thaipost-status-success", comment: "")
+                }
+            }
+           
+        }
+        
+        if cell == nil {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as UICollectionViewCell
+        }
+        return cell!
+    }
+    
+    
+    func sectionWithDrawShipThaiPostCancel(_ collectionView:UICollectionView, _ indexPath:IndexPath) -> UICollectionViewCell {
+        var cell:UICollectionViewCell?
+        
+        if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "WithDrawResultThaiPostSuccessCell", for: indexPath) as? WithDrawResultThaiPostSuccessCell {
+            cell = item
+            
+            if hideFinishButton {
+                item.bgSuccessImageView.image = nil
+            }
+            
+            if let data = self.withDrawResult as? [String:AnyObject]{
+                let created_at = data["updated_at"] as? String ?? ""
+                let transaction_number = data["withdraw_transaction"]?["transaction_no"] as? String ?? ""
+                let gold_unit = data["withdraw_transaction"]?["gold_unit"] as? String ?? ""
+                let gold_withdraw = data["withdraw_transaction"]?["gold_withdraw"] as? NSNumber ?? 0
+                let gold_received = data["withdraw_transaction"]?["gold_received"] as? [[String:AnyObject]] ??
+                    [[:]]
+                let premium = data["withdraw_transaction"]?["premium"] as? NSNumber ?? 0
+                let statusTransaction = data["status"] as? String ?? ""
+                
+             
+                let shipping_and_insurance = data["withdraw_transaction"]?["shipping_and_insurance"] as? [[String:AnyObject]] ?? [[:]]
+                let address = data["withdraw_transaction"]?["address"] as? [String:AnyObject] ?? [:]
+                let full_address = address["full_address"] as? String ?? ""
+                let total_shipping_price = data["withdraw_transaction"]?["total_shipping_price"] as? NSNumber ?? 0
+                
+                
+                item.addressLabel.text = full_address
+                item.arrayBox = shipping_and_insurance
+                item.amountBoxLabel.text = "\(shipping_and_insurance.count) \(NSLocalizedString("string-thaipost-delivery-box", comment: ""))"
+                item.serviceLabel.text = "\(total_shipping_price)"
+                item.totalLabel.text = "\(total_shipping_price.intValue + premium.intValue)"
+                
+                
+                item.formatGoldReceiveLabel.text = self.goldFormat(gold_received: gold_received)
+                item.withdrawUnitLabel.text = self.goldUnitString(gold_unit: gold_unit)
+                
+                
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                
+                item.withdrawAmountLabel.text = numberFormatter.string(from: gold_withdraw)
+                item.premiumLabel.text = numberFormatter.string(from: premium)
+                item.dateLabel.text = created_at
+                item.transactionLabel.text = transaction_number
+                
+                
+                if validateTransactionTime(created_at) {
+                    item.cancelLabel.isHidden = false
+                    item.cancelButton.isHidden = false
+                }else{
+                    item.cancelLabel.isHidden = true
+                    item.cancelButton.isHidden = true
+                }
+                
+                switch statusTransaction.lowercased() {
+              
+                case "cancel":
+                    item.statusImageView.image = UIImage(named: "ic-status-cancel")
+                    item.statusLabel.textColor = Constant.Colors.PRIMARY_COLOR
+                    item.statusLabel.text = NSLocalizedString("string-dailog-gold-transaction-status-cancel", comment: "")
+                    
+                    //hide
+                    item.shippingStatusLabel.isHidden = true
+                    item.shippingStatusTitleLabel.isHidden = true
+                    item.shippingLineView.isHidden = true
+                    
+                    item.parcelLineView.isHidden = true
+                    item.titleParcelNumberLabel.isHidden = true
+                    item.parcelNumberLabel.isHidden = true
+                    
+                    break
+                default:
+                    break
+                }
+                
+             
+                
+            }
+       
+        }
+        
+        if cell == nil {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as UICollectionViewCell
+        }
+        return cell!
+    }
+    
+    func goldUnitString(gold_unit:String) -> String {
+        var txt = ""
+        if gold_unit.lowercased() == "salueng" {
+            txt = NSLocalizedString("unit-salueng", comment: "")
+        }else{
+            txt = NSLocalizedString("unit-baht", comment: "")
+        }
+        return txt
+    }
+    
+    func goldFormat(gold_received:[[String:AnyObject]]) -> String {
+    
+        let unitSalueng = NSLocalizedString("unit-salueng", comment: "")
+        let unitBaht = NSLocalizedString("unit-baht", comment: "")
+        let unitBar = NSLocalizedString("unit-bar", comment: "")
+        
+        var txt = ""
+        for item in gold_received {
+            let unit = item["unit"] as? String ?? ""
+            let amount = item["amount"] as? NSNumber ?? 0
+            
+            if unit.lowercased() == "1salueng"{
+                txt += "1 \(unitSalueng)"
+            }
+            if unit.lowercased() == "2salueng"{
+                txt += "2 \(unitSalueng)"
+            }
+            if unit.lowercased() == "1baht"{
+                txt += "1 \(unitBaht)"
+            }
+            if unit.lowercased() == "2baht"{
+                txt += "2 \(unitBaht)"
+            }
+            if unit.lowercased() == "5baht"{
+                txt += "5 \(unitBaht)"
+            }
+            if unit.lowercased() == "10baht"{
+                txt += "10 \(unitBaht)"
+            }
+            txt +=  " \(amount) \(unitBar)\n"
+        }
+        return txt.substring(start: 0, end: (txt.count) - "\n".count)
+    }
+    
+    func tackingNumberString(tacking:[[String:AnyObject]]) -> String {
+     
+        
+        var txt = ""
+        for item in tacking {
+            let tracking = item["tracking"] as? String ?? ""
+            txt += "\(tracking)\n"
+        }
+        return txt.substring(start: 0, end: (txt.count) - "\n".count)
     }
     
 }
@@ -807,7 +978,9 @@ extension WithDrawResultViewController{
         var cell:UICollectionViewCell?
         
         if indexPath.section == 0 {
-            if let data = self.withDrawResult as? [String:AnyObject]{
+            
+            
+                if let data = self.withDrawResult as? [String:AnyObject]{
                 let statusTransaction = data["status"] as? String ?? ""
                 let shipping = data["withdraw_transaction"]?["shipping"] as? [String:AnyObject] ?? [:]
                 let statusShipping = shipping["status"] as? String ?? ""
@@ -818,11 +991,9 @@ extension WithDrawResultViewController{
                 case "office" :
                     if statusTransaction.lowercased() == "cancel" {
                         //transaction cancel
-                        
                         cell = sectionWithDrawCancelTransactionFromHistory(collectionView, indexPath)
                     }else{
                         //transaction success
-                        
                         if statusShipping != "success" {
                             if self.hideFinishButton {
                                 cell = sectionWithDrawShipOfficeWaitingFromHistory(collectionView, indexPath)
@@ -839,7 +1010,23 @@ extension WithDrawResultViewController{
                     
                   
                     break
-                case "thaipost" : break
+                case "thaipost" :
+                    if statusTransaction.lowercased() == "cancel" {
+                        //transaction cancel
+                        cell = sectionWithDrawShipThaiPostCancel(collectionView, indexPath)
+                    }else{
+                        //transaction success
+                        if statusShipping != "success" {
+                            cell = sectionWithDrawShipThaiPostWaiting(collectionView, indexPath)
+                        }else{
+                            if self.hideFinishButton {
+                                cell = sectionWithDrawShipThaiPostShippingSuccess(collectionView, indexPath)
+                            }
+                        }
+                        
+                    }
+                 
+                    break
                 default:
                     break
                 }
@@ -873,8 +1060,9 @@ extension WithDrawResultViewController{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if indexPath.section == 0 {
+            
             let width = collectionView.frame.width - 40
-            var height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*800 , rowHeight: 20.0)
+            var height = heightForViewWithDraw(self.rowBar, width: width , height: CGFloat(850) , rowHeight: 20.0)
             
             if let data = self.withDrawResult as? [String:AnyObject]{
                 let statusTransaction = data["status"] as? String ?? ""
@@ -882,16 +1070,14 @@ extension WithDrawResultViewController{
                 let statusShipping = shipping["status"] as? String ?? ""
                 let type = shipping["type"] as? String ?? ""
                 
-                
+/*
                 switch type.lowercased() {
                 case "office" :
                     if statusTransaction.lowercased() == "cancel" {
                         //transaction cancel
-                        
                         height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*400 , rowHeight: 20.0)
                     }else{
                         //transaction success
-                        
                         if statusShipping != "success" {
                             height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*800 , rowHeight: 20.0)
                         }else{
@@ -902,15 +1088,31 @@ extension WithDrawResultViewController{
                         
                     }
                     break
-                case "thaipost" : break
-                    
+                case "thaipost" :
+                    if statusTransaction.lowercased() == "cancel" {
+                        //transaction cancel
+                        height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*400 , rowHeight: 20.0)
+                    }else{
+                        //transaction success
+                        if statusShipping != "success" {
+                            height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*800 , rowHeight: 20.0)
+                        }else{
+                            if self.hideFinishButton {
+                                height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*450 , rowHeight: 20.0)
+                            }
+                        }
+                        
+                    }
+                    break
                 default:
                     break
                 }
-                
+*/
                 
             }
+ 
             return CGSize(width: width, height: height)
+ 
         }else{
             let width = collectionView.frame.width
             return CGSize(width: width, height: CGFloat(60))

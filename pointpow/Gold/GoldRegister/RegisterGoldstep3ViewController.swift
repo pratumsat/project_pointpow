@@ -49,6 +49,7 @@ class RegisterGoldstep3ViewController: BaseViewController {
                 let params:Parameters = ["email" : tp.email,
                                          "mobile": tp.mobile,
                                          "laser_id" : "ME01113123112",
+                                         "birthdate" : "22-11-1888",
                                          "firstname": tp.firstname,
                                          "lastname" : tp.lastname,
                                          "pid" : tp.idcard]

@@ -14,7 +14,8 @@ class WithDrawResultViewController: BaseViewController  , UICollectionViewDelega
     @IBOutlet weak var resultCollectionView: UICollectionView!
     var withDrawResult:AnyObject?
     var hideFinishButton:Bool = false
-    
+    var heightExpand = CGFloat(0)
+    var timeOutDate = CGFloat(0)
     
     func  addSlipImageView() {
         
@@ -113,7 +114,16 @@ class WithDrawResultViewController: BaseViewController  , UICollectionViewDelega
             
             if let data = result as? [String:AnyObject]{
                 let gold_received = data["withdraw_transaction"]?["gold_received"] as? [[String:AnyObject]] ?? [[:]]
+                let created_at = data["updated_at"] as? String ?? ""
+                
                 self.rowBar = gold_received.count
+                
+              
+                if validateTransactionTime(created_at) {
+                    self.timeOutDate = CGFloat(80)
+                }else{
+                    self.timeOutDate = CGFloat(0)
+                }
             }
             
             self.withDrawResult = result
@@ -298,9 +308,11 @@ extension WithDrawResultViewController {
                 if validateTransactionTime(created_at) {
                     item.cancelLabel.isHidden = false
                     item.cancelButton.isHidden = false
+                 
                 }else{
                     item.cancelLabel.isHidden = true
                     item.cancelButton.isHidden = true
+                    
                 }
                 
                 switch statusTransaction.lowercased() {
@@ -429,9 +441,11 @@ extension WithDrawResultViewController {
                 if validateTransactionTime(created_at) {
                     item.cancelLabel.isHidden = false
                     item.cancelButton.isHidden = false
+                    
                 }else{
                     item.cancelLabel.isHidden = true
                     item.cancelButton.isHidden = true
+                    
                 }
                 
                 item.formatGoldReceiveLabel.text = self.goldFormat(gold_received: gold_received)
@@ -649,12 +663,25 @@ extension WithDrawResultViewController {
                 item.transactionLabel.text = transaction_number
                 
                 
+                
+                item.expandableCallback = { (height) in
+                    self.heightExpand = height
+                    self.resultCollectionView.performBatchUpdates({
+                        collectionView.reloadInputViews()
+                    }, completion: { (true) in
+                        //item.amountTextField.becomeFirstResponder()
+                    })
+                    
+                }
+                
                 if validateTransactionTime(created_at) {
                     item.cancelLabel.isHidden = false
                     item.cancelButton.isHidden = false
+                   
                 }else{
                     item.cancelLabel.isHidden = true
                     item.cancelButton.isHidden = true
+                   
                 }
                 
                 switch statusTransaction.lowercased() {
@@ -738,6 +765,10 @@ extension WithDrawResultViewController {
         if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "WithDrawResultThaiPostSuccessCell", for: indexPath) as? WithDrawResultThaiPostSuccessCell {
             cell = item
             
+            if hideFinishButton {
+                item.bgSuccessImageView.image = nil
+            }
+            
             
             if let data = self.withDrawResult as? [String:AnyObject]{
                 let created_at = data["updated_at"] as? String ?? ""
@@ -767,7 +798,16 @@ extension WithDrawResultViewController {
                 item.serviceLabel.text = "\(total_shipping_price)"
                 item.totalLabel.text = "\(total_shipping_price.intValue + premium.intValue)"
                 
-             
+                
+                item.expandableCallback = { (height) in
+                    self.heightExpand = height
+                    self.resultCollectionView.performBatchUpdates({
+                        collectionView.reloadInputViews()
+                    }, completion: { (true) in
+                        //item.amountTextField.becomeFirstResponder()
+                    })
+                    
+                }
             
              
                 item.formatGoldReceiveLabel.text = self.goldFormat(gold_received: gold_received)
@@ -854,13 +894,14 @@ extension WithDrawResultViewController {
                 item.dateLabel.text = created_at
                 item.transactionLabel.text = transaction_number
                 
-                
-                if validateTransactionTime(created_at) {
-                    item.cancelLabel.isHidden = false
-                    item.cancelButton.isHidden = false
-                }else{
-                    item.cancelLabel.isHidden = true
-                    item.cancelButton.isHidden = true
+                item.expandableCallback = { (height) in
+                    self.heightExpand = height
+                    self.resultCollectionView.performBatchUpdates({
+                        collectionView.reloadInputViews()
+                    }, completion: { (true) in
+                        //item.amountTextField.becomeFirstResponder()
+                    })
+                    
                 }
                 
                 switch statusTransaction.lowercased() {
@@ -1023,7 +1064,7 @@ extension WithDrawResultViewController{
                                 cell = sectionWithDrawShipThaiPostShippingSuccess(collectionView, indexPath)
                             }
                         }
-                        
+
                     }
                  
                     break
@@ -1070,19 +1111,25 @@ extension WithDrawResultViewController{
                 let statusShipping = shipping["status"] as? String ?? ""
                 let type = shipping["type"] as? String ?? ""
                 
-/*
+//                let shipping_and_insurance = data["withdraw_transaction"]?["shipping_and_insurance"] as? [[String:AnyObject]] ?? [[:]]
+//                let address = data["withdraw_transaction"]?["address"] as? [String:AnyObject] ?? [:]
+//                let full_address = address["full_address"] as? String ?? ""
+//                let total_shipping_price = data["withdraw_transaction"]?["total_shipping_price"] as? NSNumber ?? 0
+
                 switch type.lowercased() {
                 case "office" :
                     if statusTransaction.lowercased() == "cancel" {
                         //transaction cancel
-                        height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*400 , rowHeight: 20.0)
+                        height = heightForViewWithDraw(self.rowBar, width: width , height: CGFloat(400) , rowHeight: 20.0)
                     }else{
                         //transaction success
                         if statusShipping != "success" {
-                            height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*800 , rowHeight: 20.0)
+                            height = heightForViewWithDraw(self.rowBar, width: width , height: CGFloat(670) , rowHeight: 20.0)
+                            
+                            height +=  self.timeOutDate
                         }else{
                             if self.hideFinishButton {
-                                height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*450 , rowHeight: 20.0)
+                                height = heightForViewWithDraw(self.rowBar, width: width , height: CGFloat(430) , rowHeight: 20.0)
                             }
                         }
                         
@@ -1091,14 +1138,16 @@ extension WithDrawResultViewController{
                 case "thaipost" :
                     if statusTransaction.lowercased() == "cancel" {
                         //transaction cancel
-                        height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*400 , rowHeight: 20.0)
+                        height = heightForViewWithDraw(self.rowBar, width: width , height: CGFloat(580) , rowHeight: 20.0) + self.heightExpand
                     }else{
                         //transaction success
                         if statusShipping != "success" {
-                            height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*800 , rowHeight: 20.0)
+                            height = heightForViewWithDraw(self.rowBar, width: width , height: CGFloat(620) , rowHeight: 20.0) + self.heightExpand
+                            
+                            height +=  self.timeOutDate
                         }else{
                             if self.hideFinishButton {
-                                height = heightForViewWithDraw(self.rowBar, width: width , height: width/360*450 , rowHeight: 20.0)
+                                height = heightForViewWithDraw(self.rowBar, width: width , height: CGFloat(650) , rowHeight: 20.0) + self.heightExpand
                             }
                         }
                         
@@ -1107,9 +1156,11 @@ extension WithDrawResultViewController{
                 default:
                     break
                 }
-*/
+
                 
             }
+            
+            
  
             return CGSize(width: width, height: height)
  

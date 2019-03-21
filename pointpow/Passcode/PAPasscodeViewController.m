@@ -122,11 +122,83 @@ static NSTimeInterval AnimationDuration = 0.3;
     messageLabel.textColor = [UIColor colorWithRed:0.75 green:0.16 blue:0.16 alpha:1];
     [contentView addSubview:messageLabel];
     
-    _failedAttemptsView = [[UIView alloc] init];
-    _failedAttemptsView.translatesAutoresizingMaskIntoConstraints = NO;
-    _failedAttemptsView.backgroundColor = [UIColor clearColor];
-    _failedAttemptsView.hidden = YES;
-    [contentView addSubview:_failedAttemptsView];
+    forgotLabel = [[UILabel alloc] init];
+    forgotLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    forgotLabel.font = [UIFont fontWithName:@"ThaiSansNeue-Bold" size:18];
+    forgotLabel.textAlignment = NSTextAlignmentCenter;
+    forgotLabel.numberOfLines = 0;
+    forgotLabel.textColor = [UIColor colorWithRed:20/255.0 green:92/255.0 blue:253/255.0 alpha:1];
+    
+    NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc]
+                                                  initWithString: NSLocalizedString(@"title-forgot-passcode", nil)];
+    [attributeString addAttribute:NSUnderlineStyleAttributeName
+                            value:[NSNumber numberWithInt:1]
+                            range:(NSRange){0,[attributeString length]}];
+    
+    forgotLabel.attributedText = attributeString;
+    
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(forgotTapped)];
+    tapGestureRecognizer.numberOfTapsRequired = 1;
+    forgotLabel.userInteractionEnabled = YES;
+    [forgotLabel addGestureRecognizer:tapGestureRecognizer];
+    
+    
+    [contentView addSubview:forgotLabel];
+
+    failedAttemptsLabel = [[UILabel alloc] init];
+    failedAttemptsLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    failedAttemptsLabel.textColor = [UIColor colorWithRed:0.75 green:0.16 blue:0.16 alpha:1];
+    failedAttemptsLabel.font = [UIFont fontWithName:@"ThaiSansNeue-Regular" size:18];
+    failedAttemptsLabel.textAlignment = NSTextAlignmentCenter;
+    failedAttemptsLabel.numberOfLines = 0;
+    failedAttemptsLabel.text = @" ";
+    [contentView addSubview:failedAttemptsLabel];
+    
+    
+    emailTextField = [[UITextField alloc] init];
+    emailTextField.translatesAutoresizingMaskIntoConstraints = NO;
+    emailTextField.delegate = self;
+    emailTextField.keyboardType = UIKeyboardTypeEmailAddress;
+    emailTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+    emailTextField.returnKeyType = UIReturnKeyDone;
+    emailTextField.font = [UIFont fontWithName:@"ThaiSansNeue-Bold" size:20];
+    [contentView addSubview:emailTextField];
+    emailTextField.hidden = YES;
+    
+    underLineTextFieldView = [[UIView alloc] init];
+    underLineTextFieldView.translatesAutoresizingMaskIntoConstraints = NO;
+    underLineTextFieldView.backgroundColor = [UIColor lightGrayColor];
+    [contentView addSubview: underLineTextFieldView];
+    underLineTextFieldView.hidden = YES;
+    
+    sendEmailButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    sendEmailButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [sendEmailButton setTitle:NSLocalizedString(@"title-forgot-passcode-send-email", nil) forState:UIControlStateNormal];
+    sendEmailButton.titleLabel.font = [UIFont fontWithName:@"ThaiSansNeue-Bold" size:20];
+    sendEmailButton.titleLabel.textColor = [UIColor whiteColor];
+    sendEmailButton.backgroundColor = [UIColor colorWithRed:255/255.0 green:9/255.0 blue:46/255.0 alpha:1.0];
+    
+    sendEmailButton.layer.cornerRadius = 15;
+    sendEmailButton.clipsToBounds = YES;
+    [sendEmailButton addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    [contentView addSubview: sendEmailButton];
+    sendEmailButton.hidden = YES;
+    
+    switch (_action) {
+        case PasscodeActionSet:
+            forgotLabel.hidden = YES;
+            break;
+            
+        case PasscodeActionEnter:
+            forgotLabel.hidden = NO;
+            break;
+            
+        case PasscodeActionChange:
+            forgotLabel.hidden = YES;
+            break;
+    }
     
     self.view = view;
     [self.view setNeedsUpdateConstraints];
@@ -142,11 +214,16 @@ static NSTimeInterval AnimationDuration = 0.3;
     NSDictionary *views = @{
                             @"contentView": contentView,
                             @"inputPanel": _inputPanel,
-                            @"failedAttemptsView": _failedAttemptsView,
+                            @"failedAttemptsLabel": failedAttemptsLabel,
+                            @"forgotLabel": forgotLabel,
                             @"messageLabel": messageLabel,
                             @"passcodeTextField": passcodeTextField,
                             @"promptLabel": promptLabel,
-                            @"logoAppImageView":logoAppImageView
+                            @"logoAppImageView":logoAppImageView,
+                            @"emailTextField": emailTextField,
+                            @"underLineTextFieldView":underLineTextFieldView,
+                            @"sendEmailButton":sendEmailButton
+                    
                             };
     [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[contentView]|" options:0 metrics:nil views:views]];
     
@@ -197,13 +274,46 @@ static NSTimeInterval AnimationDuration = 0.3;
     [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[d5]|" options:0 metrics:nil views:digits]];
         
     
-
-//    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[failedAttemptsLabel]-|" options:0 metrics:nil views:views]];
-//    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[failedAttemptsLabel]|" options:0 metrics:nil views:views]];
+    
+     [constraints addObject:[NSLayoutConstraint constraintWithItem:underLineTextFieldView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:emailTextField attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
+    
+     [constraints addObject:[NSLayoutConstraint constraintWithItem:underLineTextFieldView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:1]];
+    
+     [constraints addObject:[NSLayoutConstraint constraintWithItem:underLineTextFieldView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:emailTextField attribute:NSLayoutAttributeLeft multiplier:1 constant:0]];
+    
+    [constraints addObject:[NSLayoutConstraint constraintWithItem:underLineTextFieldView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:emailTextField attribute:NSLayoutAttributeRight multiplier:1 constant:0]];
+    
+    
+    
+    [constraints addObject:[NSLayoutConstraint constraintWithItem:emailTextField attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_inputPanel attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
+    
+    
+    [constraints addObject:[NSLayoutConstraint constraintWithItem:emailTextField attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeWidth multiplier:0.8 constant:0]];
+    
+    
+    [constraints addObject:[NSLayoutConstraint constraintWithItem:emailTextField attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:30]];
+    
+    
+    [constraints addObject:[NSLayoutConstraint constraintWithItem:emailTextField attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
 
     
-//    [constraints addObject:[NSLayoutConstraint constraintWithItem:_failedAttemptsView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeWidth multiplier:1 constant:0]];
-//    
+    [constraints addObject:[NSLayoutConstraint constraintWithItem:sendEmailButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:emailTextField attribute:NSLayoutAttributeBottom multiplier:1 constant:20]];
+    
+    [constraints addObject:[NSLayoutConstraint constraintWithItem:sendEmailButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:30]];
+    
+    [constraints addObject:[NSLayoutConstraint constraintWithItem:sendEmailButton attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:emailTextField attribute:NSLayoutAttributeLeft multiplier:1 constant:0]];
+    
+    [constraints addObject:[NSLayoutConstraint constraintWithItem:sendEmailButton attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:emailTextField attribute:NSLayoutAttributeRight multiplier:1 constant:0]];
+    
+    
+    [constraints addObject:[NSLayoutConstraint constraintWithItem:failedAttemptsLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
+    
+    [constraints addObject:[NSLayoutConstraint constraintWithItem:failedAttemptsLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_inputPanel attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
+    
+    
+    [constraints addObject:[NSLayoutConstraint constraintWithItem:forgotLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
+    
+    [constraints addObject:[NSLayoutConstraint constraintWithItem:forgotLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:failedAttemptsLabel attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
     
     
     
@@ -215,7 +325,7 @@ static NSTimeInterval AnimationDuration = 0.3;
     [constraints addObject:[NSLayoutConstraint constraintWithItem:promptLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
    
     
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[promptLabel]-[inputPanel]-[messageLabel]-[failedAttemptsView]" options:0 metrics:@{@"h": @(FailedBackgroundHeight)} views:views]];
+    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[promptLabel]-[inputPanel]-[messageLabel]" options:0 metrics:@{@"h": @(FailedBackgroundHeight)} views:views]];
 
     _installedConstraints = constraints;
     [self.view addConstraints:_installedConstraints];
@@ -278,7 +388,7 @@ static NSTimeInterval AnimationDuration = 0.3;
     NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     CGRect keyboardFrame = [kbFrame CGRectValue];
     
-    _keyboardHeightConstraint.constant = -keyboardFrame.size.height;
+    _keyboardHeightConstraint.constant = -(keyboardFrame.size.height + 30.0);
     [UIView animateWithDuration:animationDuration animations:^{
         [self.view layoutIfNeeded];
     }];
@@ -347,6 +457,7 @@ static NSTimeInterval AnimationDuration = 0.3;
             break;
             
         case PasscodeActionChange:
+            /*
             if (phase == 0) {
                 if ([text isEqualToString:_passcode]) {
                     [self resetFailedAttempts];
@@ -369,8 +480,64 @@ static NSTimeInterval AnimationDuration = 0.3;
                     messageLabel.text = NSLocalizedString(@"passcodes-did-not-match", nil);
                 }
             }
+             */
             break;
     }
+}
+-(void) buttonClicked:(UIButton*)sender{
+    NSLog(@"email = %@", emailTextField.text);
+
+    [_delegate PAPasscodeViewControllerDidResetEmail:self didResetEmailPinCode:emailTextField.text];
+}
+-(void)forgotTapped {
+    
+    if (_forgotPin) {
+//        [self showScreenForPhase:0 animated:YES];
+//         _forgotPin = false;
+//        emailTextField.hidden = YES;
+//        underLineTextFieldView.hidden = YES;
+//        sendEmailButton.hidden = YES;
+//        _inputPanel.hidden = NO;
+//        forgotLabel.hidden = NO;
+//        failedAttemptsLabel.hidden = NO;
+//        [passcodeTextField becomeFirstResponder];
+//        [emailTextField resignFirstResponder];
+//
+//
+//        NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc]
+//                                                      initWithString: NSLocalizedString(@"title-forgot-passcode", nil)];
+//        [attributeString addAttribute:NSUnderlineStyleAttributeName
+//                                value:[NSNumber numberWithInt:1]
+//                                range:(NSRange){0,[attributeString length]}];
+//
+//        forgotLabel.attributedText = attributeString;
+//        promptLabel.text = _enterPrompt;
+//
+    }else{
+        [self showScreenForPhase:1 animated:YES];
+         _forgotPin = true;
+        emailTextField.hidden = NO;
+        underLineTextFieldView.hidden = NO;
+        sendEmailButton.hidden = NO;
+        forgotLabel.hidden = YES;
+        _inputPanel.hidden = YES;
+        failedAttemptsLabel.hidden = YES;
+        [emailTextField becomeFirstResponder];
+        [passcodeTextField resignFirstResponder];
+        
+        
+        NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc]
+                                                      initWithString: NSLocalizedString(@"title-forgot-passcode-email-back", nil)];
+        [attributeString addAttribute:NSUnderlineStyleAttributeName
+                                value:[NSNumber numberWithInt:1]
+                                range:(NSRange){0,[attributeString length]}];
+        
+        forgotLabel.attributedText = attributeString;
+        promptLabel.text = NSLocalizedString(@"title-forgot-passcode-email", nil);
+
+    }
+    
+
 }
 
 - (void)handleFailedAttempt {
@@ -383,6 +550,8 @@ static NSTimeInterval AnimationDuration = 0.3;
 
 - (void)resetFailedAttempts {
     messageLabel.hidden = NO;
+    //failedAttemptsLabel.hidden = YES;
+    failedAttemptsLabel.text = @" ";
     _failedAttempts = 0;
 }
 
@@ -395,8 +564,16 @@ static NSTimeInterval AnimationDuration = 0.3;
 //        failedAttemptsLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d Failed Passcode Attempts", nil), _failedAttempts];
 //    }
 }
-    
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == emailTextField){
+        printf("done");
+    }
+    return YES;
+}
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if (textField == emailTextField){
+        return YES;
+    }
     NSUInteger newLength = [textField.text length] + [string length] - range.length;
     return (newLength > 6) ? NO : YES;
 }
@@ -413,7 +590,11 @@ static NSTimeInterval AnimationDuration = 0.3;
 }
 - (void)showFailedMessage:(NSString*) messageError {
     messageLabel.hidden = YES;
-
+    
+    
+    failedAttemptsLabel.text = messageError;
+    [failedAttemptsLabel sizeToFit];
+    
     for (int i=0;i<6;i++) {
         _digitLabels[i].text = BulletCharacter;
     }
@@ -461,18 +642,6 @@ static NSTimeInterval AnimationDuration = 0.3;
     }
     phase = newPhase;
     //passcodeTextField.text = @"";
-    if (!_simple) {
-        BOOL finalScreen = _action == PasscodeActionSet && phase == 1;
-        finalScreen |= _action == PasscodeActionEnter && phase == 0;
-        finalScreen |= _action == PasscodeActionChange && phase == 2;
-        if (finalScreen) {
-            
-            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(handleCompleteField)];
-        } else {
-            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Next", nil) style:UIBarButtonItemStylePlain target:self action:@selector(handleCompleteField)];
-        }
-        self.navigationItem.rightBarButtonItem.enabled = NO;
-    }
     
     switch (_action) {
         case PasscodeActionSet:
@@ -498,9 +667,11 @@ static NSTimeInterval AnimationDuration = 0.3;
                 promptLabel.text = _confirmPrompt;
             }
             break;
+         
     }
     //[promptLabel sizeToFit];
- 
+
+    
     if (animated) {
         contentView.frame = CGRectOffset(contentView.frame, contentView.frame.size.width*dir, 0);
         [UIView animateWithDuration:AnimationDuration animations:^() {

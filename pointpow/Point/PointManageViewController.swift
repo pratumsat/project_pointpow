@@ -60,8 +60,8 @@ class PointManageViewController: BaseViewController {
 //                self.isFriend = false
 //
 //            }
-//            self.showSettingPassCodeModalView()
-            self.showPointTransferView(true)
+            self.showSettingPassCodeModalView()
+            //self.showPointTransferView(true)
         })
         
         let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: nil)
@@ -83,7 +83,8 @@ class PointManageViewController: BaseViewController {
             
             self.isFriend = true
             //self.showSettingPassCodeModalView()
-            self.showFriendTransferView(true)
+            //self.showFriendTransferView(true)
+            self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
         })
         let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: nil)
         

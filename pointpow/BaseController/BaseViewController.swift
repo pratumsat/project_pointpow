@@ -733,10 +733,17 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
     func paPasscodeViewControllerDidEnterPasscodeResult(_ controller: PAPasscodeViewController!, didEnterPassCode passcode: String!) {
         print("enter passcode: \(passcode ?? "unknow")")
         
-        controller.dismiss(animated: false, completion: { () in
+        //check pass code success dismiss
+        /*controller.dismiss(animated: false, completion: { () in
             self.handlerEnterSuccess?()
-        })
-        //controller.showFailedMessage("")
+        })*/
+        
+        //check pass code fail
+        controller.showFailedMessage("error pin code\nerror errroee ewdwdowo 0993223219")
+    }
+    func paPasscodeViewControllerDidResetEmail(_ controller: PAPasscodeViewController!, didResetEmailPinCode email: String!) {
+        
+        print("enter email: \(email)")
     }
     func paPasscodeViewControllerDidSetPasscode(_ controller: PAPasscodeViewController!, didSetPassCode passcode: String!) {
         

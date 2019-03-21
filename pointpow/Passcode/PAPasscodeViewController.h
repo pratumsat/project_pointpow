@@ -19,6 +19,8 @@ typedef enum {
 @protocol PAPasscodeViewControllerDelegate <NSObject>
 
 @optional
+- (void)PAPasscodeViewControllerDidResetEmail:(PAPasscodeViewController *)controller didResetEmailPinCode:(NSString*)email;
+
 - (void)PAPasscodeViewControllerDidEnterPasscodeResult:(PAPasscodeViewController *)controller didEnterPassCode:(NSString*)passcode;
 - (void)PAPasscodeViewControllerDidCancel:(PAPasscodeViewController *)controller;
 - (void)PAPasscodeViewControllerDidChangePasscode:(PAPasscodeViewController *)controller;
@@ -26,6 +28,7 @@ typedef enum {
 - (void)PAPasscodeViewControllerDidEnterPasscode:(PAPasscodeViewController *)controller;
 - (void)PAPasscodeViewControllerDidSetPasscode:(PAPasscodeViewController *)controller didSetPassCode:(NSString*)passcode;
 - (void)PAPasscodeViewController:(PAPasscodeViewController *)controller didFailToEnterPasscode:(NSInteger)attempts;
+
 
 @end
 
@@ -37,12 +40,16 @@ typedef enum {
     NSInteger phase;
     UILabel *promptLabel;
     UILabel *messageLabel;
-    UIView *_failedAttemptsView;
-    
+    UILabel *forgotLabel;
+    UILabel *failedAttemptsLabel;
     UITextField *passcodeTextField;
     UILabel *_digitLabels[6];
     UIImageView *snapshotImageView;
     UIImageView *logoAppImageView;
+    
+    UITextField *emailTextField;
+    UIView *underLineTextFieldView;
+    UIButton *sendEmailButton;
 }
 
 @property (strong) UIView *backgroundView;
@@ -57,6 +64,8 @@ typedef enum {
 @property (strong) NSString *changePrompt;
 @property (strong) NSString *message;
 @property (assign) BOOL centerPosition;
+@property (readonly) BOOL forgotPin;
+
 
 - (void)setTitlePasscode:(NSString*)messageError;
 - (void)showFailedMessage:(NSString*)messageError;

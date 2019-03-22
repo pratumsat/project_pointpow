@@ -72,6 +72,16 @@ class DataController {
         return token
     }
     
+    func setResetPinToken(_ token:String){
+        UserDefaults.standard.set(token, forKey: Constant.CacheNotification.USER_RESET_PIN_TOKEN_CACHE)
+        UserDefaults.standard.synchronize()
+    }
+    func getResetPinToken() -> String{
+        let token = UserDefaults.standard.object(forKey: Constant.CacheNotification.USER_RESET_PIN_TOKEN_CACHE) as? String ?? ""
+        return token
+    }
+    
+    
     func isLogin() -> Bool {
         let token = data["token"] as? String ?? ""
         if token != "" {

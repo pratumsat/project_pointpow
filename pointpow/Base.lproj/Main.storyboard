@@ -3661,6 +3661,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="riG-ab-To8"/>
                     </view>
+                    <navigationItem key="navigationItem" id="W9K-5r-7a2"/>
                     <connections>
                         <segue destination="SJQ-E8-2EB" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="o11-1W-aQq"/>
                         <segue destination="4RT-UG-1wS" kind="custom" identifier="sw_right" customClass="SWRevealViewControllerSegueSetController" id="8yo-W7-wQD"/>
@@ -3791,10 +3792,10 @@
             </objects>
             <point key="canvasLocation" x="-3488" y="4156"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Gold Nav View Controller-->
         <scene sceneID="TxT-C5-p4k">
             <objects>
-                <navigationController id="p5b-AM-avd" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="GoldNavViewController" id="p5b-AM-avd" customClass="GoldNavViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uZJ-8b-gp1">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -3805,10 +3806,13 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
+                    <connections>
+                        <segue destination="XJo-cG-Bae" kind="relationship" relationship="rootViewController" id="UCL-Dc-Wcc"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zwN-9c-3pG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5103" y="3481"/>
+            <point key="canvasLocation" x="-5328" y="2778"/>
         </scene>
         <!--Gold Menu Table View Controller-->
         <scene sceneID="6Vg-Vl-bY8">

@@ -26,6 +26,7 @@
 		C107CF36222263AD00C50B8C /* PopupShippingMyAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C107CF35222263AD00C50B8C /* PopupShippingMyAddressViewController.swift */; };
 		C107CF3A222269E000C50B8C /* AddressViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C107CF38222269E000C50B8C /* AddressViewCell.swift */; };
 		C107CF3B222269E000C50B8C /* AddressViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C107CF39222269E000C50B8C /* AddressViewCell.xib */; };
+		C10931AA2244BCB200C1F33E /* GoldNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10931A92244BCB200C1F33E /* GoldNavViewController.swift */; };
 		C10CA19421914A3B00316DF3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA19321914A3B00316DF3 /* HomeViewController.swift */; };
 		C10CA19721914AD500316DF3 /* PromotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA19621914AD500316DF3 /* PromotionViewController.swift */; };
 		C10CA19A21914AF900316DF3 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CA19921914AF900316DF3 /* TransactionViewController.swift */; };
@@ -249,6 +250,7 @@
 		C107CF35222263AD00C50B8C /* PopupShippingMyAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupShippingMyAddressViewController.swift; sourceTree = "<group>"; };
 		C107CF38222269E000C50B8C /* AddressViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewCell.swift; sourceTree = "<group>"; };
 		C107CF39222269E000C50B8C /* AddressViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressViewCell.xib; sourceTree = "<group>"; };
+		C10931A92244BCB200C1F33E /* GoldNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldNavViewController.swift; sourceTree = "<group>"; };
 		C10CA19321914A3B00316DF3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C10CA19621914AD500316DF3 /* PromotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionViewController.swift; sourceTree = "<group>"; };
 		C10CA19921914AF900316DF3 /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
@@ -524,6 +526,7 @@
 				C10D94B72209719F0083FA47 /* NavProfile.swift */,
 				C10D94B9220971B10083FA47 /* NavHistory.swift */,
 				C10D94BD220978B60083FA47 /* NavWithdraw.swift */,
+				C10931A92244BCB200C1F33E /* GoldNavViewController.swift */,
 			);
 			path = GoldBase;
 			sourceTree = "<group>";
@@ -1475,6 +1478,7 @@
 				C1247C542219B126005D6F7A /* PopupGoldPremiumViewController.swift in Sources */,
 				C1817DA1219C1934009507DB /* SwitchCell.swift in Sources */,
 				C11BFCAB221BEEF200F066DE /* WidthDrawShippingPointPowCell.swift in Sources */,
+				C10931AA2244BCB200C1F33E /* GoldNavViewController.swift in Sources */,
 				C106BEAE220BEB3000E2331E /* GoldItemCell.swift in Sources */,
 				C13D99822199755B001A4794 /* ProfileViewController.swift in Sources */,
 				C1817DA8219E7BFE009507DB /* CheckBox.swift in Sources */,

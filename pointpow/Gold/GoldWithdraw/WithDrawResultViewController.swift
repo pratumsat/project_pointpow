@@ -646,7 +646,7 @@ extension WithDrawResultViewController {
                 
                 item.addressLabel.text = full_address
                 item.arrayBox = shipping_and_insurance
-                item.amountBoxLabel.text = "\(shipping_and_insurance.count) \(NSLocalizedString("string-thaipost-delivery-box", comment: ""))"
+                item.amountBoxLabel.text = "(\(shipping_and_insurance.count)\(NSLocalizedString("string-thaipost-delivery-box", comment: "")))"
                 item.serviceLabel.text = "\(total_shipping_price)"
                 item.totalLabel.text = "\(total_shipping_price.intValue + premium.intValue)"
                 
@@ -794,7 +794,7 @@ extension WithDrawResultViewController {
                 
                 item.addressLabel.text = full_address
                 item.arrayBox = shipping_and_insurance
-                item.amountBoxLabel.text = "\(shipping_and_insurance.count) \(NSLocalizedString("string-thaipost-delivery-box", comment: ""))"
+                item.amountBoxLabel.text = "(\(shipping_and_insurance.count)\(NSLocalizedString("string-thaipost-delivery-box", comment: "")))"
                 item.serviceLabel.text = "\(total_shipping_price)"
                 item.totalLabel.text = "\(total_shipping_price.intValue + premium.intValue)"
                 
@@ -877,7 +877,7 @@ extension WithDrawResultViewController {
                 
                 item.addressLabel.text = full_address
                 item.arrayBox = shipping_and_insurance
-                item.amountBoxLabel.text = "\(shipping_and_insurance.count) \(NSLocalizedString("string-thaipost-delivery-box", comment: ""))"
+                item.amountBoxLabel.text = "(\(shipping_and_insurance.count)\(NSLocalizedString("string-thaipost-delivery-box", comment: "")))"
                 item.serviceLabel.text = "\(total_shipping_price)"
                 item.totalLabel.text = "\(total_shipping_price.intValue + premium.intValue)"
                 

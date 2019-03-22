@@ -82,20 +82,11 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
         
-        
-        
-        
-        //keyboard show / hide
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(GoogleSigInSuccess), name: NSNotification.Name(rawValue: Constant.DefaultConstansts.NotificationGoogleSigInSuccess), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(GoogleSigInFailure), name: NSNotification.Name(rawValue: Constant.DefaultConstansts.NotificationGoogleSigInFailure), object: nil)
-        
-        
-        
+      
      
         
         backgroundImage = UIImageView()
@@ -128,18 +119,30 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         }
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        //keyboard show / hide
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-//
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(resetPinCode), name: NSNotification.Name(rawValue: Constant.DefaultConstansts.RESET_PIN), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: Constant.DefaultConstansts.RESET_PIN), object : nil)
         
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object : nil)
         
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object : nil)
     }
     
+    @objc func resetPinCode(notification: NSNotification){
+        //showResetpin
+        self.showSettingPassCodeModalView()
+    }
     
     @objc func GoogleSigInSuccess(notification: NSNotification){
 //        if let userInfo = notification.userInfo as? [String:AnyObject]{
@@ -319,10 +322,16 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         
     }
     func showGoldPage(_ animated:Bool){
-        if let vc:GoldSWRevealViewController = self.storyboard?.instantiateViewController(withIdentifier: "GoldSWRevealViewController") as? GoldSWRevealViewController {
+        
+        if let vc:GoldNavViewController = self.storyboard?.instantiateViewController(withIdentifier: "GoldNavViewController") as? GoldNavViewController {
             
             self.present(vc, animated: animated, completion: nil)
+            
+         
         }
+      
+        
+        
     }
     
     func confirmGoldSavingPage(_ animated:Bool, modelSaving:(pointBalance:Double?, pointSpend:Double?, goldReceive:Double?, currentGoldprice:Double?)){
@@ -733,39 +742,126 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
     func paPasscodeViewControllerDidEnterPasscodeResult(_ controller: PAPasscodeViewController!, didEnterPassCode passcode: String!) {
         print("enter passcode: \(passcode ?? "unknow")")
         
-        //check pass code success dismiss
-        /*controller.dismiss(animated: false, completion: { () in
-            self.handlerEnterSuccess?()
-        })*/
         
-        //check pass code fail
-        controller.showFailedMessage("error pin code\nerror errroee ewdwdowo 0993223219")
+        let params:Parameters = ["pin" : Int(passcode)!]
+        self.modelCtrl.enterPinCode(params: params, true, succeeded: { (result) in
+            controller.dismiss(animated: false, completion: { () in
+                self.handlerEnterSuccess?()
+            })
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                
+                controller.showFailedMessage(message)
+            }
+        }) { (messageError) in
+            self.handlerMessageError(messageError)
+            controller.showFailedMessage("")
+        }
+        
+    
     }
     func paPasscodeViewControllerDidResetEmail(_ controller: PAPasscodeViewController!, didResetEmailPinCode email: String!) {
         
-        print("enter email: \(email)")
+        if email.isEmpty {
+            let emptyEmail = NSLocalizedString("string-error-empty-email", comment: "")
+            controller.showFailedMessage(emptyEmail)
+            return
+            
+        }
+        if isValidEmail(email) {
+            let params:Parameters = ["email" : email!]
+            self.modelCtrl.forgotPinCode(params: params, true, succeeded: { (result) in
+                
+                self.showMessagePrompt2(NSLocalizedString("title-forgot-passcode-reset-email", comment: "")) {
+                    controller.dismiss(animated: true, completion: nil)
+                }
+                
+            }, error: { (error) in
+                if let mError = error as? [String:AnyObject]{
+                    let message = mError["message"] as? String ?? ""
+                    print(message)
+                    
+                    controller.showFailedMessage(message)
+                }
+            }) { (messageError) in
+                self.handlerMessageError(messageError)
+                controller.showFailedMessage("")
+            }
+            
+        }else{
+            let emailNotValid = NSLocalizedString("string-error-invalid-email", comment: "")
+            controller.showFailedMessage(emailNotValid)
+        }
+        
+       
+        
     }
     func paPasscodeViewControllerDidSetPasscode(_ controller: PAPasscodeViewController!, didSetPassCode passcode: String!) {
         
         print("set passcode: \(passcode ?? "unknow")")
-    
-        controller.dismiss(animated: false, completion: { () in
-            self.hendleSetPasscodeSuccess?(passcode)
-        })
+        
+        let tokenResetPin = DataController.sharedInstance.getResetPinToken()
+        if tokenResetPin != "" {
+            let params:Parameters = ["reset_pin_token" : tokenResetPin,
+                                     "new_pin" : Int(passcode)!]
+            self.modelCtrl.resetPinCodeToken(params: params, true, succeeded: { (result) in
+                DataController.sharedInstance.setResetPinToken("")
+                
+                let message = NSLocalizedString("string-reset-pincode-success", comment: "")
+                let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+                let ok = UIAlertAction(title: NSLocalizedString("string-button-ok", comment: ""), style: .cancel, handler: { (action) in
+                    
+                    controller.dismiss(animated: false, completion: { () in
+                        //
+                    })
+                })
+                alert.addAction(ok)
+                alert.show()
+                
+               
+            }, error: { (error) in
+                if let mError = error as? [String:AnyObject]{
+                    let message = mError["message"] as? String ?? ""
+                    print(message)
+                    
+                    controller.showFailedMessage(message)
+                }
+            }) { (messageError) in
+                self.handlerMessageError(messageError)
+            }
+            //
+        }else{
+            
+            
+            let params:Parameters = ["new_pin" : Int(passcode)!]
+            self.modelCtrl.setPinCode(params: params, true, succeeded: { (result) in
+                
+                controller.dismiss(animated: false, completion: { () in
+                    self.hendleSetPasscodeSuccess?(passcode)
+                })
+            }, error: { (error) in
+                if let mError = error as? [String:AnyObject]{
+                    let message = mError["message"] as? String ?? ""
+                    print(message)
+                    
+                    controller.showFailedMessage(message)
+                }
+            }) { (messageError) in
+                self.handlerMessageError(messageError)
+            }
+            
+        }
+        
+     
+       
         
         
         
     }
     func showTransferSuccessPopup(_ animated:Bool , nextStepCallback:(()->Void)? = nil ){
         let presenter: Presentr = {
-            
-//            let w = self.view.frame.width * 0.8
-//            let h = w/212*115
-//            let width = ModalSize.custom(size: Float(w))
-//            let height = ModalSize.custom(size: Float(h))
-//            
-//            let center = ModalCenterPosition.center
-//            let customType = PresentationType.custom(width: width, height: height, center: center)
             
             let customPresenter = Presentr(presentationType: PresentationType.alert)
             customPresenter.roundCorners = true
@@ -1192,7 +1288,8 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             
         }
         alert.addAction(confirmAction)
-        self.present(alert, animated: true, completion: nil)
+        alert.show()
+        //self.present(alert, animated: true, completion: nil)
     }
     
     func AlertMessageDialogOK(_ message:String, title:String = "Error"){
@@ -1200,7 +1297,8 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         let ok = UIAlertAction(title: NSLocalizedString("string-button-ok", comment: ""), style: .default, handler: nil)
         alert.addAction(ok)
         
-        self.present(alert, animated: true, completion: nil)
+        alert.show()
+        //self.present(alert, animated: true, completion: nil)
     }
     
     func showMessagePrompt(_ message:String){
@@ -1209,6 +1307,18 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         alert.addAction(ok)
         
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func showMessagePrompt2(_ message:String , okCallback:(()->Void)? = nil){
+        let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+        let ok = UIAlertAction(title: NSLocalizedString("string-button-ok", comment: ""), style: .cancel, handler: {
+            (alert) in
+            okCallback?()
+        })
+        alert.addAction(ok)
+        
+        alert.show()
+        
     }
     
     func showMessageDeleteAddressPrompt(_ message:String, _ deleteCallback:(()->Void)? = nil){

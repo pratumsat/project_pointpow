@@ -232,7 +232,7 @@ class WithDrawSummaryThaiPostViewController: BaseViewController, UICollectionVie
                 numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal
                 
-                item.amountBoxLabel.text = "(\(arrayBox.count) \(NSLocalizedString("string-thaipost-delivery-box", comment: "")))"
+                item.amountBoxLabel.text = "(\(arrayBox.count)\(NSLocalizedString("string-thaipost-delivery-box", comment: "")))"
                 
                 item.serviceLabel.text = numberFormatter.string(from: NSNumber(value: totalServicePrice))
                 item.totalLabel.text = numberFormatter.string(from: NSNumber(value: totalPrice))

@@ -112,6 +112,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                     }
                     
                     
+                }else if host == "resetpin" {
+                    
+                    if let dic = url.queryDictionary {
+                        let token = dic["reset_pin_token"] ?? "unknow"
+                        let activateToken = DataController.sharedInstance.getResetPinToken()
+                        
+                        
+                        if activateToken == token {
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constant.DefaultConstansts.RESET_PIN), object: nil, userInfo: [:] as [String:AnyObject])
+                        }
+                    }
+                    
+                    
                 }
             }
             

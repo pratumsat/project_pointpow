@@ -8,6 +8,35 @@
 
 import Foundation
 import UIKit
+
+
+extension UIAlertController {
+    
+    func show() {
+        present(true, completion: nil)
+    }
+    
+    func present(_ animated: Bool, completion: (() -> Void)?) {
+        if let rootVC = UIApplication.shared.keyWindow?.rootViewController {
+            presentFromController(controller: rootVC, animated: animated, completion: completion)
+        }
+    }
+    
+    private func presentFromController(controller: UIViewController, animated: Bool, completion: (() -> Void)?) {
+        if  let navVC = controller as? UINavigationController,
+            let visibleVC = navVC.visibleViewController {
+            presentFromController(controller: visibleVC, animated: animated, completion: completion)
+        } else {
+            if  let tabVC = controller as? UITabBarController,
+                let selectedVC = tabVC.selectedViewController {
+                presentFromController(controller: selectedVC, animated: animated, completion: completion)
+            } else {
+                controller.present(self, animated: animated, completion: completion)
+            }
+        }
+    }
+}
+
 extension UIViewController {
     func setCustomTitleView(_ title:String){
         let titleView = UILabel()
@@ -645,6 +674,10 @@ struct Constant {
         static let addBackgroundImageProfile = "\(HOST)\(POINTPOW_VERSION1)member/upload-background-image"
         static let memberAddress = "\(HOST)\(POINTPOW_VERSION1)member/address"
         
+        static let setPinCode = "\(HOST)\(POINTPOW_VERSION1)member/set-pin"
+        static let resetPinCode = "\(HOST)\(POINTPOW_VERSION1)member/set-reset-pin"
+        static let enterPinCode = "\(HOST)\(POINTPOW_VERSION1)member/check-pin"
+        static let forgotPinCode = "\(HOST)\(POINTPOW_VERSION1)member/reset-pin"
         
         static let registerGoldMember = "\(HOST)\(POINTPOW_VERSION1)gold-saving/register"
         static let updateGoldMember = "\(HOST)\(POINTPOW_VERSION1)gold-saving/update"
@@ -686,6 +719,7 @@ struct Constant {
         }
     }
     struct CacheNotification {
+        static let USER_RESET_PIN_TOKEN_CACHE = "USER_RESET_PIN_TOKEN_CACHE"
         static let USER_RESET_PASSWORD_TOKEN_CACHE = "USER_RESET_PASSWORD_TOKEN_CACHE"
         static let USER_ACTIVATE_TOKEN_CACHE = "USER_ACTIVATE_TOKEN_CACHE"
         static let USER_TOKEN_CACHE = "USER_TOKEN"
@@ -697,6 +731,7 @@ struct Constant {
         case left, right, top, bottom
     }
     struct DefaultConstansts {
+        static let RESET_PIN = "RESET_PIN"
         static let RESET_PASSWORD = "RESET_PASSWORD"
         static let VERIFI_EMAIL_REGISTER = "VERIFI_EMAIL_REGISTER"
         static let NOTIFICATION_SELECTED_PAGE = "NOTIFICATION_SELECTED_PAGE"

@@ -10,8 +10,7 @@ import UIKit
 
 class GoldPriceCell: UICollectionViewCell {
 
-    @IBOutlet weak var diffImageView: UIImageView!
-    @IBOutlet weak var diffLabel: UILabel!
+  
     @IBOutlet weak var sellPriceLabel: UILabel!
     @IBOutlet weak var buyPriceLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -34,7 +33,7 @@ class GoldPriceCell: UICollectionViewCell {
         super.layoutSubviews()
         
         
-        self.headView.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
+       
         
     }
 }

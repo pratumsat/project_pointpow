@@ -13,13 +13,13 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
     @IBOutlet weak var homeCollectionView: UICollectionView!
     
     @IBOutlet weak var menuBarButton: UIBarButtonItem!
-    let arrayItem_registered_waiting = ["goldprice", "logo"]
-    let arrayItem_registered_waiting_edit = ["goldprice", "goldbalance", "logo"]
-    let arrayItem_registered = ["goldprice","goldbalance","saving", "logo"]
-    let arrayItem_no_registered = ["goldprice","register", "logo"]
+    let arrayItem_registered_waiting = ["banner","goldprice", "logo"]
+    let arrayItem_registered_waiting_edit = ["banner","goldprice", "goldbalance", "logo"]
+    let arrayItem_registered = ["banner","goldprice","goldbalance","saving", "logo"]
+    let arrayItem_no_registered = ["banner","goldprice","register", "logo"]
     var arrayItem:[String] = []
     var statusMemberGold = ""
-    var gold_balance = NSNumber(value: 0.00)
+    var point_balance = NSNumber(value: 0.00)
     
     var isRegistered  = false {
         didSet{
@@ -43,7 +43,7 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
                     self.arrayItem = self.arrayItem_registered
                 }
                 
-                if self.gold_balance.doubleValue <= 0 {
+                if self.point_balance.doubleValue <= 0 {
                     self.arrayItem.remove(at: 1)
                 }
                 
@@ -58,7 +58,6 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         }
     }
     
-    var goldamountLabel:UILabel?
     var pointpowTextField:UITextField?
     var savingUpdateButton:UIButton?
     
@@ -98,7 +97,7 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         self.registerNib(self.homeCollectionView, "SavingCell")
         self.registerNib(self.homeCollectionView, "RegisterGoldCell")
         self.registerNib(self.homeCollectionView, "LogoGoldCell")
-        
+        self.registerNib(self.homeCollectionView, "PromotionCampainCell")
        
     }
     
@@ -116,10 +115,10 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
             //let profileImage = data["picture_data"] as? String ?? ""
             let registerGold = data["gold_saving_acc"] as? NSNumber ?? 0
             let status = data["goldsaving_member"]?["status"] as? String ?? ""
-            let gold_balance = data["goldsaving_member"]?["gold_balance"] as? NSNumber ?? 0
+            let point_balance = data["goldsaving_member"]?["point_balance"] as? NSNumber ?? 0
             
             
-            self.gold_balance = gold_balance
+            self.point_balance = point_balance
             self.statusMemberGold = status
             
             
@@ -131,7 +130,7 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
 
             
             self.pointpowTextField?.text = ""
-            self.goldamountLabel?.text = "0.0000"
+            
             
             
         }
@@ -159,36 +158,17 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
 
             
             if updatedText.isEmpty {
-                self.goldamountLabel?.text = "0.0000"
                 return true
             }
             
-            if let point = Int(updatedText) {
-
+            if isValidNumber(updatedText) {
+                let point = Double(updatedText)!
                 if point >= 100 {
                     self.enableButton()
                 }else{
                     self.disableButton()
                 }
                 
-                if let data  = self.goldPrice as? [String:AnyObject] {
-                    
-                    let goldprice = data["open_sell_price"] as? NSNumber ?? 0
-                    let gramToPoint = Double(goldprice.intValue)/15.244
-                    
-                    
-                    let sum = String(format: "%.04f", floor(Double(point)/gramToPoint * 10000) / 10000)
-                    
-                    
-                    print(Double(point)/gramToPoint)
-                    print(String(format: "%.04f", floor(Double(point)/gramToPoint * 10000) / 10000))
-                    
-                    
-                    
-                    self.goldamountLabel?.text = "\(sum)"
-                }
-                
-
             }else{
                 return false
             }
@@ -201,6 +181,15 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         var cell:UICollectionViewCell?
         
         let menu = self.arrayItem[indexPath.section]
+        
+        if menu == "banner" {
+            if let promo = collectionView.dequeueReusableCell(withReuseIdentifier: "PromotionCampainCell", for: indexPath) as? PromotionCampainCell{
+                
+                promo.autoSlideImage = true
+                
+                cell = promo
+            }
+        }
         if menu == "goldprice" {
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "GoldPriceCell", for: indexPath) as? GoldPriceCell{
                 cell = item
@@ -208,7 +197,7 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
                 if let data  = self.goldPrice as? [String:AnyObject] {
                     let buyPrice = data["open_buy_price"] as? NSNumber ?? 0
                     let sellPrice = data["open_sell_price"] as? NSNumber ?? 0
-                    let diff = data["diff"] as? NSNumber ?? 0
+                    
                     let created_at = data["updated_at"] as? String ?? ""
                     
                     item.dateLabel.text  = created_at
@@ -218,20 +207,7 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
                  
                     item.buyPriceLabel.text  = numberFormatter.string(from: buyPrice)
                     item.sellPriceLabel.text = numberFormatter.string(from: sellPrice)
-                    item.diffLabel.text = numberFormatter.string(from: NSNumber(value: abs(diff.intValue)))
-                    
-                    if diff == 0 {
-                        item.diffLabel.textColor = UIColor.darkGray
-                        item.diffImageView.image = nil
-                    }
-                    if diff.intValue > 0 {
-                        item.diffLabel.textColor = Constant.Colors.GREEN
-                        item.diffImageView.image = UIImage(named: "ic-gold-value-more")
-                    }
-                    if diff.intValue < 0 {
-                        item.diffLabel.textColor = Constant.Colors.PRIMARY_COLOR
-                        item.diffImageView.image = UIImage(named: "ic-gold-value-less")
-                    }
+
                 }
             }
         }
@@ -240,41 +216,23 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
                 cell = item
                
                 if let data  = self.userData as? [String:AnyObject] {
-                    let gold_balance = data["goldsaving_member"]?["gold_balance"] as? NSNumber ?? 0
-                    let gold_cost = data["goldsaving_member"]?["gold_cost"] as? [String:AnyObject] ?? [:]
-                    let present_value = gold_cost["present_value"] as? NSNumber ?? 0
-                    let tolal_point = gold_cost["tolal_point"] as? NSNumber ?? 0
-                    let profit = gold_cost["profit"] as? NSNumber ?? 0
+                    let point_balance = data["goldsaving_member"]?["point_balance"] as? NSNumber ?? 0
                     
-                    var numberFormatter = NumberFormatter()
-                    numberFormatter.numberStyle = .decimal
-                    numberFormatter.minimumFractionDigits = 4
-                   
-                    
-                    item.goldBalanceLabel.text = numberFormatter.string(from: gold_balance)
-                    
-                    
-                    numberFormatter = NumberFormatter()
+                    let numberFormatter = NumberFormatter()
                     numberFormatter.numberStyle = .decimal
                     numberFormatter.minimumFractionDigits = 2
-                    
-                    item.goldPresentLabel.text = numberFormatter.string(from: present_value)
-                    
-                    numberFormatter = NumberFormatter()
-                    numberFormatter.numberStyle = .decimal
-                    item.goldpriceAverage.text = numberFormatter.string(from: tolal_point)
-                    
-                     item.goldDiffLabel.text = numberFormatter.string(from: profit)
-                    if profit == 0 {
-                        item.goldDiffLabel.textColor = UIColor.darkGray
+                    item.pointTotalLabel.text = numberFormatter.string(from: point_balance)
+            
+                    var currentGoldprice = NSNumber(value: 0.0)
+                    if let data  = self.goldPrice as? [String:AnyObject] {
+                        currentGoldprice = data["open_sell_price"] as? NSNumber ?? 0
                     }
-                    if profit.doubleValue > 0 {
-                        item.goldDiffLabel.textColor = Constant.Colors.GREEN
-                    }
-                    if profit.doubleValue < 0 {
-                        item.goldDiffLabel.textColor = Constant.Colors.PRIMARY_COLOR
-                    }
-
+                    let gramToPoint = Double(currentGoldprice.intValue)/15.244
+                    
+                    
+                    let sum = String(format: "%.04f", floor(point_balance.doubleValue/gramToPoint * 10000) / 10000)
+                    
+                    item.goldExchangeLabel.text = "\(sum)"
                     
                 }
             }
@@ -284,14 +242,12 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "SavingCell", for: indexPath) as? SavingCell {
                 cell = item
                 self.pointpowTextField = item.pointpowTextField
-                self.goldamountLabel = item.goldamountLabel
                 self.savingUpdateButton = item.savingButton
                 self.disableButton()
                 
-                item.pointpowTextField.autocorrectionType = .no
-                item.pointpowTextField.delegate = self
-                
-                item.pointpowTextField.addDoneButtonToKeyboard()
+                self.pointpowTextField?.autocorrectionType = .no
+                self.pointpowTextField?.delegate = self
+                self.pointpowTextField?.addDoneButtonToKeyboard()
                 
                 if let data  = self.userData as? [String:AnyObject] {
                     let pointBalance = data["member_point"]?["total"] as? NSNumber ?? 0
@@ -343,11 +299,9 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
                                 return
                             }
                             
-                            goldReceive = NSNumber(value: Double(self.goldamountLabel?.text ?? "0")!)
                             pointSpend =  NSNumber(value: Double(self.pointpowTextField?.text! ?? "0")!)
-                            
-                            modelSaving.pointSpend = pointSpend.doubleValue
                             modelSaving.goldReceive = goldReceive.doubleValue
+                            modelSaving.pointSpend = pointSpend.doubleValue
                             modelSaving.currentGoldprice  = currentGoldprice.doubleValue
                             
                             if (pointSpend.doubleValue) > (pointBalance.doubleValue) {
@@ -391,7 +345,10 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         
-        
+        if section == 0 {
+            return CGSize.zero
+            
+        }
         return CGSize(width: collectionView.frame.width, height: 20)
         
     }
@@ -405,7 +362,11 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         
         let menu = self.arrayItem[indexPath.section]
         
-        
+        if menu == "banner"{
+            let width = collectionView.frame.width
+            let height = width/1799*720
+            return CGSize(width: width, height: height)
+        }
         if menu == "logo" {
             let width = collectionView.frame.width
             return CGSize(width: width, height: CGFloat(60))
@@ -417,17 +378,17 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         }
         if menu == "goldprice" {
             let width = collectionView.frame.width - 40
-            let height = CGFloat(250) //width/375*260
+            let height = CGFloat(130) //width/375*260
             return CGSize(width: width, height: height)
         }
         if menu == "goldbalance"{
             let width = collectionView.frame.width - 40
-            let height = CGFloat(200) //width/375*250
+            let height = CGFloat(160) //width/375*250
             return CGSize(width: width, height: height)
         }
         if menu == "saving"{
             let width = collectionView.frame.width - 40
-            let height =   CGFloat(300) //width/375*355
+            let height =   CGFloat(270) //width/375*355
             return CGSize(width: width, height: height)
         }
         

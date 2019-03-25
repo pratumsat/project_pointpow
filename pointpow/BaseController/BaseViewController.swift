@@ -258,7 +258,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
                     if (self.positionYTextField - hH)  > hH{
                         self.gapHeightKeyboard  += 200
                     }else{
-                        self.gapHeightKeyboard  += self.positionYTextField - hH
+                        self.gapHeightKeyboard  += abs(keyboardSize.size.height - self.positionYTextField)
                     }
                     
                     

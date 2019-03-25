@@ -80,13 +80,6 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
             self.premiumLabel.text = ""
             self.withDrawData = (premium : "\(0)" , goldReceive: [])
             self.goldSpendCallback?(0 , self.selectedUnits)
-            
-//            if self.selectedUnits == 0 {
-//                calSalueng(amountTextField?.text ?? "")
-//            }else{
-//                calBaht(amountTextField?.text ?? "")
-//            }
-            
         }
     }
     
@@ -99,6 +92,10 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
             updateView()
         }
     }
+    
+    var positionYTextField:CGFloat = 0
+    var isShowKeyBoard = false
+    var withDrawCollectionView:UICollectionView?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -135,10 +132,10 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
         //self.unitTextField.borderRedColorProperties(borderWidth: 1)
         self.unitTextField.setRightPaddingPoints(40)
         
-        
-        
-        self.amountTextField.delegate = self
-        self.amountTextField.addDoneButtonToKeyboard()
+    
+//        self.amountTextField.delegate = self
+//        self.amountTextField.addDoneButtonToKeyboard()
+//        
         
         
         self.updateView()
@@ -151,8 +148,9 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
         self.unitView.isUserInteractionEnabled = true
         self.unitView.addGestureRecognizer(dropdownTap)
         
+        
     }
-    
+   
     @objc func dropdownTapped(){
         self.unitTextField.becomeFirstResponder()
     }
@@ -160,51 +158,53 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
         self.infoCallback?()
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        if textField == self.amountTextField {
-            let textRange = Range(range, in: textField.text!)!
-            let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
-        
-            if updatedText.isEmpty {
-                self.amountTextField.text = "0"
-                self.premiumLabel.text = "0"
-                
-                self.withDrawData = (premium : "\(0)" , goldReceive: [])
-                self.goldSpendCallback?(0 , self.selectedUnits)
-                
-                return true
-            }
-            
-            if let amount = Int(updatedText) {
-               
-                if self.selectedUnits == 0 {
-                    if amount > 200 {
-                        self.amountTextField?.text = "200"
-                        calSalueng("200")
-                        return false
-                    }else{
-                        calSalueng(updatedText)
-                    }
-                   
-                }else{
-                    if amount > 50 {
-                        self.amountTextField?.text = "50"
-                        calBaht("50")
-                        return false
-                    }else{
-                        calBaht(updatedText)
-                    }
-                    
-                }
-            }else{
-                return false
-            }
-            
-        }
-        
-        return true
-    }
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        
+//        if textField == self.amountTextField {
+//            let textRange = Range(range, in: textField.text!)!
+//            let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
+//        
+//            if updatedText.isEmpty {
+//                self.amountTextField.text = "0"
+//                self.premiumLabel.text = "0"
+//                
+//                self.withDrawData = (premium : "\(0)" , goldReceive: [])
+//                self.goldSpendCallback?(0 , self.selectedUnits)
+//                
+//                return true
+//            }
+//            
+//            if  isValidNumber(updatedText) {
+//                
+//                let amount = Double(updatedText)!
+//               
+//                if self.selectedUnits == 0 {
+//                    if amount > 200 {
+//                        self.amountTextField?.text = "200"
+//                        calSalueng("200")
+//                        return false
+//                    }else{
+//                        calSalueng(updatedText)
+//                    }
+//                   
+//                }else{
+//                    if amount > 50 {
+//                        self.amountTextField?.text = "50"
+//                        calBaht("50")
+//                        return false
+//                    }else{
+//                        calBaht(updatedText)
+//                    }
+//                    
+//                }
+//            }else{
+//                return false
+//            }
+//            
+//        }
+//        
+//        return true
+//    }
 
     
     func updateView(){

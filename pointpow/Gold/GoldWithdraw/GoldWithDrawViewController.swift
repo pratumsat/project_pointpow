@@ -24,6 +24,10 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
     
     var sumWeight:Double = 0.00
     
+   
+    var withDrawCell:WithdrawCell?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -76,7 +80,61 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
         }
     }
     
-    
+    override func textFieldDidBeginEditing(_ textField: UITextField) {
+        //let y = textField.frame.origin.y + (textField.superview?.frame.origin.y)!;
+        let pointInTable = textField.superview?.convert(textField.frame.origin, to: self.withDrawCollectionView)
+        let y =  pointInTable?.y ?? 600
+        self.positionYTextField = y + 50
+        
+    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if textField == self.amountTextField {
+            let textRange = Range(range, in: textField.text!)!
+            let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
+            
+            if updatedText.isEmpty {
+                self.withDrawCell?.amountTextField.text = "0"
+                self.withDrawCell?.premiumLabel.text = "0"
+                
+                self.withDrawCell?.withDrawData = (premium : "\(0)" , goldReceive: [])
+                //self.goldSpendCallback?(0 , self.selectedUnits)
+                
+                return true
+            }
+            
+            if  isValidNumber(updatedText) {
+                
+                let amount = Double(updatedText)!
+                
+                if self.withDrawCell?.selectedUnits == 0 {
+                    if amount > 200 {
+                        self.withDrawCell?.amountTextField?.text = "200"
+                        self.withDrawCell?.calSalueng("200")
+                        return false
+                    }else{
+                        self.withDrawCell?.calSalueng(updatedText)
+                    }
+                    
+                }else{
+                    if amount > 50 {
+                        self.withDrawCell?.amountTextField?.text = "50"
+                        self.withDrawCell?.calBaht("50")
+                        return false
+                    }else{
+                        self.withDrawCell?.calBaht(updatedText)
+                    }
+                    
+                }
+            }else{
+                return false
+            }
+            
+        }
+        
+        return true
+    }
+
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 4
@@ -116,10 +174,17 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "WithdrawCell", for: indexPath) as? WithdrawCell {
                 cell = item
                 
+             
+                item.amountTextField.delegate = self
+                item.amountTextField.addDoneButtonToKeyboard()
+                
+                
+                item.withDrawCollectionView = collectionView
                 item.gold_balance = 2000000//self.gold_balance
                 
                 self.amountTextField = item.amountTextField
                 self.premiumLabel = item.premiumLabel
+              
                 
                 item.infoCallback = {
                     self.showInfoGoldPremiumPopup(true) 
@@ -179,7 +244,7 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
                         }
                     }
                 }
-                
+                   self.withDrawCell = item
                 
             }
         } else if indexPath.section == 2 {

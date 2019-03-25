@@ -8,12 +8,11 @@
 
 import UIKit
 
-class SavingCell: UICollectionViewCell , UITextFieldDelegate{
+class SavingCell: UICollectionViewCell{
 
     @IBOutlet weak var pointBalanceLabel: UILabel!
     @IBOutlet weak var headView: UIView!
-    @IBOutlet weak var goldamountLabel: UILabel!
-    @IBOutlet weak var goldamountView: UIView!
+   
     @IBOutlet weak var pointpowTextField: UITextField!
     @IBOutlet weak var savingButton: UIButton!
     
@@ -26,9 +25,9 @@ class SavingCell: UICollectionViewCell , UITextFieldDelegate{
         self.contentView.updateLayerCornerRadiusProperties()
         self.shadowCellProperties()
         
-        self.goldamountView.borderClearProperties(borderWidth: 1)
         self.pointpowTextField.borderRedColorProperties(borderWidth: 1)
         self.pointpowTextField.setRightPaddingPoints(10)
+        self.pointpowTextField.setLeftPaddingPoints(10)
     }
 
     override var bounds : CGRect {
@@ -38,11 +37,7 @@ class SavingCell: UICollectionViewCell , UITextFieldDelegate{
     }
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.headView.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
-        
-        
-
-        
+       
         
        
     }

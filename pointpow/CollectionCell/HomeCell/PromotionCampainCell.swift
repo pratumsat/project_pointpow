@@ -10,12 +10,43 @@ import UIKit
 
 class PromotionCampainCell: UICollectionViewCell , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var slideCollectionView: UICollectionView!
-    
     @IBOutlet weak var pageControl: UIPageControl!
+    
+    var timer:Timer? = nil
+    var x = 1
+    var count = 1
+    
+    var autoSlideImage = false {
+        didSet{
+            if autoSlideImage {
+                setTimer()
+            }
+        }
+    }
+    func setTimer() {
+        if self.x < count {
+            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(autoScroll), userInfo: nil,  repeats: true)
+        }
+        
+    }
+    @objc func autoScroll(){
+        self.pageControl.currentPage = x
+        if self.x < count {
+            let indexPath = IndexPath(item: x, section: 0)
+            self.slideCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            self.x += 1
+        } else {
+            
+            self.x = 0
+            
+            self.pageControl.currentPage = x
+            self.slideCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.pageControl.numberOfPages = 5
+        self.pageControl.numberOfPages = count
         self.slideCollectionView.delegate = self
         self.slideCollectionView.dataSource = self
         
@@ -30,7 +61,7 @@ class PromotionCampainCell: UICollectionViewCell , UICollectionViewDelegate , UI
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

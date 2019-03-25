@@ -262,7 +262,10 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
                 item.savingCallback = {
                     print("saving")
                  
+                    
                     if self.statusMemberGold == "waiting"{
+                        self.showMessagePrompt(NSLocalizedString("string-dailog-gold-profile-status-waitting", comment: ""))
+                    }else if self.statusMemberGold == "edit"{
                         self.showMessagePrompt(NSLocalizedString("string-dailog-gold-profile-status-waitting", comment: ""))
                     }else if self.statusMemberGold == "fail"{
                         self.showMessagePrompt(NSLocalizedString("string-dailog-gold-profile-status-fail", comment: ""))

@@ -81,7 +81,7 @@
                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                     </textField>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="etu-RZ-ygw">
-                        <rect key="frame" x="36" y="194" width="287" height="40"/>
+                        <rect key="frame" x="36" y="181" width="287" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="H0J-WN-9QX"/>
                         </constraints>
@@ -100,8 +100,8 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*สะสมพ้อยท์ขั้นต่ำ 100 PP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EkJ-Tg-Gxu">
-                        <rect key="frame" x="10" y="154" width="120" height="20"/>
-                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
+                        <rect key="frame" x="10" y="144" width="104" height="17"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="13"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -118,7 +118,7 @@
             <constraints>
                 <constraint firstItem="uJG-wA-ZYz" firstAttribute="leading" secondItem="DwH-MY-4BG" secondAttribute="trailing" constant="10" id="2IU-K1-BVx"/>
                 <constraint firstItem="OeG-Ps-qTQ" firstAttribute="leading" secondItem="DwH-MY-4BG" secondAttribute="leading" id="3Xb-7P-JRz"/>
-                <constraint firstItem="EkJ-Tg-Gxu" firstAttribute="top" secondItem="OeG-Ps-qTQ" secondAttribute="bottom" constant="10" id="7Ad-vD-OvC"/>
+                <constraint firstItem="EkJ-Tg-Gxu" firstAttribute="top" secondItem="OeG-Ps-qTQ" secondAttribute="bottom" id="7Ad-vD-OvC"/>
                 <constraint firstItem="etu-RZ-ygw" firstAttribute="width" secondItem="ba1-lG-ap1" secondAttribute="width" multiplier="0.8" id="7WF-ha-KHU"/>
                 <constraint firstItem="etu-RZ-ygw" firstAttribute="top" secondItem="EkJ-Tg-Gxu" secondAttribute="bottom" constant="20" id="86b-0x-2uU"/>
                 <constraint firstItem="VYY-yR-BYP" firstAttribute="leading" secondItem="eNv-21-EAw" secondAttribute="trailing" constant="10" id="9K8-Q8-TPy"/>

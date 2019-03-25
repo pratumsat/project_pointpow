@@ -110,7 +110,7 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
         if section == 0 {
             return 1
         }
-        return 3
+        return 4
         
     }
     
@@ -136,7 +136,7 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
 
                     
                     switch status {
-                    case "waiting":
+                    case "waiting", "edit":
                         head.statusLabel.text = NSLocalizedString("string-dailog-gold-profile-status-waitting", comment: "")
                         
                         break
@@ -166,6 +166,9 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
                     item.nameLabel.text = NSLocalizedString("string-dailog-gold-profile-withdraw", comment: "")
                 }
                 if indexPath.row == 2 {
+                    item.nameLabel.text = NSLocalizedString("string-dailog-gold-profile-lucky-draw", comment: "")
+                }
+                if indexPath.row == 3 {
                     item.nameLabel.text = NSLocalizedString("string-dailog-gold-profile-history", comment: "")
                 }
             }
@@ -195,11 +198,6 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
        
         if indexPath.section == 0 {
             // "Profile"
-//            if let profile = self.storyboard?.instantiateViewController(withIdentifier: "GoldAccount") as? UINavigationController {
-//
-//                self.revealViewController()?.pushFrontViewController(profile, animated: true)
-//
-//            }
             let userInfo = ["profile":"showEnterPassCode"]
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "messageAlert"), object: nil, userInfo: userInfo as [String:AnyObject])
             return
@@ -218,8 +216,6 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
             return
             
         }
-        
-
         
         if self.statusMemberGold == "fail"{
             if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
@@ -271,6 +267,10 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
                 }
             }
             if indexPath.row == 2 {
+                // "Lucky draw"
+               
+            }
+            if indexPath.row == 3 {
                 // "History"
                 if let history = self.storyboard?.instantiateViewController(withIdentifier: "GoldHistory") as? UINavigationController {
                     self.revealViewController()?.pushFrontViewController(history, animated: true)

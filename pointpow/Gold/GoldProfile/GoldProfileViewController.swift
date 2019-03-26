@@ -69,6 +69,8 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
     var upload:UploadRequest?
     var pickerView:UIDatePicker?
     
+    var currentBirthdate = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -117,6 +119,7 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
     }
     
     func updateView(){
+        self.currentBirthdate = ""
         //Fill Data
         if let data  = self.userData as? [String:AnyObject] {
             let first_name = data["goldsaving_member"]?["firstname"] as? String ?? ""
@@ -124,7 +127,7 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
             let email = data["goldsaving_member"]?["email"]as? String ?? ""
             let mobile = data["goldsaving_member"]?["mobile"]as? String ?? ""
             let pid = data["goldsaving_member"]?["citizen_id"]as? String ?? ""
-            let status = data["goldsaving_member"]?["status"] as? String ?? ""
+            let status = "fail" //data["goldsaving_member"]?["status"] as? String ?? ""
             let account_id = data["goldsaving_member"]?["account_id"] as? String ?? ""
             let laser_id = data["goldsaving_member"]?["laser_id"] as? String ?? ""
             let birthdate = data["goldsaving_member"]?["birthdate"] as? String ?? ""
@@ -134,7 +137,7 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
             self.lastNameTextField.text = last_name
             self.emailTextField.text = email
             
-            self.laserIdTextField.text = laser_id
+            
             
             
             
@@ -149,7 +152,9 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
             formatter.locale = Locale(identifier: "th")
             formatter.dateFormat = "dd MMMM yyyy"
             
-             self.birthdateTextField.text = formatter.string(from: d1)
+            self.birthdateTextField.text = formatter.string(from: d1)
+            
+            self.currentBirthdate = self.birthdateTextField.text!
             
             let newText = String((pid).filter({ $0 != "-" }).prefix(13))
             self.idcardTextField.text = newText.chunkFormattedPersonalID()
@@ -157,6 +162,10 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
             let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
             self.mobileTextField.text =  newMText.chunkFormatted()
         
+            let newLText = String((laser_id).filter({ $0 != "-" }).prefix(12))
+            self.laserIdTextField.text =  newLText.chunkFormattedLaserID()
+            
+            
             //self.hiddenIdCardPhotoImageView.sd_setImage(with: URL(string: idCardPhoto)!, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER))
             
             self.hiddenIdCardPhotoImageView.image = UIImage(named: "ic-img-placeholder-verify-idcard")
@@ -445,7 +454,8 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
             if let data  = self.userData as? [String:AnyObject] {
                 let laser_id = data["goldsaving_member"]?["laser_id"]as? String ?? ""
                 
-                if (textField.text!) != laser_id {
+                let cutdash = textField.text!.replace(target: "-", withString: "")
+                if cutdash != laser_id {
                     self.enableButton()
                 }else{
                     self.disableButton()
@@ -454,14 +464,10 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
         }
         
         if textField == self.birthdateTextField {
-            if let data  = self.userData as? [String:AnyObject] {
-                let birthdate = data["goldsaving_member"]?["birthdate"]as? String ?? ""
-                
-                if (textField.text!) != birthdate {
-                    self.enableButton()
-                }else{
-                    self.disableButton()
-                }
+            if (textField.text!) != self.currentBirthdate {
+                self.enableButton()
+            }else{
+                self.disableButton()
             }
         }
         
@@ -589,8 +595,15 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
                 self.clearImageView6?.isHidden = false
             }
             
-            
             //validate laserId
+            let text = textField.text ?? ""
+            if string.count == 0 {
+                textField.text = String(text.dropLast()).chunkFormattedLaserID()
+            }  else {
+                let newText = String((text + string).filter({ $0 != "-" }).prefix(12))
+                textField.text = newText.chunkFormattedLaserID()
+            }
+            return false
             
         }
         

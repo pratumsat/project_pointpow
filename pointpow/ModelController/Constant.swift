@@ -543,6 +543,26 @@ extension Collection {
         }
         return res
     }
+    public func chunkL(n: Int) -> [SubSequence] {
+        var res: [SubSequence] = []
+        var i = startIndex
+        var j: Index
+        while i != endIndex {
+            var na = n
+            if res.count == 1 {
+                na = n + 4
+            }
+            if res.count == 2 {
+                na = n + 2
+            }
+          
+            j = index(i, offsetBy: na, limitedBy: endIndex) ?? endIndex
+            res.append(self[i..<j])
+            i = j
+            
+        }
+        return res
+    }
 }
 extension URL {
     var queryDictionary: [String: String]? {
@@ -563,12 +583,16 @@ extension URL {
         return queryStrings
     }
 }
+
 extension String {
     func chunkFormatted(withChunkSize chunkSize: Int = 3, withSeparator separator: Character = "-") -> String {
         return self.filter { $0 != separator }.chunk(n: chunkSize).map{ String($0) }.joined(separator: String(separator))
     }
     func chunkFormattedPersonalID(withChunkSize chunkSize: Int = 1, withSeparator separator: Character = "-") -> String {
         return self.filter { $0 != separator }.chunkP(n: chunkSize).map{ String($0) }.joined(separator: String(separator))
+    }
+    func chunkFormattedLaserID(withChunkSize chunkSize: Int = 3, withSeparator separator: Character = "-") -> String {
+        return self.filter { $0 != separator }.chunkL(n: chunkSize).map{ String($0) }.joined(separator: String(separator))
     }
     
     func replace(target: String, withString: String) -> String{

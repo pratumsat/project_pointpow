@@ -95,12 +95,27 @@ class RegisterGoldstep3ViewController: BaseViewController {
             let newMText = String((tp.mobile).filter({ $0 != "-" }).prefix(10))
             self.mobileTextField.text =  newMText.chunkFormatted()
             
+            let newLText = String((tp.laserId).filter({ $0 != "-" }).prefix(12))
+            self.laserIdTextField.text =  newLText.chunkFormattedLaserID()
+            
             self.firstNameTextField.text = tp.firstname
             self.lastNameTextField.text = tp.lastname
             self.emailTextField.text = tp.email
             
-            self.laserIdTextField.text = tp.laserId
-            self.birthdateTextField.text = tp.birthdate
+            
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "th")
+            dateFormatter.dateFormat = "dd-MM-yyyy"
+            
+            let d1 = dateFormatter.date(from: convertDate(tp.birthdate, format: "dd-MM-yyyy"))!
+           
+            let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: "th")
+            formatter.dateFormat = "dd MMMM yyyy"
+            
+            self.birthdateTextField.text = formatter.string(from: d1)
+            
             
             if tp.image != nil{
                 self.previewImageView.image = tp.image

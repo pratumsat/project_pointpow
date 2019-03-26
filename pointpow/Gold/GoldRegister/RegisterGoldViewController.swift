@@ -59,6 +59,10 @@ class RegisterGoldViewController: BaseViewController {
 
         self.setUp()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
     @objc func donedatePicker(){
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "th")
@@ -362,10 +366,17 @@ class RegisterGoldViewController: BaseViewController {
             }else{
                 self.clearImageView6?.isHidden = false
             }
-            
+           
             
             //validate laserId
-            
+            let text = textField.text ?? ""
+            if string.count == 0 {
+                textField.text = String(text.dropLast()).chunkFormattedLaserID()
+            }  else {
+                let newText = String((text + string).filter({ $0 != "-" }).prefix(12))
+                textField.text = newText.chunkFormattedLaserID()
+            }
+            return false
         }
         return true
         

@@ -23,11 +23,20 @@ class RegisterGoldstep3ViewController: BaseViewController {
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
     
+    @IBOutlet weak var calendarImageView: UIImageView!
+    
+    @IBOutlet weak var birthdateTextField: UITextField!
+    @IBOutlet weak var laserIdTextField: UITextField!
     
      var upload:UploadRequest?
     
     @IBOutlet weak var previewImageView: UIImageView!
-    var tupleModel:(image : UIImage?, firstname : String,lastname: String , email: String,mobile: String,idcard: String)?
+    var tupleModel:(image : UIImage?, firstname : String,lastname: String , email: String,mobile: String,idcard: String , birthdate:String, laserId:String)? {
+        didSet{
+            
+            print(tupleModel)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,90 +52,29 @@ class RegisterGoldstep3ViewController: BaseViewController {
     
     func setUp(){
         
-        self.hendleSetPasscodeSuccess = { (passcode) in
-            print("new passcode= \(passcode)")
-            if let tp = self.tupleModel {
-                let params:Parameters = ["email" : tp.email,
-                                         "mobile": tp.mobile,
-                                         "laser_id" : "ME01113123112",
-                                         "birthdate" : "22-11-1888",
-                                         "firstname": tp.firstname,
-                                         "lastname" : tp.lastname,
-                                         "pid" : tp.idcard]
-                
-                
-                self.modelCtrl.registerGoldMember(params, tp.image!, true, succeeded: { (result) in
-                    print("print")
-                    self.showPenddingVerifyModalView(true , dismissCallback: {
-                        
-                        if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
-                            self.revealViewController()?.pushFrontViewController(saving, animated: true)
-                            
-                        }
-                    
-                    })
-                }, error: { (error) in
-                    if let mError = error as? [String:AnyObject]{
-                        let message = mError["message"] as? String ?? ""
-                        print(message)
-                        self.showMessagePrompt(message)
-                    }
-                }, failure: { (messageError) in
-                    self.handlerMessageError(messageError)
-                    
-                }, inprogress: { (progress) in
-                    if progress >= 1.0 {
-                        //hide
-                        //success
-                        
-                    }
-                }) { (upload) in
-                    self.upload = upload
-                }
-            }
-        }
         
         self.backgroundImage?.image = nil
        
-        if #available(iOS 10.0, *) {
-            self.firstNameTextField.textContentType = UITextContentType(rawValue: "")
-            self.lastNameTextField.textContentType = UITextContentType(rawValue: "")
-            self.emailTextField.textContentType = UITextContentType(rawValue: "")
-            self.mobileTextField.textContentType = UITextContentType(rawValue: "")
-            self.idcardTextField.textContentType = UITextContentType(rawValue: "")
-        }
-        if #available(iOS 12.0, *) {
-            self.firstNameTextField.textContentType = .oneTimeCode
-            self.lastNameTextField.textContentType = .oneTimeCode
-            self.emailTextField.textContentType = .oneTimeCode
-            self.mobileTextField.textContentType = .oneTimeCode
-            self.idcardTextField.textContentType = .oneTimeCode
-        }
-        
-        self.firstNameTextField.delegate = self
-        self.lastNameTextField.delegate = self
-        self.emailTextField.delegate = self
-        self.mobileTextField.delegate = self
-        self.idcardTextField.delegate = self
         
         self.firstNameTextField.isEnabled = false
         self.lastNameTextField.isEnabled = false
         self.emailTextField.isEnabled = false
         self.mobileTextField.isEnabled = false
         self.idcardTextField.isEnabled = false
+        self.laserIdTextField.isEnabled = false
+        self.birthdateTextField.isEnabled = false
         
+        self.calendarImageView.image = self.calendarImageView.image!.withRenderingMode(.alwaysTemplate)
+        self.calendarImageView.tintColor = UIColor.lightGray
         
-        self.firstNameTextField.autocorrectionType = .no
-        self.lastNameTextField.autocorrectionType = .no
-        self.emailTextField.autocorrectionType = .no
-        self.mobileTextField.autocorrectionType = .no
-        self.idcardTextField.autocorrectionType = .no
         
         self.firstNameTextField.setLeftPaddingPoints(40)
         self.lastNameTextField.setLeftPaddingPoints(10)
         self.emailTextField.setLeftPaddingPoints(40)
         self.mobileTextField.setLeftPaddingPoints(40)
         self.idcardTextField.setLeftPaddingPoints(40)
+        self.laserIdTextField.setLeftPaddingPoints(40)
+        self.birthdateTextField.setLeftPaddingPoints(40)
         
         self.previewImageView.contentMode = .scaleAspectFit
         
@@ -151,6 +99,8 @@ class RegisterGoldstep3ViewController: BaseViewController {
             self.lastNameTextField.text = tp.lastname
             self.emailTextField.text = tp.email
             
+            self.laserIdTextField.text = tp.laserId
+            self.birthdateTextField.text = tp.birthdate
             
             if tp.image != nil{
                 self.previewImageView.image = tp.image
@@ -166,6 +116,8 @@ class RegisterGoldstep3ViewController: BaseViewController {
             self.firstNameTextField.textColor = UIColor.lightGray
             self.lastNameTextField.textColor = UIColor.lightGray
             self.idcardTextField.textColor = UIColor.lightGray
+            self.laserIdTextField.textColor = UIColor.lightGray
+            self.birthdateTextField.textColor = UIColor.lightGray
             
 
         }
@@ -194,8 +146,45 @@ class RegisterGoldstep3ViewController: BaseViewController {
     }
     
     @IBAction func registerTapped(_ sender: Any) {
-        self.showSettingPassCodeModalView()
-        
+        if let tp = self.tupleModel {
+            let params:Parameters = ["email" : tp.email,
+                                     "mobile": tp.mobile,
+                                     "laser_id" : tp.laserId,
+                                     "firstname": tp.firstname,
+                                     "lastname" : tp.lastname,
+                                     "pid" : tp.idcard,
+                                     "birthdate" : tp.birthdate]
+            print(params)
+            
+            self.modelCtrl.registerGoldMember(params, tp.image!, true, succeeded: { (result) in
+                print("print")
+                self.showPenddingVerifyModalView(true , dismissCallback: {
+                    
+                    if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
+                        self.revealViewController()?.pushFrontViewController(saving, animated: true)
+                        
+                    }
+                    
+                })
+            }, error: { (error) in
+                if let mError = error as? [String:AnyObject]{
+                    let message = mError["message"] as? String ?? ""
+                    print(message)
+                    self.showMessagePrompt(message)
+                }
+            }, failure: { (messageError) in
+                self.handlerMessageError(messageError)
+                
+            }, inprogress: { (progress) in
+                if progress >= 1.0 {
+                    //hide
+                    //success
+                    
+                }
+            }) { (upload) in
+                self.upload = upload
+            }
+        }
     }
     
     /*

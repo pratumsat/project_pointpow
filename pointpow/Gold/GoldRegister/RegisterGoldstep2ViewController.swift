@@ -30,7 +30,7 @@ class RegisterGoldstep2ViewController: BaseViewController ,UIImagePickerControll
     var picker:UIImagePickerController?
     var upload:UploadRequest?
     
-    var tupleModel:(image : UIImage?, firstname : String,lastname: String , email: String,mobile: String,idcard: String)?
+    var tupleModel:(image : UIImage?, firstname : String,lastname: String , email: String,mobile: String,idcard: String , birthdate:String, laserId:String)?
     
     
     

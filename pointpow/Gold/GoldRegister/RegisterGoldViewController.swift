@@ -10,10 +10,15 @@ import UIKit
 
 class RegisterGoldViewController: BaseViewController {
 
+    
+    @IBOutlet weak var birthdateTextField: UITextField!
+    @IBOutlet weak var laserIdTextField: UITextField!
     @IBOutlet weak var step1Label: UILabel!
     @IBOutlet weak var step2Label: UILabel!
     @IBOutlet weak var step3Label: UILabel!
     
+    @IBOutlet weak var birthdateView: UIView!
+    @IBOutlet weak var lasetIdView: UIView!
     @IBOutlet weak var fview: UIView!
     @IBOutlet weak var lview: UIView!
     @IBOutlet weak var eview: UIView!
@@ -27,7 +32,7 @@ class RegisterGoldViewController: BaseViewController {
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
     
-     var tupleModel:(image : UIImage?, firstname : String,lastname: String , email: String,mobile: String,idcard: String)?
+    var tupleModel:(image : UIImage?, firstname : String,lastname: String , email: String,mobile: String,idcard: String , birthdate:String, laserId:String)?
     
     
     var clearImageView:UIImageView?
@@ -35,14 +40,18 @@ class RegisterGoldViewController: BaseViewController {
     var clearImageView3:UIImageView?
     var clearImageView4:UIImageView?
     var clearImageView5:UIImageView?
+    var clearImageView6:UIImageView?
     
     var errorLastnamelLabel:UILabel?
     var errorFirstNameLabel:UILabel?
     var errorPersonalIDLabel:UILabel?
     var errorEmailLabel:UILabel?
     var errorMobileLabel:UILabel?
+    var errorLaserIdLabel:UILabel?
+    var errorBirthdateLabel:UILabel?
     
     var userData:AnyObject?
+    var pickerView:UIDatePicker?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +59,18 @@ class RegisterGoldViewController: BaseViewController {
 
         self.setUp()
     }
+    @objc func donedatePicker(){
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "th")
+        formatter.dateFormat = "dd MMMM yyyy"
+        self.birthdateTextField.text = formatter.string(from: pickerView!.date)
+        self.view.endEditing(true)
+    }
+    
+    @objc func cancelDatePicker(){
+        self.view.endEditing(true)
+    }
+    
     func setUp(){
         self.backgroundImage?.image = nil
         
@@ -57,12 +78,16 @@ class RegisterGoldViewController: BaseViewController {
         
         self.idcardTextField.addDoneButtonToKeyboard()
         
+        self.birthdateTextField.addDoneButtonToKeyboard()
+        
         if #available(iOS 10.0, *) {
             self.firstNameTextField.textContentType = UITextContentType(rawValue: "")
             self.lastNameTextField.textContentType = UITextContentType(rawValue: "")
             self.emailTextField.textContentType = UITextContentType(rawValue: "")
             self.mobileTextField.textContentType = UITextContentType(rawValue: "")
             self.idcardTextField.textContentType = UITextContentType(rawValue: "")
+            self.laserIdTextField.textContentType = UITextContentType(rawValue: "")
+            self.birthdateTextField.textContentType = UITextContentType(rawValue: "")
         }
         if #available(iOS 12.0, *) {
             self.firstNameTextField.textContentType = .oneTimeCode
@@ -70,6 +95,8 @@ class RegisterGoldViewController: BaseViewController {
             self.emailTextField.textContentType = .oneTimeCode
             self.mobileTextField.textContentType = .oneTimeCode
             self.idcardTextField.textContentType = .oneTimeCode
+            self.laserIdTextField.textContentType = .oneTimeCode
+            self.birthdateTextField.textContentType = .oneTimeCode
         }
         
         self.firstNameTextField.delegate = self
@@ -77,19 +104,24 @@ class RegisterGoldViewController: BaseViewController {
         self.emailTextField.delegate = self
         self.mobileTextField.delegate = self
         self.idcardTextField.delegate = self
+        self.laserIdTextField.delegate = self
+        self.birthdateTextField.delegate = self
         
         self.firstNameTextField.autocorrectionType = .no
         self.lastNameTextField.autocorrectionType = .no
         self.emailTextField.autocorrectionType = .no
         self.mobileTextField.autocorrectionType = .no
         self.idcardTextField.autocorrectionType = .no
+        self.laserIdTextField.autocorrectionType = .no
+        self.birthdateTextField.autocorrectionType = .no
         
         self.firstNameTextField.setLeftPaddingPoints(40)
         self.lastNameTextField.setLeftPaddingPoints(10)
         self.emailTextField.setLeftPaddingPoints(40)
         self.mobileTextField.setLeftPaddingPoints(40)
         self.idcardTextField.setLeftPaddingPoints(40)
-        
+        self.laserIdTextField.setLeftPaddingPoints(40)
+        self.birthdateTextField.setLeftPaddingPoints(40)
         
         self.clearImageView = self.firstNameTextField.addRightButton(UIImage(named: "ic-x")!)
         let tap = UITapGestureRecognizer(target: self, action: #selector(clearFirstNameTapped))
@@ -121,6 +153,11 @@ class RegisterGoldViewController: BaseViewController {
         self.clearImageView5?.addGestureRecognizer(tap5)
         self.clearImageView5?.isHidden = true
     
+        self.clearImageView6 = self.laserIdTextField.addRightButton(UIImage(named: "ic-x")!)
+        let tap6 = UITapGestureRecognizer(target: self, action: #selector(clearLaserIdTapped))
+        self.clearImageView6?.isUserInteractionEnabled = true
+        self.clearImageView6?.addGestureRecognizer(tap6)
+        self.clearImageView6?.isHidden = true
         
         //Fill Data
         if let data  = self.userData as? [String:AnyObject] {
@@ -163,12 +200,31 @@ class RegisterGoldViewController: BaseViewController {
             
         }
         
+        pickerView = UIDatePicker()
+        pickerView!.datePickerMode = .date
+        pickerView!.calendar = Calendar(identifier: .buddhist)
+        
+        let toolbar = UIToolbar();
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self,
+                                         action: #selector(donedatePicker));
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,
+                                          target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self,
+                                           action: #selector(cancelDatePicker));
+        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+        
+        self.birthdateTextField.tintColor = UIColor.clear
+        self.birthdateTextField.isUserInteractionEnabled = true
+        self.birthdateTextField.inputView = pickerView
+        self.birthdateTextField.inputAccessoryView = toolbar
+        
     }
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         self.addColorLineView(textField)
         return true
     }
-   
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
@@ -184,9 +240,16 @@ class RegisterGoldViewController: BaseViewController {
         if textField == self.mobileTextField {
             self.idcardTextField.becomeFirstResponder()
         }
+        if textField == self.idcardTextField {
+            self.laserIdTextField.becomeFirstResponder()
+        }
+        if textField == self.laserIdTextField {
+            self.birthdateTextField.becomeFirstResponder()
+        }
         
         return true
     }
+   
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
@@ -286,6 +349,24 @@ class RegisterGoldViewController: BaseViewController {
             }
             
         }
+        if textField  == self.laserIdTextField {
+            let startingLength = textField.text?.count ?? 0
+            let lengthToAdd = string.count
+            let lengthToReplace = range.length
+            
+            let newLength = startingLength + lengthToAdd - lengthToReplace
+            //return newLength <= 20
+            
+            if newLength == 0 {
+                self.clearImageView6?.isHidden = true
+            }else{
+                self.clearImageView6?.isHidden = false
+            }
+            
+            
+            //validate laserId
+            
+        }
         return true
         
     }
@@ -298,35 +379,63 @@ class RegisterGoldViewController: BaseViewController {
             eview.backgroundColor = UIColor.groupTableViewBackground
             mview.backgroundColor = UIColor.groupTableViewBackground
             idview.backgroundColor = UIColor.groupTableViewBackground
+            lasetIdView.backgroundColor = UIColor.groupTableViewBackground
+            birthdateView.backgroundColor = UIColor.groupTableViewBackground
             break
-            case lastNameTextField:
-                fview.backgroundColor = UIColor.groupTableViewBackground
-                lview.backgroundColor = UIColor.darkGray
-                eview.backgroundColor = UIColor.groupTableViewBackground
-                mview.backgroundColor = UIColor.groupTableViewBackground
-                idview.backgroundColor = UIColor.groupTableViewBackground
+        case lastNameTextField:
+            fview.backgroundColor = UIColor.groupTableViewBackground
+            lview.backgroundColor = UIColor.darkGray
+            eview.backgroundColor = UIColor.groupTableViewBackground
+            mview.backgroundColor = UIColor.groupTableViewBackground
+            idview.backgroundColor = UIColor.groupTableViewBackground
+            lasetIdView.backgroundColor = UIColor.groupTableViewBackground
+            birthdateView.backgroundColor = UIColor.groupTableViewBackground
             break
-                case emailTextField:
-                    fview.backgroundColor = UIColor.groupTableViewBackground
-                    lview.backgroundColor = UIColor.groupTableViewBackground
-                    eview.backgroundColor = UIColor.darkText
-                    mview.backgroundColor = UIColor.groupTableViewBackground
-                    idview.backgroundColor = UIColor.groupTableViewBackground
-                break
-                    case mobileTextField:
-                        fview.backgroundColor = UIColor.groupTableViewBackground
-                        lview.backgroundColor = UIColor.groupTableViewBackground
-                        eview.backgroundColor = UIColor.groupTableViewBackground
-                        mview.backgroundColor = UIColor.darkText
-                        idview.backgroundColor = UIColor.groupTableViewBackground
-                    break
-                        case idcardTextField:
-                            fview.backgroundColor = UIColor.groupTableViewBackground
-                            lview.backgroundColor = UIColor.groupTableViewBackground
-                            eview.backgroundColor = UIColor.groupTableViewBackground
-                            mview.backgroundColor = UIColor.groupTableViewBackground
-                            idview.backgroundColor = UIColor.darkText
-                        break
+        case emailTextField:
+            fview.backgroundColor = UIColor.groupTableViewBackground
+            lview.backgroundColor = UIColor.groupTableViewBackground
+            eview.backgroundColor = UIColor.darkText
+            mview.backgroundColor = UIColor.groupTableViewBackground
+            idview.backgroundColor = UIColor.groupTableViewBackground
+            lasetIdView.backgroundColor = UIColor.groupTableViewBackground
+            birthdateView.backgroundColor = UIColor.groupTableViewBackground
+            break
+        case mobileTextField:
+            fview.backgroundColor = UIColor.groupTableViewBackground
+            lview.backgroundColor = UIColor.groupTableViewBackground
+            eview.backgroundColor = UIColor.groupTableViewBackground
+            mview.backgroundColor = UIColor.darkText
+            idview.backgroundColor = UIColor.groupTableViewBackground
+            lasetIdView.backgroundColor = UIColor.groupTableViewBackground
+            birthdateView.backgroundColor = UIColor.groupTableViewBackground
+            break
+        case idcardTextField:
+            fview.backgroundColor = UIColor.groupTableViewBackground
+            lview.backgroundColor = UIColor.groupTableViewBackground
+            eview.backgroundColor = UIColor.groupTableViewBackground
+            mview.backgroundColor = UIColor.groupTableViewBackground
+            idview.backgroundColor = UIColor.darkText
+            lasetIdView.backgroundColor = UIColor.groupTableViewBackground
+            birthdateView.backgroundColor = UIColor.groupTableViewBackground
+            break
+        case laserIdTextField:
+            fview.backgroundColor = UIColor.groupTableViewBackground
+            lview.backgroundColor = UIColor.groupTableViewBackground
+            eview.backgroundColor = UIColor.groupTableViewBackground
+            mview.backgroundColor = UIColor.groupTableViewBackground
+            idview.backgroundColor = UIColor.groupTableViewBackground
+            lasetIdView.backgroundColor = UIColor.darkText
+            birthdateView.backgroundColor = UIColor.groupTableViewBackground
+            break
+        case birthdateTextField:
+            fview.backgroundColor = UIColor.groupTableViewBackground
+            lview.backgroundColor = UIColor.groupTableViewBackground
+            eview.backgroundColor = UIColor.groupTableViewBackground
+            mview.backgroundColor = UIColor.groupTableViewBackground
+            idview.backgroundColor = UIColor.groupTableViewBackground
+            lasetIdView.backgroundColor = UIColor.groupTableViewBackground
+            birthdateView.backgroundColor = UIColor.darkText
+            break
             
         default:
             break
@@ -360,8 +469,15 @@ class RegisterGoldViewController: BaseViewController {
         
     }
     @objc func clearEmailTapped(){
-        self.clearImageView4?.animationTapped({
+        self.clearImageView5?.animationTapped({
             self.emailTextField.text = ""
+            self.clearImageView5?.isHidden = true
+        })
+        
+    }
+    @objc func clearLaserIdTapped(){
+        self.clearImageView6?.animationTapped({
+            self.laserIdTextField.text = ""
             self.clearImageView5?.isHidden = true
         })
         
@@ -385,20 +501,34 @@ class RegisterGoldViewController: BaseViewController {
         errorPersonalIDLabel?.removeFromSuperview()
         errorEmailLabel?.removeFromSuperview()
         errorMobileLabel?.removeFromSuperview()
-        
+        errorLaserIdLabel?.removeFromSuperview()
+        errorBirthdateLabel?.removeFromSuperview()
         
         let firstName = self.firstNameTextField.text!
         let lastName = self.lastNameTextField.text!
         let personalID  = self.idcardTextField.text!
         let mobile = self.mobileTextField.text!
         let email = self.emailTextField.text!
+        let laserId = self.laserIdTextField.text!
+        let birthdate = self.birthdateTextField.text!
         
         var errorEmpty = 0
         var emptyMessage = ""
         
         
         
-       
+        if birthdate.isEmpty {
+            emptyMessage = NSLocalizedString("string-error-empty-birth-date", comment: "")
+            self.errorBirthdateLabel =  self.birthdateTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 15 )
+            errorEmpty += 1
+            
+        }
+        if laserId.isEmpty {
+            emptyMessage = NSLocalizedString("string-error-empty-laser-id", comment: "")
+            self.errorLaserIdLabel =  self.laserIdTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 15 )
+            errorEmpty += 1
+            
+        }
         if personalID.isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-personal-id", comment: "")
             self.errorPersonalIDLabel =  self.idcardTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 15 )
@@ -435,8 +565,14 @@ class RegisterGoldViewController: BaseViewController {
         }
         
         
+        guard validateLaserId(laserId) else { return }
         guard validateIDcard(personalID) else { return }
         guard validateMobile(mobile) else { return }
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy"
+        
+        let date = convertBuddhaToChris(formatter.string(from: pickerView!.date))
         
         if isValidEmail(email) {
             //pass
@@ -445,7 +581,10 @@ class RegisterGoldViewController: BaseViewController {
                                lastname: lastName ,
                                email: email,
                                mobile: mobile.replace(target: "-", withString: ""),
-                               idcard: personalID.replace(target: "-", withString: ""))
+                               idcard: personalID.replace(target: "-", withString: ""),
+                               birthdate: date,
+                               laserId:laserId.replace(target: "-", withString: ""))
+            
             self.showRegisterGoldStep2Saving(true, tupleModel: tupleModel)
         }else{
             let emailNotValid = NSLocalizedString("string-error-invalid-email", comment: "")
@@ -455,6 +594,28 @@ class RegisterGoldViewController: BaseViewController {
        
         
         
+    }
+    func validateLaserId(_ id:String)->Bool {
+        var errorMobile = 0
+        var errorMessage = ""
+        let nID = id.replace(target: "-", withString: "")
+        
+        print("laserId = \(nID)")
+    /*    if !isValidIDCard(nID) {
+            errorMessage = NSLocalizedString("string-error-invalid-personal-id", comment: "")
+            errorMobile += 1
+        }
+        if nID.count < 13 {
+            errorMessage = NSLocalizedString("string-error-invalid-personal-id1", comment: "")
+            errorMobile += 1
+        }
+    */
+        if errorMobile > 0 {
+            self.showMessagePrompt(errorMessage)
+            self.errorLaserIdLabel =  self.laserIdTextField.addBottomLabelErrorMessage(errorMessage , marginLeft: 15)
+            return false
+        }
+        return true
     }
     func validateIDcard(_ id:String)-> Bool{
         var errorMobile = 0

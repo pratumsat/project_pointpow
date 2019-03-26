@@ -663,16 +663,21 @@ extension WithDrawResultViewController {
                 item.transactionLabel.text = transaction_number
                 
                 
-                
-                item.expandableCallback = { (height) in
-                    self.heightExpand = height
-                    self.resultCollectionView.performBatchUpdates({
-                        collectionView.reloadInputViews()
-                    }, completion: { (true) in
-                        //item.amountTextField.becomeFirstResponder()
-                    })
-                    
-                }
+                item.showViewExpand = true
+                self.heightExpand = item.heightView
+                self.resultCollectionView.performBatchUpdates({
+                    collectionView.reloadInputViews()
+                }, completion: { (true) in
+                })
+//                item.expandableCallback = { (height) in
+//                    self.heightExpand = height
+//                    self.resultCollectionView.performBatchUpdates({
+//                        collectionView.reloadInputViews()
+//                    }, completion: { (true) in
+//                        //item.amountTextField.becomeFirstResponder()
+//                    })
+//
+//                }
                 
                 if validateTransactionTime(created_at) {
                     item.cancelLabel.isHidden = false
@@ -799,15 +804,21 @@ extension WithDrawResultViewController {
                 item.totalLabel.text = "\(total_shipping_price.intValue + premium.intValue)"
                 
                 
-                item.expandableCallback = { (height) in
-                    self.heightExpand = height
-                    self.resultCollectionView.performBatchUpdates({
-                        collectionView.reloadInputViews()
-                    }, completion: { (true) in
-                        //item.amountTextField.becomeFirstResponder()
-                    })
-                    
-                }
+                item.showViewExpand = true
+                self.heightExpand = item.heightView
+                self.resultCollectionView.performBatchUpdates({
+                    collectionView.reloadInputViews()
+                }, completion: { (true) in
+                })
+//                item.expandableCallback = { (height) in
+//                    self.heightExpand = height
+//                    self.resultCollectionView.performBatchUpdates({
+//                        collectionView.reloadInputViews()
+//                    }, completion: { (true) in
+//                        //item.amountTextField.becomeFirstResponder()
+//                    })
+//
+//                }
             
              
                 item.formatGoldReceiveLabel.text = self.goldFormat(gold_received: gold_received)
@@ -894,15 +905,23 @@ extension WithDrawResultViewController {
                 item.dateLabel.text = created_at
                 item.transactionLabel.text = transaction_number
                 
-                item.expandableCallback = { (height) in
-                    self.heightExpand = height
-                    self.resultCollectionView.performBatchUpdates({
-                        collectionView.reloadInputViews()
-                    }, completion: { (true) in
-                        //item.amountTextField.becomeFirstResponder()
-                    })
-                    
-                }
+                
+                
+                item.showViewExpand = true
+                self.heightExpand = item.heightView
+                self.resultCollectionView.performBatchUpdates({
+                    collectionView.reloadInputViews()
+                }, completion: { (true) in
+                })
+//                item.expandableCallback = { (height) in
+//                    self.heightExpand = height
+//                    self.resultCollectionView.performBatchUpdates({
+//                        collectionView.reloadInputViews()
+//                    }, completion: { (true) in
+//                        //item.amountTextField.becomeFirstResponder()
+//                    })
+//
+//                }
                 
                 switch statusTransaction.lowercased() {
               

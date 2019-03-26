@@ -122,12 +122,15 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
             self.statusMemberGold = status
             
             
+            
             if registerGold.boolValue {
                 self.isRegistered = true
             }else{
                 self.isRegistered = false
             }
+            
 
+            //self.isRegistered = false
             
             self.pointpowTextField?.text = ""
             

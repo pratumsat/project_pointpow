@@ -258,8 +258,15 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
                     if (self.positionYTextField - hH)  > hH{
                         self.gapHeightKeyboard  += 200
                     }else{
-                        self.gapHeightKeyboard  += abs(keyboardSize.size.height - self.positionYTextField)
+                        let gap = abs(keyboardSize.size.height - self.positionYTextField)
+                        if gap < keyboardSize.size.height {
+                           self.gapHeightKeyboard  += gap
+                        }else{
+                            self.gapHeightKeyboard  += keyboardSize.size.height
+                        }
+                        
                     }
+                    
                     
                     
                     self.view.frame.origin.y -= self.gapHeightKeyboard
@@ -423,7 +430,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         }
     }
    
-    func showRegisterGoldStep2Saving(_ animated:Bool, tupleModel:(image : UIImage?, firstname : String,lastname: String , email: String,mobile: String,idcard: String)?){
+    func showRegisterGoldStep2Saving(_ animated:Bool, tupleModel:(image : UIImage?, firstname : String,lastname: String , email: String,mobile: String,idcard: String , birthdate:String, laserId:String)?){
         if let vc:RegisterGoldstep2ViewController = self.storyboard?.instantiateViewController(withIdentifier: "RegisterGoldstep2ViewController") as? RegisterGoldstep2ViewController {
             
             vc.tupleModel = tupleModel
@@ -431,7 +438,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         }
     }
     
-    func showRegisterGoldStep3Saving(_ animated:Bool, tupleModel:(image : UIImage?, firstname : String,lastname: String , email: String,mobile: String,idcard: String)?){
+    func showRegisterGoldStep3Saving(_ animated:Bool, tupleModel:(image : UIImage?, firstname : String,lastname: String , email: String,mobile: String,idcard: String , birthdate:String, laserId:String)?){
         if let vc:RegisterGoldstep3ViewController = self.storyboard?.instantiateViewController(withIdentifier: "RegisterGoldstep3ViewController") as? RegisterGoldstep3ViewController {
             
             vc.tupleModel = tupleModel

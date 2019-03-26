@@ -45,6 +45,16 @@ class WithDrawResultThaiPostCell: UICollectionViewCell {
             updateView()
         }
     }
+    var showViewExpand:Bool = false {
+        didSet{
+            if showViewExpand {
+                self.containerView.isHidden = false
+                self.heightContainerConstraints.constant = heightView
+                self.expandImageView.isHidden = true
+            }
+            
+        }
+    }
     
     var on = true
     
@@ -62,12 +72,11 @@ class WithDrawResultThaiPostCell: UICollectionViewCell {
         self.contentView.updateLayerCornerRadiusProperties()
         self.shadowCellProperties()
         
-        
-       
-        
         let expand = UITapGestureRecognizer(target: self, action: #selector(expandableTapped))
         self.expandImageView.isUserInteractionEnabled = true
         self.expandImageView.addGestureRecognizer(expand)
+        
+       
         
         self.updateView()
         

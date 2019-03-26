@@ -12,6 +12,14 @@ import Alamofire
 
 class GoldProfileViewController: GoldBaseViewController ,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var calendarImageView: UIImageView!
+    @IBOutlet weak var birthdateTextField: UITextField!
+    @IBOutlet weak var laserIdTextField: UITextField!
+    
+    @IBOutlet weak var birthdateView: UIView!
+    @IBOutlet weak var lasetIdView: UIView!
+    
+    
     @IBOutlet weak var iconCameraImageView: UIImageView!
     
     @IBOutlet weak var goldIdLabel: UILabel!
@@ -44,19 +52,22 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
     var clearImageView3:UIImageView?
     var clearImageView4:UIImageView?
     var clearImageView5:UIImageView?
+     var clearImageView6:UIImageView?
     
     var errorLastnamelLabel:UILabel?
     var errorFirstNameLabel:UILabel?
     var errorPersonalIDLabel:UILabel?
     var errorEmailLabel:UILabel?
     var errorMobileLabel:UILabel?
+    var errorLaserIdLabel:UILabel?
+    var errorBirthdateLabel:UILabel?
     
     let vborder = CAShapeLayer()
     
     var idCardPhoto:UIImage?
     var picker:UIImagePickerController?
     var upload:UploadRequest?
-    
+    var pickerView:UIDatePicker?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,13 +126,30 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
             let pid = data["goldsaving_member"]?["citizen_id"]as? String ?? ""
             let status = data["goldsaving_member"]?["status"] as? String ?? ""
             let account_id = data["goldsaving_member"]?["account_id"] as? String ?? ""
-            let attachment = data["goldsaving_member"]?["attachment"] as? [String:AnyObject]? ?? [:]
-            let idCardPhoto = attachment?["path"] as? String ?? ""
+            let laser_id = data["goldsaving_member"]?["laser_id"] as? String ?? ""
+            let birthdate = data["goldsaving_member"]?["birthdate"] as? String ?? ""
             
             self.goldIdLabel.text = "\(account_id)"
             self.firstNameTextField.text = first_name
             self.lastNameTextField.text = last_name
             self.emailTextField.text = email
+            
+            self.laserIdTextField.text = laser_id
+            
+            
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "th")
+            dateFormatter.dateFormat = "dd-MM-yyyy"
+            
+            let d1 = dateFormatter.date(from: convertDate(birthdate, format: "yyyy-MM-dd"))!
+            self.pickerView?.date = d1
+            
+            let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: "th")
+            formatter.dateFormat = "dd MMMM yyyy"
+            
+             self.birthdateTextField.text = formatter.string(from: d1)
             
             let newText = String((pid).filter({ $0 != "-" }).prefix(13))
             self.idcardTextField.text = newText.chunkFormattedPersonalID()
@@ -134,6 +162,7 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
             self.hiddenIdCardPhotoImageView.image = UIImage(named: "ic-img-placeholder-verify-idcard")
             
             
+            
             switch status {
             case "waiting", "edit":
                 self.statusLabel.text = NSLocalizedString("string-dailog-gold-profile-status-waitting", comment: "")
@@ -143,17 +172,24 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
                 self.firstNameTextField.isEnabled = false
                 self.lastNameTextField.isEnabled = false
                 self.idcardTextField.isEnabled = false
+                self.laserIdTextField.isEnabled = false
+                self.birthdateTextField.isEnabled = false
                 
                 self.emailTextField.textColor = UIColor.lightGray
                 self.mobileTextField.textColor = UIColor.lightGray
                 self.firstNameTextField.textColor = UIColor.lightGray
                 self.lastNameTextField.textColor = UIColor.lightGray
                 self.idcardTextField.textColor = UIColor.lightGray
+                self.laserIdTextField.textColor = UIColor.lightGray
+                self.birthdateTextField.textColor = UIColor.lightGray
                 
                 self.uploadView.isUserInteractionEnabled = false
                 self.uploadView.borderLightGrayColorProperties()
                 self.backgroundIdCardPhotoImageView.isUserInteractionEnabled = false
                 self.iconCameraImageView.image = UIImage(named: "ic-camera")
+                
+                self.calendarImageView.image = self.calendarImageView.image!.withRenderingMode(.alwaysTemplate)
+                self.calendarImageView.tintColor = UIColor.lightGray
                 
                 break
             case "approve" :
@@ -164,16 +200,23 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
                 self.firstNameTextField.isEnabled = true
                 self.lastNameTextField.isEnabled = true
                 self.idcardTextField.isEnabled = false
+                self.laserIdTextField.isEnabled = false
+                self.birthdateTextField.isEnabled = false
                 
                 self.emailTextField.textColor = UIColor.lightGray
                 self.mobileTextField.textColor = UIColor.lightGray
                 self.firstNameTextField.textColor = UIColor.black
                 self.lastNameTextField.textColor = UIColor.black
                 self.idcardTextField.textColor = UIColor.lightGray
+                self.laserIdTextField.textColor = UIColor.lightGray
+                self.birthdateTextField.textColor = UIColor.lightGray
                 
                 self.uploadView.isUserInteractionEnabled = true
                 self.uploadView.borderRedColorProperties(borderWidth: 1.0)
                 self.iconCameraImageView.image = UIImage(named: "ic-camera-1")
+                
+                self.calendarImageView.image = self.calendarImageView.image!.withRenderingMode(.alwaysTemplate)
+                self.calendarImageView.tintColor = UIColor.lightGray
                 
                 break
             case "fail" :
@@ -184,17 +227,23 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
                 self.firstNameTextField.isEnabled = true
                 self.lastNameTextField.isEnabled = true
                 self.idcardTextField.isEnabled = true
+                self.laserIdTextField.isEnabled = true
+                self.birthdateTextField.isEnabled = true
                 
                 self.emailTextField.textColor = UIColor.lightGray
                 self.mobileTextField.textColor = UIColor.lightGray
                 self.firstNameTextField.textColor = UIColor.black
                 self.lastNameTextField.textColor = UIColor.black
                 self.idcardTextField.textColor = UIColor.black
-                
+                self.laserIdTextField.textColor = UIColor.black
+                self.birthdateTextField.textColor = UIColor.black
                 
                 self.uploadView.isUserInteractionEnabled = true
                 self.uploadView.borderRedColorProperties(borderWidth: 1.0)
                 self.iconCameraImageView.image = UIImage(named: "ic-camera-1")
+                
+                self.calendarImageView.image = self.calendarImageView.image!.withRenderingMode(.alwaysTemplate)
+                self.calendarImageView.tintColor = UIColor.black
                 
                 break
             default:
@@ -211,12 +260,16 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
         
         self.idcardTextField.addDoneButtonToKeyboard()
         
+        self.birthdateTextField.addDoneButtonToKeyboard()
+        
         if #available(iOS 10.0, *) {
             self.firstNameTextField.textContentType = UITextContentType(rawValue: "")
             self.lastNameTextField.textContentType = UITextContentType(rawValue: "")
             self.emailTextField.textContentType = UITextContentType(rawValue: "")
             self.mobileTextField.textContentType = UITextContentType(rawValue: "")
             self.idcardTextField.textContentType = UITextContentType(rawValue: "")
+            self.laserIdTextField.textContentType = UITextContentType(rawValue: "")
+            self.birthdateTextField.textContentType = UITextContentType(rawValue: "")
         }
         if #available(iOS 12.0, *) {
             self.firstNameTextField.textContentType = .oneTimeCode
@@ -224,25 +277,35 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
             self.emailTextField.textContentType = .oneTimeCode
             self.mobileTextField.textContentType = .oneTimeCode
             self.idcardTextField.textContentType = .oneTimeCode
+            self.laserIdTextField.textContentType = .oneTimeCode
+            self.birthdateTextField.textContentType = .oneTimeCode
         }
+        
         
         self.firstNameTextField.delegate = self
         self.lastNameTextField.delegate = self
         self.emailTextField.delegate = self
         self.mobileTextField.delegate = self
         self.idcardTextField.delegate = self
+        self.laserIdTextField.delegate = self
+        self.birthdateTextField.delegate = self
         
         self.firstNameTextField.autocorrectionType = .no
         self.lastNameTextField.autocorrectionType = .no
         self.emailTextField.autocorrectionType = .no
         self.mobileTextField.autocorrectionType = .no
         self.idcardTextField.autocorrectionType = .no
+        self.laserIdTextField.autocorrectionType = .no
+        self.birthdateTextField.autocorrectionType = .no
+        
         
         self.firstNameTextField.setLeftPaddingPoints(40)
         self.lastNameTextField.setLeftPaddingPoints(10)
         self.emailTextField.setLeftPaddingPoints(40)
         self.mobileTextField.setLeftPaddingPoints(40)
         self.idcardTextField.setLeftPaddingPoints(40)
+        self.laserIdTextField.setLeftPaddingPoints(40)
+        self.birthdateTextField.setLeftPaddingPoints(40)
         
         
         self.clearImageView = self.firstNameTextField.addRightButton(UIImage(named: "ic-x")!)
@@ -275,6 +338,12 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
         self.clearImageView5?.addGestureRecognizer(tap5)
         self.clearImageView5?.isHidden = true
         
+        self.clearImageView6 = self.laserIdTextField.addRightButton(UIImage(named: "ic-x")!)
+        let tap6 = UITapGestureRecognizer(target: self, action: #selector(clearLaserIdTapped))
+        self.clearImageView6?.isUserInteractionEnabled = true
+        self.clearImageView6?.addGestureRecognizer(tap6)
+        self.clearImageView6?.isHidden = true
+        
         self.hiddenIdCardPhotoImageView.contentMode = .scaleAspectFit
         
         self.backgroundIdCardPhotoImageView.layer.cornerRadius = 10
@@ -296,11 +365,41 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
         
         
         
+        pickerView = UIDatePicker()
+        pickerView!.datePickerMode = .date
+        pickerView!.calendar = Calendar(identifier: .buddhist)
+        
+        let toolbar = UIToolbar();
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self,
+                                         action: #selector(donedatePicker));
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,
+                                          target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self,
+                                           action: #selector(cancelDatePicker));
+        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+        
+        self.birthdateTextField.tintColor = UIColor.clear
+        self.birthdateTextField.isUserInteractionEnabled = true
+        self.birthdateTextField.inputView = pickerView
+        self.birthdateTextField.inputAccessoryView = toolbar
         
        //disable
         self.disableButton()
         
+      
         
+    }
+    @objc func donedatePicker(){
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "th")
+        formatter.dateFormat = "dd MMMM yyyy"
+        self.birthdateTextField.text = formatter.string(from: pickerView!.date)
+        self.view.endEditing(true)
+    }
+    
+    @objc func cancelDatePicker(){
+        self.view.endEditing(true)
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -335,6 +434,30 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
                 let citizen_id = data["goldsaving_member"]?["citizen_id"]as? String ?? ""
                 
                 if (textField.text!) != citizen_id {
+                    self.enableButton()
+                }else{
+                    self.disableButton()
+                }
+            }
+        }
+        
+        if textField == self.laserIdTextField {
+            if let data  = self.userData as? [String:AnyObject] {
+                let laser_id = data["goldsaving_member"]?["laser_id"]as? String ?? ""
+                
+                if (textField.text!) != laser_id {
+                    self.enableButton()
+                }else{
+                    self.disableButton()
+                }
+            }
+        }
+        
+        if textField == self.birthdateTextField {
+            if let data  = self.userData as? [String:AnyObject] {
+                let birthdate = data["goldsaving_member"]?["birthdate"]as? String ?? ""
+                
+                if (textField.text!) != birthdate {
                     self.enableButton()
                 }else{
                     self.disableButton()
@@ -452,6 +575,25 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
             }
             
         }
+        if textField  == self.laserIdTextField {
+            let startingLength = textField.text?.count ?? 0
+            let lengthToAdd = string.count
+            let lengthToReplace = range.length
+            
+            let newLength = startingLength + lengthToAdd - lengthToReplace
+            //return newLength <= 20
+            
+            if newLength == 0 {
+                self.clearImageView6?.isHidden = true
+            }else{
+                self.clearImageView6?.isHidden = false
+            }
+            
+            
+            //validate laserId
+            
+        }
+        
         return true
         
     }
@@ -461,6 +603,8 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
         eview.backgroundColor = UIColor.groupTableViewBackground
         mview.backgroundColor = UIColor.groupTableViewBackground
         idview.backgroundColor = UIColor.groupTableViewBackground
+        lasetIdView.backgroundColor = UIColor.groupTableViewBackground
+        birthdateView.backgroundColor = UIColor.groupTableViewBackground
         
     }
     func addColorLineView(_ textField:UITextField){
@@ -471,6 +615,8 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
             eview.backgroundColor = UIColor.groupTableViewBackground
             mview.backgroundColor = UIColor.groupTableViewBackground
             idview.backgroundColor = UIColor.groupTableViewBackground
+            lasetIdView.backgroundColor = UIColor.groupTableViewBackground
+            birthdateView.backgroundColor = UIColor.groupTableViewBackground
             break
         case lastNameTextField:
             fview.backgroundColor = UIColor.groupTableViewBackground
@@ -478,6 +624,8 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
             eview.backgroundColor = UIColor.groupTableViewBackground
             mview.backgroundColor = UIColor.groupTableViewBackground
             idview.backgroundColor = UIColor.groupTableViewBackground
+            lasetIdView.backgroundColor = UIColor.groupTableViewBackground
+            birthdateView.backgroundColor = UIColor.groupTableViewBackground
             break
         case emailTextField:
             fview.backgroundColor = UIColor.groupTableViewBackground
@@ -485,6 +633,8 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
             eview.backgroundColor = UIColor.darkText
             mview.backgroundColor = UIColor.groupTableViewBackground
             idview.backgroundColor = UIColor.groupTableViewBackground
+            lasetIdView.backgroundColor = UIColor.groupTableViewBackground
+            birthdateView.backgroundColor = UIColor.groupTableViewBackground
             break
         case mobileTextField:
             fview.backgroundColor = UIColor.groupTableViewBackground
@@ -492,6 +642,8 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
             eview.backgroundColor = UIColor.groupTableViewBackground
             mview.backgroundColor = UIColor.darkText
             idview.backgroundColor = UIColor.groupTableViewBackground
+            lasetIdView.backgroundColor = UIColor.groupTableViewBackground
+            birthdateView.backgroundColor = UIColor.groupTableViewBackground
             break
         case idcardTextField:
             fview.backgroundColor = UIColor.groupTableViewBackground
@@ -499,6 +651,26 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
             eview.backgroundColor = UIColor.groupTableViewBackground
             mview.backgroundColor = UIColor.groupTableViewBackground
             idview.backgroundColor = UIColor.darkText
+            lasetIdView.backgroundColor = UIColor.groupTableViewBackground
+            birthdateView.backgroundColor = UIColor.groupTableViewBackground
+            break
+        case laserIdTextField:
+            fview.backgroundColor = UIColor.groupTableViewBackground
+            lview.backgroundColor = UIColor.groupTableViewBackground
+            eview.backgroundColor = UIColor.groupTableViewBackground
+            mview.backgroundColor = UIColor.groupTableViewBackground
+            idview.backgroundColor = UIColor.groupTableViewBackground
+            lasetIdView.backgroundColor = UIColor.darkText
+            birthdateView.backgroundColor = UIColor.groupTableViewBackground
+            break
+        case birthdateTextField:
+            fview.backgroundColor = UIColor.groupTableViewBackground
+            lview.backgroundColor = UIColor.groupTableViewBackground
+            eview.backgroundColor = UIColor.groupTableViewBackground
+            mview.backgroundColor = UIColor.groupTableViewBackground
+            idview.backgroundColor = UIColor.groupTableViewBackground
+            lasetIdView.backgroundColor = UIColor.groupTableViewBackground
+            birthdateView.backgroundColor = UIColor.darkText
             break
             
         default:
@@ -544,8 +716,15 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
         
     }
     @objc func clearEmailTapped(){
-        self.clearImageView4?.animationTapped({
+        self.clearImageView5?.animationTapped({
             self.emailTextField.text = ""
+            self.clearImageView5?.isHidden = true
+        })
+        
+    }
+    @objc func clearLaserIdTapped(){
+        self.clearImageView6?.animationTapped({
+            self.laserIdTextField.text = ""
             self.clearImageView5?.isHidden = true
         })
         
@@ -638,7 +817,12 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
         if textField == self.mobileTextField {
             self.idcardTextField.becomeFirstResponder()
         }
-        
+        if textField == self.idcardTextField {
+            self.laserIdTextField.becomeFirstResponder()
+        }
+        if textField == self.laserIdTextField {
+            self.birthdateTextField.becomeFirstResponder()
+        }
         return true
     }
     
@@ -715,6 +899,8 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
         errorPersonalIDLabel?.removeFromSuperview()
         errorEmailLabel?.removeFromSuperview()
         errorMobileLabel?.removeFromSuperview()
+        errorLaserIdLabel?.removeFromSuperview()
+        errorBirthdateLabel?.removeFromSuperview()
         
         
         let firstName = self.firstNameTextField.text!
@@ -722,11 +908,24 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
         let personalID  = self.idcardTextField.text!
         let mobile = self.mobileTextField.text!
         let email = self.emailTextField.text!
+        let laserId = self.laserIdTextField.text!
+        let birthdate = self.birthdateTextField.text!
         
         var errorEmpty = 0
         var emptyMessage = ""
         
-        
+        if birthdate.isEmpty {
+            emptyMessage = NSLocalizedString("string-error-empty-birth-date", comment: "")
+            self.errorBirthdateLabel =  self.birthdateTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 15 )
+            errorEmpty += 1
+            
+        }
+        if laserId.isEmpty {
+            emptyMessage = NSLocalizedString("string-error-empty-laser-id", comment: "")
+            self.errorLaserIdLabel =  self.laserIdTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 15 )
+            errorEmpty += 1
+            
+        }
         if personalID.isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-personal-id", comment: "")
             self.errorPersonalIDLabel =  self.idcardTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 15 )
@@ -764,7 +963,7 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
         
        
         
-        
+        guard validateLaserId(laserId) else { return }
         guard validateIDcard(personalID) else { return }
         guard validateMobile(mobile) else { return }
         
@@ -784,10 +983,19 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
                 (alert) in
                 
                 
+                let formatter = DateFormatter()
+                formatter.dateFormat = "dd-MM-yyyy"
+                
+                let date = convertBuddhaToChris(formatter.string(from: self.pickerView!.date))
+                
+                
                 let params:Parameters = ["firstname": firstName,
                                          "lastname" : lastName,
-                                         "pid" : personalID]
-                
+                                         "pid" : personalID,
+                                         "laser_id": laserId,
+                                         "birthdate":date]
+                print(params)
+             
                 var image = self.idCardPhoto
                 if self.idCardPhoto != nil {
                     image = self.idCardPhoto
@@ -835,6 +1043,7 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
 
                
             })
+ 
             let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-gold-button-cancel", comment: ""), style: .default, handler: nil)
             
             
@@ -850,6 +1059,30 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
         
         
     }
+    
+    func validateLaserId(_ id:String)->Bool {
+        var errorMobile = 0
+        var errorMessage = ""
+        let nID = id.replace(target: "-", withString: "")
+        
+        print("laserId = \(nID)")
+        /*    if !isValidIDCard(nID) {
+         errorMessage = NSLocalizedString("string-error-invalid-personal-id", comment: "")
+         errorMobile += 1
+         }
+         if nID.count < 13 {
+         errorMessage = NSLocalizedString("string-error-invalid-personal-id1", comment: "")
+         errorMobile += 1
+         }
+         */
+        if errorMobile > 0 {
+            self.showMessagePrompt(errorMessage)
+            self.errorLaserIdLabel =  self.laserIdTextField.addBottomLabelErrorMessage(errorMessage , marginLeft: 15)
+            return false
+        }
+        return true
+    }
+    
     func validateIDcard(_ id:String)-> Bool{
         var errorMobile = 0
         var errorMessage = ""

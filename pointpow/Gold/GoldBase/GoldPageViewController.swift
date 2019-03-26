@@ -44,7 +44,7 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
                 }
                 
                 if self.point_balance.doubleValue <= 0 {
-                    self.arrayItem.remove(at: 1)
+                    self.arrayItem.remove(at: 2)
                 }
                 
                 

@@ -126,6 +126,7 @@ class PopupGoldHistoryFilterViewController: BaseViewController  ,UIPickerViewDel
             //dateFormatter.locale = Locale(identifier: "en_US_POSIX")
             dateFormatter.dateFormat = "dd-MM-yyyy"
            
+           
             self.pickerView?.date = dateFormatter.date(from: data.startDate)!
             self.pickerView2?.date = dateFormatter.date(from: data.endDate)!
             

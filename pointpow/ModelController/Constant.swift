@@ -950,11 +950,10 @@ func convertDateOfDay(_ dateString:String) -> String {
     
     return "-"
 }
-func convertDate(_ dateString:String) -> String {
+func convertDate(_ dateString:String , format:String = "dd-MM-yyyy HH:mm") -> String {
     //2017-03-29 20:15:25.000+00:00
     let dateFormatter = DateFormatter()
-    dateFormatter.locale = Locale(identifier: "th")
-    dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
+    dateFormatter.dateFormat = format
     if let d1 = dateFormatter.date(from: dateString){
         
         let calendar = NSCalendar.current
@@ -964,9 +963,9 @@ func convertDate(_ dateString:String) -> String {
         
         var newStringDate = String(format: "%02d", components.day!)
         newStringDate += "-\(String(format: "%02d", components.month!))"
-        newStringDate += "-\(String(format: "%02d", components.year! - 543))"
-        newStringDate += " \(String(format: "%02d", components.hour!))"
-        newStringDate += ":\(String(format: "%02d", components.minute!))"
+        newStringDate += "-\(String(format: "%02d", components.year! + 543))"
+        //newStringDate += " \(String(format: "%02d", components.hour!))"
+        //newStringDate += ":\(String(format: "%02d", components.minute!))"
         
         
         print("\(newStringDate)")
@@ -990,7 +989,7 @@ func convertBuddhaToChris(_ dateString:String, _ format:String = "dd-MM-yyyy HH:
         let components = calendar.dateComponents(unitFlags, from: d1)
         
         let year  = components.year! - 543
-        let dateString = "\(components.day!)-\(components.month!)-\(year)"
+        let dateString = "\(components.day!)-\(String(format: "%02d", components.month!))-\(year)"
         return dateString
     }
     

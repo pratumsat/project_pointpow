@@ -189,11 +189,14 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
         
         
         if isTapped {
-            timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(disableCountDown), userInfo: nil, repeats: false)
             
             return
+        }else{
+            timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(disableCountDown), userInfo: nil, repeats: false)
+            
+            isTapped = true
         }
-        isTapped = true
+       
         
        
         if indexPath.section == 0 {

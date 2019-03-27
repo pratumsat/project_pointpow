@@ -37,13 +37,7 @@ class MobileViewController: BaseViewController {
         
         self.confirmButton.borderClearProperties(borderWidth: 1)
         
-        if #available(iOS 10.0, *) {
-            self.mobileTextField.textContentType = UITextContentType(rawValue: "")
-        }
-        if #available(iOS 12.0, *) {
-            self.mobileTextField.textContentType = .oneTimeCode
-        }
-        
+     
         
         self.mobileTextField.delegate = self
         

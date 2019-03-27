@@ -53,16 +53,7 @@ class ChangePasswordViewController: BaseViewController {
         self.confirmNewPasswordTextField.isSecureTextEntry = true
         
         
-        if #available(iOS 10.0, *) {
-            self.passwordTextField.textContentType = UITextContentType(rawValue:"")
-            self.newPasswordTextField.textContentType = UITextContentType(rawValue: "")
-            self.confirmNewPasswordTextField.textContentType = UITextContentType(rawValue:"")
-        }
-        if #available(iOS 12.0, *) {
-            self.passwordTextField.textContentType = .oneTimeCode
-            self.newPasswordTextField.textContentType = .oneTimeCode
-            self.confirmNewPasswordTextField.textContentType = .oneTimeCode
-        }
+      
         
         self.currentPassImageView = self.passwordTextField.addRightButton(UIImage(named: "ic-eye-close")!)
         let eyeCurrentTap = UITapGestureRecognizer(target: self, action: #selector(eyeCurrentPassTapped))

@@ -46,15 +46,7 @@ class LoginViewController: BaseViewController {
         self.forgotLabel.isUserInteractionEnabled = true
         self.forgotLabel.addGestureRecognizer(forgot)
         
-        
-        if #available(iOS 10.0, *) {
-            self.usernameTextField.textContentType = UITextContentType(rawValue: "")
-            self.passwordTextField.textContentType = UITextContentType(rawValue: "")
-        }
-        if #available(iOS 12.0, *) {
-            self.usernameTextField.textContentType = .oneTimeCode
-            self.passwordTextField.textContentType = .oneTimeCode
-        }
+       
         self.usernameTextField.setLeftPaddingPoints(40)
         self.passwordTextField.setLeftPaddingPoints(40)
         

@@ -17,7 +17,11 @@ class SettingViewController: BaseViewController, UICollectionViewDelegate , UICo
     var languageId =  "en"
     var textLanguage = "English"
     var pickerView:UIPickerView?
-    var dummyview:UITextField?
+    var dummyview:UITextField?{
+        didSet{
+            self.dummyview?.delegate = self
+        }
+    }
     
     
     override func viewDidLoad() {
@@ -140,7 +144,6 @@ class SettingViewController: BaseViewController, UICollectionViewDelegate , UICo
         
         
         dummyview  = UITextField(frame: CGRect.zero)
-        dummyview!.delegate = self
         dummyview!.returnKeyType = .done
         
         let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(selectLanguage))

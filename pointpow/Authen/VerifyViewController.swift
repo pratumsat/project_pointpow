@@ -45,15 +45,7 @@ class VerifyViewController: BaseViewController {
         self.sendButton.borderRedColorProperties(borderWidth: 1)  
         self.verifyButton.borderClearProperties(borderWidth: 1)
         
-        
-        if #available(iOS 10.0, *) {
-            self.usernameTextField.textContentType = UITextContentType(rawValue: "")
-            self.otpTextField.textContentType = UITextContentType(rawValue: "")
-        }
-        if #available(iOS 12.0, *) {
-            self.usernameTextField.textContentType = .oneTimeCode
-            self.otpTextField.textContentType = .oneTimeCode
-        }
+  
         self.usernameTextField.setLeftPaddingPoints(40)
         self.otpTextField.setLeftPaddingPoints(40)
         

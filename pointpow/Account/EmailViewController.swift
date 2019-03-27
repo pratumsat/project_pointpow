@@ -36,14 +36,7 @@ class EmailViewController: BaseViewController {
         self.backgroundImage?.image = nil
         
         self.confirmButton.borderClearProperties(borderWidth: 1)
-        
-        if #available(iOS 10.0, *) {
-            self.emailTextField.textContentType = UITextContentType(rawValue: "")
-        }
-        if #available(iOS 12.0, *) {
-            self.emailTextField.textContentType = .oneTimeCode
-        }
-        
+      
         
         self.emailTextField.delegate = self
         

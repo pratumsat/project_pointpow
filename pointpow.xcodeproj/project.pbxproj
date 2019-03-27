@@ -153,7 +153,6 @@
 		C197FEE52207E4F9002F24E8 /* NotoSansThai-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C197FEE22207E485002F24E8 /* NotoSansThai-Regular.ttf */; };
 		C197FEE72207EA18002F24E8 /* NotoSansThai-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C197FEE62207EA09002F24E8 /* NotoSansThai-SemiBold.ttf */; };
 		C197FF2622081C72002F24E8 /* GoldPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FF2522081C72002F24E8 /* GoldPageViewController.swift */; };
-		C197FF2822082046002F24E8 /* GoldBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FF2722082046002F24E8 /* GoldBaseViewController.swift */; };
 		C197FF2A22082503002F24E8 /* GoldProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FF2922082503002F24E8 /* GoldProfileViewController.swift */; };
 		C197FF2C22082527002F24E8 /* GoldWithDrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FF2B22082527002F24E8 /* GoldWithDrawViewController.swift */; };
 		C197FF3222083A6F002F24E8 /* GoldPriceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FF3022083A6F002F24E8 /* GoldPriceCell.swift */; };
@@ -379,7 +378,6 @@
 		C197FEE32207E497002F24E8 /* NotoSansThai-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansThai-Bold.ttf"; sourceTree = "<group>"; };
 		C197FEE62207EA09002F24E8 /* NotoSansThai-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansThai-SemiBold.ttf"; sourceTree = "<group>"; };
 		C197FF2522081C72002F24E8 /* GoldPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldPageViewController.swift; sourceTree = "<group>"; };
-		C197FF2722082046002F24E8 /* GoldBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldBaseViewController.swift; sourceTree = "<group>"; };
 		C197FF2922082503002F24E8 /* GoldProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldProfileViewController.swift; sourceTree = "<group>"; };
 		C197FF2B22082527002F24E8 /* GoldWithDrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldWithDrawViewController.swift; sourceTree = "<group>"; };
 		C197FF3022083A6F002F24E8 /* GoldPriceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldPriceCell.swift; sourceTree = "<group>"; };
@@ -519,7 +517,6 @@
 			isa = PBXGroup;
 			children = (
 				C18A1CE522118BC9002CAF4C /* GoldSWRevealViewController.swift */,
-				C197FF2722082046002F24E8 /* GoldBaseViewController.swift */,
 				C197FF2522081C72002F24E8 /* GoldPageViewController.swift */,
 				C10D94AC22095EA20083FA47 /* GoldMenuTableViewController.swift */,
 				C10D94B32209717E0083FA47 /* NavGoldPage.swift */,
@@ -1396,7 +1393,6 @@
 			files = (
 				C1AD50B72188000B00F74415 /* Constant.swift in Sources */,
 				C107CF36222263AD00C50B8C /* PopupShippingMyAddressViewController.swift in Sources */,
-				C197FF2822082046002F24E8 /* GoldBaseViewController.swift in Sources */,
 				C10CA19A21914AF900316DF3 /* TransactionViewController.swift in Sources */,
 				C11A93B3218BF6D200627B44 /* IntroViewController.swift in Sources */,
 				C10CA19421914A3B00316DF3 /* HomeViewController.swift in Sources */,

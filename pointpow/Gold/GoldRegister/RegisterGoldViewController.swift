@@ -84,24 +84,7 @@ class RegisterGoldViewController: BaseViewController {
         
         self.birthdateTextField.addDoneButtonToKeyboard()
         
-        if #available(iOS 10.0, *) {
-            self.firstNameTextField.textContentType = UITextContentType(rawValue: "")
-            self.lastNameTextField.textContentType = UITextContentType(rawValue: "")
-            self.emailTextField.textContentType = UITextContentType(rawValue: "")
-            self.mobileTextField.textContentType = UITextContentType(rawValue: "")
-            self.idcardTextField.textContentType = UITextContentType(rawValue: "")
-            self.laserIdTextField.textContentType = UITextContentType(rawValue: "")
-            self.birthdateTextField.textContentType = UITextContentType(rawValue: "")
-        }
-        if #available(iOS 12.0, *) {
-            self.firstNameTextField.textContentType = .oneTimeCode
-            self.lastNameTextField.textContentType = .oneTimeCode
-            self.emailTextField.textContentType = .oneTimeCode
-            self.mobileTextField.textContentType = .oneTimeCode
-            self.idcardTextField.textContentType = .oneTimeCode
-            self.laserIdTextField.textContentType = .oneTimeCode
-            self.birthdateTextField.textContentType = .oneTimeCode
-        }
+      
         
         self.firstNameTextField.delegate = self
         self.lastNameTextField.delegate = self
@@ -272,6 +255,11 @@ class RegisterGoldViewController: BaseViewController {
             }else{
                 self.clearImageView?.isHidden = false
             }
+            if isValidName(string) {
+                return true
+            }else{
+                return false
+            }
         }
         if textField  == self.lastNameTextField {
             let startingLength = textField.text?.count ?? 0
@@ -285,6 +273,11 @@ class RegisterGoldViewController: BaseViewController {
                 self.clearImageView2?.isHidden = true
             }else{
                 self.clearImageView2?.isHidden = false
+            }
+            if isValidName(string) {
+                return true
+            }else{
+                return false
             }
         }
         if textField  == self.idcardTextField {

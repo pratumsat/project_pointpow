@@ -73,18 +73,7 @@ class PersonalViewController: BaseViewController  {
         self.backgroundImage?.image = nil
         self.nextButton.borderClearProperties(borderWidth: 1)
         
-        if #available(iOS 10.0, *) {
-            self.firstNameTextField.textContentType = UITextContentType(rawValue: "")
-            self.lastNameTextField.textContentType = UITextContentType(rawValue: "")
-            self.parsonalTextField.textContentType = UITextContentType(rawValue: "")
-            self.birthdayTextField.textContentType = UITextContentType(rawValue: "")
-        }
-        if #available(iOS 12.0, *) {
-            self.firstNameTextField.textContentType = .oneTimeCode
-            self.lastNameTextField.textContentType = .oneTimeCode
-            self.parsonalTextField.textContentType = .oneTimeCode
-            self.birthdayTextField.textContentType = .oneTimeCode
-        }
+     
         
         
         self.firstNameTextField.delegate = self

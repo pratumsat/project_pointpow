@@ -47,17 +47,7 @@ class RegisterViewController: BaseViewController {
         self.registerButton.borderClearProperties(borderWidth: 1)
         
         
-        
-        if #available(iOS 10.0, *) {
-            self.usernameTextField.textContentType = UITextContentType(rawValue: "")
-            self.passwordTextField.textContentType = UITextContentType(rawValue: "")
-            self.confirmPasswordTextField.textContentType = UITextContentType(rawValue: "")
-        }
-        if #available(iOS 12.0, *) {
-            self.usernameTextField.textContentType = .oneTimeCode
-            self.passwordTextField.textContentType = .oneTimeCode
-            self.confirmPasswordTextField.textContentType = .oneTimeCode
-        }
+    
         
         self.usernameTextField.setLeftPaddingPoints(40)
         self.passwordTextField.setLeftPaddingPoints(40)

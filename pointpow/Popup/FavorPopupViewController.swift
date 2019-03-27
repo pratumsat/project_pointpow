@@ -61,15 +61,7 @@ class FavorPopupViewController: BaseViewController {
         
         self.saveButton.borderClearProperties(borderWidth: 1)
         
-        if #available(iOS 10.0, *) {
-            self.nameTextField.textContentType = UITextContentType(rawValue: "")
-           
-        }
-        if #available(iOS 12.0, *) {
-            self.nameTextField.textContentType = .oneTimeCode
-           
-        }
-        
+    
         
         self.nameTextField.delegate = self
         

@@ -71,14 +71,7 @@ class ResetPasswordViewController: BaseViewController {
         self.confirmNewPasswordTextField.isSecureTextEntry = true
         
         
-        if #available(iOS 10.0, *) {
-            self.newPasswordTextField.textContentType = UITextContentType(rawValue: "")
-            self.confirmNewPasswordTextField.textContentType = UITextContentType(rawValue:"")
-        }
-        if #available(iOS 12.0, *) {
-            self.newPasswordTextField.textContentType = .oneTimeCode
-            self.confirmNewPasswordTextField.textContentType = .oneTimeCode
-        }
+       
         
         
         self.eyeNewPassImageView = self.newPasswordTextField.addRightButton(UIImage(named: "ic-eye-close")!)

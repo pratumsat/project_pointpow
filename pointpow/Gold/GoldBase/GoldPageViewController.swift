@@ -9,7 +9,7 @@
 import UIKit
 
 
-class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var homeCollectionView: UICollectionView!
     
     @IBOutlet weak var menuBarButton: UIBarButtonItem!
@@ -58,15 +58,41 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         }
     }
     
-    var pointpowTextField:UITextField?
+    var pointpowTextField:UITextField? {
+        didSet{
+            self.pointpowTextField?.delegate = self
+        }
+    }
     var savingUpdateButton:UIButton?
+    
+    
+    var userData:AnyObject?
+    var goldPrice:AnyObject?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if (self.revealViewController() != nil) {
+            self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            self.navigationItem.rightBarButtonItem?.target = revealViewController()
+            
+        }
+        
         self.title = NSLocalizedString("string-title-gold-page", comment: "")
         self.setUp()
+     
+       
         
+        self.handlerEnterSuccess  = {
+            // "Profile"
+            if let profile = self.storyboard?.instantiateViewController(withIdentifier: "GoldAccount") as? UINavigationController {
+                
+                self.revealViewController()?.pushFrontViewController(profile, animated: true)
+                
+            }
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -75,10 +101,105 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
             self.updateView()
             
         }
+    
+        NotificationCenter.default.addObserver(self, selector: #selector(messageAlert), name: NSNotification.Name(rawValue: "messageAlert"), object: nil)
+        
+    }
+   
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "messageAlert"), object: nil)
         
     }
     
-   
+    
+    @objc func messageAlert(notification: NSNotification){
+        if let userInfo = notification.userInfo as? [String:AnyObject]{
+            let profile = userInfo["profile"] as? String  ?? ""
+            if !profile.isEmpty{
+                self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
+            }
+            
+        }
+        
+    }
+    
+    func getDataMember(_ loadSuccess:(()->Void)?  = nil){
+        var success = 0
+        getGoldPrice() {
+            success += 1
+            if success == 2 {
+                loadSuccess?()
+            }
+        }
+        getUserInfo() {
+            success += 1
+            if success == 2 {
+                loadSuccess?()
+            }
+        }
+        
+        
+        
+    }
+    func getGoldPrice(_ avaliable:(()->Void)?  = nil){
+        var isLoading:Bool = true
+        if self.goldPrice != nil {
+            isLoading = false
+        }else{
+            isLoading = true
+        }
+        
+        modelCtrl.getGoldPrice(params: nil , isLoading , succeeded: { (result) in
+            self.goldPrice = result
+            avaliable?()
+            
+            self.refreshControl?.endRefreshing()
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                //self.showMessagePrompt(message)
+            }
+            self.refreshControl?.endRefreshing()
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            self.refreshControl?.endRefreshing()
+        }
+    }
+    
+    func getUserInfo(_ avaliable:(()->Void)?  = nil){
+        
+        var isLoading:Bool = true
+        if self.userData != nil {
+            isLoading = false
+        }else{
+            isLoading = true
+        }
+        
+        
+        modelCtrl.getUserData(params: nil , isLoading , succeeded: { (result) in
+            self.userData = result
+            avaliable?()
+            
+            self.refreshControl?.endRefreshing()
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                //self.showMessagePrompt(message)
+            }
+            self.refreshControl?.endRefreshing()
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            self.refreshControl?.endRefreshing()
+        }
+    }
     
     
     
@@ -153,6 +274,8 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         self.positionYTextField = y + 50
         
     }
+ 
+ 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         if textField == self.pointpowTextField {
@@ -247,10 +370,11 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
                 
                 
                 item.pointpowTextField.autocorrectionType = .no
-                item.pointpowTextField.delegate = self
                 item.pointpowTextField.addDoneButtonToKeyboard()
                 
+                
                 self.pointpowTextField = item.pointpowTextField
+                
                 self.savingUpdateButton = item.savingButton
                 self.disableButton()
                 

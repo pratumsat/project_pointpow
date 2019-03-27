@@ -47,16 +47,7 @@ class PointFriendTransferViewController: BaseViewController {
         
         self.noteTextField.borderLightGrayColorProperties(borderWidth: 0.5)
         self.amountTextField.borderRedColorProperties(borderWidth: 1)
-        
-        if #available(iOS 10.0, *) {
-            self.amountTextField.textContentType = UITextContentType(rawValue: "")
-            self.noteTextField.textContentType = UITextContentType(rawValue: "")
-        }
-        if #available(iOS 12.0, *) {
-            self.amountTextField.textContentType = .oneTimeCode
-            self.noteTextField.textContentType = .oneTimeCode
-        }
-        
+     
         self.amountTextField.delegate = self
         self.amountTextField.autocorrectionType = .no
         

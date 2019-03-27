@@ -197,19 +197,7 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
         self.nextButton.borderClearProperties(borderWidth: 1)
         
         
-        if #available(iOS 10.0, *) {
-            self.nameTextField.textContentType = UITextContentType(rawValue: "")
-            self.numberPhoneTextField.textContentType = UITextContentType(rawValue: "")
-            self.addressTextField.textContentType = UITextContentType(rawValue: "")
-            
-            
-        }
-        if #available(iOS 12.0, *) {
-            self.nameTextField.textContentType = .oneTimeCode
-            self.numberPhoneTextField.textContentType = .oneTimeCode
-            self.addressTextField.textContentType = .oneTimeCode
-            
-        }
+      
         
         self.nameTextField.delegate = self
         self.numberPhoneTextField.delegate = self

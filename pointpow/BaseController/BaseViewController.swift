@@ -1591,7 +1591,7 @@ extension BaseViewController {
 extension BaseViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         let y = textField.frame.origin.y + (textField.superview?.frame.origin.y)!;
-        
+
         self.positionYTextField = y
     }
 }

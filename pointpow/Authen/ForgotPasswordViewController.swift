@@ -35,12 +35,6 @@ class ForgotPasswordViewController: BaseViewController {
         self.resetButton.borderClearProperties(borderWidth: 1)
         
         
-        if #available(iOS 10.0, *) {
-            self.usernameTextField.textContentType = UITextContentType(rawValue: "")
-        }
-        if #available(iOS 12.0, *) {
-            self.usernameTextField.textContentType = .oneTimeCode
-        }
         self.usernameTextField.setLeftPaddingPoints(40)
         
         self.usernameTextField.delegate = self

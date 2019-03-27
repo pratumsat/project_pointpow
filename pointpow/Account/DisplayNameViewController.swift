@@ -40,12 +40,7 @@ class DisplayNameViewController: BaseViewController {
         
         self.confirmButton.borderClearProperties(borderWidth: 1)
         
-        if #available(iOS 10.0, *) {
-            self.displayNameTextField.textContentType = UITextContentType(rawValue: "")
-          }
-        if #available(iOS 12.0, *) {
-            self.displayNameTextField.textContentType = .oneTimeCode
-        }
+      
         
         
         self.displayNameTextField.delegate = self

@@ -66,13 +66,7 @@ class BankPointTransferViewController: BaseViewController  {
         self.amountTextField.borderRedColorProperties(borderWidth: 1)
         self.amountTextField.setRightPaddingPoints(20)
         
-        
-        if #available(iOS 10.0, *) {
-            self.amountTextField.textContentType = UITextContentType(rawValue: "")
-        }
-        if #available(iOS 12.0, *) {
-            self.amountTextField.textContentType = .oneTimeCode
-        }
+      
         
         self.amountTextField.delegate = self
         self.amountTextField.autocorrectionType = .no

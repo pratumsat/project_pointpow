@@ -10,8 +10,6 @@ import UIKit
 
 class GoldSWRevealViewController: SWRevealViewController {
 
-   
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 

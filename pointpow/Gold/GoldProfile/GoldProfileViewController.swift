@@ -10,7 +10,7 @@ import UIKit
 import Photos
 import Alamofire
 
-class GoldProfileViewController: GoldBaseViewController ,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var calendarImageView: UIImageView!
     @IBOutlet weak var birthdateTextField: UITextField!
@@ -70,9 +70,16 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
     var pickerView:UIDatePicker?
     
     var currentBirthdate = ""
+    var userData:AnyObject?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if (self.revealViewController() != nil) {
+            self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            self.navigationItem.rightBarButtonItem?.target = revealViewController()
+            
+        }
         
         self.navigationItem.rightBarButtonItem?.action = #selector(SWRevealViewController.rightRevealToggle(_:))
         
@@ -83,6 +90,38 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
             self.updateView()
         }
     }
+    
+    func getUserInfo(_ avaliable:(()->Void)?  = nil){
+        
+        var isLoading:Bool = true
+        if self.userData != nil {
+            isLoading = false
+        }else{
+            isLoading = true
+        }
+        
+        
+        modelCtrl.getUserData(params: nil , isLoading , succeeded: { (result) in
+            self.userData = result
+            avaliable?()
+            
+            self.refreshControl?.endRefreshing()
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                //self.showMessagePrompt(message)
+            }
+            self.refreshControl?.endRefreshing()
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            self.refreshControl?.endRefreshing()
+        }
+    }
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -127,7 +166,7 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
             let email = data["goldsaving_member"]?["email"]as? String ?? ""
             let mobile = data["goldsaving_member"]?["mobile"]as? String ?? ""
             let pid = data["goldsaving_member"]?["citizen_id"]as? String ?? ""
-            let status = "fail" //data["goldsaving_member"]?["status"] as? String ?? ""
+            let status = data["goldsaving_member"]?["status"] as? String ?? ""
             let account_id = data["goldsaving_member"]?["account_id"] as? String ?? ""
             let laser_id = data["goldsaving_member"]?["laser_id"] as? String ?? ""
             let birthdate = data["goldsaving_member"]?["birthdate"] as? String ?? ""
@@ -169,7 +208,6 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
             //self.hiddenIdCardPhotoImageView.sd_setImage(with: URL(string: idCardPhoto)!, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER))
             
             self.hiddenIdCardPhotoImageView.image = UIImage(named: "ic-img-placeholder-verify-idcard")
-            
             
             
             switch status {
@@ -271,25 +309,7 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
         
         self.birthdateTextField.addDoneButtonToKeyboard()
         
-        if #available(iOS 10.0, *) {
-            self.firstNameTextField.textContentType = UITextContentType(rawValue: "")
-            self.lastNameTextField.textContentType = UITextContentType(rawValue: "")
-            self.emailTextField.textContentType = UITextContentType(rawValue: "")
-            self.mobileTextField.textContentType = UITextContentType(rawValue: "")
-            self.idcardTextField.textContentType = UITextContentType(rawValue: "")
-            self.laserIdTextField.textContentType = UITextContentType(rawValue: "")
-            self.birthdateTextField.textContentType = UITextContentType(rawValue: "")
-        }
-        if #available(iOS 12.0, *) {
-            self.firstNameTextField.textContentType = .oneTimeCode
-            self.lastNameTextField.textContentType = .oneTimeCode
-            self.emailTextField.textContentType = .oneTimeCode
-            self.mobileTextField.textContentType = .oneTimeCode
-            self.idcardTextField.textContentType = .oneTimeCode
-            self.laserIdTextField.textContentType = .oneTimeCode
-            self.birthdateTextField.textContentType = .oneTimeCode
-        }
-        
+
         
         self.firstNameTextField.delegate = self
         self.lastNameTextField.delegate = self
@@ -418,6 +438,7 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
                 let first_name = data["goldsaving_member"]?["firstname"] as? String ?? ""
                 //let last_name = data["goldsaving_member"]?["lastname"]as? String ?? ""
                 
+                
                 if (textField.text!) != first_name {
                     self.enableButton()
                 }else{
@@ -488,10 +509,18 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
             let newLength = startingLength + lengthToAdd - lengthToReplace
             //return newLength <= 20
             
+          
+            
             if newLength == 0 {
                 self.clearImageView?.isHidden = true
             }else{
                 self.clearImageView?.isHidden = false
+            }
+            
+            if isValidName(string) {
+                return true
+            }else{
+                return false
             }
 
         }
@@ -509,7 +538,11 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
                 self.clearImageView2?.isHidden = false
             }
            
-  
+            if isValidName(string) {
+                return true
+            }else{
+                return false
+            }
         }
         if textField  == self.idcardTextField {
             let startingLength = textField.text?.count ?? 0
@@ -1004,8 +1037,8 @@ class GoldProfileViewController: GoldBaseViewController ,UIImagePickerController
                 
                 let params:Parameters = ["firstname": firstName,
                                          "lastname" : lastName,
-                                         "pid" : personalID,
-                                         "laser_id": laserId,
+                                         "pid" : personalID.replace(target: "-", withString: ""),
+                                         "laser_id": laserId.replace(target: "-", withString: ""),
                                          "birthdate":date]
                 print(params)
              

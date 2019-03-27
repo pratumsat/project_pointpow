@@ -888,6 +888,16 @@ func isValidString(_ str:String) -> Bool{
     }
 }
 
+func isValidName(_ str:String) -> Bool{
+    if str.isEmpty {
+        return true
+    }
+    guard !isValidNumber(str) else {return false}
+    guard isValidString(str) else {return false}
+    
+    return true
+}
+
 func isValidNumber(_ str:String) -> Bool{
     let alphaSet = NSCharacterSet.decimalDigits
     

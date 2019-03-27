@@ -8,12 +8,16 @@
 
 import UIKit
 
-class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 
     @IBOutlet weak var withDrawCollectionView: UICollectionView!
     
     var premiumLabel:UILabel?
-    var amountTextField:UITextField?
+    var amountTextField:UITextField? {
+        didSet{
+            self.amountTextField?.delegate = self
+        }
+    }
     //var goldBalanceLabel:UILabel?
     var gold_balance:NSNumber = NSNumber(value: 0.0)
     var gold_price_average:NSNumber = NSNumber(value: 0.0)
@@ -27,9 +31,19 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
    
     var withDrawCell:WithdrawCell?
     
+    var userData:AnyObject?
+    var goldPrice:AnyObject?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if (self.revealViewController() != nil) {
+            self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            self.navigationItem.rightBarButtonItem?.target = revealViewController()
+            
+        }
         
         self.navigationItem.rightBarButtonItem?.action = #selector(SWRevealViewController.rightRevealToggle(_:))
         
@@ -44,7 +58,84 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
         
     }
     
-   
+    func getDataMember(_ loadSuccess:(()->Void)?  = nil){
+        var success = 0
+        getGoldPrice() {
+            success += 1
+            if success == 2 {
+                loadSuccess?()
+            }
+        }
+        getUserInfo() {
+            success += 1
+            if success == 2 {
+                loadSuccess?()
+            }
+        }
+        
+        
+        
+    }
+    func getGoldPrice(_ avaliable:(()->Void)?  = nil){
+        var isLoading:Bool = true
+        if self.goldPrice != nil {
+            isLoading = false
+        }else{
+            isLoading = true
+        }
+        
+        modelCtrl.getGoldPrice(params: nil , isLoading , succeeded: { (result) in
+            self.goldPrice = result
+            avaliable?()
+            
+            self.refreshControl?.endRefreshing()
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                //self.showMessagePrompt(message)
+            }
+            self.refreshControl?.endRefreshing()
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            self.refreshControl?.endRefreshing()
+        }
+    }
+    
+    func getUserInfo(_ avaliable:(()->Void)?  = nil){
+        
+        var isLoading:Bool = true
+        if self.userData != nil {
+            isLoading = false
+        }else{
+            isLoading = true
+        }
+        
+        
+        modelCtrl.getUserData(params: nil , isLoading , succeeded: { (result) in
+            self.userData = result
+            avaliable?()
+            
+            self.refreshControl?.endRefreshing()
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                //self.showMessagePrompt(message)
+            }
+            self.refreshControl?.endRefreshing()
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            self.refreshControl?.endRefreshing()
+        }
+    }
+    
+    
+    
     
     func updateView(){
         if let data  = self.userData as? [String:AnyObject] {
@@ -175,7 +266,7 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
                 cell = item
                 
              
-                item.amountTextField.delegate = self
+                item.amountTextField.autocorrectionType = .no
                 item.amountTextField.addDoneButtonToKeyboard()
                 
                 

@@ -28,7 +28,7 @@ class WithDrawSummaryOfficeViewController: BaseViewController, UICollectionViewD
     
     func setUp(){
         
-        self.handlerEnterSuccess = {
+        self.handlerEnterSuccess = {(pin) in
             
                 //get at pointpow
                 let withdrawAmount = self.withdrawData!.goldAmountToUnit.amount

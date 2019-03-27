@@ -49,7 +49,7 @@ class BankPointTransferViewController: BaseViewController  {
     }
     
     func setUp(){
-        self.handlerEnterSuccess = {
+        self.handlerEnterSuccess = { (pin) in
             self.showResultTransferView(true) {
                 self.navigationController?.popToRootViewController(animated: true)
             }

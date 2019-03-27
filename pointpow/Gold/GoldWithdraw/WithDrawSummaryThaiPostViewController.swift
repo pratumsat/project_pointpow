@@ -51,7 +51,7 @@ class WithDrawSummaryThaiPostViewController: BaseViewController, UICollectionVie
         }
         
         
-        self.handlerEnterSuccess = {
+        self.handlerEnterSuccess = {(pin) in
             
             //get at pointpow
             let withdrawAmount = self.withdrawData!.goldAmountToUnit.amount

@@ -85,7 +85,7 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
      
        
         
-        self.handlerEnterSuccess  = {
+        self.handlerEnterSuccess  = {(pin) in
             // "Profile"
             if let profile = self.storyboard?.instantiateViewController(withIdentifier: "GoldAccount") as? UINavigationController {
                 
@@ -404,15 +404,15 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
                         
                         var pointBalance:NSNumber = NSNumber(value: 0.0)
                         var currentGoldprice:NSNumber = NSNumber(value: 0)
-                        var pointSpend:NSNumber = NSNumber(value: 0)
-                        var goldReceive:NSNumber = NSNumber(value: 0.0)
+                        let pointSpend:NSNumber = NSNumber(value: Double(self.pointpowTextField?.text! ?? "0")!)
+                        //var goldReceive:NSNumber = NSNumber(value: 0.0)
                         
                         
                         
                         if let data  = self.userData as? [String:AnyObject] {
                             pointBalance = data["member_point"]?["total"] as? NSNumber ?? 0
                             
-                            modelSaving.pointBalance = pointBalance.doubleValue
+                            modelSaving.pointBalance = pointBalance.doubleValue - pointSpend.doubleValue
                         }
                         
                         if let data  = self.goldPrice as? [String:AnyObject] {
@@ -431,8 +431,8 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
                                 return
                             }
                             
-                            pointSpend =  NSNumber(value: Double(self.pointpowTextField?.text! ?? "0")!)
-                            modelSaving.goldReceive = goldReceive.doubleValue
+                            
+                            modelSaving.goldReceive = 0
                             modelSaving.pointSpend = pointSpend.doubleValue
                             modelSaving.currentGoldprice  = currentGoldprice.doubleValue
                             

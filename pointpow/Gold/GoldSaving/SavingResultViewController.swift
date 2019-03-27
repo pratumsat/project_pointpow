@@ -114,21 +114,12 @@ class SavingResultViewController: BaseViewController , UICollectionViewDelegate 
                     item.transactionNumberLabel.text = transaction_number
                     
                     
-                    var numberFormatter = NumberFormatter()
-                    numberFormatter.numberStyle = .decimal
-                    
-                    item.goldPriceLabel.text = numberFormatter.string(from: gold_price)
-                    
-                    
-                    numberFormatter = NumberFormatter()
+                    let numberFormatter = NumberFormatter()
                     numberFormatter.numberStyle = .decimal
                     numberFormatter.minimumFractionDigits = 2
                     item.pointpowLabel.text = numberFormatter.string(from: pointpow_total)
                    
-                    numberFormatter = NumberFormatter()
-                    numberFormatter.numberStyle = .decimal
-                    numberFormatter.minimumFractionDigits = 4
-                    item.goldReceiveLabel.text = numberFormatter.string(from: gold_received)
+                   
                 }
                 
             }
@@ -165,7 +156,7 @@ class SavingResultViewController: BaseViewController , UICollectionViewDelegate 
         
         if indexPath.section == 0 {
             let width = collectionView.frame.width - 40
-            let height = width/360*330
+            let height =  CGFloat(240) //width/360*330
             return CGSize(width: width, height: height)
         }else{
             let width = collectionView.frame.width

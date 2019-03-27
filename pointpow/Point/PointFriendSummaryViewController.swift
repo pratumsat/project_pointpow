@@ -164,7 +164,7 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
             let height = CGFloat(60)
             return CGSize(width: width, height: height)
         }
-        return CGSize.zero
+      
     }
 
 

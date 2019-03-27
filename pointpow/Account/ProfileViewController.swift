@@ -30,7 +30,7 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
             print("new passcode= \(passcode)")
             
         }
-        self.handlerEnterSuccess = {
+        self.handlerEnterSuccess = { (pin) in
             switch self.select {
             case .EDITPROFILE:
                 self.showPersonalView(true)

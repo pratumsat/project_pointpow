@@ -72,7 +72,7 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
     }
    
     func setUp(){
-        self.handlerEnterSuccess = {
+        self.handlerEnterSuccess = { (pin) in
             
         }
         

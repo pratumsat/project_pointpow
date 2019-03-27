@@ -10,9 +10,9 @@ import UIKit
 
 class SavingConfirmCell: UICollectionViewCell {
 
-    @IBOutlet weak var goldReceiveLabel: UILabel!
+    @IBOutlet weak var pointPointBalanceLabel: UILabel!
+    
     @IBOutlet weak var pointPowSpanLabel: UILabel!
-    @IBOutlet weak var goldPriceLabel: UILabel!
     @IBOutlet weak var headView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,8 +29,6 @@ class SavingConfirmCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        
-        self.headView.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
-        
+     
     }
 }

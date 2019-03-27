@@ -13,7 +13,7 @@ import Presentr
 import FirebaseMessaging
 import Alamofire
 
-class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
+class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate, GIDSignInUIDelegate, UITextFieldDelegate{
 
     var positionYTextField:CGFloat = 0
     var isShowKeyBoard = false
@@ -28,7 +28,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
     
     
     var handlerDidCancel: (()->Void)?
-    var handlerEnterSuccess: (()->Void)?
+    var handlerEnterSuccess: ((_ pin:String)->Void)?
     var hendleSetPasscodeSuccess: ((_ passcode:String)->Void)?
     
     private var searchImageView:UIImageView?
@@ -753,7 +753,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         let params:Parameters = ["pin" : Int(passcode)!]
         self.modelCtrl.enterPinCode(params: params, true, succeeded: { (result) in
             controller.dismiss(animated: false, completion: { () in
-                self.handlerEnterSuccess?()
+                self.handlerEnterSuccess?(passcode)
             })
         }, error: { (error) in
             if let mError = error as? [String:AnyObject]{
@@ -1093,8 +1093,8 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
             let h = 260
             let width = ModalSize.custom(size: Float(w))
             let height = ModalSize.custom(size: Float(h))
-            
-            let center = ModalCenterPosition.topCenter
+            let x = self.view.center.x
+            let center = ModalCenterPosition.custom(centerPoint: CGPoint(x: x, y: 250))
             let customType = PresentationType.custom(width: width, height: height, center: center)
             
             let customPresenter = Presentr(presentationType: customType)
@@ -1410,10 +1410,6 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate{
         // Dispose of any resources that can be recreated.
     }
     
-   
-}
-
-extension BaseViewController {
     
     func addRefreshViewController(_ collectionView:UICollectionView){
         self.refreshControl = UIRefreshControl()
@@ -1443,7 +1439,7 @@ extension BaseViewController {
         
         let window = UIApplication.shared.keyWindow!
         window.addSubview(windowSubview!);
-       
+        
     }
     func addCloseBlackView(){
         let x = CGFloat(self.view.frame.maxX) - 12.5
@@ -1500,19 +1496,83 @@ extension BaseViewController {
         self.moreImageView!.addGestureRecognizer(more)
         
     }
-    @objc func searchTapped(){
-        self.searchImageView?.animationTapped()
-    }
-    @objc func cartTapped(){
-        self.cartImageView?.animationTapped()
-    }
-    @objc func moreTapped(){
-        self.moreImageView?.animationTapped()
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        let y = textField.frame.origin.y + (textField.superview?.frame.origin.y)!;
+        
+        self.positionYTextField = y
     }
     
-}
-
-extension BaseViewController {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+    }
+    
+    @objc func loginGoogle(){
+        GIDSignIn.sharedInstance().signIn()
+    }
+    
+    @objc func loginFacebook() {
+        self.fbLoginManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
+            if error == nil {
+                let fbloginresult : FBSDKLoginManagerLoginResult = result!
+                if(fbloginresult.isCancelled) {
+                    //Show Cancel alert
+                } else if(fbloginresult.grantedPermissions.contains("email")) {
+                    self.returnUserData()
+                    //fbLoginManager.logOut()
+                }
+            }
+        }
+    }
+    
+    func returnUserData(){
+        if((FBSDKAccessToken.current()) != nil){
+            FBSDKGraphRequest(graphPath: "me", parameters:
+                ["fields":"email,first_name,last_name,gender,picture"]).start(completionHandler: { (connection, result, error) -> Void in
+                    
+                    if (error == nil){
+                        print(result)
+                        if let item = result as? [String:AnyObject]{
+                            
+                            let fbtoken = FBSDKAccessToken.current()?.tokenString ?? ""
+                            let email = item["email"] as? String ?? ""
+                            let first_name = item["first_name"] as? String ?? ""
+                            let last_name = item["last_name"] as? String ?? ""
+                            let fcmToken = Messaging.messaging().fcmToken ?? ""
+                            
+                            let params:Parameters = ["email" : email,
+                                                     "firstname": first_name,
+                                                     "lastname" : last_name,
+                                                     "social_token" : fbtoken,
+                                                     "device_token": fcmToken,
+                                                     "app_os": "ios"]
+                            
+                            self.modelCtrl.loginWithSocial(params: params, succeeded: { (result) in
+                                if let mResult = result as? [String:AnyObject]{
+                                    print(mResult)
+                                    let dupicate = mResult["exist_email"] as? NSNumber ?? 0
+                                    if dupicate.boolValue {
+                                        self.isExist = true
+                                    }else{
+                                        self.isExist = false
+                                    }
+                                    self.socialLoginSucces = true
+                                }
+                            }, error: { (error) in
+                                if let mError = error as? [String:AnyObject]{
+                                    print(mError)
+                                }
+                            }, failure: { (messageError) in
+                                self.handlerMessageError(messageError , title: "")
+                            })
+                            
+                        }
+                        
+                        
+                    }
+                })
+        }
+    }
+    
     func findShadowImage(under view: UIView) -> UIImageView? {
         if view is UIImageView && view.bounds.size.height <= 1 {
             return (view as! UIImageView)
@@ -1587,83 +1647,17 @@ extension BaseViewController {
         alert.addAction(actionCancel)
         self.present(alert, animated: true, completion: nil)
     }
+    
+    @objc func searchTapped(){
+        self.searchImageView?.animationTapped()
+    }
+    @objc func cartTapped(){
+        self.cartImageView?.animationTapped()
+    }
+    @objc func moreTapped(){
+        self.moreImageView?.animationTapped()
+    }
+    
+    
+   
 }
-extension BaseViewController: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        let y = textField.frame.origin.y + (textField.superview?.frame.origin.y)!;
-
-        self.positionYTextField = y
-    }
-}
-extension BaseViewController:GIDSignInUIDelegate {
-    
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-    }
-    
-    @objc func loginGoogle(){
-        GIDSignIn.sharedInstance().signIn()
-    }
-    
-    @objc func loginFacebook() {
-        self.fbLoginManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
-            if error == nil {
-                let fbloginresult : FBSDKLoginManagerLoginResult = result!
-                if(fbloginresult.isCancelled) {
-                    //Show Cancel alert
-                } else if(fbloginresult.grantedPermissions.contains("email")) {
-                    self.returnUserData()
-                    //fbLoginManager.logOut()
-                }
-            }
-        }
-    }
-    
-    func returnUserData(){
-            if((FBSDKAccessToken.current()) != nil){
-                FBSDKGraphRequest(graphPath: "me", parameters:
-                    ["fields":"email,first_name,last_name,gender,picture"]).start(completionHandler: { (connection, result, error) -> Void in
-                        
-                        if (error == nil){
-                            print(result)
-                            if let item = result as? [String:AnyObject]{
-                              
-                                let fbtoken = FBSDKAccessToken.current()?.tokenString ?? ""
-                                let email = item["email"] as? String ?? ""
-                                let first_name = item["first_name"] as? String ?? ""
-                                let last_name = item["last_name"] as? String ?? ""
-                                let fcmToken = Messaging.messaging().fcmToken ?? ""
-                                
-                                let params:Parameters = ["email" : email,
-                                                         "firstname": first_name,
-                                                         "lastname" : last_name,
-                                                         "social_token" : fbtoken,
-                                                         "device_token": fcmToken,
-                                                         "app_os": "ios"]
-                                
-                                self.modelCtrl.loginWithSocial(params: params, succeeded: { (result) in
-                                    if let mResult = result as? [String:AnyObject]{
-                                        print(mResult)
-                                        let dupicate = mResult["exist_email"] as? NSNumber ?? 0
-                                        if dupicate.boolValue {
-                                            self.isExist = true
-                                        }else{
-                                            self.isExist = false
-                                        }
-                                        self.socialLoginSucces = true
-                                    }
-                                }, error: { (error) in
-                                    if let mError = error as? [String:AnyObject]{
-                                        print(mError)
-                                    }
-                                }, failure: { (messageError) in
-                                    self.handlerMessageError(messageError , title: "")
-                                })
-                                
-                            }
-                            
-                            
-                        }
-                    })
-            }
-        }
-    }

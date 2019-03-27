@@ -33,13 +33,13 @@
 "string-title-favorite" = "รายการโปรด";
 "string-title-history" = "ประวัติการทำรายการ";
 // gold
-"string-title-gold-page" = "ออมทอง";
-"string-title-gold-page-withdraw" = "ถอนทองคำ";
+"string-title-gold-page" = "สะสมพ้อยท์";
+"string-title-gold-page-withdraw" = "แลกทองคำ";
 "string-title-gold-register1" = "สมัครบัญชีสะสมพ้อยท์";
 "string-title-gold-register3" = "ยืนยันการสมัคร";
 "title-gold-pendding-verify" = "การยืนยันตัวตน";
-"title-gold-pendding-confirm-saving" = "ยืนยันการทำรายการออมทอง";
-"title-gold-pendding-confirm-withdraw" = "ยืนยันการทำรายการถอนทอง";
+"title-gold-pendding-confirm-saving" = "ยืนยันรายการสะสมพ้อยท์";
+"title-gold-pendding-confirm-withdraw" = "ยืนยันการทำรายการแลกทองคำ";
 "unit-salueng" = "สลึง";
 "unit-baht" = "บาท";
 "unit-bar" = "แท่ง";
@@ -60,8 +60,8 @@
 "string-status-gold-history-success" = "สำเร็จ";
 "string-status-gold-history-cancel" = "ยกเลิก";
 "string-status-gold-history-waiting" = "กำลังดำเนินการ";
-"string-title-history-saving" = "ออมทอง";
-"string-title-history-withdraw" = "ถอนทอง";
+"string-title-history-saving" = "สะสมพ้อยท์";
+"string-title-history-withdraw" = "แลกทองคำ";
 //transaction sorry
 "string-not-found-item-transaction" = "ไม่พบข้อมูลการทำรายการ";
 
@@ -74,21 +74,21 @@
 "string-dailog-change-data-confirm" = "ยืนยันการแก้ไขข้อมูล";
 "string-dailog-gold-button-cancel" = "ยกเลิก";
 "string-dailog-gold-button-confirm" = "ยืนยัน";
-"string-dailog-gold-profile-saving"= "ออมทอง";
-"string-dailog-gold-profile-withdraw"= "ถอนทอง";
+"string-dailog-gold-profile-saving"= "สะสมพ้อยท์";
+"string-dailog-gold-profile-withdraw"= "แลกทองคำ";
 "string-dailog-gold-profile-history"= "ประวัติการทำรายการ";
 "string-dailog-gold-profile-lucky-draw" = "Lucky Draw";
 "string-dailog-gold-profile-status-waitting"= "รอการตรวจสอบ";
 "string-dailog-gold-profile-status-fail"= "ไม่ผ่านการตรวจสอบ";
 "string-dailog-gold-profile-status-approve"= "ผ่านการตรวจสอบ";
-"string-dailog-gold-profile-no-register"= "กรุณาเปิดบัญชีออมทอง";
+"string-dailog-gold-profile-no-register"= "กรุณาเปิดบัญชีสะสมพ้อยท์";
 
 "string-dailog-back-view-profile" = "คุณยืนยันที่จะออกจากหน้านี้หรือไม่";
 
 
 "string-dailog-saving-point-not-enough"= "พ้อยท์ของท่านไม่เพียงพอ สำหรับทำรายการนี้";
 "string-dailog-saving-point-pointspend-empty"= "กรุณาใส่จำนวนพ้อย";
-"string-dailog-saving-point-pointspend-min"= "ออมทองได้ตั้งแต่ 100 Point Pow ขึ้นไป";
+"string-dailog-saving-point-pointspend-min"= "สะสมพ้อยท์ได้ตั้งแต่ 100 Point Pow ขึ้นไป";
 
 "string-dailog-saving-gold-amount-empty" = "กรุณาใส่จำนวนทองคำ";
 
@@ -140,7 +140,7 @@
 /*Home*/
 "string-item-event" = "กิจกรรม";
 "string-item-gift" = "แลกสินค้า/บริการ";
-"string-item-gold" = "ออมทอง";
+"string-item-gold" = "สะสมพ้อยท์";
 "string-item-transfer-point" = "โอนพ้อยท์";
 "string-item-transfer-friend" = "โอนพ้อยท์ให้เพื่อน";
 
@@ -205,7 +205,7 @@
 "string-dailog-title-edit-favorite" = "แก้ไขรายการโปรด";
 
 
-"string-dailog-title-cancel-withdraw" = "ยืนยันการยกเลิก\nรายการถอนทองคำ";
+"string-dailog-title-cancel-withdraw" = "ยืนยันการยกเลิก\nรายการแลกทองคำ";
 
 // address
 "string-dailog-title-delete-address" = "ยืนยันในการลบ\nที่อยู่ในการจัดส่งนี้";

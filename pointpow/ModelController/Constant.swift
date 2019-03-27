@@ -1023,7 +1023,7 @@ func convertBuddhaToChris(_ dateString:String, _ format:String = "dd-MM-yyyy HH:
         let components = calendar.dateComponents(unitFlags, from: d1)
         
         let year  = components.year! - 543
-        let dateString = "\(components.day!)-\(String(format: "%02d", components.month!))-\(year)"
+        let dateString = "\(String(format: "%02d", components.day!))-\(String(format: "%02d", components.month!))-\(year)"
         return dateString
     }
     

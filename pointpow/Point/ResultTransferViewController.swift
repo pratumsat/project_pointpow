@@ -134,7 +134,7 @@ class ResultTransferViewController: BaseViewController  , UICollectionViewDelega
             let height = CGFloat(60)
             return CGSize(width: width, height: height)
         }
-        return CGSize.zero
+        
     }
 
 }

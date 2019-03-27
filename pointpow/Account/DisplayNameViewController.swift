@@ -42,7 +42,6 @@ class DisplayNameViewController: BaseViewController {
         
       
         
-        
         self.displayNameTextField.delegate = self
         
         self.displayNameTextField.autocorrectionType = .no
@@ -53,6 +52,10 @@ class DisplayNameViewController: BaseViewController {
         self.clearImageView?.addGestureRecognizer(tap)
         self.clearImageView?.isHidden = true
        
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

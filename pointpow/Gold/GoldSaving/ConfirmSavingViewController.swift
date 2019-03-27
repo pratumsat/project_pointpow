@@ -28,11 +28,10 @@ class ConfirmSavingViewController: BaseViewController , UICollectionViewDelegate
     
     func setUp(){
         
-        self.handlerEnterSuccess = {
+        self.handlerEnterSuccess = { (pin) in
             
-            let params:Parameters = ["current_gold_price": self.modelSaving.currentGoldprice ?? "0",
-                                     "pointpow_spend": self.modelSaving.pointSpend ?? "0",
-                                     "gold_received": self.modelSaving.goldReceive ?? "0.0000"]
+            let params:Parameters = ["pointpow_spend": self.modelSaving.pointSpend ?? "0",
+                                     "pin": pin]
             
             self.modelCtrl.savingGold(params: params, true , succeeded: { (result) in
                 if let data = result as? [String:AnyObject]{
@@ -82,7 +81,7 @@ class ConfirmSavingViewController: BaseViewController , UICollectionViewDelegate
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 4
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -98,44 +97,17 @@ class ConfirmSavingViewController: BaseViewController , UICollectionViewDelegate
                 cell = item
                 
                 
-                var numberFormatter = NumberFormatter()
-                numberFormatter.numberStyle = .decimal
-                
-                item.goldPriceLabel.text = numberFormatter.string(from: NSNumber(value: self.modelSaving.currentGoldprice!))
-               
-                numberFormatter = NumberFormatter()
+                let numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal
                 numberFormatter.minimumFractionDigits = 2
                 
                 item.pointPowSpanLabel.text = numberFormatter.string(from: NSNumber(value: self.modelSaving.pointSpend!))
                 
-                
-                numberFormatter = NumberFormatter()
-                numberFormatter.numberStyle = .decimal
-                numberFormatter.minimumFractionDigits = 4
-                
-                item.goldReceiveLabel.text = numberFormatter.string(from: NSNumber(value: self.modelSaving.goldReceive!))
+              item.pointPointBalanceLabel.text =  numberFormatter.string(from: NSNumber(value: self.modelSaving.pointBalance!))
                 
                 
             }
-        }else if indexPath.section == 1 {
-            
-            if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "SavingSummaryCell", for: indexPath) as? SavingSummaryCell{
-                cell = item
-                
-                let numberFormatter = NumberFormatter()
-                numberFormatter.numberStyle = .decimal
-                numberFormatter.minimumFractionDigits = 2
-            
-                item.pointPowSpanLabel.text  =  numberFormatter.string(from: NSNumber(value: self.modelSaving.pointSpend!))
-                
-                let pointbalance = self.modelSaving.pointBalance!
-                let pointspend = self.modelSaving.pointSpend!
-                let result = pointbalance - pointspend
-                item.pointpowBalance.text = numberFormatter.string(from: NSNumber(value: result))
-                
-            }
-        } else if indexPath.section == 2 {
+        } else if indexPath.section == 1 {
        
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "ConfirmButtonCell", for: indexPath) as? ConfirmButtonCell {
                 cell = item
@@ -145,7 +117,7 @@ class ConfirmSavingViewController: BaseViewController , UICollectionViewDelegate
                 }
             }
             
-        } else if indexPath.section == 3 {
+        } else if indexPath.section == 2 {
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "LogoGoldCell", for: indexPath) as? LogoGoldCell {
                 cell = item
                 
@@ -179,14 +151,9 @@ class ConfirmSavingViewController: BaseViewController , UICollectionViewDelegate
         if indexPath.section == 0 {
           
             let width = collectionView.frame.width - 40
-            let height = width/375*240
+            let height = CGFloat(160)  //width/375*240
             return CGSize(width: width, height: height)
         }else if indexPath.section == 1 {
-         
-            let width = collectionView.frame.width - 40
-            let height = width/375*220
-            return CGSize(width: width, height: height)
-        }else if indexPath.section == 2 {
           
             let height = CGFloat(40.0)
             let width = collectionView.frame.width - 40

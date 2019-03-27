@@ -58,6 +58,27 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+         NotificationCenter.default.addObserver(self, selector: #selector(messageAlert), name: NSNotification.Name(rawValue: "messageAlert"), object: nil)
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "messageAlert"), object: nil)
+        
+    }
+    
+    @objc func messageAlert(notification: NSNotification){
+        if let userInfo = notification.userInfo as? [String:AnyObject]{
+            let profile = userInfo["profile"] as? String  ?? ""
+            if !profile.isEmpty{
+                self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
+            }
+            
+        }
+        
+    }
+    
     func getDataMember(_ loadSuccess:(()->Void)?  = nil){
         var success = 0
         getGoldPrice() {

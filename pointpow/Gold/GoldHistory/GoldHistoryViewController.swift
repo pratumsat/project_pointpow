@@ -31,7 +31,31 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
         self.title = NSLocalizedString("string-title-history", comment: "")
         self.setUp()
     }
+   
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if self.goldHistory != nil {
+            self.getDataHistory(clearData: false)
+        }
+        NotificationCenter.default.addObserver(self, selector: #selector(messageAlert), name: NSNotification.Name(rawValue: "messageAlert"), object: nil)
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "messageAlert"), object: nil)
+        
+    }
+    
+    @objc func messageAlert(notification: NSNotification){
+        if let userInfo = notification.userInfo as? [String:AnyObject]{
+            let profile = userInfo["profile"] as? String  ?? ""
+            if !profile.isEmpty{
+                self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
+            }
+            
+        }
+        
+    }
     func setUp(){
         self.backgroundImage?.image = nil
         
@@ -55,12 +79,7 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
     override func reloadData() {
         self.getDataHistory(clearData: false)
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if self.goldHistory != nil {
-            self.getDataHistory(clearData: false)
-        }
-    }
+   
     
     
     

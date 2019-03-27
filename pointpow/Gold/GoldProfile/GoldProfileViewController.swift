@@ -309,7 +309,6 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
         
         self.birthdateTextField.addDoneButtonToKeyboard()
         
-
         
         self.firstNameTextField.delegate = self
         self.lastNameTextField.delegate = self

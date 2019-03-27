@@ -197,7 +197,6 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
             isTapped = true
         }
        
-        
        
         if indexPath.section == 0 {
             // "Profile"

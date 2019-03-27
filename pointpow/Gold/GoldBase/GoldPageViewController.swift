@@ -244,13 +244,15 @@ class GoldPageViewController: GoldBaseViewController, UICollectionViewDelegate ,
         if menu == "saving" {
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "SavingCell", for: indexPath) as? SavingCell {
                 cell = item
+                
+                
+                item.pointpowTextField.autocorrectionType = .no
+                item.pointpowTextField.delegate = self
+                item.pointpowTextField.addDoneButtonToKeyboard()
+                
                 self.pointpowTextField = item.pointpowTextField
                 self.savingUpdateButton = item.savingButton
                 self.disableButton()
-                
-                self.pointpowTextField?.autocorrectionType = .no
-                self.pointpowTextField?.delegate = self
-                self.pointpowTextField?.addDoneButtonToKeyboard()
                 
                 if let data  = self.userData as? [String:AnyObject] {
                     let pointBalance = data["member_point"]?["total"] as? NSNumber ?? 0

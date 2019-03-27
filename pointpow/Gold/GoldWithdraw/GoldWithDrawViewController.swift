@@ -231,8 +231,7 @@ class GoldWithDrawViewController: GoldBaseViewController , UICollectionViewDeleg
                         self.sumWeight = self.gold_balance.doubleValue - btg
                         //self.goldBalanceLabel?.text = String(format: "%.04f", sumWeight)
                         
-                        
-                        if let data  = self.goldPrice as? [String:AnyObject] {
+                        if let data = self.goldPrice as? [String:AnyObject] {
                             
                             let goldprice = data["open_buy_price"] as? NSNumber ?? 0
                             let gramToBaht = Double(goldprice.intValue)/15.244

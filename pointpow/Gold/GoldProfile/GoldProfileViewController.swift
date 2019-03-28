@@ -500,13 +500,12 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
         }
         
     }
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+   override func textFieldDidBeginEditing(_ textField: UITextField) {
+        super.textFieldDidBeginEditing(textField)
         self.addColorLineView(textField)
-        return true
     }
+   
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        
         
         if textField  == self.firstNameTextField {
             let startingLength = textField.text?.count ?? 0

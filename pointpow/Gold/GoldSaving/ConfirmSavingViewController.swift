@@ -151,7 +151,7 @@ class ConfirmSavingViewController: BaseViewController , UICollectionViewDelegate
         if indexPath.section == 0 {
           
             let width = collectionView.frame.width - 40
-            let height = CGFloat(160)  //width/375*240
+            let height = CGFloat(200)  //width/375*240
             return CGSize(width: width, height: height)
         }else if indexPath.section == 1 {
           

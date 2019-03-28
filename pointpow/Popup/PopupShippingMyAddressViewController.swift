@@ -159,7 +159,7 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "AddressViewCell", for: indexPath) as? AddressViewCell {
                 
                 if let data = modelAddreses?[indexPath.row] {
-                    let id = data["id"] as? NSNumber ?? 0
+                   // let id = data["id"] as? NSNumber ?? 0
                     let address = data["address"] as? String ?? ""
                     let districtName = data["district"]?["name_in_thai"] as? String ?? ""
                     let subdistrictName = data["subdistrict"]?["name_in_thai"] as? String ?? ""
@@ -176,6 +176,7 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
                     
                     if latest_shipping.boolValue  {
                         item.selectedAddress = true
+                        self.selectedAddress = data as AnyObject
                     }else{
                         item.selectedAddress = false
                     }

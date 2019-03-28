@@ -17,6 +17,7 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
     @IBOutlet weak var dropDownImageView: UIImageView!
     @IBOutlet weak var infoImageView: UIImageView!
     @IBOutlet weak var heightPremiumConstraint: NSLayoutConstraint!
+    @IBOutlet weak var weight2Label: UILabel!
     @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var premiumLabel: UILabel!
     @IBOutlet weak var premiumView: UIView!
@@ -157,7 +158,6 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
     @objc func infoTapped(){
         self.infoCallback?()
     }
-    
 //    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 //        
 //        if textField == self.amountTextField {
@@ -213,6 +213,7 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
         
         self.underLineView.isHidden = true
         self.weightLabel.isHidden = true
+        self.weight2Label.isHidden = true
         self.goldReceiveInfoLabel.isHidden = true
         self.heightPremiumConstraint.constant = 0
         
@@ -231,6 +232,7 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
                 if data.premium != "0" {
                     self.heightPremiumConstraint.constant = self.defaultHeight
                     self.weightLabel.isHidden = false
+                    self.weight2Label.isHidden = false
                     self.goldReceiveInfoLabel.isHidden = false
                     
                     self.underLineView.isHidden = false
@@ -273,6 +275,7 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
                 if data.premium != "0" {
                     self.heightPremiumConstraint.constant = self.defaultHeight
                     self.weightLabel.isHidden = false
+                    self.weight2Label.isHidden = false
                     self.goldReceiveInfoLabel.isHidden = false
                     
                     self.underLineView.isHidden = false
@@ -505,13 +508,7 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.headView.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
-
-        
-        
-        
-       
-
+     
     }
 }
 

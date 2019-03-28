@@ -68,7 +68,7 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
     
     var userData:AnyObject?
     var goldPrice:AnyObject?
-    
+    var banner:[[String:AnyObject]]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -129,19 +129,58 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
         var success = 0
         getGoldPrice() {
             success += 1
-            if success == 2 {
+            if success == 3 {
                 loadSuccess?()
+                self.refreshControl?.endRefreshing()
             }
         }
         getUserInfo() {
             success += 1
-            if success == 2 {
+            if success == 3 {
                 loadSuccess?()
+                self.refreshControl?.endRefreshing()
+            }
+        }
+        getBanner() {
+            success += 1
+            if success == 3 {
+                loadSuccess?()
+                self.refreshControl?.endRefreshing()
             }
         }
         
         
         
+    }
+    
+    func getBanner(_ avaliable:(()->Void)?  = nil){
+        var isLoading:Bool = true
+        if self.banner != nil {
+            isLoading = false
+        }else{
+            isLoading = true
+        }
+        
+        modelCtrl.getBanner(params: nil , isLoading , succeeded: { (result) in
+            if let items = result as? [[String:AnyObject]] {
+                self.banner = items
+            }
+            avaliable?()
+            
+            
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                //self.showMessagePrompt(message)
+            }
+            self.refreshControl?.endRefreshing()
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            self.refreshControl?.endRefreshing()
+        }
     }
     func getGoldPrice(_ avaliable:(()->Void)?  = nil){
         var isLoading:Bool = true
@@ -155,7 +194,7 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
             self.goldPrice = result
             avaliable?()
             
-            self.refreshControl?.endRefreshing()
+            
         }, error: { (error) in
             if let mError = error as? [String:AnyObject]{
                 let message = mError["message"] as? String ?? ""
@@ -185,7 +224,7 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
             self.userData = result
             avaliable?()
             
-            self.refreshControl?.endRefreshing()
+            
         }, error: { (error) in
             if let mError = error as? [String:AnyObject]{
                 let message = mError["message"] as? String ?? ""
@@ -274,8 +313,7 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
         self.positionYTextField = y + 50
         
     }
- 
- 
+   
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         if textField == self.pointpowTextField {
@@ -311,6 +349,8 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
         if menu == "banner" {
             if let promo = collectionView.dequeueReusableCell(withReuseIdentifier: "PromotionCampainCell", for: indexPath) as? PromotionCampainCell{
                 
+                
+                promo.itemBanner = self.banner
                 promo.autoSlideImage = true
                 
                 cell = promo

@@ -21,6 +21,8 @@ class SavingCell: UICollectionViewCell{
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        
+        
         self.updateLayerCornerRadiusProperties()
         self.contentView.updateLayerCornerRadiusProperties()
         self.shadowCellProperties()

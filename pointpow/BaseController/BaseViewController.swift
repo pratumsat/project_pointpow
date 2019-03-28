@@ -13,7 +13,8 @@ import Presentr
 import FirebaseMessaging
 import Alamofire
 
-class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate, GIDSignInUIDelegate, UITextFieldDelegate{
+class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeViewControllerDelegate, GIDSignInUIDelegate
+{
 
     var positionYTextField:CGFloat = 0
     var isShowKeyBoard = false
@@ -1046,7 +1047,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate, 
         let presenter: Presentr = {
             
             let w = self.view.frame.width * 0.9
-            let h = w/275*320
+            let h = CGFloat(400)
             let width = ModalSize.custom(size: Float(w))
             let height = ModalSize.custom(size: Float(h))
             
@@ -1168,7 +1169,7 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate, 
         let presenter: Presentr = {
             
             let w = self.view.frame.width * 0.8
-            let h = w/275*315
+            let h = CGFloat(330)
             let width = ModalSize.custom(size: Float(w))
             let height = ModalSize.custom(size: Float(h))
             
@@ -1194,11 +1195,42 @@ class BaseViewController: UIViewController ,  PAPasscodeViewControllerDelegate, 
         }
     }
     
+    
+    func showInfoLaserIdPopup(_ animated:Bool , nextStepCallback:(()->Void)? = nil ){
+        let presenter: Presentr = {
+            
+            let w = self.view.frame.width * 0.8
+            let h = w/260*205  //CGFloat(300)
+            let width = ModalSize.custom(size: Float(w))
+            let height = ModalSize.custom(size: Float(h))
+            
+            let center = ModalCenterPosition.center
+            let customType = PresentationType.custom(width: width, height: height, center: center)
+            
+            let customPresenter = Presentr(presentationType: customType)
+            customPresenter.roundCorners = true
+            customPresenter.cornerRadius = 10
+            customPresenter.dismissOnSwipe = true
+            customPresenter.dismissOnTap = true
+            
+            
+            return customPresenter
+        }()
+        
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "PopUpInfoLaserIdViewController") as? PopUpInfoLaserIdViewController{
+            
+            self.viewPopup = vc.view
+            
+            customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)
+            
+        }
+    }
+    
     func showInfoThaiPostPopup(_ animated:Bool , nextStepCallback:(()->Void)? = nil ){
         let presenter: Presentr = {
             
             let w = self.view.frame.width * 0.9
-            let h = w/275*400
+            let h = CGFloat(490)
             let width = ModalSize.custom(size: Float(w))
             let height = ModalSize.custom(size: Float(h))
             

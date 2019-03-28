@@ -18,6 +18,7 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
     var fee_price:Int = 0
     var addressModel:[String:AnyObject]?
     
+    var heightAddressView:CGFloat = CGFloat(0)
     
     var withdrawData:(premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double, goldPrice:Int))?{
         didSet{
@@ -279,6 +280,16 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
                     cell = item
                     item.address = self.shippingAddress
                     
+                    item.heightAddress = { (height) in
+                        self.heightAddressView = height
+                        
+                        self.shippingCollectionView.performBatchUpdates({
+                            collectionView.reloadInputViews()
+                        }, completion: { (true) in
+                            //item.amountTextField.becomeFirstResponder()
+                        })
+                    }
+                    
                     let numberFormatter = NumberFormatter()
                     numberFormatter.numberStyle = .decimal
                     
@@ -411,22 +422,22 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
         if indexPath.section == 0 {
             
             let width = collectionView.frame.width - 40
-            let height = width/360*110
+            let height = CGFloat(105)
             return CGSize(width: width, height: height)
         }else if indexPath.section == 1 {
             
             if option == 0 {
                 let width = collectionView.frame.width - 40
-                let height = width/360*120
+                let height = CGFloat(100)
                 return CGSize(width: width, height: height)
             }else{
                 if self.shippingAddress != nil{
                     let width = collectionView.frame.width - 40
-                    let height = width/360*230 + 120
+                    let height = CGFloat(180) + self.heightAddressView
                     return CGSize(width: width, height: height)
                 }else{
                     let width = collectionView.frame.width - 40
-                    let height = width/360*230
+                    let height = CGFloat(180)
                     return CGSize(width: width, height: height)
                 }
                 

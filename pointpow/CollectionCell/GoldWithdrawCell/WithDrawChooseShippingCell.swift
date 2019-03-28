@@ -10,6 +10,8 @@ import UIKit
 
 class WithDrawChooseShippingCell: UICollectionViewCell {
 
+    @IBOutlet weak var thaipostView: UIView!
+    @IBOutlet weak var pointpowView: UIView!
     @IBOutlet weak var infoThaiPostImageView: UIImageView!
     @IBOutlet weak var infoPointPowImageView: UIImageView!
     @IBOutlet weak var spThaipostImageView: UIImageView!
@@ -23,12 +25,12 @@ class WithDrawChooseShippingCell: UICollectionViewCell {
         super.awakeFromNib()
         
         let select = UITapGestureRecognizer(target: self, action: #selector(selectTapped))
-        self.spPointpowImageView.isUserInteractionEnabled  = true
-        self.spPointpowImageView.addGestureRecognizer(select)
+        self.pointpowView.isUserInteractionEnabled  = true
+        self.pointpowView.addGestureRecognizer(select)
         
         let select2 = UITapGestureRecognizer(target: self, action: #selector(selectTapped2))
-        self.spThaipostImageView.isUserInteractionEnabled  = true
-        self.spThaipostImageView.addGestureRecognizer(select2)
+        self.thaipostView.isUserInteractionEnabled  = true
+        self.thaipostView.addGestureRecognizer(select2)
         
         let info = UITapGestureRecognizer(target: self, action: #selector(infoTapped))
         self.infoPointPowImageView.isUserInteractionEnabled  = true

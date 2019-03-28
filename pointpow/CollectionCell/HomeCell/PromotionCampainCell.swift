@@ -16,6 +16,16 @@ class PromotionCampainCell: UICollectionViewCell , UICollectionViewDelegate , UI
     var x = 1
     var count = 1
     
+    var itemBanner:[[String:AnyObject]]?{
+        didSet{
+            print(itemBanner)
+            self.count = itemBanner?.count ?? 0
+            self.pageControl.numberOfPages = count
+            
+            self.slideCollectionView.reloadData()
+        }
+    }
+    
     var autoSlideImage = false {
         didSet{
             if autoSlideImage {
@@ -71,7 +81,12 @@ class PromotionCampainCell: UICollectionViewCell , UICollectionViewDelegate , UI
         if let imageCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as? ImageCell {
             cell = imageCell
             
-            imageCell.imageView.image = UIImage(named: "bg-banner")
+            if let itemData = self.itemBanner?[indexPath.row] {
+                let path = itemData["path"] as? String ?? ""
+                
+                imageCell.imageView.sd_setImage(with: URL(string: path)!, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_BACKGROUND_PLACEHOLDER))
+            }
+           
         }
         
         if cell == nil {

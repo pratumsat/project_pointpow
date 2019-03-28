@@ -11,6 +11,7 @@ import Alamofire
 
 class RegisterGoldstep3ViewController: BaseViewController {
 
+    @IBOutlet weak var infoImageView: UIImageView!
     @IBOutlet weak var backgroundPreviewView: UIView!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var step1Label: UILabel!
@@ -108,7 +109,7 @@ class RegisterGoldstep3ViewController: BaseViewController {
             dateFormatter.locale = Locale(identifier: "th")
             dateFormatter.dateFormat = "dd-MM-yyyy"
             
-            let d1 = dateFormatter.date(from: convertDate(tp.birthdate, format: "dd-MM-yyyy"))!
+            let d1 = dateFormatter.date(from: convertDateRegister(tp.birthdate, format: "dd-MM-yyyy"))!
            
             let formatter = DateFormatter()
             formatter.locale = Locale(identifier: "th")
@@ -136,6 +137,14 @@ class RegisterGoldstep3ViewController: BaseViewController {
             
 
         }
+        
+        let info = UITapGestureRecognizer(target: self, action: #selector(infoLaserId))
+        self.infoImageView.isUserInteractionEnabled = true
+        self.infoImageView.addGestureRecognizer(info)
+        self.infoImageView.isHidden  = true
+    }
+    @objc func  infoLaserId(){
+        self.showInfoLaserIdPopup(true)
     }
     
     @objc func backToStep1Tapped(){

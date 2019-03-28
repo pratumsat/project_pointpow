@@ -11,6 +11,7 @@ import UIKit
 class RegisterGoldViewController: BaseViewController {
 
     
+    @IBOutlet weak var infoImageView: UIImageView!
     @IBOutlet weak var birthdateTextField: UITextField!
     @IBOutlet weak var laserIdTextField: UITextField!
     @IBOutlet weak var step1Label: UILabel!
@@ -139,12 +140,12 @@ class RegisterGoldViewController: BaseViewController {
         self.clearImageView5?.isUserInteractionEnabled = true
         self.clearImageView5?.addGestureRecognizer(tap5)
         self.clearImageView5?.isHidden = true
-    
-        self.clearImageView6 = self.laserIdTextField.addRightButton(UIImage(named: "ic-x")!)
-        let tap6 = UITapGestureRecognizer(target: self, action: #selector(clearLaserIdTapped))
-        self.clearImageView6?.isUserInteractionEnabled = true
-        self.clearImageView6?.addGestureRecognizer(tap6)
-        self.clearImageView6?.isHidden = true
+
+//        self.clearImageView6 = self.laserIdTextField.addRightButton(UIImage(named: "ic-x")!)
+//        let tap6 = UITapGestureRecognizer(target: self, action: #selector(clearLaserIdTapped))
+//        self.clearImageView6?.isUserInteractionEnabled = true
+//        self.clearImageView6?.addGestureRecognizer(tap6)
+//        self.clearImageView6?.isHidden = true
         
         //Fill Data
         if let data  = self.userData as? [String:AnyObject] {
@@ -206,7 +207,17 @@ class RegisterGoldViewController: BaseViewController {
         self.birthdateTextField.inputView = pickerView
         self.birthdateTextField.inputAccessoryView = toolbar
         
+        
+        
+        let info = UITapGestureRecognizer(target: self, action: #selector(infoLaserId))
+        self.infoImageView.isUserInteractionEnabled = true
+        self.infoImageView.addGestureRecognizer(info)
+        
     }
+    @objc func  infoLaserId(){
+        self.showInfoLaserIdPopup(true)
+    }
+    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         self.addColorLineView(textField)
         return true

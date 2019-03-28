@@ -12,6 +12,7 @@ import Alamofire
 
 class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var infoImageView: UIImageView!
     @IBOutlet weak var calendarImageView: UIImageView!
     @IBOutlet weak var birthdateTextField: UITextField!
     @IBOutlet weak var laserIdTextField: UITextField!
@@ -184,7 +185,7 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
             dateFormatter.locale = Locale(identifier: "th")
             dateFormatter.dateFormat = "dd-MM-yyyy"
             
-            let d1 = dateFormatter.date(from: convertDate(birthdate, format: "yyyy-MM-dd"))!
+            let d1 = dateFormatter.date(from: convertDateRegister(birthdate, format: "yyyy-MM-dd"))!
             self.pickerView?.date = d1
             
             let formatter = DateFormatter()
@@ -309,7 +310,6 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
         
         self.birthdateTextField.addDoneButtonToKeyboard()
         
-        
         self.firstNameTextField.delegate = self
         self.lastNameTextField.delegate = self
         self.emailTextField.delegate = self
@@ -416,8 +416,16 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
         self.disableButton()
         
       
+        let info = UITapGestureRecognizer(target: self, action: #selector(infoLaserId))
+        self.infoImageView.isUserInteractionEnabled = true
+        self.infoImageView.addGestureRecognizer(info)
         
     }
+    
+    @objc func  infoLaserId(){
+        self.showInfoLaserIdPopup(true)
+    }
+    
     @objc func donedatePicker(){
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "th")

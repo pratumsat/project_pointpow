@@ -20,7 +20,8 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
     }
     //var goldBalanceLabel:UILabel?
     var gold_balance:NSNumber = NSNumber(value: 0.0)
-    var gold_price_average:NSNumber = NSNumber(value: 0.0)
+    var point_Balance:NSNumber = NSNumber(value: 0.0)
+    var gold_Price:NSNumber = NSNumber(value: 0.0)
     
     var drawCount = 0
     var amountToUnit:(amount:Int, unit:Int , price:Double , goldPrice:Int)?
@@ -55,7 +56,13 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
         getDataMember() {
             self.updateView()
         }
-        
+        self.handlerEnterSuccess  = {(pin) in
+            // "Profile"
+            if let profile = self.storyboard?.instantiateViewController(withIdentifier: "GoldAccount") as? UINavigationController {
+                
+                self.revealViewController()?.pushFrontViewController(profile, animated: true)
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -160,11 +167,18 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
     
     func updateView(){
         if let data  = self.userData as? [String:AnyObject] {
-            let gold_balance = data["goldsaving_member"]?["gold_balance"] as? NSNumber ?? 0
-            let gold_price_average = data["goldsaving_member"]?["gold_price_average"] as? NSNumber ?? 0
+            let point_balance = data["goldsaving_member"]?["point_balance"] as? NSNumber ?? 0
+            self.point_Balance = point_balance
             
-            self.gold_balance = gold_balance
-            self.gold_price_average = gold_price_average
+            var currentGoldprice = NSNumber(value: 0.0)
+            if let gold  = self.goldPrice as? [String:AnyObject] {
+                currentGoldprice = gold["open_sell_price"] as? NSNumber ?? 0
+                self.gold_Price = currentGoldprice
+            }
+            let gramToPoint = Double(currentGoldprice.intValue)/15.244
+            //let sum = String(format: "%.04f", floor(point_balance.doubleValue/gramToPoint * 10000) / 10000)
+            
+            self.gold_balance = NSNumber(value:floor(point_balance.doubleValue/gramToPoint * 10000) / 10000)
         }
         self.withDrawCollectionView.reloadData()
     }
@@ -267,6 +281,11 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
                 
                 var numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal
+                
+                item.goldPriceLabel.text = numberFormatter.string(from: self.gold_Price)
+                
+                numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
                 numberFormatter.minimumFractionDigits = 4
                 
                 item.goldBalanceLabel.text = numberFormatter.string(from: self.gold_balance)
@@ -275,9 +294,7 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
                 numberFormatter.numberStyle = .decimal
                 numberFormatter.minimumFractionDigits = 2
                 
-                
-                item.goldAverageLabel.text = numberFormatter.string(from: self.gold_price_average)
-                
+                item.pointTotalLabel.text = numberFormatter.string(from: self.point_Balance)
                 
                 //self.goldBalanceLabel = item.goldBalanceLabel
             }
@@ -292,16 +309,15 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
                 
                 
                 item.withDrawCollectionView = collectionView
-                item.gold_balance = 2000000//self.gold_balance
+                item.gold_balance = self.gold_balance
                 
                 self.amountTextField = item.amountTextField
                 self.premiumLabel = item.premiumLabel
               
                 
                 item.infoCallback = {
-                    self.showInfoGoldPremiumPopup(true) 
+                    self.showInfoGoldPremiumPopup(true)
                 }
-                
                 item.drawCountCallback = { (count) in
                     self.drawCount = count
                 
@@ -374,9 +390,9 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
                         
                         }else{
                          
-                            //if goldbalance < 0 {
-                           //     self.showMessagePrompt(NSLocalizedString("string-dailog-saving-gold-pointspend-not-enogh", comment: ""))
-                            //}else{
+                            if goldbalance < 0 {
+                                self.showMessagePrompt(NSLocalizedString("string-dailog-saving-gold-pointspend-not-enogh", comment: ""))
+                            }else{
                             
                                 if let amountunit = self.amountToUnit {
                                 
@@ -388,7 +404,7 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
                                 }
                                 
                             
-                           // }
+                            }
                             
                             
                         }
@@ -437,7 +453,7 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
         if indexPath.section == 0 {
             
             let width = collectionView.frame.width - 40
-            let height = width/360*190
+            let height = CGFloat(215)
             return CGSize(width: width, height: height)
         } else if indexPath.section == 1 {
            

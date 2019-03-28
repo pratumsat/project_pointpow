@@ -30,6 +30,15 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
         
         self.title = NSLocalizedString("string-title-history", comment: "")
         self.setUp()
+        
+        self.handlerEnterSuccess  = {(pin) in
+            // "Profile"
+            if let profile = self.storyboard?.instantiateViewController(withIdentifier: "GoldAccount") as? UINavigationController {
+                
+                self.revealViewController()?.pushFrontViewController(profile, animated: true)
+                
+            }
+        }
     }
    
     
@@ -38,8 +47,10 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
         if self.goldHistory != nil {
             self.getDataHistory(clearData: false)
         }
+        
         NotificationCenter.default.addObserver(self, selector: #selector(messageAlert), name: NSNotification.Name(rawValue: "messageAlert"), object: nil)
     }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "messageAlert"), object: nil)

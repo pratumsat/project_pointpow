@@ -173,7 +173,7 @@ class WithDrawSummaryOfficeViewController: BaseViewController, UICollectionViewD
         if indexPath.section == 0 {
             
             let width = collectionView.frame.width - 40
-            let height = width/375*320
+            let height = CGFloat(270)
             return CGSize(width: width, height: height)
         }else if indexPath.section == 1 {
             

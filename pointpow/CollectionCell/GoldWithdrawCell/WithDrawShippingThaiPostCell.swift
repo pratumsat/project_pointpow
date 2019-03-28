@@ -21,6 +21,9 @@ class WithDrawShippingThaiPostCell: UICollectionViewCell {
     
     @IBOutlet weak var addressView: UIView!
     
+    
+    var heightAddress:((_ height:CGFloat)->Void)?
+    
     var editCallback:(()->Void)?
     var address:String?{
         didSet{
@@ -38,6 +41,8 @@ class WithDrawShippingThaiPostCell: UICollectionViewCell {
             let height = heightForView(text: address!, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 18)!, width: self.frame.width) + 100
             
             self.heightAddressConstrainst.constant = height
+            
+            self.heightAddress?(height)
         }
     }
     

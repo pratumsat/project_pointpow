@@ -84,7 +84,6 @@
 		C120D7D221955BC900F9EEBB /* ItemProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120D7D021955BC900F9EEBB /* ItemProfileCell.swift */; };
 		C120D7D321955BC900F9EEBB /* ItemProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C120D7D121955BC900F9EEBB /* ItemProfileCell.xib */; };
 		C121B32D224C802D00D69B56 /* PopUpInfoLaserIdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C121B32C224C802D00D69B56 /* PopUpInfoLaserIdViewController.swift */; };
-		C121B32F224CE1C200D69B56 /* MyTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C121B32E224CE1C200D69B56 /* MyTextFieldDelegate.swift */; };
 		C1247C5122191898005D6F7A /* WithdrawCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1247C4F22191898005D6F7A /* WithdrawCell.swift */; };
 		C1247C5222191898005D6F7A /* WithdrawCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1247C5022191898005D6F7A /* WithdrawCell.xib */; };
 		C1247C542219B126005D6F7A /* PopupGoldPremiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1247C532219B126005D6F7A /* PopupGoldPremiumViewController.swift */; };
@@ -310,7 +309,6 @@
 		C120D7D021955BC900F9EEBB /* ItemProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemProfileCell.swift; sourceTree = "<group>"; };
 		C120D7D121955BC900F9EEBB /* ItemProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemProfileCell.xib; sourceTree = "<group>"; };
 		C121B32C224C802D00D69B56 /* PopUpInfoLaserIdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpInfoLaserIdViewController.swift; sourceTree = "<group>"; };
-		C121B32E224CE1C200D69B56 /* MyTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTextFieldDelegate.swift; sourceTree = "<group>"; };
 		C1247C4F22191898005D6F7A /* WithdrawCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawCell.swift; sourceTree = "<group>"; };
 		C1247C5022191898005D6F7A /* WithdrawCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithdrawCell.xib; sourceTree = "<group>"; };
 		C1247C532219B126005D6F7A /* PopupGoldPremiumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupGoldPremiumViewController.swift; sourceTree = "<group>"; };
@@ -985,7 +983,6 @@
 				C1AD50B12187FEE300F74415 /* ModelController.swift */,
 				C1AD50B62188000B00F74415 /* Constant.swift */,
 				C11B740A21BF67F700D0E769 /* DataController.swift */,
-				C121B32E224CE1C200D69B56 /* MyTextFieldDelegate.swift */,
 			);
 			path = ModelController;
 			sourceTree = "<group>";
@@ -1468,7 +1465,6 @@
 				C1817D92219BF61E009507DB /* ItemFriendCell.swift in Sources */,
 				C11A93B1218BF69700627B44 /* MainNav.swift in Sources */,
 				C11A93C4218FF3E200627B44 /* VerifyViewController.swift in Sources */,
-				C121B32F224CE1C200D69B56 /* MyTextFieldDelegate.swift in Sources */,
 				C1AD50B52187FF4000F74415 /* Loading.swift in Sources */,
 				C1817D9D219C07DF009507DB /* ItemBankCell.swift in Sources */,
 				C181F066220C0392003F7C70 /* GoldHistoryViewController.swift in Sources */,

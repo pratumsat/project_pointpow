@@ -13,15 +13,16 @@ class PromotionCampainCell: UICollectionViewCell , UICollectionViewDelegate , UI
     @IBOutlet weak var pageControl: UIPageControl!
     
     var timer:Timer? = nil
-    var x = 1
-    var count = 1
+    var x = 0
+    var count = 0
     
     var itemBanner:[[String:AnyObject]]?{
         didSet{
             print(itemBanner)
             self.count = itemBanner?.count ?? 0
-            self.pageControl.numberOfPages = count
-            
+            if count > 1 {
+                self.pageControl.numberOfPages = count
+            }
             self.slideCollectionView.reloadData()
         }
     }
@@ -56,7 +57,8 @@ class PromotionCampainCell: UICollectionViewCell , UICollectionViewDelegate , UI
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.pageControl.numberOfPages = count
+        
+        self.pageControl.numberOfPages = 0
         self.slideCollectionView.delegate = self
         self.slideCollectionView.dataSource = self
         

@@ -101,7 +101,6 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
             isLoading = true
         }
         
-        
         modelCtrl.getUserData(params: nil , isLoading , succeeded: { (result) in
             self.userData = result
             avaliable?()

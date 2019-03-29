@@ -40,6 +40,98 @@ class ModelController {
     var loadingStart:(()->Void)?
     var loadingFinish:(()->Void)?
 
+
+    func updateFCMToken(params:Parameters? ,
+                         _ isLoading:Bool = true,
+                         succeeded:( (_ result:AnyObject) ->Void)? = nil,
+                         error:((_ errorObject:AnyObject)->Void)?,
+                         failure:( (_ statusCode:String) ->Void)? = nil ){
+        
+        if isLoading {
+            self.loadingStart?()
+        }
+        let token = DataController.sharedInstance.getToken()
+        let header: HTTPHeaders = ["Authorization":"Bearer \(token)"]
+        
+        var path = Constant.PointPowAPI.addDeviceToken
+        
+        if token.isEmpty {
+            path = Constant.PointPowAPI.addDeviceToken
+        }else{
+            path = Constant.PointPowAPI.updateDeviceToken
+        }
+        
+        Alamofire.request(path , method: .post ,
+                          parameters : params,
+                          headers : header).validate().responseJSON { response in
+            
+            if isLoading {
+                self.loadingFinish?()
+            }
+            switch response.result {
+            case .success(let json):
+                print(json)
+                
+                if let data = json as? [String:AnyObject] {
+                    
+                    let success = data["success"] as? NSNumber  ??  0
+                    
+                    if success.intValue == 1 {
+                        succeeded?("" as AnyObject)
+                    }else{
+                        let messageError = data["message"] as? String  ??  ""
+                        let field = data["field"] as? String  ??  ""
+                        var errorObject:[String:AnyObject] = [:]
+                        errorObject["message"] = messageError as AnyObject
+                        errorObject["field"] = field as AnyObject
+                        error?(errorObject as AnyObject)
+                    }
+                }
+                break
+                
+            case .failure(let mError):
+                let code = (mError as NSError).code
+                if code == -1009 || code == -1001 || code == -1004 || code == -1005 {
+                    failure?("-1009")
+                    return
+                }
+                
+                if  response.response?.statusCode == 401 {
+                    failure?("401")
+                    return
+                    
+                }
+                if  response.response?.statusCode == 500 {
+                    failure?("500")
+                    return
+                    
+                }
+                if let data = response.data {
+                    if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
+                        if let data = json as? [String:AnyObject] {
+                            
+                            let success = data["success"] as? NSNumber  ??  0
+                            
+                            if success.intValue == 0 {
+                                let messageError = data["message"] as? String  ??  ""
+                                let field = data["field"] as? String  ??  ""
+                                var errorObject:[String:AnyObject] = [:]
+                                errorObject["message"] = messageError as AnyObject
+                                errorObject["field"] = field as AnyObject
+                                error?(errorObject as AnyObject)
+                            }
+                        }
+                        
+                    }
+                }
+                
+                break
+                
+            }
+        }
+    }
+    
+    
     func loginWithEmailORMobile(params:Parameters? ,
                                 _ isLoading:Bool = true,
                         succeeded:( (_ result:AnyObject) ->Void)? = nil,

@@ -30,6 +30,7 @@ class DataController {
             }
         }
     }
+    
     func setDataGoldPremium(_ data:AnyObject){
         UserDefaults.standard.set(data, forKey: "dataGoldPremiumPrice")
         UserDefaults.standard.synchronize()

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import FirebaseMessaging
 
 class HomeViewController: BaseViewController, UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var notiView: UIView!
@@ -38,6 +40,10 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         self.getGoldPremiumPrice()
         
         fontList()
+        
+        let fcmToken = Messaging.messaging().fcmToken ?? ""
+        let params:Parameters = ["device_token": fcmToken]
+        self.modelCtrl.updateFCMToken(params: params, error: nil)
         
     }
    

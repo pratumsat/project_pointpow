@@ -153,8 +153,9 @@ class WithDrawResultViewController: BaseViewController  , UICollectionViewDelega
     }
     
     func countDownForSnapShot(_ time: Double){
-        timer = Timer.scheduledTimer(timeInterval: time, target: self, selector: #selector(updateCountDown), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: time, target: self, selector: #selector(updateCountDown), userInfo: nil, repeats: false)
     }
+    
     @objc func updateCountDown() {
         if let snapImage = self.snapView?.snapshotImage() {
             UIImageWriteToSavedPhotosAlbum(snapImage, nil, nil, nil)
@@ -162,6 +163,7 @@ class WithDrawResultViewController: BaseViewController  , UICollectionViewDelega
             self.removeCountDown()
         }
     }
+    
     func removeCountDown() {
         timer?.invalidate()
         timer = nil
@@ -622,6 +624,11 @@ extension WithDrawResultViewController {
            
             if hideFinishButton {
                 item.bgSuccessImageView.image = nil
+                item.saveSlipView.isHidden = true
+                item.marginTopCancelButton.constant = CGFloat(20)
+            }else{
+                item.saveSlipView.isHidden = false
+                item.marginTopCancelButton.constant = CGFloat(70)
             }
             
             if let data = self.withDrawResult as? [String:AnyObject]{
@@ -669,16 +676,16 @@ extension WithDrawResultViewController {
                     collectionView.reloadInputViews()
                 }, completion: { (true) in
                 })
-//                item.expandableCallback = { (height) in
-//                    self.heightExpand = height
-//                    self.resultCollectionView.performBatchUpdates({
-//                        collectionView.reloadInputViews()
-//                    }, completion: { (true) in
-//                        //item.amountTextField.becomeFirstResponder()
-//                    })
-//
-//                }
                 
+                
+                item.saveSlipCallback = {
+                    if let snapImage = self.snapView?.snapshotImage() {
+                        UIImageWriteToSavedPhotosAlbum(snapImage, nil, nil, nil)
+                        print("created slip")
+                        self.showMessagePrompt(NSLocalizedString("string-dialog-saved-slip", comment: ""))
+                    }
+                    
+                }
                 if validateTransactionTime(created_at) {
                     item.cancelLabel.isHidden = false
                     item.cancelButton.isHidden = false
@@ -754,6 +761,19 @@ extension WithDrawResultViewController {
                 alert.addAction(okButton)
                 self.present(alert, animated: true, completion: nil)
             }
+            
+            if !hideFinishButton {
+                self.slipView = item.mView.copyView()
+                let allSubView = slipView!.allSubViewsOf(type: UIView.self)
+                
+                for itemView  in  allSubView {
+                    if let itemTag = itemView.viewWithTag(1) {
+                        itemTag.isHidden = true
+                    }
+                }
+                
+            }
+            
         }
         
         if cell == nil {
@@ -1161,9 +1181,15 @@ extension WithDrawResultViewController{
                     }else{
                         //transaction success
                         if statusShipping != "success" {
+                           
                             height = heightForViewWithDraw(self.rowBar, width: width , height: CGFloat(620) , rowHeight: 20.0) + self.heightExpand
                             
                             height +=  self.timeOutDate
+                            
+                            if !self.hideFinishButton {
+                                //show button
+                                height += CGFloat(70)
+                            }
                         }else{
                             if self.hideFinishButton {
                                 height = heightForViewWithDraw(self.rowBar, width: width , height: CGFloat(650) , rowHeight: 20.0) + self.heightExpand

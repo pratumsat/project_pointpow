@@ -60,6 +60,7 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
     
     var pointpowTextField:UITextField? {
         didSet{
+            
             self.pointpowTextField?.delegate = self
         }
     }
@@ -162,8 +163,15 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
         }
         
         modelCtrl.getBanner(params: nil , isLoading , succeeded: { (result) in
+            
             if let items = result as? [[String:AnyObject]] {
-                self.banner = items
+                self.banner = []
+                for item  in items {
+                    let type = item["type"] as? String ?? ""
+                    if type == "luckydraw" {
+                        self.banner?.append(item)
+                    }
+                }
             }
             avaliable?()
             
@@ -313,7 +321,7 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
         self.positionYTextField = y + 50
         
     }
-   
+  
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         if textField == self.pointpowTextField {
@@ -349,8 +357,8 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
         if menu == "banner" {
             if let promo = collectionView.dequeueReusableCell(withReuseIdentifier: "PromotionCampainCell", for: indexPath) as? PromotionCampainCell{
                 
-                
                 promo.itemBanner = self.banner
+                
                 promo.autoSlideImage = true
                 
                 cell = promo
@@ -414,7 +422,6 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
                 
                 
                 self.pointpowTextField = item.pointpowTextField
-                
                 self.savingUpdateButton = item.savingButton
                 self.disableButton()
                 

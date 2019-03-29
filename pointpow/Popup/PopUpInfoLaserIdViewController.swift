@@ -13,6 +13,7 @@ class PopUpInfoLaserIdViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.backgroundImage?.image = nil
         
     }
     

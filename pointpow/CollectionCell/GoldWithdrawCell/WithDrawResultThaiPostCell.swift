@@ -37,8 +37,14 @@ class WithDrawResultThaiPostCell: UICollectionViewCell {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var premiumLabel: UILabel!
     
+    @IBOutlet weak var saveSlipView: UIView!
+    @IBOutlet weak var marginTopCancelButton: NSLayoutConstraint!
+    
+    var saveSlipCallback:(()->Void)?
     var expandableCallback:((_ height:CGFloat)->Void)?
     var cancelCallback:(()->Void)?
+    
+    var addCompleted:(()->Void)?
     
     var arrayBox:[[String:AnyObject]]?{
         didSet{
@@ -51,6 +57,7 @@ class WithDrawResultThaiPostCell: UICollectionViewCell {
                 self.containerView.isHidden = false
                 self.heightContainerConstraints.constant = heightView
                 self.expandImageView.isHidden = true
+                
             }
             
         }
@@ -66,7 +73,7 @@ class WithDrawResultThaiPostCell: UICollectionViewCell {
         
         self.cancelButton?.tag = 1
         self.cancelLabel?.tag = 1
-     
+        self.saveSlipView?.tag = 1
         
         self.updateLayerCornerRadiusProperties()
         self.contentView.updateLayerCornerRadiusProperties()
@@ -76,12 +83,17 @@ class WithDrawResultThaiPostCell: UICollectionViewCell {
         self.expandImageView.isUserInteractionEnabled = true
         self.expandImageView.addGestureRecognizer(expand)
         
-       
+        let saveslip = UITapGestureRecognizer(target: self, action: #selector(saveSlipTapped))
+        self.saveSlipView?.isUserInteractionEnabled = true
+        self.saveSlipView?.addGestureRecognizer(saveslip)
         
         self.updateView()
         
     }
 
+    @objc func saveSlipTapped(){
+        self.saveSlipCallback?()
+    }
     @IBAction func cancelTapped(_ sender: Any) {
         self.cancelCallback?()
     }
@@ -96,6 +108,7 @@ class WithDrawResultThaiPostCell: UICollectionViewCell {
                 addView(item)
             }
         }
+        self.addCompleted?()
         
     }
     
@@ -179,6 +192,8 @@ class WithDrawResultThaiPostCell: UICollectionViewCell {
         self.cancelButton?.borderClearProperties(borderWidth: 1)
         self.cancelButton?.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
         
+        
+        self.saveSlipView?.borderBlackolorProperties(borderWidth: 0.5)
         
     }
 }

@@ -36,6 +36,8 @@ class WithDrawThaiPostSummaryCell: UICollectionViewCell {
     var heightView = CGFloat(0.0)
     var hideView = CGFloat(0.0)
     
+    let active = UIImage(named: "ic-more-btn")
+    let inactive = UIImage(named: "ic-more-btn2")
     override func awakeFromNib() {
         super.awakeFromNib()
        
@@ -54,6 +56,7 @@ class WithDrawThaiPostSummaryCell: UICollectionViewCell {
     func updateView(){
         self.heightContainerConstraints.constant = 0
         self.containerView.isHidden = true
+        self.expandImageView.image = active
         
         
         if let array = arrayBox {
@@ -121,6 +124,7 @@ class WithDrawThaiPostSummaryCell: UICollectionViewCell {
         self.expandableCallback?(on ? heightView : hideView)
         self.containerView.isHidden = on ? false : true
         self.heightContainerConstraints.constant = on ? heightView : hideView
+        self.expandImageView.image = on ? inactive : active
         
         
         self.setNeedsUpdateConstraints()

@@ -159,12 +159,12 @@
                             <constraint firstAttribute="height" constant="1" id="rAd-rf-0Po"/>
                         </constraints>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-dropdown-1" translatesAutoresizingMaskIntoConstraints="NO" id="buI-H9-ogs">
-                        <rect key="frame" x="170" y="374" width="25" height="25"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-more-btn" translatesAutoresizingMaskIntoConstraints="NO" id="buI-H9-ogs">
+                        <rect key="frame" x="175" y="379" width="15" height="15"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="buI-H9-ogs" secondAttribute="height" multiplier="1:1" id="LfB-bh-LPu"/>
-                            <constraint firstAttribute="width" constant="25" id="xrw-4o-Skr"/>
+                            <constraint firstAttribute="width" constant="15" id="xrw-4o-Skr"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="บาท" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OpN-KW-jD0">
@@ -173,7 +173,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="rRU-44-eWw">
-                        <rect key="frame" x="205" y="370" width="150" height="33"/>
+                        <rect key="frame" x="200" y="370" width="155" height="33"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="25"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -232,7 +232,7 @@
                 <constraint firstItem="E3R-CC-HZT" firstAttribute="leading" secondItem="Hfd-oJ-N4h" secondAttribute="leading" id="Pun-Gr-Szf"/>
                 <constraint firstItem="buI-H9-ogs" firstAttribute="centerY" secondItem="Srh-3j-B1I" secondAttribute="centerY" id="Pur-dC-HAR"/>
                 <constraint firstItem="rVq-dn-spv" firstAttribute="trailing" secondItem="fXc-Dx-xy3" secondAttribute="trailing" id="RbV-1R-82r"/>
-                <constraint firstItem="buI-H9-ogs" firstAttribute="leading" secondItem="Vk1-ye-4Kt" secondAttribute="trailing" id="SON-UL-X33"/>
+                <constraint firstItem="buI-H9-ogs" firstAttribute="leading" secondItem="Vk1-ye-4Kt" secondAttribute="trailing" constant="5" id="SON-UL-X33"/>
                 <constraint firstItem="OpN-KW-jD0" firstAttribute="centerY" secondItem="rRU-44-eWw" secondAttribute="centerY" id="T8h-49-nk2"/>
                 <constraint firstItem="4BD-dp-cwR" firstAttribute="centerY" secondItem="Tu9-ip-dZF" secondAttribute="centerY" id="Vy3-qG-wyF"/>
                 <constraint firstItem="znS-Kg-W33" firstAttribute="leading" secondItem="8JS-Of-Im6" secondAttribute="trailing" constant="10" id="WB0-Lp-V98"/>
@@ -293,6 +293,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="ic-dropdown-1" width="20" height="20.5"/>
+        <image name="ic-more-btn" width="30" height="30"/>
     </resources>
 </document>

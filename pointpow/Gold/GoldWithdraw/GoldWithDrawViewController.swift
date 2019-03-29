@@ -16,6 +16,7 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
     var amountTextField:UITextField? {
         didSet{
             self.amountTextField?.delegate = self
+            
         }
     }
     //var goldBalanceLabel:UILabel?

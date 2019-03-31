@@ -192,6 +192,7 @@
 		C1DEBE992188337500CBB95F /* ThaiSansNeue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1DEBE972188337500CBB95F /* ThaiSansNeue-Regular.ttf */; };
 		C1E7B17D21AFCD7E00DA8B82 /* ResultTransferNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E7B17C21AFCD7E00DA8B82 /* ResultTransferNav.swift */; };
 		C1E7B17F21AFCDCB00DA8B82 /* PointFreindSummaryNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E7B17E21AFCDCB00DA8B82 /* PointFreindSummaryNav.swift */; };
+		C1EB9434224E8AFF004D73A7 /* PAPasscodeViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = C10CA1A6219185AA00316DF3 /* PAPasscodeViewController.h */; };
 		C1F760F5221692FD000A2CA9 /* SavingConfirmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F760F3221692FD000A2CA9 /* SavingConfirmCell.swift */; };
 		C1F760F6221692FD000A2CA9 /* SavingConfirmCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1F760F4221692FD000A2CA9 /* SavingConfirmCell.xib */; };
 		C1F760F92216998C000A2CA9 /* SavingSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F760F72216998C000A2CA9 /* SavingSummaryCell.swift */; };
@@ -1395,6 +1396,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1EB9434224E8AFF004D73A7 /* PAPasscodeViewController.h in Sources */,
 				C1AD50B72188000B00F74415 /* Constant.swift in Sources */,
 				C107CF36222263AD00C50B8C /* PopupShippingMyAddressViewController.swift in Sources */,
 				C10CA19A21914AF900316DF3 /* TransactionViewController.swift in Sources */,

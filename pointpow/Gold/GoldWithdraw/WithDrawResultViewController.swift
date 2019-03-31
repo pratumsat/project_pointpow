@@ -17,6 +17,8 @@ class WithDrawResultViewController: BaseViewController  , UICollectionViewDelega
     var heightExpand = CGFloat(0)
     var timeOutDate = CGFloat(0)
     
+    var addSlipSuccess = false
+    
     func  addSlipImageView() {
         
         if let snap = self.snapView {
@@ -57,6 +59,7 @@ class WithDrawResultViewController: BaseViewController  , UICollectionViewDelega
             slipView!.drawLightningView(width : CGFloat(450), height: CGFloat(770))
             print("add image slip")
             
+            self.addSlipSuccess =  true
             self.countDownForSnapShot(1)
         }
     
@@ -203,10 +206,11 @@ class WithDrawResultViewController: BaseViewController  , UICollectionViewDelega
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
        
-        
+       /*
         if self.slipView != nil {
             self.addSlipImageView()
         }
+ */
     }
     
     @objc func showMapPopup(){
@@ -403,6 +407,9 @@ extension WithDrawResultViewController {
                 if let itemTag = itemView.viewWithTag(1) {
                     itemTag.isHidden = true
                 }
+            }
+            if !self.addSlipSuccess {
+                self.addSlipImageView()
             }
             
             
@@ -762,7 +769,7 @@ extension WithDrawResultViewController {
                 self.present(alert, animated: true, completion: nil)
             }
             
-            if !hideFinishButton {
+            if hideFinishButton {
                 self.slipView = item.mView.copyView()
                 let allSubView = slipView!.allSubViewsOf(type: UIView.self)
                 
@@ -770,6 +777,10 @@ extension WithDrawResultViewController {
                     if let itemTag = itemView.viewWithTag(1) {
                         itemTag.isHidden = true
                     }
+                }
+                
+                if !self.addSlipSuccess {
+                    self.addSlipImageView()
                 }
                 
             }

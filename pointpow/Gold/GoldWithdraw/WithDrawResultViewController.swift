@@ -769,7 +769,7 @@ extension WithDrawResultViewController {
                 self.present(alert, animated: true, completion: nil)
             }
             
-            if hideFinishButton {
+            if !hideFinishButton {
                 self.slipView = item.mView.copyView()
                 let allSubView = slipView!.allSubViewsOf(type: UIView.self)
                 

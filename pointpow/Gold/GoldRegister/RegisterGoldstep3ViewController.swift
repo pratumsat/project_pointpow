@@ -184,11 +184,10 @@ class RegisterGoldstep3ViewController: BaseViewController {
                 print("print")
                 self.showPenddingVerifyModalView(true , dismissCallback: {
                     
-                    if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
+                    if let saving = self.storyboard?.instantiateViewController(withIdentifier: "NavGoldPage") as? NavGoldPage {
                         self.revealViewController()?.pushFrontViewController(saving, animated: true)
                         
                     }
-                    
                 })
             }, error: { (error) in
                 if let mError = error as? [String:AnyObject]{

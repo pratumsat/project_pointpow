@@ -57,13 +57,13 @@ class RegisterGoldViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = NSLocalizedString("string-title-gold-register1", comment: "")
-
         self.setUp()
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
     }
+    
     @objc func donedatePicker(){
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "th")
@@ -85,7 +85,6 @@ class RegisterGoldViewController: BaseViewController {
         
         self.birthdateTextField.addDoneButtonToKeyboard()
         
-      
         
         self.firstNameTextField.delegate = self
         self.lastNameTextField.delegate = self
@@ -152,11 +151,12 @@ class RegisterGoldViewController: BaseViewController {
             //let pointBalance = data["member_point"]?["total"] as? String ?? "0.00"
             //let profileImage = data["picture_data"] as? String ?? ""
             let first_name = data["first_name"] as? String ?? ""
-            let last_name = data["last_name"]as? String ?? ""
-            let email = data["email"]as? String ?? ""
-            let mobile = data["mobile"]as? String ?? ""
-            let pid = data["pid"]as? String ?? ""
-            let  regis_by = data["regis_by"]as? String ?? ""
+            let last_name = data["last_name"] as? String ?? ""
+            let email = data["email"] as? String ?? ""
+            let mobile = data["mobile"] as? String ?? ""
+            let pid = data["pid"] as? String ?? ""
+            let regis_by = data["regis_by"] as? String ?? ""
+            let birthdate = data["birthdate"] as? String ?? ""
             
             if regis_by == "email" {
                 
@@ -185,6 +185,17 @@ class RegisterGoldViewController: BaseViewController {
             let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
             self.mobileTextField.text =  newMText.chunkFormatted()
             
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "th")
+            dateFormatter.dateFormat = "dd-MM-yyyy"
+            
+            if let d1 = dateFormatter.date(from: convertDateRegister(birthdate, format: "dd-MM-yyyy")) {
+                let formatter = DateFormatter()
+                formatter.locale = Locale(identifier: "th")
+                formatter.dateFormat = "dd MMMM yyyy"
+                
+                self.birthdateTextField.text = formatter.string(from: d1)
+            }
             
         }
         
@@ -252,7 +263,6 @@ class RegisterGoldViewController: BaseViewController {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
      
-        
         if textField  == self.firstNameTextField {
             let startingLength = textField.text?.count ?? 0
             let lengthToAdd = string.count

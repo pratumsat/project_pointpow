@@ -24,7 +24,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
     var isSetHeight = false
     
     var isFirst = false
-    
+    var banner:[[String:AnyObject]]?
     var userData:AnyObject?
    
     
@@ -38,6 +38,9 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         
         self.setUp()
         self.getGoldPremiumPrice()
+        self.getBanner() {
+            self.homeCollectionView.reloadData()
+        }
         
         fontList()
         
@@ -46,7 +49,42 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         self.modelCtrl.updateFCMToken(params: params, error: nil)
         
     }
-   
+    func getBanner(_ avaliable:(()->Void)?  = nil){
+        var isLoading:Bool = true
+        if self.banner != nil {
+            isLoading = false
+        }else{
+            isLoading = true
+        }
+        
+        modelCtrl.getBanner(params: nil , isLoading , succeeded: { (result) in
+            
+            if let items = result as? [[String:AnyObject]] {
+                self.banner = items
+//                for item  in items {
+//                    let type = item["type"] as? String ?? ""
+//                    if type == "luckydraw" {
+//                        self.banner?.append(item)
+//                    }
+//                }
+            }
+            avaliable?()
+            
+            
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                //self.showMessagePrompt(message)
+            }
+            self.refreshControl?.endRefreshing()
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            self.refreshControl?.endRefreshing()
+        }
+    }
    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -202,7 +240,11 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         
         if indexPath.section == 0 {
             if let promo = collectionView.dequeueReusableCell(withReuseIdentifier: "PromotionCampainCell", for: indexPath) as? PromotionCampainCell{
-                
+                promo.itemBanner = self.banner
+                promo.autoSlideImage = true
+                promo.luckyDrawCallback = {
+                    self.showGoldPage(true)
+                }
                 
                 cell = promo
             }

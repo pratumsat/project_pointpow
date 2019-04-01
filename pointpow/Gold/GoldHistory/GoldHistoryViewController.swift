@@ -33,7 +33,7 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
         
         self.handlerEnterSuccess  = {(pin) in
             // "Profile"
-            if let profile = self.storyboard?.instantiateViewController(withIdentifier: "GoldAccount") as? UINavigationController {
+            if let profile = self.storyboard?.instantiateViewController(withIdentifier: "NavProfile") as? NavProfile {
                 
                 self.revealViewController()?.pushFrontViewController(profile, animated: true)
                 
@@ -199,7 +199,7 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
     }
     
     @IBAction func bViewTapped(_ sender: Any) {
-        if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
+        if let saving = self.storyboard?.instantiateViewController(withIdentifier: "NavGoldPage") as? NavGoldPage {
             self.revealViewController()?.pushFrontViewController(saving, animated: true)
             
         }

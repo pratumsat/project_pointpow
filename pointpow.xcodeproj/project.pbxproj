@@ -178,6 +178,15 @@
 		C1AD50B22187FEE300F74415 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AD50B12187FEE300F74415 /* ModelController.swift */; };
 		C1AD50B52187FF4000F74415 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AD50B42187FF4000F74415 /* Loading.swift */; };
 		C1AD50B72188000B00F74415 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AD50B62188000B00F74415 /* Constant.swift */; };
+		C1B32E372251EAE9006AD7F2 /* LuckyDrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B32E362251EAE9006AD7F2 /* LuckyDrawViewController.swift */; };
+		C1B32E392251EB37006AD7F2 /* NavLuckyDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B32E382251EB37006AD7F2 /* NavLuckyDraw.swift */; };
+		C1B32E3E22521881006AD7F2 /* PrivilegeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B32E3C22521881006AD7F2 /* PrivilegeCell.swift */; };
+		C1B32E3F22521881006AD7F2 /* PrivilegeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1B32E3D22521881006AD7F2 /* PrivilegeCell.xib */; };
+		C1B32E4222524367006AD7F2 /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B32E4022524367006AD7F2 /* ScheduleCell.swift */; };
+		C1B32E4322524367006AD7F2 /* ScheduleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1B32E4122524367006AD7F2 /* ScheduleCell.xib */; };
+		C1B32E462252674D006AD7F2 /* CountDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B32E442252674D006AD7F2 /* CountDownCell.swift */; };
+		C1B32E472252674D006AD7F2 /* CountDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1B32E452252674D006AD7F2 /* CountDownCell.xib */; };
+		C1B32E4922526855006AD7F2 /* CountDownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B32E4822526855006AD7F2 /* CountDownTimer.swift */; };
 		C1B542DB219A85590040DDE6 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B542DA219A85590040DDE6 /* ChangePasswordViewController.swift */; };
 		C1B542DD219ABE9A0040DDE6 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B542DC219ABE9A0040DDE6 /* SettingViewController.swift */; };
 		C1DA27C3224200C2000C0715 /* WithDrawResultThaiPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DA27C1224200C2000C0715 /* WithDrawResultThaiPostCell.swift */; };
@@ -412,6 +421,15 @@
 		C1AD50B12187FEE300F74415 /* ModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		C1AD50B42187FF4000F74415 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		C1AD50B62188000B00F74415 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		C1B32E362251EAE9006AD7F2 /* LuckyDrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyDrawViewController.swift; sourceTree = "<group>"; };
+		C1B32E382251EB37006AD7F2 /* NavLuckyDraw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavLuckyDraw.swift; sourceTree = "<group>"; };
+		C1B32E3C22521881006AD7F2 /* PrivilegeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivilegeCell.swift; sourceTree = "<group>"; };
+		C1B32E3D22521881006AD7F2 /* PrivilegeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrivilegeCell.xib; sourceTree = "<group>"; };
+		C1B32E4022524367006AD7F2 /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
+		C1B32E4122524367006AD7F2 /* ScheduleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleCell.xib; sourceTree = "<group>"; };
+		C1B32E442252674D006AD7F2 /* CountDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownCell.swift; sourceTree = "<group>"; };
+		C1B32E452252674D006AD7F2 /* CountDownCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountDownCell.xib; sourceTree = "<group>"; };
+		C1B32E4822526855006AD7F2 /* CountDownTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownTimer.swift; sourceTree = "<group>"; };
 		C1B542DA219A85590040DDE6 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		C1B542DC219ABE9A0040DDE6 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		C1DA27C1224200C2000C0715 /* WithDrawResultThaiPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawResultThaiPostCell.swift; sourceTree = "<group>"; };
@@ -526,6 +544,7 @@
 				C10D94B72209719F0083FA47 /* NavProfile.swift */,
 				C10D94B9220971B10083FA47 /* NavHistory.swift */,
 				C10D94BD220978B60083FA47 /* NavWithdraw.swift */,
+				C1B32E382251EB37006AD7F2 /* NavLuckyDraw.swift */,
 				C10931A92244BCB200C1F33E /* GoldNavViewController.swift */,
 			);
 			path = GoldBase;
@@ -721,6 +740,7 @@
 		C11A93B4218C00A000627B44 /* CollectionCell */ = {
 			isa = PBXGroup;
 			children = (
+				C1B32E3B22521850006AD7F2 /* LuckyCell */,
 				C107CF37222269B400C50B8C /* AddressCell */,
 				C1892E0A221E8FDB00F5412F /* GoldHistroryCell */,
 				C1F761072216E2DB000A2CA9 /* GoldWithdrawCell */,
@@ -841,6 +861,7 @@
 		C197FF2422081C3F002F24E8 /* Gold */ = {
 			isa = PBXGroup;
 			children = (
+				C1B32E352251EAD5006AD7F2 /* LuckyDraw */,
 				C1249EB52224EDF900F56FA0 /* MapOffice */,
 				C103113D2212CB70004396E0 /* GoldRegister */,
 				C181F067220C0399003F7C70 /* GoldHistory */,
@@ -984,6 +1005,7 @@
 				C1AD50B12187FEE300F74415 /* ModelController.swift */,
 				C1AD50B62188000B00F74415 /* Constant.swift */,
 				C11B740A21BF67F700D0E769 /* DataController.swift */,
+				C1B32E4822526855006AD7F2 /* CountDownTimer.swift */,
 			);
 			path = ModelController;
 			sourceTree = "<group>";
@@ -994,6 +1016,27 @@
 				C1AD50B42187FF4000F74415 /* Loading.swift */,
 			);
 			path = LoadingView;
+			sourceTree = "<group>";
+		};
+		C1B32E352251EAD5006AD7F2 /* LuckyDraw */ = {
+			isa = PBXGroup;
+			children = (
+				C1B32E362251EAE9006AD7F2 /* LuckyDrawViewController.swift */,
+			);
+			path = LuckyDraw;
+			sourceTree = "<group>";
+		};
+		C1B32E3B22521850006AD7F2 /* LuckyCell */ = {
+			isa = PBXGroup;
+			children = (
+				C1B32E3C22521881006AD7F2 /* PrivilegeCell.swift */,
+				C1B32E3D22521881006AD7F2 /* PrivilegeCell.xib */,
+				C1B32E4022524367006AD7F2 /* ScheduleCell.swift */,
+				C1B32E4122524367006AD7F2 /* ScheduleCell.xib */,
+				C1B32E442252674D006AD7F2 /* CountDownCell.swift */,
+				C1B32E452252674D006AD7F2 /* CountDownCell.xib */,
+			);
+			path = LuckyCell;
 			sourceTree = "<group>";
 		};
 		C1DEBE8821880F2800CBB95F /* Localization */ = {
@@ -1193,6 +1236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1F760FE22169B6D000A2CA9 /* ConfirmButtonCell.xib in Resources */,
+				C1B32E3F22521881006AD7F2 /* PrivilegeCell.xib in Resources */,
 				C1817D9E219C07DF009507DB /* ItemBankCell.xib in Resources */,
 				C1247C582219B2E7005D6F7A /* NextButtonCell.xib in Resources */,
 				C1DEBE8C2188115D00CBB95F /* GoogleService-Info.plist in Resources */,
@@ -1230,6 +1274,7 @@
 				C142741B21A553EE003CC246 /* ItemFavorCell.xib in Resources */,
 				C197FF3722083AA6002F24E8 /* MyGoldCell.xib in Resources */,
 				C1817DA2219C1934009507DB /* SwitchCell.xib in Resources */,
+				C1B32E4322524367006AD7F2 /* ScheduleCell.xib in Resources */,
 				C120D7CF21955BB500F9EEBB /* ProfileCell.xib in Resources */,
 				C115FA4F219ECB85008E7844 /* ItemListResultCell.xib in Resources */,
 				C1249EB92224F03900F56FA0 /* map.html in Resources */,
@@ -1247,6 +1292,7 @@
 				C13D998B21997AD6001A4794 /* HeadCell.xib in Resources */,
 				C1DA27C4224200C2000C0715 /* WithDrawResultThaiPostCell.xib in Resources */,
 				C1AD507F2187F45600F74415 /* Main.storyboard in Resources */,
+				C1B32E472252674D006AD7F2 /* CountDownCell.xib in Resources */,
 				C13D998621997938001A4794 /* LogoutCell.xib in Resources */,
 				C197FF3322083A6F002F24E8 /* GoldPriceCell.xib in Resources */,
 				C1F760FA2216998C000A2CA9 /* SavingSummaryCell.xib in Resources */,
@@ -1407,8 +1453,10 @@
 				C10CA1A021914B8900316DF3 /* PointManageViewController.swift in Sources */,
 				C181F063220C00B8003F7C70 /* SaveButtonProfileCell.swift in Sources */,
 				C1817D8E219BD32B009507DB /* FriendTransferViewController.swift in Sources */,
+				C1B32E462252674D006AD7F2 /* CountDownCell.swift in Sources */,
 				C1F760F92216998C000A2CA9 /* SavingSummaryCell.swift in Sources */,
 				C1F760F5221692FD000A2CA9 /* SavingConfirmCell.swift in Sources */,
+				C1B32E3E22521881006AD7F2 /* PrivilegeCell.swift in Sources */,
 				C1E7B17F21AFCDCB00DA8B82 /* PointFreindSummaryNav.swift in Sources */,
 				C1B542DB219A85590040DDE6 /* ChangePasswordViewController.swift in Sources */,
 				C1AD507C2187F45600F74415 /* ViewController.swift in Sources */,
@@ -1441,7 +1489,9 @@
 				C11BFCA4221BC5D900F066DE /* GoldWithDrawChooseShippingViewController.swift in Sources */,
 				C197FF2A22082503002F24E8 /* GoldProfileViewController.swift in Sources */,
 				C197FEDE21DC8E98002F24E8 /* ResetNav.swift in Sources */,
+				C1B32E372251EAE9006AD7F2 /* LuckyDrawViewController.swift in Sources */,
 				C1F760FD22169B6D000A2CA9 /* ConfirmButtonCell.swift in Sources */,
+				C1B32E392251EB37006AD7F2 /* NavLuckyDraw.swift in Sources */,
 				C10D94AD22095EA20083FA47 /* GoldMenuTableViewController.swift in Sources */,
 				C142741A21A553EE003CC246 /* ItemFavorCell.swift in Sources */,
 				C1DEBE9521882F6F00CBB95F /* BaseNavigationViewController.swift in Sources */,
@@ -1454,6 +1504,7 @@
 				C18A1CE622118BC9002CAF4C /* GoldSWRevealViewController.swift in Sources */,
 				C169FF9E21C25C9200F9D354 /* EmailViewController.swift in Sources */,
 				C106BEA6220AC01400E2331E /* ConfirmSavingViewController.swift in Sources */,
+				C1B32E4922526855006AD7F2 /* CountDownTimer.swift in Sources */,
 				C115FA4A219EC511008E7844 /* ResultTransferViewController.swift in Sources */,
 				C18A1CE222112D2A002CAF4C /* RegisterGoldstep2ViewController.swift in Sources */,
 				C107CF3A222269E000C50B8C /* AddressViewCell.swift in Sources */,
@@ -1466,6 +1517,7 @@
 				C1F7610A2216E357000A2CA9 /* WithDrawMyGoldCell.swift in Sources */,
 				C1817D92219BF61E009507DB /* ItemFriendCell.swift in Sources */,
 				C11A93B1218BF69700627B44 /* MainNav.swift in Sources */,
+				C1B32E4222524367006AD7F2 /* ScheduleCell.swift in Sources */,
 				C11A93C4218FF3E200627B44 /* VerifyViewController.swift in Sources */,
 				C1AD50B52187FF4000F74415 /* Loading.swift in Sources */,
 				C1817D9D219C07DF009507DB /* ItemBankCell.swift in Sources */,

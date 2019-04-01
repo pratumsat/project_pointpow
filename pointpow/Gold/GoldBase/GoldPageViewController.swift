@@ -60,7 +60,6 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
     
     var pointpowTextField:UITextField? {
         didSet{
-            
             self.pointpowTextField?.delegate = self
         }
     }
@@ -88,7 +87,7 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
         
         self.handlerEnterSuccess  = {(pin) in
             // "Profile"
-            if let profile = self.storyboard?.instantiateViewController(withIdentifier: "GoldAccount") as? UINavigationController {
+            if let profile = self.storyboard?.instantiateViewController(withIdentifier: "NavProfile") as? NavProfile {
                 
                 self.revealViewController()?.pushFrontViewController(profile, animated: true)
                 
@@ -358,8 +357,13 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
             if let promo = collectionView.dequeueReusableCell(withReuseIdentifier: "PromotionCampainCell", for: indexPath) as? PromotionCampainCell{
                 
                 promo.itemBanner = self.banner
-                
                 promo.autoSlideImage = true
+                promo.luckyDrawCallback = {
+                    if let withdraw = self.storyboard?.instantiateViewController(withIdentifier: "NavLuckyDraw") as? NavLuckyDraw {
+                        
+                        self.revealViewController()?.pushFrontViewController(withdraw, animated: true)
+                    }
+                }
                 
                 cell = promo
             }

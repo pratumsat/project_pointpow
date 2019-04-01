@@ -38,7 +38,7 @@ class ConfirmSavingViewController: BaseViewController , UICollectionViewDelegate
                     let transactionId = data["saving"]?["transaction_no"] as? String ?? ""
                     
                     self.showGoldSavingResult(true , transactionId:  transactionId) {
-                        if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
+                        if let saving = self.storyboard?.instantiateViewController(withIdentifier: "NavGoldPage") as? NavGoldPage {
                             self.revealViewController()?.pushFrontViewController(saving, animated: true)
                             
                         }

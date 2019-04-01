@@ -715,6 +715,8 @@ struct Constant {
         static let transectionGold = "\(HOST)\(POINTPOW_VERSION1)gold-saving/get/history"
         static let goldhistory = "\(HOST)\(POINTPOW_VERSION1)gold-saving/get/history"
         static let cancelTransectionGold = "\(HOST)\(POINTPOW_VERSION1)gold-saving/withdraw/cancel"
+        static let privilegeLuckydraw = "\(HOST)\(POINTPOW_VERSION1)gold-saving/luckydraw/privilege"
+        
         
         static let banners = "\(HOST)\(POINTPOW_VERSION1)banners"
         

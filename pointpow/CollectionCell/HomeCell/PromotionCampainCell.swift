@@ -27,6 +27,8 @@ class PromotionCampainCell: UICollectionViewCell , UICollectionViewDelegate , UI
         }
     }
     
+    var luckyDrawCallback:(()->Void)?
+    
     var autoSlideImage = false {
         didSet{
             if autoSlideImage {
@@ -98,6 +100,15 @@ class PromotionCampainCell: UICollectionViewCell , UICollectionViewDelegate , UI
         return cell!
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let item = self.itemBanner?[indexPath.row] {
+            let type = item["type"] as? String ?? ""
+            if type == "luckydraw" {
+                self.luckyDrawCallback?()
+            }
+        }
+
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         

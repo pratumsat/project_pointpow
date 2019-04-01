@@ -74,6 +74,7 @@ class WithDrawResultThaiPostCell: UICollectionViewCell {
         self.cancelButton?.tag = 1
         self.cancelLabel?.tag = 1
         self.saveSlipView?.tag = 1
+        self.containerView?.tag = 1
         
         self.updateLayerCornerRadiusProperties()
         self.contentView.updateLayerCornerRadiusProperties()

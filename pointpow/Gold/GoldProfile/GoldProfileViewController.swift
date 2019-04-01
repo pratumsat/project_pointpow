@@ -82,6 +82,7 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
             
         }
         
+        
         self.navigationItem.rightBarButtonItem?.action = #selector(SWRevealViewController.rightRevealToggle(_:))
         
         self.title = NSLocalizedString("string-title-profile", comment: "")
@@ -136,7 +137,7 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
                 (alert) in
                 
                 
-                if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
+                if let saving = self.storyboard?.instantiateViewController(withIdentifier: "NavGoldPage") as? NavGoldPage {
                     self.revealViewController()?.pushFrontViewController(saving, animated: true)
                     
                 }
@@ -149,7 +150,7 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
             alert.addAction(okButton)
             self.present(alert, animated: true, completion: nil)
         }else{
-            if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
+            if let saving = self.storyboard?.instantiateViewController(withIdentifier: "NavGoldPage") as? NavGoldPage {
                 self.revealViewController()?.pushFrontViewController(saving, animated: true)
                 
             }
@@ -177,23 +178,22 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
             self.emailTextField.text = email
             
             
-            
-            
-            
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "th")
             dateFormatter.dateFormat = "dd-MM-yyyy"
             
-            let d1 = dateFormatter.date(from: convertDateRegister(birthdate, format: "yyyy-MM-dd"))!
-            self.pickerView?.date = d1
+            if let d1 = dateFormatter.date(from: convertDateRegister(birthdate, format: "yyyy-MM-dd")) {
+                self.pickerView?.date = d1
+                
+                let formatter = DateFormatter()
+                formatter.locale = Locale(identifier: "th")
+                formatter.dateFormat = "dd MMMM yyyy"
+                
+                self.birthdateTextField.text = formatter.string(from: d1)
+                self.currentBirthdate = self.birthdateTextField.text!
+            }
             
-            let formatter = DateFormatter()
-            formatter.locale = Locale(identifier: "th")
-            formatter.dateFormat = "dd MMMM yyyy"
-            
-            self.birthdateTextField.text = formatter.string(from: d1)
-            
-            self.currentBirthdate = self.birthdateTextField.text!
+           
             
             let newText = String((pid).filter({ $0 != "-" }).prefix(13))
             self.idcardTextField.text = newText.chunkFormattedPersonalID()

@@ -76,7 +76,7 @@ class WithDrawSummaryThaiPostViewController: BaseViewController, UICollectionVie
                     let transactionId = data["withdraw"]?["transaction_no"] as? String ?? ""
 
                     self.showGoldWithDrawResult(true , transactionId:  transactionId) {
-                        if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
+                        if let saving = self.storyboard?.instantiateViewController(withIdentifier: "NavGoldPage") as? NavGoldPage {
                             self.revealViewController()?.pushFrontViewController(saving, animated: true)
 
                         }

@@ -16,7 +16,6 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
     var amountTextField:UITextField? {
         didSet{
             self.amountTextField?.delegate = self
-            
         }
     }
     //var goldBalanceLabel:UILabel?
@@ -59,7 +58,7 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
         }
         self.handlerEnterSuccess  = {(pin) in
             // "Profile"
-            if let profile = self.storyboard?.instantiateViewController(withIdentifier: "GoldAccount") as? UINavigationController {
+            if let profile = self.storyboard?.instantiateViewController(withIdentifier: "NavProfile") as? NavProfile {
                 
                 self.revealViewController()?.pushFrontViewController(profile, animated: true)
             }
@@ -201,7 +200,7 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
     }
     
     @IBAction func bViewTapped(_ sender: Any) {
-        if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
+        if let saving = self.storyboard?.instantiateViewController(withIdentifier: "NavGoldPage") as? NavGoldPage {
             self.revealViewController()?.pushFrontViewController(saving, animated: true)
             
         }

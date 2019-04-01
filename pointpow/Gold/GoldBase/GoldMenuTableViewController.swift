@@ -206,7 +206,7 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
         }
         
         if self.statusMemberGold == "waiting"{
-            if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
+            if let saving = self.storyboard?.instantiateViewController(withIdentifier: "NavGoldPage") as? NavGoldPage {
                 
                 let userInfo = ["message":NSLocalizedString("string-dailog-gold-profile-status-waitting", comment: "")]
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "messageAlert"), object: nil, userInfo: userInfo as [String:AnyObject])
@@ -220,7 +220,7 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
         }
         
         if self.statusMemberGold == "fail"{
-            if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
+            if let saving = self.storyboard?.instantiateViewController(withIdentifier: "NavGoldPage") as? NavGoldPage {
                 
                 
                 let userInfo = ["message":NSLocalizedString("string-dailog-gold-profile-status-fail", comment: "")]
@@ -234,7 +234,7 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
         }
         
         if self.statusMemberGold == "edit"{
-            if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
+            if let saving = self.storyboard?.instantiateViewController(withIdentifier: "NavGoldPage") as? NavGoldPage {
                 
                 
                 let userInfo = ["message":NSLocalizedString("string-dailog-gold-profile-status-waitting", comment: "")]
@@ -255,7 +255,7 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
         if indexPath.section == 1 {
             if indexPath.row == 0 {
                 // "Saving"
-                if let saving = self.storyboard?.instantiateViewController(withIdentifier: "GoldPageNav") as? UINavigationController {
+                if let saving = self.storyboard?.instantiateViewController(withIdentifier: "NavGoldPage") as? NavGoldPage {
                     
                     self.revealViewController()?.pushFrontViewController(saving, animated: true)
                     
@@ -263,18 +263,21 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
             }
             if indexPath.row == 1 {
                 // "Withdraw"
-                if let withdraw = self.storyboard?.instantiateViewController(withIdentifier: "GoldWithdraw") as? UINavigationController {
+                if let withdraw = self.storyboard?.instantiateViewController(withIdentifier: "NavWithdraw") as? NavWithdraw {
                     
                     self.revealViewController()?.pushFrontViewController(withdraw, animated: true)
                 }
             }
             if indexPath.row == 2 {
                 // "Lucky draw"
-               
+                if let withdraw = self.storyboard?.instantiateViewController(withIdentifier: "NavLuckyDraw") as? NavLuckyDraw {
+                    
+                    self.revealViewController()?.pushFrontViewController(withdraw, animated: true)
+                }
             }
             if indexPath.row == 3 {
                 // "History"
-                if let history = self.storyboard?.instantiateViewController(withIdentifier: "GoldHistory") as? UINavigationController {
+                if let history = self.storyboard?.instantiateViewController(withIdentifier: "NavHistory") as? NavHistory {
                     self.revealViewController()?.pushFrontViewController(history, animated: true)
                 }
              

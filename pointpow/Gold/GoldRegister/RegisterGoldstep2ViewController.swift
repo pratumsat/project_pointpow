@@ -194,7 +194,6 @@ class RegisterGoldstep2ViewController: BaseViewController ,UIImagePickerControll
     }
     
     func photoFromCamera(){
-        
         if AVCaptureDevice.authorizationStatus(for: AVMediaType.video) !=  AVAuthorizationStatus.denied {
             picker = UIImagePickerController()
             picker!.allowsEditing = false
@@ -204,7 +203,6 @@ class RegisterGoldstep2ViewController: BaseViewController ,UIImagePickerControll
         } else {
             self.cannotAccessCamera()
         }
-        
         
     }
     

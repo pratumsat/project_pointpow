@@ -27,27 +27,35 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
     }
     
     func showShippinhAddress(){
-        self.showShippingAddressPopup(true) { (address) in
+        self.showShippingAddressPopup(true, selectCallback: { (address) in
             if !self.repeatView(address){
                 print(address)
                 
                 self.updateUI(address)
                 
             }
+        }) {
+            self.getUserInfo() {
+                self.shippingCollectionView.reloadData()
+            }
         }
     }
     func repeatView (_ address:AnyObject) -> Bool{
         if let message = address as? String {
             if message == "showViewAddress" {
-                
-                self.showShippingAddressPopup(true) { (address) in
+                self.showShippingAddressPopup(true, selectCallback: { (address) in
                     if !self.repeatView(address){
                         print(address)
                         
                         self.updateUI(address)
                         
                     }
+                }) {
+                    self.getUserInfo(){
+                        self.shippingCollectionView.reloadData()
+                    }
                 }
+               
                 
                 return true
             }else{
@@ -62,13 +70,17 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
             self.shippingAddress = nil
             self.addressModel = nil
             if option == 1 {
-                if let _ = self.myAddress?.count {
-                   self.showShippinhAddress()
-                }else{
-                    self.showShippingPopup(true , editData: nil) { (address) in
-                        //nextstep
-                        self.updateUI(address)
+                if let count = self.myAddress?.count {
+                    if count > 0 {
+                        self.showShippinhAddress()
+                    }else{
+                        self.showShippingPopup(true , editData: nil) { (address) in
+                            //nextstep
+                            self.myAddress?.append([:])
+                            self.updateUI(address)
+                        }
                     }
+                   
                 }
                 
             }
@@ -156,6 +168,9 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
     }
     
     func getUserInfo(_ avaliable:(()->Void)?  = nil){
+        
+        self.shippingAddress = nil
+        self.addressModel = nil
         
         var isLoading:Bool = true
         if self.myAddress != nil {
@@ -367,7 +382,7 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
         }else if indexPath.section == 2 {
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "NextButtonCell", for: indexPath) as? NextButtonCell {
                 cell = item
-                
+                item.enableButton()
                 item.nextCallback = {
                     if self.option == 0 {
                         //next
@@ -384,7 +399,19 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
                                                                  addressModel: address,
                                                                  ems: self.ems_price, fee: self.fee_price, name: self.name, mobile: self.mobile)
                         }else{
-                            self.showShippinhAddress()
+                            
+                            if let count = self.myAddress?.count {
+                                if count > 0 {
+                                    self.showShippinhAddress()
+                                }else{
+                                    self.showShippingPopup(true , editData: nil) { (address) in
+                                        //nextstep
+                                        self.myAddress?.append([:])
+                                        self.updateUI(address)
+                                    }
+                                }
+                                
+                            }
                         }
                        
                     }

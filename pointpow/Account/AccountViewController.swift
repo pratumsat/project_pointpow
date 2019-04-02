@@ -138,15 +138,20 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
                     if let image = self.profileImageView {
                         profileCell.profileImageView.image = image
                     }else{
-                        profileCell.profileImageView.sd_setImage(with: URL(string: picture_data)!, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER))
+                        if let url = URL(string: picture_data) {
+                            profileCell.profileImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER))
+                            
+                        }
                         
                     }
                     
                     if let image = self.bgProfileImageView {
                         profileCell.backgroundImageView.image = image
                     }else{
+                        if let url = URL(string: picture_background) {
+                            profileCell.backgroundImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_BACKGROUND_PLACEHOLDER))
+                        }
                         
-                        profileCell.backgroundImageView.sd_setImage(with: URL(string: picture_background)!, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_BACKGROUND_PLACEHOLDER))
                         
                     }
                     

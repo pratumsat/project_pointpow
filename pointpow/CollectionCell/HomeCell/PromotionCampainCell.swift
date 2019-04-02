@@ -86,9 +86,12 @@ class PromotionCampainCell: UICollectionViewCell , UICollectionViewDelegate , UI
             cell = imageCell
             
             if let itemData = self.itemBanner?[indexPath.row] {
-                let path = itemData["path"] as? String ?? ""
+                let path = itemData["path_mobile"] as? String ?? ""
                 
-                imageCell.imageView.sd_setImage(with: URL(string: path)!, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_BACKGROUND_PLACEHOLDER))
+                if let url = URL(string: path) {
+                    imageCell.imageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_BACKGROUND_PLACEHOLDER))
+                }
+                
             }
            
         }

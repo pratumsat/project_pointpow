@@ -47,7 +47,6 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
                     self.arrayItem.remove(at: 2)
                 }
                 
-                
             }else{
                 self.navigationItem.rightBarButtonItem = nil
                 self.revealViewController()?.panGestureRecognizer()?.isEnabled = false
@@ -84,7 +83,6 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
         self.setUp()
      
        
-        
         self.handlerEnterSuccess  = {(pin) in
             // "Profile"
             if let profile = self.storyboard?.instantiateViewController(withIdentifier: "NavProfile") as? NavProfile {
@@ -101,18 +99,16 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
             self.updateView()
             
         }
-    
+
         NotificationCenter.default.addObserver(self, selector: #selector(messageAlert), name: NSNotification.Name(rawValue: "messageAlert"), object: nil)
         
     }
-   
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "messageAlert"), object: nil)
         
     }
-    
     
     @objc func messageAlert(notification: NSNotification){
         if let userInfo = notification.userInfo as? [String:AnyObject]{

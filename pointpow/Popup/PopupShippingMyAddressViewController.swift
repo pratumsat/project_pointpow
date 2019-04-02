@@ -18,6 +18,7 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
     var selectedAddressCallback:((_ selectedAddress:AnyObject)->Void)?
     var addAddressCallback:((_ modelAddress:AnyObject?)->Void)?
     var editAddressCallback:((_ modelAddress:AnyObject?)->Void)?
+    var reloadDataCallback:(()->Void)?
     @IBOutlet weak var addressCollectionView: UICollectionView!
     
     var selectItem:Int?
@@ -25,6 +26,8 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
     
     var name:String = ""
     var mobile:String = ""
+    
+    var countAddress = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +65,7 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
                 self.modelAddreses = member_addresses
                 
                 self.selectedAddress = nil
+                self.countAddress = self.modelAddreses?.count ?? 0
             }
             avaliable?()
             
@@ -83,7 +87,13 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
     
     override func dismissPoPup() {
         super.dismissPoPup()
-        self.dismiss(animated: true, completion: nil)
+        
+        self.dismiss(animated: true, completion: {
+            if self.countAddress == 0 {
+                self.reloadDataCallback?()
+            }
+            
+        })
     }
     
     override func viewDidAppear(_ animated: Bool) {

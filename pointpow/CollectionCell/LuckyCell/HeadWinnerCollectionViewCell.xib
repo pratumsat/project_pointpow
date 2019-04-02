@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="ThaiSansNeue-Bold.ttf">
+            <string>ThaiSansNeue-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeadWinnerCollectionViewCell" id="wtB-GM-O2Z" customClass="HeadWinnerCollectionViewCell" customModule="pointpow" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="529" height="40"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="529" height="40"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7JY-up-5Xy">
+                        <rect key="frame" x="0.0" y="0.0" width="529" height="40"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="เบอร์โทรศัพท์" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMi-iT-cIj">
+                                <rect key="frame" x="417.5" y="9.5" width="64.5" height="21"/>
+                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ชื่อ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S6a-GL-UzF">
+                                <rect key="frame" x="72.5" y="9.5" width="14" height="21"/>
+                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="นามสกุล" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="it5-bF-K9c">
+                                <rect key="frame" x="244" y="9.5" width="41.5" height="21"/>
+                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="S6a-GL-UzF" firstAttribute="centerX" secondItem="7JY-up-5Xy" secondAttribute="centerX" multiplier="0.3" id="5ns-yW-AA0"/>
+                            <constraint firstItem="GMi-iT-cIj" firstAttribute="centerX" secondItem="7JY-up-5Xy" secondAttribute="centerX" multiplier="1.7" id="6c3-pq-Flm"/>
+                            <constraint firstItem="S6a-GL-UzF" firstAttribute="centerY" secondItem="7JY-up-5Xy" secondAttribute="centerY" id="by2-i5-Uc4"/>
+                            <constraint firstItem="it5-bF-K9c" firstAttribute="centerY" secondItem="7JY-up-5Xy" secondAttribute="centerY" id="euw-mi-dBf"/>
+                            <constraint firstItem="GMi-iT-cIj" firstAttribute="centerY" secondItem="7JY-up-5Xy" secondAttribute="centerY" id="lPX-zG-jiD"/>
+                            <constraint firstItem="it5-bF-K9c" firstAttribute="centerX" secondItem="7JY-up-5Xy" secondAttribute="centerX" id="w2S-rH-Wt8"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="7JY-up-5Xy" firstAttribute="leading" secondItem="wtB-GM-O2Z" secondAttribute="leading" id="Ns4-O9-Ltx"/>
+                <constraint firstAttribute="trailing" secondItem="7JY-up-5Xy" secondAttribute="trailing" id="grU-nU-DJ2"/>
+                <constraint firstAttribute="bottom" secondItem="7JY-up-5Xy" secondAttribute="bottom" id="lZG-Ov-0iJ"/>
+                <constraint firstItem="7JY-up-5Xy" firstAttribute="top" secondItem="wtB-GM-O2Z" secondAttribute="top" id="rPv-VL-JfN"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="6ep-Y3-4z6"/>
+            <size key="customSize" width="529" height="40"/>
+            <point key="canvasLocation" x="116.66666666666667" y="36.830357142857139"/>
+        </collectionViewCell>
+    </objects>
+</document>

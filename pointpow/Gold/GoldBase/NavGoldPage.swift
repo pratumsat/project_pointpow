@@ -13,7 +13,6 @@ class NavGoldPage: BaseNavigationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
     }
     
 

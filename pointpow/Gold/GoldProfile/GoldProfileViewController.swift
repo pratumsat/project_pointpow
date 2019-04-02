@@ -445,7 +445,7 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
                 //let last_name = data["goldsaving_member"]?["lastname"]as? String ?? ""
                 
                 
-                if (textField.text!) != first_name {
+                if (textField.text!) != first_name || (self.idCardPhoto != nil) {
                     self.enableButton()
                 }else{
                     self.disableButton()
@@ -457,7 +457,7 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
             if let data  = self.userData as? [String:AnyObject] {
                 let last_name = data["goldsaving_member"]?["lastname"]as? String ?? ""
                 
-                if (textField.text!) != last_name {
+                if (textField.text!) != last_name || (self.idCardPhoto != nil) {
                     self.enableButton()
                 }else{
                     self.disableButton()
@@ -469,7 +469,7 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
             if let data  = self.userData as? [String:AnyObject] {
                 let citizen_id = data["goldsaving_member"]?["citizen_id"]as? String ?? ""
                 
-                if (textField.text!) != citizen_id {
+                if (textField.text!) != citizen_id || (self.idCardPhoto != nil) {
                     self.enableButton()
                 }else{
                     self.disableButton()
@@ -482,7 +482,7 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
                 let laser_id = data["goldsaving_member"]?["laser_id"]as? String ?? ""
                 
                 let cutdash = textField.text!.replace(target: "-", withString: "")
-                if cutdash != laser_id {
+                if cutdash != laser_id || (self.idCardPhoto != nil) {
                     self.enableButton()
                 }else{
                     self.disableButton()
@@ -491,7 +491,7 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
         }
         
         if textField == self.birthdateTextField {
-            if (textField.text!) != self.currentBirthdate {
+            if (textField.text!) != self.currentBirthdate || (self.idCardPhoto != nil) {
                 self.enableButton()
             }else{
                 self.disableButton()
@@ -1062,7 +1062,7 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
                     self.disableButton()
                     self.clearImageViewTextField()
                     
-                    self.showPenddingVerifyModalView(true , dismissCallback: {
+                    self.showEditPenddingVerifyModalView(true , dismissCallback: {
                         self.getUserInfo(){
                             self.updateView()
                         }

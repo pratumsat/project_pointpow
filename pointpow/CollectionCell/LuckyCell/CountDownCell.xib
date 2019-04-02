@@ -28,16 +28,16 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kf2-le-HYL">
-                        <rect key="frame" x="0.0" y="25" width="51.5" height="65"/>
+                        <rect key="frame" x="0.0" y="25" width="51.5" height="59"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="30" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Da-7g-VSp">
-                                <rect key="frame" x="9.5" y="0.0" width="33" height="52"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Da-7g-VSp">
+                                <rect key="frame" x="14.5" y="0.0" width="22.5" height="47"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="40"/>
                                 <color key="textColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DAYS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEb-1d-TZZ">
-                                <rect key="frame" x="17.5" y="52" width="16.5" height="13"/>
+                                <rect key="frame" x="13" y="47" width="26" height="12"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="10"/>
                                 <color key="textColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -53,16 +53,16 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8RF-Cb-HuQ">
-                        <rect key="frame" x="78.5" y="25" width="51.5" height="65"/>
+                        <rect key="frame" x="78.5" y="25" width="51.5" height="59"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="24" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16a-cz-4K1">
-                                <rect key="frame" x="10.5" y="0.0" width="30.5" height="52"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16a-cz-4K1">
+                                <rect key="frame" x="14.5" y="0.0" width="22.5" height="47"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="40"/>
                                 <color key="textColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOURS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYT-Zd-tGC">
-                                <rect key="frame" x="14.5" y="52" width="22" height="13"/>
+                                <rect key="frame" x="8" y="47" width="35.5" height="12"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="10"/>
                                 <color key="textColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -78,24 +78,24 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COUNTDOWN TIMER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lcb-yK-l44">
-                        <rect key="frame" x="92.5" y="5" width="102" height="19.5"/>
+                        <rect key="frame" x="69.5" y="5" width="148.5" height="17.5"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pev-lr-Tno">
-                        <rect key="frame" x="51.5" y="39" width="27" height="24"/>
+                        <rect key="frame" x="51.5" y="35" width="27" height="27"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RM0-Xa-ycK">
-                                <rect key="frame" x="9.5" y="0.0" width="8" height="8"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-collon" translatesAutoresizingMaskIntoConstraints="NO" id="RM0-Xa-ycK">
+                                <rect key="frame" x="7" y="0.0" width="13" height="13.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="RM0-Xa-ycK" secondAttribute="height" multiplier="1:1" id="NuU-yA-WUj"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MLh-fe-L7s">
-                                <rect key="frame" x="9.5" y="16" width="8" height="8"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-collon" translatesAutoresizingMaskIntoConstraints="NO" id="MLh-fe-L7s">
+                                <rect key="frame" x="7" y="13.5" width="13" height="13.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -105,22 +105,22 @@
                             <constraint firstItem="RM0-Xa-ycK" firstAttribute="centerX" secondItem="pev-lr-Tno" secondAttribute="centerX" id="Dsk-Wp-aYc"/>
                             <constraint firstItem="MLh-fe-L7s" firstAttribute="centerX" secondItem="RM0-Xa-ycK" secondAttribute="centerX" id="GMe-IC-dhK"/>
                             <constraint firstItem="MLh-fe-L7s" firstAttribute="height" secondItem="RM0-Xa-ycK" secondAttribute="height" id="ZNQ-rY-XuO"/>
-                            <constraint firstItem="MLh-fe-L7s" firstAttribute="top" secondItem="RM0-Xa-ycK" secondAttribute="bottom" constant="8" id="aHm-Cs-aNn"/>
-                            <constraint firstItem="RM0-Xa-ycK" firstAttribute="width" secondItem="pev-lr-Tno" secondAttribute="width" multiplier="0.3" id="r6Z-h6-REV"/>
+                            <constraint firstItem="MLh-fe-L7s" firstAttribute="top" secondItem="RM0-Xa-ycK" secondAttribute="bottom" id="aHm-Cs-aNn"/>
+                            <constraint firstItem="RM0-Xa-ycK" firstAttribute="width" secondItem="pev-lr-Tno" secondAttribute="width" multiplier="0.5" id="r6Z-h6-REV"/>
                             <constraint firstItem="MLh-fe-L7s" firstAttribute="width" secondItem="RM0-Xa-ycK" secondAttribute="width" id="uNW-aH-jIw"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ogc-xE-0sJ">
-                        <rect key="frame" x="156.5" y="25" width="52" height="65"/>
+                        <rect key="frame" x="156.5" y="25" width="52" height="59"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="60" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33K-me-uCa">
-                                <rect key="frame" x="9.5" y="0.0" width="33.5" height="52"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33K-me-uCa">
+                                <rect key="frame" x="15" y="0.0" width="22.5" height="47"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="40"/>
                                 <color key="textColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MINUTES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKV-cZ-cht">
-                                <rect key="frame" x="12.5" y="52" width="27.5" height="13"/>
+                                <rect key="frame" x="4" y="47" width="44.5" height="12"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="10"/>
                                 <color key="textColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -136,45 +136,45 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vRe-3F-VYc">
-                        <rect key="frame" x="130" y="39" width="26.5" height="24"/>
+                        <rect key="frame" x="130" y="35" width="26.5" height="27"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8xV-nN-Qwv">
-                                <rect key="frame" x="9.5" y="0.0" width="8" height="8"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-collon" translatesAutoresizingMaskIntoConstraints="NO" id="8xV-nN-Qwv">
+                                <rect key="frame" x="6.5" y="0.0" width="13.5" height="13.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="8xV-nN-Qwv" secondAttribute="height" multiplier="1:1" id="YoL-HO-beG"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="78T-pp-lZJ">
-                                <rect key="frame" x="9.5" y="16" width="8" height="8"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-collon" translatesAutoresizingMaskIntoConstraints="NO" id="78T-pp-lZJ">
+                                <rect key="frame" x="6.5" y="13.5" width="13.5" height="13.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="8xV-nN-Qwv" firstAttribute="top" secondItem="vRe-3F-VYc" secondAttribute="top" id="4Oy-ZC-mhx"/>
-                            <constraint firstItem="8xV-nN-Qwv" firstAttribute="width" secondItem="vRe-3F-VYc" secondAttribute="width" multiplier="0.3" id="IRd-EK-jpO"/>
+                            <constraint firstItem="8xV-nN-Qwv" firstAttribute="width" secondItem="vRe-3F-VYc" secondAttribute="width" multiplier="0.5" id="IRd-EK-jpO"/>
                             <constraint firstAttribute="bottom" secondItem="78T-pp-lZJ" secondAttribute="bottom" id="MC9-Jy-Qub"/>
                             <constraint firstItem="78T-pp-lZJ" firstAttribute="height" secondItem="8xV-nN-Qwv" secondAttribute="height" id="NwT-no-NWa"/>
                             <constraint firstItem="8xV-nN-Qwv" firstAttribute="centerX" secondItem="vRe-3F-VYc" secondAttribute="centerX" id="dhj-L5-AQB"/>
                             <constraint firstItem="78T-pp-lZJ" firstAttribute="width" secondItem="8xV-nN-Qwv" secondAttribute="width" id="mRQ-Bz-HH9"/>
-                            <constraint firstItem="78T-pp-lZJ" firstAttribute="top" secondItem="8xV-nN-Qwv" secondAttribute="bottom" constant="8" id="t43-pA-sgh"/>
+                            <constraint firstItem="78T-pp-lZJ" firstAttribute="top" secondItem="8xV-nN-Qwv" secondAttribute="bottom" id="t43-pA-sgh"/>
                             <constraint firstItem="78T-pp-lZJ" firstAttribute="centerX" secondItem="8xV-nN-Qwv" secondAttribute="centerX" id="xuw-Bm-lEz"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TWq-1U-cmY">
-                        <rect key="frame" x="208.5" y="39" width="26.5" height="24"/>
+                        <rect key="frame" x="208.5" y="35" width="26.5" height="27"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tPL-WN-lhh">
-                                <rect key="frame" x="9" y="0.0" width="8" height="8"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-collon" translatesAutoresizingMaskIntoConstraints="NO" id="tPL-WN-lhh">
+                                <rect key="frame" x="6.5" y="0.0" width="13.5" height="13.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="tPL-WN-lhh" secondAttribute="height" multiplier="1:1" id="8mJ-f3-9vv"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tEW-4h-d7F">
-                                <rect key="frame" x="9" y="16" width="8" height="8"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-collon" translatesAutoresizingMaskIntoConstraints="NO" id="tEW-4h-d7F">
+                                <rect key="frame" x="6.5" y="13.5" width="13.5" height="13.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -183,23 +183,23 @@
                             <constraint firstItem="tEW-4h-d7F" firstAttribute="width" secondItem="tPL-WN-lhh" secondAttribute="width" id="3d2-3T-iuP"/>
                             <constraint firstItem="tPL-WN-lhh" firstAttribute="top" secondItem="TWq-1U-cmY" secondAttribute="top" id="6Ip-Ai-WcY"/>
                             <constraint firstItem="tPL-WN-lhh" firstAttribute="centerX" secondItem="TWq-1U-cmY" secondAttribute="centerX" id="9G7-FH-jOL"/>
-                            <constraint firstItem="tEW-4h-d7F" firstAttribute="top" secondItem="tPL-WN-lhh" secondAttribute="bottom" constant="8" id="Mnt-8W-gcj"/>
+                            <constraint firstItem="tEW-4h-d7F" firstAttribute="top" secondItem="tPL-WN-lhh" secondAttribute="bottom" id="Mnt-8W-gcj"/>
                             <constraint firstAttribute="bottom" secondItem="tEW-4h-d7F" secondAttribute="bottom" id="cMV-Wv-Szw"/>
                             <constraint firstItem="tEW-4h-d7F" firstAttribute="centerX" secondItem="tPL-WN-lhh" secondAttribute="centerX" id="eQ4-Ua-Dac"/>
-                            <constraint firstItem="tPL-WN-lhh" firstAttribute="width" secondItem="TWq-1U-cmY" secondAttribute="width" multiplier="0.3" id="yMQ-Se-Ytr"/>
+                            <constraint firstItem="tPL-WN-lhh" firstAttribute="width" secondItem="TWq-1U-cmY" secondAttribute="width" multiplier="0.5" id="yMQ-Se-Ytr"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gLu-C4-KV0">
-                        <rect key="frame" x="235" y="25" width="51.5" height="65"/>
+                        <rect key="frame" x="235" y="25" width="51.5" height="59"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="60" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1B-Gz-ss3">
-                                <rect key="frame" x="9" y="0.0" width="33.5" height="52"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1B-Gz-ss3">
+                                <rect key="frame" x="14.5" y="0.0" width="22.5" height="47"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="40"/>
                                 <color key="textColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SECONDS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQS-AI-mnd">
-                                <rect key="frame" x="11" y="52" width="30" height="13"/>
+                                <rect key="frame" x="1.5" y="47" width="48.5" height="12"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="10"/>
                                 <color key="textColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -253,4 +253,7 @@
             <point key="canvasLocation" x="-303.62318840579712" y="81.696428571428569"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="ic-collon" width="24.5" height="23.5"/>
+    </resources>
 </document>

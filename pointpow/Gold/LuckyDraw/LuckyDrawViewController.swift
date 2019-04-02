@@ -14,11 +14,13 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
     
     let cd = DateCountDownTimer()
     
+    var luckyPrivacyCell:LuckyDrawPrivacyCell?
+    
     var luckydrawModel:AnyObject?
     var banner:[[String:AnyObject]]?
     var schedule:[String:AnyObject]?
     
-    var completedDateString = NSLocalizedString("string-date-format-announce-at-completed", comment: "")
+    var privilege  = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,10 +50,7 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
         
         self.setUp()
         
-        self.getPrivilegeLuckyDraw() {
-            self.luckyDrawCollectionView.reloadData()
-        }
-        
+     
 
         
     }
@@ -69,6 +68,7 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
         self.registerNib(self.luckyDrawCollectionView, "PrivilegeCell")
         self.registerNib(self.luckyDrawCollectionView, "ScheduleCell")
         self.registerNib(self.luckyDrawCollectionView, "CountDownCell")
+        self.registerNib(self.luckyDrawCollectionView, "LuckyDrawPrivacyCell")
     }
     
     
@@ -86,12 +86,14 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
             
             if let data = result as? [String:AnyObject] {
                 
-                let bannerModel = data["banner"] as? [String:AnyObject] ?? [:]
+                self.privilege = (data["privilege"] as? NSNumber)?.intValue ?? 0
+                
+                let scheduleModel = data["schedule"] as? [String:AnyObject] ?? [:]
+                self.schedule = scheduleModel
+                
+                let bannerModel = scheduleModel["banner"] as? [String:AnyObject] ?? [:]
                 self.banner = []
                 self.banner?.append(bannerModel)
-                
-                let scheduleModel = bannerModel["schedule"] as? [String:AnyObject] ?? [:]
-                self.schedule = scheduleModel
             }
             
             avaliable?()
@@ -120,14 +122,20 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(messageAlert), name: NSNotification.Name(rawValue: "messageAlert"), object: nil)
+        
+        self.getPrivilegeLuckyDraw() {
+            self.luckyDrawCollectionView.reloadData()
+        }
+        
+        
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "messageAlert"), object: nil)
-        
+    
         self.cd.endTimer()
-        
     }
+    
     
     @objc func messageAlert(notification: NSNotification){
         if let userInfo = notification.userInfo as? [String:AnyObject]{
@@ -150,7 +158,7 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
     
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 5
+        return 6
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -213,9 +221,9 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
                     let announce_at = data["announce_at"] as? String ?? ""
                     
                     if !self.cd.running {
-                        cd.initializeTimer("2019-04-03 18:00:00")
+                        
+                        cd.initializeTimer(announce_at)
                         cd.startTimer(pUpdateActionHandler: { (timeString) in
-                            
                             
                             item.dayLabel.text = timeString.days
                             item.hoursLabel.text = timeString.hours
@@ -223,20 +231,45 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
                             item.secLabel.text = timeString.seconds
                             
                         }) {
-                            print("\(self.completedDateString)")
+                            self.luckyPrivacyCell?.liveEnable()
+                          
                             item.dayLabel.text = "0"
                             item.hoursLabel.text = "0"
                             item.minLabel.text = "0"
                             item.secLabel.text = "0"
                             
                         }
+                        
+                        self.luckyPrivacyCell?.liveDisable()
                     }
                     
                 }
+            }
+            
+        }else if indexPath.section == 4 {
+            if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "LuckyDrawPrivacyCell", for: indexPath) as? LuckyDrawPrivacyCell {
+                cell = item
                 
-              
+                if let data = self.schedule {
+                    let points_required = data["points_required"] as? NSNumber ?? 0
+                    let mlink = data["link"] as? String ?? ""
+                    
+                    item.required.text = "\(points_required.intValue)"
+                    
+                    var txtString = NSLocalizedString("string-date-format-required-point", comment: "")
+                    txtString = txtString.replacingOccurrences(of: "{point}", with: "\(points_required.intValue)", options: .literal, range: nil)
+                    
+                    item.requireTxtLabel.text  = txtString
+                    
+                    item.showWinnerCallback = {
+                        self.showWinnerLuckyDraw(true)
+                    }
+                    item.showLinkFacebookCallback = {
+                        print("link = \(mlink)")
+                    }
+                }
                 
-                
+                self.luckyPrivacyCell = item
                 
             }
         } else {
@@ -289,9 +322,13 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
             let width = collectionView.frame.width - 40
             let height = CGFloat(100)
             return CGSize(width: width, height: height)
+        }else if indexPath.section == 4 {
+            let width = collectionView.frame.width
+            let height = CGFloat(600)
+            return CGSize(width: width, height: height)
         } else{
             let width = collectionView.frame.width
-            return CGSize(width: width, height: CGFloat(60))
+            return CGSize(width: width, height: CGFloat(0))
         }
     }
 

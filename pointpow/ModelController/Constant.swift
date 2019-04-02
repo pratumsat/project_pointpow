@@ -355,6 +355,7 @@ extension UIView {
         self.layer.shadowRadius = 3
         self.layer.masksToBounds = false
     }
+  
     func updateLayerCornerRadiusProperties(){
         self.layer.cornerRadius = 10
         self.layer.borderWidth = 1
@@ -716,6 +717,7 @@ struct Constant {
         static let goldhistory = "\(HOST)\(POINTPOW_VERSION1)gold-saving/get/history"
         static let cancelTransectionGold = "\(HOST)\(POINTPOW_VERSION1)gold-saving/withdraw/cancel"
         static let privilegeLuckydraw = "\(HOST)\(POINTPOW_VERSION1)gold-saving/luckydraw/privilege"
+        static let winnerLuckydraw = "\(HOST)\(POINTPOW_VERSION1)gold-saving/luckydraw/winner"
         
         
         static let banners = "\(HOST)\(POINTPOW_VERSION1)banners"

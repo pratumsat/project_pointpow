@@ -128,13 +128,13 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
                     let status = data["goldsaving_member"]?["status"] as? String ?? ""
                     let picture_data = data["picture_data"] as? String ?? ""
                     
-                    head.profileImageView.sd_setImage(with: URL(string: picture_data)!, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER))
-                    
+                    if let url = URL(string: picture_data) {
+                        head.profileImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER))
+                    }
                     
                     head.nameLabel.text = "\(first_name) \(last_name)"
                     head.goldIdLabel.text = "\(account_id)"
 
-                    
                     switch status {
                     case "waiting", "edit":
                         head.statusLabel.text = NSLocalizedString("string-dailog-gold-profile-status-waitting", comment: "")

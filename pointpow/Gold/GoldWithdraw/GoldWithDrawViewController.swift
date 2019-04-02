@@ -15,7 +15,7 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
     var premiumLabel:UILabel?
     var amountTextField:UITextField? {
         didSet{
-            self.amountTextField?.delegate = self
+            self.amountTextField?.delegate = self    
         }
     }
     //var goldBalanceLabel:UILabel?
@@ -35,6 +35,7 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
     var userData:AnyObject?
     var goldPrice:AnyObject?
     
+     var savingUpdateButton:UIButton?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -219,6 +220,7 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
             let textRange = Range(range, in: textField.text!)!
             let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
             
+            
             if updatedText.isEmpty {
                 self.withDrawCell?.amountTextField.text = "0"
                 self.withDrawCell?.premiumLabel.text = "0"
@@ -226,12 +228,18 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
                 self.withDrawCell?.withDrawData = (premium : "\(0)" , goldReceive: [])
                 //self.goldSpendCallback?(0 , self.selectedUnits)
                 
+                self.disableButton()
                 return true
             }
             
             if  isValidNumber(updatedText) {
-                
                 let amount = Double(updatedText)!
+                
+                if amount >= 1 {
+                    self.enableButton()
+                }else{
+                    self.disableButton()
+                }
                 
                 if self.withDrawCell?.selectedUnits == 0 {
                     if amount > 200 {
@@ -252,6 +260,7 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
                     }
                     
                 }
+               
             }else{
                 return false
             }
@@ -378,6 +387,9 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "NextButtonCell", for: indexPath) as? NextButtonCell {
                 cell = item
                 
+                self.savingUpdateButton  = item.nextButton
+                self.disableButton()
+                
                 item.nextCallback = {
                     let amount = self.amountTextField?.text ?? ""
                     let goldbalance = self.sumWeight
@@ -478,4 +490,27 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
         
     }
     
+    func enableButton(){
+        if let count = self.savingUpdateButton?.layer.sublayers?.count {
+            if count > 1 {
+                self.savingUpdateButton?.layer.sublayers?.removeFirst()
+            }
+        }
+        
+        
+        self.savingUpdateButton?.borderClearProperties(borderWidth: 1)
+        self.savingUpdateButton?.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
+        self.savingUpdateButton?.isEnabled = true
+    }
+    func disableButton(){
+        if let count = self.savingUpdateButton?.layer.sublayers?.count {
+            if count > 1 {
+                self.savingUpdateButton?.layer.sublayers?.removeFirst()
+            }
+        }
+        self.savingUpdateButton?.borderClearProperties(borderWidth: 1)
+        self.savingUpdateButton?.applyGradient(colours: [UIColor.lightGray, UIColor.lightGray])
+        
+        self.savingUpdateButton?.isEnabled = false
+    }
 }

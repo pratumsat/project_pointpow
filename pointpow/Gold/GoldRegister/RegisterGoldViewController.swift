@@ -189,7 +189,7 @@ class RegisterGoldViewController: BaseViewController {
             dateFormatter.locale = Locale(identifier: "th")
             dateFormatter.dateFormat = "dd-MM-yyyy"
             
-            if let d1 = dateFormatter.date(from: convertDateRegister(birthdate, format: "dd-MM-yyyy")) {
+            if let d1 = dateFormatter.date(from: convertDateRegister(birthdate, format: "yyyy-MM-dd")) {
                 let formatter = DateFormatter()
                 formatter.locale = Locale(identifier: "th")
                 formatter.dateFormat = "dd MMMM yyyy"

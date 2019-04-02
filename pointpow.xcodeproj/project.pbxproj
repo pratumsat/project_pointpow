@@ -99,6 +99,17 @@
 		C1249EC1223E18B600F56FA0 /* WithDrawSummaryThaiPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1249EC0223E18B600F56FA0 /* WithDrawSummaryThaiPostViewController.swift */; };
 		C1249EC4223E6FC600F56FA0 /* WithDrawThaiPostSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1249EC2223E6FC600F56FA0 /* WithDrawThaiPostSummaryCell.swift */; };
 		C1249EC5223E6FC600F56FA0 /* WithDrawThaiPostSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1249EC3223E6FC600F56FA0 /* WithDrawThaiPostSummaryCell.xib */; };
+		C127323422530CA100A9EE74 /* GoldEditPenddingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C127323322530CA100A9EE74 /* GoldEditPenddingViewController.swift */; };
+		C127323622530CF700A9EE74 /* GoldEditPenddingNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = C127323522530CF700A9EE74 /* GoldEditPenddingNav.swift */; };
+		C1273239225314DB00A9EE74 /* LuckyDrawPrivacyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1273237225314DB00A9EE74 /* LuckyDrawPrivacyCell.swift */; };
+		C127323A225314DB00A9EE74 /* LuckyDrawPrivacyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1273238225314DB00A9EE74 /* LuckyDrawPrivacyCell.xib */; };
+		C127323C2253671C00A9EE74 /* WinnerLuckyDrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C127323B2253671C00A9EE74 /* WinnerLuckyDrawViewController.swift */; };
+		C127323F225380D500A9EE74 /* PickerLuckyDrawCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C127323D225380D500A9EE74 /* PickerLuckyDrawCell.swift */; };
+		C1273240225380D500A9EE74 /* PickerLuckyDrawCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C127323E225380D500A9EE74 /* PickerLuckyDrawCell.xib */; };
+		C127324322538E9A00A9EE74 /* WinnerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C127324122538E9A00A9EE74 /* WinnerCollectionViewCell.swift */; };
+		C127324422538E9A00A9EE74 /* WinnerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C127324222538E9A00A9EE74 /* WinnerCollectionViewCell.xib */; };
+		C12732472253905100A9EE74 /* HeadWinnerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12732452253905100A9EE74 /* HeadWinnerCollectionViewCell.swift */; };
+		C12732482253905100A9EE74 /* HeadWinnerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12732462253905100A9EE74 /* HeadWinnerCollectionViewCell.xib */; };
 		C13D99822199755B001A4794 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D99812199755B001A4794 /* ProfileViewController.swift */; };
 		C13D998521997938001A4794 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D998321997938001A4794 /* LogoutCell.swift */; };
 		C13D998621997938001A4794 /* LogoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13D998421997938001A4794 /* LogoutCell.xib */; };
@@ -334,6 +345,17 @@
 		C1249EC0223E18B600F56FA0 /* WithDrawSummaryThaiPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawSummaryThaiPostViewController.swift; sourceTree = "<group>"; };
 		C1249EC2223E6FC600F56FA0 /* WithDrawThaiPostSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawThaiPostSummaryCell.swift; sourceTree = "<group>"; };
 		C1249EC3223E6FC600F56FA0 /* WithDrawThaiPostSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithDrawThaiPostSummaryCell.xib; sourceTree = "<group>"; };
+		C127323322530CA100A9EE74 /* GoldEditPenddingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldEditPenddingViewController.swift; sourceTree = "<group>"; };
+		C127323522530CF700A9EE74 /* GoldEditPenddingNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldEditPenddingNav.swift; sourceTree = "<group>"; };
+		C1273237225314DB00A9EE74 /* LuckyDrawPrivacyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyDrawPrivacyCell.swift; sourceTree = "<group>"; };
+		C1273238225314DB00A9EE74 /* LuckyDrawPrivacyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LuckyDrawPrivacyCell.xib; sourceTree = "<group>"; };
+		C127323B2253671C00A9EE74 /* WinnerLuckyDrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnerLuckyDrawViewController.swift; sourceTree = "<group>"; };
+		C127323D225380D500A9EE74 /* PickerLuckyDrawCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerLuckyDrawCell.swift; sourceTree = "<group>"; };
+		C127323E225380D500A9EE74 /* PickerLuckyDrawCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerLuckyDrawCell.xib; sourceTree = "<group>"; };
+		C127324122538E9A00A9EE74 /* WinnerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnerCollectionViewCell.swift; sourceTree = "<group>"; };
+		C127324222538E9A00A9EE74 /* WinnerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WinnerCollectionViewCell.xib; sourceTree = "<group>"; };
+		C12732452253905100A9EE74 /* HeadWinnerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadWinnerCollectionViewCell.swift; sourceTree = "<group>"; };
+		C12732462253905100A9EE74 /* HeadWinnerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeadWinnerCollectionViewCell.xib; sourceTree = "<group>"; };
 		C13D99812199755B001A4794 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C13D998321997938001A4794 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		C13D998421997938001A4794 /* LogoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutCell.xib; sourceTree = "<group>"; };
@@ -520,6 +542,8 @@
 				C103113B2212C932004396E0 /* GoldPendingVerifyViewController.swift */,
 				C103113E2212CBAC004396E0 /* GoldPenddingVerifyNav.swift */,
 				C1249EB12223F71C00F56FA0 /* PrivacyPolicyViewController.swift */,
+				C127323322530CA100A9EE74 /* GoldEditPenddingViewController.swift */,
+				C127323522530CF700A9EE74 /* GoldEditPenddingNav.swift */,
 			);
 			path = GoldRegister;
 			sourceTree = "<group>";
@@ -1022,6 +1046,7 @@
 			isa = PBXGroup;
 			children = (
 				C1B32E362251EAE9006AD7F2 /* LuckyDrawViewController.swift */,
+				C127323B2253671C00A9EE74 /* WinnerLuckyDrawViewController.swift */,
 			);
 			path = LuckyDraw;
 			sourceTree = "<group>";
@@ -1035,6 +1060,14 @@
 				C1B32E4122524367006AD7F2 /* ScheduleCell.xib */,
 				C1B32E442252674D006AD7F2 /* CountDownCell.swift */,
 				C1B32E452252674D006AD7F2 /* CountDownCell.xib */,
+				C1273237225314DB00A9EE74 /* LuckyDrawPrivacyCell.swift */,
+				C1273238225314DB00A9EE74 /* LuckyDrawPrivacyCell.xib */,
+				C127323D225380D500A9EE74 /* PickerLuckyDrawCell.swift */,
+				C127323E225380D500A9EE74 /* PickerLuckyDrawCell.xib */,
+				C127324122538E9A00A9EE74 /* WinnerCollectionViewCell.swift */,
+				C127324222538E9A00A9EE74 /* WinnerCollectionViewCell.xib */,
+				C12732452253905100A9EE74 /* HeadWinnerCollectionViewCell.swift */,
+				C12732462253905100A9EE74 /* HeadWinnerCollectionViewCell.xib */,
 			);
 			path = LuckyCell;
 			sourceTree = "<group>";
@@ -1243,6 +1276,7 @@
 				C1249EBB2224F04D00F56FA0 /* map.jpg in Resources */,
 				C181F064220C00B8003F7C70 /* SaveButtonProfileCell.xib in Resources */,
 				C197FEE72207EA18002F24E8 /* NotoSansThai-SemiBold.ttf in Resources */,
+				C12732482253905100A9EE74 /* HeadWinnerCollectionViewCell.xib in Resources */,
 				C1817D97219BFCDE009507DB /* FriendCollectionCell.xib in Resources */,
 				C1DA27C822421C3B000C0715 /* WithDrawResultThaiPostSuccessCell.xib in Resources */,
 				C11BFCA8221BE72000F066DE /* WithDrawChooseShippingCell.xib in Resources */,
@@ -1262,6 +1296,7 @@
 				C11BDFBD21A2BB3C00443D2D /* ItemConfirmSummaryCell.xib in Resources */,
 				C1AD50812187F45900F74415 /* Assets.xcassets in Resources */,
 				C1247C5222191898005D6F7A /* WithdrawCell.xib in Resources */,
+				C127324422538E9A00A9EE74 /* WinnerCollectionViewCell.xib in Resources */,
 				C197FEE52207E4F9002F24E8 /* NotoSansThai-Regular.ttf in Resources */,
 				C10CA1BA2193E1D100316DF3 /* PromotionCampainCell.xib in Resources */,
 				C107CF3B222269E000C50B8C /* AddressViewCell.xib in Resources */,
@@ -1287,6 +1322,7 @@
 				C1DEBE992188337500CBB95F /* ThaiSansNeue-Regular.ttf in Resources */,
 				C120D7D321955BC900F9EEBB /* ItemProfileCell.xib in Resources */,
 				C11BFCAC221BEEF200F066DE /* WidthDrawShippingPointPowCell.xib in Resources */,
+				C127323A225314DB00A9EE74 /* LuckyDrawPrivacyCell.xib in Resources */,
 				C1F7610B2216E357000A2CA9 /* WithDrawMyGoldCell.xib in Resources */,
 				C107CF2A221FC92200C50B8C /* WidthDrawResultPointPow2Cell.xib in Resources */,
 				C13D998B21997AD6001A4794 /* HeadCell.xib in Resources */,
@@ -1294,6 +1330,7 @@
 				C1AD507F2187F45600F74415 /* Main.storyboard in Resources */,
 				C1B32E472252674D006AD7F2 /* CountDownCell.xib in Resources */,
 				C13D998621997938001A4794 /* LogoutCell.xib in Resources */,
+				C1273240225380D500A9EE74 /* PickerLuckyDrawCell.xib in Resources */,
 				C197FF3322083A6F002F24E8 /* GoldPriceCell.xib in Resources */,
 				C1F760FA2216998C000A2CA9 /* SavingSummaryCell.xib in Resources */,
 				C197FF3F22093D9B002F24E8 /* RegisterGoldCell.xib in Resources */,
@@ -1442,6 +1479,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C127324322538E9A00A9EE74 /* WinnerCollectionViewCell.swift in Sources */,
 				C1EB9434224E8AFF004D73A7 /* PAPasscodeViewController.h in Sources */,
 				C1AD50B72188000B00F74415 /* Constant.swift in Sources */,
 				C107CF36222263AD00C50B8C /* PopupShippingMyAddressViewController.swift in Sources */,
@@ -1451,6 +1489,7 @@
 				C103113F2212CBAC004396E0 /* GoldPenddingVerifyNav.swift in Sources */,
 				C18A1CE422113712002CAF4C /* RegisterGoldstep3ViewController.swift in Sources */,
 				C10CA1A021914B8900316DF3 /* PointManageViewController.swift in Sources */,
+				C1273239225314DB00A9EE74 /* LuckyDrawPrivacyCell.swift in Sources */,
 				C181F063220C00B8003F7C70 /* SaveButtonProfileCell.swift in Sources */,
 				C1817D8E219BD32B009507DB /* FriendTransferViewController.swift in Sources */,
 				C1B32E462252674D006AD7F2 /* CountDownCell.swift in Sources */,
@@ -1459,6 +1498,7 @@
 				C1B32E3E22521881006AD7F2 /* PrivilegeCell.swift in Sources */,
 				C1E7B17F21AFCDCB00DA8B82 /* PointFreindSummaryNav.swift in Sources */,
 				C1B542DB219A85590040DDE6 /* ChangePasswordViewController.swift in Sources */,
+				C127323422530CA100A9EE74 /* GoldEditPenddingViewController.swift in Sources */,
 				C1AD507C2187F45600F74415 /* ViewController.swift in Sources */,
 				C169FFC421C4D66600F9D354 /* FavoriteViewController.swift in Sources */,
 				C1249EC4223E6FC600F56FA0 /* WithDrawThaiPostSummaryCell.swift in Sources */,
@@ -1468,6 +1508,7 @@
 				C10D94B82209719F0083FA47 /* NavProfile.swift in Sources */,
 				C197FEDA21DC5616002F24E8 /* PopUpRegisterSuccessViewController.swift in Sources */,
 				C121B32D224C802D00D69B56 /* PopUpInfoLaserIdViewController.swift in Sources */,
+				C127323F225380D500A9EE74 /* PickerLuckyDrawCell.swift in Sources */,
 				C142741721A539F5003CC246 /* PointFriendTransferReviewViewController.swift in Sources */,
 				C10CA19721914AD500316DF3 /* PromotionViewController.swift in Sources */,
 				C1892E05221CFD3300F5412F /* WithDrawResultViewController.swift in Sources */,
@@ -1484,6 +1525,7 @@
 				C10CA1A42191755C00316DF3 /* PersonalPopupViewController.swift in Sources */,
 				C197FF2622081C72002F24E8 /* GoldPageViewController.swift in Sources */,
 				C1892E0D221E900900F5412F /* TransactionGoldCell.swift in Sources */,
+				C127323C2253671C00A9EE74 /* WinnerLuckyDrawViewController.swift in Sources */,
 				C1249EB42224E2CD00F56FA0 /* PopUpMapOfficeViewController.swift in Sources */,
 				C1817D99219C041F009507DB /* PointTransferViewController.swift in Sources */,
 				C11BFCA4221BC5D900F066DE /* GoldWithDrawChooseShippingViewController.swift in Sources */,
@@ -1538,6 +1580,7 @@
 				C13D99822199755B001A4794 /* ProfileViewController.swift in Sources */,
 				C1817DA8219E7BFE009507DB /* CheckBox.swift in Sources */,
 				C169FF9C21C25C8500F9D354 /* MobileViewController.swift in Sources */,
+				C12732472253905100A9EE74 /* HeadWinnerCollectionViewCell.swift in Sources */,
 				C120D7D221955BC900F9EEBB /* ItemProfileCell.swift in Sources */,
 				C1249EBF2238B25D00F56FA0 /* PopUpInfoThaiPostViewController.swift in Sources */,
 				C1249EC1223E18B600F56FA0 /* WithDrawSummaryThaiPostViewController.swift in Sources */,
@@ -1546,6 +1589,7 @@
 				C107CF3322218FE400C50B8C /* WithDrawOfficeSummaryCell.swift in Sources */,
 				C107CF29221FC92200C50B8C /* WidthDrawResultPointPow2Cell.swift in Sources */,
 				C115FA5721A2B3EB008E7844 /* PointFriendSummaryViewController.swift in Sources */,
+				C127323622530CF700A9EE74 /* GoldEditPenddingNav.swift in Sources */,
 				C11BDFBC21A2BB3C00443D2D /* ItemConfirmSummaryCell.swift in Sources */,
 				C1249EB72224EE0900F56FA0 /* WebViewMapViewController.swift in Sources */,
 				C1DEBE92218829D900CBB95F /* Scanner2ViewController.swift in Sources */,

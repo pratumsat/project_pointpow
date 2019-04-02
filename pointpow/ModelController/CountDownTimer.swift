@@ -21,7 +21,7 @@ func defaultCompletionActionHandler()->(){
 public class DateCountDownTimer{
     
     var running = false
-    var countdownTimer: Timer!
+    var countdownTimer: Timer?
     var totalTime = 60
     var dateString = "March 4, 2018 13:20:10" as String
     var UpdateActionHandler:((days:String, hours:String, minutes:String, seconds:String))->() = defaultUpdateActionHandler
@@ -45,18 +45,20 @@ public class DateCountDownTimer{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.locale = Locale(identifier: "en")
-        let targedDate = dateFormatter.date(from: dateString)!
+        if let targedDate = dateFormatter.date(from: dateString) {
+            // Calculating the difference of dates for timer
+            let calendar = NSCalendar.current
+            let unitFlags: Set<Calendar.Component> = [.minute, .hour, .day, .weekOfYear, .month, .year, .second]
+            let component = calendar.dateComponents(unitFlags, from: currentDate, to: targedDate)
+            let days = component.day!
+            let hours = component.hour!
+            let minutes = component.minute!
+            let seconds = component.second!
+            totalTime = hours * 60 * 60 + minutes * 60 + seconds
+            totalTime = days * 60 * 60 * 24 + totalTime
+        }
         
-        // Calculating the difference of dates for timer
-        let calendar = NSCalendar.current
-        let unitFlags: Set<Calendar.Component> = [.minute, .hour, .day, .weekOfYear, .month, .year, .second]
-        let component = calendar.dateComponents(unitFlags, from: currentDate, to: targedDate)
-        let days = component.day!
-        let hours = component.hour!
-        let minutes = component.minute!
-        let seconds = component.second!
-        totalTime = hours * 60 * 60 + minutes * 60 + seconds
-        totalTime = days * 60 * 60 * 24 + totalTime
+        
     }
     
     func numberOfDaysInMonth(month:Int) -> Int{
@@ -72,8 +74,8 @@ public class DateCountDownTimer{
     
     public func startTimer(pUpdateActionHandler:@escaping ((days:String, hours:String, minutes:String, seconds:String))->(),pCompletionActionHandler:@escaping ()->()) {
        
-        countdownTimer = Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
-        RunLoop.main.add(countdownTimer, forMode: RunLoop.Mode.common)
+        countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+        RunLoop.main.add(countdownTimer!, forMode: RunLoop.Mode.common)
         
         self.CompletionActionHandler = pCompletionActionHandler
         self.UpdateActionHandler = pUpdateActionHandler
@@ -94,7 +96,7 @@ public class DateCountDownTimer{
     func endTimer() {
         self.running = false
         self.CompletionActionHandler()
-        countdownTimer.invalidate()
+        countdownTimer?.invalidate()
     }
     
     func timeFormatted(_ totalSeconds: Int) -> (days:String, hours:String, minutes:String, seconds:String) {

@@ -430,6 +430,14 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
+    
+    
+    func showWinnerLuckyDraw(_ animated:Bool){
+        if let vc:WinnerLuckyDrawViewController = self.storyboard?.instantiateViewController(withIdentifier: "WinnerLuckyDrawViewController") as? WinnerLuckyDrawViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
    
     func showRegisterGoldStep2Saving(_ animated:Bool, tupleModel:(image : UIImage?, firstname : String,lastname: String , email: String,mobile: String,idcard: String , birthdate:String, laserId:String)?){
         if let vc:RegisterGoldstep2ViewController = self.storyboard?.instantiateViewController(withIdentifier: "RegisterGoldstep2ViewController") as? RegisterGoldstep2ViewController {
@@ -687,6 +695,32 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             return customPresenter
         }()
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "GoldPenddingVerifyNav") as? GoldPenddingVerifyNav {
+            
+            vc.dismissCallback = {
+                dismissCallback?()
+            }
+            customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)
+        }
+        
+    }
+    func showEditPenddingVerifyModalView(_ animated:Bool , dismissCallback:(()->Void)?){
+        
+        let presenter: Presentr = {
+            let w = self.view.frame.width
+            let h = self.view.frame.height
+            
+            let width = ModalSize.custom(size: Float(w))
+            let height = ModalSize.custom(size: Float(h))
+            
+            let center = ModalCenterPosition.center
+            let customType = PresentationType.custom(width: width, height: height, center: center)
+            
+            let customPresenter = Presentr(presentationType: customType)
+            customPresenter.dismissOnTap = false
+            
+            return customPresenter
+        }()
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "GoldEditPenddingNav") as? GoldEditPenddingNav {
             
             vc.dismissCallback = {
                 dismissCallback?()
@@ -1043,7 +1077,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }
     }
     
-    func showShippingAddressPopup(_ animated:Bool, selectCallback:((_ selectedAddress:AnyObject)->Void)? = nil ){
+    func showShippingAddressPopup(_ animated:Bool, selectCallback:((_ selectedAddress:AnyObject)->Void)? = nil, reloadDataCallback:(()->Void)? = nil ){
         let presenter: Presentr = {
             
             let w = self.view.frame.width * 0.9
@@ -1066,6 +1100,9 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "PopupShippingMyAddressViewController") as? PopupShippingMyAddressViewController{
             
+            vc.reloadDataCallback = {
+                reloadDataCallback?()
+            }
             
             vc.selectedAddressCallback = { (selectedAddress) in
                 selectCallback?(selectedAddress)

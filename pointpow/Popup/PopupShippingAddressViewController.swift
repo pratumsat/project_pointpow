@@ -80,7 +80,6 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
                 self.subDistrictPickerView!.dataSource = self
                 
                 
-                
                 self.subDistrictTextField.isEnabled = true
                 self.subDistrictTextField.tintColor = UIColor.clear
                 self.subDistrictTextField.isUserInteractionEnabled = true
@@ -525,8 +524,14 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
             self.dismiss(animated: true) {
                 self.windowSubview?.removeFromSuperview()
                 self.windowSubview = nil
-                //self.nextStep?(result as AnyObject)
-                self.nextStep?("showViewAddress" as AnyObject)
+                
+                if self.fromPopup {
+                    self.nextStep?("showViewAddress" as AnyObject)
+                }else{
+                    self.nextStep?(result as AnyObject)
+                }
+                
+                
             }
         }, error: { (error) in
             if let mError = error as? [String:AnyObject]{

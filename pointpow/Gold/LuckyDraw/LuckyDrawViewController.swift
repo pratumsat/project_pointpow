@@ -266,6 +266,13 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
                     }
                     item.showLinkFacebookCallback = {
                         print("link = \(mlink)")
+                        guard let url = URL(string: mlink) else { return }
+                        if #available(iOS 10.0, *) {
+                            UIApplication.shared.open(url)
+                        } else {
+                            UIApplication.shared.openURL(url)
+                        }
+                        
                     }
                 }
                 

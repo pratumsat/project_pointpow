@@ -46,7 +46,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="fei-7t-oC7" firstAttribute="centerX" secondItem="EBu-Ud-10d" secondAttribute="centerX" multiplier="0.3" id="67w-rc-ljw"/>
                             <constraint firstItem="E2w-EP-lOB" firstAttribute="centerY" secondItem="EBu-Ud-10d" secondAttribute="centerY" id="Ghi-if-oeZ"/>
@@ -66,6 +66,11 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="529" height="40"/>
+            <connections>
+                <outlet property="fnameLabel" destination="fei-7t-oC7" id="ba2-kD-4fc"/>
+                <outlet property="lnameLabel" destination="7tb-3F-3ZJ" id="vv1-vN-T55"/>
+                <outlet property="telLabel" destination="E2w-EP-lOB" id="q6H-z7-Q6f"/>
+            </connections>
             <point key="canvasLocation" x="116.66666666666667" y="36.830357142857139"/>
         </collectionViewCell>
     </objects>

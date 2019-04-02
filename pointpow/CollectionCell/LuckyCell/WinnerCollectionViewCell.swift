@@ -10,6 +10,9 @@ import UIKit
 
 class WinnerCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var telLabel: UILabel!
+    @IBOutlet weak var lnameLabel: UILabel!
+    @IBOutlet weak var fnameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

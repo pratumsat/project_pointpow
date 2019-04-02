@@ -35,12 +35,14 @@ class LuckyDrawPrivacyCell: UICollectionViewCell {
         liveImageView.tintColor = UIColor.white
         liveView.borderClearProperties()
         liveView.backgroundColor = UIColor.lightGray
+        liveView.isUserInteractionEnabled = false
     }
     func liveEnable(){
         liveImageView.image = liveImageView.image!.withRenderingMode(.alwaysTemplate)
         liveImageView.tintColor = UIColor.white
         liveView.borderRedColorProperties()
         liveView.backgroundColor = Constant.Colors.PRIMARY_COLOR
+        liveView.isUserInteractionEnabled = true
     }
     
      var expandablePrivacyCallback:((_ height:CGFloat)->Void)?

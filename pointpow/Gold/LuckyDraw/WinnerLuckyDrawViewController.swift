@@ -14,9 +14,10 @@ class WinnerLuckyDrawViewController: BaseViewController , UICollectionViewDelega
     
     var winnerModel:[[String:AnyObject]]?{
         didSet{
-            //few
+            self.winnerLuckyDrawCollectionView.reloadData()
         }
     }
+    var selectId:Int?
     var selectBanner:[[String:AnyObject]]?
     var selectLinkFacebook:String?
     var selectWinner:[[String:AnyObject]]?
@@ -63,16 +64,19 @@ class WinnerLuckyDrawViewController: BaseViewController , UICollectionViewDelega
                 self.winnerLuckyModel = data
             
                 if data.count > 0 {
-                    let winner = data.first?["winners"] as? [[String:AnyObject]] ?? [[:]]
                     let schedule = data.first?["schedule"] as? [String:AnyObject] ?? [:]
-                    
+                    let winners = data.first?["winners"] as? [[String:AnyObject]] ?? [[:]]
                     let link = schedule["link"] as? String ?? ""
+                    let id = data.first?["id"] as? NSNumber ?? 0
                     
+                    self.selectId = id.intValue
                     
+                    self.winnerModel = winners
                     self.selectLinkFacebook = link
                     
                     self.selectBanner = []
                     self.selectBanner?.append(schedule)
+                    
                     
                 }
                 
@@ -108,6 +112,9 @@ class WinnerLuckyDrawViewController: BaseViewController , UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if section == 2 {
+            return self.winnerModel?.count ?? 0
+        }
         return 1
     }
     
@@ -125,14 +132,13 @@ class WinnerLuckyDrawViewController: BaseViewController , UICollectionViewDelega
         }else if indexPath.section == 1 {
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "PickerLuckyDrawCell", for: indexPath) as? PickerLuckyDrawCell {
                 
-                item.memberCallback = {(winner) in
-                    for item in winner {
-                        print(item)
-                        
-                        
-                    }
+                item.memberCallback = {(id, winner , banners) in
+                    self.selectId = id
+                    self.selectBanner = banners
                     self.winnerModel = winner
+                   
                 }
+                item.selectedId = self.selectId
                 item.schedule = self.winnerLuckyModel
                 
             
@@ -141,8 +147,28 @@ class WinnerLuckyDrawViewController: BaseViewController , UICollectionViewDelega
             }
         }else if indexPath.section == 2 {
             if let item  = collectionView.dequeueReusableCell(withReuseIdentifier: "WinnerCollectionViewCell", for: indexPath) as? WinnerCollectionViewCell {
-                
+            
                 cell =  item
+                
+                if let itemData = self.winnerModel?[indexPath.row] {
+                    let  firstname = itemData["firstname"] as? String ?? ""
+                    let  lastname = itemData["lastname"] as? String ?? ""
+                    let  mobile = itemData["mobile"] as? String ?? ""
+                    
+                    item.fnameLabel.text = firstname
+                    item.lnameLabel.text = lastname
+                    item.telLabel.text = mobile
+                }
+                
+                
+                if indexPath.row%2 == 0 {
+                    item.backgroundColor = UIColor.white
+                }else{
+                    item.backgroundColor = UIColor.groupTableViewBackground
+                }
+                
+                
+                
             }
             
         }else if indexPath.section == 3 {
@@ -198,11 +224,12 @@ class WinnerLuckyDrawViewController: BaseViewController , UICollectionViewDelega
             let height = CGFloat(120)
             return CGSize(width: width, height: height)
         }else if indexPath.section == 2 {
+        
             let width = collectionView.frame.width
-            let height = CGFloat(100)
+            let height = CGFloat(40)
             return CGSize(width: width, height: height)
         }else if indexPath.section == 3 {
-            let width = collectionView.frame.width - 40
+            let width = collectionView.frame.width 
             let height = CGFloat(100)
             return CGSize(width: width, height: height)
         }else{

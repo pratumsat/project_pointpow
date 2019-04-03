@@ -60,6 +60,16 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
     @objc func messageAlert(notification: NSNotification){
         if let userInfo = notification.userInfo as? [String:AnyObject]{
             let profile = userInfo["profile"] as? String  ?? ""
+            let showTransaction = userInfo["showTransaction"] as? String ?? ""
+            
+            if !showTransaction.isEmpty {
+                if let vc:WithDrawResultNav  = self.storyboard?.instantiateViewController(withIdentifier: "WithDrawResultNav") as? WithDrawResultNav {
+                    vc.hideFinishButton = true
+                    vc.transactionId = showTransaction
+                    
+                    self.present(vc, animated: true, completion: nil)
+                }
+            }
             if !profile.isEmpty{
                 self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
             }

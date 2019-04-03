@@ -31,7 +31,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="จำนวนสิทธิ์ลุ้นรวงวัล" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDu-Jg-qXb">
-                        <rect key="frame" x="140.5" y="62.5" width="139" height="29"/>
+                        <rect key="frame" x="140.5" y="52.5" width="139" height="29"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="22"/>
                         <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -41,7 +41,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="rDu-Jg-qXb" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Y3h-5M-KhD"/>
-                <constraint firstItem="rDu-Jg-qXb" firstAttribute="top" secondItem="AcG-hR-hME" secondAttribute="bottom" constant="10" id="bKR-we-veW"/>
+                <constraint firstItem="rDu-Jg-qXb" firstAttribute="top" secondItem="AcG-hR-hME" secondAttribute="bottom" id="bKR-we-veW"/>
                 <constraint firstItem="AcG-hR-hME" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="kWh-va-mbm"/>
                 <constraint firstItem="AcG-hR-hME" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="sax-3U-0j6"/>
             </constraints>

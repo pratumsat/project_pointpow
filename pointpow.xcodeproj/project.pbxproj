@@ -110,6 +110,8 @@
 		C127324422538E9A00A9EE74 /* WinnerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C127324222538E9A00A9EE74 /* WinnerCollectionViewCell.xib */; };
 		C12732472253905100A9EE74 /* HeadWinnerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12732452253905100A9EE74 /* HeadWinnerCollectionViewCell.swift */; };
 		C12732482253905100A9EE74 /* HeadWinnerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12732462253905100A9EE74 /* HeadWinnerCollectionViewCell.xib */; };
+		C127324B2254584400A9EE74 /* WinnerHistoryLinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12732492254584400A9EE74 /* WinnerHistoryLinkCell.swift */; };
+		C127324C2254584400A9EE74 /* WinnerHistoryLinkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C127324A2254584400A9EE74 /* WinnerHistoryLinkCell.xib */; };
 		C13D99822199755B001A4794 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D99812199755B001A4794 /* ProfileViewController.swift */; };
 		C13D998521997938001A4794 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D998321997938001A4794 /* LogoutCell.swift */; };
 		C13D998621997938001A4794 /* LogoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13D998421997938001A4794 /* LogoutCell.xib */; };
@@ -356,6 +358,8 @@
 		C127324222538E9A00A9EE74 /* WinnerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WinnerCollectionViewCell.xib; sourceTree = "<group>"; };
 		C12732452253905100A9EE74 /* HeadWinnerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadWinnerCollectionViewCell.swift; sourceTree = "<group>"; };
 		C12732462253905100A9EE74 /* HeadWinnerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeadWinnerCollectionViewCell.xib; sourceTree = "<group>"; };
+		C12732492254584400A9EE74 /* WinnerHistoryLinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnerHistoryLinkCell.swift; sourceTree = "<group>"; };
+		C127324A2254584400A9EE74 /* WinnerHistoryLinkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WinnerHistoryLinkCell.xib; sourceTree = "<group>"; };
 		C13D99812199755B001A4794 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C13D998321997938001A4794 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		C13D998421997938001A4794 /* LogoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutCell.xib; sourceTree = "<group>"; };
@@ -1068,6 +1072,8 @@
 				C127324222538E9A00A9EE74 /* WinnerCollectionViewCell.xib */,
 				C12732452253905100A9EE74 /* HeadWinnerCollectionViewCell.swift */,
 				C12732462253905100A9EE74 /* HeadWinnerCollectionViewCell.xib */,
+				C12732492254584400A9EE74 /* WinnerHistoryLinkCell.swift */,
+				C127324A2254584400A9EE74 /* WinnerHistoryLinkCell.xib */,
 			);
 			path = LuckyCell;
 			sourceTree = "<group>";
@@ -1281,6 +1287,7 @@
 				C1DA27C822421C3B000C0715 /* WithDrawResultThaiPostSuccessCell.xib in Resources */,
 				C11BFCA8221BE72000F066DE /* WithDrawChooseShippingCell.xib in Resources */,
 				C1892E09221D0ED400F5412F /* WithDrawResultPointPowCell.xib in Resources */,
+				C127324C2254584400A9EE74 /* WinnerHistoryLinkCell.xib in Resources */,
 				C1AD50842187F45900F74415 /* LaunchScreen.storyboard in Resources */,
 				C10CA1B22193E01200316DF3 /* ItemServiceCell.xib in Resources */,
 				C106BEB3220BED4E00E2331E /* BrowseImageCell.xib in Resources */,
@@ -1564,6 +1571,7 @@
 				C1AD50B52187FF4000F74415 /* Loading.swift in Sources */,
 				C1817D9D219C07DF009507DB /* ItemBankCell.swift in Sources */,
 				C181F066220C0392003F7C70 /* GoldHistoryViewController.swift in Sources */,
+				C127324B2254584400A9EE74 /* WinnerHistoryLinkCell.swift in Sources */,
 				C10CA1B12193E01200316DF3 /* ItemServiceCell.swift in Sources */,
 				C1AD50AF2187FE9000F74415 /* PopUpViewController.swift in Sources */,
 				C11A93C0218C2AD900627B44 /* ForgotPasswordViewController.swift in Sources */,

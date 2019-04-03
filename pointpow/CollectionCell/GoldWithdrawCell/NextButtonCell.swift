@@ -15,6 +15,8 @@ class NextButtonCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.disableButton()
+        
     }
     override var bounds : CGRect {
         didSet {
@@ -31,7 +33,17 @@ class NextButtonCell: UICollectionViewCell {
     @IBAction func nextTapped(_ sender: Any) {
         self.nextCallback?()
     }
-    
+    func disableButton(){
+        if let count = self.nextButton?.layer.sublayers?.count {
+            if count > 1 {
+                self.nextButton?.layer.sublayers?.removeFirst()
+            }
+        }
+        self.nextButton?.borderClearProperties(borderWidth: 1)
+        self.nextButton?.applyGradient(colours: [UIColor.lightGray, UIColor.lightGray])
+        
+        self.nextButton?.isEnabled = false
+    }
     func enableButton(){
         if let count = self.nextButton?.layer.sublayers?.count {
             if count > 1 {

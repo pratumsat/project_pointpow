@@ -10,6 +10,7 @@ import UIKit
 
 class PrivilegeCell: UICollectionViewCell {
 
+    @IBOutlet weak var privilegeLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

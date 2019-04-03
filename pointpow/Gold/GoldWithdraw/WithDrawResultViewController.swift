@@ -84,6 +84,12 @@ class WithDrawResultViewController: BaseViewController  , UICollectionViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let navHideFinishButton = (self.navigationController as? WithDrawResultNav)?.hideFinishButton {
+            self.hideFinishButton = navHideFinishButton
+        }
+        
+        
         //load background image from api
         self.bgSlip = UIImage(named: "bg-slip")
         
@@ -94,18 +100,17 @@ class WithDrawResultViewController: BaseViewController  , UICollectionViewDelega
         self.view.addSubview(snapView!)
         self.view.sendSubviewToBack(snapView!)
         
-        
         self.title = NSLocalizedString("string-title-gold-page-withdraw", comment: "")
         
-        if !hideFinishButton {
-           
+       
+        if let transactionId = (self.navigationController as? WithDrawResultNav)?.transactionId {
+            self.transactionId = transactionId
             let finishButton = UIBarButtonItem(title: NSLocalizedString("string-title-finish-transfer", comment: ""), style: .plain, target: self, action: #selector(dismissTapped))
             finishButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white,
                                                  NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.ITEM_TITLE )!]
                 , for: .normal)
             
             self.navigationItem.rightBarButtonItem = finishButton
-            self.transactionId = (self.navigationController as? WithDrawResultNav)?.transactionId
         }
         
         self.setUp()

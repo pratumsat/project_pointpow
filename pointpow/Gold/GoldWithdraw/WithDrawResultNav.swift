@@ -13,6 +13,8 @@ class WithDrawResultNav: BaseNavigationViewController {
     var callbackFinish:(()->Void)?
     
     var transactionId:String?
+
+    var hideFinishButton:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()

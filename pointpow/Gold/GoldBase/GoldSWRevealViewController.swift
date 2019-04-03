@@ -29,6 +29,7 @@ class GoldSWRevealViewController: SWRevealViewController {
             let message = userInfo["message"] as? String  ?? ""
             let profile = userInfo["profile"] as? String  ?? ""
             
+            
             if !message.isEmpty {
                 let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
                 let ok = UIAlertAction(title: NSLocalizedString("string-button-ok", comment: ""), style: .cancel, handler: nil)

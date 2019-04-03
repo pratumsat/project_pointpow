@@ -18,6 +18,8 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
             self.amountTextField?.delegate = self    
         }
     }
+    var itemReload = false
+    
     //var goldBalanceLabel:UILabel?
     var gold_balance:NSNumber = NSNumber(value: 0.0)
     var point_Balance:NSNumber = NSNumber(value: 0.0)
@@ -35,7 +37,7 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
     var userData:AnyObject?
     var goldPrice:AnyObject?
     
-     var savingUpdateButton:UIButton?
+    var savingUpdateButton:UIButton?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +81,16 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
     @objc func messageAlert(notification: NSNotification){
         if let userInfo = notification.userInfo as? [String:AnyObject]{
             let profile = userInfo["profile"] as? String  ?? ""
+            let showTransaction = userInfo["showTransaction"] as? String ?? ""
+            
+            if !showTransaction.isEmpty {
+                if let vc:WithDrawResultNav  = self.storyboard?.instantiateViewController(withIdentifier: "WithDrawResultNav") as? WithDrawResultNav {
+                    vc.hideFinishButton = true
+                    vc.transactionId = showTransaction
+                    
+                    self.present(vc, animated: true, completion: nil)
+                }
+            }
             if !profile.isEmpty{
                 self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
             }
@@ -330,6 +342,7 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
                 item.drawCountCallback = { (count) in
                     self.drawCount = count
                 
+                    self.itemReload = true
                     self.withDrawCollectionView.performBatchUpdates({
                         collectionView.reloadInputViews()
                     }, completion: { (true) in
@@ -387,8 +400,8 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "NextButtonCell", for: indexPath) as? NextButtonCell {
                 cell = item
                 
+                
                 self.savingUpdateButton  = item.nextButton
-                self.disableButton()
                 
                 item.nextCallback = {
                     let amount = self.amountTextField?.text ?? ""

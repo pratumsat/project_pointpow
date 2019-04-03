@@ -35,7 +35,6 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
         
         self.navigationItem.rightBarButtonItem?.action = #selector(SWRevealViewController.rightRevealToggle(_:))
         
-        
         self.title  = NSLocalizedString("string-title-gold-page-luckydraw", comment: "")
         
         self.handlerEnterSuccess  = {(pin) in
@@ -140,6 +139,16 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
     @objc func messageAlert(notification: NSNotification){
         if let userInfo = notification.userInfo as? [String:AnyObject]{
             let profile = userInfo["profile"] as? String  ?? ""
+            let showTransaction = userInfo["showTransaction"] as? String ?? ""
+            
+            if !showTransaction.isEmpty {
+                if let vc:WithDrawResultNav  = self.storyboard?.instantiateViewController(withIdentifier: "WithDrawResultNav") as? WithDrawResultNav {
+                    vc.hideFinishButton = true
+                    vc.transactionId = showTransaction
+                    
+                    self.present(vc, animated: true, completion: nil)
+                }
+            }
             if !profile.isEmpty{
                 self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
             }
@@ -151,7 +160,6 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
     @IBAction func bViewTapped(_ sender: Any) {
         if let saving = self.storyboard?.instantiateViewController(withIdentifier: "NavGoldPage") as? NavGoldPage {
             self.revealViewController()?.pushFrontViewController(saving, animated: true)
-            
         }
     }
     
@@ -210,6 +218,8 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
         }else if indexPath.section == 2 {
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "PrivilegeCell", for: indexPath) as? PrivilegeCell {
                 cell = item
+                
+                item.privilegeLabel.text =  "\(self.privilege)"
                 
             }
         }else if indexPath.section == 3 {

@@ -47,6 +47,7 @@ class WinnerLuckyDrawViewController: BaseViewController , UICollectionViewDelega
         self.registerNib(self.winnerLuckyDrawCollectionView, "PickerLuckyDrawCell")
         self.registerHeaderNib(self.winnerLuckyDrawCollectionView, "HeadWinnerCollectionViewCell")
         self.registerNib(self.winnerLuckyDrawCollectionView, "WinnerCollectionViewCell")
+        self.registerNib(self.winnerLuckyDrawCollectionView, "WinnerHistoryLinkCell")
         
     }
     func getWinnerLuckyDraw(_ avaliable:(()->Void)?  = nil){
@@ -132,10 +133,11 @@ class WinnerLuckyDrawViewController: BaseViewController , UICollectionViewDelega
         }else if indexPath.section == 1 {
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "PickerLuckyDrawCell", for: indexPath) as? PickerLuckyDrawCell {
                 
-                item.memberCallback = {(id, winner , banners) in
+                item.memberCallback = {(id, link, winner , banners) in
                     self.selectId = id
                     self.selectBanner = banners
                     self.winnerModel = winner
+                    self.selectLinkFacebook = link
                    
                 }
                 item.selectedId = self.selectId
@@ -167,11 +169,31 @@ class WinnerLuckyDrawViewController: BaseViewController , UICollectionViewDelega
                     item.backgroundColor = UIColor.groupTableViewBackground
                 }
                 
-                
-                
             }
             
         }else if indexPath.section == 3 {
+            if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "WinnerHistoryLinkCell", for: indexPath) as? WinnerHistoryLinkCell {
+                
+                item.showSavingHomeCallback = {
+                    if let saving = self.storyboard?.instantiateViewController(withIdentifier: "NavGoldPage") as? NavGoldPage {
+                        self.revealViewController()?.pushFrontViewController(saving, animated: true)
+                        
+                    }
+                }
+                item.showLinkFacebookCallback = {
+                    if let mlink  =  self.selectLinkFacebook {
+                        guard let url = URL(string: mlink) else { return }
+                        if #available(iOS 10.0, *) {
+                            UIApplication.shared.open(url)
+                        } else {
+                            UIApplication.shared.openURL(url)
+                        }
+                    }
+                   
+                }
+                
+                cell = item
+            }
             
             
         }else {
@@ -230,7 +252,7 @@ class WinnerLuckyDrawViewController: BaseViewController , UICollectionViewDelega
             return CGSize(width: width, height: height)
         }else if indexPath.section == 3 {
             let width = collectionView.frame.width 
-            let height = CGFloat(100)
+            let height = CGFloat(190)
             return CGSize(width: width, height: height)
         }else{
             let width = collectionView.frame.width

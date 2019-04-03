@@ -26,7 +26,7 @@ class PickerLuckyDrawCell: UICollectionViewCell, UIPickerViewDelegate , UIPicker
     
     @IBOutlet weak var scheduleTextField: UITextField!
     
-    var memberCallback:((_ id:Int ,_ member:[[String:AnyObject]], _ banners:[[String:AnyObject]])->Void)?
+    var memberCallback:((_ id:Int, _ linkLive:String ,_ member:[[String:AnyObject]], _ banners:[[String:AnyObject]])->Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -49,10 +49,11 @@ class PickerLuckyDrawCell: UICollectionViewCell, UIPickerViewDelegate , UIPicker
             let winner = data["winners"] as? [[String:AnyObject]] ?? [[:]]
             let schedule = data["schedule"] as? [String:AnyObject] ?? [:]
             let id = data["id"] as? NSNumber ?? 0
+            let link = schedule["link"] as? String ?? ""
             
             var banners:[[String:AnyObject]] = []
             banners.append(schedule)
-            self.memberCallback?(id.intValue, winner, banners)
+            self.memberCallback?(id.intValue, link,  winner, banners)
         }
     }
     func setUpPicker(){
@@ -156,10 +157,11 @@ class PickerLuckyDrawCell: UICollectionViewCell, UIPickerViewDelegate , UIPicker
                         
                         let schedule = data["schedule"] as? [String:AnyObject] ?? [:]
                         let id = data["id"] as? NSNumber ?? 0
+                        let link = schedule["link"] as? String ?? ""
                         
                         var banners:[[String:AnyObject]] = []
                         banners.append(schedule)
-                        self.memberCallback?(id.intValue, winner, banners)
+                        self.memberCallback?(id.intValue, link,  winner, banners)
                         
                     }
                 }

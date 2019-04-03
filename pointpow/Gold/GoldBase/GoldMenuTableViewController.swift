@@ -18,6 +18,7 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
     var timer:Timer?
     
     var statusMemberGold = ""
+    var inprogress_withdraw:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,8 +49,9 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
             if let data  = self.userData as? [String:AnyObject] {
                 let registerGold = data["gold_saving_acc"] as? NSNumber ?? 0
                 let status = data["goldsaving_member"]?["status"] as? String ?? ""
+                let inprogress_withdraw = data["goldsaving_member"]?["inprogress_withdraw"] as? String ?? ""
                 
-                
+                self.inprogress_withdraw = inprogress_withdraw
                 self.statusMemberGold = status
             }
             
@@ -72,9 +74,6 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
     }
    
     func setUp(){
-        self.handlerEnterSuccess = { (pin) in
-            
-        }
         
         self.backgroundImage?.image = nil
         
@@ -263,6 +262,11 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
             }
             if indexPath.row == 1 {
                 // "Withdraw"
+                if self.inprogress_withdraw != nil {
+                    let userInfo = ["showTransaction": inprogress_withdraw]
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "messageAlert"), object: nil, userInfo: userInfo as [String:AnyObject])
+                    return
+                }
                 if let withdraw = self.storyboard?.instantiateViewController(withIdentifier: "NavWithdraw") as? NavWithdraw {
                     
                     self.revealViewController()?.pushFrontViewController(withdraw, animated: true)

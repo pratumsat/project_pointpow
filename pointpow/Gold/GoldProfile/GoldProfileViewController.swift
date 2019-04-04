@@ -13,7 +13,7 @@ import Alamofire
 class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var infoImageView: UIImageView!
-    @IBOutlet weak var calendarImageView: UIImageView!
+   
     @IBOutlet weak var birthdateTextField: UITextField!
     @IBOutlet weak var laserIdTextField: UITextField!
     
@@ -234,8 +234,7 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
                 self.backgroundIdCardPhotoImageView.isUserInteractionEnabled = false
                 self.iconCameraImageView.image = UIImage(named: "ic-camera")
                 
-                self.calendarImageView.image = self.calendarImageView.image!.withRenderingMode(.alwaysTemplate)
-                self.calendarImageView.tintColor = UIColor.lightGray
+               
                 
                 break
             case "approve" :
@@ -246,7 +245,7 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
                 self.firstNameTextField.isEnabled = true
                 self.lastNameTextField.isEnabled = true
                 self.idcardTextField.isEnabled = false
-                self.laserIdTextField.isEnabled = false
+                self.laserIdTextField.isEnabled = true
                 self.birthdateTextField.isEnabled = false
                 
                 self.emailTextField.textColor = UIColor.lightGray
@@ -254,15 +253,14 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
                 self.firstNameTextField.textColor = UIColor.black
                 self.lastNameTextField.textColor = UIColor.black
                 self.idcardTextField.textColor = UIColor.lightGray
-                self.laserIdTextField.textColor = UIColor.lightGray
+                self.laserIdTextField.textColor = UIColor.black
                 self.birthdateTextField.textColor = UIColor.lightGray
                 
                 self.uploadView.isUserInteractionEnabled = true
                 self.uploadView.borderRedColorProperties(borderWidth: 1.0)
                 self.iconCameraImageView.image = UIImage(named: "ic-camera-1")
                 
-                self.calendarImageView.image = self.calendarImageView.image!.withRenderingMode(.alwaysTemplate)
-                self.calendarImageView.tintColor = UIColor.lightGray
+             
                 
                 break
             case "fail" :
@@ -287,9 +285,7 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
                 self.uploadView.isUserInteractionEnabled = true
                 self.uploadView.borderRedColorProperties(borderWidth: 1.0)
                 self.iconCameraImageView.image = UIImage(named: "ic-camera-1")
-                
-                self.calendarImageView.image = self.calendarImageView.image!.withRenderingMode(.alwaysTemplate)
-                self.calendarImageView.tintColor = UIColor.black
+              
                 
                 break
             default:
@@ -364,12 +360,12 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
         self.clearImageView5?.addGestureRecognizer(tap5)
         self.clearImageView5?.isHidden = true
         
-        self.clearImageView6 = self.laserIdTextField.addRightButton(UIImage(named: "ic-x")!)
-        let tap6 = UITapGestureRecognizer(target: self, action: #selector(clearLaserIdTapped))
-        self.clearImageView6?.isUserInteractionEnabled = true
-        self.clearImageView6?.addGestureRecognizer(tap6)
-        self.clearImageView6?.isHidden = true
-        
+//        self.clearImageView6 = self.laserIdTextField.addRightButton(UIImage(named: "ic-x")!)
+//        let tap6 = UITapGestureRecognizer(target: self, action: #selector(clearLaserIdTapped))
+//        self.clearImageView6?.isUserInteractionEnabled = true
+//        self.clearImageView6?.addGestureRecognizer(tap6)
+//        self.clearImageView6?.isHidden = true
+//        
         self.hiddenIdCardPhotoImageView.contentMode = .scaleAspectFit
         
         self.backgroundIdCardPhotoImageView.layer.cornerRadius = 10

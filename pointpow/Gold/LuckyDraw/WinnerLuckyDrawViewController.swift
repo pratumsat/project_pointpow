@@ -220,7 +220,7 @@ class WinnerLuckyDrawViewController: BaseViewController , UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if section == 2 {
-            return CGSize(width: collectionView.frame.width, height: CGFloat(40))
+            return CGSize(width: collectionView.frame.width, height: CGFloat(30))
         }
         return CGSize.zero
         
@@ -243,12 +243,12 @@ class WinnerLuckyDrawViewController: BaseViewController , UICollectionViewDelega
             return CGSize(width: width, height: height)
         }else if indexPath.section == 1 {
             let width = collectionView.frame.width
-            let height = CGFloat(120)
+            let height = CGFloat(112)
             return CGSize(width: width, height: height)
         }else if indexPath.section == 2 {
         
             let width = collectionView.frame.width
-            let height = CGFloat(40)
+            let height = CGFloat(30)
             return CGSize(width: width, height: height)
         }else if indexPath.section == 3 {
             let width = collectionView.frame.width 

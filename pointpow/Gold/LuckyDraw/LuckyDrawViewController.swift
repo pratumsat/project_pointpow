@@ -219,7 +219,10 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "PrivilegeCell", for: indexPath) as? PrivilegeCell {
                 cell = item
                 
-                item.privilegeLabel.text =  "\(self.privilege)"
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                
+                item.privilegeLabel.text =  numberFormatter.string(from: NSNumber(value: self.privilege))
                 
             }
         }else if indexPath.section == 3 {
@@ -251,10 +254,7 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
                             item.secLabel.text = "0"
                             
                         }
-                        
-                        
                     }
-                    
                 }
             }
             

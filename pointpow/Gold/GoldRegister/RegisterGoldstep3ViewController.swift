@@ -24,7 +24,7 @@ class RegisterGoldstep3ViewController: BaseViewController {
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
     
-    @IBOutlet weak var calendarImageView: UIImageView!
+    
     
     @IBOutlet weak var birthdateTextField: UITextField!
     @IBOutlet weak var laserIdTextField: UITextField!
@@ -65,8 +65,6 @@ class RegisterGoldstep3ViewController: BaseViewController {
         self.laserIdTextField.isEnabled = false
         self.birthdateTextField.isEnabled = false
         
-        self.calendarImageView.image = self.calendarImageView.image!.withRenderingMode(.alwaysTemplate)
-        self.calendarImageView.tintColor = UIColor.lightGray
         
         
         self.firstNameTextField.setLeftPaddingPoints(40)

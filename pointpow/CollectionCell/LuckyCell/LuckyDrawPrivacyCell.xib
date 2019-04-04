@@ -25,11 +25,11 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YgV-Pn-f5y">
-                        <rect key="frame" x="23" y="212" width="261" height="196"/>
+                        <rect key="frame" x="23" y="192" width="261" height="196"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cXl-jX-QvT">
-                        <rect key="frame" x="23" y="422" width="261" height="146"/>
+                        <rect key="frame" x="23" y="402" width="261" height="146"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NMu-1e-Zh7">
@@ -89,7 +89,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rNK-Cp-oQS">
-                        <rect key="frame" x="20" y="70" width="267" height="120"/>
+                        <rect key="frame" x="20" y="70" width="267" height="100"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ivz-Rt-hGN">
                                 <rect key="frame" x="41.5" y="0.0" width="184" height="58"/>
@@ -148,12 +148,12 @@
                             <constraint firstItem="Ie6-Sc-1c2" firstAttribute="top" secondItem="Ivz-Rt-hGN" secondAttribute="bottom" constant="10" id="5s5-ZF-azr"/>
                             <constraint firstItem="Ivz-Rt-hGN" firstAttribute="top" secondItem="rNK-Cp-oQS" secondAttribute="top" id="6IQ-c7-rnt"/>
                             <constraint firstItem="Ivz-Rt-hGN" firstAttribute="centerX" secondItem="rNK-Cp-oQS" secondAttribute="centerX" id="Nzk-BX-szL"/>
-                            <constraint firstAttribute="height" constant="120" id="TZu-qi-xka"/>
+                            <constraint firstAttribute="height" constant="100" id="TZu-qi-xka"/>
                             <constraint firstItem="Ie6-Sc-1c2" firstAttribute="centerX" secondItem="rNK-Cp-oQS" secondAttribute="centerX" id="m6y-4f-1Be"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lD4-vz-exk">
-                        <rect key="frame" x="20" y="210" width="267" height="200"/>
+                        <rect key="frame" x="20" y="190" width="267" height="200"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5i9-C8-7qL">
                                 <rect key="frame" x="0.0" y="0.0" width="5" height="200"/>
@@ -207,7 +207,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mNa-9E-CHA">
-                        <rect key="frame" x="20" y="420" width="267" height="150"/>
+                        <rect key="frame" x="20" y="400" width="267" height="150"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B3M-2A-SyI">
                                 <rect key="frame" x="0.0" y="0.0" width="5" height="150"/>

@@ -19,6 +19,7 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
         }
     }
     var itemReload = false
+    var pointBalance:Double = 0.0
     
     //var goldBalanceLabel:UILabel?
     var gold_balance:NSNumber = NSNumber(value: 0.0)
@@ -27,7 +28,7 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
     
     var drawCount = 0
     var amountToUnit:(amount:Int, unit:Int , price:Double , goldPrice:Int)?
-    var withdrawData:(premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double, goldPrice:Int))?
+    var withdrawData:(pointBalance:Double, premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double, goldPrice:Int))?
     
     var sumWeight:Double = 0.00
     
@@ -409,11 +410,12 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
                     let premium = Int(self.premiumLabel?.text ?? "") ?? 0
                    
                     
-                        if amount.isEmpty {
+                    if amount.isEmpty {
                             
-                          self.showMessagePrompt(NSLocalizedString("string-dailog-saving-gold-amount-empty", comment: ""))
+                        self.showMessagePrompt(NSLocalizedString("string-dailog-saving-gold-amount-empty", comment: ""))
                         
-                        }else{
+                        
+                    }else{
                          
                             if goldbalance < 0 {
                                 self.showMessagePrompt(NSLocalizedString("string-dailog-saving-gold-pointspend-not-enogh", comment: ""))
@@ -421,7 +423,12 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
                             
                                 if let amountunit = self.amountToUnit {
                                 
-                                    self.withdrawData = (premium: premium, goldbalance: goldbalance,  goldAmountToUnit: amountunit)
+                                    if let data  = self.userData as? [String:AnyObject] {
+                                        let point_balance = data["goldsaving_member"]?["point_balance"] as? NSNumber ?? 0
+                                        
+                                        self.pointBalance = point_balance.doubleValue - amountunit.price
+                                        self.withdrawData = (pointBalance: self.pointBalance, premium: premium, goldbalance: goldbalance,  goldAmountToUnit: amountunit)
+                                    }
                                     
                                    
                                     self.chooseShippingPage(true ,withdrawData:  self.withdrawData!)
@@ -478,7 +485,7 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
         if indexPath.section == 0 {
             
             let width = collectionView.frame.width - 40
-            let height = CGFloat(215)
+            let height = CGFloat(180)
             return CGSize(width: width, height: height)
         } else if indexPath.section == 1 {
            

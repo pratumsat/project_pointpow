@@ -11,7 +11,6 @@ import UIKit
 
 class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var homeCollectionView: UICollectionView!
-    
     @IBOutlet weak var menuBarButton: UIBarButtonItem!
     let arrayItem_registered_waiting = ["banner","goldprice", "logo"]
     let arrayItem_registered_waiting_edit = ["banner","goldprice", "goldbalance", "logo"]
@@ -60,6 +59,7 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
     var pointpowTextField:UITextField? {
         didSet{
             self.pointpowTextField?.delegate = self
+            
         }
     }
     var savingUpdateButton:UIButton?
@@ -126,7 +126,6 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
             if !profile.isEmpty{
                 self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
             }
-            
         }
         
     }
@@ -365,10 +364,16 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
                 promo.itemBanner = self.banner
                 promo.autoSlideImage = true
                 promo.luckyDrawCallback = {
-                    if let withdraw = self.storyboard?.instantiateViewController(withIdentifier: "NavLuckyDraw") as? NavLuckyDraw {
+                    if self.isRegistered {
+                        if self.statusMemberGold == "approve" {
+                            if let withdraw = self.storyboard?.instantiateViewController(withIdentifier: "NavLuckyDraw") as? NavLuckyDraw {
+                                
+                                self.revealViewController()?.pushFrontViewController(withdraw, animated: true)
+                            }
+                        }
                         
-                        self.revealViewController()?.pushFrontViewController(withdraw, animated: true)
                     }
+                   
                 }
                 
                 cell = promo
@@ -567,7 +572,7 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
         }
         if menu == "goldprice" {
             let width = collectionView.frame.width - 40
-            let height = CGFloat(130) //width/375*260
+            let height = CGFloat(150) //width/375*260
             return CGSize(width: width, height: height)
         }
         if menu == "goldbalance"{

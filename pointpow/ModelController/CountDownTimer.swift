@@ -109,7 +109,7 @@ public class DateCountDownTimer{
         
         //return String(format: "%dD %02dH %02dM %02dS", days, hours, minutes, seconds)
         
-        return (days:String(format: "%d",  days),
+        return (days:String(format: "%02d",  days),
                 hours:String(format: "%02d", hours),
                 minutes:String(format: "%02d",  minutes),
                 seconds:String(format: "%02d",  seconds))

@@ -917,7 +917,17 @@ func isValidNumber(_ str:String) -> Bool{
     }
 }
 
-
+func isValidLaserIdCard(_ idCard:String) -> Bool{
+    if idCard.count != 12  { return false }
+    
+    let fString = idCard.substring(start: 0, end: 2)
+    let sString = idCard.substring(start: 2, end: idCard.count)
+    
+    guard !isValidNumber(fString) else {return false}
+    guard isValidString(fString) else { return false }
+    guard isValidNumber(sString) else {return false}
+    return true
+}
 func isValidIDCard(_ idCard:String) -> Bool{
     if idCard.count != 13  { return false }
     var sum:Int = 0

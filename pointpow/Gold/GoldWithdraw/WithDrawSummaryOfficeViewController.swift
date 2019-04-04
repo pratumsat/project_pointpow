@@ -11,11 +11,13 @@ import Alamofire
 
 class WithDrawSummaryOfficeViewController: BaseViewController, UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    var withdrawData:(premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double, goldPrice:Int))?{
+    var withdrawData:(pointBalance:Double, premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double, goldPrice:Int))?{
         didSet{
             print(withdrawData!)
+            
         }
     }
+    
     
     @IBOutlet weak var summaryCollectionView: UICollectionView!
     override func viewDidLoad() {
@@ -122,10 +124,11 @@ class WithDrawSummaryOfficeViewController: BaseViewController, UICollectionViewD
 
                 numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal
-                numberFormatter.minimumFractionDigits = 4
+                numberFormatter.minimumFractionDigits = 2
                 
-                item.goldBalanceLabel.text = numberFormatter.string(from: NSNumber(value: self.withdrawData!.goldbalance))
-                
+//                item.goldBalanceLabel.text = numberFormatter.string(from: NSNumber(value: self.withdrawData!.goldbalance))
+                let pb = self.withdrawData!.pointBalance
+                item.goldBalanceLabel.text = numberFormatter.string(from: NSNumber(value: pb))
                 cell = item
             }
             

@@ -59,6 +59,7 @@ class WithDrawThaiPostSummaryCell: UICollectionViewCell {
         self.expandImageView.image = active
         
         
+        
         if let array = arrayBox {
             for item in array {
                 addView(item)

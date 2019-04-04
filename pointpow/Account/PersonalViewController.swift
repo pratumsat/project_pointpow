@@ -53,6 +53,7 @@ class PersonalViewController: BaseViewController  {
         pickerView = UIDatePicker()
         pickerView!.datePickerMode = .date
         pickerView!.calendar = Calendar(identifier: .buddhist)
+        pickerView!.maximumDate = Date()
 
         let toolbar = UIToolbar();
         toolbar.sizeToFit()

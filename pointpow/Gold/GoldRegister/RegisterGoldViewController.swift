@@ -202,6 +202,8 @@ class RegisterGoldViewController: BaseViewController {
         pickerView = UIDatePicker()
         pickerView!.datePickerMode = .date
         pickerView!.calendar = Calendar(identifier: .buddhist)
+        pickerView!.maximumDate = Date()
+        
         
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
@@ -626,15 +628,15 @@ class RegisterGoldViewController: BaseViewController {
         let nID = id.replace(target: "-", withString: "")
         
         print("laserId = \(nID)")
-    /*    if !isValidIDCard(nID) {
-            errorMessage = NSLocalizedString("string-error-invalid-personal-id", comment: "")
+        if !isValidLaserIdCard(nID) {
+            errorMessage = NSLocalizedString("string-error-invalid-laser-id", comment: "")
             errorMobile += 1
         }
-        if nID.count < 13 {
-            errorMessage = NSLocalizedString("string-error-invalid-personal-id1", comment: "")
+        if nID.count < 12 {
+            errorMessage = NSLocalizedString("string-error-invalid-laser-id1", comment: "")
             errorMobile += 1
         }
-    */
+    
         if errorMobile > 0 {
             self.showMessagePrompt(errorMessage)
             self.errorLaserIdLabel =  self.laserIdTextField.addBottomLabelErrorMessage(errorMessage , marginLeft: 15)

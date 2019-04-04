@@ -262,11 +262,12 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
             }
             if indexPath.row == 1 {
                 // "Withdraw"
-                if self.inprogress_withdraw != nil {
-                    let userInfo = ["showTransaction": inprogress_withdraw]
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "messageAlert"), object: nil, userInfo: userInfo as [String:AnyObject])
-                    return
-                }
+                //if self.inprogress_withdraw != nil  && !(self.inprogress_withdraw!.isEmpty) {
+                //
+                //    let userInfo = ["showTransaction": inprogress_withdraw]
+                //    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "messageAlert"), object: nil, userInfo: userInfo as [String:AnyObject])
+                //    return
+                //}
                 if let withdraw = self.storyboard?.instantiateViewController(withIdentifier: "NavWithdraw") as? NavWithdraw {
                     
                     self.revealViewController()?.pushFrontViewController(withdraw, animated: true)

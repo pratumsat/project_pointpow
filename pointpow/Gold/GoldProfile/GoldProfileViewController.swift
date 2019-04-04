@@ -193,7 +193,6 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
                 self.currentBirthdate = self.birthdateTextField.text!
             }
             
-           
             
             let newText = String((pid).filter({ $0 != "-" }).prefix(13))
             self.idcardTextField.text = newText.chunkFormattedPersonalID()
@@ -395,6 +394,7 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
         pickerView = UIDatePicker()
         pickerView!.datePickerMode = .date
         pickerView!.calendar = Calendar(identifier: .buddhist)
+        pickerView!.maximumDate = Date()
         
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
@@ -1117,15 +1117,15 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
         let nID = id.replace(target: "-", withString: "")
         
         print("laserId = \(nID)")
-        /*    if !isValidIDCard(nID) {
-         errorMessage = NSLocalizedString("string-error-invalid-personal-id", comment: "")
-         errorMobile += 1
-         }
-         if nID.count < 13 {
-         errorMessage = NSLocalizedString("string-error-invalid-personal-id1", comment: "")
-         errorMobile += 1
-         }
-         */
+        if !isValidLaserIdCard(nID) {
+            errorMessage = NSLocalizedString("string-error-invalid-laser-id", comment: "")
+            errorMobile += 1
+        }
+        if nID.count < 12 {
+            errorMessage = NSLocalizedString("string-error-invalid-laser-id1", comment: "")
+            errorMobile += 1
+        }
+        
         if errorMobile > 0 {
             self.showMessagePrompt(errorMessage)
             self.errorLaserIdLabel =  self.laserIdTextField.addBottomLabelErrorMessage(errorMessage , marginLeft: 15)

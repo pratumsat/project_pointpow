@@ -143,6 +143,12 @@
                             <constraint firstAttribute="height" constant="1" id="KzD-41-0JY"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="*ราคาอ้างอิงจากสมาคมค้าทองคำ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8B-1v-1jG">
+                        <rect key="frame" x="10" y="115" width="134" height="17"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="13"/>
+                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -151,6 +157,7 @@
                 <constraint firstItem="Dpc-41-CsE" firstAttribute="top" secondItem="YbZ-eN-8E0" secondAttribute="bottom" id="6yv-Ql-oNv"/>
                 <constraint firstItem="Dpc-41-CsE" firstAttribute="centerX" secondItem="YbZ-eN-8E0" secondAttribute="centerX" id="AgJ-Yh-dJv"/>
                 <constraint firstItem="djn-Dx-rUT" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="FXt-wn-s2B"/>
+                <constraint firstItem="f8B-1v-1jG" firstAttribute="top" secondItem="b6O-H3-BbB" secondAttribute="bottom" id="Glv-6m-vUO"/>
                 <constraint firstItem="eB5-Db-8cT" firstAttribute="centerY" secondItem="4sE-si-l7Q" secondAttribute="centerY" id="H6P-fn-e3y"/>
                 <constraint firstAttribute="trailing" secondItem="pxK-7i-ClL" secondAttribute="trailing" constant="10" id="HZD-Ey-e9v"/>
                 <constraint firstItem="4sE-si-l7Q" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="Mie-pJ-MR8"/>
@@ -159,6 +166,7 @@
                 <constraint firstItem="pxK-7i-ClL" firstAttribute="top" secondItem="eB5-Db-8cT" secondAttribute="bottom" id="XgN-9z-V57"/>
                 <constraint firstAttribute="trailing" secondItem="67R-df-43P" secondAttribute="trailing" constant="2" id="aZe-C1-gE6"/>
                 <constraint firstAttribute="trailing" secondItem="djn-Dx-rUT" secondAttribute="trailing" id="bpE-cN-wfr"/>
+                <constraint firstItem="f8B-1v-1jG" firstAttribute="leading" secondItem="4sE-si-l7Q" secondAttribute="leading" id="dsi-N4-HDp"/>
                 <constraint firstItem="67R-df-43P" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="2" id="fRG-ef-9Wf"/>
                 <constraint firstItem="djn-Dx-rUT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="fpy-CJ-kbw"/>
                 <constraint firstItem="pxK-7i-ClL" firstAttribute="leading" secondItem="Dpc-41-CsE" secondAttribute="trailing" constant="20" id="hqk-2G-VqF"/>

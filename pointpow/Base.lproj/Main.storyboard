@@ -3920,7 +3920,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xUK-Wj-ib8">
-                                        <rect key="frame" x="20" y="613" width="374" height="40"/>
+                                        <rect key="frame" x="20" y="604" width="374" height="40"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="J7n-rx-mKt"/>
@@ -4053,23 +4053,23 @@
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SuI-UA-P58">
-                                        <rect key="frame" x="72.333333333333343" y="753" width="124.33333333333334" height="41.333333333333371"/>
+                                        <rect key="frame" x="72.333333333333343" y="744" width="124.33333333333334" height="41.333333333333371"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="SuI-UA-P58" secondAttribute="height" multiplier="3:1" id="qF4-1j-swa"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i1x-SB-KHo">
-                                        <rect key="frame" x="217.33333333333334" y="753" width="124.33333333333334" height="41.333333333333371"/>
+                                        <rect key="frame" x="217.33333333333334" y="744" width="124.33333333333334" height="41.333333333333371"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NLS-Im-LOb">
-                                        <rect key="frame" x="20" y="492" width="374" height="1"/>
+                                        <rect key="frame" x="20" y="483" width="374" height="1"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="nvV-rx-raH"/>
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="หมายเลขหลังบัตรประชาชน 12 หลัก" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eBB-Ga-aBp">
-                                        <rect key="frame" x="20" y="453" width="374" height="40"/>
+                                        <rect key="frame" x="20" y="444" width="374" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="FA0-ss-Cpl"/>
                                         </constraints>
@@ -4078,20 +4078,20 @@
                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-laser-id" translatesAutoresizingMaskIntoConstraints="NO" id="cf6-gw-duc">
-                                        <rect key="frame" x="30" y="463" width="20" height="20"/>
+                                        <rect key="frame" x="30" y="454" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="Xcw-mX-lGA"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ux9-iU-fhQ">
-                                        <rect key="frame" x="20" y="572" width="374" height="1"/>
+                                        <rect key="frame" x="20" y="563" width="374" height="1"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="XdM-Qb-1Iy"/>
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="วันเกิด" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i5q-Mr-Pr0">
-                                        <rect key="frame" x="20" y="533" width="374" height="40"/>
+                                        <rect key="frame" x="20" y="524" width="374" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="W1S-SU-lFL"/>
                                         </constraints>
@@ -4100,19 +4100,19 @@
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-birthday-2" translatesAutoresizingMaskIntoConstraints="NO" id="QYF-Jd-QEU">
-                                        <rect key="frame" x="30" y="543" width="20" height="20"/>
+                                        <rect key="frame" x="30" y="534" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="dHB-xk-OTK"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-birthday" translatesAutoresizingMaskIntoConstraints="NO" id="4Fj-qE-p8n">
-                                        <rect key="frame" x="360" y="541" width="24" height="24"/>
+                                        <rect key="frame" x="360" y="532" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="4Fj-qE-p8n" secondAttribute="height" multiplier="1:1" id="Hic-DS-RuM"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-info" translatesAutoresizingMaskIntoConstraints="NO" id="8Wo-G7-Lts">
-                                        <rect key="frame" x="360" y="461" width="24" height="24"/>
+                                        <rect key="frame" x="360" y="452" width="24" height="24"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -4147,7 +4147,7 @@
                                     <constraint firstAttribute="trailing" secondItem="xUK-Wj-ib8" secondAttribute="trailing" constant="20" id="IQB-bw-nus"/>
                                     <constraint firstItem="LbO-Jd-a0r" firstAttribute="centerY" secondItem="shn-R7-f86" secondAttribute="centerY" id="Ia8-gc-04v"/>
                                     <constraint firstItem="cf6-gw-duc" firstAttribute="leading" secondItem="eBB-Ga-aBp" secondAttribute="leading" constant="10" id="Ik0-yL-ybh"/>
-                                    <constraint firstItem="eBB-Ga-aBp" firstAttribute="top" secondItem="AaQ-ZK-9qO" secondAttribute="bottom" constant="49" id="J20-K4-9je"/>
+                                    <constraint firstItem="eBB-Ga-aBp" firstAttribute="top" secondItem="AaQ-ZK-9qO" secondAttribute="bottom" constant="40" id="J20-K4-9je"/>
                                     <constraint firstItem="4Fj-qE-p8n" firstAttribute="centerY" secondItem="i5q-Mr-Pr0" secondAttribute="centerY" id="JiI-qQ-Ucx"/>
                                     <constraint firstItem="LbO-Jd-a0r" firstAttribute="leading" secondItem="shn-R7-f86" secondAttribute="leading" constant="10" id="L47-dd-XuF"/>
                                     <constraint firstItem="gOH-TW-wld" firstAttribute="bottom" secondItem="P7C-my-lC6" secondAttribute="bottom" id="LUW-I2-tzv"/>

@@ -266,10 +266,14 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
                     let points_required = data["points_required"] as? NSNumber ?? 0
                     let mlink = data["link"] as? String ?? ""
                     
-                    item.required.text = "\(points_required.intValue)"
+                    let numberFormatter = NumberFormatter()
+                    numberFormatter.numberStyle = .decimal
+                    
+                    let rquiredPP = numberFormatter.string(from: points_required) ?? "0"
+                    item.required.text = rquiredPP
                     
                     var txtString = NSLocalizedString("string-date-format-required-point", comment: "")
-                    txtString = txtString.replacingOccurrences(of: "{point}", with: "\(points_required.intValue)", options: .literal, range: nil)
+                    txtString = txtString.replacingOccurrences(of: "{point}", with: "\(rquiredPP)", options: .literal, range: nil)
                     
                     item.requireTxtLabel.text  = txtString
                     

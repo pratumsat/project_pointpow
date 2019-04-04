@@ -9,6 +9,9 @@
 import UIKit
 
 class LuckyDrawPrivacyCell: UICollectionViewCell {
+    
+    @IBOutlet weak var howToTitleLabel: UILabel!
+    @IBOutlet weak var privacyTitleLabel: UILabel!
     @IBOutlet weak var requireTxtLabel: UILabel!
     @IBOutlet weak var required: UILabel!
     @IBOutlet weak var shadowHowToView: UIView!
@@ -77,12 +80,12 @@ class LuckyDrawPrivacyCell: UICollectionViewCell {
         
         
         let expandPrivacy = UITapGestureRecognizer(target: self, action: #selector(expandablePrivacyTapped))
-        self.expandPrivacyImageView.isUserInteractionEnabled = true
-        self.expandPrivacyImageView.addGestureRecognizer(expandPrivacy)
+        self.privacyTitleLabel.isUserInteractionEnabled = true
+        self.privacyTitleLabel.addGestureRecognizer(expandPrivacy)
         
         let expandHowto = UITapGestureRecognizer(target: self, action: #selector(expandableHowToTapped))
-        self.expandHowtoImageView.isUserInteractionEnabled = true
-        self.expandHowtoImageView.addGestureRecognizer(expandHowto)
+        self.howToTitleLabel.isUserInteractionEnabled = true
+        self.howToTitleLabel.addGestureRecognizer(expandHowto)
       
         let winner = UITapGestureRecognizer(target: self, action: #selector(showWinnerLuckyDraw))
         self.winnerView.isUserInteractionEnabled = true

@@ -41,10 +41,15 @@ class RegisterGoldstep2ViewController: BaseViewController ,UIImagePickerControll
 
         self.title = NSLocalizedString("string-title-gold-register1", comment: "")
         self.setUp()
+        
+        self.validateData()
     }
     func setUp(){
         self.backgroundImage?.image = nil
         self.checkBox.isChecked = false
+        self.checkBox.toggle  = { (isCheck) in
+            self.validateData()
+        }
         
         self.hiddenIdCardPhotoImageView.contentMode = .scaleAspectFit
       
@@ -89,8 +94,8 @@ class RegisterGoldstep2ViewController: BaseViewController ,UIImagePickerControll
         self.hiddenIdCardPhotoImageView.borderClearProperties(borderWidth: 0, radius: 10)
         self.containerView.borderLightGrayColorProperties(borderWidth: 0.5, radius: 10)
         self.uploadView.borderRedColorProperties(borderWidth: 1.0)
-        self.nextButton.borderClearProperties(borderWidth: 1)
-        self.nextButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
+        //self.nextButton.borderClearProperties(borderWidth: 1)
+        //self.nextButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
         self.step1Label.ovalColorClearProperties()
         self.step2Label.ovalColorClearProperties()
         self.step3Label.ovalColorClearProperties()
@@ -137,7 +142,7 @@ class RegisterGoldstep2ViewController: BaseViewController ,UIImagePickerControll
         self.hiddenIdCardPhotoImageView.image = resizeImage
         self.icCardPhotoImageView.isHidden = true
         
-        
+        self.validateData()
     }
     
     @objc func browseTapped(){
@@ -218,5 +223,38 @@ class RegisterGoldstep2ViewController: BaseViewController ,UIImagePickerControll
         }else{
             showMessagePrompt(NSLocalizedString("string-message-alert-please-choose-image", comment: ""))
         }
+    }
+    
+    func validateData(){
+        if self.idCardPhoto == nil || !self.checkBox.isChecked {
+            self.disableButton()
+            return
+        }
+      
+        self.enableButton()
+    }
+    
+    func enableButton(){
+        if let count = self.nextButton?.layer.sublayers?.count {
+            if count > 1 {
+                self.nextButton?.layer.sublayers?.removeFirst()
+            }
+        }
+        
+        
+        self.nextButton?.borderClearProperties(borderWidth: 1)
+        self.nextButton?.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
+        self.nextButton?.isEnabled = true
+    }
+    func disableButton(){
+        if let count = self.nextButton?.layer.sublayers?.count {
+            if count > 1 {
+                self.nextButton?.layer.sublayers?.removeFirst()
+            }
+        }
+        self.nextButton?.borderClearProperties(borderWidth: 1)
+        self.nextButton?.applyGradient(colours: [UIColor.lightGray, UIColor.lightGray])
+        
+        self.nextButton?.isEnabled = false
     }
 }

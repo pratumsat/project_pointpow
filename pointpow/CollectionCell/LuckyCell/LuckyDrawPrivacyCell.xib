@@ -92,30 +92,30 @@
                         <rect key="frame" x="20" y="70" width="267" height="120"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ivz-Rt-hGN">
-                                <rect key="frame" x="32.5" y="0.0" width="202" height="76"/>
+                                <rect key="frame" x="41.5" y="0.0" width="184" height="58"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Point Pow" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q4t-rs-w9L">
-                                        <rect key="frame" x="10" y="50" width="65.5" height="26"/>
-                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
+                                        <rect key="frame" x="10" y="37" width="52.5" height="21"/>
+                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="100" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NGK-iE-Sp3">
-                                        <rect key="frame" x="14.5" y="0.0" width="57" height="65"/>
-                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="50"/>
+                                        <rect key="frame" x="13.5" y="0.0" width="46" height="52"/>
+                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="40"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="สิทธิ์" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DgC-Q4-6OB">
-                                        <rect key="frame" x="156" y="50" width="26" height="26"/>
-                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
+                                        <rect key="frame" x="143" y="37" width="21" height="21"/>
+                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="1" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T2t-X0-dcf">
-                                        <rect key="frame" x="162.5" y="0.0" width="13" height="65"/>
-                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="50"/>
+                                        <rect key="frame" x="148.5" y="0.0" width="10.5" height="52"/>
+                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="40"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="=" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oyr-jo-LOK">
-                                        <rect key="frame" x="105.5" y="0.0" width="20.5" height="65"/>
+                                        <rect key="frame" x="92.5" y="-6.5" width="20.5" height="65"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="50"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -137,9 +137,9 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="ทุกการสะสม 100 Point Pow รับทันที 1 สิทธิ์" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ie6-Sc-1c2">
-                                <rect key="frame" x="33" y="86" width="201.5" height="19.5"/>
+                                <rect key="frame" x="33" y="68" width="201.5" height="19.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
-                                <color key="textColor" red="0.74509803921568629" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -164,13 +164,13 @@
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQZ-ck-hkZ">
                                 <rect key="frame" x="10" y="41" width="247" height="156"/>
-                                <mutableString key="text">Point Pow คือ พ้อยท์แพลตฟอร์ม ศูนย์กลางการรวมพ้อยท์รูปแบบใหม่ สามารถรวมพ้อยท์ได้จากหลายแหล่ง และมีช่องทางใช้พ้อยท์ที่หลากหลาย Point Pow คือ พ้อยท์แพลตฟอร์ม ศูนย์กลางการรวมพ้อยท์รูปแบบใหม่ สามารถรวมพ้อยท์ได้จากหลายแหล่ง และมีช่องทางใช้พ้อยท์ที่หลากหลาย Point Pow คือ พ้อยท์แพลตฟอร์ม ศูนย์กลางการรวมพ้อยท์รูปแบบใหม่ สามารถรวมพ้อยท์ได้จากหลายแหล่ง และมีช่องทางใช้พ้อยท์ที่หลากหลาย</mutableString>
+                                <string key="text">Point Pow คือ พ้อยท์แพลตฟอร์ม ศูนย์กลางการรวมพ้อยท์รูปแบบใหม่ สามารถรวมพ้อยท์ได้จากหลายแหล่ง และมีช่องทางใช้พ้อยท์ที่หลากหลาย Point Pow คือ พ้อยท์แพลตฟอร์ม ศูนย์กลางการรวมพ้อยท์รูปแบบใหม่ สามารถรวมพ้อยท์ได้จากหลายแหล่ง และมีช่องทางใช้พ้อยท์ที่หลากหลาย Point Pow คือ พ้อยท์แพลตฟอร์ม ศูนย์กลางการรวมพ้อยท์รูปแบบใหม่ สามารถรวมพ้อยท์ได้จากหลายแหล่ง และมีช่องทางใช้พ้อยท์ที่หลากหลาย</string>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uzw-aH-UMC">
-                                <rect key="frame" x="10" y="5" width="124" height="26"/>
+                                <rect key="frame" x="10" y="5" width="252" height="26"/>
                                 <attributedString key="attributedText">
                                     <fragment content="ข้อกำหนดและเงื่อนไข">
                                         <attributes>
@@ -200,6 +200,7 @@
                             <constraint firstAttribute="height" constant="200" id="MC8-wx-DcB"/>
                             <constraint firstAttribute="bottom" secondItem="5i9-C8-7qL" secondAttribute="bottom" id="XUU-mE-opU"/>
                             <constraint firstItem="cw5-6G-fMX" firstAttribute="centerY" secondItem="Uzw-aH-UMC" secondAttribute="centerY" id="Yh4-aR-6wc"/>
+                            <constraint firstAttribute="trailing" secondItem="Uzw-aH-UMC" secondAttribute="trailing" constant="5" id="fs5-Ls-1A5"/>
                             <constraint firstAttribute="trailing" secondItem="cw5-6G-fMX" secondAttribute="trailing" constant="10" id="gOz-sU-K9y"/>
                             <constraint firstAttribute="trailing" secondItem="BQZ-ck-hkZ" secondAttribute="trailing" constant="10" id="iYJ-hf-wuu"/>
                             <constraint firstItem="5i9-C8-7qL" firstAttribute="top" secondItem="lD4-vz-exk" secondAttribute="top" id="uHF-8P-haB"/>
@@ -222,7 +223,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2q-Bm-Zp6">
-                                <rect key="frame" x="10" y="5" width="83.5" height="26"/>
+                                <rect key="frame" x="10" y="5" width="252" height="26"/>
                                 <attributedString key="attributedText">
                                     <fragment content="วิธีการรับสิทธิ์">
                                         <attributes>
@@ -247,6 +248,7 @@
                         <constraints>
                             <constraint firstItem="VIN-v4-Mzc" firstAttribute="leading" secondItem="E2q-Bm-Zp6" secondAttribute="leading" id="6nR-t1-3rp"/>
                             <constraint firstItem="E2q-Bm-Zp6" firstAttribute="leading" secondItem="mNa-9E-CHA" secondAttribute="leading" constant="10" id="Bhn-7O-Lu0"/>
+                            <constraint firstAttribute="trailing" secondItem="E2q-Bm-Zp6" secondAttribute="trailing" constant="5" id="GRW-BR-amV"/>
                             <constraint firstItem="B3M-2A-SyI" firstAttribute="leading" secondItem="mNa-9E-CHA" secondAttribute="leading" id="NiW-2N-tp5"/>
                             <constraint firstItem="tZe-ku-OcH" firstAttribute="centerY" secondItem="E2q-Bm-Zp6" secondAttribute="centerY" id="RQo-Nb-rwS"/>
                             <constraint firstItem="E2q-Bm-Zp6" firstAttribute="top" secondItem="mNa-9E-CHA" secondAttribute="top" constant="5" id="XCk-SU-ZGu"/>
@@ -294,11 +296,13 @@
                 <outlet property="expandPrivacyImageView" destination="cw5-6G-fMX" id="PSL-Br-6xc"/>
                 <outlet property="heightHowtoViewConstraint" destination="eRN-5E-FCh" id="nra-Fw-vSE"/>
                 <outlet property="heightPrivacyViewConstraint" destination="MC8-wx-DcB" id="LmT-n5-t02"/>
+                <outlet property="howToTitleLabel" destination="E2q-Bm-Zp6" id="1lV-0t-8OG"/>
                 <outlet property="howtoLeftView" destination="B3M-2A-SyI" id="gyf-AX-lUi"/>
                 <outlet property="howtoView" destination="mNa-9E-CHA" id="XnD-ph-Rr4"/>
                 <outlet property="liveImageView" destination="Jnc-xg-rOE" id="HIi-Iw-EPW"/>
                 <outlet property="liveView" destination="NMu-1e-Zh7" id="BgO-1x-nVl"/>
                 <outlet property="privacyLeftView" destination="5i9-C8-7qL" id="vjg-nq-9Aw"/>
+                <outlet property="privacyTitleLabel" destination="Uzw-aH-UMC" id="eEJ-vh-LFd"/>
                 <outlet property="privacyView" destination="lD4-vz-exk" id="AU7-3P-ThH"/>
                 <outlet property="requireTxtLabel" destination="Ie6-Sc-1c2" id="cTf-4Z-1fD"/>
                 <outlet property="required" destination="NGK-iE-Sp3" id="Up8-QO-HFV"/>

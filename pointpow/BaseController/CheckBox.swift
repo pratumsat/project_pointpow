@@ -14,6 +14,7 @@ class CheckBox: UIButton {
     let checkedImage = UIImage(named: "ic_check_box")! as UIImage
     let uncheckedImage = UIImage(named: "ic_check_box_outline_blank")! as UIImage
     
+    var toggle:((_ check:Bool)->Void)?
     // Bool property
     var isChecked: Bool = false {
         didSet{
@@ -24,6 +25,7 @@ class CheckBox: UIButton {
                 let original = uncheckedImage.withRenderingMode(.alwaysOriginal)
                 self.setImage(original, for: UIControl.State.normal)
             }
+            self.toggle?(isChecked)
         }
     }
     

@@ -40,7 +40,7 @@ class SavingCell: UICollectionViewCell{
     override func layoutSubviews() {
         super.layoutSubviews()
        
-        
+        self.headView.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
        
     }
     

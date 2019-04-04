@@ -235,6 +235,8 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
                         cd.initializeTimer(announce_at)
                         cd.startTimer(pUpdateActionHandler: { (timeString) in
                             
+                            self.luckyPrivacyCell?.liveDisable()
+                            
                             item.dayLabel.text = timeString.days
                             item.hoursLabel.text = timeString.hours
                             item.minLabel.text = timeString.minutes
@@ -250,7 +252,7 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
                             
                         }
                         
-                        self.luckyPrivacyCell?.liveDisable()
+                        
                     }
                     
                 }

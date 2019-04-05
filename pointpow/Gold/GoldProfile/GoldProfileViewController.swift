@@ -208,7 +208,6 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
             
             self.hiddenIdCardPhotoImageView.image = UIImage(named: "ic-img-placeholder-verify-idcard")
             
-            
             switch status {
             case "waiting", "edit":
                 self.statusLabel.text = NSLocalizedString("string-dailog-gold-profile-status-waitting", comment: "")

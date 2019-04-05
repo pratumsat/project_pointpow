@@ -112,8 +112,7 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
         }else{
             isLoading = true
         }
-     
-        
+           
         var parameter = "type=\(type)"
         
         if !startDate.isEmpty {

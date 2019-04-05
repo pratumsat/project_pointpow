@@ -77,10 +77,35 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
     var units = [NSLocalizedString("unit-salueng", comment: ""),NSLocalizedString("unit-baht", comment: "")]
     var selectedUnits:Int = 0 {
         didSet{
-            self.amountTextField.text = ""
-            self.premiumLabel.text = ""
-            self.withDrawData = (premium : "\(0)" , goldReceive: [])
-            self.goldSpendCallback?(0 , self.selectedUnits)
+            //self.amountTextField.text = ""
+            //self.premiumLabel.text = ""
+            //self.withDrawData = (premium : "\(0)" , goldReceive: [])
+            
+           
+            if let amount = Int(self.amountTextField.text!) {
+                self.goldSpendCallback?(amount , self.selectedUnits)
+                
+                if self.selectedUnits == 0 {
+                    if amount > 200 {
+                        self.amountTextField?.text = "200"
+                        calSalueng("200")
+                        
+                    }else{
+                        calSalueng(amount.description)
+                    }
+                    
+                }else{
+                    if amount > 50 {
+                        self.amountTextField?.text = "50"
+                        calBaht("50")
+                        
+                    }else{
+                        calBaht(amount.description)
+                    }
+                    
+                }
+            }
+            
         }
     }
     

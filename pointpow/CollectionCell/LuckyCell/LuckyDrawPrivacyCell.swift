@@ -105,20 +105,20 @@ class LuckyDrawPrivacyCell: UICollectionViewCell {
         self.showWinnerCallback?()
     }
     func updateView(){
-        self.expandPrivacyImageView.image = active
+        self.expandPrivacyImageView.image = inactive
         self.expandHowtoImageView.image = inactive
         
-        self.heightPrivacyViewConstraint.constant = heightViewPrivacy
+        self.heightPrivacyViewConstraint.constant = hideViewPrivacy
         self.onPrivacy = true
         
-        self.heightHowtoViewConstraint.constant = hideViewPrivacy
-        self.onPrivacy = false
+        self.heightHowtoViewConstraint.constant = hideViewHowto
+        self.onHowto = true
     }
     
     @objc func expandablePrivacyTapped(){
         self.expandablePrivacyCallback?(onPrivacy ? heightViewPrivacy : hideViewPrivacy)
-        self.heightPrivacyViewConstraint.constant = onPrivacy ? hideViewPrivacy : heightViewPrivacy
-        self.expandPrivacyImageView.image = onPrivacy ? inactive : active
+        self.heightPrivacyViewConstraint.constant = onPrivacy ? heightViewPrivacy : hideViewPrivacy
+        self.expandPrivacyImageView.image = onPrivacy ? active : inactive
         
         
         self.setNeedsUpdateConstraints()

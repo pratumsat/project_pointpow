@@ -54,13 +54,35 @@ class LuckyDrawPrivacyCell: UICollectionViewCell {
     var showWinnerCallback:(()->Void)?
     var showLinkFacebookCallback:(()->Void)?
     
-    var onPrivacy = true
+    var onPrivacy = true {
+        didSet{
+            if onPrivacy  {
+                self.expandPrivacyImageView.image = inactive
+                self.heightPrivacyViewConstraint.constant = hideViewPrivacy
+            }else{
+                self.expandPrivacyImageView.image = active
+                self.heightPrivacyViewConstraint.constant = heightViewPrivacy
+                
+            }
+        }
+    }
+    
+    var onHowto = true {
+        didSet{
+            if onHowto {
+                self.expandHowtoImageView.image = inactive
+                self.heightHowtoViewConstraint.constant = hideViewHowto
+            }else{
+                self.expandHowtoImageView.image = active
+                self.heightHowtoViewConstraint.constant = heightViewHowto
+            }
+        }
+    }
+    
     
     var heightViewPrivacy = CGFloat(200.0)
     var hideViewPrivacy = CGFloat(35.0)
   
-    var onHowto = true
-    
     var heightViewHowto = CGFloat(150.0)
     var hideViewHowto = CGFloat(35.0)
     
@@ -105,13 +127,7 @@ class LuckyDrawPrivacyCell: UICollectionViewCell {
         self.showWinnerCallback?()
     }
     func updateView(){
-        self.expandPrivacyImageView.image = inactive
-        self.expandHowtoImageView.image = inactive
-        
-        self.heightPrivacyViewConstraint.constant = hideViewPrivacy
-        self.onPrivacy = true
-        
-        self.heightHowtoViewConstraint.constant = hideViewHowto
+        self.onPrivacy = false
         self.onHowto = true
     }
     
@@ -121,18 +137,6 @@ class LuckyDrawPrivacyCell: UICollectionViewCell {
         self.expandPrivacyImageView.image = onPrivacy ? active : inactive
         
         
-        self.setNeedsUpdateConstraints()
-        
-        UIView.animate(withDuration: 0.2,  delay: 0, options:.beginFromCurrentState,animations: {
-            self.layoutIfNeeded()
-        }) { (completed) in
-            self.onPrivacy = self.onPrivacy ? false : true
-        }
-        
-    }
-    
-    
-    @objc func expandableHowToTapped(){
         self.expandableHowToCallback?(onHowto ? heightViewHowto : hideViewHowto)
         self.heightHowtoViewConstraint.constant = onHowto ? heightViewHowto : hideViewHowto
         self.expandHowtoImageView.image = onHowto ? active : inactive
@@ -143,6 +147,30 @@ class LuckyDrawPrivacyCell: UICollectionViewCell {
         UIView.animate(withDuration: 0.2,  delay: 0, options:.beginFromCurrentState,animations: {
             self.layoutIfNeeded()
         }) { (completed) in
+            self.onPrivacy = self.onPrivacy ? false : true
+            self.onHowto = self.onHowto ? false : true
+        }
+        
+    }
+    
+    
+    @objc func expandableHowToTapped(){
+        self.expandablePrivacyCallback?(onPrivacy ? heightViewPrivacy : hideViewPrivacy)
+        self.heightPrivacyViewConstraint.constant = onPrivacy ? heightViewPrivacy : hideViewPrivacy
+        self.expandPrivacyImageView.image = onPrivacy ? active : inactive
+        
+        
+        self.expandableHowToCallback?(onHowto ? heightViewHowto : hideViewHowto)
+        self.heightHowtoViewConstraint.constant = onHowto ? heightViewHowto : hideViewHowto
+        self.expandHowtoImageView.image = onHowto ? active : inactive
+        
+        
+        self.setNeedsUpdateConstraints()
+        
+        UIView.animate(withDuration: 0.2,  delay: 0, options:.beginFromCurrentState,animations: {
+            self.layoutIfNeeded()
+        }) { (completed) in
+            self.onPrivacy = self.onPrivacy ? false : true
             self.onHowto = self.onHowto ? false : true
         }
     }

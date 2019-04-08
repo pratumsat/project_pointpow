@@ -14,7 +14,7 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
     
     let cd = DateCountDownTimer()
     
-    var luckyPrivacyCell:LuckyDrawPrivacyCell?
+   
     
     var luckydrawModel:AnyObject?
     var banner:[[String:AnyObject]]?
@@ -238,16 +238,13 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
                         cd.initializeTimer(announce_at)
                         cd.startTimer(pUpdateActionHandler: { (timeString) in
                             
-                            self.luckyPrivacyCell?.liveDisable()
-                            
                             item.dayLabel.text = timeString.days
                             item.hoursLabel.text = timeString.hours
                             item.minLabel.text = timeString.minutes
                             item.secLabel.text = timeString.seconds
                             
                         }) {
-                            self.luckyPrivacyCell?.liveEnable()
-                          
+                            
                             item.dayLabel.text = "0"
                             item.hoursLabel.text = "0"
                             item.minLabel.text = "0"
@@ -291,8 +288,7 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
                         
                     }
                 }
-                
-                self.luckyPrivacyCell = item
+                item.liveDisable()
                 
             }
         } else {

@@ -403,7 +403,7 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
         if menu == "goldbalance" {
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "MyGoldCell", for: indexPath) as? MyGoldCell {
                 cell = item
-               
+                
                 if let data  = self.userData as? [String:AnyObject] {
                     let point_balance = data["goldsaving_member"]?["point_balance"] as? NSNumber ?? 0
                     
@@ -422,10 +422,8 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
                     let sum = String(format: "%.04f", floor(point_balance.doubleValue/gramToPoint * 10000) / 10000)
                     
                     item.goldExchangeLabel.text = "\(sum)"
-                    
                 }
             }
-            
         }
         if menu == "saving" {
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "SavingCell", for: indexPath) as? SavingCell {

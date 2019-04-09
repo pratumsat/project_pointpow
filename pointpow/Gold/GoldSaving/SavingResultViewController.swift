@@ -16,7 +16,7 @@ class SavingResultViewController: BaseViewController , UICollectionViewDelegate 
     var transactionId:String?{
         didSet{
             print("updateView")
-            print("transactionId \(transactionId)")
+            print("transactionId \(transactionId ?? "no id")")
             self.getDetail()
         }
     }
@@ -106,9 +106,9 @@ class SavingResultViewController: BaseViewController , UICollectionViewDelegate 
                 if let data = self.savingResult as? [String:AnyObject]{
                     let transaction_number = data["saving_transaction"]?["transaction_no"] as? String ?? ""
                     let created_at = data["saving_transaction"]?["created_at"] as? String ?? ""
-                    let gold_price = data["saving_transaction"]?["gold_price"] as? NSNumber ?? 0
+                    let _ = data["saving_transaction"]?["gold_price"] as? NSNumber ?? 0
                     let pointpow_total = data["saving_transaction"]?["pointpow_total"] as? NSNumber ?? 0
-                    let gold_received = data["saving_transaction"]?["gold_received"] as? NSNumber ?? 0
+                    let _ = data["saving_transaction"]?["gold_received"] as? NSNumber ?? 0
                     
                     item.dateLabel.text = created_at
                     item.transactionNumberLabel.text = transaction_number

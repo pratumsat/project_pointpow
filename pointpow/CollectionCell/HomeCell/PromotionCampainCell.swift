@@ -18,7 +18,7 @@ class PromotionCampainCell: UICollectionViewCell , UICollectionViewDelegate , UI
     
     var itemBanner:[[String:AnyObject]]?{
         didSet{
-            print(itemBanner)
+            print(itemBanner ?? "no item")
             self.count = itemBanner?.count ?? 0
             if count > 1 {
                 self.pageControl.numberOfPages = count

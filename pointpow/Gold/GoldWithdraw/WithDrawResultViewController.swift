@@ -77,7 +77,7 @@ class WithDrawResultViewController: BaseViewController  , UICollectionViewDelega
     var transactionId:String?{
         didSet{
             print("updateView")
-            print("transactionId \(transactionId)")
+            print("transactionId \(transactionId!)")
             self.getDetail()
         }
     }
@@ -660,7 +660,7 @@ extension WithDrawResultViewController {
                 let address = data["withdraw_transaction"]?["address"] as? [String:AnyObject] ?? [:]
                 let full_address = address["full_address"] as? String ?? ""
                 let total_shipping_price = data["withdraw_transaction"]?["total_shipping_price"] as? NSNumber ?? 0
-                let tracking_number = data["withdraw_transaction"]?["tracking_number"] as? [[String:AnyObject]] ?? [[:]]
+                let _ = data["withdraw_transaction"]?["tracking_number"] as? [[String:AnyObject]] ?? [[:]]
                 
                 
                 item.addressLabel.text = full_address

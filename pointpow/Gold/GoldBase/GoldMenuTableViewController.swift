@@ -47,7 +47,7 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
             self.userData = result
             
             if let data  = self.userData as? [String:AnyObject] {
-                let registerGold = data["gold_saving_acc"] as? NSNumber ?? 0
+                let _ = data["gold_saving_acc"] as? NSNumber ?? 0
                 let status = data["goldsaving_member"]?["status"] as? String ?? ""
                 let inprogress_withdraw = data["goldsaving_member"]?["inprogress_withdraw"] as? String ?? ""
                 

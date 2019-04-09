@@ -285,7 +285,7 @@ class RegisterViewController: BaseViewController {
                     if let mError = error as? [String:AnyObject]{
                         print(mError)
                         let message = mError["message"] as? String ?? ""
-                        let field = mError["field"] as? String ?? ""
+                        let _ = mError["field"] as? String ?? ""
                         
                         self.errorUsernamelLabel =  self.usernameTextField.addBottomLabelErrorMessage(message, marginLeft: 15 )
                         self.showMessagePrompt(message)
@@ -330,7 +330,7 @@ class RegisterViewController: BaseViewController {
                     if let mError = error as? [String:AnyObject]{
                         print(mError)
                         let message = mError["message"] as? String ?? ""
-                        let field = mError["field"] as? String ?? ""
+                        let _ = mError["field"] as? String ?? ""
                         
                         self.errorUsernamelLabel =  self.usernameTextField.addBottomLabelErrorMessage(message, marginLeft: 15 )
                         self.showMessagePrompt(message)

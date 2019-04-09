@@ -35,7 +35,6 @@ class WithDrawSummaryOfficeViewController: BaseViewController, UICollectionViewD
                 //get at pointpow
                 let withdrawAmount = self.withdrawData!.goldAmountToUnit.amount
                 var unit = ""
-                var pick = "office" //"thaipost"
                 if self.withdrawData!.goldAmountToUnit.unit == 0 {
                     unit = "salueng"
                 }else{
@@ -44,7 +43,7 @@ class WithDrawSummaryOfficeViewController: BaseViewController, UICollectionViewD
                 }
                 let params:Parameters = ["withdraw_amount": withdrawAmount,
                                          "unit": unit,
-                                         "pick": pick]
+                                         "pick": "office"]
                 print(params)
                 
                 self.modelCtrl.withdrawGold(params: params, true , succeeded: { (result) in

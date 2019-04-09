@@ -35,7 +35,7 @@ class RegisterGoldstep3ViewController: BaseViewController {
     var tupleModel:(image : UIImage?, firstname : String,lastname: String , email: String,mobile: String,idcard: String , birthdate:String, laserId:String)? {
         didSet{
             
-            print(tupleModel)
+            print(tupleModel ?? "not value")
         }
     }
     

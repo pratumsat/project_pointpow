@@ -63,13 +63,17 @@ typedef enum {
 @property (strong) NSString *confirmPrompt;
 @property (strong) NSString *changePrompt;
 @property (strong) NSString *message;
+@property (strong) NSString *lockPinMessage;
 @property (assign) BOOL centerPosition;
 @property (readonly) BOOL forgotPin;
+@property (assign) BOOL lockPin;
+
 
 
 - (void)setTitlePasscode:(NSString*)messageError;
 - (void)showFailedMessage:(NSString*)messageError;
 - (void)showPassCodeSuccess;
 - (id)initForAction:(PasscodeAction)action;
+- (void)showLockPinCode;
 
 @end

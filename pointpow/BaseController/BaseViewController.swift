@@ -281,7 +281,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     var gapHeightKeyboard = CGFloat(0)
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+        //if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             
             //if self.view.frame.origin.y < 0 {
                 print(self.view.frame.origin.y)
@@ -294,7 +294,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
                 }
                 //self.view.frame.origin.y += (keyboardSize.height)
             //}
-        }
+        //}
     }
     
     
@@ -647,34 +647,62 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     }
     
     func showEnterPassCodeModalView(_ title:String = NSLocalizedString("title-enter-passcode", comment: "")){
-        let enterPasscode = PAPasscodeViewController(for: PasscodeActionEnter )
-        enterPasscode!.centerPosition = true
-        enterPasscode!.delegate = self
-        enterPasscode!.title = title
         
-        let navController = UINavigationController(rootViewController: enterPasscode!)
-        navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                                                           NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.TITLE )!]
-    
-        let presenter: Presentr = {
-            let w = self.view.frame.width
-            let h = self.view.frame.height
+        self.statusPin { (lockPin , message) in
             
-            let width = ModalSize.custom(size: Float(w))
-            let height = ModalSize.custom(size: Float(h))
             
-            let center = ModalCenterPosition.center
-            let customType = PresentationType.custom(width: width, height: height, center: center)
-            
-            let customPresenter = Presentr(presentationType: customType)
-            customPresenter.dismissOnTap = false
-            
-            return customPresenter
-        }()
+            let enterPasscode = PAPasscodeViewController(for: PasscodeActionEnter )
+            enterPasscode!.centerPosition = true
+            enterPasscode!.delegate = self
+            enterPasscode!.title = title
+            enterPasscode!.lockPin = lockPin
+            enterPasscode!.lockPinMessage = message
         
-        customPresentViewController(presenter, viewController: navController, animated: true, completion: nil)
+            let navController = UINavigationController(rootViewController: enterPasscode!)
+            navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.darkGray,
+                                                               NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.TITLE )!]
+            
+            let presenter: Presentr = {
+                let w = self.view.frame.width
+                let h = self.view.frame.height
+                
+                let width = ModalSize.custom(size: Float(w))
+                let height = ModalSize.custom(size: Float(h))
+                
+                let center = ModalCenterPosition.center
+                let customType = PresentationType.custom(width: width, height: height, center: center)
+                
+                let customPresenter = Presentr(presentationType: customType)
+                customPresenter.dismissOnTap = false
+                
+                return customPresenter
+            }()
+            
+            self.customPresentViewController(presenter, viewController: navController, animated: true, completion: nil)
+        }
+        
+       
     }
     
+    private func statusPin(_ statusCallback:((_ status:Bool,_ message:String)->Void)?) {
+        self.modelCtrl.statusPinCode(params: nil, true, succeeded: { (result) in
+            statusCallback?(false , "")
+            
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(mError)
+                
+                //pinlock
+                statusCallback?(true , message)
+            }
+            
+            
+            
+        }) { (messageError) in
+            self.handlerMessageError(messageError)
+        }
+    }
     
     
     func showPenddingVerifyModalView(_ animated:Bool , dismissCallback:(()->Void)?){
@@ -793,9 +821,15 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }, error: { (error) in
             if let mError = error as? [String:AnyObject]{
                 let message = mError["message"] as? String ?? ""
-                print(message)
+                let pin_status = mError["pin_status"] as? NSNumber ?? 0
+                print(mError)
                 
                 controller.showFailedMessage(message)
+                
+                if !pin_status.boolValue {
+                    controller.showLockPinCode()
+                }
+                
             }
         }) { (messageError) in
             self.handlerMessageError(messageError)

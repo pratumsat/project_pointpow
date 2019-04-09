@@ -144,14 +144,16 @@ static NSTimeInterval AnimationDuration = 0.3;
     
     
     [contentView addSubview:forgotLabel];
+    
+   
 
+    
     failedAttemptsLabel = [[UILabel alloc] init];
     failedAttemptsLabel.translatesAutoresizingMaskIntoConstraints = NO;
     failedAttemptsLabel.textColor = [UIColor colorWithRed:0.75 green:0.16 blue:0.16 alpha:1];
     failedAttemptsLabel.font = [UIFont fontWithName:@"ThaiSansNeue-Regular" size:18];
     failedAttemptsLabel.textAlignment = NSTextAlignmentCenter;
     failedAttemptsLabel.numberOfLines = 0;
-    failedAttemptsLabel.text = @" ";
     [contentView addSubview:failedAttemptsLabel];
     
     
@@ -200,6 +202,19 @@ static NSTimeInterval AnimationDuration = 0.3;
             break;
     }
     
+    if(_lockPin){
+        failedAttemptsLabel.text = _lockPinMessage;
+        forgotLabel.hidden = YES;
+        promptLabel.hidden = YES;
+        UIFont *font = [UIFont fontWithName:@"Courier" size:0];
+        for (int i=0;i<6;i++) {
+            _digitLabels[i].font = font;
+            _digitLabels[i].text = BulletCharacter;
+        }
+    }else{
+        forgotLabel.hidden = NO;
+        promptLabel.hidden = NO;
+    }
     self.view = view;
     [self.view setNeedsUpdateConstraints];
 }
@@ -264,6 +279,7 @@ static NSTimeInterval AnimationDuration = 0.3;
     
     [constraints addObject:[NSLayoutConstraint constraintWithItem:_inputPanel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
     
+    
     NSDictionary *digits = @{@"d0": _digitLabels[0], @"d1": _digitLabels[1], @"d2": _digitLabels[2], @"d3": _digitLabels[3],@"d4": _digitLabels[4],@"d5": _digitLabels[5]};
     [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[d0]-(w)-[d1]-(w)-[d2]-(w)-[d3]-(w)-[d4]-(w)-[d5]|" options:0 metrics:@{@"w": @(16)} views:digits]];
     [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[d0]|" options:0 metrics:nil views:digits]];
@@ -310,6 +326,8 @@ static NSTimeInterval AnimationDuration = 0.3;
     
     [constraints addObject:[NSLayoutConstraint constraintWithItem:failedAttemptsLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_inputPanel attribute:NSLayoutAttributeBottom multiplier:1 constant:5]];
     
+    [constraints addObject:[NSLayoutConstraint constraintWithItem:failedAttemptsLabel attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeWidth multiplier:1 constant:-10]];
+    
     
     [constraints addObject:[NSLayoutConstraint constraintWithItem:forgotLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
     
@@ -326,6 +344,7 @@ static NSTimeInterval AnimationDuration = 0.3;
    
     
     [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[promptLabel]-[inputPanel]-[messageLabel]" options:0 metrics:@{@"h": @(FailedBackgroundHeight)} views:views]];
+   
 
     _installedConstraints = constraints;
     [self.view addConstraints:_installedConstraints];
@@ -368,6 +387,8 @@ static NSTimeInterval AnimationDuration = 0.3;
     [self showScreenForPhase:0 animated:NO];
     [passcodeTextField becomeFirstResponder];
     [self.view layoutIfNeeded];
+    
+    
 }
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
@@ -423,7 +444,7 @@ static NSTimeInterval AnimationDuration = 0.3;
     NSDictionary *info = [notification userInfo];
     NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     
-    _keyboardHeightConstraint.constant = 0;
+    //_keyboardHeightConstraint.constant = 0;
     [UIView animateWithDuration:animationDuration animations:^{
         [self.view layoutIfNeeded];
     }];
@@ -582,6 +603,9 @@ static NSTimeInterval AnimationDuration = 0.3;
     return YES;
 }
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if(_lockPin){
+        return NO;
+    }
     if (textField == emailTextField){
         return YES;
     }
@@ -599,12 +623,24 @@ static NSTimeInterval AnimationDuration = 0.3;
     promptLabel.text = messageTitle;
     
 }
+
+- (void)showLockPinCode {
+    UIFont *font = [UIFont fontWithName:@"Courier" size:0];
+    for (int i=0;i<6;i++) {
+        _digitLabels[i].font = font;
+        _digitLabels[i].text = DashCharacter;
+    }
+    forgotLabel.hidden = YES;
+    promptLabel.hidden = YES;
+    _lockPin = YES;
+}
+
 - (void)showFailedMessage:(NSString*) messageError {
     messageLabel.hidden = YES;
     
     
     failedAttemptsLabel.text = messageError;
-    [failedAttemptsLabel sizeToFit];
+    //[failedAttemptsLabel sizeToFit];
     
     for (int i=0;i<6;i++) {
         _digitLabels[i].text = BulletCharacter;

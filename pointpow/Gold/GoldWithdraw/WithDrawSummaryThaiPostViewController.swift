@@ -59,7 +59,6 @@ class WithDrawSummaryThaiPostViewController: BaseViewController, UICollectionVie
             //get at pointpow
             let withdrawAmount = self.withdrawData!.goldAmountToUnit.amount
             var unit = ""
-            let pick = "thaipost" //
             if self.withdrawData!.goldAmountToUnit.unit == 0 {
                 unit = "salueng"
             }else{
@@ -68,7 +67,7 @@ class WithDrawSummaryThaiPostViewController: BaseViewController, UICollectionVie
             }
             let params:Parameters = ["withdraw_amount": withdrawAmount,
                                      "unit": unit,
-                                     "pick": pick,
+                                     "pick": "thaipost",
                                      "address_id": (self.addressModel?["id"] as? NSNumber)?.intValue ?? 0]
             print(params)
             

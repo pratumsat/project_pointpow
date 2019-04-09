@@ -188,8 +188,8 @@ class PersonalViewController: BaseViewController  {
         
         errorPersonalIDLabel?.removeFromSuperview()
         
-        let firstName = self.firstNameTextField.text!
-        let lastName = self.lastNameTextField.text!
+        //let firstName = self.firstNameTextField.text!
+        //let lastName = self.lastNameTextField.text!
         let personalID  = self.parsonalTextField.text!
         
         

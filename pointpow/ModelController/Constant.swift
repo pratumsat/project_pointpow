@@ -705,6 +705,7 @@ struct Constant {
         static let resetPinCode = "\(HOST)\(POINTPOW_VERSION1)member/set-reset-pin"
         static let enterPinCode = "\(HOST)\(POINTPOW_VERSION1)member/check-pin"
         static let forgotPinCode = "\(HOST)\(POINTPOW_VERSION1)member/reset-pin"
+        static let statusPinCode = "\(HOST)\(POINTPOW_VERSION1)member/check-pin-status"
         
         static let registerGoldMember = "\(HOST)\(POINTPOW_VERSION1)gold-saving/register"
         static let updateGoldMember = "\(HOST)\(POINTPOW_VERSION1)gold-saving/update"

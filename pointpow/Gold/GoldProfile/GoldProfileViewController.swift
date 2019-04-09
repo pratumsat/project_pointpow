@@ -177,7 +177,6 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
             self.lastNameTextField.text = last_name
             self.emailTextField.text = email
             
-            
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "th")
             dateFormatter.dateFormat = "dd-MM-yyyy"
@@ -292,7 +291,6 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
             }
         }
     }
-    
     
     func setUp(){
         self.backgroundImage?.image = nil

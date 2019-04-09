@@ -464,8 +464,6 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
     }
     
     
-    
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         
         if section == 2  {

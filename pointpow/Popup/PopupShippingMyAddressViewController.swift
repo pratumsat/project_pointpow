@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Alamofire
+
 
 class PopupShippingMyAddressViewController: BaseViewController  , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     @IBOutlet weak var addView: UIView!

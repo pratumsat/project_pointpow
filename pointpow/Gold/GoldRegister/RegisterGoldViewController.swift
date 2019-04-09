@@ -85,7 +85,6 @@ class RegisterGoldViewController: BaseViewController {
         
         self.birthdateTextField.addDoneButtonToKeyboard()
         
-        
         self.firstNameTextField.delegate = self
         self.lastNameTextField.delegate = self
         self.emailTextField.delegate = self
@@ -260,8 +259,6 @@ class RegisterGoldViewController: BaseViewController {
         
         return true
     }
-   
-    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
      
@@ -619,7 +616,6 @@ class RegisterGoldViewController: BaseViewController {
             self.errorEmailLabel =  self.emailTextField.addBottomLabelErrorMessage(emailNotValid, marginLeft: 0 )
         }
        
-        
     }
     func validateLaserId(_ id:String)->Bool {
         var errorMobile = 0

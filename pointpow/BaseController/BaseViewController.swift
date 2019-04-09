@@ -88,7 +88,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         
         NotificationCenter.default.addObserver(self, selector: #selector(GoogleSigInFailure), name: NSNotification.Name(rawValue: Constant.DefaultConstansts.NotificationGoogleSigInFailure), object: nil)
       
-     
+        NotificationCenter.default.addObserver(self, selector: #selector(resetPinCode), name: NSNotification.Name(rawValue: Constant.DefaultConstansts.RESET_PIN), object: nil)
         
         backgroundImage = UIImageView()
         backgroundImage!.image = UIImage(named: "background_image")
@@ -123,7 +123,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(resetPinCode), name: NSNotification.Name(rawValue: Constant.DefaultConstansts.RESET_PIN), object: nil)
+       
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -133,7 +133,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: Constant.DefaultConstansts.RESET_PIN), object : nil)
+        //NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: Constant.DefaultConstansts.RESET_PIN), object : nil)
         
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object : nil)
         

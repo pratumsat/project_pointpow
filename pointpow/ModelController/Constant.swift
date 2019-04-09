@@ -1075,6 +1075,37 @@ func convertBuddhaToChris(_ dateString:String, _ format:String = "dd-MM-yyyy HH:
     return ""
 }
 
+func compareLiveTime(_ destinationDate:String) -> Bool{
+    var totalTime = 0
+    // Setting Today's Date
+    let currentDate = Date()
+    
+    // Setting TargetDate
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    dateFormatter.locale = Locale(identifier: "en")
+    if let targedDate = dateFormatter.date(from: destinationDate) {
+        // Calculating the difference of dates for timer
+        let calendar = NSCalendar.current
+        let unitFlags: Set<Calendar.Component> = [.minute, .hour, .day, .weekOfYear, .month, .year, .second]
+        let component = calendar.dateComponents(unitFlags, from: currentDate, to: targedDate)
+        let days = component.day!
+        let hours = component.hour!
+        let minutes = component.minute!
+        let seconds = component.second!
+        totalTime = hours * 60 * 60 + minutes * 60 + seconds
+        totalTime = days * 60 * 60 * 24 + totalTime
+        
+        print(totalTime)
+        if totalTime > 0 {
+            return false
+        }else{
+            //end
+            return true
+        }
+    }
+    return false
+}
 func validateTransactionTime(_ dateString:String) -> Bool {
     //2017-03-29 20:15
     let dateFormatter = DateFormatter()

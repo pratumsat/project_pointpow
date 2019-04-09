@@ -22,7 +22,11 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
     @IBOutlet weak var addressCollectionView: UICollectionView!
     
     var selectItem:Int?
-    var selectedAddress:AnyObject?
+    var selectedAddress:AnyObject?{
+        didSet{
+            print(self.selectedAddress)
+        }
+    }
     
     var name:String = ""
     var mobile:String = ""
@@ -184,22 +188,25 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
                     item.addressLabel.text = rawAddress
                     
                     
-                    if latest_shipping.boolValue  {
-                        item.selectedAddress = true
-                        self.selectedAddress = data as AnyObject
+                    
+                    if let select = selectItem {
+                        if indexPath.row == select {
+                            item.selectedAddress = true
+                        }else{
+                            item.selectedAddress = false
+                        }
+                        
                     }else{
-                        item.selectedAddress = false
+                        if latest_shipping.boolValue  {
+                            item.selectedAddress = true
+                            self.selectedAddress = data as AnyObject
+                        }else{
+                            item.selectedAddress = false
+                        }
                     }
                 }
                 
-                if let select = selectItem {
-                    if indexPath.row == select {
-                        item.selectedAddress = true
-                    }else{
-                        item.selectedAddress = false
-                    }
-                    
-                }
+               
                 
                 
                 item.editCallback = {

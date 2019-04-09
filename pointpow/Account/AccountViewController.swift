@@ -308,28 +308,28 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)
         
-        let chosenImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-        if chooseProfile {
-            // square for profile
-            let resizeImage = chosenImage.resizeUIImage(targetSize: CGSize(width: 400.0, height: 400.0))
-            
-            self.isUploadProfile = true
-            self.uploadProfileImage(resizeImage)
-            
-            self.profileImageView = resizeImage
-            
-            
-        }else{
-            // square for background
-            let resizeImage = chosenImage.resizeUIImage(targetSize: CGSize(width: 370, height: 300))
-           
-            self.isUploadProfile = true
-            self.uploadBackgroundImage(resizeImage)
-            
-            self.bgProfileImageView = resizeImage
+        if let chosenImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
+            if chooseProfile {
+                // square for profile
+                let resizeImage = chosenImage.resizeUIImage(targetSize: CGSize(width: 400.0, height: 400.0))
+                
+                self.isUploadProfile = true
+                self.uploadProfileImage(resizeImage)
+                
+                self.profileImageView = resizeImage
+                
+                
+            }else{
+                // square for background
+                let resizeImage = chosenImage.resizeUIImage(targetSize: CGSize(width: 370, height: 300))
+               
+                self.isUploadProfile = true
+                self.uploadBackgroundImage(resizeImage)
+                
+                self.bgProfileImageView = resizeImage
+            }
+        
         }
-        
-        
         
     }
     

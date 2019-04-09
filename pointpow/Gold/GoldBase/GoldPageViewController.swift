@@ -59,7 +59,6 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
     var pointpowTextField:UITextField? {
         didSet{
             self.pointpowTextField?.delegate = self
-            
         }
     }
     var savingUpdateButton:UIButton?
@@ -540,6 +539,10 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
         if section == 0 {
             return CGSize.zero
             
+        }
+        let menu = self.arrayItem[section]
+        if menu == "register" {
+            return CGSize(width: collectionView.frame.width, height: 30)
         }
         return CGSize(width: collectionView.frame.width, height: 20)
         

@@ -288,7 +288,16 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
                         
                     }
                 }
-                item.liveDisable()
+                if let data = self.schedule {
+                    let time_to_live = data["time_to_live"] as? String ?? ""
+                    if compareLiveTime(time_to_live){
+                        item.liveEnable()
+                    }else{
+                        item.liveDisable()
+                    }
+                }
+               
+               
                 
             }
         } else {

@@ -145,7 +145,6 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
             self.refreshControl?.endRefreshing()
         }
     }
-    
     func getUserInfo(_ avaliable:(()->Void)?  = nil){
         
         var isLoading:Bool = true
@@ -469,7 +468,9 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         
-        
+        if section == 2  {
+            return CGSize(width: collectionView.frame.width, height: 30)
+        }
         return CGSize(width: collectionView.frame.width, height: 20)
         
     }

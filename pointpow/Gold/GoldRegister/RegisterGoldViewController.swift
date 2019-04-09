@@ -620,7 +620,6 @@ class RegisterGoldViewController: BaseViewController {
         }
        
         
-        
     }
     func validateLaserId(_ id:String)->Bool {
         var errorMobile = 0

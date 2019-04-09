@@ -817,31 +817,32 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)
         
-        let chosenImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+       if let chosenImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
         
+            
+            if let imageData = chosenImage.pngData() {
+                let bytes = imageData.count
+                let KB = Double(bytes) / 1024.0 // Note the difference
+                print("size of image in KB: \(KB)")
+            }
+            
+            // square for profile
+            let resizeImage = chosenImage.resizeUIImage(targetSize: CGSize(width: 400.0, height: 400.0))
+            self.idCardPhoto = resizeImage
+            
+            if let imageData = resizeImage.pngData() {
+                let bytes = imageData.count
+                let KB = Double(bytes) / 1024.0 // Note the difference
+                print("size of image in KB: \(KB)")
+            }
+            
+            
+            //reload data
+            self.hiddenIdCardPhotoImageView.image = resizeImage
+            
+            self.enableButton()
         
-        if let imageData = chosenImage.pngData() {
-            let bytes = imageData.count
-            let KB = Double(bytes) / 1024.0 // Note the difference
-            print("size of image in KB: \(KB)")
         }
-        
-        // square for profile
-        let resizeImage = chosenImage.resizeUIImage(targetSize: CGSize(width: 400.0, height: 400.0))
-        self.idCardPhoto = resizeImage
-        
-        if let imageData = resizeImage.pngData() {
-            let bytes = imageData.count
-            let KB = Double(bytes) / 1024.0 // Note the difference
-            print("size of image in KB: \(KB)")
-        }
-        
-        
-        //reload data
-        self.hiddenIdCardPhotoImageView.image = resizeImage
-        
-        self.enableButton()
-        
     }
     
     @objc func browseTapped(){

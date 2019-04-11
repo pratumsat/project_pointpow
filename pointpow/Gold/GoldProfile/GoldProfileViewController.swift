@@ -625,6 +625,15 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
             }else{
                 self.clearImageView6?.isHidden = false
             }
+            if newLength <= 2 {
+                if !isValidName(string) {
+                    return false
+                }
+            }else{
+                if !isValidNumber(string) {
+                    return false
+                }
+            }
             
             //validate laserId
             let text = textField.text ?? ""

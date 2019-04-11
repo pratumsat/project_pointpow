@@ -439,7 +439,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }
     }
    
-    func showRegisterGoldStep2Saving(_ animated:Bool, tupleModel:(image : UIImage?, firstname : String,lastname: String , email: String,mobile: String,idcard: String , birthdate:String, laserId:String)?){
+    func showRegisterGoldStep2Saving(_ animated:Bool, tupleModel:(image : UIImage?, firstname : String,lastname: String , email: String,mobile: String,idcard: String , birthdate:String, laserId:String, isCheck:Bool)?){
         if let vc:RegisterGoldstep2ViewController = self.storyboard?.instantiateViewController(withIdentifier: "RegisterGoldstep2ViewController") as? RegisterGoldstep2ViewController {
             
             vc.tupleModel = tupleModel
@@ -447,7 +447,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }
     }
     
-    func showRegisterGoldStep3Saving(_ animated:Bool, tupleModel:(image : UIImage?, firstname : String,lastname: String , email: String,mobile: String,idcard: String , birthdate:String, laserId:String)?){
+    func showRegisterGoldStep3Saving(_ animated:Bool, tupleModel:(image : UIImage?, firstname : String,lastname: String , email: String,mobile: String,idcard: String , birthdate:String, laserId:String, isCheck:Bool)?){
         if let vc:RegisterGoldstep3ViewController = self.storyboard?.instantiateViewController(withIdentifier: "RegisterGoldstep3ViewController") as? RegisterGoldstep3ViewController {
             
             vc.tupleModel = tupleModel

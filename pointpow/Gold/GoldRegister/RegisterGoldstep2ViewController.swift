@@ -30,26 +30,32 @@ class RegisterGoldstep2ViewController: BaseViewController ,UIImagePickerControll
     var picker:UIImagePickerController?
     var upload:UploadRequest?
     
-    var tupleModel:(image : UIImage?, firstname : String,lastname: String , email: String,mobile: String,idcard: String , birthdate:String, laserId:String)?
+    var tupleModel:(image : UIImage?, firstname : String,lastname: String , email: String,mobile: String,idcard: String , birthdate:String, laserId:String, isCheck:Bool)?
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        let backImage = UIImage(named: "ic-back-white")
+        let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(backViewTapped))
+        self.navigationItem.leftBarButtonItem = backButton
 
         self.title = NSLocalizedString("string-title-gold-register1", comment: "")
         self.setUp()
         
-        self.validateData()
+       
     }
+   
     func setUp(){
         self.backgroundImage?.image = nil
-        self.checkBox.isChecked = false
+        
         self.checkBox.toggle  = { (isCheck) in
             self.validateData()
+            self.tupleModel?.isCheck = isCheck
         }
+        
+        
         
         self.hiddenIdCardPhotoImageView.contentMode = .scaleAspectFit
       
@@ -77,11 +83,21 @@ class RegisterGoldstep2ViewController: BaseViewController ,UIImagePickerControll
         self.privacyPolicyLabel.isUserInteractionEnabled =  true
         self.privacyPolicyLabel.addGestureRecognizer(privacyPolicy)
         
+        if let tp = self.tupleModel {
+            if tp.image != nil{
+                self.hiddenIdCardPhotoImageView.image = tp.image
+                self.icCardPhotoImageView.isHidden = true
+                self.idCardPhoto = tp.image
+            }
+            self.checkBox.isChecked = tp.isCheck
+        }
         
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        
+
     }
     override func viewWillLayoutSubviews(){
         super.viewWillLayoutSubviews()
@@ -108,9 +124,17 @@ class RegisterGoldstep2ViewController: BaseViewController ,UIImagePickerControll
     }
     
     @objc func backToStep1Tapped(){
-        self.navigationController?.popViewController(animated: true)
+        if let formViewController = self.navigationController?.viewControllers[1] as? RegisterGoldViewController {
+            formViewController.tupleModel = self.tupleModel
+            self.navigationController?.popToViewController(formViewController, animated: true)
+        }
     }
-    
+    @objc func backViewTapped() {
+        if let formViewController = self.navigationController?.viewControllers[1] as? RegisterGoldViewController {
+            formViewController.tupleModel = self.tupleModel
+            self.navigationController?.popToViewController(formViewController, animated: true)
+        }
+    }
    
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -131,6 +155,7 @@ class RegisterGoldstep2ViewController: BaseViewController ,UIImagePickerControll
             // square for profile
             let resizeImage = chosenImage.resizeUIImage(targetSize: CGSize(width: 400.0, height: 400.0))
             self.idCardPhoto = resizeImage
+            self.tupleModel?.image = self.idCardPhoto
             
             if let imageData = resizeImage.pngData() {
                 let bytes = imageData.count
@@ -218,8 +243,7 @@ class RegisterGoldstep2ViewController: BaseViewController ,UIImagePickerControll
             showMessagePrompt(NSLocalizedString("string-message-alert-please-check-box", comment: ""))
             return
         }
-        if let idcardPhoto  = self.idCardPhoto {
-            self.tupleModel?.image = idcardPhoto
+        if  self.idCardPhoto != nil {
             self.showRegisterGoldStep3Saving(true , tupleModel: tupleModel)
         }else{
             showMessagePrompt(NSLocalizedString("string-message-alert-please-choose-image", comment: ""))
@@ -241,7 +265,7 @@ class RegisterGoldstep2ViewController: BaseViewController ,UIImagePickerControll
                 self.nextButton?.layer.sublayers?.removeFirst()
             }
         }
-        
+        print(self.nextButton?.layer.sublayers?.count)
         
         self.nextButton?.borderClearProperties(borderWidth: 1)
         self.nextButton?.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
@@ -253,6 +277,9 @@ class RegisterGoldstep2ViewController: BaseViewController ,UIImagePickerControll
                 self.nextButton?.layer.sublayers?.removeFirst()
             }
         }
+        
+        print(self.nextButton?.layer.sublayers?.count)
+        
         self.nextButton?.borderClearProperties(borderWidth: 1)
         self.nextButton?.applyGradient(colours: [UIColor.lightGray, UIColor.lightGray])
         

@@ -32,7 +32,7 @@ class RegisterGoldstep3ViewController: BaseViewController {
      var upload:UploadRequest?
     
     @IBOutlet weak var previewImageView: UIImageView!
-    var tupleModel:(image : UIImage?, firstname : String,lastname: String , email: String,mobile: String,idcard: String , birthdate:String, laserId:String)? {
+    var tupleModel:(image : UIImage?, firstname : String,lastname: String , email: String,mobile: String,idcard: String , birthdate:String, laserId:String, isCheck:Bool)? {
         didSet{
             
             print(tupleModel ?? "not value")
@@ -146,11 +146,16 @@ class RegisterGoldstep3ViewController: BaseViewController {
     }
     
     @objc func backToStep1Tapped(){
-        
-        self.navigationController?.popToViewController(self.navigationController!.viewControllers[1], animated: true)
+        if let formViewController = self.navigationController?.viewControllers[1] as? RegisterGoldViewController {
+            
+            formViewController.tupleModel = self.tupleModel
+            self.navigationController?.popToViewController(formViewController, animated: true)
+
+        }
     }
     @objc func backToStep2Tapped(){
         self.navigationController?.popViewController(animated: true)
+        
     }
     
     override func viewWillLayoutSubviews(){

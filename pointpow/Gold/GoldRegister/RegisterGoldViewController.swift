@@ -33,7 +33,7 @@ class RegisterGoldViewController: BaseViewController {
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
     
-    var tupleModel:(image : UIImage?, firstname : String,lastname: String , email: String,mobile: String,idcard: String , birthdate:String, laserId:String)?
+    var tupleModel:(image : UIImage?, firstname : String,lastname: String , email: String,mobile: String,idcard: String , birthdate:String, laserId:String, isCheck:Bool)?
     
     
     var clearImageView:UIImageView?
@@ -62,8 +62,14 @@ class RegisterGoldViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        if let tp = self.tupleModel {
+            if tp.image != nil{
+                
+            }
+        }
+        
     }
-    
     @objc func donedatePicker(){
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "th")
@@ -612,14 +618,15 @@ class RegisterGoldViewController: BaseViewController {
         
         if isValidEmail(email) {
             //pass
-            self.tupleModel = (image : nil,
+            self.tupleModel = (image : self.tupleModel?.image ?? nil,
                                firstname : firstName,
                                lastname: lastName ,
                                email: email,
                                mobile: mobile.replace(target: "-", withString: ""),
                                idcard: personalID.replace(target: "-", withString: ""),
                                birthdate: date,
-                               laserId:laserId.replace(target: "-", withString: ""))
+                               laserId:laserId.replace(target: "-", withString: ""),
+                               isCheck:self.tupleModel?.isCheck ?? false)
             
             self.showRegisterGoldStep2Saving(true, tupleModel: tupleModel)
         }else{

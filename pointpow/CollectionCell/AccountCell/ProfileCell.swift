@@ -39,6 +39,9 @@ class ProfileCell: UICollectionViewCell {
         let background = UITapGestureRecognizer(target: self, action: #selector(changeBackgroundTapped))
         self.changeBackground2Button.isUserInteractionEnabled = true
         self.changeBackground2Button.addGestureRecognizer(background)
+        
+        
+        self.backgroundImageView.blurImage()
     }
     
     @objc func changeProfileTapped(){

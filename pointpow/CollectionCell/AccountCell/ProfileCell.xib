@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -33,23 +33,11 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="po6-29-quF">
                                 <rect key="frame" x="0.0" y="0.0" width="370" height="380"/>
                             </imageView>
-                            <visualEffectView opaque="NO" clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zQ6-Ry-kJ7">
-                                <rect key="frame" x="0.0" y="0.0" width="370" height="380"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ZR6-Ov-Bcf">
-                                    <rect key="frame" x="0.0" y="0.0" width="370" height="380"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </view>
-                                <blurEffect style="dark"/>
-                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="zQ6-Ry-kJ7" firstAttribute="leading" secondItem="tB0-2a-L76" secondAttribute="leading" id="55g-CE-YQZ"/>
                             <constraint firstItem="po6-29-quF" firstAttribute="leading" secondItem="tB0-2a-L76" secondAttribute="leading" id="8dg-ZE-U6B"/>
-                            <constraint firstItem="zQ6-Ry-kJ7" firstAttribute="top" secondItem="tB0-2a-L76" secondAttribute="top" id="8kd-Fo-6yX"/>
-                            <constraint firstAttribute="trailing" secondItem="zQ6-Ry-kJ7" secondAttribute="trailing" id="9Ev-up-3XS"/>
                             <constraint firstAttribute="bottom" secondItem="po6-29-quF" secondAttribute="bottom" id="BeT-Bg-eDd"/>
-                            <constraint firstAttribute="bottom" secondItem="zQ6-Ry-kJ7" secondAttribute="bottom" id="HLm-8L-57u"/>
                             <constraint firstAttribute="trailing" secondItem="po6-29-quF" secondAttribute="trailing" id="hIo-rm-ch9"/>
                             <constraint firstItem="po6-29-quF" firstAttribute="top" secondItem="tB0-2a-L76" secondAttribute="top" id="xa5-LR-0ee"/>
                         </constraints>
@@ -201,7 +189,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="ic-camera" width="24" height="24"/>
-        <image name="ic-logo-white" width="19.200000762939453" height="19.200000762939453"/>
+        <image name="ic-camera" width="50" height="50"/>
+        <image name="ic-logo-white" width="40" height="40"/>
     </resources>
 </document>

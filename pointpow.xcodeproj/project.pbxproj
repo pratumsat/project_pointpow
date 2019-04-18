@@ -79,6 +79,8 @@
 		C11BFCAF221BF70300F066DE /* WithDrawShippingThaiPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11BFCAD221BF70300F066DE /* WithDrawShippingThaiPostCell.swift */; };
 		C11BFCB0221BF70300F066DE /* WithDrawShippingThaiPostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C11BFCAE221BF70300F066DE /* WithDrawShippingThaiPostCell.xib */; };
 		C11BFCB3221C0CB700F066DE /* PopupShippingAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11BFCB2221C0CB700F066DE /* PopupShippingAddressViewController.swift */; };
+		C11DD35322681EF70085EFBE /* WinnerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C127324122538E9A00A9EE74 /* WinnerCollectionViewCell.swift */; };
+		C11DD3542268536A0085EFBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1AD507D2187F45600F74415 /* Main.storyboard */; };
 		C120D7CE21955BB500F9EEBB /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120D7CC21955BB500F9EEBB /* ProfileCell.swift */; };
 		C120D7CF21955BB500F9EEBB /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C120D7CD21955BB500F9EEBB /* ProfileCell.xib */; };
 		C120D7D221955BC900F9EEBB /* ItemProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120D7D021955BC900F9EEBB /* ItemProfileCell.swift */; };
@@ -106,7 +108,6 @@
 		C127323C2253671C00A9EE74 /* WinnerLuckyDrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C127323B2253671C00A9EE74 /* WinnerLuckyDrawViewController.swift */; };
 		C127323F225380D500A9EE74 /* PickerLuckyDrawCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C127323D225380D500A9EE74 /* PickerLuckyDrawCell.swift */; };
 		C1273240225380D500A9EE74 /* PickerLuckyDrawCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C127323E225380D500A9EE74 /* PickerLuckyDrawCell.xib */; };
-		C127324322538E9A00A9EE74 /* WinnerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C127324122538E9A00A9EE74 /* WinnerCollectionViewCell.swift */; };
 		C127324422538E9A00A9EE74 /* WinnerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C127324222538E9A00A9EE74 /* WinnerCollectionViewCell.xib */; };
 		C12732472253905100A9EE74 /* HeadWinnerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12732452253905100A9EE74 /* HeadWinnerCollectionViewCell.swift */; };
 		C12732482253905100A9EE74 /* HeadWinnerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12732462253905100A9EE74 /* HeadWinnerCollectionViewCell.xib */; };
@@ -163,9 +164,6 @@
 		C18A1CE622118BC9002CAF4C /* GoldSWRevealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18A1CE522118BC9002CAF4C /* GoldSWRevealViewController.swift */; };
 		C197FEDA21DC5616002F24E8 /* PopUpRegisterSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FED921DC5616002F24E8 /* PopUpRegisterSuccessViewController.swift */; };
 		C197FEDE21DC8E98002F24E8 /* ResetNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FEDD21DC8E98002F24E8 /* ResetNav.swift */; };
-		C197FEE42207E4F6002F24E8 /* NotoSansThai-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C197FEE32207E497002F24E8 /* NotoSansThai-Bold.ttf */; };
-		C197FEE52207E4F9002F24E8 /* NotoSansThai-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C197FEE22207E485002F24E8 /* NotoSansThai-Regular.ttf */; };
-		C197FEE72207EA18002F24E8 /* NotoSansThai-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C197FEE62207EA09002F24E8 /* NotoSansThai-SemiBold.ttf */; };
 		C197FF2622081C72002F24E8 /* GoldPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FF2522081C72002F24E8 /* GoldPageViewController.swift */; };
 		C197FF2A22082503002F24E8 /* GoldProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FF2922082503002F24E8 /* GoldProfileViewController.swift */; };
 		C197FF2C22082527002F24E8 /* GoldWithDrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FF2B22082527002F24E8 /* GoldWithDrawViewController.swift */; };
@@ -181,7 +179,6 @@
 		C197FF432209401D002F24E8 /* LogoGoldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C197FF412209401D002F24E8 /* LogoGoldCell.xib */; };
 		C1AD507A2187F45600F74415 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AD50792187F45600F74415 /* AppDelegate.swift */; };
 		C1AD507C2187F45600F74415 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AD507B2187F45600F74415 /* ViewController.swift */; };
-		C1AD507F2187F45600F74415 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1AD507D2187F45600F74415 /* Main.storyboard */; };
 		C1AD50812187F45900F74415 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1AD50802187F45900F74415 /* Assets.xcassets */; };
 		C1AD50842187F45900F74415 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1AD50822187F45900F74415 /* LaunchScreen.storyboard */; };
 		C1AD508F2187F45900F74415 /* pointpowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AD508E2187F45900F74415 /* pointpowTests.swift */; };
@@ -412,9 +409,6 @@
 		C18A1CE522118BC9002CAF4C /* GoldSWRevealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldSWRevealViewController.swift; sourceTree = "<group>"; };
 		C197FED921DC5616002F24E8 /* PopUpRegisterSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpRegisterSuccessViewController.swift; sourceTree = "<group>"; };
 		C197FEDD21DC8E98002F24E8 /* ResetNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetNav.swift; sourceTree = "<group>"; };
-		C197FEE22207E485002F24E8 /* NotoSansThai-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansThai-Regular.ttf"; sourceTree = "<group>"; };
-		C197FEE32207E497002F24E8 /* NotoSansThai-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansThai-Bold.ttf"; sourceTree = "<group>"; };
-		C197FEE62207EA09002F24E8 /* NotoSansThai-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansThai-SemiBold.ttf"; sourceTree = "<group>"; };
 		C197FF2522081C72002F24E8 /* GoldPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldPageViewController.swift; sourceTree = "<group>"; };
 		C197FF2922082503002F24E8 /* GoldProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldProfileViewController.swift; sourceTree = "<group>"; };
 		C197FF2B22082527002F24E8 /* GoldWithDrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldWithDrawViewController.swift; sourceTree = "<group>"; };
@@ -1098,9 +1092,6 @@
 		C1DEBE9321882A6800CBB95F /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				C197FEE62207EA09002F24E8 /* NotoSansThai-SemiBold.ttf */,
-				C197FEE32207E497002F24E8 /* NotoSansThai-Bold.ttf */,
-				C197FEE22207E485002F24E8 /* NotoSansThai-Regular.ttf */,
 				C1DEBE962188337500CBB95F /* ThaiSansNeue-Bold.ttf */,
 				C1DEBE972188337500CBB95F /* ThaiSansNeue-Regular.ttf */,
 			);
@@ -1274,6 +1265,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C11DD3542268536A0085EFBE /* Main.storyboard in Resources */,
 				C1F760FE22169B6D000A2CA9 /* ConfirmButtonCell.xib in Resources */,
 				C1B32E3F22521881006AD7F2 /* PrivilegeCell.xib in Resources */,
 				C1817D9E219C07DF009507DB /* ItemBankCell.xib in Resources */,
@@ -1281,7 +1273,6 @@
 				C1DEBE8C2188115D00CBB95F /* GoogleService-Info.plist in Resources */,
 				C1249EBB2224F04D00F56FA0 /* map.jpg in Resources */,
 				C181F064220C00B8003F7C70 /* SaveButtonProfileCell.xib in Resources */,
-				C197FEE72207EA18002F24E8 /* NotoSansThai-SemiBold.ttf in Resources */,
 				C12732482253905100A9EE74 /* HeadWinnerCollectionViewCell.xib in Resources */,
 				C1817D97219BFCDE009507DB /* FriendCollectionCell.xib in Resources */,
 				C1DA27C822421C3B000C0715 /* WithDrawResultThaiPostSuccessCell.xib in Resources */,
@@ -1294,7 +1285,6 @@
 				C11BFCB0221BF70300F066DE /* WithDrawShippingThaiPostCell.xib in Resources */,
 				C1892E0E221E900900F5412F /* TransactionGoldCell.xib in Resources */,
 				C169FFBF21C36E1300F9D354 /* Localizable.strings in Resources */,
-				C197FEE42207E4F6002F24E8 /* NotoSansThai-Bold.ttf in Resources */,
 				C106BEAF220BEB3000E2331E /* GoldItemCell.xib in Resources */,
 				C1249EC5223E6FC600F56FA0 /* WithDrawThaiPostSummaryCell.xib in Resources */,
 				C1DEBE982188337500CBB95F /* ThaiSansNeue-Bold.ttf in Resources */,
@@ -1304,7 +1294,6 @@
 				C1AD50812187F45900F74415 /* Assets.xcassets in Resources */,
 				C1247C5222191898005D6F7A /* WithdrawCell.xib in Resources */,
 				C127324422538E9A00A9EE74 /* WinnerCollectionViewCell.xib in Resources */,
-				C197FEE52207E4F9002F24E8 /* NotoSansThai-Regular.ttf in Resources */,
 				C10CA1BA2193E1D100316DF3 /* PromotionCampainCell.xib in Resources */,
 				C107CF3B222269E000C50B8C /* AddressViewCell.xib in Resources */,
 				C169FFC921C4F10100F9D354 /* FavorCell.xib in Resources */,
@@ -1334,7 +1323,6 @@
 				C107CF2A221FC92200C50B8C /* WidthDrawResultPointPow2Cell.xib in Resources */,
 				C13D998B21997AD6001A4794 /* HeadCell.xib in Resources */,
 				C1DA27C4224200C2000C0715 /* WithDrawResultThaiPostCell.xib in Resources */,
-				C1AD507F2187F45600F74415 /* Main.storyboard in Resources */,
 				C1B32E472252674D006AD7F2 /* CountDownCell.xib in Resources */,
 				C13D998621997938001A4794 /* LogoutCell.xib in Resources */,
 				C1273240225380D500A9EE74 /* PickerLuckyDrawCell.xib in Resources */,
@@ -1486,7 +1474,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C127324322538E9A00A9EE74 /* WinnerCollectionViewCell.swift in Sources */,
+				C11DD35322681EF70085EFBE /* WinnerCollectionViewCell.swift in Sources */,
 				C1EB9434224E8AFF004D73A7 /* PAPasscodeViewController.h in Sources */,
 				C1AD50B72188000B00F74415 /* Constant.swift in Sources */,
 				C107CF36222263AD00C50B8C /* PopupShippingMyAddressViewController.swift in Sources */,

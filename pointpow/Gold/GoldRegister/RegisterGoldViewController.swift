@@ -236,9 +236,9 @@ class RegisterGoldViewController: BaseViewController {
         self.showInfoLaserIdPopup(true)
     }
     
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+    override func textFieldDidBeginEditing(_ textField: UITextField) {
+        super.textFieldDidBeginEditing(textField)
         self.addColorLineView(textField)
-        return true
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

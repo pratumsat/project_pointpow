@@ -769,8 +769,6 @@ struct Constant {
         static let RESET_PASSWORD = "RESET_PASSWORD"
         static let VERIFI_EMAIL_REGISTER = "VERIFI_EMAIL_REGISTER"
         static let NOTIFICATION_SELECTED_PAGE = "NOTIFICATION_SELECTED_PAGE"
-        static let NotificationGoogleSigInSuccess = "NotificationGoogleSigInSuccess"
-        static let NotificationGoogleSigInFailure = "NotificationGoogleSigInFailure"
         
             struct DefaultImaege{
                 static let PROFILE_PLACEHOLDER = "ic-gold-profile"

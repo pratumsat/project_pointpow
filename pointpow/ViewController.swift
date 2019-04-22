@@ -19,10 +19,10 @@ class ViewController: BaseViewController {
         self.showIntroduce(false)
     }
     @IBAction func facebookTapped(_ sender: Any) {
-        self.loginFacebook()
+        
     }
     @IBAction func googleTapped(_ sender: Any) {
-        self.loginGoogle()
+        
     }
     @IBAction func cameraTapped(_ sender: Any) {
         self.showScanBarcode { (resultCode, code) in

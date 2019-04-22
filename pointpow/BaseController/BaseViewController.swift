@@ -7,13 +7,11 @@
 //
 import AVFoundation
 import UIKit
-import FBSDKLoginKit
-import GoogleSignIn
 import Presentr
 import FirebaseMessaging
 import Alamofire
 
-class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeViewControllerDelegate, GIDSignInUIDelegate
+class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeViewControllerDelegate
 {
 
     var positionYTextField:CGFloat = 0
@@ -39,16 +37,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     var backgroundImage:UIImageView?
     var refreshControl:UIRefreshControl?
     
-    private var _fbLoginManager: FBSDKLoginManager?
-    var fbLoginManager: FBSDKLoginManager {
-        get {
-            if _fbLoginManager == nil {
-                _fbLoginManager = FBSDKLoginManager()
-            }
-            return _fbLoginManager!
-        }
-    }
-    
+   
     @objc func backTapped(){
         print("backTapped")
     }
@@ -75,18 +64,14 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         let backButton = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(backTapped))
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         
-        
-        GIDSignIn.sharedInstance().uiDelegate = self
-        
+
         //add tap dismiss keyboard
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
         
 
-        NotificationCenter.default.addObserver(self, selector: #selector(GoogleSigInSuccess), name: NSNotification.Name(rawValue: Constant.DefaultConstansts.NotificationGoogleSigInSuccess), object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(GoogleSigInFailure), name: NSNotification.Name(rawValue: Constant.DefaultConstansts.NotificationGoogleSigInFailure), object: nil)
+     
       
         NotificationCenter.default.addObserver(self, selector: #selector(resetPinCode), name: NSNotification.Name(rawValue: Constant.DefaultConstansts.RESET_PIN), object: nil)
         
@@ -145,55 +130,6 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         self.showSettingPassCodeModalView()
     }
     
-    @objc func GoogleSigInSuccess(notification: NSNotification){
-//        if let userInfo = notification.userInfo as? [String:AnyObject]{
-//
-//            print(userInfo)
-//
-////            let fbtoken = FBSDKAccessToken.current()?.tokenString ?? ""
-////            let email = item["email"] as? String ?? ""
-////            let first_name = item["first_name"] as? String ?? ""
-////            let last_name = item["last_name"] as? String ?? ""
-////            let fcmToken = Messaging.messaging().fcmToken ?? ""
-////
-////            let params:Parameters = ["email" : email,
-////                                     "firstname": first_name,
-////                                     "lastname" : last_name,
-////                                     "social_token" : fbtoken,
-////                                     "device_token": fcmToken,
-////                                     "app_os": "ios"]
-////
-////            self.modelCtrl.loginWithSocial(params: params, succeeded: { (result) in
-////                if let mResult = result as? [String:AnyObject]{
-////                    print(mResult)
-////                    let dupicate = mResult["exist_email"] as? NSNumber ?? 0
-////                    if dupicate.boolValue {
-////                        self.isExist = true
-////                    }else{
-////                        self.isExist = false
-////                    }
-////                    self.socialLoginSucces = true
-////                }
-////            }, error: { (error) in
-////                if let mError = error as? [String:AnyObject]{
-////                    print(mError)
-////                }
-////            }, failure: { (messageError) in
-////                self.handlerMessageError(messageError , title: "")
-////            })
-//            //when after call api success
-//            //self.socialLoginSucces = true
-//
-//        }
-        
-    }
-   
-    
-    @objc func GoogleSigInFailure(notification: NSNotification){
-        if let userInfo = notification.userInfo as? [String:AnyObject]{
-            self.showMessagePrompt(userInfo["error"] as? String ?? "unknow")
-        }
-    }
     
     func registerTableViewNib(_ tableTarget:UITableView ,_ nibName:String){
         
@@ -1606,75 +1542,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         self.positionYTextField = y
     }
     
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-    }
     
-    @objc func loginGoogle(){
-        GIDSignIn.sharedInstance().signIn()
-    }
-    
-    @objc func loginFacebook() {
-        self.fbLoginManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
-            if error == nil {
-                let fbloginresult : FBSDKLoginManagerLoginResult = result!
-                if(fbloginresult.isCancelled) {
-                    //Show Cancel alert
-                } else if(fbloginresult.grantedPermissions.contains("email")) {
-                    self.returnUserData()
-                    //fbLoginManager.logOut()
-                }
-            }
-        }
-    }
-    
-    func returnUserData(){
-        if((FBSDKAccessToken.current()) != nil){
-            FBSDKGraphRequest(graphPath: "me", parameters:
-                ["fields":"email,first_name,last_name,gender,picture"]).start(completionHandler: { (connection, result, error) -> Void in
-                    
-                    if (error == nil){
-                        print(result)
-                        if let item = result as? [String:AnyObject]{
-                            
-                            let fbtoken = FBSDKAccessToken.current()?.tokenString ?? ""
-                            let email = item["email"] as? String ?? ""
-                            let first_name = item["first_name"] as? String ?? ""
-                            let last_name = item["last_name"] as? String ?? ""
-                            let fcmToken = Messaging.messaging().fcmToken ?? ""
-                            
-                            let params:Parameters = ["email" : email,
-                                                     "firstname": first_name,
-                                                     "lastname" : last_name,
-                                                     "social_token" : fbtoken,
-                                                     "device_token": fcmToken,
-                                                     "app_os": "ios"]
-                            
-                            self.modelCtrl.loginWithSocial(params: params, succeeded: { (result) in
-                                if let mResult = result as? [String:AnyObject]{
-                                    print(mResult)
-                                    let dupicate = mResult["exist_email"] as? NSNumber ?? 0
-                                    if dupicate.boolValue {
-                                        self.isExist = true
-                                    }else{
-                                        self.isExist = false
-                                    }
-                                    self.socialLoginSucces = true
-                                }
-                            }, error: { (error) in
-                                if let mError = error as? [String:AnyObject]{
-                                    print(mError)
-                                }
-                            }, failure: { (messageError) in
-                                self.handlerMessageError(messageError , title: "")
-                            })
-                            
-                        }
-                        
-                        
-                    }
-                })
-        }
-    }
     
     func findShadowImage(under view: UIView) -> UIImageView? {
         if view is UIImageView && view.bounds.size.height <= 1 {

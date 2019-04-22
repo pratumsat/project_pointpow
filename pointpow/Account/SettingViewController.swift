@@ -129,6 +129,11 @@ class SettingViewController: BaseViewController, UICollectionViewDelegate , UICo
         if indexPath.section == 0 {
             self.chooseLanguage()
         }
+        if indexPath.section == 2 {
+            self.modelCtrl.logOut() { (result) in
+                Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(self.reNewApplication), userInfo: nil, repeats: false)
+            }
+        }
     }
     
     

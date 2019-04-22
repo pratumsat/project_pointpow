@@ -8,12 +8,11 @@
 import SDWebImage
 import UIKit
 import Firebase
-import GoogleSignIn
 import UserNotifications
 import FirebaseMessaging
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.message_id"
@@ -25,8 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         DataController.sharedInstance.retrieveToken()
         
         FirebaseApp.configure()
-        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-        GIDSignIn.sharedInstance().delegate = self
         
         Messaging.messaging().delegate = self
         
@@ -128,42 +125,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 }
             }
             
-            return GIDSignIn.sharedInstance().handle(url,sourceApplication:
-                options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
+            return true
     }
    
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if let error = error {
-            print(error.localizedDescription)
-            //let userInfo = ["error":error.localizedDescription]
-            //NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constant.DefaultConstansts.NotificationGoogleSigInFailure), object: nil, userInfo: userInfo as [String:AnyObject])
-            
-            
-            return
-        }
-        // Perform any operations on signed in user here.
-        let userId = user.userID                  // For client-side use only!
-        let idToken = user.authentication.idToken // Safe to send to the server
-        let fullName = user.profile.name
-        let givenName = user.profile.givenName
-        let familyName = user.profile.familyName
-        let email = user.profile.email
-        
-        let userInfo = ["userId":userId,
-                        "idToken":idToken,
-                        "fullName":fullName,
-                        "givenName":givenName,
-                        "familyName":familyName,
-                        "email":email]
-        
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constant.DefaultConstansts.NotificationGoogleSigInSuccess), object: nil, userInfo: userInfo as [String:AnyObject])
-        
-        
-    }
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        // Perform any operations when the user disconnects from app here.
-        // ...
-    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

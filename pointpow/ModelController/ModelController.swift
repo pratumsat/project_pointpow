@@ -8,8 +8,7 @@
 import Alamofire
 import Foundation
 import FirebaseMessaging
-import FBSDKLoginKit
-import GoogleSignIn
+
 /*
  
  let urlStr: String = "maps://"
@@ -27,15 +26,6 @@ import GoogleSignIn
  
  */
 class ModelController {
-    private var _fbLoginManager: FBSDKLoginManager?
-    var fbLoginManager: FBSDKLoginManager {
-        get {
-            if _fbLoginManager == nil {
-                _fbLoginManager = FBSDKLoginManager()
-            }
-            return _fbLoginManager!
-        }
-    }
     
     var loadingStart:(()->Void)?
     var loadingFinish:(()->Void)?
@@ -3358,9 +3348,12 @@ class ModelController {
     
     
     
-    func logOut(){
-        GIDSignIn.sharedInstance()?.signOut()
-        self.fbLoginManager.logOut()
+    func logOut(succeeded:( (_ result:AnyObject) ->Void)? = nil){
+        DataController.sharedInstance.setToken("")
+        succeeded?("logut success" as AnyObject)
+        
+        //GIDSignIn.sharedInstance()?.signOut()
+        //self.fbLoginManager.logOut()
         
         /*
         if((FBSDKAccessToken.current()) == nil){

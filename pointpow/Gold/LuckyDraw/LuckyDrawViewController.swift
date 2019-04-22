@@ -296,9 +296,6 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
                         item.liveDisable()
                     }
                 }
-               
-               
-                
             }
         } else {
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "LogoGoldCell", for: indexPath) as? LogoGoldCell {

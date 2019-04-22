@@ -265,7 +265,7 @@ class RegisterGoldstep2ViewController: BaseViewController ,UIImagePickerControll
                 self.nextButton?.layer.sublayers?.removeFirst()
             }
         }
-        print(self.nextButton?.layer.sublayers?.count)
+        
         
         self.nextButton?.borderClearProperties(borderWidth: 1)
         self.nextButton?.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
@@ -278,7 +278,7 @@ class RegisterGoldstep2ViewController: BaseViewController ,UIImagePickerControll
             }
         }
         
-        print(self.nextButton?.layer.sublayers?.count)
+        
         
         self.nextButton?.borderClearProperties(borderWidth: 1)
         self.nextButton?.applyGradient(colours: [UIColor.lightGray, UIColor.lightGray])

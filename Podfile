@@ -12,9 +12,7 @@ target 'pointpow' do
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'
     pod 'ZBarSDK', '~>1.3.1'
-    pod 'GoogleSignIn'
     
-    pod 'FBSDKLoginKit'
     
     pod 'SWRevealViewController', :git => 'https://github.com/John-Lluch/SWRevealViewController.git', :tag => 'v2.4.0'
 

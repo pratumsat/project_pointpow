@@ -97,6 +97,16 @@ class LoginViewController: BaseViewController {
             }else{
                 self.clearImageView?.isHidden = false
             }
+            //Mobile
+            let text = textField.text ?? ""
+            
+            if string.count == 0 {
+                textField.text = String(text.dropLast()).chunkFormatted()
+            }  else {
+                let newText = String((text + string).filter({ $0 != "-" }).prefix(10))
+                textField.text = newText.chunkFormatted()
+            }
+            return false
         }
         return true
         
@@ -156,100 +166,52 @@ class LoginViewController: BaseViewController {
             return
         }
 
-       
-        if isValidNumber(username){
-            print("number")
-            
-            guard validateMobile(username) else { return }
-            
-            let fcmToken = Messaging.messaging().fcmToken ?? ""
-            let params:Parameters = ["mobile" : username,
-                                     "password": password,
-                                     "device_token": fcmToken,
-                                     "app_os": "ios"]
-            modelCtrl.loginWithEmailORMobile(params: params, succeeded: { (result) in
-                if let mResult = result as? [String:AnyObject]{
-                    print(mResult)
-                    
-                    self.dismiss(animated: true, completion: nil)
-                    
-                }
-            }, error: { (error) in
-                if let mError = error as? [String:AnyObject]{
-                    print(mError)
-                    let message = mError["message"] as? String ?? ""
-                    let field = mError["field"] as? String ?? ""
-                    if field == "username" {
-                        self.errorUsernamelLabel = self.usernameTextField.addBottomLabelErrorMessage(message, marginLeft: 15)
-                    }else if field == "password"{
-                        self.errorPasswordLabel =  self.passwordTextField.addBottomLabelErrorMessage(message, marginLeft: 15)
-                    }
-                    self.showMessagePrompt(message)
-                }
-            }, failure: { (messageError) in
-                self.handlerMessageError(messageError , title: "")
-            })
-            
-            return
-        }
+        guard validateMobile(username) else { return }
         
-        if isValidEmail(username) {
-            print("email")
-         
-            let fcmToken = Messaging.messaging().fcmToken ?? ""
-            let params:Parameters = ["email" : username,
-                                     "password": password,
-                                     "device_token": fcmToken,
-                                     "app_os": "ios"]
-            modelCtrl.loginWithEmailORMobile(params: params, succeeded: { (result) in
-                if let mResult = result as? [String:AnyObject]{
-                    print(mResult)
-                    
-                    self.dismiss(animated: true, completion: nil)
-                    
+        let fcmToken = Messaging.messaging().fcmToken ?? ""
+        let params:Parameters = ["mobile" : username.replace(target: "-", withString: ""),
+                                 "password": password,
+                                 "device_token": fcmToken,
+                                 "app_os": "ios"]
+        modelCtrl.loginWithEmailORMobile(params: params, succeeded: { (result) in
+            if let mResult = result as? [String:AnyObject]{
+                print(mResult)
+                
+                self.dismiss(animated: true, completion: nil)
+                
+            }
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                print(mError)
+                let message = mError["message"] as? String ?? ""
+                let field = mError["field"] as? String ?? ""
+                if field == "username" {
+                    self.errorUsernamelLabel = self.usernameTextField.addBottomLabelErrorMessage(message, marginLeft: 15)
+                }else if field == "password"{
+                    self.errorPasswordLabel =  self.passwordTextField.addBottomLabelErrorMessage(message, marginLeft: 15)
                 }
-            }, error: { (error) in
-                if let mError = error as? [String:AnyObject]{
-                    print(mError)
-                    let message = mError["message"] as? String ?? ""
-                    let field = mError["field"] as? String ?? ""
-                    if field == "username" {
-                        self.errorUsernamelLabel = self.usernameTextField.addBottomLabelErrorMessage(message, marginLeft: 15)
-                    }else if field == "password"{
-                        self.errorPasswordLabel =  self.passwordTextField.addBottomLabelErrorMessage(message, marginLeft: 15)
-                    }
-                    self.showMessagePrompt(message)
-                }
-            }, failure: { (messageError) in
-                self.handlerMessageError(messageError , title: "")
-            })
-            
-            
-        }else{
-           
-            print("not email")
-            
-            let emailNotValid = NSLocalizedString("string-error-invalid-email", comment: "")
-            self.showMessagePrompt(emailNotValid)
-            self.errorUsernamelLabel =  self.usernameTextField.addBottomLabelErrorMessage(emailNotValid, marginLeft: 15 )
-
-            
-        }
+                self.showMessagePrompt(message)
+            }
+        }, failure: { (messageError) in
+            self.handlerMessageError(messageError , title: "")
+        })
+        
     }
    
     func validateMobile(_ mobile:String)-> Bool{
         var errorMobile = 0
         var errorMessage = ""
         
-        if !checkPrefixcellPhone(mobile) {
+        let nMobile = mobile.replace(target: "-", withString: "")
+        if !checkPrefixcellPhone(nMobile) {
             errorMessage = NSLocalizedString("string-error-invalid-mobile", comment: "")
             errorMobile += 1
         }
-        if mobile.count < 10 {
+        if nMobile.count < 10 {
             errorMessage = NSLocalizedString("string-error-invalid-mobile1", comment: "")
             errorMobile += 1
         }
-        if mobile.count > 10 {
+        if nMobile.count > 10 {
             errorMessage = NSLocalizedString("string-error-invalid-mobile2", comment: "")
             errorMobile += 1
         }

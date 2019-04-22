@@ -164,8 +164,21 @@ static NSTimeInterval AnimationDuration = 0.3;
     emailTextField.autocorrectionType = UITextAutocorrectionTypeNo;
     emailTextField.returnKeyType = UIReturnKeyDone;
     emailTextField.font = [UIFont fontWithName:@"ThaiSansNeue-Bold" size:20];
+    emailTextField.placeholder = NSLocalizedString(@"title-forgot-passcode-email-fill", nil);
     [contentView addSubview:emailTextField];
+    
+    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 40, 5)];
+    emailTextField.leftView = paddingView;
+    emailTextField.leftViewMode = UITextFieldViewModeAlways;
+    
+    emailImageView = [[UIImageView alloc] initWithImage:([UIImage imageNamed:@"ic-mail"] )];
+    emailImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    emailImageView.contentMode = UIViewContentModeScaleAspectFit;
+    [contentView addSubview:emailImageView];
+    
     emailTextField.hidden = YES;
+    emailImageView.hidden = YES;
+    
     
     underLineTextFieldView = [[UIView alloc] init];
     underLineTextFieldView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -237,7 +250,8 @@ static NSTimeInterval AnimationDuration = 0.3;
                             @"logoAppImageView":logoAppImageView,
                             @"emailTextField": emailTextField,
                             @"underLineTextFieldView":underLineTextFieldView,
-                            @"sendEmailButton":sendEmailButton
+                            @"sendEmailButton":sendEmailButton,
+                            @"emailImageView":emailImageView
                     
                             };
     [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[contentView]|" options:0 metrics:nil views:views]];
@@ -311,6 +325,12 @@ static NSTimeInterval AnimationDuration = 0.3;
     
     
     [constraints addObject:[NSLayoutConstraint constraintWithItem:emailTextField attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
+    
+     [constraints addObject:[NSLayoutConstraint constraintWithItem:emailImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:20]];
+    
+    [constraints addObject:[NSLayoutConstraint constraintWithItem:emailImageView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:emailTextField attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
+    
+    [constraints addObject:[NSLayoutConstraint constraintWithItem:emailImageView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:emailTextField attribute:NSLayoutAttributeLeft multiplier:1 constant:10]];
 
     
     [constraints addObject:[NSLayoutConstraint constraintWithItem:sendEmailButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:emailTextField attribute:NSLayoutAttributeBottom multiplier:1 constant:40]];
@@ -403,6 +423,7 @@ static NSTimeInterval AnimationDuration = 0.3;
         [self showScreenForPhase:0 animated:YES];
         _forgotPin = false;
         emailTextField.hidden = YES;
+        emailImageView.hidden = YES;
         underLineTextFieldView.hidden = YES;
         sendEmailButton.hidden = YES;
         _inputPanel.hidden = NO;
@@ -542,6 +563,7 @@ static NSTimeInterval AnimationDuration = 0.3;
         [self showScreenForPhase:1 animated:YES];
          _forgotPin = true;
         emailTextField.hidden = NO;
+        emailImageView.hidden = NO;
         underLineTextFieldView.hidden = NO;
         sendEmailButton.hidden = NO;
         forgotLabel.hidden = YES;

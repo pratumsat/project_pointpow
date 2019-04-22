@@ -105,6 +105,16 @@ class RegisterViewController: BaseViewController {
             }else{
                 self.clearImageView?.isHidden = false
             }
+            //Mobile
+            let text = textField.text ?? ""
+            
+            if string.count == 0 {
+                textField.text = String(text.dropLast()).chunkFormatted()
+            }  else {
+                let newText = String((text + string).filter({ $0 != "-" }).prefix(10))
+                textField.text = newText.chunkFormatted()
+            }
+            return false
         }
         return true
         
@@ -157,7 +167,7 @@ class RegisterViewController: BaseViewController {
     }
     
     @IBAction func registerTapped(_ sender: Any) {
-        let username = self.usernameTextField.text!
+        var username = self.usernameTextField.text!
         let password = self.passwordTextField.text!
         let confirmPassword = self.confirmPasswordTextField.text!
         
@@ -193,95 +203,40 @@ class RegisterViewController: BaseViewController {
             return
         }
         
-        if isValidNumber(username){
-            print("number")
-            
-            guard validateMobile(username) else { return }
-            guard validatePassword(password, confirmPassword) else { return }
-            print("pass")
-            
-            
-            let fcmToken = Messaging.messaging().fcmToken ?? ""
-            let params:Parameters = ["mobile" : username,
-                                     "password": password,
-                                     "device_token": fcmToken,
-                                     "app_os": "ios"]
-            
-            modelCtrl.registerWithMobile(params: params, succeeded: { (result) in
-                if let mResult = result as? [String:AnyObject]{
-                    print(mResult)
-                    let ref_id = mResult["ref_id"] as? String ?? ""
-                    let member_id = mResult["member_id"] as? NSNumber ?? 0
-                    self.showVerify(username, ref_id, member_id.stringValue, true)
-                }
-            }, error: { (error) in
-                if let mError = error as? [String:AnyObject]{
-                    print(mError)
-                    if let mError = error as? [String:AnyObject]{
-                        print(mError)
-                        let message = mError["message"] as? String ?? ""
-                        let _ = mError["field"] as? String ?? ""
-                        
-                        self.errorUsernamelLabel =  self.usernameTextField.addBottomLabelErrorMessage(message, marginLeft: 15 )
-                        self.showMessagePrompt(message)
-                    }
-                }
-            }, failure: { (messageError) in
-                self.handlerMessageError(messageError , title: "")
-            })
-            
-            
-            return
-        }
         
-        if isValidEmail(username) {
-            print("email")
-            guard validatePassword(password, confirmPassword) else { return }
-            print("pass")
-            
-            let fcmToken = Messaging.messaging().fcmToken ?? ""
-            let params:Parameters = ["email" : username,
-                                     "password": password,
-                                     "device_token": fcmToken,
-                                     "app_os": "ios"]
-            modelCtrl.registerWithEmail(params: params, succeeded: { (result) in
-                if let mResult = result as? [String:AnyObject]{
-                    print(mResult)
-                    
-                    let message = NSLocalizedString("string-verify-password-send-email", comment: "")
-                    let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
-                    let ok = UIAlertAction(title: NSLocalizedString("string-button-ok", comment: ""), style: .cancel, handler: { (action) in
-                        
-                        self.showLogin(true)
-                    })
-                    alert.addAction(ok)
-                    self.present(alert, animated: true, completion: nil)
-
-                    
-                }
-            }, error: { (error) in
+        guard validateMobile(username) else { return }
+        guard validatePassword(password, confirmPassword) else { return }
+        print("pass")
+        
+        
+        let fcmToken = Messaging.messaging().fcmToken ?? ""
+        let params:Parameters = ["mobile" : username.replace(target: "-", withString: ""),
+                                 "password": password,
+                                 "device_token": fcmToken,
+                                 "app_os": "ios"]
+        
+        modelCtrl.registerWithMobile(params: params, succeeded: { (result) in
+            if let mResult = result as? [String:AnyObject]{
+                print(mResult)
+                let ref_id = mResult["ref_id"] as? String ?? ""
+                let member_id = mResult["member_id"] as? NSNumber ?? 0
+                self.showVerify(username, ref_id, member_id.stringValue, true)
+            }
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                print(mError)
                 if let mError = error as? [String:AnyObject]{
                     print(mError)
-                    if let mError = error as? [String:AnyObject]{
-                        print(mError)
-                        let message = mError["message"] as? String ?? ""
-                        let _ = mError["field"] as? String ?? ""
-                        
-                        self.errorUsernamelLabel =  self.usernameTextField.addBottomLabelErrorMessage(message, marginLeft: 15 )
-                        self.showMessagePrompt(message)
-                    }
+                    let message = mError["message"] as? String ?? ""
+                    let _ = mError["field"] as? String ?? ""
+                    
+                    self.errorUsernamelLabel =  self.usernameTextField.addBottomLabelErrorMessage(message, marginLeft: 15 )
+                    self.showMessagePrompt(message)
                 }
-            }, failure: { (messageError) in
-                self.handlerMessageError(messageError , title: "")
-            })
-            
-        }else{
-            print("not email")
-            let emailNotValid = NSLocalizedString("string-error-invalid-email", comment: "")
-            self.showMessagePrompt(emailNotValid)
-            self.errorUsernamelLabel =  self.usernameTextField.addBottomLabelErrorMessage(emailNotValid, marginLeft: 15 )
-            
-        }
+            }
+        }, failure: { (messageError) in
+            self.handlerMessageError(messageError , title: "")
+        })
         
     }
     
@@ -289,15 +244,16 @@ class RegisterViewController: BaseViewController {
         var errorMobile = 0
         var errorMessage = ""
        
-        if !checkPrefixcellPhone(mobile) {
+        let nMobile = mobile.replace(target: "-", withString: "")
+        if !checkPrefixcellPhone(nMobile) {
             errorMessage = NSLocalizedString("string-error-invalid-mobile", comment: "")
             errorMobile += 1
         }
-        if mobile.count < 10 {
+        if nMobile.count < 10 {
             errorMessage = NSLocalizedString("string-error-invalid-mobile1", comment: "")
             errorMobile += 1
         }
-        if mobile.count > 10 {
+        if nMobile.count > 10 {
             errorMessage = NSLocalizedString("string-error-invalid-mobile2", comment: "")
             errorMobile += 1
         }

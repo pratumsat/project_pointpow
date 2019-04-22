@@ -584,15 +584,15 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     
     func showEnterPassCodeModalView(_ title:String = NSLocalizedString("title-enter-passcode", comment: "")){
         
-        self.statusPin { (lockPin , message) in
+        //self.statusPin { (lockPin , message) in
             
             
             let enterPasscode = PAPasscodeViewController(for: PasscodeActionEnter )
             enterPasscode!.centerPosition = true
             enterPasscode!.delegate = self
             enterPasscode!.title = title
-            enterPasscode!.lockPin = lockPin
-            enterPasscode!.lockPinMessage = message
+            enterPasscode!.lockPin = false
+            enterPasscode!.lockPinMessage = ""
         
             let navController = UINavigationController(rootViewController: enterPasscode!)
             navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.darkGray,
@@ -615,7 +615,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             }()
             
             self.customPresentViewController(presenter, viewController: navController, animated: true, completion: nil)
-        }
+        //}
         
        
     }

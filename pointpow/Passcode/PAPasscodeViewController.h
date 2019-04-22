@@ -50,6 +50,7 @@ typedef enum {
     UITextField *emailTextField;
     UIView *underLineTextFieldView;
     UIButton *sendEmailButton;
+    UIImageView *emailImageView;
 }
 
 @property (strong) UIView *backgroundView;

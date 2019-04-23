@@ -1101,7 +1101,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m79-CZ-tLG">
-                                        <rect key="frame" x="20.666666666666657" y="335.66666666666669" width="372.66666666666674" height="40"/>
+                                        <rect key="frame" x="20.666666666666657" y="368" width="372.66666666666674" height="40"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="owG-VD-CLf"/>
@@ -1148,17 +1148,30 @@
                                             <constraint firstAttribute="width" constant="20" id="Drg-fe-91W"/>
                                         </constraints>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REF ID: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hos-XZ-oDn">
+                                        <rect key="frame" x="20.666666666666671" y="305.66666666666669" width="41" height="22.333333333333314"/>
+                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="17"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EEE9900" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXP-Ci-4nd">
+                                        <rect key="frame" x="71.666666666666671" y="305.33333333333331" width="44" height="23"/>
+                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="PZt-tb-sph" firstAttribute="leading" secondItem="EGD-2n-m1z" secondAttribute="leading" id="7j9-dg-4mX"/>
+                                    <constraint firstItem="Hos-XZ-oDn" firstAttribute="leading" secondItem="PZt-tb-sph" secondAttribute="leading" id="8lZ-xg-ikL"/>
                                     <constraint firstItem="gQc-5t-Ppy" firstAttribute="trailing" secondItem="EGD-2n-m1z" secondAttribute="trailing" id="91W-QP-Iv0"/>
                                     <constraint firstItem="O7s-qC-Xn3" firstAttribute="centerY" secondItem="EGD-2n-m1z" secondAttribute="centerY" id="Cr9-2P-1Xo"/>
                                     <constraint firstItem="VxS-R8-0xn" firstAttribute="trailing" secondItem="EGD-2n-m1z" secondAttribute="trailing" id="Fov-2Z-umH"/>
+                                    <constraint firstItem="m79-CZ-tLG" firstAttribute="top" secondItem="Hos-XZ-oDn" secondAttribute="bottom" constant="40" id="H6a-QB-GXT"/>
+                                    <constraint firstItem="Hos-XZ-oDn" firstAttribute="top" secondItem="PZt-tb-sph" secondAttribute="bottom" constant="10" id="Lqu-uX-X20"/>
                                     <constraint firstItem="EGD-2n-m1z" firstAttribute="width" secondItem="lrs-tA-6oT" secondAttribute="width" multiplier="0.9" id="Uxo-Fn-4R2"/>
                                     <constraint firstItem="Nat-pu-F0s" firstAttribute="centerX" secondItem="lrs-tA-6oT" secondAttribute="centerX" id="Vgy-lV-3sr"/>
                                     <constraint firstItem="EGD-2n-m1z" firstAttribute="centerX" secondItem="lrs-tA-6oT" secondAttribute="centerX" id="WX5-Te-7Vf"/>
                                     <constraint firstItem="PZt-tb-sph" firstAttribute="top" secondItem="EGD-2n-m1z" secondAttribute="bottom" constant="30" id="Wtq-ku-bSb"/>
-                                    <constraint firstItem="m79-CZ-tLG" firstAttribute="top" secondItem="PZt-tb-sph" secondAttribute="bottom" constant="40" id="X8o-Rh-BoU"/>
                                     <constraint firstItem="Nat-pu-F0s" firstAttribute="top" secondItem="p12-D7-JLU" secondAttribute="bottom" constant="30" id="ZEO-ds-Z4E"/>
                                     <constraint firstItem="QrC-xQ-6zI" firstAttribute="leading" secondItem="PZt-tb-sph" secondAttribute="leading" id="ZUs-r3-Cee"/>
                                     <constraint firstItem="gQc-5t-Ppy" firstAttribute="bottom" secondItem="PZt-tb-sph" secondAttribute="bottom" id="a9a-B8-KcR"/>
@@ -1166,9 +1179,11 @@
                                     <constraint firstItem="p12-D7-JLU" firstAttribute="top" secondItem="lrs-tA-6oT" secondAttribute="top" constant="30" id="cPg-WN-tI0"/>
                                     <constraint firstItem="QrC-xQ-6zI" firstAttribute="trailing" secondItem="PZt-tb-sph" secondAttribute="trailing" id="dFp-CE-Fax"/>
                                     <constraint firstItem="O7s-qC-Xn3" firstAttribute="leading" secondItem="EGD-2n-m1z" secondAttribute="leading" constant="10" id="dSj-Yn-Fgf"/>
+                                    <constraint firstItem="OXP-Ci-4nd" firstAttribute="leading" secondItem="Hos-XZ-oDn" secondAttribute="trailing" constant="10" id="dlM-sb-RAT"/>
                                     <constraint firstItem="p12-D7-JLU" firstAttribute="centerX" secondItem="lrs-tA-6oT" secondAttribute="centerX" id="fyt-4M-MJh"/>
                                     <constraint firstItem="VxS-R8-0xn" firstAttribute="bottom" secondItem="EGD-2n-m1z" secondAttribute="bottom" id="jJt-wS-Omc"/>
                                     <constraint firstAttribute="bottom" secondItem="m79-CZ-tLG" secondAttribute="bottom" constant="60" id="lQ1-vO-hFb"/>
+                                    <constraint firstItem="OXP-Ci-4nd" firstAttribute="centerY" secondItem="Hos-XZ-oDn" secondAttribute="centerY" id="nPc-kT-gfe"/>
                                     <constraint firstItem="p12-D7-JLU" firstAttribute="width" secondItem="lrs-tA-6oT" secondAttribute="width" multiplier="0.5" id="o3K-1O-F2p"/>
                                     <constraint firstItem="PZt-tb-sph" firstAttribute="width" secondItem="EGD-2n-m1z" secondAttribute="width" multiplier="0.7" id="o5S-kb-7ax"/>
                                     <constraint firstItem="m79-CZ-tLG" firstAttribute="width" secondItem="EGD-2n-m1z" secondAttribute="width" id="ob2-14-22N"/>
@@ -1195,6 +1210,7 @@
                     </view>
                     <connections>
                         <outlet property="otpTextField" destination="PZt-tb-sph" id="Wn7-W5-E1Z"/>
+                        <outlet property="refIDLabel" destination="OXP-Ci-4nd" id="Hlz-Uq-vDn"/>
                         <outlet property="sendButton" destination="gQc-5t-Ppy" id="zsk-TE-XqU"/>
                         <outlet property="usernameTextField" destination="EGD-2n-m1z" id="4tr-9q-Zym"/>
                         <outlet property="verifyButton" destination="m79-CZ-tLG" id="BAK-xu-8tA"/>

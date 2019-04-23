@@ -16,13 +16,18 @@ class VerifyViewController: BaseViewController {
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var usernameTextField: UITextField!
     
+    @IBOutlet weak var refIDLabel: UILabel!
     var clearImageView:UIImageView?
     
      var errorOTPlLabel:UILabel?
     var countDown:Int = 60
     var timer:Timer?
     
-    var ref_id:String?
+    var ref_id:String?{
+        didSet{
+            self.refIDLabel?.text = self.ref_id
+        }
+    }
     var member_id:String?
     var mobilePhone:String?
     
@@ -63,6 +68,8 @@ class VerifyViewController: BaseViewController {
         self.otpTextField.keyboardType = .numberPad
         
 
+        self.refIDLabel.text = self.ref_id
+        
         self.clearImageView = self.usernameTextField.addRightButton(UIImage(named: "ic-x")!)
         let tap = UITapGestureRecognizer(target: self, action: #selector(clearUserNameTapped))
         self.clearImageView?.isUserInteractionEnabled = true

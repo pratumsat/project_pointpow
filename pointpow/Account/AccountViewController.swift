@@ -141,6 +141,8 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
                         if let url = URL(string: picture_data) {
                             profileCell.profileImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER))
                             
+                        }else{
+                            profileCell.profileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER)
                         }
                         
                     }
@@ -150,6 +152,8 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
                     }else{
                         if let url = URL(string: picture_background) {
                             profileCell.backgroundImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_BACKGROUND_PLACEHOLDER))
+                        }else{
+                            profileCell.backgroundImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_BACKGROUND_PLACEHOLDER)
                         }
                         
                         

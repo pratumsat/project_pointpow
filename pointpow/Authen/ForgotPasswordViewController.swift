@@ -91,7 +91,7 @@ class ForgotPasswordViewController: BaseViewController {
             return
         }
         
-        /*
+        
         if isValidNumber(username){
             print("number")
             
@@ -125,7 +125,7 @@ class ForgotPasswordViewController: BaseViewController {
             
             return
         }
-        */
+        
         if isValidEmail(username) {
             print("email")
            

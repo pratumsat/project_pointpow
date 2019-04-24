@@ -27,18 +27,18 @@ class PointManageViewController: BaseViewController {
     func setUp(){
         self.backgroundImage?.image = nil
         
-        self.hendleSetPasscodeSuccess = { (passcode) in
-            print("new passcode= \(passcode)")
-            
-            
-            if self.isFriend  {
-                self.showFriendTransferView(true)
-            }else{
-                self.showPointTransferView(true)
-            }
-            
-            
-        }
+//        self.hendleSetPasscodeSuccess = { (passcode) in
+//            print("new passcode= \(passcode)")
+//
+//
+//            if self.isFriend  {
+//                self.showFriendTransferView(true)
+//            }else{
+//                self.showPointTransferView(true)
+//            }
+//
+//
+//        }
         
         let friend = UITapGestureRecognizer(target: self, action: #selector(friendTransferTapped))
         self.friendTransfer.isUserInteractionEnabled = true
@@ -50,49 +50,53 @@ class PointManageViewController: BaseViewController {
     }
     
     @objc func transferPointTapped(){
-        let alert = UIAlertController(title: NSLocalizedString("string-dailog-title-fill-firstname-lastname", comment: ""),
-                                      message: "", preferredStyle: .alert)
         
-        let okButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-ok", comment: ""), style: .default, handler: {
-            (alert) in
-            
+        self.showPointTransferView(true)
+//        let alert = UIAlertController(title: NSLocalizedString("string-dailog-title-fill-firstname-lastname", comment: ""),
+//                                      message: "", preferredStyle: .alert)
+//
+//        let okButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-ok", comment: ""), style: .default, handler: {
+//            (alert) in
+//
 //            self.showPersonalPopup(true) {
 //                self.isFriend = false
 //
 //            }
-            self.showSettingPassCodeModalView()
+            //self.showSettingPassCodeModalView()
             //self.showPointTransferView(true)
-        })
-        
-        let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: nil)
-        
-        
-        
-        alert.addAction(cancelButton)
-        alert.addAction(okButton)
-        self.present(alert, animated: true, completion: nil)
+//        })
+//
+//        let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: nil)
+//
+//
+//
+//        alert.addAction(cancelButton)
+//        alert.addAction(okButton)
+//        self.present(alert, animated: true, completion: nil)
     }
     
     
     @objc func friendTransferTapped(){
-        let alert = UIAlertController(title: NSLocalizedString("string-dailog-title-set-passcode", comment: ""),
-                                      message: "", preferredStyle: .alert)
+        self.showFriendTransferView(true)
         
-        let okButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-ok", comment: ""), style: .default, handler: {
-            (alert) in
-            
-            self.isFriend = true
-            //self.showSettingPassCodeModalView()
-            //self.showFriendTransferView(true)
-            self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
-        })
-        let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: nil)
-        
-        
-        
-        alert.addAction(cancelButton)
-        alert.addAction(okButton)
-        self.present(alert, animated: true, completion: nil)
+//        let alert = UIAlertController(title: NSLocalizedString("string-dailog-title-set-passcode", comment: ""),
+//                                      message: "", preferredStyle: .alert)
+//
+//        let okButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-ok", comment: ""), style: .default, handler: {
+//            (alert) in
+//
+//            self.isFriend = true
+//            //self.showSettingPassCodeModalView()
+//            //self.showFriendTransferView(true)
+//            //self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
+//        })
+//        let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: nil)
+//
+//
+//
+//        alert.addAction(cancelButton)
+//        alert.addAction(okButton)
+//        self.present(alert, animated: true, completion: nil)
     }
 
 }

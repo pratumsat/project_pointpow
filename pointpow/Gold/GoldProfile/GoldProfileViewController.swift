@@ -203,8 +203,6 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
             self.laserIdTextField.text =  newLText.chunkFormattedLaserID()
             
             
-            //self.hiddenIdCardPhotoImageView.sd_setImage(with: URL(string: idCardPhoto)!, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER))
-            
             self.hiddenIdCardPhotoImageView.image = UIImage(named: "ic-img-placeholder-verify-idcard")
             
             switch status {

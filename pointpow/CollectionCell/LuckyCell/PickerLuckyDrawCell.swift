@@ -86,13 +86,13 @@ class PickerLuckyDrawCell: UICollectionViewCell, UIPickerViewDelegate , UIPicker
                 let id = itemData["id"] as? NSNumber ?? 0
                 if self.selectedId == id.intValue {
                     let schedule = itemData["schedule"] as? [String:AnyObject] ?? [:]
-                    let announce_at = schedule["announce_at"] as? String ?? ""
+                    let end_at = schedule["end_at"] as? String ?? ""
                     
                     let dateFormatter = DateFormatter()
                     dateFormatter.locale = Locale(identifier: "th")
                     dateFormatter.dateFormat = "dd-MM-yyyy"
                     
-                    if let d1 = dateFormatter.date(from: convertDateRegister(announce_at, format: "yyyy-MM-dd HH:mm:ss")) {
+                    if let d1 = dateFormatter.date(from: convertDateRegister(end_at, format: "yyyy-MM-dd HH:mm:ss")) {
                         
                         let formatter = DateFormatter()
                         formatter.locale = Locale(identifier: "th")
@@ -137,13 +137,13 @@ class PickerLuckyDrawCell: UICollectionViewCell, UIPickerViewDelegate , UIPicker
                     let winner = data["winners"] as? [[String:AnyObject]] ?? [[:]]
                     let id = data["id"] as? NSNumber ?? 0
                     let schedule = data["schedule"] as? [String:AnyObject] ?? [:]
-                    let announce_at = schedule["announce_at"] as? String ?? ""
+                    let end_at = schedule["end_at"] as? String ?? ""
                     
                     let dateFormatter = DateFormatter()
                     dateFormatter.locale = Locale(identifier: "th")
                     dateFormatter.dateFormat = "dd-MM-yyyy"
                     
-                    if let d1 = dateFormatter.date(from: convertDateRegister(announce_at, format: "yyyy-MM-dd HH:mm:ss")) {
+                    if let d1 = dateFormatter.date(from: convertDateRegister(end_at, format: "yyyy-MM-dd HH:mm:ss")) {
                         
                         let formatter = DateFormatter()
                         formatter.locale = Locale(identifier: "th")
@@ -186,13 +186,13 @@ class PickerLuckyDrawCell: UICollectionViewCell, UIPickerViewDelegate , UIPicker
         if let data = self.schedule?[row] {
             let id = data["id"] as? NSNumber ?? 0
             let schedule = data["schedule"] as? [String:AnyObject] ?? [:]
-            let announce_at = schedule["announce_at"] as? String ?? ""
+            let end_at = schedule["end_at"] as? String ?? ""
             
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "th")
             dateFormatter.dateFormat = "dd-MM-yyyy"
             
-            if let d1 = dateFormatter.date(from: convertDateRegister(announce_at, format: "yyyy-MM-dd HH:mm:ss")) {
+            if let d1 = dateFormatter.date(from: convertDateRegister(end_at, format: "yyyy-MM-dd HH:mm:ss")) {
                 
                 let formatter = DateFormatter()
                 formatter.locale = Locale(identifier: "th")

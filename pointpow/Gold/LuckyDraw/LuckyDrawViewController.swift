@@ -190,7 +190,7 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
                 
                 if let data = self.schedule {
                     let id = data["id"] as? NSNumber ?? 0
-                    let announce_at = data["announce_at"] as? String ?? ""
+                    let end_at = data["end_at"] as? String ?? ""
                     
                     
                     
@@ -198,7 +198,7 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
                     dateFormatter.locale = Locale(identifier: "th")
                     dateFormatter.dateFormat = "dd-MM-yyyy"
                     
-                    if let d1 = dateFormatter.date(from: convertDateRegister(announce_at, format: "yyyy-MM-dd HH:mm:ss")) {
+                    if let d1 = dateFormatter.date(from: convertDateRegister(end_at, format: "yyyy-MM-dd HH:mm:ss")) {
                         
                         let formatter = DateFormatter()
                         formatter.locale = Locale(identifier: "th")
@@ -231,11 +231,11 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
                 
                 
                 if let data = self.schedule {
-                    let announce_at = data["announce_at"] as? String ?? ""
+                    let end_at = data["end_at"] as? String ?? ""
                     
                     if !self.cd.running {
                         
-                        cd.initializeTimer(announce_at)
+                        cd.initializeTimer(end_at)
                         cd.startTimer(pUpdateActionHandler: { (timeString) in
                             
                             item.dayLabel.text = timeString.days

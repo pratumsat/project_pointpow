@@ -12,9 +12,92 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
     @IBOutlet weak var resultCollectionView: UICollectionView!
     
    
+    var addSlipSuccess = false
+    
+    func  addSlipImageView() {
+        
+        if let snap = self.snapView {
+            let backgroundImage = UIImageView(image: bgSlip)
+            backgroundImage.contentMode = .scaleAspectFill
+            backgroundImage.clipsToBounds = true
+            backgroundImage.translatesAutoresizingMaskIntoConstraints = false
+            snap.addSubview(backgroundImage)
+            snap.sendSubviewToBack(backgroundImage)
+            
+            backgroundImage.leftAnchor.constraint(equalTo: snap.leftAnchor).isActive = true
+            backgroundImage.rightAnchor.constraint(equalTo: snap.rightAnchor).isActive = true
+            backgroundImage.topAnchor.constraint(equalTo: snap.topAnchor).isActive = true
+            backgroundImage.bottomAnchor.constraint(equalTo: snap.bottomAnchor).isActive = true
+            
+            
+            slipView!.updateLayerCornerRadiusProperties()
+            
+            slipView!.translatesAutoresizingMaskIntoConstraints = false
+            snap.addSubview(slipView!)
+            
+            
+            slipView!.centerXAnchor.constraint(equalTo: snap.centerXAnchor, constant: 0).isActive = true
+            slipView!.centerYAnchor.constraint(equalTo: snap.centerYAnchor, constant: 0).isActive = true
+            slipView!.widthAnchor.constraint(equalToConstant: 450).isActive = true
+            slipView!.heightAnchor.constraint(equalToConstant: 770).isActive = true
+            
+            let logo = UIImageView(image: UIImage(named: "ic-logo"))
+            logo.contentMode = .scaleAspectFit
+            logo.translatesAutoresizingMaskIntoConstraints = false
+            snap.addSubview(logo)
+            
+            logo.centerXAnchor.constraint(equalTo: snap.centerXAnchor, constant: 0).isActive = true
+            logo.widthAnchor.constraint(equalTo: snap.widthAnchor, multiplier: 0.5).isActive = true
+            logo.bottomAnchor.constraint(equalTo: slipView!.topAnchor, constant: 0).isActive = true
+            
+            
+            slipView!.drawLightningView(width : CGFloat(450), height: CGFloat(770))
+            print("add image slip")
+            
+            self.addSlipSuccess =  true
+            self.countDownForSnapShot(1)
+        }
+        
+    }
+    
+    func countDownForSnapShot(_ time: Double){
+        timer = Timer.scheduledTimer(timeInterval: time, target: self, selector: #selector(updateCountDown), userInfo: nil, repeats: false)
+    }
+    
+    @objc func updateCountDown() {
+        if let snapImage = self.snapView?.snapshotImage() {
+            UIImageWriteToSavedPhotosAlbum(snapImage, nil, nil, nil)
+            print("created slip")
+            self.removeCountDown()
+        }
+    }
+    
+    func removeCountDown() {
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    var slipView:UIView?
+    var snapView:UIView?
+    
+    var countDown:Int = 3
+    var timer:Timer?
+    
+    var bgSlip:UIImage?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //load background image from api
+        self.bgSlip = UIImage(named: "bg-slip")
+        
+        
+        snapView = UIView(frame: CGRect(x: 0, y: 0, width: 600, height: 1200))
+        snapView!.backgroundColor = UIColor.clear
+        
+        self.view.addSubview(snapView!)
+        self.view.sendSubviewToBack(snapView!)
         
         
         self.title = NSLocalizedString("string-title-freind-transfer", comment: "")
@@ -76,18 +159,29 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
                
                 cell = statusCell
                 
+                self.slipView = statusCell.mView.copyView()
+                let allSubView = slipView!.allSubViewsOf(type: UIView.self)
+                
+                for itemView  in  allSubView {
+                    if let itemTag = itemView.viewWithTag(1) {
+                        itemTag.isHidden = true
+                    }
+                }
+                if !self.addSlipSuccess {
+                    self.addSlipImageView()
+                }
                 
             }
         } else if indexPath.section == 1 {
             if let confirmCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemConfirmSummaryCell", for: indexPath) as? ItemConfirmSummaryCell {
                 
                 confirmCell.shareCallback = {
-//                    if let snapImage = self.snapView?.snapshotImage() {
-//                        let imageShare = [ snapImage ]
-//                        let activityViewController = UIActivityViewController(activityItems: imageShare, applicationActivities: nil)
-//                        activityViewController.popoverPresentationController?.sourceView = self.view
-//                        self.present(activityViewController, animated: true, completion: nil)
-//                    }
+                    if let snapImage = self.snapView?.snapshotImage() {
+                        let imageShare = [ snapImage ]
+                        let activityViewController = UIActivityViewController(activityItems: imageShare, applicationActivities: nil)
+                        activityViewController.popoverPresentationController?.sourceView = self.view
+                        self.present(activityViewController, animated: true, completion: nil)
+                    }
                 }
                 confirmCell.favorCallback = {
                     //add favorit

@@ -175,6 +175,8 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
                 if let url  = URL(string: picture_data) {
                     self.profileImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER))
                     
+                }else{
+                    self.profileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER)
                 }
                 
                 

@@ -121,7 +121,7 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
      
     }
     @objc func dismissTapped(){
-        self.dismiss(animated: true) {
+        self.dismiss(animated: false) {
             (self.navigationController as? PointFreindSummaryNav)?.callbackFinish?()
         }
         

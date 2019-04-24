@@ -10,10 +10,16 @@ import UIKit
 import Presentr
 import FirebaseMessaging
 import Alamofire
+import LocalAuthentication
 
 class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeViewControllerDelegate
 {
 
+
+    //fingerprint
+    var context = LAContext()
+    var  passCodeController: PAPasscodeViewController?
+    
     var positionYTextField:CGFloat = 0
     var isShowKeyBoard = false
     var loadingView:Loading?
@@ -582,18 +588,129 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }
     }
     
-    func showEnterPassCodeModalView(_ title:String = NSLocalizedString("title-enter-passcode", comment: "")){
+    func checkLAPolicy( status:((_ type:String)->Void)? ){
+        var policy: LAPolicy?
+        // Depending the iOS version we'll need to choose the policy we are able to use
+        //if #available(iOS 9.0, *) {
+        // iOS 9+ users with Biometric and Passcode verification
+        //    policy = .deviceOwnerAuthentication
+        //} else {
+        // iOS 8+ users with Biometric and Custom (Fallback button) verification
+        //    policy = .deviceOwnerAuthenticationWithBiometrics
+        //}
+        context = LAContext()
+        context.localizedFallbackTitle = ""
+        policy =  .deviceOwnerAuthenticationWithBiometrics
+        var err: NSError?
         
-        //self.statusPin { (lockPin , message) in
+        // Check if the user is able to use the policy we've selected previously
+        guard context.canEvaluatePolicy(policy!, error: &err) else {
+            print("TouchID_OFF!!")
+            return
+        }
+        print("TouchID_ON!!")
+        
+        loginProcess(policy: policy!) { (stringResult) in
+            //successful
+            
+            if stringResult == "1"{
+                status?("login_success")
+            }else if stringResult == "2"{
+                status?("problem_verifying")
+            }else if stringResult == "3" {
+                status?("problem_configured")
+            }else{
+                status?("user_dismiss")
+            }
+            
+        }
+    }
+    private func loginProcess(policy: LAPolicy , successful:((_ stringResult:String)->Void)?) {
+        context.evaluatePolicy(policy, localizedReason: NSLocalizedString("string-dismiss-fingerprint", comment: ""), reply: { (success, error) in
+            DispatchQueue.main.async {
+                
+                guard success else {
+                    guard let error = error else {
+                        print("Unexpected error!")
+                        return
+                    }
+                    switch(error) {
+                    case LAError.authenticationFailed:
+                        print("There was a problem verifying your identity.")
+                        successful?("2")
+                        
+                    case LAError.userCancel:
+                        print("Authentication was canceled by user.")
+                        
+                        successful?("0")
+                        
+                        // Fallback button was pressed and an extra login step should be implemented for iOS 8 users.
+                    // By the other hand, iOS 9+ users will use the pasccode verification implemented by the own system.
+                    case LAError.userFallback:
+                        print("The user tapped the fallback button (Fuu!)")
+                    case LAError.systemCancel:
+                        print("Authentication was canceled by system.")
+                    case LAError.passcodeNotSet:
+                        print("Passcode is not set on the device.")
+                    case LAError.touchIDNotAvailable:
+                        print("Touch ID is not available on the device.")
+                    case LAError.touchIDNotEnrolled:
+                        print("Touch ID has no enrolled fingers.")
+                        // iOS 9+ functions
+                        //case LAError.touchIDLockout:
+                        //    print("There were too many failed Touch ID attempts and Touch ID is now locked.")
+                        //case LAError.appCancel:
+                        //    print("Authentication was canceled by application.")
+                        // case LAError.invalidContext:
+                        //    print("LAContext passed to this call has been previously invalidated.")
+                    // MARK: IMPORTANT: There are more error states, take a look into the LAError struct
+                    default:
+                        print("Touch ID may not be configured")
+                        
+                        successful?("3")
+                        
+                        break
+                    }
+                    return
+                }
+                
+                // Good news! Everything went fine
+                
+                successful?("1")
+            }
+        })
+    }
+    
+    func showEnterPassCodeModalView(_ title:String = NSLocalizedString("title-enter-passcode", comment: "")){
+        self.statusPin { (lockPin , message) in
+            
+            if !lockPin {
+                self.checkLAPolicy { (type) in
+                    if type == "login_success"{
+                        self.passCodeController?.showPassCodeSuccess()
+                        self.passCodeController?.dismiss(animated: false, completion: { () in
+                            self.handlerEnterSuccess?("")
+                        })
+                        
+                           
+                    }else if type == "problem_verifying"{
+                        self.passCodeController?.showFailedMessage(NSLocalizedString("error-problem-verifying", comment: ""))
+                    }else if type == "problem_configured" {
+                        self.passCodeController?.showFailedMessage(NSLocalizedString("error-problem-configured", comment: ""))
+                    }
+                }
+            }
             
             
             let enterPasscode = PAPasscodeViewController(for: PasscodeActionEnter )
             enterPasscode!.centerPosition = true
             enterPasscode!.delegate = self
             enterPasscode!.title = title
-            enterPasscode!.lockPin = false
-            enterPasscode!.lockPinMessage = ""
+            enterPasscode!.lockPin = lockPin
+            enterPasscode!.lockPinMessage = message
         
+            self.passCodeController = enterPasscode
+            
             let navController = UINavigationController(rootViewController: enterPasscode!)
             navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.darkGray,
                                                                NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.TITLE )!]
@@ -615,7 +732,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             }()
             
             self.customPresentViewController(presenter, viewController: navController, animated: true, completion: nil)
-        //}
+        }
         
        
     }

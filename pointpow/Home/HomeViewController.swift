@@ -314,6 +314,12 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
                 print("gold saving")
                 self.showGoldPage(true)
             }
+            if indexPath.row == 2 {
+                self.showPointTransferView(true)
+            }
+            if indexPath.row == 3 {
+                self.showFriendTransferView(true)
+            }
         }
     }
     

@@ -310,6 +310,7 @@
 		C11A93BD218C20D100627B44 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		C11A93BF218C2AD900627B44 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		C11A93C3218FF3E200627B44 /* VerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyViewController.swift; sourceTree = "<group>"; };
+		C11AC1D92270621100B7922F /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		C11B740A21BF67F700D0E769 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		C11BDFB621A2B95D00443D2D /* ItemFriendSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFriendSummaryCell.swift; sourceTree = "<group>"; };
 		C11BDFB721A2B95D00443D2D /* ItemFriendSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemFriendSummaryCell.xib; sourceTree = "<group>"; };
@@ -511,6 +512,7 @@
 		45D4B9E32453B6BB65A818A1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C11AC1D92270621100B7922F /* LocalAuthentication.framework */,
 				31B9DAB23EC121F58205F612 /* Pods_pointpow.framework */,
 				397FA4B92F56CF5C6AC3D5E5 /* Pods_pointpowTests.framework */,
 				F71C5AF1196142AE070221A8 /* Pods_pointpowUITests.framework */,

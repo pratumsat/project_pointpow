@@ -110,7 +110,7 @@ class ResultTransferViewController: BaseViewController  , UICollectionViewDelega
         self.setUp()
     }
     @objc func dismissTapped(){
-        self.dismiss(animated: true) {
+        self.dismiss(animated: false) {
             (self.navigationController as? ResultTransferNav)?.callbackFinish?()
         }
     }

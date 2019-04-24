@@ -14,7 +14,7 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
     @IBOutlet weak var profileCollectionView: UICollectionView!
     
     enum SelectType {
-        case EMAIL, MOBILE ,EDITPROFILE
+        case MOBILE ,EDITPROFILE
     }
     var select:SelectType = .EDITPROFILE
     override func viewDidLoad() {
@@ -34,9 +34,6 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
             switch self.select {
             case .EDITPROFILE:
                 self.showPersonalView(true)
-                
-            case .EMAIL:
-                self.showEmailView(true)
                 
             case .MOBILE:
                 self.showMobilePhoneView(true)
@@ -61,7 +58,7 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return 5
+            return 4
         }
         return 1
     }
@@ -83,9 +80,6 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
                     itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change-mobile", comment: "")
                     itemCell.trailLabel.text = ""
                 }else if indexPath.row == 3{
-                    itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change-email", comment: "")
-                    itemCell.trailLabel.text = ""
-                }else if indexPath.row == 4{
                     itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change-pwd", comment: "")
                     itemCell.trailLabel.text = ""
                 }
@@ -134,12 +128,6 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
                 
                 
             }else if indexPath.row == 3 {
-                
-                self.select = .EMAIL
-                 self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
-                
-                
-            }else if indexPath.row == 4 {
                 self.showChangePasswordView(true)
             }
             

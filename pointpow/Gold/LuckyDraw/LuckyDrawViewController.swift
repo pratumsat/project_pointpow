@@ -232,26 +232,38 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
                 
                 if let data = self.schedule {
                     let end_at = data["end_at"] as? String ?? ""
+                    let start_at = data["start_at"] as? String ?? ""
                     
-                    if !self.cd.running {
-                        
-                        cd.initializeTimer(end_at)
-                        cd.startTimer(pUpdateActionHandler: { (timeString) in
+                    if compareLiveTime(start_at) {
+                        print("in time")
+                        if !self.cd.running {
                             
-                            item.dayLabel.text = timeString.days
-                            item.hoursLabel.text = timeString.hours
-                            item.minLabel.text = timeString.minutes
-                            item.secLabel.text = timeString.seconds
-                            
-                        }) {
-                            
-                            item.dayLabel.text = "0"
-                            item.hoursLabel.text = "0"
-                            item.minLabel.text = "0"
-                            item.secLabel.text = "0"
-                            
+                            cd.initializeTimer(end_at)
+                            cd.startTimer(pUpdateActionHandler: { (timeString) in
+                                
+                                item.dayLabel.text = timeString.days
+                                item.hoursLabel.text = timeString.hours
+                                item.minLabel.text = timeString.minutes
+                                item.secLabel.text = timeString.seconds
+                                
+                            }) {
+                                
+                                item.dayLabel.text = "0"
+                                item.hoursLabel.text = "0"
+                                item.minLabel.text = "0"
+                                item.secLabel.text = "0"
+                                
+                            }
                         }
+                    }else{
+                        print("out time")
+                        
+                        item.dayLabel.text = "0"
+                        item.hoursLabel.text = "0"
+                        item.minLabel.text = "0"
+                        item.secLabel.text = "0"
                     }
+                   
                 }
             }
             

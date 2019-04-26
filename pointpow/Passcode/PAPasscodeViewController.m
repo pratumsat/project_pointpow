@@ -200,20 +200,7 @@ static NSTimeInterval AnimationDuration = 0.3;
     
     [contentView addSubview: sendEmailButton];
     sendEmailButton.hidden = YES;
-    
-    switch (_action) {
-        case PasscodeActionSet:
-            forgotLabel.hidden = YES;
-            break;
-            
-        case PasscodeActionEnter:
-            forgotLabel.hidden = NO;
-            break;
-            
-        case PasscodeActionChange:
-            forgotLabel.hidden = YES;
-            break;
-    }
+
     
     if(_lockPin){
         failedAttemptsLabel.text = _lockPinMessage;
@@ -228,6 +215,22 @@ static NSTimeInterval AnimationDuration = 0.3;
         forgotLabel.hidden = NO;
         promptLabel.hidden = NO;
     }
+    
+    
+    switch (_action) {
+        case PasscodeActionSet:
+        forgotLabel.hidden = YES;
+        break;
+        
+        case PasscodeActionEnter:
+        forgotLabel.hidden = NO;
+        break;
+        
+        case PasscodeActionChange:
+        forgotLabel.hidden = YES;
+        break;
+    }
+    
     self.view = view;
     [self.view setNeedsUpdateConstraints];
 }
@@ -375,7 +378,7 @@ static NSTimeInterval AnimationDuration = 0.3;
     
     if ([_delegate respondsToSelector:@selector(PAPasscodeViewControllerDidCancel:)]) {
 
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
+        //self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
         
     }
     
@@ -443,7 +446,8 @@ static NSTimeInterval AnimationDuration = 0.3;
         promptLabel.text = _enterPrompt;
         
         
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
+        //self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
+        self.navigationItem.leftBarButtonItem = nil;
     }
 }
 

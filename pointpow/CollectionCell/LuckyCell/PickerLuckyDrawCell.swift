@@ -48,7 +48,7 @@ class PickerLuckyDrawCell: UICollectionViewCell, UIPickerViewDelegate , UIPicker
         if let data = self.schedule?[selectedUnits] {
             let winner = data["winners"] as? [[String:AnyObject]] ?? [[:]]
             let schedule = data["schedule"] as? [String:AnyObject] ?? [:]
-            let id = data["id"] as? NSNumber ?? 0
+            let id = schedule["id"] as? NSNumber ?? 0
             let link = schedule["link"] as? String ?? ""
             
             var banners:[[String:AnyObject]] = []
@@ -83,9 +83,10 @@ class PickerLuckyDrawCell: UICollectionViewCell, UIPickerViewDelegate , UIPicker
         if let data = self.schedule {
         
             for itemData in  data {
-                let id = itemData["id"] as? NSNumber ?? 0
+                let schedule = itemData["schedule"] as? [String:AnyObject] ?? [:]
+                let id = schedule["id"] as? NSNumber ?? 0
+                
                 if self.selectedId == id.intValue {
-                    let schedule = itemData["schedule"] as? [String:AnyObject] ?? [:]
                     let end_at = schedule["end_at"] as? String ?? ""
                     
                     let dateFormatter = DateFormatter()
@@ -135,8 +136,8 @@ class PickerLuckyDrawCell: UICollectionViewCell, UIPickerViewDelegate , UIPicker
                 
                 if let data = self.schedule?[selectedRow] {
                     let winner = data["winners"] as? [[String:AnyObject]] ?? [[:]]
-                    let id = data["id"] as? NSNumber ?? 0
                     let schedule = data["schedule"] as? [String:AnyObject] ?? [:]
+                    let id = schedule["id"] as? NSNumber ?? 0
                     let end_at = schedule["end_at"] as? String ?? ""
                     
                     let dateFormatter = DateFormatter()
@@ -156,7 +157,7 @@ class PickerLuckyDrawCell: UICollectionViewCell, UIPickerViewDelegate , UIPicker
                         self.scheduleTextField.text = dataFormat
                         
                         let schedule = data["schedule"] as? [String:AnyObject] ?? [:]
-                        let id = data["id"] as? NSNumber ?? 0
+                        let id = schedule["id"] as? NSNumber ?? 0
                         let link = schedule["link"] as? String ?? ""
                         
                         var banners:[[String:AnyObject]] = []
@@ -184,8 +185,8 @@ class PickerLuckyDrawCell: UICollectionViewCell, UIPickerViewDelegate , UIPicker
         
         
         if let data = self.schedule?[row] {
-            let id = data["id"] as? NSNumber ?? 0
             let schedule = data["schedule"] as? [String:AnyObject] ?? [:]
+            let id = schedule["id"] as? NSNumber ?? 0
             let end_at = schedule["end_at"] as? String ?? ""
             
             let dateFormatter = DateFormatter()

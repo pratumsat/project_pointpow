@@ -68,7 +68,7 @@ class WinnerLuckyDrawViewController: BaseViewController , UICollectionViewDelega
                     let schedule = data.first?["schedule"] as? [String:AnyObject] ?? [:]
                     let winners = data.first?["winners"] as? [[String:AnyObject]] ?? [[:]]
                     let link = schedule["link"] as? String ?? ""
-                    let id = data.first?["id"] as? NSNumber ?? 0
+                    let id = schedule["id"] as? NSNumber ?? 0
                     
                     self.selectId = id.intValue
                     

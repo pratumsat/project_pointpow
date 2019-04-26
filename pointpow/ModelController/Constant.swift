@@ -765,10 +765,12 @@ struct Constant {
         case left, right, top, bottom
     }
     struct DefaultConstansts {
+        
         static let RESET_PIN = "RESET_PIN"
         static let RESET_PASSWORD = "RESET_PASSWORD"
         static let VERIFI_EMAIL_REGISTER = "VERIFI_EMAIL_REGISTER"
         static let NOTIFICATION_SELECTED_PAGE = "NOTIFICATION_SELECTED_PAGE"
+        static let NOTIFICATION_SPLASH_LOCKAPP = "notification_lock_app"
         
             struct DefaultImaege{
                 static let PROFILE_PLACEHOLDER = "ic-gold-profile"

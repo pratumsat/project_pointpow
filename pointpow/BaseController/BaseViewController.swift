@@ -15,7 +15,7 @@ import LocalAuthentication
 class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeViewControllerDelegate
 {
 
-
+    var LOCKSCREEN = false
     //fingerprint
     var context = LAContext()
     var  passCodeController: PAPasscodeViewController?
@@ -77,7 +77,8 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         view.addGestureRecognizer(tap)
         
 
-     
+        NotificationCenter.default.addObserver(self, selector: #selector(showSplashLock), name: NSNotification.Name(rawValue: Constant.DefaultConstansts.NOTIFICATION_SPLASH_LOCKAPP), object: nil)
+
       
         NotificationCenter.default.addObserver(self, selector: #selector(resetPinCode), name: NSNotification.Name(rawValue: Constant.DefaultConstansts.RESET_PIN), object: nil)
         
@@ -111,6 +112,23 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }
     }
     
+    @objc func showSplashLock(notification:NSNotification){
+        if DataController.sharedInstance.isLogin() {
+            if let top = Constant.TopViewController.top {
+                if self == top  {
+                    self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""), lockscreen: true)
+                }
+            }
+            
+        }
+    }
+    
+    @objc func resetPinCode(notification: NSNotification){
+        //showResetpin
+        self.passCodeController?.dismiss(animated: false, completion: nil)
+        self.showSettingPassCodeModalView()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -131,10 +149,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object : nil)
     }
     
-    @objc func resetPinCode(notification: NSNotification){
-        //showResetpin
-        self.showSettingPassCodeModalView()
-    }
+  
     
     
     func registerTableViewNib(_ tableTarget:UITableView ,_ nibName:String){
@@ -681,7 +696,10 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         })
     }
     
-    func showEnterPassCodeModalView(_ title:String = NSLocalizedString("title-enter-passcode", comment: "")){
+    func showEnterPassCodeModalView(_ title:String = NSLocalizedString("title-enter-passcode", comment: ""), lockscreen:Bool = false){
+        
+        self.LOCKSCREEN = lockscreen
+        
         self.statusPin { (lockPin , message) in
             
             if !lockPin {
@@ -689,7 +707,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
                     if type == "login_success"{
                         self.passCodeController?.showPassCodeSuccess()
                         self.passCodeController?.dismiss(animated: false, completion: { () in
-                            self.handlerEnterSuccess?("")
+                            //ignored self.handlerEnterSuccess?("")
                         })
                         
                            
@@ -711,28 +729,24 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         
             self.passCodeController = enterPasscode
             
+          
+            
             let navController = UINavigationController(rootViewController: enterPasscode!)
             navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.darkGray,
                                                                NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.TITLE )!]
             
             let presenter: Presentr = {
-                let w = self.view.frame.width
-                let h = self.view.frame.height
                 
-                let width = ModalSize.custom(size: Float(w))
-                let height = ModalSize.custom(size: Float(h))
-                
-                let center = ModalCenterPosition.center
-                let customType = PresentationType.custom(width: width, height: height, center: center)
-                
-                let customPresenter = Presentr(presentationType: customType)
+                let customPresenter = Presentr(presentationType: .fullScreen)
                 customPresenter.dismissOnTap = false
                 
                 return customPresenter
             }()
-            
             self.customPresentViewController(presenter, viewController: navController, animated: true, completion: nil)
+            
         }
+            
+        
         
        
     }
@@ -820,24 +834,15 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         enterPasscode!.delegate = self
         enterPasscode!.title = title
         
+        
+        
+        self.passCodeController = enterPasscode
+        
+       
         let navController = UINavigationController(rootViewController: enterPasscode!)
         navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.darkGray,
                                                            NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.TITLE )!]
-        
-        
-        
         let presenter: Presentr = {
-//            let w = self.view.frame.width
-//            //let h = self.view.frame.height
-//
-//            let width = ModalSize.custom(size: Float(w))
-//            let height = ModalSize.custom(size: Float(w / 300 * 500))
-//            //let height = ModalSize.custom(size: Float(h))
-//
-//            let center = ModalCenterPosition.bottomCenter
-//            //let center = ModalCenterPosition.center
-//            let customType = PresentationType.custom(width: width, height: height, center: center)
-
             let w = self.view.frame.width
             let h = self.view.frame.height
             
@@ -869,7 +874,10 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         let params:Parameters = ["pin" : Int(passcode)!]
         self.modelCtrl.enterPinCode(params: params, true, succeeded: { (result) in
             controller.dismiss(animated: false, completion: { () in
-                self.handlerEnterSuccess?(passcode)
+                if !self.LOCKSCREEN {
+                    self.handlerEnterSuccess?(passcode)
+                }
+                self.LOCKSCREEN = false
             })
         }, error: { (error) in
             if let mError = error as? [String:AnyObject]{
@@ -904,7 +912,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             self.modelCtrl.forgotPinCode(params: params, true, succeeded: { (result) in
                 
                 self.showMessagePrompt2(NSLocalizedString("title-forgot-passcode-reset-email", comment: "")) {
-                    controller.dismiss(animated: true, completion: nil)
+                    //ok callback
                 }
                 
             }, error: { (error) in

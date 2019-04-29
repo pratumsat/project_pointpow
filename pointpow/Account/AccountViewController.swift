@@ -276,12 +276,16 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
             if indexPath.row == 4 {
                 self.showProfileView(true)
             }
+            if indexPath.row == 5  {
+                self.showSecuritySettingView(true)
+            }
             if indexPath.row == 6 {
                 self.showFavoriteView(true)
             }
             if indexPath.row == 7 {
                 self.showSettingView(true)
             }
+            
         }
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {

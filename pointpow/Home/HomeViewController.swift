@@ -92,7 +92,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         if !self.isSetHeight {
             self.isSetHeight = true
             let height = self.view.frame.height
-            self.pointBalanceConstraintHeight.constant = height*0.15
+            self.pointBalanceConstraintHeight.constant = height*0.18
         }
         
         if DataController.sharedInstance.isLogin() {

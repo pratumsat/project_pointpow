@@ -29,7 +29,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.78823529411764703" green="0.16470588235294117" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="23"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -51,7 +51,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="1" green="0.035294117647058823" blue="0.1803921568627451" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.78823529410000004" green="0.1647058824" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="23"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -215,42 +215,6 @@
                                             <action selector="loginTapped:" destination="QKj-wM-o6n" eventType="touchUpInside" id="ZLY-xS-uDI"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="หรือ ลงชื่อเข้าใช้งานผ่าน" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lhj-dB-wAz">
-                                        <rect key="frame" x="133.33333333333337" y="425.33333333333331" width="147.66666666666663" height="26"/>
-                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Wg-Zi-nf0">
-                                        <rect key="frame" x="125.33333333333331" y="471.33333333333337" width="60" height="60"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-facebook" translatesAutoresizingMaskIntoConstraints="NO" id="mJs-uo-NNb">
-                                                <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                            </imageView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="BcN-SW-TBb"/>
-                                            <constraint firstItem="mJs-uo-NNb" firstAttribute="leading" secondItem="8Wg-Zi-nf0" secondAttribute="leading" id="O2I-ve-iYM"/>
-                                            <constraint firstItem="mJs-uo-NNb" firstAttribute="top" secondItem="8Wg-Zi-nf0" secondAttribute="top" id="agv-sq-5rQ"/>
-                                            <constraint firstAttribute="width" secondItem="8Wg-Zi-nf0" secondAttribute="height" multiplier="1:1" id="gyr-92-ft5"/>
-                                            <constraint firstAttribute="trailing" secondItem="mJs-uo-NNb" secondAttribute="trailing" id="nNi-Mg-aUC"/>
-                                            <constraint firstAttribute="bottom" secondItem="mJs-uo-NNb" secondAttribute="bottom" id="qmr-Kt-EMQ"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M2H-Bd-O1G">
-                                        <rect key="frame" x="228.66666666666663" y="471.33333333333337" width="60" height="60"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-google" translatesAutoresizingMaskIntoConstraints="NO" id="qtw-zX-9t6">
-                                                <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                            </imageView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="qtw-zX-9t6" firstAttribute="top" secondItem="M2H-Bd-O1G" secondAttribute="top" id="Eom-4o-h7o"/>
-                                            <constraint firstItem="qtw-zX-9t6" firstAttribute="leading" secondItem="M2H-Bd-O1G" secondAttribute="leading" id="ebg-fV-IwX"/>
-                                            <constraint firstAttribute="trailing" secondItem="qtw-zX-9t6" secondAttribute="trailing" id="fdp-Bq-9OC"/>
-                                            <constraint firstAttribute="bottom" secondItem="qtw-zX-9t6" secondAttribute="bottom" id="jlV-ej-HOm"/>
-                                        </constraints>
-                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g2s-YS-tk1">
                                         <rect key="frame" x="20.666666666666657" y="224.66666666666669" width="372.66666666666674" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -281,30 +245,24 @@
                                     </imageView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="8Wg-Zi-nf0" firstAttribute="top" secondItem="Lhj-dB-wAz" secondAttribute="bottom" constant="20" id="30g-LE-QhT"/>
                                     <constraint firstItem="YAr-PL-QtD" firstAttribute="leading" secondItem="uOC-98-xMV" secondAttribute="leading" id="3M5-v7-mLh"/>
                                     <constraint firstItem="YAr-PL-QtD" firstAttribute="trailing" secondItem="uOC-98-xMV" secondAttribute="trailing" id="4iP-Ww-mED"/>
                                     <constraint firstItem="ljl-gH-9LG" firstAttribute="centerX" secondItem="mxx-26-BJY" secondAttribute="centerX" id="6Ok-A1-bTM"/>
-                                    <constraint firstItem="M2H-Bd-O1G" firstAttribute="width" secondItem="8Wg-Zi-nf0" secondAttribute="width" id="8M9-Ds-dP3"/>
                                     <constraint firstItem="bBw-jh-4O0" firstAttribute="centerY" secondItem="uOC-98-xMV" secondAttribute="centerY" id="AC3-nx-acS"/>
                                     <constraint firstItem="zvd-jg-DeI" firstAttribute="centerX" secondItem="mxx-26-BJY" secondAttribute="centerX" id="Afg-0j-kkz"/>
-                                    <constraint firstItem="M2H-Bd-O1G" firstAttribute="height" secondItem="8Wg-Zi-nf0" secondAttribute="height" id="Btb-MJ-sjU"/>
                                     <constraint firstItem="uOC-98-xMV" firstAttribute="centerX" secondItem="mxx-26-BJY" secondAttribute="centerX" id="CCJ-Ib-qxg"/>
                                     <constraint firstItem="g2s-YS-tk1" firstAttribute="trailing" secondItem="ljl-gH-9LG" secondAttribute="trailing" id="CaP-ki-4tK"/>
-                                    <constraint firstItem="M2H-Bd-O1G" firstAttribute="top" secondItem="8Wg-Zi-nf0" secondAttribute="top" id="EhI-W7-bEm"/>
-                                    <constraint firstItem="Lhj-dB-wAz" firstAttribute="centerX" secondItem="mxx-26-BJY" secondAttribute="centerX" id="HHG-es-tAv"/>
                                     <constraint firstItem="bBw-jh-4O0" firstAttribute="leading" secondItem="uOC-98-xMV" secondAttribute="leading" constant="10" id="MQ6-iJ-ncI"/>
                                     <constraint firstItem="zvd-jg-DeI" firstAttribute="top" secondItem="mxx-26-BJY" secondAttribute="top" constant="30" id="OLH-8R-94c"/>
                                     <constraint firstItem="M7b-Bt-GGP" firstAttribute="top" secondItem="zvd-jg-DeI" secondAttribute="bottom" constant="30" id="P2n-nX-NJc"/>
                                     <constraint firstItem="v5c-kx-zuG" firstAttribute="trailing" secondItem="FMq-0r-v6c" secondAttribute="trailing" id="R7k-Wr-VJ4"/>
                                     <constraint firstItem="uOC-98-xMV" firstAttribute="width" secondItem="ljl-gH-9LG" secondAttribute="width" id="RPn-qg-V06"/>
                                     <constraint firstItem="qZ3-DW-tHM" firstAttribute="centerY" secondItem="ljl-gH-9LG" secondAttribute="centerY" id="TSG-mU-eaL"/>
-                                    <constraint firstItem="M2H-Bd-O1G" firstAttribute="centerX" secondItem="mxx-26-BJY" secondAttribute="centerX" multiplier="1.25" id="UVW-Ub-Kg9"/>
                                     <constraint firstItem="FMq-0r-v6c" firstAttribute="centerX" secondItem="mxx-26-BJY" secondAttribute="centerX" id="VBL-7D-co4"/>
                                     <constraint firstItem="ljl-gH-9LG" firstAttribute="top" secondItem="M7b-Bt-GGP" secondAttribute="bottom" constant="20" id="VT7-eg-kcJ"/>
                                     <constraint firstItem="uOC-98-xMV" firstAttribute="top" secondItem="ljl-gH-9LG" secondAttribute="bottom" constant="30" id="Vfw-QA-FzK"/>
+                                    <constraint firstAttribute="bottom" secondItem="FMq-0r-v6c" secondAttribute="bottom" constant="60" id="Vzn-oK-vnn"/>
                                     <constraint firstItem="uOC-98-xMV" firstAttribute="height" secondItem="ljl-gH-9LG" secondAttribute="height" id="am3-Ud-xrf"/>
-                                    <constraint firstItem="Lhj-dB-wAz" firstAttribute="top" secondItem="FMq-0r-v6c" secondAttribute="bottom" constant="20" id="dMH-We-H7C"/>
                                     <constraint firstItem="ljl-gH-9LG" firstAttribute="width" secondItem="mxx-26-BJY" secondAttribute="width" multiplier="0.9" id="eaz-Ns-ZWq"/>
                                     <constraint firstItem="g2s-YS-tk1" firstAttribute="bottom" secondItem="ljl-gH-9LG" secondAttribute="bottom" id="fMv-YL-Mlh"/>
                                     <constraint firstItem="qZ3-DW-tHM" firstAttribute="leading" secondItem="ljl-gH-9LG" secondAttribute="leading" constant="10" id="fuF-BB-avB"/>
@@ -312,10 +270,8 @@
                                     <constraint firstItem="M7b-Bt-GGP" firstAttribute="centerX" secondItem="mxx-26-BJY" secondAttribute="centerX" id="gjG-nu-XGP"/>
                                     <constraint firstItem="FMq-0r-v6c" firstAttribute="top" secondItem="v5c-kx-zuG" secondAttribute="bottom" constant="30" id="h36-c9-aUp"/>
                                     <constraint firstItem="v5c-kx-zuG" firstAttribute="top" secondItem="uOC-98-xMV" secondAttribute="bottom" constant="20" id="hA1-nr-Fm0"/>
-                                    <constraint firstAttribute="bottom" secondItem="M2H-Bd-O1G" secondAttribute="bottom" constant="60" id="hl0-34-qXF"/>
                                     <constraint firstAttribute="trailing" secondItem="M7b-Bt-GGP" secondAttribute="trailing" id="oAA-cg-KRw"/>
                                     <constraint firstItem="YAr-PL-QtD" firstAttribute="bottom" secondItem="uOC-98-xMV" secondAttribute="bottom" id="r1Q-Sd-0Iy"/>
-                                    <constraint firstItem="8Wg-Zi-nf0" firstAttribute="centerX" secondItem="mxx-26-BJY" secondAttribute="centerX" multiplier="0.75" id="wGu-n0-ZzR"/>
                                     <constraint firstItem="g2s-YS-tk1" firstAttribute="leading" secondItem="ljl-gH-9LG" secondAttribute="leading" id="xCd-Vw-fDr"/>
                                     <constraint firstItem="FMq-0r-v6c" firstAttribute="width" secondItem="ljl-gH-9LG" secondAttribute="width" id="xYc-yD-Z5J"/>
                                 </constraints>
@@ -331,9 +287,7 @@
                         <viewLayoutGuide key="safeArea" id="eKp-v8-fMR"/>
                     </view>
                     <connections>
-                        <outlet property="facebookView" destination="8Wg-Zi-nf0" id="k2v-ai-g2M"/>
                         <outlet property="forgotLabel" destination="v5c-kx-zuG" id="QpV-sC-Ul8"/>
-                        <outlet property="googleView" destination="M2H-Bd-O1G" id="bo8-Gk-fGl"/>
                         <outlet property="loginButton" destination="FMq-0r-v6c" id="GDX-vB-uNo"/>
                         <outlet property="passwordTextField" destination="uOC-98-xMV" id="3oG-6i-kXc"/>
                         <outlet property="usernameTextField" destination="ljl-gH-9LG" id="pfa-aN-Czt"/>
@@ -401,47 +355,12 @@
                                             <action selector="registerTapped:" destination="2pX-TG-qQL" eventType="touchUpInside" id="r9r-a5-tQC"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="หรือ ลงชื่อเข้าใช้งานผ่าน" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NPv-Or-XUh">
-                                        <rect key="frame" x="133.33333333333337" y="493" width="147.66666666666663" height="26"/>
-                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ยืนยันรหัสผ่าน" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bWs-Mt-w12">
                                         <rect key="frame" x="20.666666666666657" y="353" width="372.66666666666674" height="40"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IXM-Ry-gy9">
-                                        <rect key="frame" x="228.66666666666663" y="539" width="60" height="60"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-google" translatesAutoresizingMaskIntoConstraints="NO" id="lmi-h2-bSG">
-                                                <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                            </imageView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="lmi-h2-bSG" secondAttribute="trailing" id="3OO-eT-TqL"/>
-                                            <constraint firstItem="lmi-h2-bSG" firstAttribute="leading" secondItem="IXM-Ry-gy9" secondAttribute="leading" id="GqQ-de-cu7"/>
-                                            <constraint firstItem="lmi-h2-bSG" firstAttribute="top" secondItem="IXM-Ry-gy9" secondAttribute="top" id="SmA-Gw-gKa"/>
-                                            <constraint firstAttribute="bottom" secondItem="lmi-h2-bSG" secondAttribute="bottom" id="azQ-fp-tHK"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1oy-yr-Vdo">
-                                        <rect key="frame" x="125.33333333333331" y="539" width="60" height="60"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-facebook" translatesAutoresizingMaskIntoConstraints="NO" id="47c-fo-VlS">
-                                                <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                            </imageView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="47c-fo-VlS" secondAttribute="bottom" id="LhR-Tu-4hv"/>
-                                            <constraint firstAttribute="trailing" secondItem="47c-fo-VlS" secondAttribute="trailing" id="Ruw-fi-zDR"/>
-                                            <constraint firstItem="47c-fo-VlS" firstAttribute="leading" secondItem="1oy-yr-Vdo" secondAttribute="leading" id="VYC-oN-jtx"/>
-                                            <constraint firstItem="47c-fo-VlS" firstAttribute="top" secondItem="1oy-yr-Vdo" secondAttribute="top" id="ngh-4n-17j"/>
-                                            <constraint firstAttribute="width" constant="60" id="zaT-NH-YDZ"/>
-                                        </constraints>
-                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cJ0-z8-fdT">
                                         <rect key="frame" x="20.666666666666657" y="224.66666666666669" width="372.66666666666674" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -486,51 +405,42 @@
                                 <constraints>
                                     <constraint firstItem="Rxp-g3-AQr" firstAttribute="centerY" secondItem="chK-po-LeA" secondAttribute="centerY" id="0B9-S6-WvD"/>
                                     <constraint firstItem="bWs-Mt-w12" firstAttribute="top" secondItem="CEi-RV-Ty2" secondAttribute="bottom" constant="30" id="567-9V-tv9"/>
-                                    <constraint firstItem="1oy-yr-Vdo" firstAttribute="width" secondItem="1oy-yr-Vdo" secondAttribute="height" multiplier="1:1" id="5ht-md-RU0"/>
                                     <constraint firstItem="CEi-RV-Ty2" firstAttribute="leading" secondItem="TCr-ac-WmX" secondAttribute="leading" id="81E-i0-6qd"/>
                                     <constraint firstItem="TCr-ac-WmX" firstAttribute="top" secondItem="chK-po-LeA" secondAttribute="bottom" constant="30" id="8XO-Od-PS7"/>
                                     <constraint firstItem="2A2-0g-cR0" firstAttribute="top" secondItem="QOT-Li-ANT" secondAttribute="top" constant="30" id="ACI-ZY-anQ"/>
                                     <constraint firstItem="mzX-Nk-lKA" firstAttribute="leading" secondItem="TCr-ac-WmX" secondAttribute="leading" id="Ej3-5I-Old"/>
-                                    <constraint firstItem="NPv-Or-XUh" firstAttribute="top" secondItem="YAs-Y8-DI5" secondAttribute="bottom" constant="20" id="H69-EC-k6T"/>
                                     <constraint firstItem="bWs-Mt-w12" firstAttribute="centerX" secondItem="QOT-Li-ANT" secondAttribute="centerX" id="IQQ-44-9hj"/>
                                     <constraint firstItem="YAs-Y8-DI5" firstAttribute="width" secondItem="chK-po-LeA" secondAttribute="width" id="J5d-Qz-Qm0"/>
+                                    <constraint firstAttribute="bottom" secondItem="YAs-Y8-DI5" secondAttribute="bottom" constant="60" id="KmJ-bV-bzR"/>
                                     <constraint firstItem="TCr-ac-WmX" firstAttribute="centerX" secondItem="QOT-Li-ANT" secondAttribute="centerX" id="L58-QK-wTh"/>
                                     <constraint firstItem="TCr-ac-WmX" firstAttribute="height" secondItem="chK-po-LeA" secondAttribute="height" id="L5s-bA-E4v"/>
-                                    <constraint firstItem="IXM-Ry-gy9" firstAttribute="top" secondItem="1oy-yr-Vdo" secondAttribute="top" id="LGF-6t-2ry"/>
                                     <constraint firstItem="chK-po-LeA" firstAttribute="width" secondItem="QOT-Li-ANT" secondAttribute="width" multiplier="0.9" id="Lpo-DX-S75"/>
                                     <constraint firstItem="4un-ap-sRT" firstAttribute="top" secondItem="2A2-0g-cR0" secondAttribute="bottom" constant="30" id="MM5-xH-LtK"/>
                                     <constraint firstItem="tze-2n-SCh" firstAttribute="bottom" secondItem="bWs-Mt-w12" secondAttribute="bottom" id="O0v-Px-5W4"/>
                                     <constraint firstAttribute="trailing" secondItem="4un-ap-sRT" secondAttribute="trailing" id="OS2-Yw-0jY"/>
                                     <constraint firstItem="bwe-Kr-S5v" firstAttribute="leading" secondItem="bWs-Mt-w12" secondAttribute="leading" constant="10" id="Oum-nr-S6F"/>
                                     <constraint firstItem="CEi-RV-Ty2" firstAttribute="top" secondItem="TCr-ac-WmX" secondAttribute="bottom" constant="5" id="PRk-VD-7ee"/>
-                                    <constraint firstItem="IXM-Ry-gy9" firstAttribute="width" secondItem="1oy-yr-Vdo" secondAttribute="width" id="Sje-u8-jMN"/>
                                     <constraint firstItem="tze-2n-SCh" firstAttribute="trailing" secondItem="bWs-Mt-w12" secondAttribute="trailing" id="TZA-Fe-upr"/>
-                                    <constraint firstItem="IXM-Ry-gy9" firstAttribute="centerX" secondItem="QOT-Li-ANT" secondAttribute="centerX" multiplier="1.25" id="UFu-ef-w4G"/>
                                     <constraint firstItem="bWs-Mt-w12" firstAttribute="width" secondItem="TCr-ac-WmX" secondAttribute="width" id="UJ7-CS-Gnp"/>
                                     <constraint firstItem="TCr-ac-WmX" firstAttribute="width" secondItem="chK-po-LeA" secondAttribute="width" id="UqZ-Co-rCu"/>
                                     <constraint firstItem="bWs-Mt-w12" firstAttribute="height" secondItem="TCr-ac-WmX" secondAttribute="height" id="W6C-8Y-eyZ"/>
                                     <constraint firstItem="cJ0-z8-fdT" firstAttribute="leading" secondItem="chK-po-LeA" secondAttribute="leading" id="aLQ-1Q-Y4p"/>
                                     <constraint firstItem="cJ0-z8-fdT" firstAttribute="trailing" secondItem="chK-po-LeA" secondAttribute="trailing" id="aP1-ey-bx2"/>
-                                    <constraint firstItem="IXM-Ry-gy9" firstAttribute="height" secondItem="1oy-yr-Vdo" secondAttribute="height" id="ced-pe-giX"/>
                                     <constraint firstItem="bwe-Kr-S5v" firstAttribute="centerY" secondItem="bWs-Mt-w12" secondAttribute="centerY" id="cwz-n6-nkU"/>
                                     <constraint firstItem="dVZ-0C-ad0" firstAttribute="leading" secondItem="TCr-ac-WmX" secondAttribute="leading" constant="10" id="eiZ-EN-LAD"/>
                                     <constraint firstItem="mzX-Nk-lKA" firstAttribute="trailing" secondItem="TCr-ac-WmX" secondAttribute="trailing" id="etr-zd-R2w"/>
                                     <constraint firstItem="chK-po-LeA" firstAttribute="top" secondItem="4un-ap-sRT" secondAttribute="bottom" constant="20" id="f6Y-Sb-Gng"/>
-                                    <constraint firstItem="NPv-Or-XUh" firstAttribute="centerX" secondItem="QOT-Li-ANT" secondAttribute="centerX" id="fL6-V5-p4h"/>
                                     <constraint firstItem="chK-po-LeA" firstAttribute="centerX" secondItem="QOT-Li-ANT" secondAttribute="centerX" id="hXx-93-DKA"/>
                                     <constraint firstItem="YAs-Y8-DI5" firstAttribute="centerX" secondItem="QOT-Li-ANT" secondAttribute="centerX" id="hap-QC-a1t"/>
                                     <constraint firstItem="tze-2n-SCh" firstAttribute="leading" secondItem="bWs-Mt-w12" secondAttribute="leading" id="jNA-r0-qTB"/>
                                     <constraint firstItem="dVZ-0C-ad0" firstAttribute="width" secondItem="dVZ-0C-ad0" secondAttribute="height" multiplier="1:1" id="jfV-R1-1gh"/>
-                                    <constraint firstItem="1oy-yr-Vdo" firstAttribute="centerX" secondItem="QOT-Li-ANT" secondAttribute="centerX" multiplier="0.75" id="kQ5-0y-Fz9"/>
                                     <constraint firstItem="2A2-0g-cR0" firstAttribute="width" secondItem="QOT-Li-ANT" secondAttribute="width" multiplier="0.5" id="m5f-m5-dpA"/>
                                     <constraint firstItem="4un-ap-sRT" firstAttribute="centerX" secondItem="QOT-Li-ANT" secondAttribute="centerX" id="nsE-8D-vZF"/>
                                     <constraint firstItem="2A2-0g-cR0" firstAttribute="centerX" secondItem="QOT-Li-ANT" secondAttribute="centerX" id="oUl-bL-U3g"/>
                                     <constraint firstItem="Rxp-g3-AQr" firstAttribute="leading" secondItem="chK-po-LeA" secondAttribute="leading" constant="10" id="pi8-WP-Cxi"/>
                                     <constraint firstItem="bwe-Kr-S5v" firstAttribute="width" secondItem="bwe-Kr-S5v" secondAttribute="height" multiplier="1:1" id="pm1-zO-LT4"/>
                                     <constraint firstItem="mzX-Nk-lKA" firstAttribute="bottom" secondItem="TCr-ac-WmX" secondAttribute="bottom" id="pvZ-8Y-s0D"/>
-                                    <constraint firstAttribute="bottom" secondItem="IXM-Ry-gy9" secondAttribute="bottom" constant="60" id="q4Z-8y-6O7"/>
                                     <constraint firstItem="dVZ-0C-ad0" firstAttribute="centerY" secondItem="TCr-ac-WmX" secondAttribute="centerY" id="vH0-d6-UaL"/>
-                                    <constraint firstItem="1oy-yr-Vdo" firstAttribute="top" secondItem="NPv-Or-XUh" secondAttribute="bottom" constant="20" id="vwQ-Na-3Fs"/>
                                     <constraint firstItem="YAs-Y8-DI5" firstAttribute="top" secondItem="bWs-Mt-w12" secondAttribute="bottom" constant="40" id="wB4-3R-aPO"/>
                                     <constraint firstItem="cJ0-z8-fdT" firstAttribute="bottom" secondItem="chK-po-LeA" secondAttribute="bottom" id="zOs-M8-IMn"/>
                                 </constraints>
@@ -547,8 +457,6 @@
                     </view>
                     <connections>
                         <outlet property="confirmPasswordTextField" destination="bWs-Mt-w12" id="hjP-Pw-wdX"/>
-                        <outlet property="facebookView" destination="1oy-yr-Vdo" id="qFL-3p-1ns"/>
-                        <outlet property="googleView" destination="IXM-Ry-gy9" id="ioL-uU-4j7"/>
                         <outlet property="infomationlabel" destination="CEi-RV-Ty2" id="YC8-f6-0Kg"/>
                         <outlet property="passwordTextField" destination="TCr-ac-WmX" id="Dlc-sb-GnW"/>
                         <outlet property="registerButton" destination="YAs-Y8-DI5" id="s4h-N6-tal"/>
@@ -785,7 +693,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GRw-KC-sQE">
-                                <rect key="frame" x="0.0" y="115" width="414" height="698"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="0lb-3D-QWk">
                                     <size key="itemSize" width="50" height="50"/>
@@ -805,56 +713,71 @@
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZFo-CG-apC">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="115"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
                                 <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-red-cover" translatesAutoresizingMaskIntoConstraints="NO" id="R2H-Xh-IXf">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
+                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100,999.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dM-nj-xml">
-                                        <rect key="frame" x="156" y="51.666666666666657" width="102.33333333333331" height="39"/>
+                                        <rect key="frame" x="156" y="60.666666666666657" width="102.33333333333331" height="39"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9NF-9b-Su5">
-                                        <rect key="frame" x="19.999999999999996" y="42.666666666666657" width="57.666666666666657" height="57.333333333333343"/>
+                                        <rect key="frame" x="20" y="55" width="50" height="50"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="R5h-Vm-dAj"/>
                                             <constraint firstAttribute="width" secondItem="9NF-9b-Su5" secondAttribute="height" multiplier="1:1" id="vhv-Kx-OOh"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-logo-white" translatesAutoresizingMaskIntoConstraints="NO" id="4uS-aV-DsJ">
-                                        <rect key="frame" x="268.33333333333331" y="58.666666666666657" width="25" height="25"/>
+                                        <rect key="frame" x="268.33333333333331" y="67.666666666666671" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="FvD-Y3-nGZ"/>
                                             <constraint firstAttribute="width" secondItem="4uS-aV-DsJ" secondAttribute="height" multiplier="1:1" id="Yjf-UD-OKz"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-notifination" translatesAutoresizingMaskIntoConstraints="NO" id="seD-NO-lu9">
-                                        <rect key="frame" x="354" y="51.333333333333343" width="40" height="40"/>
+                                        <rect key="frame" x="354" y="60" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="dFi-SN-91W"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YMG-i2-TXA">
-                                        <rect key="frame" x="376" y="58.333333333333343" width="12" height="12"/>
+                                        <rect key="frame" x="376" y="67" width="12" height="12"/>
                                         <color key="backgroundColor" red="1" green="0.87753733664153255" blue="0.27724318233403877" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="12" id="ORM-vD-2cN"/>
                                             <constraint firstAttribute="width" secondItem="YMG-i2-TXA" secondAttribute="height" multiplier="1:1" id="zSM-JK-Oe3"/>
                                         </constraints>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loki" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v25-1M-Suu">
+                                        <rect key="frame" x="33.666666666666664" y="105" width="22.666666666666664" height="23.666666666666657"/>
+                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.96078431372549022" green="0.25882352941176467" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="R2H-Xh-IXf" secondAttribute="bottom" id="2rX-eS-gE1"/>
+                                    <constraint firstAttribute="trailing" secondItem="R2H-Xh-IXf" secondAttribute="trailing" id="59e-x7-K9a"/>
                                     <constraint firstItem="YMG-i2-TXA" firstAttribute="top" secondItem="seD-NO-lu9" secondAttribute="top" constant="7" id="As9-2c-Et6"/>
                                     <constraint firstItem="5dM-nj-xml" firstAttribute="centerX" secondItem="ZFo-CG-apC" secondAttribute="centerX" id="Dhm-J3-VzX"/>
+                                    <constraint firstItem="R2H-Xh-IXf" firstAttribute="top" secondItem="ZFo-CG-apC" secondAttribute="top" id="K3l-Sh-3Y3"/>
                                     <constraint firstItem="5dM-nj-xml" firstAttribute="centerY" secondItem="9NF-9b-Su5" secondAttribute="centerY" id="Lc3-WU-maL"/>
+                                    <constraint firstItem="v25-1M-Suu" firstAttribute="centerX" secondItem="9NF-9b-Su5" secondAttribute="centerX" id="Nss-dK-BNM"/>
                                     <constraint firstItem="seD-NO-lu9" firstAttribute="centerY" secondItem="5dM-nj-xml" secondAttribute="centerY" id="QSW-nr-F3c"/>
                                     <constraint firstItem="4uS-aV-DsJ" firstAttribute="centerY" secondItem="5dM-nj-xml" secondAttribute="centerY" id="TGI-ET-EJO"/>
-                                    <constraint firstAttribute="bottom" secondItem="9NF-9b-Su5" secondAttribute="bottom" constant="15" id="egb-ej-8Gk"/>
+                                    <constraint firstAttribute="bottom" secondItem="9NF-9b-Su5" secondAttribute="bottom" constant="35" id="egb-ej-8Gk"/>
                                     <constraint firstAttribute="trailing" secondItem="seD-NO-lu9" secondAttribute="trailing" constant="20" id="mey-I3-8Y1"/>
-                                    <constraint firstItem="9NF-9b-Su5" firstAttribute="height" secondItem="ZFo-CG-apC" secondAttribute="height" multiplier="0.5" id="mue-RI-Knj"/>
-                                    <constraint firstAttribute="height" constant="115" id="rCE-eE-74Z"/>
+                                    <constraint firstItem="v25-1M-Suu" firstAttribute="top" secondItem="9NF-9b-Su5" secondAttribute="bottom" id="oU1-ii-1zs"/>
+                                    <constraint firstAttribute="height" constant="140" id="rCE-eE-74Z"/>
                                     <constraint firstItem="4uS-aV-DsJ" firstAttribute="leading" secondItem="5dM-nj-xml" secondAttribute="trailing" constant="10" id="rK3-FZ-odr"/>
                                     <constraint firstItem="9NF-9b-Su5" firstAttribute="leading" secondItem="ZFo-CG-apC" secondAttribute="leading" constant="20" id="rSK-UH-mHO"/>
                                     <constraint firstItem="seD-NO-lu9" firstAttribute="width" secondItem="seD-NO-lu9" secondAttribute="height" multiplier="1:1" id="tmQ-08-wDQ"/>
+                                    <constraint firstItem="R2H-Xh-IXf" firstAttribute="leading" secondItem="ZFo-CG-apC" secondAttribute="leading" id="uJG-L7-ZBU"/>
                                     <constraint firstItem="YMG-i2-TXA" firstAttribute="trailing" secondItem="seD-NO-lu9" secondAttribute="trailing" constant="-6" id="zTd-5q-41i"/>
                                 </constraints>
                             </view>
@@ -1101,7 +1024,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m79-CZ-tLG">
-                                        <rect key="frame" x="20.666666666666657" y="368" width="372.66666666666674" height="40"/>
+                                        <rect key="frame" x="20.666666666666657" y="369.33333333333331" width="372.66666666666674" height="40"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="owG-VD-CLf"/>
@@ -1148,15 +1071,15 @@
                                             <constraint firstAttribute="width" constant="20" id="Drg-fe-91W"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REF ID: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hos-XZ-oDn">
-                                        <rect key="frame" x="20.666666666666671" y="305.66666666666669" width="41" height="22.333333333333314"/>
-                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="17"/>
-                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ref." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hos-XZ-oDn">
+                                        <rect key="frame" x="20.666666666666671" y="305.66666666666669" width="21.333333333333329" height="23.666666666666686"/>
+                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
+                                        <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EEE9900" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXP-Ci-4nd">
-                                        <rect key="frame" x="71.666666666666671" y="305.33333333333331" width="44" height="23"/>
-                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="17"/>
+                                        <rect key="frame" x="52" y="306" width="49.666666666666657" height="23"/>
+                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -3180,7 +3103,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.78823529410000004" green="0.1647058824" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="23"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3202,7 +3125,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.78823529410000004" green="0.1647058824" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="23"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3552,7 +3475,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.78823529410000004" green="0.1647058824" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="23"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3695,7 +3618,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.78823529410000004" green="0.1647058824" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="23"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3772,7 +3695,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.78823529410000004" green="0.1647058824" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="23"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3794,7 +3717,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.78823529410000004" green="0.1647058824" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="23"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3816,7 +3739,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.78823529410000004" green="0.1647058824" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="23"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -4351,7 +4274,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.78823529410000004" green="0.1647058824" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="23"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -5519,7 +5442,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.78823529410000004" green="0.1647058824" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="23"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -6056,7 +5979,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.78823529410000004" green="0.1647058824" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="23"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -6437,7 +6360,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.78823529410000004" green="0.1647058824" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="23"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -7854,7 +7777,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.78823529410000004" green="0.1647058824" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="23"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -7977,7 +7900,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.78823529410000004" green="0.1647058824" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="23"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -8038,9 +7961,57 @@
             </objects>
             <point key="canvasLocation" x="-5329" y="4156"/>
         </scene>
+        <!--Security Setting View Controller-->
+        <scene sceneID="5qq-th-cHv">
+            <objects>
+                <viewController storyboardIdentifier="SecuritySettingViewController" id="Nhx-Hw-W0L" customClass="SecuritySettingViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="x48-uR-LCB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="k3E-o9-NUl">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="mCY-xr-2Dh">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="9EN-cG-jBY">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="k3E-o9-NUl" secondAttribute="bottom" id="34A-Id-jPQ"/>
+                            <constraint firstItem="k3E-o9-NUl" firstAttribute="leading" secondItem="rfC-dU-M1v" secondAttribute="leading" id="LYY-6S-166"/>
+                            <constraint firstItem="rfC-dU-M1v" firstAttribute="trailing" secondItem="k3E-o9-NUl" secondAttribute="trailing" id="hb8-bf-dDi"/>
+                            <constraint firstItem="k3E-o9-NUl" firstAttribute="top" secondItem="rfC-dU-M1v" secondAttribute="top" id="rVq-6i-kWJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rfC-dU-M1v"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="AU9-hv-4CR"/>
+                    <connections>
+                        <outlet property="settingCollectionView" destination="k3E-o9-NUl" id="RtT-ZV-H4p"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OmZ-Q5-2cN" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6265" y="2677"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bg-office-map" width="1138" height="800"/>
+        <image name="bg-red-cover" width="1240" height="552"/>
         <image name="ic-add-address" width="90" height="89"/>
         <image name="ic-arrow-transfer" width="300" height="83"/>
         <image name="ic-back-white" width="54" height="69"/>
@@ -8049,12 +8020,10 @@
         <image name="ic-birthday-2" width="60" height="60"/>
         <image name="ic-camera-1" width="60" height="61"/>
         <image name="ic-dropdown-2" width="14.399999618530273" height="14.880000114440918"/>
-        <image name="ic-facebook" width="150" height="154"/>
         <image name="ic-filter" width="90" height="83"/>
         <image name="ic-gold-bg-menu" width="631" height="1260"/>
         <image name="ic-gold-menu-1" width="51" height="50"/>
         <image name="ic-gold-pendding-ver" width="28.799999237060547" height="35.279998779296875"/>
-        <image name="ic-google" width="150" height="153"/>
         <image name="ic-home-transfer-friend" width="450" height="450"/>
         <image name="ic-home-transfer-point" width="450" height="450"/>
         <image name="ic-icon-app-red" width="600" height="599"/>

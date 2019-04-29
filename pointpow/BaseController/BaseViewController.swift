@@ -459,6 +459,12 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
+    func showSecuritySettingView(_ animated:Bool){
+        if let vc:SecuritySettingViewController  = self.storyboard?.instantiateViewController(withIdentifier: "SecuritySettingViewController") as? SecuritySettingViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
     func showDisplayNameView(_ animated:Bool){
         if let vc:DisplayNameViewController  = self.storyboard?.instantiateViewController(withIdentifier: "DisplayNameViewController") as? DisplayNameViewController {
             

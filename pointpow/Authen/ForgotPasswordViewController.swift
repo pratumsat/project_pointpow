@@ -97,7 +97,7 @@ class ForgotPasswordViewController: BaseViewController {
             
             guard validateMobile(username) else { return }
             
-           
+           /*
             let params:Parameters = ["mobile" : username  ]
             
             modelCtrl.forgotPassword(params: params, succeeded: { (result) in
@@ -121,6 +121,7 @@ class ForgotPasswordViewController: BaseViewController {
             }, failure: { (messageError) in
                 self.handlerMessageError(messageError , title: "")
             })
+ */
             
             
             return

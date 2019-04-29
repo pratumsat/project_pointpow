@@ -744,7 +744,14 @@ struct Constant {
             if let tabBarViewController = viewController as? UITabBarController {
                 return topViewController(from: tabBarViewController.selectedViewController)
             } else if let navigationController = viewController as? UINavigationController {
-                return topViewController(from: navigationController.visibleViewController)
+                let view = topViewController(from: navigationController.visibleViewController)
+                if view is GoldSWRevealViewController {
+                
+                    let front = topViewController(from: (view as! GoldSWRevealViewController).frontViewController)
+                    return front
+                }
+                return view
+                
             } else if let presentedViewController = viewController?.presentedViewController {
                 return topViewController(from: presentedViewController)
             } else {

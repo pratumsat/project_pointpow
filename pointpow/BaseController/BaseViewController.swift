@@ -120,6 +120,8 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
                 }
             }
             
+            
+            
         }
     }
     

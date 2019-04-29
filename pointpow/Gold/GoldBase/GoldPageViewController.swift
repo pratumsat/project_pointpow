@@ -91,7 +91,8 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
             }
         }
     }
-
+   
+  
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.getDataMember(){

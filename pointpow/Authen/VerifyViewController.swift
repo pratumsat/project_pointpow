@@ -19,7 +19,6 @@ class VerifyViewController: BaseViewController {
     @IBOutlet weak var refIDLabel: UILabel!
     var clearImageView:UIImageView?
     
-     var errorOTPlLabel:UILabel?
     var countDown:Int = 60
     var timer:Timer?
     
@@ -64,6 +63,7 @@ class VerifyViewController: BaseViewController {
             let newText = String(mobile.filter({ $0 != "-" }).prefix(10))
             self.usernameTextField.text = newText.chunkFormatted()
         }
+        self.usernameTextField.textColor = UIColor.lightGray
         self.usernameTextField.isEnabled = false
         self.otpTextField.keyboardType = .numberPad
         
@@ -83,13 +83,13 @@ class VerifyViewController: BaseViewController {
     }
     func updateButton(){
         self.sendButton.borderLightGrayColorProperties(borderWidth: 1)
-        self.sendButton.addSpacingCharacters(0,  title: "\(countDown)", color: UIColor.lightGray)
-        
+        self.sendButton.setTitle("\(countDown)", for: .normal)
+        self.sendButton.setTitleColor(UIColor.lightGray, for: .normal)
     }
     func resetButton(){
         self.sendButton.borderRedColorProperties(borderWidth: 1)
-        self.sendButton.addSpacingCharacters(0,  title: NSLocalizedString("string-button-re-send", comment: ""),
-                                             color: Constant.Colors.PRIMARY_COLOR)
+        self.sendButton.setTitle(NSLocalizedString("string-button-re-send", comment: ""), for: .normal)
+        self.sendButton.setTitleColor(UIColor.red, for: .normal)
         self.sendButton.isEnabled = true
     }
     func countDown(_ time: Double){
@@ -175,7 +175,7 @@ class VerifyViewController: BaseViewController {
             if let mError = error as? [String:AnyObject]{
                 print(mError)
                 let message = mError["message"] as? String ?? ""
-                self.errorOTPlLabel = self.otpTextField.addBottomLabelErrorMessage(message, marginLeft: 15)
+                //self.errorOTPlLabel = self.otpTextField.addBottomLabelErrorMessage(message, marginLeft: 15)
                 self.showMessagePrompt(message)
             }
         }, failure: { (messageError) in
@@ -187,7 +187,7 @@ class VerifyViewController: BaseViewController {
     @IBAction func verifyTapped(_ sender: Any) {
         let otp = self.otpTextField.text!
         
-        self.errorOTPlLabel?.removeFromSuperview()
+        //self.errorOTPlLabel?.removeFromSuperview()
 
         let params:Parameters = ["ref_id" : self.ref_id ?? "",
                                  "otp" : otp,
@@ -206,7 +206,7 @@ class VerifyViewController: BaseViewController {
             if let mError = error as? [String:AnyObject]{
                 print(mError)
                 let message = mError["message"] as? String ?? ""
-                self.errorOTPlLabel = self.otpTextField.addBottomLabelErrorMessage(message, marginLeft: 15)
+                //self.errorOTPlLabel = self.otpTextField.addBottomLabelErrorMessage(message, marginLeft: 15)
                 self.showMessagePrompt(message)
             }
         }, failure: { (messageError) in

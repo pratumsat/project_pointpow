@@ -128,7 +128,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     @objc func resetPinCode(notification: NSNotification){
         //showResetpin
         self.passCodeController?.dismiss(animated: false, completion: nil)
-        self.showSettingPassCodeModalView()
+        self.showSettingPassCodeModalView(NSLocalizedString("title-set-passcode", comment: ""), lockscreen: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -715,7 +715,10 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
                     if type == "login_success"{
                         self.passCodeController?.showPassCodeSuccess()
                         self.passCodeController?.dismiss(animated: false, completion: { () in
-                            //ignored self.handlerEnterSuccess?("")
+                            if !self.LOCKSCREEN {
+                                self.handlerEnterSuccess?("")
+                            }
+                            self.LOCKSCREEN = false
                         })
                         
                            
@@ -734,7 +737,8 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             enterPasscode!.title = title
             enterPasscode!.lockPin = lockPin
             enterPasscode!.lockPinMessage = message
-        
+            enterPasscode!.lockscreenMode = lockscreen
+            
             self.passCodeController = enterPasscode
             
           
@@ -836,12 +840,12 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     
     
     
-    func showSettingPassCodeModalView(_ title:String = NSLocalizedString("title-set-passcode", comment: "")){
+    func showSettingPassCodeModalView(_ title:String = NSLocalizedString("title-set-passcode", comment: ""), lockscreen:Bool = false){
         let enterPasscode = PAPasscodeViewController(for: PasscodeActionSet )
         enterPasscode!.centerPosition = true
         enterPasscode!.delegate = self
         enterPasscode!.title = title
-        
+        enterPasscode!.lockscreenMode = lockscreen
         
         
         self.passCodeController = enterPasscode
@@ -907,42 +911,89 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         
     
     }
+    func validateMobile(_ mobile:String)-> String{
+        var errorMobile = 0
+        var errorMessage = ""
+        
+        if !checkPrefixcellPhone(mobile) {
+            errorMessage = NSLocalizedString("string-error-invalid-mobile", comment: "")
+            errorMobile += 1
+        }
+        if mobile.count < 10 {
+            errorMessage = NSLocalizedString("string-error-invalid-mobile1", comment: "")
+            errorMobile += 1
+        }
+        if mobile.count > 10 {
+            errorMessage = NSLocalizedString("string-error-invalid-mobile2", comment: "")
+            errorMobile += 1
+        }
+        if errorMobile > 0 {
+            return errorMessage
+        }
+        return errorMessage
+    }
     func paPasscodeViewControllerDidResetEmail(_ controller: PAPasscodeViewController!, didResetEmailPinCode email: String!) {
         
         if email.isEmpty {
-            let emptyEmail = NSLocalizedString("string-error-empty-email", comment: "")
+            let emptyEmail = NSLocalizedString("string-error-empty-username", comment: "")
             controller.showFailedMessage(emptyEmail)
             return
             
         }
-        if isValidEmail(email) {
-            let params:Parameters = ["email" : email!]
-            self.modelCtrl.forgotPinCode(params: params, true, succeeded: { (result) in
+        if isValidNumber(email){
+            print("number")
+            let message = validateMobile(email)
+            if  !message.isEmpty {
+                controller.showFailedMessage(message)
+            }else{
+                print("pass number")
                 
-                self.showMessagePrompt2(NSLocalizedString("title-forgot-passcode-reset-email", comment: "")) {
-                    //ok callback
-                }
-                
-            }, error: { (error) in
-                if let mError = error as? [String:AnyObject]{
-                    let message = mError["message"] as? String ?? ""
-                    print(message)
-                    
-                    controller.showFailedMessage(message)
-                }
-            }) { (messageError) in
-                self.handlerMessageError(messageError)
-                controller.showFailedMessage("")
+                // forgorpin by mobile (API)
+                // pass
+                controller.showMobileOTP(email, refOTP: "sx5501")
             }
-            
         }else{
-            let emailNotValid = NSLocalizedString("string-error-invalid-email", comment: "")
-            controller.showFailedMessage(emailNotValid)
+            
+            if isValidEmail(email) {
+                print("pass email")
+                
+                let params:Parameters = ["email" : email!]
+                self.modelCtrl.forgotPinCode(params: params, true, succeeded: { (result) in
+                    
+                    self.showMessagePrompt2(NSLocalizedString("title-forgot-passcode-reset-email", comment: "")) {
+                        //ok callback
+                    }
+                    
+                }, error: { (error) in
+                    if let mError = error as? [String:AnyObject]{
+                        let message = mError["message"] as? String ?? ""
+                        print(message)
+                        
+                        controller.showFailedMessage(message)
+                    }
+                }) { (messageError) in
+                    self.handlerMessageError(messageError)
+                    controller.showFailedMessage("")
+                }
+                
+            }else{
+                let emailNotValid = NSLocalizedString("string-error-invalid-email", comment: "")
+                controller.showFailedMessage(emailNotValid)
+            }
         }
+    }
+    func paPasscodeViewControllerDidLoadViewOTP(_ controller: PAPasscodeViewController!, resend resendBtn: UIButton!) {
+        //show otp mode
         
-       
+        self.sendButtonResend = resendBtn
+        self.updateButtonResend()
+        self.removeCountDownLableResend()
+        self.sendButtonResend?.isEnabled = false
+        self.countDownResend(1.0)
+        
         
     }
+    
     func paPasscodeViewControllerDidSetPasscode(_ controller: PAPasscodeViewController!, didSetPassCode passcode: String!) {
         
         print("set passcode: \(passcode ?? "unknow")")
@@ -1004,6 +1055,42 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         
         
         
+    }
+    
+    private var countDownResend:Int = 10
+    private var timerResend:Timer?
+    private var sendButtonResend: UIButton?
+    
+    private func updateButtonResend(){
+        self.sendButtonResend?.borderLightGrayColorProperties(borderWidth: 1)
+        self.sendButtonResend?.setTitle("\(countDownResend)", for: .normal)
+        self.sendButtonResend?.setTitleColor(UIColor.lightGray, for: .normal)
+    }
+    private  func resetButtonResend(){
+        self.sendButtonResend?.borderRedColorProperties(borderWidth: 1)
+        self.sendButtonResend?.setTitle(NSLocalizedString("string-button-re-send", comment: ""), for: .normal)
+        self.sendButtonResend?.setTitleColor(UIColor.red, for: .normal)
+        self.sendButtonResend?.isEnabled = true
+    }
+    private func countDownResend(_ time: Double){
+        timerResend = Timer.scheduledTimer(timeInterval: time, target: self, selector: #selector(updateCountDownResend), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateCountDownResend() {
+        if(countDownResend > 0) {
+            countDownResend -= 1
+            self.updateButtonResend()
+        } else {
+            self.resetButtonResend()
+            self.removeCountDownLableResend()
+        }
+    }
+    private func removeCountDownLableResend() {
+        //finish
+        countDownResend = 10
+        timerResend?.invalidate()
+        timerResend = nil
+       
     }
     func showTransferSuccessPopup(_ animated:Bool , nextStepCallback:(()->Void)? = nil ){
         let presenter: Presentr = {

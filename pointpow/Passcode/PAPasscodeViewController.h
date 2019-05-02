@@ -20,6 +20,7 @@ typedef enum {
 
 @optional
 - (void)PAPasscodeViewControllerDidResetEmail:(PAPasscodeViewController *)controller didResetEmailPinCode:(NSString*)email;
+- (void)PAPasscodeViewControllerDidLoadViewOTP:(PAPasscodeViewController *)controller resendButton:(UIButton*)resendBtn;
 
 - (void)PAPasscodeViewControllerDidEnterPasscodeResult:(PAPasscodeViewController *)controller didEnterPassCode:(NSString*)passcode;
 - (void)PAPasscodeViewControllerDidCancel:(PAPasscodeViewController *)controller;
@@ -36,7 +37,7 @@ typedef enum {
     NSArray *_installedConstraints;
     UIView *_inputPanel;
     NSLayoutConstraint *_keyboardHeightConstraint;
-    UIView *contentView;
+    UIScrollView *contentView;
     NSInteger phase;
     UILabel *promptLabel;
     UILabel *messageLabel;
@@ -51,6 +52,18 @@ typedef enum {
     UIView *underLineTextFieldView;
     UIButton *sendEmailButton;
     UIImageView *emailImageView;
+    
+    UITextField *verifyMobileTextField;
+    UIImageView *verifyMobileImageView;
+    UIView *verifyMobileunderLineTextFieldView;
+    
+    UITextField *verifyOTPTextField;
+    UIImageView *verifyOTPImageView;
+    UIView *verifyOTPunderLineTextFieldView;
+    
+    UILabel *refOTPLabel;
+    UIButton *confirmOTPButton;
+    UIButton *resendOTPButton;
 }
 
 @property (strong) UIView *backgroundView;
@@ -68,6 +81,7 @@ typedef enum {
 @property (assign) BOOL centerPosition;
 @property (readonly) BOOL forgotPin;
 @property (assign) BOOL lockPin;
+@property (assign) BOOL lockscreenMode;
 
 
 
@@ -76,5 +90,6 @@ typedef enum {
 - (void)showPassCodeSuccess;
 - (id)initForAction:(PasscodeAction)action;
 - (void)showLockPinCode;
+- (void)showMobileOTP:(NSString*)mobile refOTP:(NSString*)ref;
 
 @end

@@ -115,14 +115,6 @@ static NSTimeInterval AnimationDuration = 0.3;
     //[promptLabel sizeToFit];
     [contentView addSubview:promptLabel];
     
-    messageLabel = [[UILabel alloc] init];
-    messageLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    messageLabel.font = [UIFont fontWithName:@"ThaiSansNeue-Regular" size:18];
-    messageLabel.textAlignment = NSTextAlignmentCenter;
-    messageLabel.numberOfLines = 0;
-    messageLabel.text = _message;
-    messageLabel.textColor = [UIColor colorWithRed:0.75 green:0.16 blue:0.16 alpha:1];
-    [contentView addSubview:messageLabel];
     
     forgotLabel = [[UILabel alloc] init];
     forgotLabel.translatesAutoresizingMaskIntoConstraints = NO;
@@ -359,7 +351,6 @@ static NSTimeInterval AnimationDuration = 0.3;
                             @"inputPanel": _inputPanel,
                             @"failedAttemptsLabel": failedAttemptsLabel,
                             @"forgotLabel": forgotLabel,
-                            @"messageLabel": messageLabel,
                             @"passcodeTextField": passcodeTextField,
                             @"promptLabel": promptLabel,
                             @"logoAppImageView":logoAppImageView,
@@ -581,13 +572,11 @@ static NSTimeInterval AnimationDuration = 0.3;
     
     [constraints addObject:[NSLayoutConstraint constraintWithItem:promptLabel attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeWidth multiplier:0.8 constant:0]];
     
-     
-    [constraints addObject:[NSLayoutConstraint constraintWithItem:messageLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
-    
+ 
     [constraints addObject:[NSLayoutConstraint constraintWithItem:promptLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
    
     
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[promptLabel]-[inputPanel]-[messageLabel]" options:0 metrics:@{@"h": @(FailedBackgroundHeight)} views:views]];
+    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[promptLabel]-[inputPanel]" options:0 metrics:@{@"h": @(FailedBackgroundHeight)} views:views]];
    
 
     _installedConstraints = constraints;
@@ -649,73 +638,191 @@ static NSTimeInterval AnimationDuration = 0.3;
 - (void)cancel:(id)sender {
     [_delegate PAPasscodeViewControllerDidCancel:self];
 }
+- (void)showPhase4ForgotPin{
+    [self showScreenForPhase:4 animated:YES];
+    _action = PasscodeActionSet;
+    _forgotPin = true;
+    emailTextField.hidden = YES;
+    emailImageView.hidden = YES;
+    underLineTextFieldView.hidden = YES;
+    sendEmailButton.hidden = YES;
+    forgotLabel.hidden = YES;
+    verifyMobileTextField.hidden = YES;
+    verifyMobileImageView.hidden = YES;
+    verifyMobileunderLineTextFieldView.hidden = YES;
+    verifyOTPTextField.hidden = YES;
+    verifyOTPImageView.hidden = YES;
+    verifyOTPunderLineTextFieldView.hidden = YES;
+    refOTPLabel.hidden = YES;
+    confirmOTPButton.hidden = YES;
+    resendOTPButton.hidden = YES;
+    
+    _inputPanel.hidden = NO;
+    failedAttemptsLabel.text = @" ";
+    
+    promptLabel.text = NSLocalizedString(@"re-enter-your-passcode", nil);
+    
+    [passcodeTextField becomeFirstResponder];
+    [verifyOTPTextField resignFirstResponder];
+    
+    self.navigationItem.leftBarButtonItem =  [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic-back-white.png"] style:UIBarButtonItemStylePlain target:self action:@selector(back:)];
+    
+    self.navigationItem.leftBarButtonItem.imageInsets = UIEdgeInsetsMake(2.0, -5.0, -2.0, 5.0);
+    
+}
+- (void)showPhase3ForgotPin{
+    [self showScreenForPhase:3 animated:YES];
+    _action = PasscodeActionSet;
+    _forgotPin = true;
+    emailTextField.hidden = YES;
+    emailImageView.hidden = YES;
+    underLineTextFieldView.hidden = YES;
+    sendEmailButton.hidden = YES;
+    forgotLabel.hidden = YES;
+    verifyMobileTextField.hidden = YES;
+    verifyMobileImageView.hidden = YES;
+    verifyMobileunderLineTextFieldView.hidden = YES;
+    verifyOTPTextField.hidden = YES;
+    verifyOTPImageView.hidden = YES;
+    verifyOTPunderLineTextFieldView.hidden = YES;
+    refOTPLabel.hidden = YES;
+    confirmOTPButton.hidden = YES;
+    resendOTPButton.hidden = YES;
+    
+    _inputPanel.hidden = NO;
+    failedAttemptsLabel.text = @" ";
+    
+    promptLabel.text = NSLocalizedString(@"prompt-enter-a-passcode", nil);
+    
+    [passcodeTextField becomeFirstResponder];
+    [verifyOTPTextField resignFirstResponder];
+    
+    self.navigationItem.leftBarButtonItem =  [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic-back-white.png"] style:UIBarButtonItemStylePlain target:self action:@selector(back:)];
+    
+    self.navigationItem.leftBarButtonItem.imageInsets = UIEdgeInsetsMake(2.0, -5.0, -2.0, 5.0);
+    
+}
+- (void)showPhase2ForgotPin{
+    [self showScreenForPhase:2 animated:YES];
+    _forgotPin = true;
+    emailTextField.hidden = YES;
+    emailImageView.hidden = YES;
+    underLineTextFieldView.hidden = YES;
+    sendEmailButton.hidden = YES;
+    forgotLabel.hidden = YES;
+    _inputPanel.hidden = YES;
+    failedAttemptsLabel.text = @" ";
+    
+    
+    verifyMobileTextField.hidden = NO;
+    verifyMobileImageView.hidden = NO;
+    verifyMobileunderLineTextFieldView.hidden = NO;
+    
+    verifyOTPTextField.hidden = NO;
+    verifyOTPImageView.hidden = NO;
+    verifyOTPunderLineTextFieldView.hidden = NO;
+    refOTPLabel.hidden = NO;
+    
+    confirmOTPButton.hidden = NO;
+    resendOTPButton.hidden = NO;
+    
+    [verifyOTPTextField becomeFirstResponder];
+    [emailTextField resignFirstResponder];
+    
+    promptLabel.text = NSLocalizedString(@"title-forgot-passcode-confirm-otp", nil);
+    
+    self.navigationItem.leftBarButtonItem =  [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic-back-white.png"] style:UIBarButtonItemStylePlain target:self action:@selector(back:)];
+    
+    self.navigationItem.leftBarButtonItem.imageInsets = UIEdgeInsetsMake(2.0, -5.0, -2.0, 5.0);
+    
+}
+
+- (void)showPhase1ForgotPin{
+    [self showScreenForPhase:1 animated:YES];
+    _forgotPin = true;
+    emailTextField.hidden = NO;
+    emailImageView.hidden = NO;
+    underLineTextFieldView.hidden = NO;
+    sendEmailButton.hidden = NO;
+    forgotLabel.hidden = YES;
+    _inputPanel.hidden = YES;
+    
+    verifyMobileunderLineTextFieldView.hidden = YES;
+    verifyMobileImageView.hidden = YES;
+    verifyMobileTextField.hidden = YES;
+    
+    verifyOTPunderLineTextFieldView.hidden = YES;
+    verifyOTPImageView.hidden = YES;
+    verifyOTPTextField.hidden = YES;
+    confirmOTPButton.hidden = YES;
+    resendOTPButton.hidden = YES;
+    refOTPLabel.hidden = YES;
+    
+    failedAttemptsLabel.text = @" ";
+    
+    
+    [emailTextField becomeFirstResponder];
+    [verifyOTPTextField resignFirstResponder];
+    
+    promptLabel.text = NSLocalizedString(@"title-forgot-passcode-email", nil);
+    
+    self.navigationItem.leftBarButtonItem =  [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic-back-white.png"] style:UIBarButtonItemStylePlain target:self action:@selector(back:)];
+    
+    self.navigationItem.leftBarButtonItem.imageInsets = UIEdgeInsetsMake(2.0, -5.0, -2.0, 5.0);
+    
+}
+
+- (void)showPhase0ForgotPin{
+    [self showScreenForPhase:0 animated:YES];
+    _action = PasscodeActionEnter;
+    _forgotPin = false;
+    emailTextField.hidden = YES;
+    emailImageView.hidden = YES;
+    underLineTextFieldView.hidden = YES;
+    sendEmailButton.hidden = YES;
+    _inputPanel.hidden = NO;
+    forgotLabel.hidden = NO;
+    failedAttemptsLabel.text = @" ";
+    
+    NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc]
+                                                  initWithString: NSLocalizedString(@"title-forgot-passcode", nil)];
+    [attributeString addAttribute:NSUnderlineStyleAttributeName
+                            value:[NSNumber numberWithInt:1]
+                            range:(NSRange){0,[attributeString length]}];
+    
+    forgotLabel.attributedText = attributeString;
+    promptLabel.text = _enterPrompt;
+    
+    [passcodeTextField becomeFirstResponder];
+    [emailTextField resignFirstResponder];
+    
+    if(_lockscreenMode){
+        self.navigationItem.leftBarButtonItem = nil;
+        
+    }else{
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
+        
+    }
+}
+
+
 - (void)back:(id)sender {
     if (_forgotPin) {
-        if (phase == 2){
-            [self showScreenForPhase:1 animated:YES];
-            _forgotPin = true;
-            emailTextField.hidden = NO;
-            emailImageView.hidden = NO;
-            underLineTextFieldView.hidden = NO;
-            sendEmailButton.hidden = NO;
-            forgotLabel.hidden = YES;
-            _inputPanel.hidden = YES;
-            
-            verifyMobileunderLineTextFieldView.hidden = YES;
-            verifyMobileImageView.hidden = YES;
-            verifyMobileTextField.hidden = YES;
-            
-            verifyOTPunderLineTextFieldView.hidden = YES;
-            verifyOTPImageView.hidden = YES;
-            verifyOTPTextField.hidden = YES;
-            confirmOTPButton.hidden = YES;
-            resendOTPButton.hidden = YES;
-            refOTPLabel.hidden = YES;
-            
-            failedAttemptsLabel.text = @" ";
-           
-            [emailTextField becomeFirstResponder];
-            [verifyOTPTextField resignFirstResponder];
-            
-            promptLabel.text = NSLocalizedString(@"title-forgot-passcode-email", nil);
-            
-            self.navigationItem.leftBarButtonItem =  [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic-back-white.png"] style:UIBarButtonItemStylePlain target:self action:@selector(back:)];
-            
-            self.navigationItem.leftBarButtonItem.imageInsets = UIEdgeInsetsMake(2.0, -5.0, -2.0, 5.0);
-            
+        if (phase == 4){
+            [self emptyPin];
+            [self showPhase3ForgotPin];
             return;
         }
-        
+        if (phase == 3){
+            [self showPhase2ForgotPin];
+            return;
+        }
+        if (phase == 2){
+            [self showPhase1ForgotPin];
+            return;
+        }
         if (phase == 1){
-            [self showScreenForPhase:0 animated:YES];
-            _forgotPin = false;
-            emailTextField.hidden = YES;
-            emailImageView.hidden = YES;
-            underLineTextFieldView.hidden = YES;
-            sendEmailButton.hidden = YES;
-            _inputPanel.hidden = NO;
-            forgotLabel.hidden = NO;
-            failedAttemptsLabel.text = @" ";
-            
-            NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc]
-                                                          initWithString: NSLocalizedString(@"title-forgot-passcode", nil)];
-            [attributeString addAttribute:NSUnderlineStyleAttributeName
-                                    value:[NSNumber numberWithInt:1]
-                                    range:(NSRange){0,[attributeString length]}];
-            
-            forgotLabel.attributedText = attributeString;
-            promptLabel.text = _enterPrompt;
-            
-            [passcodeTextField becomeFirstResponder];
-            [emailTextField resignFirstResponder];
-            
-            if(_lockscreenMode){
-                self.navigationItem.leftBarButtonItem = nil;
-                
-            }else{
-                self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
-                
-            }
+            [self showPhase0ForgotPin];
             return;
         }
     }
@@ -756,9 +863,29 @@ static NSTimeInterval AnimationDuration = 0.3;
     NSString *text = passcodeTextField.text;
     switch (_action) {
         case PasscodeActionSet:
+            if (_forgotPin) {
+                if (phase == 3 ) {
+                    _passcode = text;
+                    failedAttemptsLabel.text = @"";
+                    [self emptyPin];
+                    [self showPhase4ForgotPin];
+                }else{
+                    if ([text isEqualToString:_passcode]) {
+                        if ([_delegate respondsToSelector:@selector(PAPasscodeViewControllerDidSetPasscode:didSetPassCode:)]) {
+                            [_delegate PAPasscodeViewControllerDidSetPasscode:self didSetPassCode:text];
+                        }
+                    } else {
+                        [self emptyPin];
+                        [self showPhase3ForgotPin];
+                        failedAttemptsLabel.text = NSLocalizedString(@"passcodes-did-not-match", nil);
+                    }
+                }
+                return;
+            }
+            
             if (phase == 0) {
                 _passcode = text;
-                messageLabel.text = @"";
+                failedAttemptsLabel.text = @"";
                 [self emptyPin];
                 [self showScreenForPhase:1 animated:YES];
             } else {
@@ -769,7 +896,7 @@ static NSTimeInterval AnimationDuration = 0.3;
                 } else {
                     [self emptyPin];
                     [self showScreenForPhase:0 animated:YES];
-                    messageLabel.text = NSLocalizedString(@"passcodes-did-not-match", nil);
+                    failedAttemptsLabel.text = NSLocalizedString(@"passcodes-did-not-match", nil);
                 }
             }
             break;
@@ -798,30 +925,6 @@ static NSTimeInterval AnimationDuration = 0.3;
             break;
             
         case PasscodeActionChange:
-            /*
-            if (phase == 0) {
-                if ([text isEqualToString:_passcode]) {
-                    [self resetFailedAttempts];
-                    [self showScreenForPhase:1 animated:YES];
-                } else {
-                    //[self handleFailedAttempt];
-                    [self showScreenForPhase:0 animated:NO];
-                }
-            } else if (phase == 1) {
-                _passcode = text;
-                messageLabel.text = nil;
-                [self showScreenForPhase:2 animated:YES];
-            } else {
-                if ([text isEqualToString:_passcode]) {
-                    if ([_delegate respondsToSelector:@selector(PAPasscodeViewControllerDidChangePasscode:)]) {
-                        [_delegate PAPasscodeViewControllerDidChangePasscode:self];
-                    }
-                } else {
-                    [self showScreenForPhase:1 animated:YES];
-                    messageLabel.text = NSLocalizedString(@"passcodes-did-not-match", nil);
-                }
-            }
-             */
             break;
     }
 }
@@ -833,12 +936,15 @@ static NSTimeInterval AnimationDuration = 0.3;
 -(void) buttonClickedConfirmOTP:(UIButton*)sender{
     NSLog(@"otp = %@", verifyOTPTextField.text);
     
-    //[_delegate PAPasscodeViewControllerDidResetEmail:self didResetEmailPinCode:emailTextField.text];
+    //[_delegate PAPasscodeViewControllerConfirmOTP:self didEnterOTP:verifyOTPTextField.text refOTP:refOTPLabel.text];
+    
+    [self showPhase3ForgotPin];
 }
 -(void) buttonResendConfirmOTP:(UIButton*)sender{
     NSLog(@"resend otp");
     
-    //[_delegate PAPasscodeViewControllerDidResetEmail:self didResetEmailPinCode:emailTextField.text];
+    [_delegate PAPasscodeViewControllerResendOTP:self resendButton:resendOTPButton callbackMobileNumber: verifyMobileTextField.text];
+    
 }
 -(void)forgotTapped {
     
@@ -853,6 +959,7 @@ static NSTimeInterval AnimationDuration = 0.3;
         forgotLabel.hidden = YES;
         _inputPanel.hidden = YES;
         failedAttemptsLabel.text = @" ";
+        
         [emailTextField becomeFirstResponder];
         [passcodeTextField resignFirstResponder];
         
@@ -862,8 +969,6 @@ static NSTimeInterval AnimationDuration = 0.3;
         
         self.navigationItem.leftBarButtonItem.imageInsets = UIEdgeInsetsMake(2.0, -5.0, -2.0, 5.0);
     }
-    
-
 }
 
 - (void)handleFailedAttempt {
@@ -875,20 +980,14 @@ static NSTimeInterval AnimationDuration = 0.3;
 }
 
 - (void)resetFailedAttempts {
-    messageLabel.hidden = NO;
-    //failedAttemptsLabel.hidden = YES;
+    
     failedAttemptsLabel.text = @" ";
+
     _failedAttempts = 0;
 }
 
 - (void)showFailedAttempts {
-//    messageLabel.hidden = YES;
-//    failedAttemptsLabel = NO;
-//    if (_failedAttempts == 1) {
-//        failedAttemptsLabel.text = NSLocalizedString(@"1 Failed Passcode Attempt", nil);
-//    } else {
-//        failedAttemptsLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d Failed Passcode Attempts", nil), _failedAttempts];
-//    }
+    
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == emailTextField){
@@ -937,6 +1036,7 @@ static NSTimeInterval AnimationDuration = 0.3;
     _inputPanel.hidden = YES;
     failedAttemptsLabel.text = @" ";
     
+    
     NSString *refOTP = [NSString stringWithFormat: @"%@ %@", NSLocalizedString(@"title-forgot-passcode-confirm-ref-otp", nil), ref];
     refOTPLabel.text = refOTP;
     verifyMobileTextField.text = mobile;
@@ -975,9 +1075,7 @@ static NSTimeInterval AnimationDuration = 0.3;
 }
 
 - (void)showFailedMessage:(NSString*) messageError {
-    messageLabel.hidden = YES;
-    
-    
+   
     failedAttemptsLabel.text = messageError;
     //[failedAttemptsLabel sizeToFit];
     

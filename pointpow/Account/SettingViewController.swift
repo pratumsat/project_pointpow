@@ -220,6 +220,9 @@ class SettingViewController: BaseViewController, UICollectionViewDelegate , UICo
             return CGSize.zero
             
         }
+        if section == 2 {
+            return CGSize(width: collectionView.frame.width, height: CGFloat(20.0))
+        }
         return CGSize(width: collectionView.frame.width, height: CGFloat(40.0))
     }
     

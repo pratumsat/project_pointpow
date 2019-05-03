@@ -766,7 +766,7 @@ struct Constant {
         static let USER_TOKEN_CACHE = "USER_TOKEN"
         static let NAME_CACHE = "NotiStructHolder"
         static let NAME_CACHE_OBJECT = "NotiStructObject"
-        
+         static let USER_PINCODE_CACHE = "PINCODE"
     }
     enum ViewBorder: String {
         case left, right, top, bottom

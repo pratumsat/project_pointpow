@@ -10,6 +10,12 @@ import UIKit
 
 class SecuritySettingViewController: BaseViewController, UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
+    var item:ITEM?
+    enum ITEM {
+        case CHANGE_PIN, CHANGE_PWD, CHANGE_MOBILE
+    }
+    let dash = "\u{25CF}\u{25CF}\u{25CF}\u{25CF}\u{25CF}\u{25CF}\u{25CF}\u{25CF}"
+    
     @IBOutlet weak var settingCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +24,45 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
         self.setUp()
     }
     func setUp(){
+        self.handlerEnterSuccess = { (passcode) in
+            if let typeForPin = self.item {
+                switch typeForPin {
+                case .CHANGE_PIN:
+                    DataController.sharedInstance.setPasscode(passcode)
+                    self.showSettingPassCodeModalView()
+                    break
+                    
+                case .CHANGE_PWD:
+                    self.showChangePasswordView(true)
+                    break
+                    
+                case .CHANGE_MOBILE:
+                    self.showMobilePhoneView(true)
+                    break
+                }
+            }
+        }
+        
+        
+        self.hendleSetPasscodeSuccess = { (passcode, controller) in
+            
+            DataController.sharedInstance.setPasscode("")
+            
+            
+            let message = NSLocalizedString("string-change-pincode-success", comment: "")
+            let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+            let ok = UIAlertAction(title: NSLocalizedString("string-button-ok", comment: ""), style: .cancel, handler: { (action) in
+                
+                controller.dismiss(animated: false, completion: { () in
+                    //
+                })
+            })
+            alert.addAction(ok)
+            alert.show()
+            
+        }
+        
+        
         self.backgroundImage?.image = nil
         
         self.settingCollectionView.dataSource = self
@@ -25,19 +70,83 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
         self.settingCollectionView.showsVerticalScrollIndicator = false
         
         self.registerHeaderNib(self.settingCollectionView, "HeadCell")
+        self.registerNib(self.settingCollectionView, "ItemProfileCell")
+        self.registerNib(self.settingCollectionView, "SwitchCell")
+        self.registerNib(self.settingCollectionView, "LogoutCell")
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return 3
+        if section == 0 {
+            return 5
+        }
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell:UICollectionViewCell?
+        if indexPath.section == 0 {
+        
+            switch indexPath.row {
+            case 0,2,3,4:
+                if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemProfileCell", for: indexPath) as? ItemProfileCell{
+                    cell = itemCell
+                    
+                    if indexPath.row == 0{
+                        itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change-pin", comment: "")
+                        itemCell.trailLabel.text = ""
+                    }else if indexPath.row == 2{
+                        itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change-point-limit", comment: "")
+                        itemCell.trailLabel.text = "10,000"
+                    }else if indexPath.row == 3{
+                        itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change-mobile", comment: "")
+                        itemCell.trailLabel.text = "083673xxxx"
+                    }else if indexPath.row == 4{
+                        itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change-pwd", comment: "")
+                        itemCell.trailLabel.text = dash
+                    }
+                    
+                    
+                    let lineBottom = UIView(frame: CGRect(x: 0, y: itemCell.frame.height - 1 , width: collectionView.frame.width, height: 1 ))
+                    lineBottom.backgroundColor = Constant.Colors.LINE_PROFILE
+                    itemCell.addSubview(lineBottom)
+                    
+                }
+                break;
+            case 1:
+                
+                if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SwitchCell", for: indexPath) as? SwitchCell {
+                    cell = itemCell
+                    
+                    itemCell.nameLabel.text = NSLocalizedString("string-item-setting-faceid", comment: "")
+                    
+                    
+                    let lineBottom = UIView(frame: CGRect(x: 0, y: itemCell.frame.height - 1 , width: collectionView.frame.width, height: 1 ))
+                    lineBottom.backgroundColor = Constant.Colors.LINE_PROFILE
+                    itemCell.addSubview(lineBottom)
+                }
+                break;
+            default:
+                break;
+            }
+            
+            
+            
+        }else{
+            if let logOutCell = collectionView.dequeueReusableCell(withReuseIdentifier: "LogoutCell", for: indexPath) as? LogoutCell {
+                cell = logOutCell
+                
+                logOutCell.logoutLabel.text = NSLocalizedString("string-item-profile-logout", comment: "")
+                logOutCell.logoutLabel.textColor = Constant.Colors.PRIMARY_COLOR
+                
+                let lineBottom = UIView(frame: CGRect(x: 0, y: logOutCell.frame.height - 1 , width: collectionView.frame.width, height: 1 ))
+                lineBottom.backgroundColor = Constant.Colors.LINE_PROFILE
+                logOutCell.addSubview(lineBottom)
+            }
+        }
         
       
         if cell == nil {
@@ -49,11 +158,32 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       
+     
+        if indexPath.section == 0 {
+            if indexPath.row == 0 {
+                self.item = .CHANGE_PIN
+                self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
+            }
+            if indexPath.row == 3 {
+                self.item = .CHANGE_MOBILE
+                self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
+            }
+            if indexPath.row == 4 {
+                self.item = .CHANGE_PWD
+                self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
+            }
+        }
+        if indexPath.section == 2 {
+            self.modelCtrl.logOut() { (result) in
+                Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(self.reNewApplication), userInfo: nil, repeats: false)
+            }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        
+        if section == 1 {
+            return CGSize(width: collectionView.frame.width, height: CGFloat(20.0))
+        }
         return CGSize.zero
     }
     

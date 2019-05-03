@@ -13,10 +13,6 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
     
     @IBOutlet weak var profileCollectionView: UICollectionView!
     
-    enum SelectType {
-        case MOBILE ,EDITPROFILE
-    }
-    var select:SelectType = .EDITPROFILE
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,18 +22,9 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
     
     
     func setUp(){
-        self.hendleSetPasscodeSuccess = { (passcode) in
-            print("new passcode= \(passcode)")
-            
-        }
+     
         self.handlerEnterSuccess = { (pin) in
-            switch self.select {
-            case .EDITPROFILE:
-                self.showPersonalView(true)
-                
-            case .MOBILE:
-                self.showMobilePhoneView(true)
-            }
+            self.showPersonalView(true)
         }
 
         self.backgroundImage?.image = nil
@@ -58,7 +45,7 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return 4
+            return 2
         }
         return 1
     }
@@ -76,12 +63,6 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
                 }else if indexPath.row == 1{
                     itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change-displayname", comment: "")
                     itemCell.trailLabel.text = "Lazy"
-                }else if indexPath.row == 2{
-                    itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change-mobile", comment: "")
-                    itemCell.trailLabel.text = ""
-                }else if indexPath.row == 3{
-                    itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change-pwd", comment: "")
-                    itemCell.trailLabel.text = ""
                 }
                 let lineBottom = UIView(frame: CGRect(x: 0, y: itemCell.frame.height - 1 , width: collectionView.frame.width, height: 1 ))
                 lineBottom.backgroundColor = Constant.Colors.LINE_PROFILE
@@ -112,25 +93,15 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
-                //check isPassCode
-                //self.showSettingPassCodeModalView()
-                
-                self.select = .EDITPROFILE
                 self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
-                
             }else if indexPath.row == 1 {
                 self.showDisplayNameView(true)
-            
-            }else if indexPath.row == 2 {
-                
-                self.select = .MOBILE
-                self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
-                
-                
-            }else if indexPath.row == 3 {
-                self.showChangePasswordView(true)
             }
-            
+        }
+        if indexPath.section == 2 {
+            self.modelCtrl.logOut() { (result) in
+                Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(self.reNewApplication), userInfo: nil, repeats: false)
+            }
         }
     }
     

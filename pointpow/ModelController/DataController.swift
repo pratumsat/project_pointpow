@@ -56,6 +56,20 @@ class DataController {
     func getToken() -> String {
         return data["token"] as? String ?? ""
     }
+    
+    
+    func setPasscode(_ passcode:String){
+        UserDefaults.standard.set(passcode, forKey: Constant.CacheNotification.USER_PINCODE_CACHE)
+        UserDefaults.standard.synchronize()
+        
+    }
+    func getPasscode() -> String{
+        if let passcode = UserDefaults.standard.object(forKey: Constant.CacheNotification.USER_PINCODE_CACHE) as? String {  
+            return passcode
+        }
+        return ""
+    }
+    
     func setActivateToken(_ token:String){
         UserDefaults.standard.set(token, forKey: Constant.CacheNotification.USER_ACTIVATE_TOKEN_CACHE)
         UserDefaults.standard.synchronize()

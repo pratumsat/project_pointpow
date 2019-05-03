@@ -105,6 +105,7 @@
 "string-reset-password-send-mobile" = "ระบบได้ดำเนินการรีเซ็ทรหัสผ่าน\nกรุณาตรวจเช็คกล่องข้อความของท่าน";
 "string-reset-password-success" = "รีเซ็ตรหัสผ่านเรียบร้อย";
 "string-reset-pincode-success" = "รีเซ็ต PIN Code เรียบร้อย";
+"string-change-pincode-success" = "เปลี่ยน PIN Code สำเร็จ";
 "string-button-ok" = "ตกลง";
 
 /* ResultPointTransfer*/
@@ -170,6 +171,8 @@
 
 
 /*Profile*/
+"string-item-profile-change-pin" = "เปลี่ยน PIN Code";
+"string-item-profile-change-point-limit" = "Point จำกัดต่อวัน";
 "string-item-profile-change" = "แก้ไขโปรไฟล์";
 "string-item-profile-change-displayname" = "Display Name";
 "string-item-profile-change-mobile" = "เบอร์มือถือ";
@@ -187,6 +190,8 @@
 "string-item-setting-noti" = "การแจ้งเตือน";
 "string-item-setting-receipt" = "บันทึกสลิปอัตโนมัติ";
 "string-item-setting-about" = "เกี่ยวกับ Point Pow";
+
+"string-item-setting-faceid" = "ตั้งค่า Face ID หรือ Touch ID";
 
 
 "alert-title-language" = "ภาษา";
@@ -256,6 +261,8 @@
 "string-error-invalid-confirm-pwd" = "ยืนยันรหัสไม่ถูกต้อง ต้องมีตัวอักษรและตัวเลขอย่างน้อย 6 ตัว";
 "string-error-mismatch-pwd"= "ยืนยันรหัสผ่านไม่ถูกต้อง กรุณาใส่ใหม่อีกครั้ง";
 "string-error-otp"  = "รหัส OTP ไม่ถูกต้อง กรุณาใส่ใหม่อีกครั้ง";
+"string-error-otp-empty"  = "กรุณาใส่รหัส OTP";
+
 
 "string-error-invalid-personal-id" = "เลขบัตรประชาชนไม่ถูกต้อง";
 "string-error-invalid-personal-id1" = "เลขบัตรประชาชนไม่ครบ 13 หลัก";

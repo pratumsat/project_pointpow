@@ -22,6 +22,12 @@ typedef enum {
 - (void)PAPasscodeViewControllerDidResetEmail:(PAPasscodeViewController *)controller didResetEmailPinCode:(NSString*)email;
 - (void)PAPasscodeViewControllerDidLoadViewOTP:(PAPasscodeViewController *)controller resendButton:(UIButton*)resendBtn;
 
+- (void)PAPasscodeViewControllerResendOTP:(PAPasscodeViewController *)controller resendButton:(UIButton*)resendBtn callbackMobileNumber:(NSString*)mobileNumber;
+
+- (void)PAPasscodeViewControllerConfirmOTP:(PAPasscodeViewController *)controller didEnterOTP:(NSString*)otp 
+    refOTP:(NSString*)ref;
+
+
 - (void)PAPasscodeViewControllerDidEnterPasscodeResult:(PAPasscodeViewController *)controller didEnterPassCode:(NSString*)passcode;
 - (void)PAPasscodeViewControllerDidCancel:(PAPasscodeViewController *)controller;
 - (void)PAPasscodeViewControllerDidChangePasscode:(PAPasscodeViewController *)controller;
@@ -40,7 +46,6 @@ typedef enum {
     UIScrollView *contentView;
     NSInteger phase;
     UILabel *promptLabel;
-    UILabel *messageLabel;
     UILabel *forgotLabel;
     UILabel *failedAttemptsLabel;
     UITextField *passcodeTextField;

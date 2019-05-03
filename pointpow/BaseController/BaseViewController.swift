@@ -34,7 +34,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     
     var handlerDidCancel: (()->Void)?
     var handlerEnterSuccess: ((_ pin:String)->Void)?
-    var hendleSetPasscodeSuccess: ((_ passcode:String)->Void)?
+    var hendleSetPasscodeSuccess: ((_ passcode:String, _ controller:PAPasscodeViewController)->Void)?
     
     private var searchImageView:UIImageView?
     private var cartImageView:UIImageView?
@@ -890,6 +890,9 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
                     self.handlerEnterSuccess?(passcode)
                 }
                 self.LOCKSCREEN = false
+                
+                
+                
             })
         }, error: { (error) in
             if let mError = error as? [String:AnyObject]{
@@ -984,14 +987,34 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     }
     func paPasscodeViewControllerDidLoadViewOTP(_ controller: PAPasscodeViewController!, resend resendBtn: UIButton!) {
         //show otp mode
-        
         self.sendButtonResend = resendBtn
         self.updateButtonResend()
         self.removeCountDownLableResend()
         self.sendButtonResend?.isEnabled = false
         self.countDownResend(1.0)
         
+    }
+    func paPasscodeViewControllerResendOTP(_ controller: PAPasscodeViewController!, resend resendBtn: UIButton!, callbackMobileNumber mobileNumber: String?) {
         
+        print("mobile = \(mobileNumber!)")
+        self.sendButtonResend = resendBtn
+        self.updateButtonResend()
+        self.removeCountDownLableResend()
+        self.sendButtonResend?.isEnabled = false
+        self.countDownResend(1.0)
+    }
+    func paPasscodeViewControllerConfirmOTP(_ controller: PAPasscodeViewController!, didEnterOTP otp: String!, refOTP ref: String!) {
+        print("Confirm OTP \(otp!)")
+        print("Confirm REF \(ref!)")
+        
+        if otp.isEmpty {
+            self.showMessagePrompt2(NSLocalizedString("string-error-otp-empty", comment: "")) {
+                //ok callback
+            }
+        }else{
+            // pass otp
+        }
+       
     }
     
     func paPasscodeViewControllerDidSetPasscode(_ controller: PAPasscodeViewController!, didSetPassCode passcode: String!) {
@@ -1027,16 +1050,20 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             }) { (messageError) in
                 self.handlerMessageError(messageError)
             }
-            //
+
         }else{
+            var params:Parameters = [:]
+            let oldPasscode = DataController.sharedInstance.getPasscode()
+            if oldPasscode.isEmpty {
+                params = ["new_pin" : Int(passcode)!]
+            }else{
+                params = ["old_pin" : Int(oldPasscode)!,
+                          "new_pin" : Int(passcode)!]
+            }
             
-            
-            let params:Parameters = ["new_pin" : Int(passcode)!]
-            self.modelCtrl.setPinCode(params: params, true, succeeded: { (result) in
+            self.modelCtrl.setPinCode(params: params, true, succeeded: { (result) in  
+                self.hendleSetPasscodeSuccess?(passcode, controller)
                 
-                controller.dismiss(animated: false, completion: { () in
-                    self.hendleSetPasscodeSuccess?(passcode)
-                })
             }, error: { (error) in
                 if let mError = error as? [String:AnyObject]{
                     let message = mError["message"] as? String ?? ""
@@ -1057,13 +1084,13 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         
     }
     
-    private var countDownResend:Int = 10
+    private var countDownResend:Int = 300
     private var timerResend:Timer?
     private var sendButtonResend: UIButton?
     
     private func updateButtonResend(){
         self.sendButtonResend?.borderLightGrayColorProperties(borderWidth: 1)
-        self.sendButtonResend?.setTitle("\(countDownResend)", for: .normal)
+        self.sendButtonResend?.setTitle("\(prodTimeString(time: TimeInterval(countDownResend)))", for: .normal)
         self.sendButtonResend?.setTitleColor(UIColor.lightGray, for: .normal)
     }
     private  func resetButtonResend(){
@@ -1074,8 +1101,14 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     }
     private func countDownResend(_ time: Double){
         timerResend = Timer.scheduledTimer(timeInterval: time, target: self, selector: #selector(updateCountDownResend), userInfo: nil, repeats: true)
+        RunLoop.main.add(timerResend!, forMode: RunLoop.Mode.common)
     }
-    
+    private func prodTimeString(time: TimeInterval) -> String {
+        let prodMinutes = Int(time) / 60 % 60
+        let prodSeconds = Int(time) % 60
+        
+        return String(format: "%02d:%02d", prodMinutes, prodSeconds)
+    }
     @objc func updateCountDownResend() {
         if(countDownResend > 0) {
             countDownResend -= 1
@@ -1087,7 +1120,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     }
     private func removeCountDownLableResend() {
         //finish
-        countDownResend = 10
+        countDownResend = 300
         timerResend?.invalidate()
         timerResend = nil
        

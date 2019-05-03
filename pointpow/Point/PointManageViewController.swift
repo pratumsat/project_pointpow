@@ -26,20 +26,7 @@ class PointManageViewController: BaseViewController {
     
     func setUp(){
         self.backgroundImage?.image = nil
-        
-//        self.hendleSetPasscodeSuccess = { (passcode) in
-//            print("new passcode= \(passcode)")
-//
-//
-//            if self.isFriend  {
-//                self.showFriendTransferView(true)
-//            }else{
-//                self.showPointTransferView(true)
-//            }
-//
-//
-//        }
-        
+                
         let friend = UITapGestureRecognizer(target: self, action: #selector(friendTransferTapped))
         self.friendTransfer.isUserInteractionEnabled = true
         self.friendTransfer.addGestureRecognizer(friend)
@@ -62,7 +49,7 @@ class PointManageViewController: BaseViewController {
 //                self.isFriend = false
 //
 //            }
-            //self.showSettingPassCodeModalView()
+            //
             //self.showPointTransferView(true)
 //        })
 //
@@ -86,7 +73,7 @@ class PointManageViewController: BaseViewController {
 //            (alert) in
 //
 //            self.isFriend = true
-//            //self.showSettingPassCodeModalView()
+//            //
 //            //self.showFriendTransferView(true)
 //            //self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
 //        })

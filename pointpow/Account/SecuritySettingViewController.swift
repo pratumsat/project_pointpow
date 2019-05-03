@@ -10,6 +10,8 @@ import UIKit
 
 class SecuritySettingViewController: BaseViewController, UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
+    var userData:AnyObject?
+    
     var item:ITEM?
     enum ITEM {
         case CHANGE_PIN, CHANGE_PWD, CHANGE_MOBILE
@@ -23,6 +25,46 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
         self.title = NSLocalizedString("string-title-security-setting", comment: "")
         self.setUp()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if DataController.sharedInstance.isLogin() {
+            self.getUserInfo()
+        }
+    }
+    
+    override func reloadData() {
+        self.getUserInfo()
+    }
+    
+    func getUserInfo(_ avaliable:(()->Void)?  = nil){
+        var isLoading:Bool = true
+        if self.userData != nil {
+            isLoading = false
+        }else{
+            isLoading = true
+        }
+        modelCtrl.getUserData(params: nil , isLoading , succeeded: { (result) in
+            self.userData = result
+            avaliable?()
+            
+            self.settingCollectionView.reloadData()
+            self.refreshControl?.endRefreshing()
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                //self.showMessagePrompt(message)
+            }
+            self.refreshControl?.endRefreshing()
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            self.refreshControl?.endRefreshing()
+        }
+    }
+    
     func setUp(){
         self.handlerEnterSuccess = { (passcode) in
             if let typeForPin = self.item {
@@ -45,10 +87,8 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
         
         
         self.hendleSetPasscodeSuccess = { (passcode, controller) in
-            
             DataController.sharedInstance.setPasscode("")
-            
-            
+        
             let message = NSLocalizedString("string-change-pincode-success", comment: "")
             let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
             let ok = UIAlertAction(title: NSLocalizedString("string-button-ok", comment: ""), style: .cancel, handler: { (action) in
@@ -61,6 +101,9 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
             alert.show()
             
         }
+        self.handlerDidCancel = {
+            DataController.sharedInstance.setPasscode("")
+        }
         
         
         self.backgroundImage?.image = nil
@@ -68,6 +111,8 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
         self.settingCollectionView.dataSource = self
         self.settingCollectionView.delegate = self
         self.settingCollectionView.showsVerticalScrollIndicator = false
+        
+        self.addRefreshViewController(self.settingCollectionView)
         
         self.registerHeaderNib(self.settingCollectionView, "HeadCell")
         self.registerNib(self.settingCollectionView, "ItemProfileCell")
@@ -95,15 +140,30 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
                 if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemProfileCell", for: indexPath) as? ItemProfileCell{
                     cell = itemCell
                     
+                    let limitpoint_perday = "10,000"
+                    var mobile = ""
+                    if let userData = self.userData as? [String:AnyObject] {
+                        mobile = userData["mobile"] as? String ?? ""
+                    }
+                    
+                    if !mobile.isEmpty {
+                        mobile = mobile.substring(start: 0, end: 6)
+                        mobile += "xxxx"
+                    }
+                    
+                    
+                    
+                    
                     if indexPath.row == 0{
                         itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change-pin", comment: "")
                         itemCell.trailLabel.text = ""
                     }else if indexPath.row == 2{
                         itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change-point-limit", comment: "")
-                        itemCell.trailLabel.text = "10,000"
+                        itemCell.trailLabel.text = limitpoint_perday
                     }else if indexPath.row == 3{
                         itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change-mobile", comment: "")
-                        itemCell.trailLabel.text = "083673xxxx"
+                        let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
+                        itemCell.trailLabel.text = newMText.chunkFormatted()
                     }else if indexPath.row == 4{
                         itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change-pwd", comment: "")
                         itemCell.trailLabel.text = dash

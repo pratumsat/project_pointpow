@@ -13,13 +13,14 @@ import FirebaseMessaging
 class RegisterViewController: BaseViewController {
 
     @IBOutlet weak var infomationlabel: UILabel!
-    @IBOutlet weak var googleView: UIView!
-    @IBOutlet weak var facebookView: UIView!
+    
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var registerButton: UIButton!
     
+    @IBOutlet weak var termLabel: UILabel!
+    @IBOutlet weak var checkBox: CheckBox!
     var clearImageView:UIImageView?
     var eyeImageView:UIImageView?
     var confirmEyeImageView:UIImageView?
@@ -39,12 +40,12 @@ class RegisterViewController: BaseViewController {
     }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.registerButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
+        //self.registerButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
         
     }
     
     func setUp(){
-        self.registerButton.borderClearProperties(borderWidth: 1)
+        //self.registerButton.borderClearProperties(borderWidth: 1)
         
         
     
@@ -86,7 +87,54 @@ class RegisterViewController: BaseViewController {
         self.confirmEyeImageView?.addGestureRecognizer(confirmEyeTap)
         
         
-       
+        let term = UITapGestureRecognizer(target: self, action: #selector(termTapped))
+        self.termLabel.isUserInteractionEnabled =  true
+        self.termLabel.addGestureRecognizer(term)
+        
+        
+        self.checkBox.toggle  = { (isCheck) in
+            self.validateData()
+        }
+        self.checkBox.isChecked = false
+    }
+    
+    
+    @objc func termTapped(){
+        print("term and conftion")
+    }
+    
+    func validateData(){
+        if self.checkBox.isChecked {
+            self.enableButton()
+        }else{
+            self.disableButton()
+        }
+    }
+    func enableButton(){
+        if let count = self.registerButton?.layer.sublayers?.count {
+            if count > 1 {
+                self.registerButton?.layer.sublayers?.removeFirst()
+            }
+        }
+        
+        
+        self.registerButton?.borderClearProperties(borderWidth: 1)
+        self.registerButton?.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
+        self.registerButton?.isEnabled = true
+    }
+    func disableButton(){
+        if let count = self.registerButton?.layer.sublayers?.count {
+            if count > 1 {
+                self.registerButton?.layer.sublayers?.removeFirst()
+            }
+        }
+        
+        
+        
+        self.registerButton?.borderClearProperties(borderWidth: 1)
+        self.registerButton?.applyGradient(colours: [UIColor.lightGray, UIColor.lightGray])
+        
+        self.registerButton?.isEnabled = false
     }
     
    
@@ -167,7 +215,12 @@ class RegisterViewController: BaseViewController {
     }
     
     @IBAction func registerTapped(_ sender: Any) {
-        var username = self.usernameTextField.text!
+        guard  self.checkBox.isChecked  else {
+            showMessagePrompt(NSLocalizedString("string-message-alert-please-check-box", comment: ""))
+            return
+        }
+        
+        let username = self.usernameTextField.text!
         let password = self.passwordTextField.text!
         let confirmPassword = self.confirmPasswordTextField.text!
         
@@ -208,9 +261,9 @@ class RegisterViewController: BaseViewController {
         guard validatePassword(password, confirmPassword) else { return }
         print("pass")
         
-        
+        let mobile = username.replace(target: "-", withString: "")
         let fcmToken = Messaging.messaging().fcmToken ?? ""
-        let params:Parameters = ["mobile" : username.replace(target: "-", withString: ""),
+        let params:Parameters = ["mobile" : mobile,
                                  "password": password,
                                  "device_token": fcmToken,
                                  "app_os": "ios"]
@@ -219,8 +272,8 @@ class RegisterViewController: BaseViewController {
             if let mResult = result as? [String:AnyObject]{
                 print(mResult)
                 let ref_id = mResult["ref_id"] as? String ?? ""
-                let member_id = mResult["member_id"] as? NSNumber ?? 0
-                self.showVerify(username, ref_id, member_id.stringValue, true)
+               
+                self.showVerify(mobile, ref_id,  true)
             }
         }, error: { (error) in
             if let mError = error as? [String:AnyObject]{

@@ -180,6 +180,8 @@ class RegisterGoldViewController: BaseViewController {
                 self.mobileTextField.isEnabled = true
             }
             
+            
+            
             self.firstNameTextField.text = first_name
             self.lastNameTextField.text = last_name
             self.emailTextField.text = email

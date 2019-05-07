@@ -98,7 +98,7 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
                 self.showDisplayNameView(true)
             }
         }
-        if indexPath.section == 2 {
+        if indexPath.section == 1 {
             self.modelCtrl.logOut() { (result) in
                 Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(self.reNewApplication), userInfo: nil, repeats: false)
             }

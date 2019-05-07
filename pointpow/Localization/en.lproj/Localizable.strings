@@ -32,6 +32,7 @@
 "string-title-favorite" = "รายการโปรด";
 "string-title-history" = "ประวัติการทำรายการ";
 "string-title-winner-lucky-draw" = "ประกาศรายชื่อผู้โชคดี";
+"string-title-skip" = "ข้าม";
 
 // gold
 "string-title-gold-page" = "สะสมพ้อยท์";
@@ -101,11 +102,13 @@
 /*Reset Password*/
 "string-title-cancel-reset-pwd" = "ยกเลิก";
 "string-verify-password-send-email" = "สมัครสมาชิกเรียบร้อยแล้ว\nกรุณาตรวจเช็คอีเมลของท่าน";
-"string-reset-password-send-email" = "ระบบได้ดำเนินการรีเซ็ทรหัสผ่าน\nกรุณาตรวจเช็คอีเมลของท่าน";
-"string-reset-password-send-mobile" = "ระบบได้ดำเนินการรีเซ็ทรหัสผ่าน\nกรุณาตรวจเช็คกล่องข้อความของท่าน";
+"string-reset-password-send-email" = "ระบบได้ดำเนินการรีเซ็ตรหัสผ่าน\nกรุณาตรวจเช็คอีเมลของท่าน";
+"string-reset-password-send-mobile" = "ระบบได้ดำเนินการรีเซ็ตรหัสผ่าน\nกรุณาตรวจเช็คกล่องข้อความของท่าน";
 "string-reset-password-success" = "รีเซ็ตรหัสผ่านเรียบร้อย";
 "string-reset-pincode-success" = "รีเซ็ต PIN Code เรียบร้อย";
 "string-change-pincode-success" = "เปลี่ยน PIN Code สำเร็จ";
+"string-register-pincode-success" = "สร้างบัญชีผู้ใช้สำเร็จ";
+"string-set-pincode-success" = "ตั้งค่า PIN Code สำเร็จ";
 "string-button-ok" = "ตกลง";
 
 /* ResultPointTransfer*/
@@ -298,10 +301,12 @@
 "string-error-empty-fill" = "กรุณาใส่ข้อมูลให้ครบ";
 
 /*error*/
+"error-connect-server-cri" = "ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้, กรุณาตรวจสอบสัญญาณอินเทอร์เน็ตของท่านเพื่อเชื่อมต่ออีกครั้ง";
 "error-connect-server" = "ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้, กรุณาลองใหม่อีกครั้ง";
 "error-connect-server-internet" = "ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์, กรุณาตรวจสอบสัญญาณอินเทอร์เน็ตของท่านเพื่อเชื่อมต่ออีกครั้ง";
 "error-access-denied" = "ปฏิเสธการเข้าใช้";
 "error-access-denied-confirm" = "ตกลง";
+;
 
 
 /* delivery */

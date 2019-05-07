@@ -113,6 +113,7 @@
 		C12732482253905100A9EE74 /* HeadWinnerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12732462253905100A9EE74 /* HeadWinnerCollectionViewCell.xib */; };
 		C127324B2254584400A9EE74 /* WinnerHistoryLinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12732492254584400A9EE74 /* WinnerHistoryLinkCell.swift */; };
 		C127324C2254584400A9EE74 /* WinnerHistoryLinkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C127324A2254584400A9EE74 /* WinnerHistoryLinkCell.xib */; };
+		C12CCC612281590C00F26DCC /* PersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12CCC602281590C00F26DCC /* PersonalDataViewController.swift */; };
 		C13D99822199755B001A4794 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D99812199755B001A4794 /* ProfileViewController.swift */; };
 		C13D998521997938001A4794 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D998321997938001A4794 /* LogoutCell.swift */; };
 		C13D998621997938001A4794 /* LogoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13D998421997938001A4794 /* LogoutCell.xib */; };
@@ -359,6 +360,7 @@
 		C12732462253905100A9EE74 /* HeadWinnerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeadWinnerCollectionViewCell.xib; sourceTree = "<group>"; };
 		C12732492254584400A9EE74 /* WinnerHistoryLinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnerHistoryLinkCell.swift; sourceTree = "<group>"; };
 		C127324A2254584400A9EE74 /* WinnerHistoryLinkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WinnerHistoryLinkCell.xib; sourceTree = "<group>"; };
+		C12CCC602281590C00F26DCC /* PersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDataViewController.swift; sourceTree = "<group>"; };
 		C13D99812199755B001A4794 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C13D998321997938001A4794 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		C13D998421997938001A4794 /* LogoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutCell.xib; sourceTree = "<group>"; };
@@ -793,6 +795,7 @@
 				C11A93BD218C20D100627B44 /* RegisterViewController.swift */,
 				C11A93BF218C2AD900627B44 /* ForgotPasswordViewController.swift */,
 				C11A93C3218FF3E200627B44 /* VerifyViewController.swift */,
+				C12CCC602281590C00F26DCC /* PersonalDataViewController.swift */,
 			);
 			path = Authen;
 			sourceTree = "<group>";
@@ -1541,6 +1544,7 @@
 				C11A93BE218C20D100627B44 /* RegisterViewController.swift in Sources */,
 				C10D94B1220960940083FA47 /* NameTableViewCell.swift in Sources */,
 				C103113C2212C932004396E0 /* GoldPendingVerifyViewController.swift in Sources */,
+				C12CCC612281590C00F26DCC /* PersonalDataViewController.swift in Sources */,
 				C1249EB22223F71D00F56FA0 /* PrivacyPolicyViewController.swift in Sources */,
 				C1892E03221CFCD500F5412F /* WithDrawResultNav.swift in Sources */,
 				C1247C542219B126005D6F7A /* PopupGoldPremiumViewController.swift in Sources */,

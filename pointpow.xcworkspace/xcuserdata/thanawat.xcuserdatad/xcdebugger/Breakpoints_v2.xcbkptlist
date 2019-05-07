@@ -2,4 +2,70 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "pointpow/Gold/GoldProfile/GoldProfileViewController.swift"
+            timestampString = "578911904.166356"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1060"
+            endingLineNumber = "1060"
+            landmarkName = "saveStepTapped(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in pointpow.GoldProfileViewController.saveStepTapped(Any) -&gt; ()"
+                  moduleName = "pointpow"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thanawat/pointpow/pointpow/Gold/GoldProfile/GoldProfileViewController.swift"
+                  timestampString = "578922614.589206"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1060"
+                  endingLineNumber = "1060"
+                  offsetFromSymbolStart = "3081">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.AnyObject) -&gt; () in closure #1 (__C.UIAlertAction) -&gt; () in pointpow.GoldProfileViewController.saveStepTapped(Any) -&gt; ()"
+                  moduleName = "pointpow"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thanawat/pointpow/pointpow/Gold/GoldProfile/GoldProfileViewController.swift"
+                  timestampString = "578922614.591531"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1061"
+                  endingLineNumber = "1061"
+                  offsetFromSymbolStart = "41">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "pointpow/Authen/VerifyViewController.swift"
+            timestampString = "578922614.4231991"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
+            landmarkName = "sendTapped(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

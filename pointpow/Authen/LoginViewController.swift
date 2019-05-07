@@ -12,8 +12,7 @@ import FirebaseMessaging
 
 class LoginViewController: BaseViewController {
 
-    @IBOutlet weak var googleView: UIView!
-    @IBOutlet weak var facebookView: UIView!
+    
     @IBOutlet weak var forgotLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
     
@@ -169,15 +168,22 @@ class LoginViewController: BaseViewController {
         guard validateMobile(username) else { return }
         
         let fcmToken = Messaging.messaging().fcmToken ?? ""
-        let params:Parameters = ["mobile" : username.replace(target: "-", withString: ""),
+        let mobile = username.replace(target: "-", withString: "")
+        let params:Parameters = ["mobile" : mobile,
                                  "password": password,
                                  "device_token": fcmToken,
                                  "app_os": "ios"]
         modelCtrl.loginWithEmailORMobile(params: params, succeeded: { (result) in
             if let mResult = result as? [String:AnyObject]{
                 print(mResult)
-                
-                self.dismiss(animated: true, completion: nil)
+                let status = mResult["status"] as? String ?? ""
+                let ref_id = mResult["ref_id"] as? String ?? ""
+                if status == "active" {
+                    self.dismiss(animated: true, completion: nil)
+                }else{
+                    self.showVerify(mobile, ref_id, true)
+                }
+                //
                 
             }
         }, error: { (error) in

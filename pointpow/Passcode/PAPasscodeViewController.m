@@ -937,7 +937,7 @@ static NSTimeInterval AnimationDuration = 0.3;
     NSLog(@"otp = %@", verifyOTPTextField.text);
     
     //[_delegate PAPasscodeViewControllerConfirmOTP:self didEnterOTP:verifyOTPTextField.text refOTP:refOTPLabel.text];
-    
+    [self emptyPin];
     [self showPhase3ForgotPin];
 }
 -(void) buttonResendConfirmOTP:(UIButton*)sender{

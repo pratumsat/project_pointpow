@@ -306,10 +306,9 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
             
             self.pointpowTextField?.text = ""
             
-            
-            
         }
     }
+  
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return arrayItem.count

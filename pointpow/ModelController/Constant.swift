@@ -687,6 +687,7 @@ struct Constant {
         
         static let HOST = "http://103.27.201.106/dev-pointpow/api/public/api/"
         static let POINTPOW_VERSION1 = "v1/"
+        static let updateMember  = "\(HOST)\(POINTPOW_VERSION1)member/update"
         static let updateDeviceToken  = "\(HOST)\(POINTPOW_VERSION1)member/update-device-token"
         static let addDeviceToken = "\(HOST)\(POINTPOW_VERSION1)device-token"
         static let loginWithEmailORMobile  = "\(HOST)\(POINTPOW_VERSION1)login"

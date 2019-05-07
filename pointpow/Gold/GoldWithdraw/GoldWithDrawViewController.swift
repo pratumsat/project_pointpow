@@ -95,6 +95,7 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
             if !profile.isEmpty{
                 self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
             }
+           
             
         }
         

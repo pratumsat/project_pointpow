@@ -16,6 +16,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
 {
 
     var LOCKSCREEN = false
+    var startApp = false
     //fingerprint
     var context = LAContext()
     var  passCodeController: PAPasscodeViewController?
@@ -354,11 +355,17 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
-    func showVerify(_ mobilePhone:String, _ ref_id:String, _ member_id:String, _ animated:Bool){
+    func showVerify(_ mobilePhone:String, _ ref_id:String, _ animated:Bool){
         if let vc:VerifyViewController = self.storyboard?.instantiateViewController(withIdentifier: "VerifyViewController") as? VerifyViewController {
             vc.mobilePhone = mobilePhone
             vc.ref_id = ref_id
-            vc.member_id = member_id
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    func showPersonalData(_ animated:Bool){
+        if let vc:PersonalDataViewController = self.storyboard?.instantiateViewController(withIdentifier: "PersonalDataViewController") as? PersonalDataViewController {
+            
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
@@ -704,30 +711,38 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         })
     }
     
-    func showEnterPassCodeModalView(_ title:String = NSLocalizedString("title-enter-passcode", comment: ""), lockscreen:Bool = false){
+    func showEnterPassCodeModalView(_ title:String = NSLocalizedString("title-enter-passcode", comment: ""), lockscreen:Bool = false, startApp:Bool = false){
         
         self.LOCKSCREEN = lockscreen
+        self.startApp = startApp
         
         self.statusPin { (lockPin , message) in
             
             if !lockPin {
-                self.checkLAPolicy { (type) in
-                    if type == "login_success"{
-                        self.passCodeController?.showPassCodeSuccess()
-                        self.passCodeController?.dismiss(animated: false, completion: { () in
-                            if !self.LOCKSCREEN {
-                                self.handlerEnterSuccess?("")
-                            }
-                            self.LOCKSCREEN = false
-                        })
-                        
-                           
-                    }else if type == "problem_verifying"{
-                        self.passCodeController?.showFailedMessage(NSLocalizedString("error-problem-verifying", comment: ""))
-                    }else if type == "problem_configured" {
-                        self.passCodeController?.showFailedMessage(NSLocalizedString("error-problem-configured", comment: ""))
+                if lockscreen {
+                    self.checkLAPolicy { (type) in
+                        if type == "login_success"{
+                            self.passCodeController?.showPassCodeSuccess()
+                            self.passCodeController?.dismiss(animated: false, completion: { () in
+                                if !self.LOCKSCREEN {
+                                    self.handlerEnterSuccess?("")
+                                }
+                                if self.startApp {
+                                    self.handlerEnterSuccess?("")
+                                }
+                                self.LOCKSCREEN = false
+                                self.startApp = false
+                            })
+                            
+                            
+                        }else if type == "problem_verifying"{
+                            self.passCodeController?.showFailedMessage(NSLocalizedString("error-problem-verifying", comment: ""))
+                        }else if type == "problem_configured" {
+                            self.passCodeController?.showFailedMessage(NSLocalizedString("error-problem-configured", comment: ""))
+                        }
                     }
                 }
+                
             }
             
             
@@ -779,7 +794,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             
             
         }) { (messageError) in
-            self.handlerMessageError(messageError)
+            statusCallback?(false , "")
         }
     }
     
@@ -882,14 +897,29 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     func paPasscodeViewControllerDidEnterPasscodeResult(_ controller: PAPasscodeViewController!, didEnterPassCode passcode: String!) {
         print("enter passcode: \(passcode ?? "unknow")")
         
-        
+        controller.dismiss(animated: false, completion: { () in
+            if !self.LOCKSCREEN {
+                self.handlerEnterSuccess?(passcode)
+            }
+            if self.startApp {
+                self.handlerEnterSuccess?("")
+            }
+            self.LOCKSCREEN = false
+            self.startApp = false
+        })
+       
+        /*
         let params:Parameters = ["pin" : Int(passcode)!]
         self.modelCtrl.enterPinCode(params: params, true, succeeded: { (result) in
             controller.dismiss(animated: false, completion: { () in
                 if !self.LOCKSCREEN {
                     self.handlerEnterSuccess?(passcode)
                 }
+                if self.startApp {
+                    self.handlerEnterSuccess?("")
+                }
                 self.LOCKSCREEN = false
+                self.startApp = false
                 
                 
                 
@@ -911,7 +941,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             self.handlerMessageError(messageError)
             controller.showFailedMessage("")
         }
-        
+        */
     
     }
     func validateMobile(_ mobile:String)-> String{
@@ -1039,7 +1069,6 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
                 alert.addAction(ok)
                 alert.show()
                 
-               
             }, error: { (error) in
                 if let mError = error as? [String:AnyObject]{
                     let message = mError["message"] as? String ?? ""

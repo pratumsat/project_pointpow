@@ -23,10 +23,11 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
     var shadowImageView:UIImageView?
     var isSetHeight = false
     
-    var isFirst = false
+    var startHome = false
     var banner:[[String:AnyObject]]?
     var userData:AnyObject?
    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,10 +38,8 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         }
         
         self.setUp()
-        self.getGoldPremiumPrice()
-        self.getBanner() {
-            self.homeCollectionView.reloadData()
-        }
+        
+       
         
         fontList()
         
@@ -49,73 +48,48 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         self.modelCtrl.updateFCMToken(params: params, error: nil)
         
     }
-    func getBanner(_ avaliable:(()->Void)?  = nil){
-        var isLoading:Bool = true
-        if self.banner != nil {
-            isLoading = false
-        }else{
-            isLoading = true
-        }
-        
-        modelCtrl.getBanner(params: nil , isLoading , succeeded: { (result) in
-            
-            if let items = result as? [[String:AnyObject]] {
-                self.banner = items
-//                for item  in items {
-//                    let type = item["type"] as? String ?? ""
-//                    if type == "luckydraw" {
-//                        self.banner?.append(item)
-//                    }
-//                }
-            }
-            avaliable?()
-            
-            
-        }, error: { (error) in
-            if let mError = error as? [String:AnyObject]{
-                let message = mError["message"] as? String ?? ""
-                print(message)
-                //self.showMessagePrompt(message)
-            }
-            self.refreshControl?.endRefreshing()
-            print(error)
-        }) { (messageError) in
-            print("messageError")
-            self.handlerMessageError(messageError)
-            self.refreshControl?.endRefreshing()
-        }
-    }
    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        if !self.isSetHeight {
-            self.isSetHeight = true
-            let height = self.view.frame.height
-            self.pointBalanceConstraintHeight.constant = height*0.18
-        }
-        
-        if DataController.sharedInstance.isLogin() {
-            print("isLogin")
-
-            self.getUserInfo() { //validate
-                if !self.isFirst {
-                    self.showPoPup(true) {   //dismissView
-                        self.isFirst = true
-                    }
-                }
-            }
-        }else{
-            print("notLogin")
-            self.showIntroduce(false)
-        }
-    }
     
     func setUp(){
+        self.hendleSetPasscodeSuccess = { (passcode, controller) in
+            
+            let message = NSLocalizedString("string-set-pincode-success", comment: "")
+            let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+            let ok = UIAlertAction(title: NSLocalizedString("string-button-ok", comment: ""), style: .cancel, handler: { (action) in
+                
+                controller.dismiss(animated: false, completion: { () in
+                    //
+                    self.getBanner() {
+                        self.homeCollectionView.reloadData()
+                    }
+                    self.getGoldPremiumPrice()
+                    
+                    if !self.startHome {
+                        self.showPoPup(true) {   //dismissView
+                            self.startHome = true
+                        }
+                    }
+                })
+            })
+            alert.addAction(ok)
+            alert.show()
+        }
+
+        self.handlerEnterSuccess = { (pin) in
+            
+            self.getBanner() {
+                self.homeCollectionView.reloadData()
+            }
+            self.getGoldPremiumPrice()
+            
+            if !self.startHome {
+                self.showPoPup(true) {   //dismissView
+                    self.startHome = true
+                }
+            }
+        }
+        
         self.backgroundImage?.image = nil
-       
-        
-        
         self.homeCollectionView.delegate = self
         self.homeCollectionView.dataSource = self
         self.homeCollectionView.showsVerticalScrollIndicator = false
@@ -133,6 +107,55 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapToPointBalance))
         self.pointBalanceLabel.isUserInteractionEnabled = true
         self.pointBalanceLabel.addGestureRecognizer(tap)
+        
+        
+        if DataController.sharedInstance.isLogin() {
+            self.getUserInfo({
+                //pass
+                self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""), lockscreen: true, startApp : true)
+
+            }, notAvaliable: { (action) in
+                if action == "nopin"{
+                    self.showSettingPassCodeModalView(NSLocalizedString("title-set-passcode", comment: ""), lockscreen: true)
+                }
+            }, lostConnection: {  (messageError) in
+
+                let message = NSLocalizedString("error-connect-server-cri", comment: "")
+                let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+                let ok = UIAlertAction(title: NSLocalizedString("error-access-denied-confirm", comment: ""), style: .default, handler: { (action) in
+
+                    exit(EXIT_SUCCESS)
+                })
+                alert.addAction(ok)
+                alert.show()
+
+            })
+ 
+            
+            
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if !self.isSetHeight {
+            self.isSetHeight = true
+            let height = self.view.frame.height
+            self.pointBalanceConstraintHeight.constant = height*0.18
+        }
+        
+        if DataController.sharedInstance.isLogin() {
+            print("isLogin")
+            if self.startHome {
+                self.getUserInfo()
+            }
+   
+            
+        }else{
+            print("notLogin")
+            self.showIntroduce(false)
+        }
     }
     
     override func reloadData() {
@@ -152,12 +175,43 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
             print(error)
         }) { (messageError) in
             print("messageError")
-            self.handlerMessageError(messageError)
+            //self.handlerMessageError(messageError)
             
         }
     }
+    func getBanner(_ avaliable:(()->Void)?  = nil){
+        var isLoading:Bool = true
+        if self.banner != nil {
+            isLoading = false
+        }else{
+            isLoading = true
+        }
+        
+        modelCtrl.getBanner(params: nil , isLoading , succeeded: { (result) in
+            
+            if let items = result as? [[String:AnyObject]] {
+                self.banner = items
+            }
+            avaliable?()
+            
+            
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                //self.showMessagePrompt(message)
+            }
+            self.refreshControl?.endRefreshing()
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            //self.handlerMessageError(messageError)
+            self.refreshControl?.endRefreshing()
+        }
+    }
     
-    func getUserInfo(_ avaliable:(()->Void)?  = nil){
+    func getUserInfo(_ avaliable:(()->Void)?  = nil, notAvaliable:((_ action:String)->Void)?  = nil ,
+                     lostConnection:((_ messageError:String)->Void)? = nil){
         var isLoading:Bool = true
         if self.userData != nil {
             isLoading = false
@@ -167,9 +221,12 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         
         modelCtrl.getUserData(params: nil , isLoading , succeeded: { (result) in
             self.userData = result
-            avaliable?()
+            
             if let data  = result as? [String:AnyObject] {
               
+                //let status = data["status"] as? String ?? ""
+                let is_pin = data["is_pin"] as? NSNumber ?? 0
+                //let is_profile = data["is_profile"] as? NSNumber ?? 0
                 let picture_data = data["picture_data"] as? String ?? ""
                 
                 if let url  = URL(string: picture_data) {
@@ -179,6 +236,18 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
                     self.profileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER)
                 }
                 
+                
+                var action = ""
+                
+                if !is_pin.boolValue {
+                    action = "nopin"
+                }
+
+                if action.isEmpty {
+                    avaliable?()
+                }else{
+                    notAvaliable?(action)
+                }
                 
                 
             }
@@ -194,7 +263,13 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
             print(error)
         }) { (messageError) in
             print("messageError")
-            self.handlerMessageError(messageError)
+            
+            if lostConnection != nil {
+                lostConnection?(messageError)
+            }else{
+                self.handlerMessageError(messageError)
+            }
+            
             self.refreshControl?.endRefreshing()
         }
     }

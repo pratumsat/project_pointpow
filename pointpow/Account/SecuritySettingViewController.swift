@@ -233,7 +233,7 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
                 self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
             }
         }
-        if indexPath.section == 2 {
+        if indexPath.section == 1 {
             self.modelCtrl.logOut() { (result) in
                 Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(self.reNewApplication), userInfo: nil, repeats: false)
             }
@@ -252,7 +252,6 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeadCell", for: indexPath) as! HeadCell
         
        
-        
         let lineBottom = UIView(frame: CGRect(x: 0, y: header.frame.height - 1 , width: collectionView.frame.width, height: 1 ))
         lineBottom.backgroundColor = Constant.Colors.LINE_PROFILE
         header.addSubview(lineBottom)

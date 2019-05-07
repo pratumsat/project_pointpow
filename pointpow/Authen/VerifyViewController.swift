@@ -24,11 +24,16 @@ class VerifyViewController: BaseViewController {
     
     var ref_id:String?{
         didSet{
-            self.refIDLabel?.text = self.ref_id
+            if self.ref_id != nil {
+                self.refIDLabel?.text = "\(NSLocalizedString("title-forgot-passcode-confirm-ref-otp", comment: "")) \(self.ref_id!)"
+                
+            }
+            
         }
     }
-    var member_id:String?
+   
     var mobilePhone:String?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +73,10 @@ class VerifyViewController: BaseViewController {
         self.otpTextField.keyboardType = .numberPad
         
 
-        self.refIDLabel.text = self.ref_id
+        if self.ref_id != nil {
+            self.refIDLabel?.text = "\(NSLocalizedString("title-forgot-passcode-confirm-ref-otp", comment: "")) \(self.ref_id!)"
+            
+        }
         
         self.clearImageView = self.usernameTextField.addRightButton(UIImage(named: "ic-x")!)
         let tap = UITapGestureRecognizer(target: self, action: #selector(clearUserNameTapped))
@@ -78,6 +86,8 @@ class VerifyViewController: BaseViewController {
         
         
         self.sendButton.isEnabled = false
+        self.updateButton()
+        self.removeCountDownLable()
         self.countDown(1.0)
         
     }
@@ -85,6 +95,13 @@ class VerifyViewController: BaseViewController {
         self.sendButton.borderLightGrayColorProperties(borderWidth: 1)
         self.sendButton.setTitle("\(countDown)", for: .normal)
         self.sendButton.setTitleColor(UIColor.lightGray, for: .normal)
+        
+    }
+    private func prodTimeString(time: TimeInterval) -> String {
+        let prodMinutes = Int(time) / 60 % 60
+        let prodSeconds = Int(time) % 60
+        
+        return String(format: "%02d:%02d", prodMinutes, prodSeconds)
     }
     func resetButton(){
         self.sendButton.borderRedColorProperties(borderWidth: 1)
@@ -94,6 +111,7 @@ class VerifyViewController: BaseViewController {
     }
     func countDown(_ time: Double){
         timer = Timer.scheduledTimer(timeInterval: time, target: self, selector: #selector(updateCountDown), userInfo: nil, repeats: true)
+        RunLoop.main.add(timer!, forMode: RunLoop.Mode.common)
     }
     
     @objc func updateCountDown() {
@@ -166,8 +184,8 @@ class VerifyViewController: BaseViewController {
                 
                 if let mResult = result as? [String:AnyObject]{
                     print(mResult)
-                    let ref_otp = mResult["ref_otp"] as? String ?? ""
-                    self.ref_id = ref_otp
+                    let ref_id = mResult["ref_id"] as? String ?? ""
+                    self.ref_id = ref_id
                    
                 }
             }
@@ -186,21 +204,21 @@ class VerifyViewController: BaseViewController {
     }
     @IBAction func verifyTapped(_ sender: Any) {
         let otp = self.otpTextField.text!
-        
         //self.errorOTPlLabel?.removeFromSuperview()
 
         let params:Parameters = ["ref_id" : self.ref_id ?? "",
                                  "otp" : otp,
-                                 "member_id" : self.member_id ?? ""]
+                                 "mobile" : self.mobilePhone ?? ""]
         
         modelCtrl.verifyOTP(params: params, succeeded: { (result) in
             if let mResult = result as? [String:AnyObject]{
                 print(mResult)
                 
+
+                self.showPersonalData(true)
                 
-                self.showRegisterSuccessPopup(true , nextStepCallback: {
-                    self.showLogin(true)
-                })
+                
+                
             }
         }, error: { (error) in
             if let mError = error as? [String:AnyObject]{

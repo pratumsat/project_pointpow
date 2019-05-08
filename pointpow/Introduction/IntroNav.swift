@@ -11,7 +11,7 @@ import Presentr
 
 class IntroNav: BaseNavigationViewController {
 
-    
+    var callbackFinish:(()->Void)?
     override func viewDidLoad() {
         super.viewDidLoad()
 

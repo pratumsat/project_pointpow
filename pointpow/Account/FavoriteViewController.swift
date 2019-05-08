@@ -25,6 +25,14 @@ class FavoriteViewController: BaseViewController, UICollectionViewDelegate , UIC
         
         self.registerNib(self.favCollectionView, "FavorCell")
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }

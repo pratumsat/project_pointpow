@@ -97,7 +97,8 @@ class MainTabbarViewController: UITabBarController , UITabBarControllerDelegate 
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = true
+      
+        //self.navigationController?.isNavigationBarHidden = true
 //        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
 //        self.navigationController?.navigationBar.shadowImage = UIImage()
 //        self.navigationController?.navigationBar.isTranslucent = true
@@ -107,7 +108,8 @@ class MainTabbarViewController: UITabBarController , UITabBarControllerDelegate 
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.isNavigationBarHidden = false
+       
+       // self.navigationController?.isNavigationBarHidden = false
 //        self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
 //        self.navigationController?.navigationBar.shadowImage = nil
 //        self.navigationController?.navigationBar.isTranslucent = true

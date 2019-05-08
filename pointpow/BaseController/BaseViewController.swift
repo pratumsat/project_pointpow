@@ -343,9 +343,11 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     }
 
     
-    func showIntroduce(_ animated:Bool){
+    func showIntroduce(_ animated:Bool, finish:(()->Void)? = nil){
         if let vc:IntroNav = self.storyboard?.instantiateViewController(withIdentifier: "IntroNav") as? IntroNav {
-            
+            vc.callbackFinish = {
+                finish?()
+            }
             self.present(vc, animated: animated, completion: nil)
         }
     }
@@ -389,6 +391,12 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }
     }
     
+    func showPromotionDetail(_ id:String, _ animated:Bool){
+        if let vc:PromotionDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "PromotionDetailViewController") as? PromotionDetailViewController {
+        
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
     func showRegisterGoldSaving(_ animated:Bool, userData:AnyObject?){
         if let vc:RegisterGoldViewController = self.storyboard?.instantiateViewController(withIdentifier: "RegisterGoldViewController") as? RegisterGoldViewController {
             
@@ -711,40 +719,12 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         })
     }
     
-    func showEnterPassCodeModalView(_ title:String = NSLocalizedString("title-enter-passcode", comment: ""), lockscreen:Bool = false, startApp:Bool = false){
+    func showEnterPassCodeModalView(_ title:String = NSLocalizedString("title-enter-passcode", comment: ""), lockscreen:Bool = false, startApp:Bool = false , animated:Bool = true){
         
         self.LOCKSCREEN = lockscreen
         self.startApp = startApp
         
         self.statusPin { (lockPin , message) in
-            
-            if !lockPin {
-                if lockscreen {
-                    self.checkLAPolicy { (type) in
-                        if type == "login_success"{
-                            self.passCodeController?.showPassCodeSuccess()
-                            self.passCodeController?.dismiss(animated: false, completion: { () in
-                                if !self.LOCKSCREEN {
-                                    self.handlerEnterSuccess?("")
-                                }
-                                if self.startApp {
-                                    self.handlerEnterSuccess?("")
-                                }
-                                self.LOCKSCREEN = false
-                                self.startApp = false
-                            })
-                            
-                            
-                        }else if type == "problem_verifying"{
-                            self.passCodeController?.showFailedMessage(NSLocalizedString("error-problem-verifying", comment: ""))
-                        }else if type == "problem_configured" {
-                            self.passCodeController?.showFailedMessage(NSLocalizedString("error-problem-configured", comment: ""))
-                        }
-                    }
-                }
-                
-            }
-            
             
             let enterPasscode = PAPasscodeViewController(for: PasscodeActionEnter )
             enterPasscode!.centerPosition = true
@@ -769,7 +749,37 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
                 
                 return customPresenter
             }()
-            self.customPresentViewController(presenter, viewController: navController, animated: true, completion: nil)
+            self.customPresentViewController(presenter, viewController: navController, animated: animated, completion: nil)
+            
+            
+            if !lockPin {
+                if lockscreen {
+                    self.checkLAPolicy { (type) in
+                        if type == "login_success"{
+                            self.passCodeController?.showPassCodeSuccess()
+                            self.passCodeController?.dismiss(animated: false, completion: { () in
+                                if !self.LOCKSCREEN {
+                                    self.handlerEnterSuccess?("")
+                                }
+                                if self.startApp {
+                                    self.handlerEnterSuccess?("")
+                                }
+                                self.LOCKSCREEN = false
+                                self.startApp = false
+                            })
+                            
+                            
+                        }else if type == "problem_verifying"{
+                            self.passCodeController?.showFailedMessage(NSLocalizedString("error-problem-verifying", comment: ""))
+                        }else if type == "problem_configured" {
+                            self.passCodeController?.showFailedMessage(NSLocalizedString("error-problem-configured", comment: ""))
+                        }else if type == "user_dismiss" {
+                            self.passCodeController?.showKeyboard()
+                        }
+                    }
+                }
+                
+            }
             
         }
             

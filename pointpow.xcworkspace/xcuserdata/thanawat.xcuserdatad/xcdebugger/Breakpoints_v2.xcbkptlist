@@ -26,12 +26,12 @@
                   moduleName = "pointpow"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/thanawat/pointpow/pointpow/Gold/GoldProfile/GoldProfileViewController.swift"
-                  timestampString = "578922614.589206"
+                  timestampString = "579000628.26692"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1060"
                   endingLineNumber = "1060"
-                  offsetFromSymbolStart = "3081">
+                  offsetFromSymbolStart = "2624">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -41,12 +41,12 @@
                   moduleName = "pointpow"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/thanawat/pointpow/pointpow/Gold/GoldProfile/GoldProfileViewController.swift"
-                  timestampString = "578922614.591531"
+                  timestampString = "579000628.270547"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1061"
                   endingLineNumber = "1061"
-                  offsetFromSymbolStart = "41">
+                  offsetFromSymbolStart = "37">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -57,13 +57,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "pointpow/Authen/VerifyViewController.swift"
-            timestampString = "578922614.4231991"
+            filePath = "pointpow/ModelController/ModelController.swift"
+            timestampString = "579000627.972484"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
-            landmarkName = "sendTapped(_:)"
+            startingLineNumber = "479"
+            endingLineNumber = "479"
+            landmarkName = "loginWithSocial(params:_:succeeded:error:failure:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "pointpow/ModelController/ModelController.swift"
+            timestampString = "579000627.972831"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "385"
+            endingLineNumber = "385"
+            landmarkName = "updateMemberProfile(params:_:succeeded:error:failure:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "pointpow/ModelController/ModelController.swift"
+            timestampString = "579000627.973034"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "722"
+            endingLineNumber = "722"
+            landmarkName = "forgotPassword(params:_:succeeded:error:failure:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "pointpow/Authen/ForgotPasswordViewController.swift"
+            timestampString = "579000627.973242"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "resetTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

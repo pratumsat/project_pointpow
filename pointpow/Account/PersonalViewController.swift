@@ -15,16 +15,23 @@ class PersonalViewController: BaseViewController  {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
     
     
     var clearImageView:UIImageView?
     var clearImageView2:UIImageView?
     var clearImageView3:UIImageView?
-    
+    var clearImageView4:UIImageView?
+    var clearImageView5:UIImageView?
     
     var pickerView:UIDatePicker?
     
-     var errorPersonalIDLabel:UILabel?
+    var errorBirthdayLabel:UILabel?
+    var errorPersonalIDLabel:UILabel?
+    var errorLastnamelLabel:UILabel?
+    var errorFirstNameLabel:UILabel?
+    var errorEmailLabel:UILabel?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,12 +88,13 @@ class PersonalViewController: BaseViewController  {
         self.lastNameTextField.delegate = self
         self.parsonalTextField.delegate = self
         self.birthdayTextField.delegate = self
+        self.emailTextField.delegate = self
         
         self.firstNameTextField.autocorrectionType = .no
         self.lastNameTextField.autocorrectionType = .no
         self.parsonalTextField.autocorrectionType = .no
         self.birthdayTextField.autocorrectionType = .no
-        
+        self.emailTextField.autocorrectionType = .no
         
         self.clearImageView = self.firstNameTextField.addRightButton(UIImage(named: "ic-x")!)
         let tap = UITapGestureRecognizer(target: self, action: #selector(clearFirstNameTapped))
@@ -105,6 +113,12 @@ class PersonalViewController: BaseViewController  {
         self.clearImageView3?.isUserInteractionEnabled = true
         self.clearImageView3?.addGestureRecognizer(tap3)
         self.clearImageView3?.isHidden = true
+        
+        self.clearImageView4 = self.emailTextField.addRightButton(UIImage(named: "ic-x")!)
+        let tap4 = UITapGestureRecognizer(target: self, action: #selector(clearEmailTapped))
+        self.clearImageView4?.isUserInteractionEnabled = true
+        self.clearImageView4?.addGestureRecognizer(tap4)
+        self.clearImageView4?.isHidden = true
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -152,6 +166,12 @@ class PersonalViewController: BaseViewController  {
         }
         return true
         
+    }
+    @objc func clearEmailTapped(){
+        self.clearImageView4?.animationTapped({
+            self.emailTextField.text = ""
+            self.clearImageView4?.isHidden = true
+        })
     }
     @objc func clearPersanalTapped(){
         self.clearImageView3?.animationTapped({

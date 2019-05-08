@@ -31,6 +31,8 @@ class PersonalDataViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = NSLocalizedString("string-title-personal-data", comment: "")
+        
         let skipButton = UIBarButtonItem(title: NSLocalizedString("string-title-skip", comment: ""), style: .plain, target: self, action: #selector(skipTapped))
         skipButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white,
                                              NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.ITEM_TITLE )!]
@@ -61,7 +63,9 @@ class PersonalDataViewController: BaseViewController {
                 
                 controller.dismiss(animated: false, completion: { () in
                     //
-                    self.dismiss(animated: false, completion: nil)
+                    self.dismiss(animated: false, completion: {
+                        (self.navigationController as? IntroNav)?.callbackFinish?()
+                    })
                 })
             })
             alert.addAction(ok)

@@ -96,5 +96,5 @@ typedef enum {
 - (id)initForAction:(PasscodeAction)action;
 - (void)showLockPinCode;
 - (void)showMobileOTP:(NSString*)mobile refOTP:(NSString*)ref;
-
+- (void)showKeyboard;
 @end

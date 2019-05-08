@@ -18,6 +18,13 @@ class PointTransferViewController: BaseViewController , UICollectionViewDelegate
         self.setUp()
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
     func setUp(){
         self.backgroundImage?.image = nil
         

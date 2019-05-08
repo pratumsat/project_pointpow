@@ -17,8 +17,22 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         self.title = NSLocalizedString("string-title-freind-transfer", comment: "")
+        
+        let scanIcon = UIBarButtonItem(image: UIImage(named: "ic-qr-scan"), style: .plain, target: self, action: #selector(popupQRTapped))
+        
+        
+        
+        self.navigationItem.rightBarButtonItem = scanIcon
+        
+        
         self.setUp()
+    }
+    @objc func popupQRTapped(){
+        self.showScanBarcodeForMember { (modelFriend, barcode) in
+            
+        }
     }
    
     override func viewWillLayoutSubviews() {
@@ -26,6 +40,11 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
         self.searchView.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = false
+    }
 
     func setUp(){
         self.searchTextField.borderRedColorProperties(borderWidth: 1.0)

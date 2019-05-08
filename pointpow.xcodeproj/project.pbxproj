@@ -114,6 +114,9 @@
 		C127324B2254584400A9EE74 /* WinnerHistoryLinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12732492254584400A9EE74 /* WinnerHistoryLinkCell.swift */; };
 		C127324C2254584400A9EE74 /* WinnerHistoryLinkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C127324A2254584400A9EE74 /* WinnerHistoryLinkCell.xib */; };
 		C12CCC612281590C00F26DCC /* PersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12CCC602281590C00F26DCC /* PersonalDataViewController.swift */; };
+		C12CCC652282B43A00F26DCC /* PromoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12CCC632282B43A00F26DCC /* PromoCell.swift */; };
+		C12CCC662282B43A00F26DCC /* PromoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12CCC642282B43A00F26DCC /* PromoCell.xib */; };
+		C12CCC682282C7BF00F26DCC /* PromotionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12CCC672282C7BF00F26DCC /* PromotionDetailViewController.swift */; };
 		C13D99822199755B001A4794 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D99812199755B001A4794 /* ProfileViewController.swift */; };
 		C13D998521997938001A4794 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D998321997938001A4794 /* LogoutCell.swift */; };
 		C13D998621997938001A4794 /* LogoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13D998421997938001A4794 /* LogoutCell.xib */; };
@@ -361,6 +364,9 @@
 		C12732492254584400A9EE74 /* WinnerHistoryLinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnerHistoryLinkCell.swift; sourceTree = "<group>"; };
 		C127324A2254584400A9EE74 /* WinnerHistoryLinkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WinnerHistoryLinkCell.xib; sourceTree = "<group>"; };
 		C12CCC602281590C00F26DCC /* PersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDataViewController.swift; sourceTree = "<group>"; };
+		C12CCC632282B43A00F26DCC /* PromoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoCell.swift; sourceTree = "<group>"; };
+		C12CCC642282B43A00F26DCC /* PromoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromoCell.xib; sourceTree = "<group>"; };
+		C12CCC672282C7BF00F26DCC /* PromotionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionDetailViewController.swift; sourceTree = "<group>"; };
 		C13D99812199755B001A4794 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C13D998321997938001A4794 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		C13D998421997938001A4794 /* LogoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutCell.xib; sourceTree = "<group>"; };
@@ -633,6 +639,7 @@
 			isa = PBXGroup;
 			children = (
 				C10CA19621914AD500316DF3 /* PromotionViewController.swift */,
+				C12CCC672282C7BF00F26DCC /* PromotionDetailViewController.swift */,
 			);
 			path = Promotion;
 			sourceTree = "<group>";
@@ -769,6 +776,7 @@
 		C11A93B4218C00A000627B44 /* CollectionCell */ = {
 			isa = PBXGroup;
 			children = (
+				C12CCC622282B42000F26DCC /* PromotionCell */,
 				C1B32E3B22521850006AD7F2 /* LuckyCell */,
 				C107CF37222269B400C50B8C /* AddressCell */,
 				C1892E0A221E8FDB00F5412F /* GoldHistroryCell */,
@@ -821,6 +829,15 @@
 				C1249EB62224EE0900F56FA0 /* WebViewMapViewController.swift */,
 			);
 			path = MapOffice;
+			sourceTree = "<group>";
+		};
+		C12CCC622282B42000F26DCC /* PromotionCell */ = {
+			isa = PBXGroup;
+			children = (
+				C12CCC632282B43A00F26DCC /* PromoCell.swift */,
+				C12CCC642282B43A00F26DCC /* PromoCell.xib */,
+			);
+			path = PromotionCell;
 			sourceTree = "<group>";
 		};
 		C13D998721997AC4001A4794 /* HeadCell */ = {
@@ -1275,6 +1292,7 @@
 				C11DD3542268536A0085EFBE /* Main.storyboard in Resources */,
 				C1F760FE22169B6D000A2CA9 /* ConfirmButtonCell.xib in Resources */,
 				C1B32E3F22521881006AD7F2 /* PrivilegeCell.xib in Resources */,
+				C12CCC662282B43A00F26DCC /* PromoCell.xib in Resources */,
 				C1817D9E219C07DF009507DB /* ItemBankCell.xib in Resources */,
 				C1247C582219B2E7005D6F7A /* NextButtonCell.xib in Resources */,
 				C1DEBE8C2188115D00CBB95F /* GoogleService-Info.plist in Resources */,
@@ -1515,6 +1533,7 @@
 				C10D94BE220978B60083FA47 /* NavWithdraw.swift in Sources */,
 				C1E7B17D21AFCD7E00DA8B82 /* ResultTransferNav.swift in Sources */,
 				C11B740B21BF67F700D0E769 /* DataController.swift in Sources */,
+				C12CCC682282C7BF00F26DCC /* PromotionDetailViewController.swift in Sources */,
 				C10CA19D21914B1B00316DF3 /* AccountViewController.swift in Sources */,
 				C18A1CE622118BC9002CAF4C /* GoldSWRevealViewController.swift in Sources */,
 				C169FF9E21C25C9200F9D354 /* EmailViewController.swift in Sources */,
@@ -1594,6 +1613,7 @@
 				C1892E11221E92BE00F5412F /* HeaderCollectionReusableView.swift in Sources */,
 				C169FFCB21C7939E00F9D354 /* FavorPopupViewController.swift in Sources */,
 				C1892E18221EB9DC00F5412F /* PopupGoldHistoryFilterViewController.swift in Sources */,
+				C12CCC652282B43A00F26DCC /* PromoCell.swift in Sources */,
 				C13D998D21997EF7001A4794 /* PersonalViewController.swift in Sources */,
 				C142741D21A68154003CC246 /* ResetPasswordViewController.swift in Sources */,
 				C10D94B42209717E0083FA47 /* NavGoldPage.swift in Sources */,

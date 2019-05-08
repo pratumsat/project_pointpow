@@ -39,6 +39,23 @@ class LoginViewController: BaseViewController {
     }
    
     func setUp(){
+        self.hendleSetPasscodeSuccess = { (passcode, controller) in
+            
+            let message = NSLocalizedString("string-set-pincode-success", comment: "")
+            let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+            let ok = UIAlertAction(title: NSLocalizedString("string-button-ok", comment: ""), style: .cancel, handler: { (action) in
+                
+                controller.dismiss(animated: false, completion: { () in
+                    //
+                    self.dismiss(animated: false, completion: {
+                        (self.navigationController as? IntroNav)?.callbackFinish?()
+                    })
+                })
+            })
+            alert.addAction(ok)
+            alert.show()
+        }
+        
         self.loginButton.borderClearProperties(borderWidth: 1)
         
         let forgot = UITapGestureRecognizer(target: self, action: #selector(forgotTapped))
@@ -178,12 +195,26 @@ class LoginViewController: BaseViewController {
                 print(mResult)
                 let status = mResult["status"] as? String ?? ""
                 let ref_id = mResult["ref_id"] as? String ?? ""
-                if status == "active" {
-                    self.dismiss(animated: true, completion: nil)
-                }else{
+                let is_pin = mResult["is_pin"] as? NSNumber ?? 0
+                
+                
+                
+                if status != "active" {
                     self.showVerify(mobile, ref_id, true)
+                    return
                 }
-                //
+                
+                if !is_pin.boolValue {
+                    self.showSettingPassCodeModalView(NSLocalizedString("title-set-passcode", comment: ""), lockscreen: true)
+                    return
+                }
+                
+                
+                self.dismiss(animated: true, completion: {
+                    (self.navigationController as? IntroNav)?.callbackFinish?()
+                })
+                
+                
                 
             }
         }, error: { (error) in

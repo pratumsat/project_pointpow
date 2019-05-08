@@ -35,10 +35,12 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
       
+        self.navigationController?.isNavigationBarHidden = true
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
        
+     
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)

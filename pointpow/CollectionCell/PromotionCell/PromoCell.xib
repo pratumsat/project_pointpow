@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="ThaiSansNeue-Bold.ttf">
+            <string>ThaiSansNeue-Bold</string>
+        </array>
+        <array key="ThaiSansNeue-Regular.ttf">
+            <string>ThaiSansNeue-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PromoCell" id="gTV-IL-0wX" customClass="PromoCell" customModule="pointpow" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="481" height="287"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="481" height="287"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ลดราคาสินค้า 20%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zuc-9d-O9o">
+                        <rect key="frame" x="10" y="5" width="461" height="29"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="22"/>
+                        <color key="textColor" red="0.78823529410000004" green="0.1647058824" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner-mock1" translatesAutoresizingMaskIntoConstraints="NO" id="oNC-a7-aiK">
+                        <rect key="frame" x="10" y="39" width="461" height="145.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="oNC-a7-aiK" secondAttribute="height" multiplier="950:300" id="c41-Dc-Ted"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4B-yI-NkW">
+                        <rect key="frame" x="10" y="189.5" width="461" height="42"/>
+                        <string key="text">รายละเอียดสินค้า รายละเอียดสินค้า รายละเอียดสินค้า รายละเอียดสินค้า รายละเอียดสินค้า รายละเอียดสินค้า รายละเอียดสินค้า รายละเอียดสินค้า รายละเอียดสินค้า รายละเอียดสินค้า รายละเอียดสินค้า </string>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="16"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ดูเพิ่มเติม" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7c-ds-Vq4">
+                        <rect key="frame" x="417" y="235.5" width="44" height="21"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
+                        <color key="textColor" red="0.78823529410000004" green="0.1647058824" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-arrow-right-red" translatesAutoresizingMaskIntoConstraints="NO" id="00s-NP-tA0">
+                        <rect key="frame" x="461" y="241" width="10" height="10"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="10" id="G8x-UB-Vrv"/>
+                            <constraint firstAttribute="width" secondItem="00s-NP-tA0" secondAttribute="height" multiplier="1:1" id="NOJ-Ol-WTb"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="l4B-yI-NkW" firstAttribute="leading" secondItem="oNC-a7-aiK" secondAttribute="leading" id="2Fz-dt-A9o"/>
+                <constraint firstItem="zuc-9d-O9o" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="6Os-uU-7Ja"/>
+                <constraint firstAttribute="trailing" secondItem="zuc-9d-O9o" secondAttribute="trailing" constant="10" id="8Qg-rs-Tju"/>
+                <constraint firstItem="00s-NP-tA0" firstAttribute="leading" secondItem="I7c-ds-Vq4" secondAttribute="trailing" id="AT1-bQ-NWg"/>
+                <constraint firstItem="oNC-a7-aiK" firstAttribute="leading" secondItem="zuc-9d-O9o" secondAttribute="leading" id="Iy1-oy-FDY"/>
+                <constraint firstItem="00s-NP-tA0" firstAttribute="centerY" secondItem="I7c-ds-Vq4" secondAttribute="centerY" id="amW-LH-Jdz"/>
+                <constraint firstItem="l4B-yI-NkW" firstAttribute="trailing" secondItem="oNC-a7-aiK" secondAttribute="trailing" id="bFN-eL-zuf"/>
+                <constraint firstItem="zuc-9d-O9o" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="e6T-B0-u5c"/>
+                <constraint firstItem="I7c-ds-Vq4" firstAttribute="top" secondItem="l4B-yI-NkW" secondAttribute="bottom" constant="4" id="eDG-Of-t7n"/>
+                <constraint firstItem="oNC-a7-aiK" firstAttribute="top" secondItem="zuc-9d-O9o" secondAttribute="bottom" constant="5" id="fdu-hg-eYY"/>
+                <constraint firstItem="oNC-a7-aiK" firstAttribute="trailing" secondItem="zuc-9d-O9o" secondAttribute="trailing" id="flQ-Fr-taD"/>
+                <constraint firstItem="00s-NP-tA0" firstAttribute="trailing" secondItem="oNC-a7-aiK" secondAttribute="trailing" id="kdB-CS-vvE"/>
+                <constraint firstItem="l4B-yI-NkW" firstAttribute="top" secondItem="oNC-a7-aiK" secondAttribute="bottom" constant="5" id="qN7-g6-uMk"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="481" height="287"/>
+            <point key="canvasLocation" x="116" y="158.77061469265368"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="banner-mock1" width="951" height="301"/>
+        <image name="ic-arrow-right-red" width="40" height="40"/>
+    </resources>
+</document>

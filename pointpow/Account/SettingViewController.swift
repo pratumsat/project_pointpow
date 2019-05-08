@@ -31,6 +31,13 @@ class SettingViewController: BaseViewController, UICollectionViewDelegate , UICo
         self.setUp()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
+    
     func setUp(){
         var i = 0
         for lang  in language {

@@ -35,6 +35,11 @@ class PointManageViewController: BaseViewController {
         self.transferPointImageView.isUserInteractionEnabled = true
         self.transferPointImageView.addGestureRecognizer(point)
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = false
+    }
     
     @objc func transferPointTapped(){
         

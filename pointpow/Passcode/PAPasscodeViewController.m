@@ -1074,6 +1074,10 @@ static NSTimeInterval AnimationDuration = 0.3;
     _lockPin = YES;
 }
 
+- (void)showKeyboard {
+    [passcodeTextField becomeFirstResponder];
+}
+
 - (void)showFailedMessage:(NSString*) messageError {
    
     failedAttemptsLabel.text = messageError;

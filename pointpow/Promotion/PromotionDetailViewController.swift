@@ -1,26 +1,20 @@
 //
-//  TransactionViewController.swift
+//  PromotionDetailViewController.swift
 //  pointpow
 //
-//  Created by thanawat on 6/11/2561 BE.
-//  Copyright © 2561 abcpoint. All rights reserved.
+//  Created by thanawat on 8/5/2562 BE.
+//  Copyright © 2562 abcpoint. All rights reserved.
 //
 
 import UIKit
 
-class TransactionViewController: BaseViewController {
+class PromotionDetailViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tabBarController?.title = NSLocalizedString("string-title-transection", comment: "")
+        self.title  = "ส่วนลดสินค้า 20%"
         self.backgroundImage?.image = nil
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.navigationController?.isNavigationBarHidden = false
     }
     
 

@@ -21,6 +21,13 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
     }
     
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
+    
     func setUp(){
      
         self.handlerEnterSuccess = { (pin) in

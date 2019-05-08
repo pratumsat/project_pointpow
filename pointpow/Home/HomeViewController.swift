@@ -59,16 +59,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
                 
                 controller.dismiss(animated: false, completion: { () in
                     //
-                    self.getBanner() {
-                        self.homeCollectionView.reloadData()
-                    }
-                    self.getGoldPremiumPrice()
-                    
-                    if !self.startHome {
-                        self.showPoPup(true) {   //dismissView
-                            self.startHome = true
-                        }
-                    }
+                    self.startLoadAPI()
                 })
             })
             alert.addAction(ok)
@@ -77,16 +68,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
 
         self.handlerEnterSuccess = { (pin) in
             
-            self.getBanner() {
-                self.homeCollectionView.reloadData()
-            }
-            self.getGoldPremiumPrice()
-            
-            if !self.startHome {
-                self.showPoPup(true) {   //dismissView
-                    self.startHome = true
-                }
-            }
+            self.startLoadAPI()
         }
         
         self.backgroundImage?.image = nil
@@ -111,8 +93,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         
         if DataController.sharedInstance.isLogin() {
             self.getUserInfo({
-                //pass
-                self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""), lockscreen: true, startApp : true)
+                self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""), lockscreen: true, startApp : true, animated : false)
 
             }, notAvaliable: { (action) in
                 if action == "nopin"{
@@ -130,10 +111,31 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
                 alert.show()
 
             })
- 
-            
-            
+        }else{
+            print("notLogin")
+            self.showIntroduce(false) {
+                //success
+                self.startLoadAPI()
+            }
         }
+        
+        
+       
+    }
+    
+    func startLoadAPI(){
+        
+        if !self.startHome {
+            self.showPoPup(true) {   //dismissView
+                self.startHome = true
+            }
+        }
+        self.getBanner() {
+            self.homeCollectionView.reloadData()
+        }
+       
+        self.getGoldPremiumPrice()
+        self.getUserInfo()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -150,12 +152,8 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
             if self.startHome {
                 self.getUserInfo()
             }
-   
-            
-        }else{
-            print("notLogin")
-            self.showIntroduce(false)
         }
+        
     }
     
     override func reloadData() {
@@ -264,7 +262,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         }) { (messageError) in
             print("messageError")
             
-            if lostConnection != nil {
+            if messageError != "401" {
                 lostConnection?(messageError)
             }else{
                 self.handlerMessageError(messageError)
@@ -285,6 +283,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.navigationController?.isNavigationBarHidden = true
         
         if shadowImageView == nil {
             shadowImageView = findShadowImage(under: navigationController!.navigationBar)
@@ -294,8 +293,10 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
         shadowImageView?.isHidden = false
     }
+   
    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -409,5 +410,6 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         let width = collectionView.frame.width / 3
         return CGSize(width: width, height: width)
     }
+   
 
 }

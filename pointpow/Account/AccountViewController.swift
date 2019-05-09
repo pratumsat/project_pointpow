@@ -133,7 +133,7 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
                 if let userData = self.userData as? [String:AnyObject] {
                     let pointpowId = userData["pointpow_id"] as? String ?? "-"
                     let displayName = userData["display_name"] as? String ?? "-"
-                    let pointBalance = userData["member_point"]?["total"] as? String ?? "0.00"
+                    let pointBalance = userData["member_point"]?["total"] as? NSNumber ?? 0
                     let picture_data = userData["picture_data"] as? String ?? ""
                     let picture_background = userData["picture_background"] as? String ?? ""
                     
@@ -161,9 +161,13 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
                         
                     }
                     
+                    let numberFormatter = NumberFormatter()
+                    numberFormatter.numberStyle = .decimal
+                    numberFormatter.minimumFractionDigits = 2
+                    
+                    profileCell.pointBalanceLabel.text = numberFormatter.string(from: pointBalance )
                     
                     
-                    profileCell.pointBalanceLabel.text = pointBalance
                     profileCell.displayNameLabel.text = displayName
                     profileCell.pointpowIdLabel.text = pointpowId
                     

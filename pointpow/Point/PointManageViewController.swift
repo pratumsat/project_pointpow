@@ -13,8 +13,10 @@ class PointManageViewController: BaseViewController {
     @IBOutlet weak var friendTransfer: UIImageView!
     @IBOutlet weak var transferPointImageView: UIImageView!
     
+    @IBOutlet weak var pointBalanceLabel: UILabel!
     
     var isFriend:Bool = false
+    var userData:AnyObject?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +37,47 @@ class PointManageViewController: BaseViewController {
         self.transferPointImageView.isUserInteractionEnabled = true
         self.transferPointImageView.addGestureRecognizer(point)
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.getUserInfo()
+    }
+    func getUserInfo(_ avaliable:(()->Void)?  = nil){
+        var isLoading:Bool = true
+        if self.userData != nil {
+            isLoading = false
+        }else{
+            isLoading = true
+        }
+        modelCtrl.getUserData(params: nil , isLoading , succeeded: { (result) in
+            self.userData = result
+            avaliable?()
+            if let userData = self.userData as? [String:AnyObject] {
+                let pointBalance = userData["member_point"]?["total"] as? NSNumber ?? 0
+                
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                numberFormatter.minimumFractionDigits = 2
+                
+                self.pointBalanceLabel.text = numberFormatter.string(from: pointBalance )
+            }
+            self.refreshControl?.endRefreshing()
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                //self.showMessagePrompt(message)
+            }
+            self.refreshControl?.endRefreshing()
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            self.refreshControl?.endRefreshing()
+        }
+    }
+    
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

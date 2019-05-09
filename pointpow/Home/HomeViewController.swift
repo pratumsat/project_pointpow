@@ -236,6 +236,13 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
                 //let is_profile = data["is_profile"] as? NSNumber ?? 0
                 let picture_data = data["picture_data"] as? String ?? ""
                 let display_name = data["display_name"] as? String ?? ""
+                let pointBalance = data["member_point"]?["total"] as? NSNumber ?? 0
+                
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                numberFormatter.minimumFractionDigits = 2
+                
+                self.pointBalanceLabel.text = numberFormatter.string(from: pointBalance )
                 
                 self.displayNameLabel.text = display_name
                 if let url  = URL(string: picture_data) {

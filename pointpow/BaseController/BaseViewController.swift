@@ -766,8 +766,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             enterPasscode!.lockscreenMode = lockscreen
             
             self.passCodeController = enterPasscode
-            
-          
+            self.loadingView?.mRootView = enterPasscode!.view
             
             let navController = UINavigationController(rootViewController: enterPasscode!)
             navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.darkGray,
@@ -883,7 +882,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         
         
         self.passCodeController = enterPasscode
-        
+        self.loadingView?.mRootView = enterPasscode!.view
        
         let navController = UINavigationController(rootViewController: enterPasscode!)
         navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.darkGray,

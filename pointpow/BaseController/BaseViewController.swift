@@ -36,6 +36,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     var handlerDidCancel: (()->Void)?
     var handlerEnterSuccess: ((_ pin:String)->Void)?
     var hendleSetPasscodeSuccess: ((_ passcode:String, _ controller:PAPasscodeViewController)->Void)?
+    var hendleSetPasscodeSuccessWithStartApp: ((_ passcode:String, _ controller:PAPasscodeViewController)->Void)?
     
     private var searchImageView:UIImageView?
     private var cartImageView:UIImageView?
@@ -357,10 +358,11 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
-    func showVerify(_ mobilePhone:String, _ ref_id:String, _ animated:Bool){
+    func showVerify(_ mobilePhone:String, _ ref_id:String, forgotPassword:Bool = false, _ animated:Bool){
         if let vc:VerifyViewController = self.storyboard?.instantiateViewController(withIdentifier: "VerifyViewController") as? VerifyViewController {
             vc.mobilePhone = mobilePhone
             vc.ref_id = ref_id
+            vc.forgotPassword = forgotPassword
             
             self.navigationController?.pushViewController(vc, animated: animated)
         }
@@ -517,9 +519,9 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }
     }
     
-    func showResetPasswordView(_ animated:Bool){
+    func showResetPasswordView(forgotPassword:Bool = false, _ animated:Bool){
         if let vc:ResetPasswordViewController  = self.storyboard?.instantiateViewController(withIdentifier: "ResetPasswordViewController") as? ResetPasswordViewController {
-            
+            vc.forgotPassword = forgotPassword
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
@@ -663,6 +665,35 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             
         }
     }
+    @objc func becomeTouchID(){
+        self.checkLAPolicy { (type) in
+            if type == "login_success"{
+                self.passCodeController?.showPassCodeSuccess()
+                self.passCodeController?.dismiss(animated: false, completion: { () in
+                    if !self.LOCKSCREEN {
+                        self.handlerEnterSuccess?("")
+                    }
+                    if self.startApp {
+                        self.handlerEnterSuccess?("")
+                    }
+                    self.LOCKSCREEN = false
+                    self.startApp = false
+                })
+                
+                
+            }else if type == "problem_verifying"{
+                self.passCodeController?.showFailedMessage(NSLocalizedString("error-problem-verifying", comment: ""))
+                self.passCodeController?.showKeyboard()
+            }else if type == "problem_configured" {
+                self.passCodeController?.showFailedMessage(NSLocalizedString("error-problem-configured", comment: ""))
+                self.passCodeController?.showKeyboard()
+            }else if type == "user_dismiss" {
+                self.passCodeController?.showKeyboard()
+            }else{
+                self.passCodeController?.showKeyboard()
+            }
+        }
+    }
     private func loginProcess(policy: LAPolicy , successful:((_ stringResult:String)->Void)?) {
         context.evaluatePolicy(policy, localizedReason: NSLocalizedString("string-dismiss-fingerprint", comment: ""), reply: { (success, error) in
             DispatchQueue.main.async {
@@ -754,29 +785,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             
             if !lockPin {
                 if lockscreen {
-                    self.checkLAPolicy { (type) in
-                        if type == "login_success"{
-                            self.passCodeController?.showPassCodeSuccess()
-                            self.passCodeController?.dismiss(animated: false, completion: { () in
-                                if !self.LOCKSCREEN {
-                                    self.handlerEnterSuccess?("")
-                                }
-                                if self.startApp {
-                                    self.handlerEnterSuccess?("")
-                                }
-                                self.LOCKSCREEN = false
-                                self.startApp = false
-                            })
-                            
-                            
-                        }else if type == "problem_verifying"{
-                            self.passCodeController?.showFailedMessage(NSLocalizedString("error-problem-verifying", comment: ""))
-                        }else if type == "problem_configured" {
-                            self.passCodeController?.showFailedMessage(NSLocalizedString("error-problem-configured", comment: ""))
-                        }else if type == "user_dismiss" {
-                            self.passCodeController?.showKeyboard()
-                        }
-                    }
+                    Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.becomeTouchID), userInfo: nil, repeats: false)
                 }
                 
             }
@@ -907,18 +916,6 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     func paPasscodeViewControllerDidEnterPasscodeResult(_ controller: PAPasscodeViewController!, didEnterPassCode passcode: String!) {
         print("enter passcode: \(passcode ?? "unknow")")
         
-        controller.dismiss(animated: false, completion: { () in
-            if !self.LOCKSCREEN {
-                self.handlerEnterSuccess?(passcode)
-            }
-            if self.startApp {
-                self.handlerEnterSuccess?("")
-            }
-            self.LOCKSCREEN = false
-            self.startApp = false
-        })
-       
-        /*
         let params:Parameters = ["pin" : Int(passcode)!]
         self.modelCtrl.enterPinCode(params: params, true, succeeded: { (result) in
             controller.dismiss(animated: false, completion: { () in
@@ -951,7 +948,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             self.handlerMessageError(messageError)
             controller.showFailedMessage("")
         }
-        */
+        
     
     }
     func validateMobile(_ mobile:String)-> String{
@@ -993,7 +990,29 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
                 
                 // forgorpin by mobile (API)
                 // pass
-                controller.showMobileOTP(email, refOTP: "sx5501")
+                let mobile = email!
+                let params:Parameters = ["mobile" : mobile]
+                self.modelCtrl.forgotPinCodeMobile(params: params, true, succeeded: { (result) in
+                    if let mResult = result as? [String:AnyObject] {
+                        let ref_id = mResult["ref_id"] as? String ?? ""
+                        
+                        let newText = String(mobile.filter({ $0 != "-" }).prefix(10))
+                        let mobileFormat = newText.chunkFormatted()
+                        controller.showMobileOTP(mobileFormat, refOTP: ref_id)
+                    }
+                    
+                }, error: { (error) in
+                    if let mError = error as? [String:AnyObject]{
+                        let message = mError["message"] as? String ?? ""
+                        print(message)
+                        
+                        controller.showFailedMessage(message)
+                    }
+                }) { (messageError) in
+                    self.handlerMessageError(messageError)
+                    controller.showFailedMessage("")
+                }
+                
             }
         }else{
             
@@ -1034,16 +1053,46 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         self.countDownResend(1.0)
         
     }
-    func paPasscodeViewControllerResendOTP(_ controller: PAPasscodeViewController!, resend resendBtn: UIButton!, callbackMobileNumber mobileNumber: String?) {
+    func paPasscodeViewControllerResendOTP(_ controller: PAPasscodeViewController!, resend resendBtn: UIButton!, callbackMobileNumber mobileNumber: String!) {
         
-        print("mobile = \(mobileNumber!)")
-        self.sendButtonResend = resendBtn
-        self.updateButtonResend()
-        self.removeCountDownLableResend()
-        self.sendButtonResend?.isEnabled = false
-        self.countDownResend(1.0)
+        print("mobile = \(mobileNumber)")
+        
+        let mobile = mobileNumber.replace(target: "-", withString: "")
+        let params:Parameters = ["mobile" : mobile ]
+        
+        modelCtrl.resendOTP(params: params, succeeded: { (result) in
+            if let mResult = result as? [String:AnyObject]{
+                print(mResult)
+                
+                if let mResult = result as? [String:AnyObject]{
+                    print(mResult)
+                    let ref_id = mResult["ref_id"] as? String ?? ""
+                    
+                    let newText = String(mobile.filter({ $0 != "-" }).prefix(10))
+                    let mobileFormat = newText.chunkFormatted()
+                    controller.actionResend(mobileFormat, refOTP: ref_id)
+                    
+                    self.sendButtonResend = resendBtn
+                    self.updateButtonResend()
+                    self.removeCountDownLableResend()
+                    self.sendButtonResend?.isEnabled = false
+                    self.countDownResend(1.0)
+
+                }
+            }
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                print(mError)
+                let message = mError["message"] as? String ?? ""
+                //self.errorOTPlLabel = self.otpTextField.addBottomLabelErrorMessage(message, marginLeft: 15)
+                self.showMessagePrompt2(message)
+            }
+        }, failure: { (messageError) in
+            self.handlerMessageError(messageError , title: "")
+        })
+        
     }
-    func paPasscodeViewControllerConfirmOTP(_ controller: PAPasscodeViewController!, didEnterOTP otp: String!, refOTP ref: String!) {
+    func paPasscodeViewControllerConfirmOTP(_ controller: PAPasscodeViewController!, didEnterOTP otp: String!, refOTP ref: String!, mobileNumber:String!) {
         print("Confirm OTP \(otp!)")
         print("Confirm REF \(ref!)")
         
@@ -1053,6 +1102,31 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             }
         }else{
             // pass otp
+            let mobile = mobileNumber.replace(target: "-", withString: "")
+            let params:Parameters = ["ref_id" : ref ?? "",
+                                     "otp" : otp ?? "",
+                                     "mobile" : mobile]
+            
+            modelCtrl.verifyOTP(params: params, succeeded: { (result) in
+                if let mResult = result as? [String:AnyObject]{
+                    print(mResult)
+                    let access_token  = result["access_token"] as? String ?? ""
+                    DataController.sharedInstance.setToken(access_token)
+                    
+                    controller.becomeSetPinCode()
+                    
+                    
+                }
+            }, error: { (error) in
+                if let mError = error as? [String:AnyObject]{
+                    print(mError)
+                    let message = mError["message"] as? String ?? ""
+                    //self.errorOTPlLabel = self.otpTextField.addBottomLabelErrorMessage(message, marginLeft: 15)
+                    self.showMessagePrompt2(message)
+                }
+            }, failure: { (messageError) in
+                self.handlerMessageError(messageError , title: "")
+            })
         }
        
     }
@@ -1074,6 +1148,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
                     
                     controller.dismiss(animated: false, completion: { () in
                         //
+                        self.hendleSetPasscodeSuccessWithStartApp?(passcode, controller)
                     })
                 })
                 alert.addAction(ok)

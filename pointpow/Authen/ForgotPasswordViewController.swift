@@ -100,10 +100,10 @@ class ForgotPasswordViewController: BaseViewController {
            
             let params:Parameters = ["mobile" : username  ]
             
-            modelCtrl.forgotPassword(params: params, succeeded: { (result) in
-                if let mResult = result["result"] as? [String:AnyObject] {
+            modelCtrl.forgotPasswordMobile(params: params, succeeded: { (result) in
+                if let mResult = result as? [String:AnyObject] {
                     let ref_id = mResult["ref_id"] as? String ?? ""
-                    self.showVerify(username, ref_id, true)
+                    self.showVerify(username, ref_id, forgotPassword: true, true)
                 }
                 
                 

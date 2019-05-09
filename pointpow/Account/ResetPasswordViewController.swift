@@ -26,6 +26,7 @@ class ResetPasswordViewController: BaseViewController {
     var errorPasswordLabel:UILabel?
     var errorConfirmPasswordLabel:UILabel?
     
+    var forgotPassword:Bool = false
     
     
     override func viewDidLoad() {
@@ -153,7 +154,15 @@ class ResetPasswordViewController: BaseViewController {
             let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
             let ok = UIAlertAction(title: NSLocalizedString("string-button-ok", comment: ""), style: .cancel, handler: { (action) in
                 
-                self.dismiss(animated: true, completion: nil)
+                if self.forgotPassword {
+                    if let loginVC = self.navigationController?.viewControllers[1] as? LoginViewController {
+                        self.navigationController?.popToViewController(loginVC, animated: false)
+                    }
+                    
+                }else{
+                    self.dismiss(animated: true, completion: nil)
+                }
+                
             })
             alert.addAction(ok)
             self.present(alert, animated: true, completion: nil)

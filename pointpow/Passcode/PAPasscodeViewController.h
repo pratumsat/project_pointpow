@@ -25,7 +25,7 @@ typedef enum {
 - (void)PAPasscodeViewControllerResendOTP:(PAPasscodeViewController *)controller resendButton:(UIButton*)resendBtn callbackMobileNumber:(NSString*)mobileNumber;
 
 - (void)PAPasscodeViewControllerConfirmOTP:(PAPasscodeViewController *)controller didEnterOTP:(NSString*)otp 
-    refOTP:(NSString*)ref;
+                                    refOTP:(NSString*)ref mobileNumber:(NSString*)mobileNumber;
 
 
 - (void)PAPasscodeViewControllerDidEnterPasscodeResult:(PAPasscodeViewController *)controller didEnterPassCode:(NSString*)passcode;
@@ -97,4 +97,6 @@ typedef enum {
 - (void)showLockPinCode;
 - (void)showMobileOTP:(NSString*)mobile refOTP:(NSString*)ref;
 - (void)showKeyboard;
+- (void)actionResend:(NSString*)mobile refOTP:(NSString*)ref;
+- (void)becomeSetPinCode;
 @end

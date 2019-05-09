@@ -33,7 +33,15 @@ class VerifyViewController: BaseViewController {
     }
    
     var mobilePhone:String?
-    
+    var forgotPassword:Bool = false {
+        didSet{
+            if forgotPassword {
+                countDown = 300
+            }else{
+                countDown = 60
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,6 +102,11 @@ class VerifyViewController: BaseViewController {
     func updateButton(){
         self.sendButton.borderLightGrayColorProperties(borderWidth: 1)
         self.sendButton.setTitle("\(countDown)", for: .normal)
+        if forgotPassword {
+            self.sendButton.setTitle("\(prodTimeString(time: TimeInterval(countDown)) )", for: .normal)
+        }else{
+            self.sendButton.setTitle("\(countDown)", for: .normal)
+        }
         self.sendButton.setTitleColor(UIColor.lightGray, for: .normal)
         
     }
@@ -125,7 +138,12 @@ class VerifyViewController: BaseViewController {
     }
     func removeCountDownLable() {
         //finish
-        countDown = 60
+        if forgotPassword {
+            countDown = 300
+        }else{
+            countDown = 60
+        }
+        
         timer?.invalidate()
         timer = nil
         
@@ -214,8 +232,16 @@ class VerifyViewController: BaseViewController {
             if let mResult = result as? [String:AnyObject]{
                 print(mResult)
                 
-
-                self.showPersonalData(true)
+                let access_token  = result["access_token"] as? String ?? ""
+                
+            
+                if self.forgotPassword {
+                    self.showResetPasswordView(forgotPassword: true ,true)
+                }else{
+                    self.showPersonalData(true)
+                    DataController.sharedInstance.setToken(access_token)
+                }
+                
                 
                 
                 

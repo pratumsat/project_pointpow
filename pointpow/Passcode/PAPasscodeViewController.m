@@ -615,7 +615,7 @@ static NSTimeInterval AnimationDuration = 0.3;
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [NSTimer scheduledTimerWithTimeInterval:0.1
+    [NSTimer scheduledTimerWithTimeInterval:0.2
                                      target:self
                                    selector:@selector(becomePasscode:)
                                    userInfo:nil
@@ -627,8 +627,7 @@ static NSTimeInterval AnimationDuration = 0.3;
     [self showScreenForPhase:0 animated:NO];
     [passcodeTextField becomeFirstResponder];
     [self.view layoutIfNeeded];
-    
-    
+
 }
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
@@ -936,9 +935,7 @@ static NSTimeInterval AnimationDuration = 0.3;
 -(void) buttonClickedConfirmOTP:(UIButton*)sender{
     NSLog(@"otp = %@", verifyOTPTextField.text);
     
-    //[_delegate PAPasscodeViewControllerConfirmOTP:self didEnterOTP:verifyOTPTextField.text refOTP:refOTPLabel.text];
-    [self emptyPin];
-    [self showPhase3ForgotPin];
+    [_delegate PAPasscodeViewControllerConfirmOTP:self didEnterOTP:verifyOTPTextField.text refOTP:refOTPLabel.text mobileNumber:verifyMobileTextField.text];
 }
 -(void) buttonResendConfirmOTP:(UIButton*)sender{
     NSLog(@"resend otp");
@@ -946,6 +943,11 @@ static NSTimeInterval AnimationDuration = 0.3;
     [_delegate PAPasscodeViewControllerResendOTP:self resendButton:resendOTPButton callbackMobileNumber: verifyMobileTextField.text];
     
 }
+-(void)becomeSetPinCode{
+    [self emptyPin];
+    [self showPhase3ForgotPin];
+}
+
 -(void)forgotTapped {
     
     if (!_forgotPin) {
@@ -1020,7 +1022,14 @@ static NSTimeInterval AnimationDuration = 0.3;
     promptLabel.text = messageTitle;
     
 }
-
+-(void)actionResend:(NSString*)mobile refOTP:(NSString*)ref {
+    NSLog(@"mobile = %@", mobile);
+    NSLog(@"refOTP = %@", ref);
+    
+    NSString *refOTP = [NSString stringWithFormat: @"%@ %@", NSLocalizedString(@"title-forgot-passcode-confirm-ref-otp", nil), ref];
+    refOTPLabel.text = refOTP;
+    verifyMobileTextField.text = mobile;
+}
 -(void)showMobileOTP:(NSString *)mobile refOTP:(NSString *)ref {
     NSLog(@"mobile = %@", mobile);
     NSLog(@"refOTP = %@", ref);

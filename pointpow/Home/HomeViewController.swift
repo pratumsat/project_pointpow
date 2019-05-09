@@ -19,6 +19,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
     @IBOutlet weak var homeCollectionView: UICollectionView!
     
     @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var displayNameLabel: UILabel!
     
     var shadowImageView:UIImageView?
     var isSetHeight = false
@@ -65,9 +66,12 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
             alert.addAction(ok)
             alert.show()
         }
+        
+        self.hendleSetPasscodeSuccessWithStartApp = { (passcode, controller) in
+            self.startLoadAPI()
+        }
 
         self.handlerEnterSuccess = { (pin) in
-            
             self.startLoadAPI()
         }
         
@@ -118,7 +122,13 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
                 self.startLoadAPI()
             }
         }
+       
+        // not token
+        self.getBanner() {
+            self.homeCollectionView.reloadData()
+        }
         
+        self.getGoldPremiumPrice()
         
        
     }
@@ -130,12 +140,9 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
                 self.startHome = true
             }
         }
-        self.getBanner() {
-            self.homeCollectionView.reloadData()
-        }
        
-        self.getGoldPremiumPrice()
         self.getUserInfo()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -154,10 +161,12 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
             }
         }
         
+      
+        
     }
     
     override func reloadData() {
-        self.getUserInfo()
+        self.startLoadAPI()
     }
     
     func getGoldPremiumPrice(_ avaliable:(()->Void)?  = nil){
@@ -226,7 +235,9 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
                 let is_pin = data["is_pin"] as? NSNumber ?? 0
                 //let is_profile = data["is_profile"] as? NSNumber ?? 0
                 let picture_data = data["picture_data"] as? String ?? ""
+                let display_name = data["display_name"] as? String ?? ""
                 
+                self.displayNameLabel.text = display_name
                 if let url  = URL(string: picture_data) {
                     self.profileImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER))
                     

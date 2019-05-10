@@ -50,29 +50,7 @@ class PointLimitViewController: BaseViewController {
             }
             
         }
-        /*
-         let params:Parameters = ["ref_id" : self.ref_id ?? "",
-         "otp" : otp,
-         "mobile" : self.mobilePhone ?? ""]
-         
-         modelCtrl.verifyOTP(params: params, succeeded: { (result) in
-         if let mResult = result as? [String:AnyObject]{
-         print(mResult)
-         let access_token  = result["access_token"] as? String ?? ""
-         DataController.sharedInstance.setToken(access_token)
-         //success
-         
-         }
-         }, error: { (error) in
-         if let mError = error as? [String:AnyObject]{
-         print(mError)
-         let message = mError["message"] as? String ?? ""
-         self.showMessagePrompt(message)
-         }
-         }, failure: { (messageError) in
-         self.handlerMessageError(messageError , title: "")
-         })
-         */
+        
     }
 
 }

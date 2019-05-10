@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class MobileViewController: BaseViewController {
 
@@ -115,7 +116,26 @@ class MobileViewController: BaseViewController {
         let mobileNumber = mobile.replace(target: "-", withString: "")
         print("mobileNumber = \(mobileNumber)")
         
-        self.showMobileVerify(mobileNumber, "axa1122", true)
+        let params:Parameters = ["new_mobile_number" : mobileNumber]
+        
+        self.modelCtrl.changeMobileNumber(params: params, succeeded: { (result) in
+            if let mResult = result as? [String: AnyObject] {
+                let ref_id = mResult["ref_id"] as? String ?? ""
+                self.showMobileVerify(mobileNumber, ref_id, true)
+                
+            }
+            
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                print(mError)
+                let message = mError["message"] as? String ?? ""
+                
+                self.handlerMessageError(message , title: "")
+            }
+        }, failure: { (messageError) in
+            self.handlerMessageError(messageError , title: "")
+        })
+        
         
     }
 

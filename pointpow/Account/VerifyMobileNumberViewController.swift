@@ -153,25 +153,18 @@ class VerifyMobileNumberViewController: BaseViewController {
     @IBAction func verifyTapped(_ sender: Any) {
         let otp = self.otpTextField.text!
        
-        self.showMessagePrompt2(NSLocalizedString("string-message-success-change-mobile", comment: "")) {
-            //ok callback
-        
-            if let security = self.navigationController?.viewControllers[1] as? SecuritySettingViewController {
-                self.navigationController?.popToViewController(security, animated: false)
-            }
-            
-        }
-        /*
         let params:Parameters = ["ref_id" : self.ref_id ?? "",
                                  "otp" : otp,
-                                 "mobile" : self.mobilePhone ?? ""]
+                                 "new_mobile_number" : self.mobilePhone ?? ""]
         
-        modelCtrl.verifyOTP(params: params, succeeded: { (result) in
-            if let mResult = result as? [String:AnyObject]{
-                print(mResult)
-                let access_token  = result["access_token"] as? String ?? ""
-                DataController.sharedInstance.setToken(access_token)
-                //success
+        modelCtrl.verifyOTPNewMobileNumber(params: params, succeeded: { (result) in
+            //success
+            self.showMessagePrompt2(NSLocalizedString("string-message-success-change-mobile", comment: "")) {
+                //ok callback
+                
+                if let security = self.navigationController?.viewControllers[1] as? SecuritySettingViewController {
+                    self.navigationController?.popToViewController(security, animated: false)
+                }
                 
             }
         }, error: { (error) in
@@ -183,7 +176,7 @@ class VerifyMobileNumberViewController: BaseViewController {
         }, failure: { (messageError) in
             self.handlerMessageError(messageError , title: "")
         })
-        */
+        
     }
     
 }

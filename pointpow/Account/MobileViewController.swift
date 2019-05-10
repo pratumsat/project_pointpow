@@ -15,6 +15,7 @@ class MobileViewController: BaseViewController {
 
     var clearImageView:UIImageView?
     
+    var mobile:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +32,12 @@ class MobileViewController: BaseViewController {
     
     
     func setUp(){
-        self.mobileTextField.text = "088-999-9999"
+        if let mobile = self.mobile {
+            let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
+            self.mobileTextField.text = newMText.chunkFormatted()
+        
+        }
+       
         
         self.backgroundImage?.image = nil
         
@@ -65,6 +71,16 @@ class MobileViewController: BaseViewController {
             }else{
                 self.clearImageView?.isHidden = false
             }
+            //Mobile
+            let text = textField.text ?? ""
+            
+            if string.count == 0 {
+                textField.text = String(text.dropLast()).chunkFormatted()
+            }  else {
+                let newText = String((text + string).filter({ $0 != "-" }).prefix(10))
+                textField.text = newText.chunkFormatted()
+            }
+            return false
         }
         
         return true
@@ -79,6 +95,51 @@ class MobileViewController: BaseViewController {
     
     
     @IBAction func confirmTapped(_ sender: Any) {
+        let mobile = self.mobileTextField.text!
+        var errorEmpty = 0
+        var emptyMessage = ""
+        
+        if mobile.isEmpty {
+            emptyMessage = NSLocalizedString("string-error-empty-mobile", comment: "")
+         
+            errorEmpty += 1
+            
+        }
+        if errorEmpty > 0 {
+            self.showMessagePrompt(emptyMessage)
+            return
+        }
+        
+        guard validateMobile(mobile) else { return }
+        
+        let mobileNumber = mobile.replace(target: "-", withString: "")
+        print("mobileNumber = \(mobileNumber)")
+        
+        self.showMobileVerify(mobileNumber, "axa1122", true)
+        
     }
 
+    func validateMobile(_ mobile:String)-> Bool{
+        var errorMobile = 0
+        var errorMessage = ""
+        
+        let nMobile = mobile.replace(target: "-", withString: "")
+        if !checkPrefixcellPhone(nMobile) {
+            errorMessage = NSLocalizedString("string-error-invalid-mobile", comment: "")
+            errorMobile += 1
+        }
+        if nMobile.count < 10 {
+            errorMessage = NSLocalizedString("string-error-invalid-mobile1", comment: "")
+            errorMobile += 1
+        }
+        if nMobile.count > 10 {
+            errorMessage = NSLocalizedString("string-error-invalid-mobile2", comment: "")
+            errorMobile += 1
+        }
+        if errorMobile > 0 {
+            self.showMessagePrompt(errorMessage)
+            return false
+        }
+        return true
+    }
 }

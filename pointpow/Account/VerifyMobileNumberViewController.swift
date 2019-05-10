@@ -1,23 +1,21 @@
 //
-//  VerifyViewController.swift
+//  VerifyMobileNumberViewController.swift
 //  pointpow
 //
-//  Created by thanawat on 5/11/2561 BE.
-//  Copyright © 2561 abcpoint. All rights reserved.
+//  Created by thanawat on 10/5/2562 BE.
+//  Copyright © 2562 abcpoint. All rights reserved.
 //
 
 import UIKit
 import Alamofire
 
-class VerifyViewController: BaseViewController {
+class VerifyMobileNumberViewController: BaseViewController {
+
     @IBOutlet weak var verifyButton: UIButton!
-   
     @IBOutlet weak var otpTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var usernameTextField: UITextField!
-    
     @IBOutlet weak var refIDLabel: UILabel!
-    var clearImageView:UIImageView?
     
     var countDown:Int = 60
     var timer:Timer?
@@ -26,29 +24,18 @@ class VerifyViewController: BaseViewController {
         didSet{
             if self.ref_id != nil {
                 self.refIDLabel?.text = "\(NSLocalizedString("title-forgot-passcode-confirm-ref-otp", comment: "")) \(self.ref_id!)"
-                
             }
-            
         }
     }
-   
     var mobilePhone:String?
-    var forgotPassword:Bool = false {
-        didSet{
-            if forgotPassword {
-                countDown = 300
-            }else{
-                countDown = 60
-            }
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.title = NSLocalizedString("string-title-verify", comment: "")
         self.setUp()
     }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         self.verifyButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
@@ -59,10 +46,10 @@ class VerifyViewController: BaseViewController {
         self.removeCountDownLable()
     }
     func setUp(){
-        self.sendButton.borderRedColorProperties(borderWidth: 1)  
+        self.sendButton.borderRedColorProperties(borderWidth: 1)
         self.verifyButton.borderClearProperties(borderWidth: 1)
         
-  
+        
         self.usernameTextField.setLeftPaddingPoints(40)
         self.otpTextField.setLeftPaddingPoints(40)
         
@@ -80,18 +67,13 @@ class VerifyViewController: BaseViewController {
         self.usernameTextField.isEnabled = false
         self.otpTextField.keyboardType = .numberPad
         
-
+        
         if self.ref_id != nil {
             self.refIDLabel?.text = "\(NSLocalizedString("title-forgot-passcode-confirm-ref-otp", comment: "")) \(self.ref_id!)"
             
         }
         
-        self.clearImageView = self.usernameTextField.addRightButton(UIImage(named: "ic-x")!)
-        let tap = UITapGestureRecognizer(target: self, action: #selector(clearUserNameTapped))
-        self.clearImageView?.isUserInteractionEnabled = true
-        self.clearImageView?.addGestureRecognizer(tap)
-        self.clearImageView?.isHidden = true
-        
+      
         
         self.sendButton.isEnabled = false
         self.updateButton()
@@ -101,12 +83,7 @@ class VerifyViewController: BaseViewController {
     }
     func updateButton(){
         self.sendButton.borderLightGrayColorProperties(borderWidth: 1)
-     
-        if forgotPassword {
-            self.sendButton.setTitle("\(prodTimeString(time: TimeInterval(countDown)) )", for: .normal)
-        }else{
-            self.sendButton.setTitle("\(countDown)", for: .normal)
-        }
+        self.sendButton.setTitle("\(countDown)", for: .normal)
         self.sendButton.setTitleColor(UIColor.lightGray, for: .normal)
         
     }
@@ -138,58 +115,11 @@ class VerifyViewController: BaseViewController {
     }
     func removeCountDownLable() {
         //finish
-        if forgotPassword {
-            countDown = 300
-        }else{
-            countDown = 60
-        }
-        
+        countDown = 60
         timer?.invalidate()
         timer = nil
         
     }
-    
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-
-        if textField  == self.usernameTextField {
-            let startingLength = textField.text?.count ?? 0
-            let lengthToAdd = string.count
-            let lengthToReplace = range.length
-            
-            let newLength = startingLength + lengthToAdd - lengthToReplace
-            //return newLength <= 20
-            
-            if newLength == 0 {
-                self.clearImageView?.isHidden = true
-            }else{
-                self.clearImageView?.isHidden = false
-            }
-            
-            let text = textField.text ?? ""
-            
-            if string.count == 0 {
-                textField.text = String(text.dropLast()).chunkFormatted()
-            }  else {
-                let newText = String((text + string).filter({ $0 != "-" }).prefix(10))
-                textField.text = newText.chunkFormatted()
-            }
-            return false
-            
-        }
-        return true
-        
-    }
-    
-    @objc func clearUserNameTapped(){
-        self.clearImageView?.animationTapped({
-            self.usernameTextField.text = ""
-            self.clearImageView?.isHidden = true
-        })
-        
-    }
-    
-   
     @IBAction func sendTapped(_ sender: Any) {
         self.sendButton.isEnabled = false
         self.countDown(1.0)
@@ -204,7 +134,7 @@ class VerifyViewController: BaseViewController {
                     print(mResult)
                     let ref_id = mResult["ref_id"] as? String ?? ""
                     self.ref_id = ref_id
-                   
+                    
                 }
             }
         }, error: { (error) in
@@ -222,8 +152,16 @@ class VerifyViewController: BaseViewController {
     }
     @IBAction func verifyTapped(_ sender: Any) {
         let otp = self.otpTextField.text!
-        //self.errorOTPlLabel?.removeFromSuperview()
-
+       
+        self.showMessagePrompt2(NSLocalizedString("string-message-success-change-mobile", comment: "")) {
+            //ok callback
+        
+            if let security = self.navigationController?.viewControllers[1] as? SecuritySettingViewController {
+                self.navigationController?.popToViewController(security, animated: false)
+            }
+            
+        }
+        /*
         let params:Parameters = ["ref_id" : self.ref_id ?? "",
                                  "otp" : otp,
                                  "mobile" : self.mobilePhone ?? ""]
@@ -231,37 +169,21 @@ class VerifyViewController: BaseViewController {
         modelCtrl.verifyOTP(params: params, succeeded: { (result) in
             if let mResult = result as? [String:AnyObject]{
                 print(mResult)
-                
                 let access_token  = result["access_token"] as? String ?? ""
-                
-            
-                if self.forgotPassword {
-                    self.showResetPasswordView(forgotPassword: true ,true)
-                }else{
-                    self.showPersonalData(true)
-                    DataController.sharedInstance.setToken(access_token)
-                }
-                
-                
-                
+                DataController.sharedInstance.setToken(access_token)
+                //success
                 
             }
         }, error: { (error) in
             if let mError = error as? [String:AnyObject]{
                 print(mError)
                 let message = mError["message"] as? String ?? ""
-                //self.errorOTPlLabel = self.otpTextField.addBottomLabelErrorMessage(message, marginLeft: 15)
                 self.showMessagePrompt(message)
             }
         }, failure: { (messageError) in
             self.handlerMessageError(messageError , title: "")
         })
-        
-//        let errorMessage = NSLocalizedString("string-error-otp", comment: "")
-//        self.errorOTPlLabel = self.otpTextField.addBottomLabelErrorMessage(errorMessage, marginLeft: 15)
-//        self.showMessagePrompt(errorMessage)
+        */
     }
     
-   
-
 }

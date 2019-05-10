@@ -14,7 +14,7 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
     
     var item:ITEM?
     enum ITEM {
-        case CHANGE_PIN, CHANGE_PWD, CHANGE_MOBILE
+        case CHANGE_PIN, CHANGE_PWD, CHANGE_MOBILE , POINT_LIMIT
     }
     let dash = "\u{25CF}\u{25CF}\u{25CF}\u{25CF}\u{25CF}\u{25CF}\u{25CF}\u{25CF}"
     
@@ -86,8 +86,19 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
                     break
                     
                 case .CHANGE_MOBILE:
-                    self.showMobilePhoneView(true)
+                    if let userData = self.userData as? [String:AnyObject] {
+                        let mobile = userData["mobile"] as? String ?? ""
+                    
+                        self.showMobilePhoneView(mobile, true)
+                    }
+                    
                     break
+                case .POINT_LIMIT:
+                    if let userData = self.userData as? [String:AnyObject] {
+                        let point_limit = userData["point_limit"] as? String ?? "0"
+                        
+                        self.showPointLimitView(point_limit, true)
+                    }
                 }
             }
         }
@@ -229,6 +240,11 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
         if indexPath.section == 0 {
             if indexPath.row == 0 {
                 self.item = .CHANGE_PIN
+                self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
+            
+            }
+            if indexPath.row == 2 {
+                self.item = .POINT_LIMIT
                 self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
             }
             if indexPath.row == 3 {

@@ -367,6 +367,15 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
+    
+    func showMobileVerify(_ mobilePhone:String, _ ref_id:String, _ animated:Bool){
+        if let vc:VerifyMobileNumberViewController = self.storyboard?.instantiateViewController(withIdentifier: "VerifyMobileNumberViewController") as? VerifyMobileNumberViewController {
+            vc.mobilePhone = mobilePhone
+            vc.ref_id = ref_id
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    
     func showPersonalData(_ animated:Bool){
         if let vc:PersonalDataViewController = self.storyboard?.instantiateViewController(withIdentifier: "PersonalDataViewController") as? PersonalDataViewController {
             
@@ -488,15 +497,16 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
-    func showMobilePhoneView(_ animated:Bool){
+    func showMobilePhoneView(_ mobile:String, _ animated:Bool){
         if let vc:MobileViewController  = self.storyboard?.instantiateViewController(withIdentifier: "MobileViewController") as? MobileViewController {
+            vc.mobile = mobile
             
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
-    func showEmailView(_ animated:Bool){
-        if let vc:EmailViewController  = self.storyboard?.instantiateViewController(withIdentifier: "EmailViewController") as? EmailViewController {
-            
+    func showPointLimitView(_ amount:String, _ animated:Bool){
+        if let vc:PointLimitViewController  = self.storyboard?.instantiateViewController(withIdentifier: "PointLimitViewController") as? PointLimitViewController {
+            vc.pointlimit = amount
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }

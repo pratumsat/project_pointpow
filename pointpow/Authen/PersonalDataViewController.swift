@@ -158,7 +158,7 @@ class PersonalDataViewController: BaseViewController {
                 self.clearImageView3?.isHidden = false
             }
             
-            //Mobile
+            //PID
             let text = textField.text ?? ""
             
             if string.count == 0 {

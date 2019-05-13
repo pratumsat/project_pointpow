@@ -472,6 +472,12 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
+    func showGoldProfileView(fromAccountPointPow:Bool = false, _ animated:Bool){
+        if let vc:GoldProfileViewController = self.storyboard?.instantiateViewController(withIdentifier: "GoldProfileViewController") as? GoldProfileViewController {
+            vc.fromAccountPointPow = fromAccountPointPow
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
     
     func showChangePasswordView(_ animated:Bool){
         if let vc:ChangePasswordViewController  = self.storyboard?.instantiateViewController(withIdentifier: "ChangePasswordViewController") as? ChangePasswordViewController {
@@ -491,9 +497,9 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
-    func showDisplayNameView(_ animated:Bool){
+    func showDisplayNameView(_ displayName:String, _ animated:Bool){
         if let vc:DisplayNameViewController  = self.storyboard?.instantiateViewController(withIdentifier: "DisplayNameViewController") as? DisplayNameViewController {
-            
+            vc.displayName = displayName
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
@@ -676,6 +682,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }
     }
     @objc func becomeTouchID(){
+        
         self.checkLAPolicy { (type) in
             if type == "login_success"{
                 self.passCodeController?.showPassCodeSuccess()
@@ -794,7 +801,11 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             
             if !lockPin {
                 if lockscreen {
-                    Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.becomeTouchID), userInfo: nil, repeats: false)
+                    let isFaceID = DataController.sharedInstance.getFaceID()
+                    if isFaceID {
+                        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.becomeTouchID), userInfo: nil, repeats: false)
+                    }
+                    
                 }
                 
             }
@@ -1782,7 +1793,27 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             
             let confirmAction = UIAlertAction(title: close, style: .destructive) { _ in
                 DataController.sharedInstance.setLanguage(languageId)
-                exit(EXIT_SUCCESS)
+                
+                let params:Parameters = ["language"  : languageId]
+                
+                self.modelCtrl.memberSetting(params: params, true, succeeded: { (result) in
+                    print(result)
+                    exit(EXIT_SUCCESS)
+                    self.refreshControl?.endRefreshing()
+                }, error: { (error) in
+                    if let mError = error as? [String:AnyObject]{
+                        let message = mError["message"] as? String ?? ""
+                        print(message)
+                        //self.showMessagePrompt(message)
+                    }
+                    self.refreshControl?.endRefreshing()
+                    print(error)
+                }) { (messageError) in
+                    print("messageError")
+                    self.handlerMessageError(messageError)
+                    self.refreshControl?.endRefreshing()
+                }
+                
             }
             confirmAlertCtrl.addAction(confirmAction)
             
@@ -1825,7 +1856,13 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         // Dispose of any resources that can be recreated.
     }
     
-    
+    func addRefreshScrollViewController(_ scrollview:UIScrollView){
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl!.addTarget(self, action: #selector(reloadData), for: .valueChanged)
+        scrollview.isScrollEnabled = true
+        scrollview.alwaysBounceVertical = true
+        scrollview.addSubview(self.refreshControl!)
+    }
     func addRefreshViewController(_ collectionView:UICollectionView){
         self.refreshControl = UIRefreshControl()
         self.refreshControl!.addTarget(self, action: #selector(reloadData), for: .valueChanged)

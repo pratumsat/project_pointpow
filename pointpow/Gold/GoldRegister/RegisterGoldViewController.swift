@@ -407,7 +407,9 @@ class RegisterGoldViewController: BaseViewController {
             }
             return false
         }
-        
+        if textField == self.birthdateTextField {
+            return false
+        }
         
        
         

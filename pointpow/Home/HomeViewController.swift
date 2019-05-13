@@ -142,7 +142,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         }
        
         self.getUserInfo()
-        
+        self.getMemberSetting()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -167,6 +167,23 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
     
     override func reloadData() {
         self.startLoadAPI()
+    }
+    
+    func getMemberSetting(_ avaliable:(()->Void)?  = nil){
+        modelCtrl.getMemberSetting(params: nil, true, succeeded: { (result) in
+            avaliable?()
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                //self.showMessagePrompt(message)
+            }
+           
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            
+        }
     }
     
     func getGoldPremiumPrice(_ avaliable:(()->Void)?  = nil){

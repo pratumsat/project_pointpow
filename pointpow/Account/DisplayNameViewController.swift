@@ -14,6 +14,11 @@ class DisplayNameViewController: BaseViewController {
     @IBOutlet weak var displayNameTextField: UITextField!
     
     
+    var displayName:String?{
+        didSet{
+            print("displayName \(displayName)")
+        }
+    }
     
     var clearImageView:UIImageView?
    
@@ -34,7 +39,7 @@ class DisplayNameViewController: BaseViewController {
     
     
     func setUp(){
-        self.displayNameTextField.text = "Lazy"
+        self.displayNameTextField.text = displayName
         
         self.backgroundImage?.image = nil
         
@@ -86,6 +91,24 @@ class DisplayNameViewController: BaseViewController {
    
 
     @IBAction func confirmTapped(_ sender: Any) {
+        let displayName = self.displayNameTextField.text!
+        
+        var errorEmpty = 0
+        var emptyMessage = ""
+        
+        
+        
+        if displayName.isEmpty {
+            emptyMessage = NSLocalizedString("string-error-empty-display-name", comment: "")
+            errorEmpty += 1
+        }
+        
+        if errorEmpty > 0 {
+            self.showMessagePrompt(emptyMessage)
+            return
+        }
+        
+        //update
     }
     
 }

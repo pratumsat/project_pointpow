@@ -12,6 +12,11 @@ class SwitchCell: UICollectionViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var toggleSwitch: UISwitch!
+    
+    
+    var toggleValueCallback:((_ toggleValue:Bool,_ typeValue:String)->Void)?
+    var typeValue:String?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -21,6 +26,7 @@ class SwitchCell: UICollectionViewCell {
         self.toggleSwitch.backgroundColor = UIColor.groupTableViewBackground
     }
     @IBAction func toggleTapped(_ sender: Any) {
+        self.toggleValueCallback?(toggleSwitch.isOn , self.typeValue ?? "")
     }
     
 }

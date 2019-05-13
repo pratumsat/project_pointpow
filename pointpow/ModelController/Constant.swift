@@ -707,12 +707,14 @@ struct Constant {
         static let changeMobile = "\(HOST)\(POINTPOW_VERSION1)member/change-mobile-number"
         static let verifyOTPNewMobileNumber  = "\(HOST)\(POINTPOW_VERSION1)member/verify-change-mobile-number"
         
+        static let memberSetting = "\(HOST)\(POINTPOW_VERSION1)member/setting"
         static let setPinCode = "\(HOST)\(POINTPOW_VERSION1)member/set-pin"
         static let resetPinCode = "\(HOST)\(POINTPOW_VERSION1)member/set-reset-pin"
         static let enterPinCode = "\(HOST)\(POINTPOW_VERSION1)member/check-pin"
         static let forgotPinCodeEmail = "\(HOST)\(POINTPOW_VERSION1)member/reset-pin-email"
         static let forgotPinCodeMobile = "\(HOST)\(POINTPOW_VERSION1)member/reset-pin-mobile"
         static let statusPinCode = "\(HOST)\(POINTPOW_VERSION1)member/check-pin-status"
+        static let memberLogout = "\(HOST)\(POINTPOW_VERSION1)member/logout"
         
         static let registerGoldMember = "\(HOST)\(POINTPOW_VERSION1)gold-saving/register"
         static let updateGoldMember = "\(HOST)\(POINTPOW_VERSION1)gold-saving/update"
@@ -772,7 +774,8 @@ struct Constant {
         static let USER_TOKEN_CACHE = "USER_TOKEN"
         static let NAME_CACHE = "NotiStructHolder"
         static let NAME_CACHE_OBJECT = "NotiStructObject"
-         static let USER_PINCODE_CACHE = "PINCODE"
+        static let USER_PINCODE_CACHE = "PINCODE"
+        static let USER_FACE_ID_CACHE = "FACEID_TOUCHID"
     }
     enum ViewBorder: String {
         case left, right, top, bottom

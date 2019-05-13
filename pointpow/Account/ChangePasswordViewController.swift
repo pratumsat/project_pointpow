@@ -52,9 +52,7 @@ class ChangePasswordViewController: BaseViewController {
         self.newPasswordTextField.isSecureTextEntry = true
         self.confirmNewPasswordTextField.isSecureTextEntry = true
         
-        
-      
-        
+
         self.currentPassImageView = self.passwordTextField.addRightButton(UIImage(named: "ic-eye-close")!)
         let eyeCurrentTap = UITapGestureRecognizer(target: self, action: #selector(eyeCurrentPassTapped))
         self.currentPassImageView?.isUserInteractionEnabled = true
@@ -70,8 +68,8 @@ class ChangePasswordViewController: BaseViewController {
         self.eyeConfirmImageView?.isUserInteractionEnabled = true
         self.eyeConfirmImageView?.addGestureRecognizer(eyeConfirmTap)
         
-        
     }
+    
     @objc func eyeCurrentPassTapped(){
         
         self.self.currentPsssIsClose = toggleEye(self.currentPassImageView!,

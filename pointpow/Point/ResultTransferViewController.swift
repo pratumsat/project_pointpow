@@ -65,6 +65,7 @@ class ResultTransferViewController: BaseViewController  , UICollectionViewDelega
     }
     
     @objc func updateCountDown() {
+        guard DataController.sharedInstance.getSaveSlip() else { return }
         if let snapImage = self.snapView?.snapshotImage() {
             UIImageWriteToSavedPhotosAlbum(snapImage, nil, nil, nil)
             print("created slip")

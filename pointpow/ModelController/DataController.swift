@@ -57,6 +57,23 @@ class DataController {
         return data["token"] as? String ?? ""
     }
     
+    func setSaveSlip(_ token:Bool){
+        data["save_slip"] = token as AnyObject
+    }
+    
+    func getSaveSlip() -> Bool {
+        return data["save_slip"] as? Bool ?? false
+    }
+    
+    func setFaceID(_ faceID:Bool){
+        UserDefaults.standard.set(faceID, forKey: Constant.CacheNotification.USER_FACE_ID_CACHE)
+        UserDefaults.standard.synchronize()
+    }
+    
+    func getFaceID() -> Bool {
+        return UserDefaults.standard.object(forKey: Constant.CacheNotification.USER_FACE_ID_CACHE) as? Bool ?? false
+    }
+    
     
     func setPasscode(_ passcode:String){
         UserDefaults.standard.set(passcode, forKey: Constant.CacheNotification.USER_PINCODE_CACHE)

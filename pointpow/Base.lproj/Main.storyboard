@@ -2036,11 +2036,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9Xh-wZ-UQM"/>
                     </view>
+                    <navigationItem key="navigationItem" id="G8h-kg-rNd">
+                        <barButtonItem key="leftBarButtonItem" image="ic-back-white" id="Isp-8z-uIt">
+                            <inset key="imageInsets" minX="-10" minY="2" maxX="10" maxY="-2"/>
+                            <connections>
+                                <action selector="bViewTapped:" destination="082-Yj-yCy" id="tg4-L4-BIg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="birthdayTextField" destination="0Ob-5v-B9r" id="HqE-wH-aal"/>
                         <outlet property="emailTextField" destination="7qu-Y3-6eL" id="3hT-YA-36A"/>
                         <outlet property="firstNameTextField" destination="qea-Rt-1Tx" id="XAi-D4-z4N"/>
                         <outlet property="lastNameTextField" destination="Ihf-Z5-vHk" id="xJe-3j-SHo"/>
+                        <outlet property="mScrollView" destination="htA-4V-0eg" id="jQh-sW-q6Q"/>
                         <outlet property="nextButton" destination="9EX-CU-IPo" id="nz3-gC-gWk"/>
                         <outlet property="parsonalTextField" destination="FnC-MT-0PJ" id="zvG-QC-7an"/>
                     </connections>
@@ -3705,7 +3714,7 @@
                         </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="ZBb-uj-r5F" kind="relationship" relationship="rootViewController" id="wsa-4V-J5w"/>
+                        <segue destination="ZBb-uj-r5F" kind="relationship" relationship="rootViewController" id="Px2-l5-uBB"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gFp-EA-y7l" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -5682,7 +5691,7 @@
         <!--Gold Profile View Controller-->
         <scene sceneID="3Ox-Wv-CRe">
             <objects>
-                <viewController id="lyZ-DZ-mnd" customClass="GoldProfileViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GoldProfileViewController" id="lyZ-DZ-mnd" customClass="GoldProfileViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qDz-55-NAS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -6135,6 +6144,7 @@
                         <outlet property="lasetIdView" destination="aMg-rF-bfM" id="TYA-xa-P3y"/>
                         <outlet property="lastNameTextField" destination="ilt-95-1hO" id="XTc-N5-3hO"/>
                         <outlet property="lview" destination="Qah-ET-qaU" id="8Q5-Bu-FB5"/>
+                        <outlet property="mScrollView" destination="mQ5-j5-nWM" id="bhY-eQ-4f8"/>
                         <outlet property="mobileTextField" destination="57T-g8-fvD" id="Uju-UM-zcy"/>
                         <outlet property="mview" destination="zlF-cx-Xvg" id="pwn-Jf-EGN"/>
                         <outlet property="saveButton" destination="zZy-l9-BeI" id="L1d-rI-Fgz"/>

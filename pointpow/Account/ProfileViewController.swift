@@ -12,6 +12,7 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
     
     
     @IBOutlet weak var profileCollectionView: UICollectionView!
+    var userData:AnyObject?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,17 +27,65 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
         
         self.navigationController?.isNavigationBarHidden = false
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if DataController.sharedInstance.isLogin() {
+            self.getUserInfo()
+        }
+    }
     
+    override func reloadData() {
+        self.getUserInfo()
+    }
+    
+    func getUserInfo(_ avaliable:(()->Void)?  = nil){
+        
+        var isLoading:Bool = true
+        if self.userData != nil {
+            isLoading = false
+        }else{
+            isLoading = true
+        }
+        
+        modelCtrl.getUserData(params: nil , isLoading , succeeded: { (result) in
+            self.userData = result
+            avaliable?()
+            
+            self.profileCollectionView.reloadData()
+            self.refreshControl?.endRefreshing()
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                //self.showMessagePrompt(message)
+            }
+            self.refreshControl?.endRefreshing()
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            self.refreshControl?.endRefreshing()
+        }
+    }
     
     func setUp(){
-     
         self.handlerEnterSuccess = { (pin) in
-            self.showPersonalView(true)
+            if let userData = self.userData as? [String:AnyObject] {
+                let registerGold = userData["gold_saving_acc"] as? NSNumber ?? 0
+                
+                if registerGold.boolValue {
+                    self.showGoldProfileView(fromAccountPointPow : true , true)
+                }else{
+                    self.showPersonalView(true)
+                }
+            }
+            //user
+            
         }
 
         self.backgroundImage?.image = nil
         
-        
+        self.addRefreshViewController(self.profileCollectionView)
         self.profileCollectionView.dataSource = self
         self.profileCollectionView.delegate = self
         self.profileCollectionView.showsVerticalScrollIndicator = false
@@ -46,6 +95,7 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
         self.registerHeaderNib(self.profileCollectionView, "HeadCell")
         
     }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
@@ -69,7 +119,12 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
                     itemCell.trailLabel.text = ""
                 }else if indexPath.row == 1{
                     itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change-displayname", comment: "")
-                    itemCell.trailLabel.text = "Lazy"
+                    
+                    if let userData = self.userData as? [String:AnyObject] {
+                        let displayName = userData["display_name"] as? String ?? ""
+                        itemCell.trailLabel.text = displayName
+                    }
+                    
                 }
                 let lineBottom = UIView(frame: CGRect(x: 0, y: itemCell.frame.height - 1 , width: collectionView.frame.width, height: 1 ))
                 lineBottom.backgroundColor = Constant.Colors.LINE_PROFILE
@@ -82,6 +137,11 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
 
                 logOutCell.logoutLabel.text = NSLocalizedString("string-item-profile-logout", comment: "")
                 logOutCell.logoutLabel.textColor = Constant.Colors.PRIMARY_COLOR
+                
+                let lineTop = UIView(frame: CGRect(x: 0, y: 0 , width: collectionView.frame.width, height: 1 ))
+                lineTop.backgroundColor = Constant.Colors.LINE_PROFILE
+                logOutCell.addSubview(lineTop)
+                
                 
                 let lineBottom = UIView(frame: CGRect(x: 0, y: logOutCell.frame.height - 1 , width: collectionView.frame.width, height: 1 ))
                 lineBottom.backgroundColor = Constant.Colors.LINE_PROFILE
@@ -102,12 +162,30 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
             if indexPath.row == 0 {
                 self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
             }else if indexPath.row == 1 {
-                self.showDisplayNameView(true)
+                
+                if let userData = self.userData as? [String:AnyObject] {
+                    let displayName = userData["display_name"] as? String ?? ""
+                
+                    self.showDisplayNameView(displayName, true)
+                    
+                }
+                
             }
         }
         if indexPath.section == 1 {
-            self.modelCtrl.logOut() { (result) in
+            self.modelCtrl.logOut(succeeded: { (result) in
                 Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(self.reNewApplication), userInfo: nil, repeats: false)
+            }, error: { (error) in
+                if let mError = error as? [String:AnyObject]{
+                    let message = mError["message"] as? String ?? ""
+                    print(message)
+                    //self.showMessagePrompt(message)
+                }
+                print(error)
+            }) { (messageError) in
+                print("messageError")
+                self.handlerMessageError(messageError)
+                
             }
         }
     }
@@ -125,9 +203,6 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
         
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeadCell", for: indexPath) as! HeadCell
         
-        let lineBottom = UIView(frame: CGRect(x: 0, y: header.frame.height - 1 , width: collectionView.frame.width, height: 1 ))
-        lineBottom.backgroundColor = Constant.Colors.LINE_PROFILE
-        header.addSubview(lineBottom)
         
         return header
     }

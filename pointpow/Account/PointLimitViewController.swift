@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class PointLimitViewController: BaseViewController {
 
@@ -42,14 +43,38 @@ class PointLimitViewController: BaseViewController {
     @IBAction func saveTapped(_ sender: Any) {
         let point = self.pointlimitTextField.text!
         
-        self.showMessagePrompt2(NSLocalizedString("string-message-success-change-point-limit", comment: "")) {
-            //ok callback
+        
+        let params:Parameters = ["limit_pay"  : point]
+        
+        self.modelCtrl.memberSetting(params: params, true, succeeded: { (result) in
+            print(result)
             
-            if let security = self.navigationController?.viewControllers[1] as? SecuritySettingViewController {
-                self.navigationController?.popToViewController(security, animated: false)
+            self.showMessagePrompt2(NSLocalizedString("string-message-success-change-point-limit", comment: "")) {
+                //ok callback
+                
+                if let security = self.navigationController?.viewControllers[1] as? SecuritySettingViewController {
+                    self.navigationController?.popToViewController(security, animated: false)
+                }
+                
             }
             
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                //self.showMessagePrompt(message)
+            }
+            self.refreshControl?.endRefreshing()
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            self.refreshControl?.endRefreshing()
         }
+        
+        
+        
+      
         
     }
 

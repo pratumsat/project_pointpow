@@ -48,6 +48,7 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
     
     @IBOutlet weak var containerView: UIView!
     
+    @IBOutlet weak var mScrollView: UIScrollView!
     var clearImageView:UIImageView?
     var clearImageView2:UIImageView?
     var clearImageView3:UIImageView?
@@ -73,21 +74,35 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
     var currentBirthdate = ""
     var userData:AnyObject?
     
+    var fromAccountPointPow:Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (self.revealViewController() != nil) {
-            self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-            self.navigationItem.rightBarButtonItem?.target = revealViewController()
-            
+        
+        if !fromAccountPointPow {
+            if (self.revealViewController() != nil) {
+                self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
+                self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+                self.navigationItem.rightBarButtonItem?.target = revealViewController()
+                
+            }
+            self.navigationItem.rightBarButtonItem?.action = #selector(SWRevealViewController.rightRevealToggle(_:))
+        
+        }else{
+            self.navigationItem.rightBarButtonItem = nil
         }
         
         
-        self.navigationItem.rightBarButtonItem?.action = #selector(SWRevealViewController.rightRevealToggle(_:))
+        
         
         self.title = NSLocalizedString("string-title-profile", comment: "")
         self.setUp()
         
+        self.getUserInfo(){
+            self.updateView()
+        }
+    }
+    override func reloadData() {
         self.getUserInfo(){
             self.updateView()
         }
@@ -136,11 +151,16 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
             let okButton = UIAlertAction(title: NSLocalizedString("string-dailog-gold-button-confirm", comment: ""), style: .default, handler: {
                 (alert) in
                 
-                
-                if let saving = self.storyboard?.instantiateViewController(withIdentifier: "NavGoldPage") as? NavGoldPage {
-                    self.revealViewController()?.pushFrontViewController(saving, animated: true)
-                    
+                if !self.fromAccountPointPow {
+                    if let saving = self.storyboard?.instantiateViewController(withIdentifier: "NavGoldPage") as? NavGoldPage {
+                        self.revealViewController()?.pushFrontViewController(saving, animated: true)
+                        
+                    }
+                }else{
+                    self.navigationController?.popViewController(animated: true)
                 }
+                
+                
                 
             })
             let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-gold-button-cancel", comment: ""), style: .default, handler: nil)
@@ -150,10 +170,15 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
             alert.addAction(okButton)
             self.present(alert, animated: true, completion: nil)
         }else{
-            if let saving = self.storyboard?.instantiateViewController(withIdentifier: "NavGoldPage") as? NavGoldPage {
-                self.revealViewController()?.pushFrontViewController(saving, animated: true)
-                
+            if !self.fromAccountPointPow {
+                if let saving = self.storyboard?.instantiateViewController(withIdentifier: "NavGoldPage") as? NavGoldPage {
+                    self.revealViewController()?.pushFrontViewController(saving, animated: true)
+                    
+                }
+            }else{
+                self.navigationController?.popViewController(animated: true)
             }
+            
         }
         
     }
@@ -291,6 +316,8 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
     }
     
     func setUp(){
+        self.addRefreshScrollViewController(self.mScrollView)
+        
         self.backgroundImage?.image = nil
        
         self.mobileTextField.addDoneButtonToKeyboard()
@@ -430,66 +457,46 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
 
     func textFieldDidEndEditing(_ textField: UITextField) {
         
-        if textField == self.firstNameTextField {
-            if let data  = self.userData as? [String:AnyObject] {
-                let first_name = data["goldsaving_member"]?["firstname"] as? String ?? ""
-                //let last_name = data["goldsaving_member"]?["lastname"]as? String ?? ""
-                
-                
-                if (textField.text!) != first_name || (self.idCardPhoto != nil) {
-                    self.enableButton()
-                }else{
-                    self.disableButton()
-                }
-            }
-        }
-        if textField == self.lastNameTextField {
-            
-            if let data  = self.userData as? [String:AnyObject] {
-                let last_name = data["goldsaving_member"]?["lastname"]as? String ?? ""
-                
-                if (textField.text!) != last_name || (self.idCardPhoto != nil) {
-                    self.enableButton()
-                }else{
-                    self.disableButton()
-                }
-            }
-        }
-        
-        if textField == self.idcardTextField {
-            if let data  = self.userData as? [String:AnyObject] {
-                let citizen_id = data["goldsaving_member"]?["citizen_id"]as? String ?? ""
-                
-                if (textField.text!) != citizen_id || (self.idCardPhoto != nil) {
-                    self.enableButton()
-                }else{
-                    self.disableButton()
-                }
-            }
-        }
-        
-        if textField == self.laserIdTextField {
-            if let data  = self.userData as? [String:AnyObject] {
-                let laser_id = data["goldsaving_member"]?["laser_id"]as? String ?? ""
-                
-                let cutdash = textField.text!.replace(target: "-", withString: "")
-                if cutdash != laser_id || (self.idCardPhoto != nil) {
-                    self.enableButton()
-                }else{
-                    self.disableButton()
-                }
-            }
-        }
-        
-        if textField == self.birthdateTextField {
-            if (textField.text!) != self.currentBirthdate || (self.idCardPhoto != nil) {
-                self.enableButton()
-            }else{
-                self.disableButton()
-            }
+        if hasChangeData(){
+            self.enableButton()
+        }else{
+            self.disableButton()
         }
         
     }
+    
+    func hasChangeData() -> Bool {
+        if let data  = self.userData as? [String:AnyObject] {
+            let email = data["goldsaving_member"]?["email"]as? String ?? ""
+            let citizen_id = data["goldsaving_member"]?["citizen_id"]as? String ?? ""
+            let laser_id = data["goldsaving_member"]?["laser_id"]as? String ?? ""
+            let last_name = data["goldsaving_member"]?["lastname"]as? String ?? ""
+            let first_name = data["goldsaving_member"]?["firstname"] as? String ?? ""
+            
+            if self.firstNameTextField.text != first_name || (self.idCardPhoto != nil) {
+                return true
+            }
+            if self.lastNameTextField.text != last_name || (self.idCardPhoto != nil)  {
+                return true
+            }
+            if self.laserIdTextField.text?.replace(target: "-", withString: "") != laser_id || (self.idCardPhoto != nil)  {
+                return true
+            }
+            if self.idcardTextField.text?.replace(target: "-", withString: "") != citizen_id || (self.idCardPhoto != nil)  {
+                return true
+            }
+            if self.birthdateTextField.text != self.currentBirthdate || (self.idCardPhoto != nil)  {
+                return true
+            }
+            if self.emailTextField.text != email || (self.idCardPhoto != nil) {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+    
    override func textFieldDidBeginEditing(_ textField: UITextField) {
         super.textFieldDidBeginEditing(textField)
         self.addColorLineView(textField)

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ChangePasswordViewController: BaseViewController {
 
@@ -22,6 +23,10 @@ class ChangePasswordViewController: BaseViewController {
     var comfirmIsClose:Bool = false
     var newPsssIsClose:Bool = false
     var currentPsssIsClose:Bool = false
+    
+    var errorOldPasswordLabel:UILabel?
+    var errorNewPasswordLabel:UILabel?
+    var errorConfirmNewPasswordLabel:UILabel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,5 +109,106 @@ class ChangePasswordViewController: BaseViewController {
         }
     }
     @IBAction func confirmTapped(_ sender: Any) {
+        let old_password = self.passwordTextField.text!
+        let new_password = self.newPasswordTextField.text!
+        let confirm_new_password = self.confirmNewPasswordTextField.text!
+        
+        var errorEmpty = 0
+        var emptyMessage = ""
+        
+        self.errorOldPasswordLabel?.removeFromSuperview()
+        self.errorNewPasswordLabel?.removeFromSuperview()
+        self.errorConfirmNewPasswordLabel?.removeFromSuperview()
+        
+        if confirm_new_password.isEmpty {
+            emptyMessage = NSLocalizedString("string-error-empty-confirm-pwd", comment: "")
+            self.errorConfirmNewPasswordLabel =  self.confirmNewPasswordTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
+            errorEmpty += 1
+            
+        }
+        if new_password.isEmpty {
+            emptyMessage = NSLocalizedString("string-error-empty-pwd", comment: "")
+            self.errorNewPasswordLabel =  self.newPasswordTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
+            errorEmpty += 1
+            
+        }
+        if old_password.isEmpty {
+            emptyMessage = NSLocalizedString("string-error-empty-old-pwd", comment: "")
+            self.errorOldPasswordLabel =  self.passwordTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
+            errorEmpty += 1
+            
+        }
+        
+       
+        if errorEmpty > 0 {
+            self.showMessagePrompt(NSLocalizedString("string-error-empty-fill", comment: ""))
+            return
+        }
+        
+        if !validPassword(old_password) {
+            self.errorOldPasswordLabel =  self.passwordTextField.addBottomLabelErrorMessage(NSLocalizedString("string-error-invalid-pwd", comment: ""), marginLeft: 0 )
+            
+            return
+            
+        }
+        
+        guard validatePassword(new_password, confirm_new_password) else { return }
+        print(" matching password  ")
+        
+        
+        let params:Parameters = ["old_password": old_password,
+                                 "new_password" : new_password]
+
+        self.modelCtrl.changePassword(params: params, succeeded: { (result) in
+            print(result)
+            
+            self.showMessagePrompt2(NSLocalizedString("string-change-password-success", comment: ""), okCallback: {
+                if let security = self.navigationController?.viewControllers[1] as? SecuritySettingViewController {
+                    self.navigationController?.popToViewController(security, animated: false)
+                }
+            })
+
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                print(mError)
+                let message = mError["message"] as? String ?? ""
+
+                self.handlerMessageError(message , title: "")
+            }
+        }, failure: { (messageError) in
+            self.handlerMessageError(messageError , title: "")
+        })
+       
+        
+    }
+    
+    func validatePassword(_ password:String, _ confirmPassword:String) ->Bool{
+        var errorPassowrd = 0
+        var errorMessagePassword = ""
+        if !validPassword(confirmPassword){
+            errorMessagePassword = NSLocalizedString("string-error-invalid-confirm-pwd", comment: "")
+            self.errorConfirmNewPasswordLabel =  self.confirmNewPasswordTextField.addBottomLabelErrorMessage(errorMessagePassword, marginLeft: 0 )
+            errorPassowrd += 1
+        }
+        if !validPassword(password) {
+            errorMessagePassword = NSLocalizedString("string-error-invalid-pwd", comment: "")
+            self.errorNewPasswordLabel =  self.newPasswordTextField.addBottomLabelErrorMessage(errorMessagePassword, marginLeft: 0 )
+            errorPassowrd += 1
+        }
+        if errorPassowrd > 0 {
+            self.showMessagePrompt(errorMessagePassword)
+            return false
+        }
+        
+        if password != confirmPassword {
+            let errorMissmatch = NSLocalizedString("string-error-mismatch-pwd", comment: "")
+            self.showMessagePrompt(errorMissmatch)
+            self.errorConfirmNewPasswordLabel =  self.confirmNewPasswordTextField.addBottomLabelErrorMessage(errorMissmatch, marginLeft: 0 )
+            
+            return false
+        }
+        
+        
+        return true
     }
 }

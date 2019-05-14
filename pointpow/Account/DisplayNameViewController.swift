@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class DisplayNameViewController: BaseViewController {
     @IBOutlet weak var confirmButton: UIButton!
@@ -108,7 +109,30 @@ class DisplayNameViewController: BaseViewController {
             return
         }
         
-        //update
+        //post displayname
+        let params:Parameters = ["display_name"  : displayName]
+        
+        self.modelCtrl.memberSetting(params: params, true, succeeded: { (result) in
+            print(result)
+            self.showMessagePrompt2(NSLocalizedString("string-message-success-change-displayname", comment: ""), okCallback: {
+                if let profile = self.navigationController?.viewControllers[1] as? ProfileViewController {
+                    self.navigationController?.popToViewController(profile, animated: false)
+                }
+            })
+            
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                self.showMessagePrompt(message)
+            }
+            
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            
+        }
     }
     
 }

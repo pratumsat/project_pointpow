@@ -305,35 +305,34 @@ static NSTimeInterval AnimationDuration = 0.3;
     resendOTPButton.hidden = YES;
 
     
-    if(_lockPin){
-        failedAttemptsLabel.text = _lockPinMessage;
-        forgotLabel.hidden = YES;
-        promptLabel.hidden = YES;
-        UIFont *font = [UIFont fontWithName:@"Courier" size:0];
-        for (int i=0;i<6;i++) {
-            _digitLabels[i].font = font;
-            _digitLabels[i].text = BulletCharacter;
-        }
-    }else{
-        forgotLabel.hidden = NO;
-        promptLabel.hidden = NO;
-    }
-   
-    
-    
     switch (_action) {
         case PasscodeActionSet:
         forgotLabel.hidden = YES;
         break;
         
         case PasscodeActionEnter:
-        forgotLabel.hidden = NO;
+            if(_lockPin){
+                failedAttemptsLabel.text = _lockPinMessage;
+                forgotLabel.hidden = YES;
+                promptLabel.hidden = YES;
+                UIFont *font = [UIFont fontWithName:@"Courier" size:0];
+                for (int i=0;i<6;i++) {
+                    _digitLabels[i].font = font;
+                    _digitLabels[i].text = BulletCharacter;
+                }
+            }else{
+                forgotLabel.hidden = NO;
+                promptLabel.hidden = NO;
+            }
+        
         break;
         
         case PasscodeActionChange:
-        forgotLabel.hidden = YES;
         break;
     }
+    
+   
+    
     
     self.view = view;
     [self.view setNeedsUpdateConstraints];

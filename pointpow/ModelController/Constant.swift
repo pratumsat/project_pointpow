@@ -704,6 +704,8 @@ struct Constant {
         static let addBackgroundImageProfile = "\(HOST)\(POINTPOW_VERSION1)member/upload-background-image"
         static let memberAddress = "\(HOST)\(POINTPOW_VERSION1)member/address"
         
+        static let changePassword = "\(HOST)\(POINTPOW_VERSION1)member/change-password"
+        
         static let changeMobile = "\(HOST)\(POINTPOW_VERSION1)member/change-mobile-number"
         static let verifyOTPNewMobileNumber  = "\(HOST)\(POINTPOW_VERSION1)member/verify-change-mobile-number"
         

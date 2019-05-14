@@ -395,12 +395,34 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
-    func showPrivacyPolicy(_ animated:Bool){
-        if let vc:PrivacyPolicyViewController = self.storyboard?.instantiateViewController(withIdentifier: "PrivacyPolicyViewController") as? PrivacyPolicyViewController {
+    func showTermAndConGold(_ animated:Bool){
+        if let vc:TermPointSavingViewController = self.storyboard?.instantiateViewController(withIdentifier: "TermPointSavingViewController") as? TermPointSavingViewController {
             
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
+    
+    func showPrivacyPolicyPointPow(_ animated:Bool){
+        if let vc:PrivacyPolicyPointPowViewController = self.storyboard?.instantiateViewController(withIdentifier: "PrivacyPolicyPointPowViewController") as? PrivacyPolicyPointPowViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    func showTermAndConPointPow(_ animated:Bool){
+        if let vc:TermPointPowViewController = self.storyboard?.instantiateViewController(withIdentifier: "TermPointPowViewController") as? TermPointPowViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    
+    func showAboutPointPow(_ animated:Bool){
+        if let vc:AboutPointPowViewController = self.storyboard?.instantiateViewController(withIdentifier: "AboutPointPowViewController") as? AboutPointPowViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    
+    
     
     func showPromotionDetail(_ id:String, _ animated:Bool){
         if let vc:PromotionDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "PromotionDetailViewController") as? PromotionDetailViewController {
@@ -461,6 +483,13 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     
     func showProfileView(_ animated:Bool){
         if let vc:ProfileViewController = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    
+    func showAboutView(_ animated:Bool){
+        if let vc:AboutViewController = self.storyboard?.instantiateViewController(withIdentifier: "AboutViewController") as? AboutViewController {
             
             self.navigationController?.pushViewController(vc, animated: animated)
         }
@@ -528,9 +557,10 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
-    func showPPWebView(_ animated:Bool){
+    func showPPWebView(_ title:String, url:String, _ animated:Bool){
         if let vc:PPWebViewController  = self.storyboard?.instantiateViewController(withIdentifier: "PPWebViewController") as? PPWebViewController {
-            
+            vc.mTitle = title
+            vc.mUrl = url
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }

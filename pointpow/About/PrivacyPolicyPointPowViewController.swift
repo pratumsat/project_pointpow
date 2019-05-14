@@ -1,22 +1,21 @@
 //
-//  PrivacyPolicyViewController.swift
+//  PrivacyPolicyPointPowViewController.swift
 //  pointpow
 //
-//  Created by thanawat on 25/2/2562 BE.
+//  Created by thanawat on 14/5/2562 BE.
 //  Copyright © 2562 abcpoint. All rights reserved.
 //
 
 import UIKit
 
-class PrivacyPolicyViewController: BaseViewController {
+class PrivacyPolicyPointPowViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "PrivacyPolicyViewController"
+        self.title = NSLocalizedString("string-item-about-privacy", comment: "")
         self.backgroundImage?.image = nil
     }
-    
     
 
     /*

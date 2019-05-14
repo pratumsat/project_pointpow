@@ -37,13 +37,20 @@ class PointLimitViewController: BaseViewController {
         if let point = self.pointlimit {
             self.pointlimitTextField.text = point
         }
-      
     }
+   
     
     @IBAction func saveTapped(_ sender: Any) {
         let point = self.pointlimitTextField.text!
         
-        
+        if isValidNumber(point) {
+            let point = Double(point)!
+            if point < 100 {
+                self.showMessagePrompt(NSLocalizedString("string-dailog-limit-point-min", comment: ""))
+                return
+            }
+            
+        }
         let params:Parameters = ["limit_pay"  : point]
         
         self.modelCtrl.memberSetting(params: params, true, succeeded: { (result) in
@@ -62,7 +69,7 @@ class PointLimitViewController: BaseViewController {
             if let mError = error as? [String:AnyObject]{
                 let message = mError["message"] as? String ?? ""
                 print(message)
-                //self.showMessagePrompt(message)
+                self.showMessagePrompt(message)
             }
             self.refreshControl?.endRefreshing()
             print(error)

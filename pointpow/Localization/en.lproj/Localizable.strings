@@ -9,6 +9,7 @@
 /*Title*/
 
 "title-map-office" = "แผนที่บริษัท Point Power";
+"string-title-about-pointpow" = "เกี่ยวกับ Point Pow";
 "string-title-point-limit" = "Point จำกัดต่อวัน";
 "string-title-promotion" = "โปรโมชั่น";
 "string-title-transection" = "รายการ";
@@ -99,6 +100,9 @@
 "string-dailog-saving-point-pointspend-empty"= "กรุณาใส่จำนวนพ้อย";
 "string-dailog-saving-point-pointspend-min"= "สะสมพ้อยท์ได้ตั้งแต่ 100 Point Pow ขึ้นไป";
 
+"string-dailog-limit-point-min"= "จำกัดต่อวันตั้งแต่ 100 Point Pow ขึ้นไป";
+
+
 "string-dailog-saving-gold-amount-empty" = "กรุณาใส่จำนวนทองคำ";
 
 "string-dailog-saving-gold-pointspend-not-enogh" = "คุณมีทองคำไม่เพียงพอ สำหรับทำรายการนี้";
@@ -114,6 +118,8 @@
 "string-register-pincode-success" = "สร้างบัญชีผู้ใช้สำเร็จ";
 "string-set-pincode-success" = "ตั้งค่า PIN Code สำเร็จ";
 "string-button-ok" = "ตกลง";
+
+"string-change-password-success" = "เปลี่ยนรหัสผ่านเรียบร้อย";
 
 /* ResultPointTransfer*/
 "string-point-result-success" = "โอนพ้อยท์สำเร็จ";
@@ -177,6 +183,12 @@
 "string-item-setting" = "การตั้งค่า";
 "string-item-favorite" = "รายการโปรด";
 
+/*About*/
+"string-item-about-faq" = "คำถามที่พบบ่อย";
+"string-item-about-pointpow" = "เกี่ยวกับ Point Pow";
+"string-item-about-privacy" = "นโยบายความเป็นส่วนตัว";
+"string-item-about-term" = "ข้อกำหนดและเงื่อนไข";
+"string-item-about-howto" = "วิธีการใช้งาน";
 
 /*Profile*/
 "string-item-profile-change-pin" = "เปลี่ยน PIN Code";
@@ -203,6 +215,7 @@
 "string-message-success-change-mobile" = "คุณสามารถลงชื่อเข้าใช้\nด้วยเบอร์ใหม่ได้แล้ว";
 "string-message-success-change-point-limit" = "บันทึกเรียบร้อย";
 "string-message-success-change-profile-infomation" = "บันทึกเรียบร้อย";
+"string-message-success-change-displayname" = "บันทึกเรียบร้อย";
 
 "alert-title-language" = "ภาษา";
 "alert-message-already-language" = "ภาษาปัจจุบันคือภาษา ";
@@ -273,6 +286,11 @@
 "string-error-otp"  = "รหัส OTP ไม่ถูกต้อง กรุณาใส่ใหม่อีกครั้ง";
 "string-error-otp-empty"  = "กรุณาใส่รหัส OTP";
 
+"string-error-empty-old-pwd" = "กรุณาใส่รหัสผ่าน";
+"string-error-empty-new-pwd" = "กรุณาใส่รหัสผ่านใหม่";
+"string-error-empty-confirm-new-pwd" = "กรุณาใส่ยืนยันรหัสผ่านใหม่";
+"string-error-pwd-not-match" = "รหัสผ่านไม่ตรงกัน";
+
 
 "string-error-invalid-personal-id" = "เลขบัตรประชาชนไม่ถูกต้อง";
 "string-error-invalid-personal-id1" = "เลขบัตรประชาชนไม่ครบ 13 หลัก";
@@ -307,6 +325,10 @@
 "string-error-empty-display-name" = "กรุณาใส่ Display Name";
 
 "string-error-empty-fill" = "กรุณาใส่ข้อมูลให้ครบ";
+
+
+
+
 
 /*error*/
 "error-connect-server-cri" = "ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้, กรุณาตรวจสอบสัญญาณอินเทอร์เน็ตของท่านเพื่อเชื่อมต่ออีกครั้ง";

@@ -88,12 +88,21 @@
 		C121B32D224C802D00D69B56 /* PopUpInfoLaserIdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C121B32C224C802D00D69B56 /* PopUpInfoLaserIdViewController.swift */; };
 		C121FB4B22853B2100043387 /* VerifyMobileNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C121FB4A22853B2100043387 /* VerifyMobileNumberViewController.swift */; };
 		C121FB4D22854E5100043387 /* PointLimitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C121FB4C22854E5100043387 /* PointLimitViewController.swift */; };
+		C121FB4F228A640700043387 /* NotificationStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = C121FB4E228A640700043387 /* NotificationStruct.swift */; };
+		C121FB51228A641D00043387 /* NotificationStructHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C121FB50228A641D00043387 /* NotificationStructHolder.swift */; };
+		C121FB54228A652F00043387 /* NotificationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C121FB53228A652F00043387 /* NotificationTableViewController.swift */; };
+		C121FB58228A66C100043387 /* HeaderViewDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C121FB56228A66C100043387 /* HeaderViewDateTableViewCell.swift */; };
+		C121FB59228A66C100043387 /* HeaderViewDateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C121FB57228A66C100043387 /* HeaderViewDateTableViewCell.xib */; };
+		C121FB5C228A815F00043387 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C121FB5B228A815F00043387 /* AboutViewController.swift */; };
+		C121FB5E228AC37D00043387 /* PrivacyPolicyPointPowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C121FB5D228AC37D00043387 /* PrivacyPolicyPointPowViewController.swift */; };
+		C121FB60228AC39500043387 /* TermPointPowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C121FB5F228AC39500043387 /* TermPointPowViewController.swift */; };
+		C121FB62228AC67500043387 /* TermPointSavingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C121FB61228AC67500043387 /* TermPointSavingViewController.swift */; };
+		C121FB64228ACC5500043387 /* AboutPointPowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C121FB63228ACC5500043387 /* AboutPointPowViewController.swift */; };
 		C1247C5122191898005D6F7A /* WithdrawCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1247C4F22191898005D6F7A /* WithdrawCell.swift */; };
 		C1247C5222191898005D6F7A /* WithdrawCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1247C5022191898005D6F7A /* WithdrawCell.xib */; };
 		C1247C542219B126005D6F7A /* PopupGoldPremiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1247C532219B126005D6F7A /* PopupGoldPremiumViewController.swift */; };
 		C1247C572219B2E7005D6F7A /* NextButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1247C552219B2E7005D6F7A /* NextButtonCell.swift */; };
 		C1247C582219B2E7005D6F7A /* NextButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1247C562219B2E7005D6F7A /* NextButtonCell.xib */; };
-		C1249EB22223F71D00F56FA0 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1249EB12223F71C00F56FA0 /* PrivacyPolicyViewController.swift */; };
 		C1249EB42224E2CD00F56FA0 /* PopUpMapOfficeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1249EB32224E2CD00F56FA0 /* PopUpMapOfficeViewController.swift */; };
 		C1249EB72224EE0900F56FA0 /* WebViewMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1249EB62224EE0900F56FA0 /* WebViewMapViewController.swift */; };
 		C1249EB92224F03900F56FA0 /* map.html in Resources */ = {isa = PBXBuildFile; fileRef = C1249EB82224F03900F56FA0 /* map.html */; };
@@ -339,12 +348,21 @@
 		C121B32C224C802D00D69B56 /* PopUpInfoLaserIdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpInfoLaserIdViewController.swift; sourceTree = "<group>"; };
 		C121FB4A22853B2100043387 /* VerifyMobileNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyMobileNumberViewController.swift; sourceTree = "<group>"; };
 		C121FB4C22854E5100043387 /* PointLimitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointLimitViewController.swift; sourceTree = "<group>"; };
+		C121FB4E228A640700043387 /* NotificationStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationStruct.swift; sourceTree = "<group>"; };
+		C121FB50228A641D00043387 /* NotificationStructHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationStructHolder.swift; sourceTree = "<group>"; };
+		C121FB53228A652F00043387 /* NotificationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewController.swift; sourceTree = "<group>"; };
+		C121FB56228A66C100043387 /* HeaderViewDateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewDateTableViewCell.swift; sourceTree = "<group>"; };
+		C121FB57228A66C100043387 /* HeaderViewDateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderViewDateTableViewCell.xib; sourceTree = "<group>"; };
+		C121FB5B228A815F00043387 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		C121FB5D228AC37D00043387 /* PrivacyPolicyPointPowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyPointPowViewController.swift; sourceTree = "<group>"; };
+		C121FB5F228AC39500043387 /* TermPointPowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermPointPowViewController.swift; sourceTree = "<group>"; };
+		C121FB61228AC67500043387 /* TermPointSavingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermPointSavingViewController.swift; sourceTree = "<group>"; };
+		C121FB63228ACC5500043387 /* AboutPointPowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPointPowViewController.swift; sourceTree = "<group>"; };
 		C1247C4F22191898005D6F7A /* WithdrawCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawCell.swift; sourceTree = "<group>"; };
 		C1247C5022191898005D6F7A /* WithdrawCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithdrawCell.xib; sourceTree = "<group>"; };
 		C1247C532219B126005D6F7A /* PopupGoldPremiumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupGoldPremiumViewController.swift; sourceTree = "<group>"; };
 		C1247C552219B2E7005D6F7A /* NextButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButtonCell.swift; sourceTree = "<group>"; };
 		C1247C562219B2E7005D6F7A /* NextButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NextButtonCell.xib; sourceTree = "<group>"; };
-		C1249EB12223F71C00F56FA0 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
 		C1249EB32224E2CD00F56FA0 /* PopUpMapOfficeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpMapOfficeViewController.swift; sourceTree = "<group>"; };
 		C1249EB62224EE0900F56FA0 /* WebViewMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewMapViewController.swift; sourceTree = "<group>"; };
 		C1249EB82224F03900F56FA0 /* map.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = map.html; sourceTree = "<group>"; };
@@ -555,9 +573,9 @@
 				C18A1CE322113712002CAF4C /* RegisterGoldstep3ViewController.swift */,
 				C103113B2212C932004396E0 /* GoldPendingVerifyViewController.swift */,
 				C103113E2212CBAC004396E0 /* GoldPenddingVerifyNav.swift */,
-				C1249EB12223F71C00F56FA0 /* PrivacyPolicyViewController.swift */,
 				C127323322530CA100A9EE74 /* GoldEditPenddingViewController.swift */,
 				C127323522530CF700A9EE74 /* GoldEditPenddingNav.swift */,
+				C121FB61228AC67500043387 /* TermPointSavingViewController.swift */,
 			);
 			path = GoldRegister;
 			sourceTree = "<group>";
@@ -737,6 +755,7 @@
 		C10D94AE220960790083FA47 /* TableCell */ = {
 			isa = PBXGroup;
 			children = (
+				C121FB55228A66B100043387 /* noti */,
 				C10D94AF220960940083FA47 /* NameTableViewCell.swift */,
 				C10D94B0220960940083FA47 /* NameTableViewCell.xib */,
 				C181F068220D8566003F7C70 /* ProfileTableViewCell.swift */,
@@ -829,6 +848,34 @@
 			path = AccountCell;
 			sourceTree = "<group>";
 		};
+		C121FB52228A651B00043387 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				C121FB53228A652F00043387 /* NotificationTableViewController.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		C121FB55228A66B100043387 /* noti */ = {
+			isa = PBXGroup;
+			children = (
+				C121FB56228A66C100043387 /* HeaderViewDateTableViewCell.swift */,
+				C121FB57228A66C100043387 /* HeaderViewDateTableViewCell.xib */,
+			);
+			path = noti;
+			sourceTree = "<group>";
+		};
+		C121FB5A228A813B00043387 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				C121FB5B228A815F00043387 /* AboutViewController.swift */,
+				C121FB5D228AC37D00043387 /* PrivacyPolicyPointPowViewController.swift */,
+				C121FB5F228AC39500043387 /* TermPointPowViewController.swift */,
+				C121FB63228ACC5500043387 /* AboutPointPowViewController.swift */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
 		C1249EB52224EDF900F56FA0 /* MapOffice */ = {
 			isa = PBXGroup;
 			children = (
@@ -907,6 +954,8 @@
 			isa = PBXGroup;
 			children = (
 				C1892E13221E9CCC00F5412F /* GoldHistory.swift */,
+				C121FB4E228A640700043387 /* NotificationStruct.swift */,
+				C121FB50228A641D00043387 /* NotificationStructHolder.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -968,11 +1017,13 @@
 		C1AD50782187F45600F74415 /* pointpow */ = {
 			isa = PBXGroup;
 			children = (
+				C121FB52228A651B00043387 /* Notification */,
 				C10CA1A5219185A000316DF3 /* Passcode */,
 				C197FF2422081C3F002F24E8 /* Gold */,
 				C10CA19E21914B7A00316DF3 /* Point */,
 				C11A93BA218C20B600627B44 /* Authen */,
 				C10CA19B21914B0700316DF3 /* Account */,
+				C121FB5A228A813B00043387 /* About */,
 				C10CA19821914AE300316DF3 /* Transaction */,
 				C10CA19521914AC600316DF3 /* Promotion */,
 				C10CA19221914A2800316DF3 /* Home */,
@@ -1358,6 +1409,7 @@
 				C13D998621997938001A4794 /* LogoutCell.xib in Resources */,
 				C1273240225380D500A9EE74 /* PickerLuckyDrawCell.xib in Resources */,
 				C197FF3322083A6F002F24E8 /* GoldPriceCell.xib in Resources */,
+				C121FB59228A66C100043387 /* HeaderViewDateTableViewCell.xib in Resources */,
 				C1F760FA2216998C000A2CA9 /* SavingSummaryCell.xib in Resources */,
 				C197FF3F22093D9B002F24E8 /* RegisterGoldCell.xib in Resources */,
 			);
@@ -1525,11 +1577,13 @@
 				C127323C2253671C00A9EE74 /* WinnerLuckyDrawViewController.swift in Sources */,
 				C121FB4B22853B2100043387 /* VerifyMobileNumberViewController.swift in Sources */,
 				C1249EB42224E2CD00F56FA0 /* PopUpMapOfficeViewController.swift in Sources */,
+				C121FB54228A652F00043387 /* NotificationTableViewController.swift in Sources */,
 				C1817D99219C041F009507DB /* PointTransferViewController.swift in Sources */,
 				C11BFCA4221BC5D900F066DE /* GoldWithDrawChooseShippingViewController.swift in Sources */,
 				C197FF2A22082503002F24E8 /* GoldProfileViewController.swift in Sources */,
 				C197FEDE21DC8E98002F24E8 /* ResetNav.swift in Sources */,
 				C1B32E372251EAE9006AD7F2 /* LuckyDrawViewController.swift in Sources */,
+				C121FB64228ACC5500043387 /* AboutPointPowViewController.swift in Sources */,
 				C1F760FD22169B6D000A2CA9 /* ConfirmButtonCell.swift in Sources */,
 				C1B32E392251EB37006AD7F2 /* NavLuckyDraw.swift in Sources */,
 				C10D94AD22095EA20083FA47 /* GoldMenuTableViewController.swift in Sources */,
@@ -1552,6 +1606,8 @@
 				C10CA1BE219429D500316DF3 /* ImageCell.swift in Sources */,
 				C115FA5521A2A40F008E7844 /* PointFriendTransferViewController.swift in Sources */,
 				C169FFC821C4F10100F9D354 /* FavorCell.swift in Sources */,
+				C121FB60228AC39500043387 /* TermPointPowViewController.swift in Sources */,
+				C121FB5C228A815F00043387 /* AboutViewController.swift in Sources */,
 				C1247C5122191898005D6F7A /* WithdrawCell.swift in Sources */,
 				C1AD50A92187F7B500F74415 /* BaseViewController.swift in Sources */,
 				C11BDFB821A2B95D00443D2D /* ItemFriendSummaryCell.swift in Sources */,
@@ -1562,6 +1618,7 @@
 				C11A93C4218FF3E200627B44 /* VerifyViewController.swift in Sources */,
 				C1AD50B52187FF4000F74415 /* Loading.swift in Sources */,
 				C1817D9D219C07DF009507DB /* ItemBankCell.swift in Sources */,
+				C121FB58228A66C100043387 /* HeaderViewDateTableViewCell.swift in Sources */,
 				C181F066220C0392003F7C70 /* GoldHistoryViewController.swift in Sources */,
 				C127324B2254584400A9EE74 /* WinnerHistoryLinkCell.swift in Sources */,
 				C10CA1B12193E01200316DF3 /* ItemServiceCell.swift in Sources */,
@@ -1571,7 +1628,6 @@
 				C10D94B1220960940083FA47 /* NameTableViewCell.swift in Sources */,
 				C103113C2212C932004396E0 /* GoldPendingVerifyViewController.swift in Sources */,
 				C12CCC612281590C00F26DCC /* PersonalDataViewController.swift in Sources */,
-				C1249EB22223F71D00F56FA0 /* PrivacyPolicyViewController.swift in Sources */,
 				C1892E03221CFCD500F5412F /* WithDrawResultNav.swift in Sources */,
 				C1247C542219B126005D6F7A /* PopupGoldPremiumViewController.swift in Sources */,
 				C121FB4D22854E5100043387 /* PointLimitViewController.swift in Sources */,
@@ -1600,8 +1656,10 @@
 				C11A93AE218BF67F00627B44 /* IntroNav.swift in Sources */,
 				C1B542DD219ABE9A0040DDE6 /* SettingViewController.swift in Sources */,
 				C1F761052216C261000A2CA9 /* SavingResultCell.swift in Sources */,
+				C121FB51228A641D00043387 /* NotificationStructHolder.swift in Sources */,
 				C10CA1B92193E1D100316DF3 /* PromotionCampainCell.swift in Sources */,
 				C1892E14221E9CCC00F5412F /* GoldHistory.swift in Sources */,
+				C121FB4F228A640700043387 /* NotificationStruct.swift in Sources */,
 				C106BEB2220BED4E00E2331E /* BrowseImageCell.swift in Sources */,
 				C11A93B7218C00C800627B44 /* IntroCell1.swift in Sources */,
 				C1247C572219B2E7005D6F7A /* NextButtonCell.swift in Sources */,
@@ -1609,6 +1667,7 @@
 				C1892E08221D0ED300F5412F /* WithDrawResultPointPowCell.swift in Sources */,
 				C197FF3622083AA6002F24E8 /* MyGoldCell.swift in Sources */,
 				C197FF3222083A6F002F24E8 /* GoldPriceCell.swift in Sources */,
+				C121FB5E228AC37D00043387 /* PrivacyPolicyPointPowViewController.swift in Sources */,
 				C120D7CE21955BB500F9EEBB /* ProfileCell.swift in Sources */,
 				C107CF30222157E900C50B8C /* WithDrawSummaryOfficeViewController.swift in Sources */,
 				C10CA1AC219298C500316DF3 /* EmptyViewController.swift in Sources */,
@@ -1630,6 +1689,7 @@
 				C1249EBD22378DBB00F56FA0 /* PopupEditAddressViewController.swift in Sources */,
 				C1DA27C722421C3B000C0715 /* WithDrawResultThaiPostSuccessCell.swift in Sources */,
 				C13D998A21997AD6001A4794 /* HeadCell.swift in Sources */,
+				C121FB62228AC67500043387 /* TermPointSavingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

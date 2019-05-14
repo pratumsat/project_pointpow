@@ -16,7 +16,7 @@ class RegisterGoldstep2ViewController: BaseViewController ,UIImagePickerControll
     @IBOutlet weak var step3Label: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var checkBox: CheckBox!
-    @IBOutlet weak var privacyPolicyLabel: UILabel!
+    @IBOutlet weak var termLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
     
     @IBOutlet weak var uploadView: UIView!
@@ -79,9 +79,9 @@ class RegisterGoldstep2ViewController: BaseViewController ,UIImagePickerControll
         self.step1Label.addGestureRecognizer(back)
         
         
-        let privacyPolicy = UITapGestureRecognizer(target: self, action: #selector(privacyPolicyTapped))
-        self.privacyPolicyLabel.isUserInteractionEnabled =  true
-        self.privacyPolicyLabel.addGestureRecognizer(privacyPolicy)
+        let term = UITapGestureRecognizer(target: self, action: #selector(termTapped))
+        self.termLabel.isUserInteractionEnabled =  true
+        self.termLabel.addGestureRecognizer(term)
         
         if let tp = self.tupleModel {
             if tp.image != nil{
@@ -119,8 +119,8 @@ class RegisterGoldstep2ViewController: BaseViewController ,UIImagePickerControll
         
       
     }
-    @objc func privacyPolicyTapped(){
-        self.showPrivacyPolicy(true)
+    @objc func termTapped(){
+        self.showTermAndConGold(true)
     }
     
     @objc func backToStep1Tapped(){

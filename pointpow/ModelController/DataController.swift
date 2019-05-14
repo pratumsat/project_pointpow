@@ -140,55 +140,55 @@ class DataController {
     
     func getVersion() -> String {
         let dictionary = Bundle.main.infoDictionary!
-        let version = dictionary["CFBundleShortVersionString"] as! String
+        let version = dictionary["CFBundleShortVersionString"] as? String ?? "Unknown"
         //let build = dictionary["CFBundleVersion"] as! String
         return version
     }
     
     
     
-//    func saveNotifiacationArrayOfObjectData(newNoti: NotificationStruct){
-//
-//        var myObject:NotificationStructHolder
-//        if let  cacheVersion = getNotificationArrayOfObjectData() {
-//            myObject = cacheVersion
-//        }else{
-//            myObject = NotificationStructHolder()
-//        }
-//
-//        myObject.addToArray(item: newNoti)
-//
-//        let arrrayOfObjectData = NSKeyedArchiver.archivedData(withRootObject: myObject)
-//        UserDefaults.standard.set(arrrayOfObjectData, forKey: Constanst.CacheNotification.NAME_CACHE)
-//        UserDefaults.standard.synchronize()
-//
-//    }
-//
-//    func saveNewArraysStructHolder(arrayOfObjectData:[NotificationStruct]? = nil) {
-//        if arrayOfObjectData == nil{
-//            return
-//        }
-//        let  myObject = NotificationStructHolder()
-//        myObject.setArray(array: (arrayOfObjectData!.reversed()))
-//
-//        let arrrayOfObjectData = NSKeyedArchiver.archivedData(withRootObject: myObject)
-//        UserDefaults.standard.set(arrrayOfObjectData, forKey: Constanst.CacheNotification.NAME_CACHE)
-//        UserDefaults.standard.synchronize()
-//    }
-//    func getNotificationArrayOfObjectData() -> NotificationStructHolder? {
-//        //check nil
-//        if nil == UserDefaults.standard.object(forKey: Constanst.CacheNotification.NAME_CACHE){
-//            return nil
-//        }
-//        guard let cacheVersion:NotificationStructHolder = NSKeyedUnarchiver.unarchiveObject(with: UserDefaults.standard.object(forKey: Constanst.CacheNotification.NAME_CACHE) as! Data)  as? NotificationStructHolder
-//            else{
-//                return nil
-//        }
-//        return cacheVersion
-//    }
-//    func clearNotificationArrayOfObjectData() {
-//        UserDefaults.standard.set(nil, forKey: Constanst.CacheNotification.NAME_CACHE)
-//        UserDefaults.standard.synchronize()
-//    }
+    func saveNotifiacationArrayOfObjectData(newNoti: NotificationStruct){
+
+        var myObject:NotificationStructHolder
+        if let  cacheVersion = getNotificationArrayOfObjectData() {
+            myObject = cacheVersion
+        }else{
+            myObject = NotificationStructHolder()
+        }
+
+        myObject.addToArray(item: newNoti)
+
+        let arrrayOfObjectData = NSKeyedArchiver.archivedData(withRootObject: myObject)
+        UserDefaults.standard.set(arrrayOfObjectData, forKey: Constant.CacheNotification.NAME_CACHE)
+        UserDefaults.standard.synchronize()
+
+    }
+
+    func saveNewArraysStructHolder(arrayOfObjectData:[NotificationStruct]? = nil) {
+        if arrayOfObjectData == nil{
+            return
+        }
+        let  myObject = NotificationStructHolder()
+        myObject.setArray(array: (arrayOfObjectData!.reversed()))
+
+        let arrrayOfObjectData = NSKeyedArchiver.archivedData(withRootObject: myObject)
+        UserDefaults.standard.set(arrrayOfObjectData, forKey: Constant.CacheNotification.NAME_CACHE)
+        UserDefaults.standard.synchronize()
+    }
+    func getNotificationArrayOfObjectData() -> NotificationStructHolder? {
+        //check nil
+        if nil == UserDefaults.standard.object(forKey: Constant.CacheNotification.NAME_CACHE){
+            return nil
+        }
+        guard let cacheVersion:NotificationStructHolder = NSKeyedUnarchiver.unarchiveObject(with: UserDefaults.standard.object(forKey: Constant.CacheNotification.NAME_CACHE) as! Data)  as? NotificationStructHolder
+            else{
+                return nil
+        }
+        return cacheVersion
+    }
+    func clearNotificationArrayOfObjectData() {
+        UserDefaults.standard.set(nil, forKey: Constant.CacheNotification.NAME_CACHE)
+        UserDefaults.standard.synchronize()
+    }
     
 }

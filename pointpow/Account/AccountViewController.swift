@@ -12,7 +12,7 @@ import  Alamofire
 
 class AccountViewController: BaseViewController , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    let sizeArray = 9
+    let sizeArray = 7
     var picker:UIImagePickerController?
     
     var chooseProfile = false
@@ -201,37 +201,30 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
                     item.nameLabel.text = NSLocalizedString("string-item-history", comment: "")
                     item.name2Label.text = NSLocalizedString("string-item-history2", comment: "")
                 case 1:
-                    item.itemImageView.image = UIImage(named: "ic-account-bill")
-                    item.nameLabel.text = NSLocalizedString("string-item-bill", comment: "")
+                    item.itemImageView.image = UIImage(named: "ic-account-profile")
+                    item.nameLabel.text = NSLocalizedString("string-item-profile", comment: "")
                     item.name2Label.text = ""
                 case 2:
-                    item.itemImageView.image = UIImage(named: "ic-account-ticket")
-                    item.nameLabel.text = NSLocalizedString("string-item-ticket", comment: "")
-                    item.name2Label.text = ""
-                case 3:
                     item.itemImageView.image = UIImage(named: "ic-account-qr")
                     item.nameLabel.text = NSLocalizedString("string-item-qr", comment: "")
                     item.name2Label.text = ""
+                case 3:
+                    item.itemImageView.image = UIImage(named: "ic-account-fav")
+                    item.nameLabel.text = NSLocalizedString("string-item-favorite", comment: "")
+                    item.name2Label.text = ""
                 case 4:
-                    item.itemImageView.image = UIImage(named: "ic-account-profile")
-                    item.nameLabel.text = NSLocalizedString("string-item-profile", comment: "")
+                    item.itemImageView.image = UIImage(named: "ic-account-setting")
+                    item.nameLabel.text = NSLocalizedString("string-item-setting", comment: "")
                     item.name2Label.text = ""
                 case 5:
                     item.itemImageView.image = UIImage(named: "ic-account-secue-setting")
                     item.nameLabel.text = NSLocalizedString("string-item-security-setting", comment: "")
                     item.name2Label.text = ""
                 case 6:
-                    item.itemImageView.image = UIImage(named: "ic-account-fav")
-                    item.nameLabel.text = NSLocalizedString("string-item-favorite", comment: "")
-                    item.name2Label.text = ""
-                case 7:
-                    item.itemImageView.image = UIImage(named: "ic-account-setting")
-                    item.nameLabel.text = NSLocalizedString("string-item-setting", comment: "")
-                    item.name2Label.text = ""
-                case 8:
                     item.itemImageView.image = UIImage(named: "ic-account-about")
                     item.nameLabel.text = NSLocalizedString("string-item-about", comment: "")
                     item.name2Label.text = NSLocalizedString("string-item-about2", comment: "")
+               
                 default:
                     break
                     
@@ -279,18 +272,32 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 1{
-            if indexPath.row == 4 {
+            
+            if indexPath.row == 0 {
+                //history
+            }
+            if indexPath.row == 1 {
                 self.showProfileView(true)
+            }
+            if indexPath.row == 2 {
+                //qr
+            }
+            if indexPath.row == 3 {
+                self.showFavoriteView(true)
+            }
+            if indexPath.row == 4 {
+                self.showSettingView(true)
             }
             if indexPath.row == 5  {
                 self.showSecuritySettingView(true)
+                
             }
             if indexPath.row == 6 {
-                self.showFavoriteView(true)
+                self.showAboutView(true)
             }
-            if indexPath.row == 7 {
-                self.showSettingView(true)
-            }
+            
+           
+            
             
         }
     }

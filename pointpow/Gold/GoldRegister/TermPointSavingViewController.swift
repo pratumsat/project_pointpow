@@ -1,24 +1,20 @@
 //
-//  PPWebViewController.swift
+//  TermPointSavingViewController.swift
 //  pointpow
 //
-//  Created by thanawat on 16/11/2561 BE.
-//  Copyright © 2561 abcpoint. All rights reserved.
+//  Created by thanawat on 14/5/2562 BE.
+//  Copyright © 2562 abcpoint. All rights reserved.
 //
 
 import UIKit
 
-class PPWebViewController: BaseViewController {
+class TermPointSavingViewController: BaseViewController {
 
-    var mTitle:String?
-    var mUrl:String?
-    
-    @IBOutlet weak var mWeb: UIWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = mTitle
-        // Do any additional setup after loading the view.
+        self.title = "Term&Condition Gold"
+        self.backgroundImage?.image = nil
     }
     
 

@@ -213,11 +213,9 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
                         limitpoint_perday = data["limit_pay"] as? NSNumber ?? 0
                     }
                     if !mobile.isEmpty {
-                        mobile = mobile.substring(start: 0, end: 6)
-                        mobile += "xxxx"
+                        mobile = mobile.substring(start: 0, end: 7)
+                        mobile += "xxx"
                     }
-                    
-                    
                     
                     
                     if indexPath.row == 0{

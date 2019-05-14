@@ -92,9 +92,7 @@ class PointTransferViewController: BaseViewController , UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
      
-        if indexPath.row == 0 {
-            self.showPPWebView(true)
-        }else if indexPath.row == 6 {
+        if indexPath.row == 6 {
             self.showBankTransferView(true)
         }
     }

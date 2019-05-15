@@ -101,6 +101,10 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         self.notificationImageView.isUserInteractionEnabled = true
         self.notificationImageView.addGestureRecognizer(bell)
         
+        let bell2 = UITapGestureRecognizer(target: self, action: #selector(tapToNotification))
+        self.notiView.isUserInteractionEnabled = true
+        self.notiView.addGestureRecognizer(bell2)
+        
         
         if DataController.sharedInstance.isLogin() {
             self.getUserInfo({

@@ -28,6 +28,8 @@ class TransactionViewController: BaseViewController {
         var detail = ""
         var ref_id = "120101010"
         var amount = "3000"
+        var gold_unit = ""
+        var gold_amount = ""
         var date = "15-05-2562 11:22"
         
         var newNotiModel = NotificationStruct(id: id,
@@ -38,7 +40,9 @@ class TransactionViewController: BaseViewController {
                                               ref_id: ref_id,
                                               amount:amount,
                                               date:date,
-                                              transfer_from:transfer_from)
+                                              transfer_from:transfer_from,
+                                              gold_unit:gold_unit,
+                                              gold_amount:gold_amount)
         
         DataController.sharedInstance.saveNotifiacationArrayOfObjectData(newNoti: newNotiModel)
         
@@ -50,6 +54,8 @@ class TransactionViewController: BaseViewController {
          detail = "Point Pow ช่วยจ่ายเพิ่ม 70% Point Pow ช่วยจ่ายเพิ่ม 70%"
          ref_id = "2222233322"
          amount = ""
+         gold_unit = ""
+         gold_amount = ""
          date = "14-05-2562 14:22"
         
          newNotiModel = NotificationStruct(id: id,
@@ -60,7 +66,35 @@ class TransactionViewController: BaseViewController {
                                               ref_id: ref_id,
                                               amount:amount,
                                               date:date,
-                                              transfer_from:transfer_from)
+                                              transfer_from:transfer_from,
+                                              gold_unit:gold_unit,
+                                              gold_amount:gold_amount)
+        
+        DataController.sharedInstance.saveNotifiacationArrayOfObjectData(newNoti: newNotiModel)
+        
+        id = "3"
+        image_url = ""
+        type = "gold"
+        transfer_from = ""
+        title = "รับทองคำเรียบร้อย"
+        detail = ""
+        ref_id = "33233322"
+        amount = ""
+        gold_unit = "salueng"
+        gold_amount = "4"
+        date = "13-05-2562 14:22"
+        
+        newNotiModel = NotificationStruct(id: id,
+                                          image_url: image_url,
+                                          title: title,
+                                          detail: detail,
+                                          type: type ,
+                                          ref_id: ref_id,
+                                          amount:amount,
+                                          date:date,
+                                          transfer_from:transfer_from,
+                                          gold_unit:gold_unit,
+                                          gold_amount:gold_amount)
         
         DataController.sharedInstance.saveNotifiacationArrayOfObjectData(newNoti: newNotiModel)
     }

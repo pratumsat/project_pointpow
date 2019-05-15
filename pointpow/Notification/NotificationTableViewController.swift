@@ -53,12 +53,13 @@ class NotificationTableViewController: BaseViewController, UITableViewDelegate, 
         self.tableView.backgroundView = view
     }
     func setupView(){
-        //self.tableView.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: 0, right: 0);
+        self.tableView.contentInset = UIEdgeInsets(top: -16, left: 0, bottom: -16, right: 0);
+        self.tableView.sectionHeaderHeight = 0;
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.separatorStyle = .none
         
-        self.registerTableViewNib(self.tableView, "HeaderViewDateTableViewCell")
+        //self.registerTableViewNib(self.tableView, "HeaderViewDateTableViewCell")
         self.registerTableViewNib(self.tableView, "NotificationTableViewCell")
         self.registerTableViewNib(self.tableView, "NotificationAdvertiesCell")
         
@@ -87,17 +88,35 @@ class NotificationTableViewController: BaseViewController, UITableViewDelegate, 
         if objects[indexPath.section].type.lowercased()  == "transfer"  {
             return 130
         }else if objects[indexPath.section].type.lowercased()  == "adverties" {
-            return 150
+            let width = tableView.frame.width - 50
+            let heightImage = (width)/950*300
+            let height = heightImage + 140
+            return height
+            
         }else if objects[indexPath.section].type.lowercased()  == "gold" {
             return 150
         }else{
             return 0
         }
     }
- 
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20.0
-    }
+//
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        if section == 0 {
+//            return 0
+//        }
+//        return 0
+//    }
+//
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//
+//        let headerCell:HeaderViewDateTableViewCell = tableView.dequeueReusableCell(withIdentifier: "HeaderViewDateTableViewCell") as! HeaderViewDateTableViewCell
+//
+//
+//        return headerCell
+//
+//    }
+    
+
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.arrayOfObjectData?.count ?? 0
@@ -127,7 +146,11 @@ class NotificationTableViewController: BaseViewController, UITableViewDelegate, 
                 }
                 
             }else if objects[indexPath.section].type.lowercased()  == "gold"  {
-                
+                //if gold_unit.lowercased() == "salueng" {
+                //    transCell.unitLabel.text = NSLocalizedString("unit-salueng", comment: "")
+                //}else{
+                //    transCell.unitLabel.text = NSLocalizedString("unit-baht", comment: "")
+                //}
             }
             
         }
@@ -140,14 +163,6 @@ class NotificationTableViewController: BaseViewController, UITableViewDelegate, 
     }
     
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-
-        let headerCell:HeaderViewDateTableViewCell = tableView.dequeueReusableCell(withIdentifier: "HeaderViewDateTableViewCell") as! HeaderViewDateTableViewCell
-        headerCell.separatorInset = UIEdgeInsets.zero
-        headerCell.selectionStyle = .none
-        return headerCell
-
-    }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true

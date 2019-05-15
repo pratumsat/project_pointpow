@@ -20,8 +20,10 @@ class NotificationStruct:NSObject, NSCoding {
     var amount = ""
     var date = ""
     var transfer_from = ""
+    var gold_unit = ""
+    var gold_amount = ""
     
-    init(id:String, image_url:String , title:String, detail:String, type:String , ref_id:String, amount:String, date:String, transfer_from:String) {
+    init(id:String, image_url:String , title:String, detail:String, type:String , ref_id:String, amount:String, date:String, transfer_from:String, gold_unit:String, gold_amount:String) {
         self.id = id
         self.image_url = image_url
         self.title = title
@@ -31,6 +33,8 @@ class NotificationStruct:NSObject, NSCoding {
         self.amount = amount
         self.date = date
         self.transfer_from = transfer_from
+        self.gold_unit = gold_unit
+        self.gold_amount = gold_amount
         
     }
     
@@ -45,6 +49,8 @@ class NotificationStruct:NSObject, NSCoding {
         self.amount = decoder.decodeObject(forKey: "amount") as? String ?? ""
         self.date = decoder.decodeObject(forKey: "date") as? String ?? ""
         self.transfer_from = decoder.decodeObject(forKey: "transfer_from") as? String ?? ""
+        self.gold_unit = decoder.decodeObject(forKey: "gold_unit") as? String ?? ""
+        self.gold_amount = decoder.decodeObject(forKey: "gold_amount") as? String ?? ""
         super.init()
     }
     
@@ -58,6 +64,8 @@ class NotificationStruct:NSObject, NSCoding {
         coder.encode(self.amount, forKey: "amount")
         coder.encode(self.date, forKey: "date")
         coder.encode(self.transfer_from, forKey: "transfer_from")
+        coder.encode(self.gold_unit, forKey: "gold_unit")
+        coder.encode(self.gold_amount, forKey: "gold_amount")
         
         
     }

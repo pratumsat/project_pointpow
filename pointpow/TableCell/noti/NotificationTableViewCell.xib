@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="ThaiSansNeue-Bold.ttf">
+            <string>ThaiSansNeue-Bold</string>
+        </array>
+        <array key="ThaiSansNeue-Regular.ttf">
+            <string>ThaiSansNeue-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NotificationTableViewCell" rowHeight="156" id="KGk-i7-Jjw" customClass="NotificationTableViewCell" customModule="pointpow" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="365" height="156"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="365" height="155.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ii8-xL-zDs">
+                        <rect key="frame" x="10" y="0.0" width="345" height="155.5"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fAo-so-N2j">
+                                <rect key="frame" x="20" y="0.0" width="325" height="155.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EXP-Vw-00Z">
+                                <rect key="frame" x="10" y="0.0" width="325" height="155.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.40000000000000002" green="0.70196078431372544" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="EXP-Vw-00Z" secondAttribute="bottom" id="5IF-83-MYl"/>
+                            <constraint firstItem="EXP-Vw-00Z" firstAttribute="top" secondItem="Ii8-xL-zDs" secondAttribute="top" id="ET3-Hz-KN7"/>
+                            <constraint firstAttribute="trailing" secondItem="fAo-so-N2j" secondAttribute="trailing" id="Lnb-PO-Xh3"/>
+                            <constraint firstItem="EXP-Vw-00Z" firstAttribute="leading" secondItem="Ii8-xL-zDs" secondAttribute="leading" constant="10" id="N1u-fB-3PO"/>
+                            <constraint firstItem="fAo-so-N2j" firstAttribute="top" secondItem="Ii8-xL-zDs" secondAttribute="top" id="SE7-aL-GGE"/>
+                            <constraint firstAttribute="trailing" secondItem="EXP-Vw-00Z" secondAttribute="trailing" constant="10" id="eyv-2x-Paz"/>
+                            <constraint firstItem="fAo-so-N2j" firstAttribute="leading" secondItem="Ii8-xL-zDs" secondAttribute="leading" constant="20" id="hNu-dp-v7m"/>
+                            <constraint firstAttribute="bottom" secondItem="fAo-so-N2j" secondAttribute="bottom" id="mqK-cU-JTV"/>
+                        </constraints>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-notification-transfer" translatesAutoresizingMaskIntoConstraints="NO" id="OMD-Je-wO9">
+                        <rect key="frame" x="30" y="10" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="J8F-x4-Etr"/>
+                            <constraint firstAttribute="width" secondItem="OMD-Je-wO9" secondAttribute="height" multiplier="1:1" id="Xdc-Zy-IMR"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="โอนพ้อยท์มา Point Pow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ju2-3J-PUw">
+                        <rect key="frame" x="65" y="10" width="134" height="23.5"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 วันที่แล้ว" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rxy-9D-A0d">
+                        <rect key="frame" x="300" y="12" width="45" height="20"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="15"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="โอนจาก :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8X-mh-ADI">
+                        <rect key="frame" x="30" y="45" width="44" height="21"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="16"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="จำนวน Point Pow :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RCT-Mv-eTP">
+                        <rect key="frame" x="30" y="66" width="93" height="21"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="16"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,000 Point Pow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJh-1Y-pr7">
+                        <rect key="frame" x="133" y="66" width="80" height="21"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="16"/>
+                        <color key="textColor" red="0.40000000000000002" green="0.70196078429999997" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KTC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i0D-Bc-WEh">
+                        <rect key="frame" x="84" y="45" width="19" height="21"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="16"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15-05-2562 10:12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XZr-hA-Tbg">
+                        <rect key="frame" x="30" y="125.5" width="74" height="20"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="15"/>
+                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                <constraints>
+                    <constraint firstItem="g8X-mh-ADI" firstAttribute="leading" secondItem="OMD-Je-wO9" secondAttribute="leading" id="4FJ-Xh-rt5"/>
+                    <constraint firstItem="wJh-1Y-pr7" firstAttribute="centerY" secondItem="RCT-Mv-eTP" secondAttribute="centerY" id="4HC-Yg-n4O"/>
+                    <constraint firstItem="ju2-3J-PUw" firstAttribute="leading" secondItem="OMD-Je-wO9" secondAttribute="trailing" constant="10" id="67N-Oz-2e9"/>
+                    <constraint firstItem="i0D-Bc-WEh" firstAttribute="centerY" secondItem="g8X-mh-ADI" secondAttribute="centerY" id="7JJ-Gg-Xqh"/>
+                    <constraint firstItem="XZr-hA-Tbg" firstAttribute="leading" secondItem="RCT-Mv-eTP" secondAttribute="leading" id="7NQ-Hb-zU1"/>
+                    <constraint firstAttribute="bottom" secondItem="Ii8-xL-zDs" secondAttribute="bottom" id="CfF-71-Cpw"/>
+                    <constraint firstItem="OMD-Je-wO9" firstAttribute="leading" secondItem="Ii8-xL-zDs" secondAttribute="leading" constant="20" id="Efp-9X-475"/>
+                    <constraint firstItem="i0D-Bc-WEh" firstAttribute="leading" secondItem="g8X-mh-ADI" secondAttribute="trailing" constant="10" id="Ks1-tq-Fqp"/>
+                    <constraint firstItem="wJh-1Y-pr7" firstAttribute="leading" secondItem="RCT-Mv-eTP" secondAttribute="trailing" constant="10" id="NWT-cX-dcH"/>
+                    <constraint firstItem="RCT-Mv-eTP" firstAttribute="top" secondItem="g8X-mh-ADI" secondAttribute="bottom" id="OuV-sN-kl7"/>
+                    <constraint firstItem="Rxy-9D-A0d" firstAttribute="trailing" secondItem="EXP-Vw-00Z" secondAttribute="trailing" id="ZrC-sW-KNw"/>
+                    <constraint firstItem="Ii8-xL-zDs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="acE-z2-BX9"/>
+                    <constraint firstItem="OMD-Je-wO9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="d5e-G7-2gP"/>
+                    <constraint firstItem="Rxy-9D-A0d" firstAttribute="centerY" secondItem="ju2-3J-PUw" secondAttribute="centerY" id="fO3-hZ-oqf"/>
+                    <constraint firstItem="ju2-3J-PUw" firstAttribute="top" secondItem="OMD-Je-wO9" secondAttribute="top" id="gwV-sH-zP8"/>
+                    <constraint firstItem="RCT-Mv-eTP" firstAttribute="leading" secondItem="g8X-mh-ADI" secondAttribute="leading" id="np9-D6-iXS"/>
+                    <constraint firstItem="Ii8-xL-zDs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="rfE-or-wpl"/>
+                    <constraint firstAttribute="bottom" secondItem="XZr-hA-Tbg" secondAttribute="bottom" constant="10" id="rxW-yx-PeU"/>
+                    <constraint firstItem="g8X-mh-ADI" firstAttribute="top" secondItem="OMD-Je-wO9" secondAttribute="bottom" constant="10" id="wIn-cq-1Oc"/>
+                    <constraint firstAttribute="trailing" secondItem="Ii8-xL-zDs" secondAttribute="trailing" constant="10" id="zOm-8j-f2o"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="mView" destination="Ii8-xL-zDs" id="jyM-oy-ryU"/>
+                <outlet property="topMView" destination="fAo-so-N2j" id="RRQ-NM-Rfx"/>
+            </connections>
+            <point key="canvasLocation" x="56.799999999999997" y="50.374812593703155"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic-notification-transfer" width="100" height="100"/>
+    </resources>
+</document>

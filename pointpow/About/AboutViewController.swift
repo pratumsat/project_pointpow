@@ -51,19 +51,20 @@ class AboutViewController: BaseViewController  , UICollectionViewDelegate , UICo
             cell = itemCell
           
             if indexPath.row == 0 {
-                itemCell.nameLabel.text = NSLocalizedString("string-item-about-faq", comment: "")
-                itemCell.trailLabel.text = ""
-                
-            }else if indexPath.row == 1{
                 itemCell.nameLabel.text = NSLocalizedString("string-item-about-pointpow", comment: "")
                 itemCell.trailLabel.text = ""
                 
-            }else if indexPath.row == 2{
+            }else if indexPath.row == 1{
                 itemCell.nameLabel.text = NSLocalizedString("string-item-about-term", comment: "")
                 itemCell.trailLabel.text = ""
                 
-            }else if indexPath.row == 3{
+            }else if indexPath.row == 2{
                 itemCell.nameLabel.text = NSLocalizedString("string-item-about-privacy", comment: "")
+                
+                itemCell.trailLabel.text = ""
+                
+            }else if indexPath.row == 3{
+                itemCell.nameLabel.text = NSLocalizedString("string-item-about-faq", comment: "")
                 itemCell.trailLabel.text = ""
                 
             }else if indexPath.row == 4{
@@ -86,20 +87,23 @@ class AboutViewController: BaseViewController  , UICollectionViewDelegate , UICo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            let title = NSLocalizedString("string-item-about-faq", comment: "")
-            self.showPPWebView(title, url: "", true)
-        }else if indexPath.row == 1{
             self.showAboutPointPow(true)
             
-        }else if indexPath.row == 2{
+        }else if indexPath.row == 1{
             self.showTermAndConPointPow(true)
             
-        }else if indexPath.row == 3{
+        }else if indexPath.row == 2{
             self.showPrivacyPolicyPointPow(true)
+            
+        }else if indexPath.row == 3{
+            let title = NSLocalizedString("string-item-about-faq", comment: "")
+            self.showPPWebView(title, url: "", true)
             
         }else if indexPath.row == 4{
             let title = NSLocalizedString("string-item-about-howto", comment: "")
             self.showPPWebView(title, url: "", true)
+            
+           
         }
     }
     

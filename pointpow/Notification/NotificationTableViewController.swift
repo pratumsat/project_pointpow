@@ -17,10 +17,18 @@ class NotificationTableViewController: BaseViewController, UITableViewDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = NSLocalizedString("nav-notification-title", comment: "")
         
         let editButton = UIBarButtonItem(image: UIImage(named: "ic_trash"), style: .plain, target: self, action: #selector(editCell))
         
         navigationItem.rightBarButtonItem = editButton
+        
+       
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -28,14 +36,31 @@ class NotificationTableViewController: BaseViewController, UITableViewDelegate, 
         self.setupView()
     }
     
+    func addViewNotfoundData(){
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        var centerpoint = view.center
+        centerpoint.y -= self.view.frame.height*0.2
+        
+        let sorry = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 30))
+        sorry.center = centerpoint
+        sorry.textAlignment = .center
+        sorry.font = UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.CONTENT )
+        sorry.text = NSLocalizedString("string-not-found-item-transaction", comment: "")
+        sorry.textColor = UIColor.lightGray
+        view.addSubview(sorry)
+        
+        self.tableView.reloadData()
+        self.tableView.backgroundView = view
+    }
     func setupView(){
+        //self.tableView.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: 0, right: 0);
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.separatorStyle = .none
         
         self.registerTableViewNib(self.tableView, "HeaderViewDateTableViewCell")
-        //self.registerTableViewNib(self.tableView, "NotificationTableViewCell")
-        
+        self.registerTableViewNib(self.tableView, "NotificationTableViewCell")
+        self.registerTableViewNib(self.tableView, "NotificationAdvertiesCell")
         
         
         if let notiStructHolder = DataController.sharedInstance.getNotificationArrayOfObjectData(){
@@ -44,28 +69,34 @@ class NotificationTableViewController: BaseViewController, UITableViewDelegate, 
             let count = notiStructHolder.arrayNotification?.count ?? 0
             if count <= 0 {
                 print("not found notification data")
-                
+                self.addViewNotfoundData()
+            }else{
+                self.tableView.reloadData()
             }
         }else{
             print("not found notification data")
-            
+            self.addViewNotfoundData()
         }
+        
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard let objects = self.arrayOfObjectData else { return 0 }
         
         if objects[indexPath.section].type.lowercased()  == "transfer"  {
-            return 200
-        }else if objects[indexPath.section].type.lowercased()  == "news" {
-            return 400
+            return 130
+        }else if objects[indexPath.section].type.lowercased()  == "adverties" {
+            return 150
+        }else if objects[indexPath.section].type.lowercased()  == "gold" {
+            return 150
         }else{
             return 0
         }
     }
-    
+ 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50.0
+        return 20.0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -78,12 +109,30 @@ class NotificationTableViewController: BaseViewController, UITableViewDelegate, 
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell:UITableViewCell?
-//        if let objects = self.arrayOfObjectData  {
-//            if objects[indexPath.section].type.lowercased()  == "transfer"  {
-//
-//            }
-//
-//        }
+        if let objects = self.arrayOfObjectData  {
+            if objects[indexPath.section].type.lowercased()  == "transfer"  {
+                if let itemCell = tableView.dequeueReusableCell(withIdentifier: "NotificationTableViewCell", for: indexPath) as? NotificationTableViewCell{
+                    itemCell.selectionStyle = .none
+                    itemCell.separatorInset = UIEdgeInsets.zero
+                    
+                    cell = itemCell
+                }
+                
+            }else if objects[indexPath.section].type.lowercased()  == "adverties"  {
+                if let itemCell = tableView.dequeueReusableCell(withIdentifier: "NotificationAdvertiesCell", for: indexPath) as? NotificationAdvertiesCell{
+                    itemCell.selectionStyle = .none
+                    itemCell.separatorInset = UIEdgeInsets.zero
+                    
+                    cell = itemCell
+                }
+                
+            }else if objects[indexPath.section].type.lowercased()  == "gold"  {
+                
+            }
+            
+        }
+        
+        
         if cell == nil {
             cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         }
@@ -92,15 +141,12 @@ class NotificationTableViewController: BaseViewController, UITableViewDelegate, 
     
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        let headerCell:HeaderViewDateTableViewCell = tableView.dequeueReusableCell(withIdentifier: "HeaderViewDateTableViewCell") as! HeaderViewDateTableViewCell
 
-//        if let objects = self.arrayOfObjectData  {
-//            headerCell.headerLabel.text = "\(convertDateOfDay(objects[section].date))"
-//        }
-    
+        let headerCell:HeaderViewDateTableViewCell = tableView.dequeueReusableCell(withIdentifier: "HeaderViewDateTableViewCell") as! HeaderViewDateTableViewCell
+        headerCell.separatorInset = UIEdgeInsets.zero
+        headerCell.selectionStyle = .none
         return headerCell
-        
+
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -113,7 +159,14 @@ class NotificationTableViewController: BaseViewController, UITableViewDelegate, 
             self.arrayOfObjectData?.remove(at: indexPath.section)
             DataController.sharedInstance.saveNewArraysStructHolder(arrayOfObjectData: arrayOfObjectData)
             
-            tableView.reloadData()
+
+            let count = self.arrayOfObjectData?.count ?? 0
+            if count <= 0 {
+                print("not found notification data")
+                self.addViewNotfoundData()
+            }else{
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -125,6 +178,7 @@ class NotificationTableViewController: BaseViewController, UITableViewDelegate, 
             //
             //}
         //}
+        print(indexPath.row)
     }
     
     @objc func editCell(){

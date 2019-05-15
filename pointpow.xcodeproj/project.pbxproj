@@ -98,6 +98,10 @@
 		C121FB60228AC39500043387 /* TermPointPowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C121FB5F228AC39500043387 /* TermPointPowViewController.swift */; };
 		C121FB62228AC67500043387 /* TermPointSavingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C121FB61228AC67500043387 /* TermPointSavingViewController.swift */; };
 		C121FB64228ACC5500043387 /* AboutPointPowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C121FB63228ACC5500043387 /* AboutPointPowViewController.swift */; };
+		C121FB67228BE4AA00043387 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C121FB65228BE4A900043387 /* NotificationTableViewCell.swift */; };
+		C121FB68228BE4AA00043387 /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C121FB66228BE4A900043387 /* NotificationTableViewCell.xib */; };
+		C121FB6B228C19E500043387 /* NotificationAdvertiesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C121FB69228C19E500043387 /* NotificationAdvertiesCell.swift */; };
+		C121FB6C228C19E500043387 /* NotificationAdvertiesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C121FB6A228C19E500043387 /* NotificationAdvertiesCell.xib */; };
 		C1247C5122191898005D6F7A /* WithdrawCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1247C4F22191898005D6F7A /* WithdrawCell.swift */; };
 		C1247C5222191898005D6F7A /* WithdrawCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1247C5022191898005D6F7A /* WithdrawCell.xib */; };
 		C1247C542219B126005D6F7A /* PopupGoldPremiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1247C532219B126005D6F7A /* PopupGoldPremiumViewController.swift */; };
@@ -358,6 +362,10 @@
 		C121FB5F228AC39500043387 /* TermPointPowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermPointPowViewController.swift; sourceTree = "<group>"; };
 		C121FB61228AC67500043387 /* TermPointSavingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermPointSavingViewController.swift; sourceTree = "<group>"; };
 		C121FB63228ACC5500043387 /* AboutPointPowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPointPowViewController.swift; sourceTree = "<group>"; };
+		C121FB65228BE4A900043387 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
+		C121FB66228BE4A900043387 /* NotificationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationTableViewCell.xib; sourceTree = "<group>"; };
+		C121FB69228C19E500043387 /* NotificationAdvertiesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAdvertiesCell.swift; sourceTree = "<group>"; };
+		C121FB6A228C19E500043387 /* NotificationAdvertiesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationAdvertiesCell.xib; sourceTree = "<group>"; };
 		C1247C4F22191898005D6F7A /* WithdrawCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawCell.swift; sourceTree = "<group>"; };
 		C1247C5022191898005D6F7A /* WithdrawCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithdrawCell.xib; sourceTree = "<group>"; };
 		C1247C532219B126005D6F7A /* PopupGoldPremiumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupGoldPremiumViewController.swift; sourceTree = "<group>"; };
@@ -861,6 +869,10 @@
 			children = (
 				C121FB56228A66C100043387 /* HeaderViewDateTableViewCell.swift */,
 				C121FB57228A66C100043387 /* HeaderViewDateTableViewCell.xib */,
+				C121FB65228BE4A900043387 /* NotificationTableViewCell.swift */,
+				C121FB66228BE4A900043387 /* NotificationTableViewCell.xib */,
+				C121FB69228C19E500043387 /* NotificationAdvertiesCell.swift */,
+				C121FB6A228C19E500043387 /* NotificationAdvertiesCell.xib */,
 			);
 			path = noti;
 			sourceTree = "<group>";
@@ -1362,6 +1374,7 @@
 				C1892E09221D0ED400F5412F /* WithDrawResultPointPowCell.xib in Resources */,
 				C127324C2254584400A9EE74 /* WinnerHistoryLinkCell.xib in Resources */,
 				C1AD50842187F45900F74415 /* LaunchScreen.storyboard in Resources */,
+				C121FB6C228C19E500043387 /* NotificationAdvertiesCell.xib in Resources */,
 				C10CA1B22193E01200316DF3 /* ItemServiceCell.xib in Resources */,
 				C106BEB3220BED4E00E2331E /* BrowseImageCell.xib in Resources */,
 				C11BFCB0221BF70300F066DE /* WithDrawShippingThaiPostCell.xib in Resources */,
@@ -1384,6 +1397,7 @@
 				C1F760F6221692FD000A2CA9 /* SavingConfirmCell.xib in Resources */,
 				C107CF3422218FE400C50B8C /* WithDrawOfficeSummaryCell.xib in Resources */,
 				C10D94B2220960940083FA47 /* NameTableViewCell.xib in Resources */,
+				C121FB68228BE4AA00043387 /* NotificationTableViewCell.xib in Resources */,
 				C142741B21A553EE003CC246 /* ItemFavorCell.xib in Resources */,
 				C197FF3722083AA6002F24E8 /* MyGoldCell.xib in Resources */,
 				C1817DA2219C1934009507DB /* SwitchCell.xib in Resources */,
@@ -1551,6 +1565,7 @@
 				C1AD507C2187F45600F74415 /* ViewController.swift in Sources */,
 				C169FFC421C4D66600F9D354 /* FavoriteViewController.swift in Sources */,
 				C1249EC4223E6FC600F56FA0 /* WithDrawThaiPostSummaryCell.swift in Sources */,
+				C121FB67228BE4AA00043387 /* NotificationTableViewCell.swift in Sources */,
 				C11A93BC218C20C700627B44 /* LoginViewController.swift in Sources */,
 				C10D94BA220971B10083FA47 /* NavHistory.swift in Sources */,
 				C1AD50B22187FEE300F74415 /* ModelController.swift in Sources */,
@@ -1593,6 +1608,7 @@
 				C10CA1A8219185AB00316DF3 /* PAPasscodeViewController.m in Sources */,
 				C10D94BE220978B60083FA47 /* NavWithdraw.swift in Sources */,
 				C1E7B17D21AFCD7E00DA8B82 /* ResultTransferNav.swift in Sources */,
+				C121FB6B228C19E500043387 /* NotificationAdvertiesCell.swift in Sources */,
 				C11B740B21BF67F700D0E769 /* DataController.swift in Sources */,
 				C12CCC682282C7BF00F26DCC /* PromotionDetailViewController.swift in Sources */,
 				C10CA19D21914B1B00316DF3 /* AccountViewController.swift in Sources */,

@@ -121,9 +121,6 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
                     self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""), lockscreen: true)
                 }
             }
-            
-            
-            
         }
     }
     
@@ -160,7 +157,12 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         
         let nib = UINib(nibName: nibName, bundle: nil)
         tableTarget.register(nib, forCellReuseIdentifier: nibName)
+       
+    }
+    func registerTableViewHeaderNib(_ tableTarget:UITableView ,_ nibName:String){
         
+        let nib = UINib(nibName: nibName, bundle: nil)
+        tableTarget.register(nib, forHeaderFooterViewReuseIdentifier: nibName)
     }
     
     func registerNib(_ collecionTarget:UICollectionView ,_ nibName:String){
@@ -422,7 +424,12 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }
     }
     
-    
+    func showNotificationData(_ animated:Bool){
+        if let vc:NotificationTableViewController = self.storyboard?.instantiateViewController(withIdentifier: "NotificationTableViewController") as? NotificationTableViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
     
     func showPromotionDetail(_ id:String, _ animated:Bool){
         if let vc:PromotionDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "PromotionDetailViewController") as? PromotionDetailViewController {

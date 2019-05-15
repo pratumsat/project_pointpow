@@ -357,8 +357,8 @@ extension UIView {
         self.layer.masksToBounds = false
     }
   
-    func updateLayerCornerRadiusProperties(){
-        self.layer.cornerRadius = 10
+    func updateLayerCornerRadiusProperties(_ radius:CGFloat = 10){
+        self.layer.cornerRadius = radius
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.clear.cgColor
         self.layer.masksToBounds = true

@@ -10,7 +10,7 @@ import UIKit
 
 class HeaderViewDateTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var headerDateLabel: UILabel!
+   
     override func awakeFromNib() {
         super.awakeFromNib()
        

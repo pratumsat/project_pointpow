@@ -101,6 +101,7 @@ class RegisterViewController: BaseViewController {
     
     @objc func termTapped(){
         print("term and conftion")
+        self.showTermAndConPointPow(true)
     }
     
     func validateData(){

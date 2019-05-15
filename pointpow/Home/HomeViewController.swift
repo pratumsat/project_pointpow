@@ -13,6 +13,7 @@ import FirebaseMessaging
 class HomeViewController: BaseViewController, UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var notiView: UIView!
     
+    @IBOutlet weak var notificationImageView: UIImageView!
     @IBOutlet weak var pointBalanceLabel: UILabel!
     @IBOutlet weak var pointBalanceConstraintHeight: NSLayoutConstraint!
   
@@ -48,6 +49,8 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         let params:Parameters = ["device_token": fcmToken]
         self.modelCtrl.updateFCMToken(params: params, error: nil)
         
+        
+      
     }
    
     
@@ -93,6 +96,10 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapToPointBalance))
         self.pointBalanceLabel.isUserInteractionEnabled = true
         self.pointBalanceLabel.addGestureRecognizer(tap)
+        
+        let bell = UITapGestureRecognizer(target: self, action: #selector(tapToNotification))
+        self.notificationImageView.isUserInteractionEnabled = true
+        self.notificationImageView.addGestureRecognizer(bell)
         
         
         if DataController.sharedInstance.isLogin() {
@@ -313,7 +320,9 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
     @objc func tapToPointBalance(){
         self.showPointManagement(true)
     }
-    
+    @objc func tapToNotification(){
+        self.showNotificationData(true)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

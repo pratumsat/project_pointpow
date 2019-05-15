@@ -52,10 +52,11 @@ class PersonalDataViewController: BaseViewController {
         self.nextButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
         
     }
-    
+    override func showSplashLock(notification: NSNotification) {
+        //ignored
+    }
     func setUp(){
         self.hendleSetPasscodeSuccess = { (passcode, controller) in
-        
             
             let message = NSLocalizedString("string-register-pincode-success", comment: "")
             let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
@@ -129,6 +130,12 @@ class PersonalDataViewController: BaseViewController {
             }else{
                 self.clearImageView?.isHidden = false
             }
+            
+            if isValidName(string) {
+                return true
+            }else{
+                return false
+            }
         }
         if textField  == self.lastNameTextField {
             let startingLength = textField.text?.count ?? 0
@@ -142,6 +149,12 @@ class PersonalDataViewController: BaseViewController {
                 self.clearImageView2?.isHidden = true
             }else{
                 self.clearImageView2?.isHidden = false
+            }
+            
+            if isValidName(string) {
+                return true
+            }else{
+                return false
             }
         }
         if textField  == self.parsonalTextField {

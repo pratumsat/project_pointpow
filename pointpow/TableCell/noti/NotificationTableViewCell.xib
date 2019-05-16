@@ -58,13 +58,13 @@
                             <constraint firstAttribute="width" secondItem="OMD-Je-wO9" secondAttribute="height" multiplier="1:1" id="Xdc-Zy-IMR"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="โอนพ้อยท์มา Point Pow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ju2-3J-PUw">
-                        <rect key="frame" x="65" y="10" width="134" height="23.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="โอนพ้อยท์มา Point Pow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ju2-3J-PUw">
+                        <rect key="frame" x="65" y="10" width="225" height="23.5"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 วันที่แล้ว" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rxy-9D-A0d">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="2 วันที่แล้ว" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rxy-9D-A0d">
                         <rect key="frame" x="300" y="12" width="45" height="20"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="15"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -109,6 +109,7 @@
                     <constraint firstItem="i0D-Bc-WEh" firstAttribute="centerY" secondItem="g8X-mh-ADI" secondAttribute="centerY" id="7JJ-Gg-Xqh"/>
                     <constraint firstItem="XZr-hA-Tbg" firstAttribute="leading" secondItem="RCT-Mv-eTP" secondAttribute="leading" id="7NQ-Hb-zU1"/>
                     <constraint firstAttribute="bottom" secondItem="Ii8-xL-zDs" secondAttribute="bottom" id="CfF-71-Cpw"/>
+                    <constraint firstItem="Rxy-9D-A0d" firstAttribute="leading" secondItem="ju2-3J-PUw" secondAttribute="trailing" constant="10" id="CxW-Mb-3Ox"/>
                     <constraint firstItem="OMD-Je-wO9" firstAttribute="leading" secondItem="Ii8-xL-zDs" secondAttribute="leading" constant="20" id="Efp-9X-475"/>
                     <constraint firstItem="i0D-Bc-WEh" firstAttribute="leading" secondItem="g8X-mh-ADI" secondAttribute="trailing" constant="10" id="Ks1-tq-Fqp"/>
                     <constraint firstItem="wJh-1Y-pr7" firstAttribute="leading" secondItem="RCT-Mv-eTP" secondAttribute="trailing" constant="10" id="NWT-cX-dcH"/>
@@ -128,8 +129,13 @@
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="dateLabel" destination="XZr-hA-Tbg" id="zI2-vp-eSC"/>
                 <outlet property="mView" destination="Ii8-xL-zDs" id="jyM-oy-ryU"/>
+                <outlet property="pointAmountLabel" destination="wJh-1Y-pr7" id="vhU-l5-bhH"/>
+                <outlet property="timeAgoLabel" destination="Rxy-9D-A0d" id="U5G-Mj-rGD"/>
+                <outlet property="titleLabel" destination="ju2-3J-PUw" id="64s-Ij-EAV"/>
                 <outlet property="topMView" destination="fAo-so-N2j" id="RRQ-NM-Rfx"/>
+                <outlet property="transferFromLabel" destination="i0D-Bc-WEh" id="F84-td-hvx"/>
             </connections>
             <point key="canvasLocation" x="56.799999999999997" y="50.374812593703155"/>
         </tableViewCell>

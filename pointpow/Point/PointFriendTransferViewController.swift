@@ -17,6 +17,23 @@ class PointFriendTransferViewController: BaseViewController {
     @IBOutlet weak var friendImageView: UIImageView!
     @IBOutlet weak var myProfileImageView: UIImageView!
     @IBOutlet weak var amountTextField: UITextField!
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var nameFriendLabel: UILabel!
+    @IBOutlet weak var pointBalanceLabel: UILabel!
+    
+    @IBOutlet weak var ppIdFriendLabel: UILabel!
+    @IBOutlet weak var ppIdLabel: UILabel!
+    var userData:AnyObject?
+    
+    var friendModel:[String:AnyObject]?{
+        didSet{
+            print(friendModel)
+        }
+    }
+    let exchangeRate = 100
+    let minPointTransfer = 100.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,6 +65,17 @@ class PointFriendTransferViewController: BaseViewController {
         self.noteTextField.borderLightGrayColorProperties(borderWidth: 0.5)
         self.amountTextField.borderRedColorProperties(borderWidth: 1)
      
+     
+        let less = UITapGestureRecognizer(target: self, action: #selector(lessPointTapped))
+        self.lessImageView.isUserInteractionEnabled = true
+        self.lessImageView.addGestureRecognizer(less)
+        
+        
+        let more = UITapGestureRecognizer(target: self, action: #selector(morePointTapped))
+        self.moreImageView.isUserInteractionEnabled = true
+        self.moreImageView.addGestureRecognizer(more)
+        
+        
         self.amountTextField.delegate = self
         self.amountTextField.autocorrectionType = .no
         
@@ -55,9 +83,166 @@ class PointFriendTransferViewController: BaseViewController {
         self.noteTextField.delegate = self
         self.noteTextField.autocorrectionType = .no
         
+        if let modelFriend = self.friendModel {
+            let display_name = modelFriend["display_name"] as? String ?? ""
+            let first_name = modelFriend["first_name"] as? String ?? ""
+            let last_name = modelFriend["last_name"] as? String ?? ""
+            let mobile = modelFriend["mobile"] as? String ?? ""
+            let picture_data = modelFriend["picture_data"] as? String ?? ""
+            let pointpow_id = modelFriend["pointpow_id"] as? String ?? ""
+            
+            if let url = URL(string: picture_data) {
+                self.friendImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER))
+            }else{
+                self.friendImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER)
+            }
+            
+            if display_name.isEmpty {
+                self.nameFriendLabel.text = "\(first_name)"
+            }else{
+                self.nameFriendLabel.text = "\(display_name)"
+            }
+            self.ppIdFriendLabel.text = pointpow_id
+        }
         
+        //min transfer
+        self.amountTextField.text = "100"
+        self.disableImageView(lessImageView)
     }
-    @IBAction func toggle(_ sender: Any) {
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.getUserInfo()
+    }
+    
+    func getUserInfo(_ avaliable:(()->Void)?  = nil){
+        var isLoading:Bool = true
+        if self.userData != nil {
+            isLoading = false
+        }else{
+            isLoading = true
+        }
+        modelCtrl.getUserData(params: nil , isLoading , succeeded: { (result) in
+            self.userData = result
+            avaliable?()
+            if let userData = self.userData as? [String:AnyObject] {
+                let pointpowId = userData["pointpow_id"] as? String ?? ""
+                let pointBalance = userData["member_point"]?["total"] as? NSNumber ?? 0
+                let picture_data = userData["picture_data"] as? String ?? ""
+                let displayName = userData["display_name"] as? String ?? ""
+                let first_name = userData["first_name"] as? String ?? ""
+                let last_name = userData["last_name"] as? String ?? ""
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                numberFormatter.minimumFractionDigits = 2
+                
+                if let url = URL(string: picture_data) {
+                    self.myProfileImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER))
+                    
+                }else{
+                    self.myProfileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER)
+                }
+                self.ppIdLabel.text = pointpowId
+                self.pointBalanceLabel.text = numberFormatter.string(from: pointBalance )
+                
+                if displayName.isEmpty {
+                    self.nameLabel.text = "\(first_name)"
+                }else{
+                    self.nameLabel.text = "\(displayName)"
+                }
+                
+            }
+            self.refreshControl?.endRefreshing()
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                //self.showMessagePrompt(message)
+            }
+            self.refreshControl?.endRefreshing()
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            self.refreshControl?.endRefreshing()
+        }
+    }
+    
+    @objc func lessPointTapped() {
+        let updatedText = self.amountTextField.text!
+        
+        var amount = 0.0
+        if  (Double(updatedText) != nil) {
+            amount = Double(updatedText)!
+        }
+        amount -= Double(exchangeRate)
+        
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .none
+        numberFormatter.minimumFractionDigits = 0
+        
+        self.amountTextField.text = numberFormatter.string(from: NSNumber(value: amount))
+        
+        if amount <= minPointTransfer {
+            self.amountTextField.text = "100"
+            disableImageView(self.lessImageView)
+        }else{
+            enableImageView(self.lessImageView)
+        }
+        
+
+    }
+    @objc func morePointTapped() {
+        let updatedText = self.amountTextField.text!
+        
+        var amount = 0.0
+        if  (Double(updatedText) != nil) {
+           amount = Double(updatedText)!
+        }
+        
+        amount += Double(exchangeRate)
+        
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .none
+        numberFormatter.minimumFractionDigits = 0
+        
+        self.amountTextField.text = numberFormatter.string(from: NSNumber(value: amount))
+        
+        enableImageView(self.lessImageView)
+    }
+    
+    
+    func disableImageView(_ image:UIImageView){
+        //image.ovalColorClearProperties()
+        image.backgroundColor = UIColor.groupTableViewBackground
+        image.isUserInteractionEnabled = false
+    }
+    func enableImageView(_ image:UIImageView){
+        //image.ovalColorClearProperties()
+        image.backgroundColor = Constant.Colors.PRIMARY_COLOR
+        image.isUserInteractionEnabled = true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == self.amountTextField {
+            let textRange = Range(range, in: textField.text!)!
+            let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
+
+            
+            if  (Double(updatedText) != nil) {
+                let amount = Double(updatedText)!
+                if amount <= minPointTransfer {
+                    
+                    disableImageView(self.lessImageView)
+                   
+                }else{
+                    enableImageView(self.lessImageView)
+                }
+            }else{
+                //return false
+            }
+        }
+        return true
     }
     
     @IBAction func transferTapped(_ sender: Any) {

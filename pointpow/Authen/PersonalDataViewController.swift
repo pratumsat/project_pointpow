@@ -228,6 +228,22 @@ class PersonalDataViewController: BaseViewController {
         })
         
     }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        if textField == self.firstNameTextField {
+            self.lastNameTextField.becomeFirstResponder()
+        }
+        if textField == self.lastNameTextField {
+            self.parsonalTextField.becomeFirstResponder()
+        }
+        if textField == self.parsonalTextField {
+            self.emailTextField.becomeFirstResponder()
+        }
+    
+        
+        return true
+    }
     @IBAction func nextTapped(_ sender: Any) {
         
         errorLastnamelLabel?.removeFromSuperview()

@@ -30,7 +30,7 @@ class TransactionViewController: BaseViewController {
         var amount = "3000"
         var gold_unit = ""
         var gold_amount = ""
-        var date = "15-05-2562 11:22"
+        var date = "13-05-2562 11:22"
         
         var newNotiModel = NotificationStruct(id: id,
                                               image_url: image_url,
@@ -47,7 +47,7 @@ class TransactionViewController: BaseViewController {
         DataController.sharedInstance.saveNotifiacationArrayOfObjectData(newNoti: newNotiModel)
         
          id = "2"
-         image_url = ""
+         image_url = "http://www.eunittrust.com.my/Scripts/js/images/index/web-banner-New-web-promo.jpg"
          type = "adverties"
          transfer_from = ""
          title = "Point Pow ช่วยจ่ายเพิ่ม 70%"
@@ -82,7 +82,7 @@ class TransactionViewController: BaseViewController {
         amount = ""
         gold_unit = "salueng"
         gold_amount = "4"
-        date = "13-05-2562 14:22"
+        date = "16-05-2562 08:22"
         
         newNotiModel = NotificationStruct(id: id,
                                           image_url: image_url,

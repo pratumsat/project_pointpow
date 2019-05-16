@@ -115,6 +115,16 @@ class ResetPasswordViewController: BaseViewController {
             return true
         }
     }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        if textField == self.newPasswordTextField {
+            self.confirmNewPasswordTextField.becomeFirstResponder()
+        }
+       
+        
+        return true
+    }
     @IBAction func confirmTapped(_ sender: Any) {
         let password = self.newPasswordTextField.text!
         let confirmPassword = self.confirmNewPasswordTextField.text!

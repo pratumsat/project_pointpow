@@ -709,6 +709,9 @@ struct Constant {
         static let changeMobile = "\(HOST)\(POINTPOW_VERSION1)member/change-mobile-number"
         static let verifyOTPNewMobileNumber  = "\(HOST)\(POINTPOW_VERSION1)member/verify-change-mobile-number"
         
+        static let searchMember = "\(HOST)\(POINTPOW_VERSION1)member/transfer-point/search"
+        static let recentMemberTransfer = "\(HOST)\(POINTPOW_VERSION1)member/transfer-point/recent"
+        
         static let memberSetting = "\(HOST)\(POINTPOW_VERSION1)member/setting"
         static let setPinCode = "\(HOST)\(POINTPOW_VERSION1)member/set-pin"
         static let resetPinCode = "\(HOST)\(POINTPOW_VERSION1)member/set-reset-pin"
@@ -793,6 +796,8 @@ struct Constant {
             struct DefaultImaege{
                 static let PROFILE_PLACEHOLDER = "ic-gold-profile"
                 static let PROFILE_BACKGROUND_PLACEHOLDER = "bg-profile-image"
+                static let BANNER_PROMOTION_MOCK = "banner-mock1"
+                static let BANNER_HOME_MOCK = "banner-mock1"
         }
     }
     struct Colors {
@@ -1221,6 +1226,77 @@ func dateNow() -> String {
     
 }
 
+func timeAgoSinceDate(dateString:String, numericDates:Bool = false) -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.locale = Locale(identifier: "en")
+    dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
+    if let date = dateFormatter.date(from: convertDate(dateString)){
+        let calendar = NSCalendar.current
+        let unitFlags: Set<Calendar.Component> = [.minute, .hour, .day, .weekOfYear, .month, .year, .second]
+        let now = NSDate()
+        let earliest = now.earlierDate(date as Date)
+        let latest = (earliest == now as Date) ? date : now as Date
+        let components = calendar.dateComponents(unitFlags, from: earliest as Date,  to: latest as Date)
+        
+        if (components.year! >= 2) {
+            return "\(components.year!) \(NSLocalizedString("string-years-ago", comment: "years ago"))"
+        } else if (components.year! >= 1){
+            if (numericDates){
+                return "1 year ago"
+            } else {
+                return NSLocalizedString("string-last-year", comment: "Last year")
+            }
+        } else if (components.month! >= 2) {
+            return "\(components.month!) \(NSLocalizedString("string-months-ago", comment: "months ago"))"
+        } else if (components.month! >= 1){
+            if (numericDates){
+                return "1 month ago"
+            } else {
+                return NSLocalizedString("string-last-month", comment: "Last month")
+            }
+        } else if (components.weekOfYear! >= 2) {
+            return "\(components.weekOfYear!) \(NSLocalizedString("string-weeks-ago", comment: "weeks ago"))"
+        } else if (components.weekOfYear! >= 1){
+            if (numericDates){
+                return "1 week ago"
+            } else {
+                return NSLocalizedString("string-last-week", comment: "Last week")
+            }
+        } else if (components.day! >= 2) {
+            return "\(components.day!) \(NSLocalizedString("string-days-ago", comment: "days ago"))"
+        } else if (components.day! >= 1){
+            if (numericDates){
+                return "1 day ago"
+            } else {
+                return NSLocalizedString("string-yesterday", comment: "Yesterday")
+            }
+        } else if (components.hour! >= 2) {
+            return "\(components.hour!) \(NSLocalizedString("string-hours-ago", comment: "hours ago"))"
+        } else if (components.hour! >= 1){
+            if (numericDates){
+                return "1 hour ago"
+            } else {
+                return NSLocalizedString("string-hour-ago", comment: "An hour ago")
+            }
+        } else if (components.minute! >= 2) {
+            return "\(components.minute!) \(NSLocalizedString("string-minutes-ago", comment: "minute ago"))"
+        } else if (components.minute! >= 1){
+            if (numericDates){
+                return "1 minute ago"
+            } else {
+                return NSLocalizedString("string-min-ago", comment: "A minute ago")
+            }
+        } else if (components.second! >= 3) {
+            return "\(components.second!) \(NSLocalizedString("string-seconds-ago", comment: "seconds ago"))"
+        } else {
+            return NSLocalizedString("string-just-now", comment: "Just now")
+        }
+    }
+    
+    
+    return ""
+    
+}
 
 
 

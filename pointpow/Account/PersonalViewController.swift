@@ -119,7 +119,7 @@ class PersonalViewController: BaseViewController  {
             if let mError = error as? [String:AnyObject]{
                 let message = mError["message"] as? String ?? ""
                 print(message)
-                //self.showMessagePrompt(message)
+                self.showMessagePrompt(message)
             }
             self.refreshControl?.endRefreshing()
             print(error)
@@ -404,7 +404,24 @@ class PersonalViewController: BaseViewController  {
             self.clearImageView2?.isHidden = true
         })
     }
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        if textField == self.firstNameTextField {
+            self.lastNameTextField.becomeFirstResponder()
+        }
+        if textField == self.lastNameTextField {
+            self.parsonalTextField.becomeFirstResponder()
+        }
+        if textField == self.parsonalTextField {
+            self.emailTextField.becomeFirstResponder()
+        }
+        if textField == self.emailTextField {
+            self.birthdayTextField.becomeFirstResponder()
+        }
+        
+        return true
+    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1

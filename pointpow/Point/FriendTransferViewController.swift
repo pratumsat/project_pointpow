@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class FriendTransferViewController: BaseViewController, UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
@@ -14,21 +15,115 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
    
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var friendCollectionView: UICollectionView!
+    
+    var friendModel:[String:AnyObject]? {
+        didSet{
+            if friendModel == nil {
+                self.addViewNotfoundData()
+            }else{
+                self.friendCollectionView.backgroundView = nil
+            }
+        }
+    }
+    var recentFriend:[[String:AnyObject]]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         self.title = NSLocalizedString("string-title-freind-transfer", comment: "")
         
         let scanIcon = UIBarButtonItem(image: UIImage(named: "ic-qr-scan"), style: .plain, target: self, action: #selector(popupQRTapped))
-        
-        
         
         self.navigationItem.rightBarButtonItem = scanIcon
         
         
         self.setUp()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.getRecentFriend()
+    }
+    override func reloadData() {
+        self.getRecentFriend()
+    }
+    
+    func addViewNotfoundData(){
+        if self.friendModel != nil {
+            return
+        }
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        var centerpoint = view.center
+        centerpoint.y -= self.view.frame.height*0.2
+        
+        let sorry = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 30))
+        sorry.center = centerpoint
+        sorry.textAlignment = .center
+        sorry.font = UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.CONTENT )
+        sorry.text = NSLocalizedString("string-not-found-item-transfer-friend", comment: "")
+        sorry.textColor = UIColor.lightGray
+        view.addSubview(sorry)
+        
+        self.friendCollectionView.reloadData()
+        self.friendCollectionView.backgroundView = view
+    }
+    
+    func getRecentFriend(_ avaliable:(()->Void)?  = nil){
+        modelCtrl.recentFriendTransfer(params: nil , true , succeeded: { (result) in
+            avaliable?()
+            if let mResults = result as? [[String:AnyObject]] {
+                
+                if mResults.count <= 0 {
+                    self.addViewNotfoundData()
+                }else{
+                    self.recentFriend  = mResults
+                  
+                    self.friendCollectionView.reloadData()
+                }
+               
+            }
+           
+            self.refreshControl?.endRefreshing()
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                //self.showMessagePrompt(message)
+            }
+            self.refreshControl?.endRefreshing()
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            self.refreshControl?.endRefreshing()
+        }
+    }
+    
+    func searchBy(params:Parameters){
+        print(params)
+        self.modelCtrl.searchMember(params: params, succeeded: { (result) in
+            if let mResult = result as? [String:AnyObject]{
+                print(mResult)
+                
+                self.friendModel = mResult
+                self.friendCollectionView.reloadData()
+            }
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                print(mError)
+                if let mError = error as? [String:AnyObject]{
+                    let message = mError["message"] as? String ?? ""
+                    self.showMessagePrompt(message)
+                    self.friendModel = nil
+                    self.friendCollectionView.reloadData()
+                }
+            }
+        }, failure: { (messageError) in
+            self.handlerMessageError(messageError , title: "")
+            self.friendModel = nil
+            self.friendCollectionView.reloadData()
+        })
+    }
+    
     @objc func popupQRTapped(){
         self.showScanBarcodeForMember { (modelFriend, barcode) in
             
@@ -47,6 +142,13 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
     }
 
     func setUp(){
+        self.searchTextField.delegate = self
+        self.searchTextField.autocorrectionType = .no
+        
+        let search = UITapGestureRecognizer(target: self, action: #selector(searchFriendTapped))
+        self.searchView.isUserInteractionEnabled = true
+        self.searchView.addGestureRecognizer(search)
+        
         self.searchTextField.borderRedColorProperties(borderWidth: 1.0)
         self.searchTextField.setLeftPaddingPoints(20)
         self.searchTextField.setRightPaddingPoints(40)
@@ -56,12 +158,84 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
         self.backgroundImage?.image = nil
         self.friendCollectionView.backgroundColor = UIColor.white
         
+        self.addRefreshViewController(self.friendCollectionView)
+        
         self.friendCollectionView.delegate = self
         self.friendCollectionView.dataSource = self
         self.friendCollectionView.showsVerticalScrollIndicator = false
         
         self.registerNib(self.friendCollectionView, "ItemFriendCell")
         self.registerHeaderNib(self.friendCollectionView, "HeadCell")
+        
+        
+    }
+    
+    @objc func searchFriendTapped(){
+        let keyword = self.searchTextField.text!
+        self.searchFriend(keyword)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        let keyword = self.searchTextField.text!
+        self.searchFriend(keyword)
+        
+        return true
+    }
+    
+    
+    func searchFriend(_ keyword:String) {
+        print("keyword = \(keyword)")
+        if keyword.isEmpty {
+             self.showMessagePrompt(NSLocalizedString("string-error-empty-search", comment: ""))
+            return
+        }
+        
+        if isValidEmail(keyword){
+            print("email")
+            let params:Parameters = ["email":keyword]
+            self.searchBy(params: params)
+            return
+        }
+        if validateMobile(keyword){
+            print("mobile")
+            let params:Parameters = ["mobile":keyword]
+            self.searchBy(params: params)
+            return
+        }
+        
+        print("point id")
+        let params:Parameters = ["pointpow_id":keyword]
+        self.searchBy(params: params)
+
+    }
+    
+    
+    
+    func validateMobile(_ mobile:String)-> Bool{
+        var errorMobile = 0
+        var errorMessage = ""
+        let nMobile = mobile.replace(target: "-", withString: "")
+        if nMobile.count != 10 {
+            errorMobile += 1
+        }
+        if !checkPrefixcellPhone(nMobile) {
+            errorMessage = NSLocalizedString("string-error-invalid-mobile", comment: "")
+            errorMobile += 1
+        }
+        if nMobile.count < 10 {
+            errorMessage = NSLocalizedString("string-error-invalid-mobile1", comment: "")
+            errorMobile += 1
+        }
+        if nMobile.count > 10 {
+            errorMessage = NSLocalizedString("string-error-invalid-mobile2", comment: "")
+            errorMobile += 1
+        }
+        if errorMobile > 0 {
+            //self.showMessagePrompt(errorMessage)
+            return false
+        }
+        return true
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -70,9 +244,9 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return 1
+            return (self.friendModel != nil) ? 1 : 0
         }
-        return 3
+        return self.recentFriend?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -82,15 +256,43 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
             if let friendCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemFriendCell", for:  indexPath) as? ItemFriendCell {
                 
                 cell = friendCell
-                friendCell.transferButton.setTitle(NSLocalizedString("string-point-friend-transfer", comment: ""), for: .normal)
-                friendCell.coverImageView.image = UIImage(named: "bg-4")
                 
-                friendCell.didSelectImageView = {
-                    self.showPointFriendTransferView(true)
+                if let modelFriend = self.friendModel {
+                    let display_name = modelFriend["display_name"] as? String ?? ""
+                    let first_name = modelFriend["first_name"] as? String ?? ""
+                    let last_name = modelFriend["last_name"] as? String ?? ""
+                    let mobile = modelFriend["mobile"] as? String ?? ""
+                    let picture_data = modelFriend["picture_data"] as? String ?? ""
+                    let pointpow_id = modelFriend["pointpow_id"] as? String ?? ""
+                
+                    if let url = URL(string: picture_data) {
+                        friendCell.coverImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER))
+                    }else{
+                        friendCell.coverImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER)
+                    }
+                    if display_name.isEmpty {
+                        friendCell.nameLabel.text = "\(first_name)"
+                    }else{
+                        friendCell.nameLabel.text = "\(display_name)"
+                    }
+                    
+                    
+                
+                    
+                    friendCell.transferButton.setTitle(NSLocalizedString("string-point-friend-transfer", comment: ""), for: .normal)
+                    
+                    
+                    
+                    friendCell.didSelectImageView = {
+                        self.showPointFriendTransferView(modelFriend, true)
+                    }
+                    friendCell.tappedCallback = {
+                        self.showPointFriendTransferView(modelFriend, true)
+                    }
+                
+                
                 }
-                friendCell.tappedCallback = {
-                    self.showPointFriendTransferView(true)
-                }
+                
                 
                 let lineBottom = UIView(frame: CGRect(x: 0, y: friendCell.frame.height - 10 , width: friendCell.frame.width, height: 1 ))
                 lineBottom.backgroundColor = Constant.Colors.LINE_PROFILE
@@ -101,7 +303,36 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
             if let friendCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemFriendCell", for:  indexPath) as? ItemFriendCell {
                 friendCell.recentMode = true
                 
-                friendCell.coverImageView.image = UIImage(named: "bg-\(indexPath.row+1)")
+                
+                if let modelFriend = self.recentFriend?[indexPath.row] {
+                    let display_name = modelFriend["display_name"] as? String ?? ""
+                    let first_name = modelFriend["first_name"] as? String ?? ""
+                    let last_name = modelFriend["last_name"] as? String ?? ""
+                    let mobile = modelFriend["mobile"] as? String ?? ""
+                    let picture_data = modelFriend["picture_data"] as? String ?? ""
+                    let pointpow_id = modelFriend["pointpow_id"] as? String ?? ""
+                    
+                    
+                    if let url = URL(string: picture_data) {
+                        friendCell.coverImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER))
+                    }else{
+                        friendCell.coverImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER)
+                    }
+                    
+                    if display_name.isEmpty {
+                        friendCell.nameLabel.text = "\(first_name)"
+                    }else{
+                        friendCell.nameLabel.text = "\(display_name)"
+                    }
+                 
+                    friendCell.didSelectImageView = {
+                        self.showPointFriendTransferView(modelFriend, true)
+                    }
+                    friendCell.tappedCallback = {
+                        self.showPointFriendTransferView(modelFriend, true)
+                    }
+                    
+                }
                 
                 cell = friendCell
             }
@@ -131,8 +362,13 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeadCell", for: indexPath) as! HeadCell
-        header.nameLabel.text = NSLocalizedString("string-point-transfer-friend-header-recent", comment: "")
-        header.nameLabel.font = UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.FRIEND_HEADER_RECENT)!
+        
+        let count = self.recentFriend?.count ?? 0
+        if count > 0 {
+            header.nameLabel.text = NSLocalizedString("string-point-transfer-friend-header-recent", comment: "")
+            header.nameLabel.font = UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.FRIEND_HEADER_RECENT)!
+        }
+       
         header.backgroundColor = UIColor.white
         header.marginLeftConstrantLabel.constant = 35
 

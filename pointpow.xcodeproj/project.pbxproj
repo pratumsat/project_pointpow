@@ -132,6 +132,8 @@
 		C12CCC652282B43A00F26DCC /* PromoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12CCC632282B43A00F26DCC /* PromoCell.swift */; };
 		C12CCC662282B43A00F26DCC /* PromoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12CCC642282B43A00F26DCC /* PromoCell.xib */; };
 		C12CCC682282C7BF00F26DCC /* PromotionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12CCC672282C7BF00F26DCC /* PromotionDetailViewController.swift */; };
+		C12FD30E228D168100FB81B6 /* NotificationGoldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12FD30C228D168100FB81B6 /* NotificationGoldCell.swift */; };
+		C12FD30F228D168100FB81B6 /* NotificationGoldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12FD30D228D168100FB81B6 /* NotificationGoldCell.xib */; };
 		C13D99822199755B001A4794 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D99812199755B001A4794 /* ProfileViewController.swift */; };
 		C13D998521997938001A4794 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D998321997938001A4794 /* LogoutCell.swift */; };
 		C13D998621997938001A4794 /* LogoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13D998421997938001A4794 /* LogoutCell.xib */; };
@@ -397,6 +399,8 @@
 		C12CCC632282B43A00F26DCC /* PromoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoCell.swift; sourceTree = "<group>"; };
 		C12CCC642282B43A00F26DCC /* PromoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromoCell.xib; sourceTree = "<group>"; };
 		C12CCC672282C7BF00F26DCC /* PromotionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionDetailViewController.swift; sourceTree = "<group>"; };
+		C12FD30C228D168100FB81B6 /* NotificationGoldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationGoldCell.swift; sourceTree = "<group>"; };
+		C12FD30D228D168100FB81B6 /* NotificationGoldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationGoldCell.xib; sourceTree = "<group>"; };
 		C13D99812199755B001A4794 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C13D998321997938001A4794 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		C13D998421997938001A4794 /* LogoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutCell.xib; sourceTree = "<group>"; };
@@ -873,6 +877,8 @@
 				C121FB66228BE4A900043387 /* NotificationTableViewCell.xib */,
 				C121FB69228C19E500043387 /* NotificationAdvertiesCell.swift */,
 				C121FB6A228C19E500043387 /* NotificationAdvertiesCell.xib */,
+				C12FD30C228D168100FB81B6 /* NotificationGoldCell.swift */,
+				C12FD30D228D168100FB81B6 /* NotificationGoldCell.xib */,
 			);
 			path = noti;
 			sourceTree = "<group>";
@@ -1376,6 +1382,7 @@
 				C1AD50842187F45900F74415 /* LaunchScreen.storyboard in Resources */,
 				C121FB6C228C19E500043387 /* NotificationAdvertiesCell.xib in Resources */,
 				C10CA1B22193E01200316DF3 /* ItemServiceCell.xib in Resources */,
+				C12FD30F228D168100FB81B6 /* NotificationGoldCell.xib in Resources */,
 				C106BEB3220BED4E00E2331E /* BrowseImageCell.xib in Resources */,
 				C11BFCB0221BF70300F066DE /* WithDrawShippingThaiPostCell.xib in Resources */,
 				C1892E0E221E900900F5412F /* TransactionGoldCell.xib in Resources */,
@@ -1635,6 +1642,7 @@
 				C1AD50B52187FF4000F74415 /* Loading.swift in Sources */,
 				C1817D9D219C07DF009507DB /* ItemBankCell.swift in Sources */,
 				C121FB58228A66C100043387 /* HeaderViewDateTableViewCell.swift in Sources */,
+				C12FD30E228D168100FB81B6 /* NotificationGoldCell.swift in Sources */,
 				C181F066220C0392003F7C70 /* GoldHistoryViewController.swift in Sources */,
 				C127324B2254584400A9EE74 /* WinnerHistoryLinkCell.swift in Sources */,
 				C10CA1B12193E01200316DF3 /* ItemServiceCell.swift in Sources */,

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class PersonalPopupViewController: BaseViewController {
 
@@ -25,7 +26,7 @@ class PersonalPopupViewController: BaseViewController {
     var clearImageView4:UIImageView?
     
     var nextStep:(()->Void)?
-    
+    var userData:AnyObject?
     
     var errorLastnamelLabel:UILabel?
     var errorFirstNameLabel:UILabel?
@@ -33,14 +34,62 @@ class PersonalPopupViewController: BaseViewController {
     var errorEmailLabel:UILabel?
     var errorMobileLabel:UILabel?
     
-    var isMobileField:Bool = false
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.setUp()
-        
+        self.getUserInfo(){
+            self.updateView()
+        }
     }
+   
+    func getUserInfo(_ avaliable:(()->Void)?  = nil){
+        
+        var isLoading:Bool = true
+        if self.userData != nil {
+            isLoading = false
+        }else{
+            isLoading = true
+        }
+        
+        modelCtrl.getUserData(params: nil , isLoading , succeeded: { (result) in
+            self.userData = result
+            avaliable?()
+            
+           
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                self.showMessagePrompt(message)
+            }
+            
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            
+        }
+    }
+    
+    func updateView(){
+        //Fill Data
+        if let data  = self.userData as? [String:AnyObject] {
+            let first_name = data["first_name"] as? String ?? ""
+            let last_name = data["last_name"] as? String ?? ""
+            let email = data["email"] as? String ?? ""
+            let pid = data["pid"] as? String ?? ""
+            
+            self.firstNameTextField.text = first_name
+            self.lastNameTextField.text = last_name
+            self.optionTextField.text = email
+            
+            let newText = String((pid).filter({ $0 != "-" }).prefix(13))
+            self.parsonalTextField.text = newText.chunkFormattedPersonalID()
+            
+        }
+    }
+    
     override func dismissPoPup() {
         super.dismissPoPup()
         self.dismiss(animated: true, completion: nil)
@@ -51,20 +100,39 @@ class PersonalPopupViewController: BaseViewController {
     }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.nextButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
+        
         
     }
     
+    func enableButton(){
+        if let count = self.nextButton.layer.sublayers?.count {
+            if count > 1 {
+                self.nextButton.layer.sublayers?.removeFirst()
+            }
+        }
+        
+        self.nextButton.borderClearProperties(borderWidth: 1)
+        self.nextButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
+        self.nextButton.isEnabled = true
+    }
+    func disableButton(){
+        if let count = self.nextButton.layer.sublayers?.count {
+            if count > 1 {
+                self.nextButton.layer.sublayers?.removeFirst()
+            }
+        }
+        self.nextButton.borderClearProperties(borderWidth: 1)
+        self.nextButton.applyGradient(colours: [UIColor.lightGray, UIColor.lightGray])
+        
+        self.nextButton.isEnabled = false
+    }
+    
     func setUp(){
-        
-        self.isMobileField = true
-        
         self.backgroundImage?.image = nil
         
         self.nextButton.borderClearProperties(borderWidth: 1)
         
       
-        
         self.firstNameTextField.delegate = self
         self.lastNameTextField.delegate = self
         self.parsonalTextField.delegate = self
@@ -75,14 +143,8 @@ class PersonalPopupViewController: BaseViewController {
         self.parsonalTextField.autocorrectionType = .no
         self.optionTextField.autocorrectionType = .no
       
-        if self.isMobileField {
-            self.optionTextField.keyboardType = .numberPad
-            self.optionLabel.text = NSLocalizedString("string-item-popup-profile-mobile", comment: "")
-        }else{
-            self.optionTextField.keyboardType = .emailAddress
-            self.optionLabel.text = NSLocalizedString("string-item-popup-profile-email", comment: "")
-        }
-        
+        self.optionTextField.keyboardType = .emailAddress
+        self.optionLabel.text = NSLocalizedString("string-item-popup-profile-email", comment: "")
         
         self.clearImageView = self.firstNameTextField.addRightButton(UIImage(named: "ic-x")!)
         let tap = UITapGestureRecognizer(target: self, action: #selector(clearFirstNameTapped))
@@ -108,6 +170,9 @@ class PersonalPopupViewController: BaseViewController {
         self.clearImageView4?.addGestureRecognizer(tap4)
         self.clearImageView4?.isHidden = true
         
+        //disable
+        self.disableButton()
+        
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -124,6 +189,11 @@ class PersonalPopupViewController: BaseViewController {
             }else{
                 self.clearImageView?.isHidden = false
             }
+            if isValidName(string) {
+                return true
+            }else{
+                return false
+            }
         }
         if textField  == self.lastNameTextField {
             let startingLength = textField.text?.count ?? 0
@@ -137,6 +207,11 @@ class PersonalPopupViewController: BaseViewController {
                 self.clearImageView2?.isHidden = true
             }else{
                 self.clearImageView2?.isHidden = false
+            }
+            if isValidName(string) {
+                return true
+            }else{
+                return false
             }
         }
         if textField  == self.parsonalTextField {
@@ -178,21 +253,7 @@ class PersonalPopupViewController: BaseViewController {
             }else{
                 self.clearImageView4?.isHidden = false
             }
-            if self.isMobileField {
-                //Mobile
-                let text = textField.text ?? ""
-                
-                if string.count == 0 {
-                    textField.text = String(text.dropLast()).chunkFormatted()
-                }  else {
-                    let newText = String((text + string).filter({ $0 != "-" }).prefix(10))
-                    textField.text = newText.chunkFormatted()
-                }
-                return false
-            }else{
-                //Email
-            }
-            
+           
         }
         return true
         
@@ -223,6 +284,22 @@ class PersonalPopupViewController: BaseViewController {
         })
         
     }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        if textField == self.firstNameTextField {
+            self.lastNameTextField.becomeFirstResponder()
+        }
+        if textField == self.lastNameTextField {
+            self.parsonalTextField.becomeFirstResponder()
+        }
+        if textField == self.parsonalTextField {
+            self.optionTextField.becomeFirstResponder()
+        }
+      
+        
+        return true
+    }
     @IBAction func nextTapped(_ sender: Any) {
         
         errorLastnamelLabel?.removeFromSuperview()
@@ -235,21 +312,17 @@ class PersonalPopupViewController: BaseViewController {
         let firstName = self.firstNameTextField.text!
         let lastName = self.lastNameTextField.text!
         let personalID  = self.parsonalTextField.text!
-        let optional = self.optionTextField.text!
+        let email = self.optionTextField.text!
         
         var errorEmpty = 0
         var emptyMessage = ""
         
         
         
-        if optional.isEmpty {
-            if self.isMobileField {
-                emptyMessage = NSLocalizedString("string-error-empty-mobile", comment: "")
-                self.errorMobileLabel =  self.optionTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
-            }else{
-                emptyMessage = NSLocalizedString("string-error-empty-email", comment: "")
-                self.errorEmailLabel =  self.optionTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
-            }
+        if email.isEmpty {
+            emptyMessage = NSLocalizedString("string-error-empty-email", comment: "")
+            self.errorEmailLabel =  self.optionTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
+            
             errorEmpty += 1
             
         }
@@ -280,28 +353,81 @@ class PersonalPopupViewController: BaseViewController {
     
         guard validateIDcard(personalID) else { return }
         
-        if self.isMobileField {
-            guard validateMobile(optional) else { return }
+        if isValidEmail(email) {
             
-            self.dismiss(animated: true) {
-                self.windowSubview?.removeFromSuperview()
-                self.windowSubview = nil
-                self.nextStep?()
-            }
-        }else{
-            if isValidEmail(optional) {
-                self.dismiss(animated: true) {
-                    self.windowSubview?.removeFromSuperview()
-                    self.windowSubview = nil
-                    self.nextStep?()
+            //pass
+            let params:Parameters = ["firstname" : firstName,
+                                     "lastname" : lastName,
+                                     "pid" : personalID.replace(target: "-", withString: ""),
+                                     "email" : email]
+            print(params)
+            self.modelCtrl.updateMemberProfile(params: params, succeeded: { (result) in
+                
+                //self.disableButton()
+                
+                
+                self.showMessagePrompt2(NSLocalizedString("string-message-success-change-profile-infomation", comment: "")) {
+                    //ok callback
+                    self.dismiss(animated: true) {
+                        self.windowSubview?.removeFromSuperview()
+                        self.windowSubview = nil
+                        self.nextStep?()
+                    }
                 }
-            }else{
-                let emailNotValid = NSLocalizedString("string-error-invalid-email", comment: "")
-                self.showMessagePrompt(emailNotValid)
-                self.errorEmailLabel =  self.optionTextField.addBottomLabelErrorMessage(emailNotValid, marginLeft: 0 )
-            }
+                
+                
+            }, error: { (error) in
+                if let mError = error as? [String:AnyObject]{
+                    print(mError)
+                    let message = mError["message"] as? String ?? ""
+                    //self.errorOTPlLabel = self.otpTextField.addBottomLabelErrorMessage(message, marginLeft: 15)
+                    self.showMessagePrompt(message)
+                }
+            }, failure: { (messageError) in
+                self.handlerMessageError(messageError , title: "")
+            })
+            
+        }else{
+            let emailNotValid = NSLocalizedString("string-error-invalid-email", comment: "")
+            self.showMessagePrompt(emailNotValid)
+            self.errorEmailLabel =  self.optionTextField.addBottomLabelErrorMessage(emailNotValid, marginLeft: 0 )
         }
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        if hasChangeData(){
+            self.enableButton()
+        }else{
+            self.disableButton()
+        }
+        
+    }
+    
+    func hasChangeData() -> Bool {
+        if let data  = self.userData as? [String:AnyObject] {
+            let email = data["email"]as? String ?? ""
+            let pid = data["pid"]as? String ?? ""
+            let last_name = data["last_name"]as? String ?? ""
+            let first_name = data["first_name"] as? String ?? ""
+            
+            if self.firstNameTextField.text != first_name {
+                return true
+            }
+            if self.lastNameTextField.text != last_name {
+                return true
+            }
+            if self.parsonalTextField.text?.replace(target: "-", withString: "") != pid {
+                return true
+            }
+            if self.optionTextField.text != email {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
     
     func validateIDcard(_ id:String)-> Bool{
         var errorMobile = 0
@@ -324,32 +450,5 @@ class PersonalPopupViewController: BaseViewController {
         }
         return true
     }
-    func validateMobile(_ mobile:String)-> Bool{
-        var errorMobile = 0
-        var errorMessage = ""
-        let nMobile = mobile.replace(target: "-", withString: "")
-        if nMobile.count != 10 {
-            errorMobile += 1
-        }
-        if !checkPrefixcellPhone(nMobile) {
-            errorMessage = NSLocalizedString("string-error-invalid-mobile", comment: "")
-            errorMobile += 1
-        }
-        if nMobile.count < 10 {
-            errorMessage = NSLocalizedString("string-error-invalid-mobile1", comment: "")
-            errorMobile += 1
-        }
-        if nMobile.count > 10 {
-            errorMessage = NSLocalizedString("string-error-invalid-mobile2", comment: "")
-            errorMobile += 1
-        }
-        if errorMobile > 0 {
-            
-            self.showMessagePrompt(errorMessage)
-            self.errorMobileLabel =  self.optionTextField.addBottomLabelErrorMessage(errorMessage , marginLeft: 0)
-            return false
-        }
-        return true
-    }
-
+   
 }

@@ -10,6 +10,11 @@ import UIKit
 
 class NotificationAdvertiesCell: UITableViewCell {
 
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var bannerImageView: UIImageView!
+    @IBOutlet weak var timeAgoLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var topMView: UIView!
     @IBOutlet weak var mView: UIView!
     override func awakeFromNib() {

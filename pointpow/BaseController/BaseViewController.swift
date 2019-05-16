@@ -667,9 +667,9 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     
     
     
-    func showPointFriendTransferView(_ animated:Bool){
+    func showPointFriendTransferView(_ friendModel:[String:AnyObject], _ animated:Bool){
         if let vc:PointFriendTransferViewController  = self.storyboard?.instantiateViewController(withIdentifier: "PointFriendTransferViewController") as? PointFriendTransferViewController {
-            
+            vc.friendModel = friendModel
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
@@ -1371,6 +1371,31 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             
         }
     }
+    
+    func showPopupProfileInfomation(_ callback:(()->Void)? = nil){
+        
+        let alert = UIAlertController(title: NSLocalizedString("string-dailog-title-fill-firstname-lastname", comment: ""),
+                                      message: "", preferredStyle: .alert)
+        
+        let okButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-ok", comment: ""), style: .default, handler: {
+            (alert) in
+            
+            self.showPersonalPopup(true) {
+                callback?() 
+            }
+            
+            
+        })
+        
+        let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: nil)
+        
+        
+        
+        alert.addAction(cancelButton)
+        alert.addAction(okButton)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func showPersonalPopup(_ animated:Bool , nextStepCallback:(()->Void)? = nil ){
         let presenter: Presentr = {
             

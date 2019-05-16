@@ -439,10 +439,21 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
                 self.showGoldPage(true)
             }
             if indexPath.row == 2 {
+                
                 self.showPointTransferView(true)
             }
             if indexPath.row == 3 {
-                self.showFriendTransferView(true)
+                if let data  = self.userData as? [String:AnyObject] {
+                    let is_profile = data["is_profile"] as? NSNumber ?? 0
+                    
+                    if is_profile.boolValue {
+                       self.showFriendTransferView(true)
+                    }else{
+                        self.showPopupProfileInfomation(){
+                            self.showFriendTransferView(true)
+                        }
+                    }
+                }
             }
         }
     }

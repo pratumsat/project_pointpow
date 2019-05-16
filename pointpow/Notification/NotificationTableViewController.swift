@@ -62,6 +62,7 @@ class NotificationTableViewController: BaseViewController, UITableViewDelegate, 
         //self.registerTableViewNib(self.tableView, "HeaderViewDateTableViewCell")
         self.registerTableViewNib(self.tableView, "NotificationTableViewCell")
         self.registerTableViewNib(self.tableView, "NotificationAdvertiesCell")
+        self.registerTableViewNib(self.tableView, "NotificationGoldCell")
         
         
         if let notiStructHolder = DataController.sharedInstance.getNotificationArrayOfObjectData(){
@@ -72,13 +73,14 @@ class NotificationTableViewController: BaseViewController, UITableViewDelegate, 
                 print("not found notification data")
                 self.addViewNotfoundData()
             }else{
+                self.tableView.backgroundView = nil
                 self.tableView.reloadData()
+                
             }
         }else{
             print("not found notification data")
             self.addViewNotfoundData()
         }
-        
         
     }
     
@@ -94,7 +96,7 @@ class NotificationTableViewController: BaseViewController, UITableViewDelegate, 
             return height
             
         }else if objects[indexPath.section].type.lowercased()  == "gold" {
-            return 150
+            return 130
         }else{
             return 0
         }
@@ -135,6 +137,24 @@ class NotificationTableViewController: BaseViewController, UITableViewDelegate, 
                     itemCell.separatorInset = UIEdgeInsets.zero
                     
                     cell = itemCell
+                    
+                    let id = objects[indexPath.section].id
+                    let image_url = objects[indexPath.section].image_url
+                    let title = objects[indexPath.section].title
+                    let detail = objects[indexPath.section].detail
+                    let type = objects[indexPath.section].type
+                    let ref_id = objects[indexPath.section].ref_id
+                    let amount = objects[indexPath.section].amount
+                    let date = objects[indexPath.section].date
+                    let transfer_from = objects[indexPath.section].transfer_from
+                    let gold_unit = objects[indexPath.section].gold_unit
+                    let gold_amount = objects[indexPath.section].gold_amount
+                    
+                    itemCell.titleLabel.text = title
+                    itemCell.transferFromLabel.text = transfer_from
+                    itemCell.pointAmountLabel.text = amount
+                    itemCell.dateLabel.text = date
+                    itemCell.timeAgoLabel.text = timeAgoSinceDate(dateString: date)
                 }
                 
             }else if objects[indexPath.section].type.lowercased()  == "adverties"  {
@@ -143,14 +163,59 @@ class NotificationTableViewController: BaseViewController, UITableViewDelegate, 
                     itemCell.separatorInset = UIEdgeInsets.zero
                     
                     cell = itemCell
+                    
+                    let id = objects[indexPath.section].id
+                    let image_url = objects[indexPath.section].image_url
+                    let title = objects[indexPath.section].title
+                    let detail = objects[indexPath.section].detail
+                    let type = objects[indexPath.section].type
+                    let ref_id = objects[indexPath.section].ref_id
+                    let amount = objects[indexPath.section].amount
+                    let date = objects[indexPath.section].date
+                    let transfer_from = objects[indexPath.section].transfer_from
+                    let gold_unit = objects[indexPath.section].gold_unit
+                    let gold_amount = objects[indexPath.section].gold_amount
+                    
+                    itemCell.titleLabel.text = title
+                    itemCell.detailLabel.text = detail
+                    itemCell.dateLabel.text = date
+                    itemCell.timeAgoLabel.text = timeAgoSinceDate(dateString: date)
+                   
+                    if let url = URL(string: image_url) {
+                        itemCell.bannerImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_PROMOTION_MOCK))
+                    }else{
+                        itemCell.bannerImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_PROMOTION_MOCK)
+                    }
                 }
                 
             }else if objects[indexPath.section].type.lowercased()  == "gold"  {
-                //if gold_unit.lowercased() == "salueng" {
-                //    transCell.unitLabel.text = NSLocalizedString("unit-salueng", comment: "")
-                //}else{
-                //    transCell.unitLabel.text = NSLocalizedString("unit-baht", comment: "")
-                //}
+                if let itemCell = tableView.dequeueReusableCell(withIdentifier: "NotificationGoldCell", for: indexPath) as? NotificationGoldCell{
+                    itemCell.selectionStyle = .none
+                    itemCell.separatorInset = UIEdgeInsets.zero
+                    
+                    cell = itemCell
+                    
+                    
+                    let id = objects[indexPath.section].id
+                    let image_url = objects[indexPath.section].image_url
+                    let title = objects[indexPath.section].title
+                    let detail = objects[indexPath.section].detail
+                    let type = objects[indexPath.section].type
+                    let ref_id = objects[indexPath.section].ref_id
+                    let amount = objects[indexPath.section].amount
+                    let date = objects[indexPath.section].date
+                    let transfer_from = objects[indexPath.section].transfer_from
+                    let gold_unit = objects[indexPath.section].gold_unit
+                    let gold_amount = objects[indexPath.section].gold_amount
+                    
+                    itemCell.titleLabel.text = title
+                    itemCell.goldAmountLabel.text = "\(gold_amount) \(getGoldUnit(gold_unit))"
+                    itemCell.dateLabel.text = date
+                    itemCell.timeAgoLabel.text = timeAgoSinceDate(dateString: date)
+                    
+                  
+                }
+                
             }
             
         }
@@ -162,7 +227,14 @@ class NotificationTableViewController: BaseViewController, UITableViewDelegate, 
         return cell!
     }
     
-    
+    func getGoldUnit(_ gold_unit:String) -> String{
+        if gold_unit.lowercased() == "salueng" {
+            return NSLocalizedString("unit-salueng", comment: "")
+        }else{
+            return NSLocalizedString("unit-baht", comment: "")
+        }
+        return ""
+    }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true

@@ -108,6 +108,21 @@ class ChangePasswordViewController: BaseViewController {
             return true
         }
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        if textField == self.passwordTextField {
+            self.newPasswordTextField.becomeFirstResponder()
+        }
+        if textField == self.newPasswordTextField {
+            self.confirmNewPasswordTextField.becomeFirstResponder()
+        }
+      
+        
+        return true
+    }
+    
     @IBAction func confirmTapped(_ sender: Any) {
         let old_password = self.passwordTextField.text!
         let new_password = self.newPasswordTextField.text!

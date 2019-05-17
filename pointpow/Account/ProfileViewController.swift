@@ -57,7 +57,7 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
             if let mError = error as? [String:AnyObject]{
                 let message = mError["message"] as? String ?? ""
                 print(message)
-                //self.showMessagePrompt(message)
+                self.showMessagePrompt(message)
             }
             self.refreshControl?.endRefreshing()
             print(error)
@@ -179,7 +179,7 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
                 if let mError = error as? [String:AnyObject]{
                     let message = mError["message"] as? String ?? ""
                     print(message)
-                    //self.showMessagePrompt(message)
+                    self.showMessagePrompt(message)
                 }
                 print(error)
             }) { (messageError) in

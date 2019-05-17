@@ -187,7 +187,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
             if let mError = error as? [String:AnyObject]{
                 let message = mError["message"] as? String ?? ""
                 print(message)
-                //self.showMessagePrompt(message)
+                self.showMessagePrompt(message)
             }
            
             print(error)
@@ -205,12 +205,12 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
             if let mError = error as? [String:AnyObject]{
                 let message = mError["message"] as? String ?? ""
                 print(message)
-                //self.showMessagePrompt(message)
+                self.showMessagePrompt(message)
             }
             print(error)
         }) { (messageError) in
             print("messageError")
-            //self.handlerMessageError(messageError)
+            self.handlerMessageError(messageError)
             
         }
     }
@@ -234,13 +234,13 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
             if let mError = error as? [String:AnyObject]{
                 let message = mError["message"] as? String ?? ""
                 print(message)
-                //self.showMessagePrompt(message)
+                self.showMessagePrompt(message)
             }
             self.refreshControl?.endRefreshing()
             print(error)
         }) { (messageError) in
             print("messageError")
-            //self.handlerMessageError(messageError)
+            self.handlerMessageError(messageError)
             self.refreshControl?.endRefreshing()
         }
     }
@@ -261,6 +261,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
               
                 //let status = data["status"] as? String ?? ""
                 let is_pin = data["is_pin"] as? NSNumber ?? 0
+                let first_name = data["first_name"] as? String ?? ""
                 //let is_profile = data["is_profile"] as? NSNumber ?? 0
                 let picture_data = data["picture_data"] as? String ?? ""
                 let display_name = data["display_name"] as? String ?? ""
@@ -272,7 +273,14 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
                 
                 self.pointBalanceLabel.text = numberFormatter.string(from: pointBalance )
                 
-                self.displayNameLabel.text = display_name
+                
+                if display_name.isEmpty {
+                    self.displayNameLabel.text = "\(first_name)"
+                }else{
+                    self.displayNameLabel.text = "\(display_name)"
+                }
+                
+                
                 if let url  = URL(string: picture_data) {
                     self.profileImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER))
                     
@@ -301,7 +309,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
             if let mError = error as? [String:AnyObject]{
                 let message = mError["message"] as? String ?? ""
                 print(message)
-                //self.showMessagePrompt(message)
+                self.showMessagePrompt(message)
             }
             self.refreshControl?.endRefreshing()
             print(error)

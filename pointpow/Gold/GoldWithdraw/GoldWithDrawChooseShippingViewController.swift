@@ -157,7 +157,7 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
             if let mError = error as? [String:AnyObject]{
                 let message = mError["message"] as? String ?? ""
                 print(message)
-                //self.showMessagePrompt(message)
+                self.showMessagePrompt(message)
             }
             print(error)
         }) { (messageError) in
@@ -202,7 +202,7 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
             if let mError = error as? [String:AnyObject]{
                 let message = mError["message"] as? String ?? ""
                 print(message)
-                //self.showMessagePrompt(message)
+                self.showMessagePrompt(message)
             }
             
             print(error)

@@ -674,9 +674,11 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }
     }
 
-    func showPointFriendTransferReviewView(_ animated:Bool){
+    func showPointFriendTransferReviewView(_ friendModel:[String:AnyObject]?, amount:Double, note:String, _ animated:Bool){
         if let vc:PointFriendTransferReviewViewController  = self.storyboard?.instantiateViewController(withIdentifier: "PointFriendTransferReviewViewController") as? PointFriendTransferReviewViewController {
-            
+            vc.friendModel = friendModel
+            vc.amount = amount
+            vc.note = note
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
@@ -1866,7 +1868,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
                     if let mError = error as? [String:AnyObject]{
                         let message = mError["message"] as? String ?? ""
                         print(message)
-                        //self.showMessagePrompt(message)
+                        self.showMessagePrompt2(message)
                     }
                     self.refreshControl?.endRefreshing()
                     print(error)

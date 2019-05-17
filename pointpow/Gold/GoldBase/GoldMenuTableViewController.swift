@@ -62,7 +62,7 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
             if let mError = error as? [String:AnyObject]{
                 let message = mError["message"] as? String ?? ""
                 print(message)
-                //self.showMessagePrompt(message)
+                self.showMessagePrompt(message)
             }
             self.refreshControl?.endRefreshing()
             print(error)

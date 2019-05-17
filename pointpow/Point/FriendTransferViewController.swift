@@ -18,7 +18,8 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
     
     var friendModel:[String:AnyObject]? {
         didSet{
-            if friendModel == nil {
+            if friendModel == nil && recentFriend == nil{
+                
                 self.addViewNotfoundData()
             }else{
                 self.friendCollectionView.backgroundView = nil
@@ -87,7 +88,7 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
             if let mError = error as? [String:AnyObject]{
                 let message = mError["message"] as? String ?? ""
                 print(message)
-                //self.showMessagePrompt(message)
+                self.showMessagePrompt(message)
             }
             self.refreshControl?.endRefreshing()
             print(error)
@@ -98,14 +99,21 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
         }
     }
     
-    func searchBy(params:Parameters){
+    func searchBy(params:Parameters, _ callbackFriendModel:((_ friendModel:[String:AnyObject])->Void)? = nil){
         print(params)
         self.modelCtrl.searchMember(params: params, succeeded: { (result) in
             if let mResult = result as? [String:AnyObject]{
                 print(mResult)
                 
-                self.friendModel = mResult
-                self.friendCollectionView.reloadData()
+                if callbackFriendModel == nil{
+                    self.friendModel = mResult
+                    self.friendCollectionView.reloadData()
+                }else{
+                    callbackFriendModel?(mResult)
+                }
+                
+                
+              
             }
         }, error: { (error) in
             if let mError = error as? [String:AnyObject]{
@@ -113,14 +121,21 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
                 if let mError = error as? [String:AnyObject]{
                     let message = mError["message"] as? String ?? ""
                     self.showMessagePrompt(message)
-                    self.friendModel = nil
-                    self.friendCollectionView.reloadData()
+                    
+                    if callbackFriendModel == nil{
+                        self.friendModel = nil
+                        self.friendCollectionView.reloadData()
+                    }
+                    
                 }
             }
         }, failure: { (messageError) in
             self.handlerMessageError(messageError , title: "")
-            self.friendModel = nil
-            self.friendCollectionView.reloadData()
+            if callbackFriendModel == nil{
+                self.friendModel = nil
+                self.friendCollectionView.reloadData()
+            }
+            
         })
     }
     
@@ -165,6 +180,7 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
         self.friendCollectionView.showsVerticalScrollIndicator = false
         
         self.registerNib(self.friendCollectionView, "ItemFriendCell")
+        self.registerNib(self.friendCollectionView, "ItemFriendSearchCell")
         self.registerHeaderNib(self.friendCollectionView, "HeadCell")
         
         
@@ -253,7 +269,8 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
         var cell:UICollectionViewCell?
         
         if indexPath.section == 0 {
-            if let friendCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemFriendCell", for:  indexPath) as? ItemFriendCell {
+            if let friendCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemFriendSearchCell", for:  indexPath) as? ItemFriendSearchCell {
+                
                 
                 cell = friendCell
                 
@@ -270,18 +287,14 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
                     }else{
                         friendCell.coverImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER)
                     }
-                    if display_name.isEmpty {
-                        friendCell.nameLabel.text = "\(first_name)"
-                    }else{
+                    if !display_name.isEmpty {
                         friendCell.nameLabel.text = "\(display_name)"
                     }
-                    
-                    
-                
-                    
-                    friendCell.transferButton.setTitle(NSLocalizedString("string-point-friend-transfer", comment: ""), for: .normal)
-                    
-                    
+                    if !first_name.isEmpty {
+                        friendCell.nameLabel.text = "\(first_name)"
+                    }else{
+                        friendCell.nameLabel.text = "\(mobile)"
+                    }
                     
                     friendCell.didSelectImageView = {
                         self.showPointFriendTransferView(modelFriend, true)
@@ -297,14 +310,16 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
                 let lineBottom = UIView(frame: CGRect(x: 0, y: friendCell.frame.height - 10 , width: friendCell.frame.width, height: 1 ))
                 lineBottom.backgroundColor = Constant.Colors.LINE_PROFILE
                 friendCell.addSubview(lineBottom)
+                
             }
         }
         if indexPath.section == 1 {
             if let friendCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemFriendCell", for:  indexPath) as? ItemFriendCell {
-                friendCell.recentMode = true
                 
                 
-                if let modelFriend = self.recentFriend?[indexPath.row] {
+                cell = friendCell
+                
+                if let modelFriend = self.recentFriend?[indexPath.row]["friend"] as? [String:AnyObject] {
                     let display_name = modelFriend["display_name"] as? String ?? ""
                     let first_name = modelFriend["first_name"] as? String ?? ""
                     let last_name = modelFriend["last_name"] as? String ?? ""
@@ -319,22 +334,35 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
                         friendCell.coverImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER)
                     }
                     
-                    if display_name.isEmpty {
-                        friendCell.nameLabel.text = "\(first_name)"
-                    }else{
+                    if !display_name.isEmpty {
                         friendCell.nameLabel.text = "\(display_name)"
                     }
+                    if !first_name.isEmpty {
+                        friendCell.nameLabel.text = "\(first_name)"
+                    }else{
+                        friendCell.nameLabel.text = "\(mobile)"
+                    }
                  
+                    
+                    
+                    //Recent
                     friendCell.didSelectImageView = {
-                        self.showPointFriendTransferView(modelFriend, true)
+                        let params:Parameters = ["mobile": mobile]
+                        self.searchBy(params: params) { (model) in
+                            self.showPointFriendTransferView(model, true)
+                        }
+                        
+                        
                     }
                     friendCell.tappedCallback = {
-                        self.showPointFriendTransferView(modelFriend, true)
+                        let params:Parameters = ["mobile": mobile]
+                        self.searchBy(params: params) { (model) in
+                            self.showPointFriendTransferView(model, true)
+                        }
                     }
                     
                 }
                 
-                cell = friendCell
             }
         }
         

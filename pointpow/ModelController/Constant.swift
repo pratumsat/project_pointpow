@@ -711,6 +711,7 @@ struct Constant {
         
         static let searchMember = "\(HOST)\(POINTPOW_VERSION1)member/transfer-point/search"
         static let recentMemberTransfer = "\(HOST)\(POINTPOW_VERSION1)member/transfer-point/recent"
+        static let memberTransfer = "\(HOST)\(POINTPOW_VERSION1)member/transfer-point/friend"
         
         static let memberSetting = "\(HOST)\(POINTPOW_VERSION1)member/setting"
         static let setPinCode = "\(HOST)\(POINTPOW_VERSION1)member/set-pin"
@@ -831,6 +832,8 @@ struct Constant {
             static let CONTENT = CGFloat(22.0)
             static let TAB = CGFloat(13.0)
             static let FREIND_RECENT = CGFloat(15.0)
+            static let FREIND_SEARCH = CGFloat(18.0)
+            static let FREIND_SEARCH_BUTTON = CGFloat(20.0)
             static let FRIEND_HEADER_RECENT = CGFloat(20.0)
             static let SEGMENT = CGFloat(18.0)
             static let VALUE_EXPEND = CGFloat(18.0)

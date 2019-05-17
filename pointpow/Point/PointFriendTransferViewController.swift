@@ -10,6 +10,8 @@ import UIKit
 
 class PointFriendTransferViewController: BaseViewController {
 
+    @IBOutlet weak var limitLabel: UILabel!
+    @IBOutlet weak var countNoteLabel: UILabel!
     @IBOutlet weak var moreImageView: UIImageView!
     @IBOutlet weak var lessImageView: UIImageView!
     @IBOutlet weak var noteTextField: UITextField!
@@ -25,14 +27,17 @@ class PointFriendTransferViewController: BaseViewController {
     @IBOutlet weak var ppIdFriendLabel: UILabel!
     @IBOutlet weak var ppIdLabel: UILabel!
     var userData:AnyObject?
+    var settingData:AnyObject?
     
     var friendModel:[String:AnyObject]?{
         didSet{
-            print(friendModel)
+            //print(friendModel)
         }
     }
     let exchangeRate = 100
     let minPointTransfer = 100.0
+    
+    var pointLimitOrder = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,8 +58,7 @@ class PointFriendTransferViewController: BaseViewController {
     }
     
     func setUp(){
-        self.myProfileImageView.image = UIImage(named:"bg-profile-image")
-        self.friendImageView.image = UIImage(named:"bg-4")
+        
        
         self.backgroundImage?.image = nil
         
@@ -86,10 +90,24 @@ class PointFriendTransferViewController: BaseViewController {
         if let modelFriend = self.friendModel {
             let display_name = modelFriend["display_name"] as? String ?? ""
             let first_name = modelFriend["first_name"] as? String ?? ""
-            let last_name = modelFriend["last_name"] as? String ?? ""
+       //     let last_name = modelFriend["last_name"] as? String ?? ""
+        //     let pointpow_id = modelFriend["pointpow_id"] as? String ?? ""
             let mobile = modelFriend["mobile"] as? String ?? ""
             let picture_data = modelFriend["picture_data"] as? String ?? ""
-            let pointpow_id = modelFriend["pointpow_id"] as? String ?? ""
+            let limit_pay_left = modelFriend["limit_pay_left"] as? NSNumber ?? 0
+       
+        
+            self.pointLimitOrder = limit_pay_left.doubleValue
+        
+            //min transfer
+            let numberFormatter = NumberFormatter()
+            numberFormatter.numberStyle = .decimal
+            numberFormatter.minimumFractionDigits = 0
+            let limitp = numberFormatter.string(from: limit_pay_left)
+            
+            var prefixlimit = NSLocalizedString("string-point-transfer-point-limit-today", comment: "")
+            prefixlimit += " \(limitp ?? "")"
+            self.limitLabel.text = "\(prefixlimit)"
             
             if let url = URL(string: picture_data) {
                 self.friendImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER))
@@ -102,10 +120,11 @@ class PointFriendTransferViewController: BaseViewController {
             }else{
                 self.nameFriendLabel.text = "\(display_name)"
             }
-            self.ppIdFriendLabel.text = pointpow_id
+            self.ppIdFriendLabel.text = mobile
         }
         
-        //min transfer
+        
+        //default
         self.amountTextField.text = "100"
         self.disableImageView(lessImageView)
     }
@@ -113,6 +132,7 @@ class PointFriendTransferViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.getUserInfo()
+       
     }
     
     func getUserInfo(_ avaliable:(()->Void)?  = nil){
@@ -126,12 +146,14 @@ class PointFriendTransferViewController: BaseViewController {
             self.userData = result
             avaliable?()
             if let userData = self.userData as? [String:AnyObject] {
-                let pointpowId = userData["pointpow_id"] as? String ?? ""
+       //         let pointpowId = userData["pointpow_id"] as? String ?? ""
                 let pointBalance = userData["member_point"]?["total"] as? NSNumber ?? 0
                 let picture_data = userData["picture_data"] as? String ?? ""
                 let displayName = userData["display_name"] as? String ?? ""
                 let first_name = userData["first_name"] as? String ?? ""
-                let last_name = userData["last_name"] as? String ?? ""
+       //         let last_name = userData["last_name"] as? String ?? ""
+                let mobile = userData["mobile"] as? String ?? ""
+                
                 let numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal
                 numberFormatter.minimumFractionDigits = 2
@@ -142,8 +164,8 @@ class PointFriendTransferViewController: BaseViewController {
                 }else{
                     self.myProfileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER)
                 }
-                self.ppIdLabel.text = pointpowId
-                self.pointBalanceLabel.text = numberFormatter.string(from: pointBalance )
+                self.ppIdLabel.text = mobile
+                self.pointBalanceLabel.text = "\(numberFormatter.string(from: pointBalance ) ?? "") Point Pow"
                 
                 if displayName.isEmpty {
                     self.nameLabel.text = "\(first_name)"
@@ -157,7 +179,7 @@ class PointFriendTransferViewController: BaseViewController {
             if let mError = error as? [String:AnyObject]{
                 let message = mError["message"] as? String ?? ""
                 print(message)
-                //self.showMessagePrompt(message)
+                self.showMessagePrompt(message)
             }
             self.refreshControl?.endRefreshing()
             print(error)
@@ -224,6 +246,21 @@ class PointFriendTransferViewController: BaseViewController {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if textField == self.noteTextField {
+            let startingLength = textField.text?.count ?? 0
+            let lengthToAdd = string.count
+            let lengthToReplace = range.length
+            
+            let newLength = startingLength + lengthToAdd - lengthToReplace
+            
+            if newLength <= 40 {
+                self.countNoteLabel.text = "\(newLength)/40"
+            }
+            
+            return newLength <= 40
+            
+        }
         if textField == self.amountTextField {
             let textRange = Range(range, in: textField.text!)!
             let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
@@ -246,6 +283,37 @@ class PointFriendTransferViewController: BaseViewController {
     }
     
     @IBAction func transferTapped(_ sender: Any) {
-       self.showPointFriendTransferReviewView(true)
+        let updatedText = self.amountTextField.text!
+        var note = self.noteTextField.text!
+        
+        
+        if let userData = self.userData as? [String:AnyObject] {
+            let pointBalance = userData["member_point"]?["total"] as? NSNumber ?? 0
+            
+            var amount = 0.0
+            if  (Double(updatedText) != nil) {
+                amount = Double(updatedText)!
+            }
+            
+            if amount == 0 {
+                self.showMessagePrompt(NSLocalizedString("string-dailog-saving-point-pointspend-empty", comment: ""))
+                return
+            }
+            if pointBalance.doubleValue < amount {
+                self.showMessagePrompt(NSLocalizedString("string-dailog-saving-point-not-enough", comment: ""))
+                return
+            }
+            if self.pointLimitOrder  < amount {
+                self.showMessagePrompt(NSLocalizedString("string-dailog-point-over-limit-order", comment: ""))
+                return
+            }
+            
+            self.showPointFriendTransferReviewView(self.friendModel, amount: amount,
+                                                   note: note,  true)
+        }
+      
+
+        
+     
     }
 }

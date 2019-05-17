@@ -134,6 +134,8 @@
 		C12CCC682282C7BF00F26DCC /* PromotionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12CCC672282C7BF00F26DCC /* PromotionDetailViewController.swift */; };
 		C12FD30E228D168100FB81B6 /* NotificationGoldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12FD30C228D168100FB81B6 /* NotificationGoldCell.swift */; };
 		C12FD30F228D168100FB81B6 /* NotificationGoldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12FD30D228D168100FB81B6 /* NotificationGoldCell.xib */; };
+		C12FD312228EA48700FB81B6 /* ItemFriendSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12FD310228EA48700FB81B6 /* ItemFriendSearchCell.swift */; };
+		C12FD313228EA48700FB81B6 /* ItemFriendSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12FD311228EA48700FB81B6 /* ItemFriendSearchCell.xib */; };
 		C13D99822199755B001A4794 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D99812199755B001A4794 /* ProfileViewController.swift */; };
 		C13D998521997938001A4794 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D998321997938001A4794 /* LogoutCell.swift */; };
 		C13D998621997938001A4794 /* LogoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13D998421997938001A4794 /* LogoutCell.xib */; };
@@ -401,6 +403,8 @@
 		C12CCC672282C7BF00F26DCC /* PromotionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionDetailViewController.swift; sourceTree = "<group>"; };
 		C12FD30C228D168100FB81B6 /* NotificationGoldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationGoldCell.swift; sourceTree = "<group>"; };
 		C12FD30D228D168100FB81B6 /* NotificationGoldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationGoldCell.xib; sourceTree = "<group>"; };
+		C12FD310228EA48700FB81B6 /* ItemFriendSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFriendSearchCell.swift; sourceTree = "<group>"; };
+		C12FD311228EA48700FB81B6 /* ItemFriendSearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemFriendSearchCell.xib; sourceTree = "<group>"; };
 		C13D99812199755B001A4794 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C13D998321997938001A4794 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		C13D998421997938001A4794 /* LogoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutCell.xib; sourceTree = "<group>"; };
@@ -936,6 +940,8 @@
 				C1817D91219BF61E009507DB /* ItemFriendCell.xib */,
 				C1817D94219BFCDE009507DB /* FriendCollectionCell.swift */,
 				C1817D95219BFCDE009507DB /* FriendCollectionCell.xib */,
+				C12FD310228EA48700FB81B6 /* ItemFriendSearchCell.swift */,
+				C12FD311228EA48700FB81B6 /* ItemFriendSearchCell.xib */,
 			);
 			path = FriendTransferCell;
 			sourceTree = "<group>";
@@ -1386,6 +1392,7 @@
 				C106BEB3220BED4E00E2331E /* BrowseImageCell.xib in Resources */,
 				C11BFCB0221BF70300F066DE /* WithDrawShippingThaiPostCell.xib in Resources */,
 				C1892E0E221E900900F5412F /* TransactionGoldCell.xib in Resources */,
+				C12FD313228EA48700FB81B6 /* ItemFriendSearchCell.xib in Resources */,
 				C169FFBF21C36E1300F9D354 /* Localizable.strings in Resources */,
 				C106BEAF220BEB3000E2331E /* GoldItemCell.xib in Resources */,
 				C1249EC5223E6FC600F56FA0 /* WithDrawThaiPostSummaryCell.xib in Resources */,
@@ -1667,6 +1674,7 @@
 				C1249EBF2238B25D00F56FA0 /* PopUpInfoThaiPostViewController.swift in Sources */,
 				C1249EC1223E18B600F56FA0 /* WithDrawSummaryThaiPostViewController.swift in Sources */,
 				C11BFCA7221BE72000F066DE /* WithDrawChooseShippingCell.swift in Sources */,
+				C12FD312228EA48700FB81B6 /* ItemFriendSearchCell.swift in Sources */,
 				C1817D96219BFCDE009507DB /* FriendCollectionCell.swift in Sources */,
 				C107CF3322218FE400C50B8C /* WithDrawOfficeSummaryCell.swift in Sources */,
 				C107CF29221FC92200C50B8C /* WidthDrawResultPointPow2Cell.swift in Sources */,

@@ -102,7 +102,7 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
             if let mError = error as? [String:AnyObject]{
                 let message = mError["message"] as? String ?? ""
                 print(message)
-                //self.showMessagePrompt(message)
+                self.showMessagePrompt(message)
             }
             self.refreshControl?.endRefreshing()
             print(error)

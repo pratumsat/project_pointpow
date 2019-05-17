@@ -1,23 +1,21 @@
 //
-//  ItemFriendCell.swift
+//  ItemFriendSearchCell.swift
 //  pointpow
 //
-//  Created by thanawat on 14/11/2561 BE.
-//  Copyright © 2561 abcpoint. All rights reserved.
+//  Created by thanawat on 17/5/2562 BE.
+//  Copyright © 2562 abcpoint. All rights reserved.
 //
 
 import UIKit
 
-class ItemFriendCell: UICollectionViewCell {
-
-    
+class ItemFriendSearchCell: UICollectionViewCell {
+   
     @IBOutlet weak var transferButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var coverImageView: UIImageView!
     
-    var didSelectImageView:(()->Void)?
     var tappedCallback:(()->Void)?
-    
+    var didSelectImageView:(()->Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,9 +38,9 @@ class ItemFriendCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.coverImageView.ovalColorClearProperties()
-        self.transferButton.borderClearProperties(borderWidth: 1)
-        self.transferButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
+          self.coverImageView.ovalColorClearProperties()
+          self.transferButton.borderClearProperties(borderWidth: 1)
+          self.transferButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
         
     }
     

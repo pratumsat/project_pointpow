@@ -60,11 +60,11 @@ class DataController {
     func setSaveSlip(_ token:Bool){
         data["save_slip"] = token as AnyObject
     }
-    
+   
     func getSaveSlip() -> Bool {
         return data["save_slip"] as? Bool ?? false
     }
-    
+   
     func setFaceID(_ faceID:Bool){
         UserDefaults.standard.set(faceID, forKey: Constant.CacheNotification.USER_FACE_ID_CACHE)
         UserDefaults.standard.synchronize()

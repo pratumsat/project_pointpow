@@ -88,10 +88,10 @@ class PointFriendTransferViewController: BaseViewController {
         self.noteTextField.autocorrectionType = .no
         
         if let modelFriend = self.friendModel {
-            let display_name = modelFriend["display_name"] as? String ?? ""
+        //    let display_name = modelFriend["display_name"] as? String ?? ""
             let first_name = modelFriend["first_name"] as? String ?? ""
        //     let last_name = modelFriend["last_name"] as? String ?? ""
-        //     let pointpow_id = modelFriend["pointpow_id"] as? String ?? ""
+            let pointpow_id = modelFriend["pointpow_id"] as? String ?? ""
             let mobile = modelFriend["mobile"] as? String ?? ""
             let picture_data = modelFriend["picture_data"] as? String ?? ""
             let limit_pay_left = modelFriend["limit_pay_left"] as? NSNumber ?? 0
@@ -115,10 +115,10 @@ class PointFriendTransferViewController: BaseViewController {
                 self.friendImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER)
             }
             
-            if display_name.isEmpty {
-                self.nameFriendLabel.text = "\(first_name)"
+            if !pointpow_id.isEmpty {
+                self.nameFriendLabel.text = "\(pointpow_id)"
             }else{
-                self.nameFriendLabel.text = "\(display_name)"
+                self.nameFriendLabel.text = "\(( (first_name.isEmpty) ? "-" : first_name))"
             }
             self.ppIdFriendLabel.text = mobile
         }
@@ -146,10 +146,10 @@ class PointFriendTransferViewController: BaseViewController {
             self.userData = result
             avaliable?()
             if let userData = self.userData as? [String:AnyObject] {
-       //         let pointpowId = userData["pointpow_id"] as? String ?? ""
+                let pointpow_id = userData["pointpow_id"] as? String ?? ""
                 let pointBalance = userData["member_point"]?["total"] as? NSNumber ?? 0
                 let picture_data = userData["picture_data"] as? String ?? ""
-                let displayName = userData["display_name"] as? String ?? ""
+        //        let displayName = userData["display_name"] as? String ?? ""
                 let first_name = userData["first_name"] as? String ?? ""
        //         let last_name = userData["last_name"] as? String ?? ""
                 let mobile = userData["mobile"] as? String ?? ""
@@ -166,11 +166,11 @@ class PointFriendTransferViewController: BaseViewController {
                 }
                 self.ppIdLabel.text = mobile
                 self.pointBalanceLabel.text = "\(numberFormatter.string(from: pointBalance ) ?? "") Point Pow"
-                
-                if displayName.isEmpty {
-                    self.nameLabel.text = "\(first_name)"
+               
+                if !pointpow_id.isEmpty {
+                    self.nameLabel.text = "\(pointpow_id)"
                 }else{
-                    self.nameLabel.text = "\(displayName)"
+                    self.nameLabel.text = "\(( (first_name.isEmpty) ? "-" : first_name))"
                 }
                 
             }

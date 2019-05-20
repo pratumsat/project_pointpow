@@ -287,14 +287,12 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
                     }else{
                         friendCell.coverImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER)
                     }
-                    if !display_name.isEmpty {
-                        friendCell.nameLabel.text = "\(display_name)"
-                    }
-                    if !first_name.isEmpty {
-                        friendCell.nameLabel.text = "\(first_name)"
+                    if !pointpow_id.isEmpty {
+                        friendCell.nameLabel.text = "\(pointpow_id)"
                     }else{
                         friendCell.nameLabel.text = "\(mobile)"
                     }
+                    
                     
                     friendCell.didSelectImageView = {
                         self.showPointFriendTransferView(modelFriend, true)
@@ -334,11 +332,9 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
                         friendCell.coverImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER)
                     }
                     
-                    if !display_name.isEmpty {
-                        friendCell.nameLabel.text = "\(display_name)"
-                    }
-                    if !first_name.isEmpty {
-                        friendCell.nameLabel.text = "\(first_name)"
+                    
+                    if !pointpow_id.isEmpty {
+                        friendCell.nameLabel.text = "\(pointpow_id)"
                     }else{
                         friendCell.nameLabel.text = "\(mobile)"
                     }

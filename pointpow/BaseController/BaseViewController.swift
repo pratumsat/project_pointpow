@@ -434,6 +434,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     func showPromotionDetail(_ id:String, _ animated:Bool){
         if let vc:PromotionDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "PromotionDetailViewController") as? PromotionDetailViewController {
         
+            vc.id = id
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }

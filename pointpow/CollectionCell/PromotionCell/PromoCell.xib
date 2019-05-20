@@ -79,6 +79,11 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="449" height="280"/>
+            <connections>
+                <outlet property="bannerImageView" destination="oNC-a7-aiK" id="etg-9H-NBs"/>
+                <outlet property="detailLabel" destination="l4B-yI-NkW" id="sXj-Xf-1FN"/>
+                <outlet property="titleLabel" destination="zuc-9d-O9o" id="aru-fr-drH"/>
+            </connections>
             <point key="canvasLocation" x="90.400000000000006" y="155.62218890554723"/>
         </collectionViewCell>
     </objects>

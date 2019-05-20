@@ -7,25 +7,82 @@
 //
 
 import UIKit
+import Alamofire
 
 class PromotionDetailViewController: BaseViewController {
 
+    var promotionModel:[String:AnyObject]?
+    
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var bannerLImageView: UIImageView!
+    
+    var id:String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title  = "ส่วนลดสินค้า 20%"
+        
         self.backgroundImage?.image = nil
+        
+        
+        self.getPromotion(){
+            self.updateView()
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func updateView(){
+        if let itemData = self.promotionModel {
+            let title = itemData["title"] as? String ?? ""
+            let cover = itemData["cover"] as? String ?? ""
+            let detail = itemData["detail"] as? String ?? ""
+            
+            self.title = title
+            self.titleLabel.text = title
+            self.detailLabel.text = detail
+            
+            if let url = URL(string: cover) {
+                self.bannerLImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_PROMOTION_MOCK_DETAIL))
+            }else{
+                self.bannerLImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_PROMOTION_MOCK_DETAIL)
+            }
+            
+        }
+       
     }
-    */
 
+    func getPromotion(_ avaliable:(()->Void)?  = nil){
+        
+        var isLoading:Bool = true
+        if self.promotionModel != nil {
+            isLoading = false
+        }else{
+            isLoading = true
+        }
+        
+        
+        modelCtrl.promotionById(id: self.id! , isLoading , succeeded: { (result) in
+            if let mResult = result as? [String:AnyObject] {
+                 self.promotionModel = mResult
+            }
+            avaliable?()
+            
+            
+            self.refreshControl?.endRefreshing()
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                self.showMessagePrompt(message)
+            }
+            self.refreshControl?.endRefreshing()
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            self.refreshControl?.endRefreshing()
+        }
+        
+    }
 }

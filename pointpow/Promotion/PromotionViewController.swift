@@ -11,7 +11,7 @@ import UIKit
 class PromotionViewController: BaseViewController , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 
     
-    var userData:AnyObject?
+    var promotionList:[[String:AnyObject]]?
     
     @IBOutlet weak var promotionCollectionView: UICollectionView!
     
@@ -34,24 +34,40 @@ class PromotionViewController: BaseViewController , UICollectionViewDelegate , U
         self.registerNib(promotionCollectionView, "PromoCell")
     }
     
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.getPromotion()
+    }
     override func reloadData() {
         self.getPromotion()
     }
     
     func getPromotion(_ avaliable:(()->Void)?  = nil){
-        /*
+        
         var isLoading:Bool = true
-        if self.userData != nil {
+        if self.promotionList != nil {
             isLoading = false
         }else{
             isLoading = true
         }
-        modelCtrl.getUserData(params: nil , isLoading , succeeded: { (result) in
-            self.userData = result
+        modelCtrl.promotionList(params: nil , isLoading , succeeded: { (result) in
+            if let mResult = result as? [[String:AnyObject]] {
+                
+                
+                if mResult.count <= 0 {
+                    print("not found notification data")
+                    self.addViewNotfoundData()
+                }else{
+                    self.promotionList = mResult
+                    self.promotionCollectionView.reloadData()
+                }
+            }
+            
+            
+            
             avaliable?()
             
-            self.promotionCollectionView.reloadData()
+            
             self.refreshControl?.endRefreshing()
         }, error: { (error) in
             if let mError = error as? [String:AnyObject]{
@@ -66,10 +82,28 @@ class PromotionViewController: BaseViewController , UICollectionViewDelegate , U
             self.handlerMessageError(messageError)
             self.refreshControl?.endRefreshing()
         }
-        */
+        
     }
+    
+    func addViewNotfoundData(){
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        var centerpoint = view.center
+        centerpoint.y -= self.view.frame.height*0.2
+        
+        let sorry = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 30))
+        sorry.center = centerpoint
+        sorry.textAlignment = .center
+        sorry.font = UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.CONTENT )
+        sorry.text = NSLocalizedString("string-not-found-item-pomotion", comment: "")
+        sorry.textColor = UIColor.lightGray
+        view.addSubview(sorry)
+        
+        self.promotionCollectionView.reloadData()
+        self.promotionCollectionView.backgroundView = view
+    }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 5
+        return self.promotionList?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -82,7 +116,21 @@ class PromotionViewController: BaseViewController , UICollectionViewDelegate , U
         if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PromoCell", for: indexPath) as? PromoCell{
             cell = itemCell
 
-
+            if let itemData = self.promotionList?[indexPath.section] {
+                let title = itemData["title"] as? String ?? ""
+                let cover = itemData["cover"] as? String ?? ""
+                let detail = itemData["detail"] as? String ?? ""
+                
+                itemCell.titleLabel.text = title
+                itemCell.detailLabel.text = detail
+                
+                if let url = URL(string: cover) {
+                    itemCell.bannerImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_PROMOTION_MOCK))
+                }else{
+                    itemCell.bannerImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_PROMOTION_MOCK)
+                }
+                
+            }
 
         }
         
@@ -95,7 +143,11 @@ class PromotionViewController: BaseViewController , UICollectionViewDelegate , U
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.showPromotionDetail("1", true)
+        if let itemData = self.promotionList?[indexPath.section] {
+            let id = itemData["id"] as? NSNumber ?? 0
+            self.showPromotionDetail(id.stringValue, true)
+        }
+        
        
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -105,7 +157,8 @@ class PromotionViewController: BaseViewController , UICollectionViewDelegate , U
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         
-        if section == 4 {
+        let size = (self.promotionList?.count ?? 0) - 1
+        if size == section {
             return CGSize(width: collectionView.frame.width, height: 60)
         }
         return CGSize.zero

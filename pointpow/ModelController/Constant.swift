@@ -699,6 +699,8 @@ struct Constant {
         static let forgotPasswordEmail  = "\(HOST)\(POINTPOW_VERSION1)reset-password-email"
         static let forgotPasswordMobile  = "\(HOST)\(POINTPOW_VERSION1)reset-password-mobile"
         static let setNewPassword = "\(HOST)\(POINTPOW_VERSION1)set-new-password"
+        static let promotion = "\(HOST)\(POINTPOW_VERSION1)promotions"
+        
         static let userData = "\(HOST)\(POINTPOW_VERSION1)member/get"
         static let addImageProfile = "\(HOST)\(POINTPOW_VERSION1)member/upload-profile-image"
         static let addBackgroundImageProfile = "\(HOST)\(POINTPOW_VERSION1)member/upload-background-image"
@@ -712,6 +714,8 @@ struct Constant {
         static let searchMember = "\(HOST)\(POINTPOW_VERSION1)member/transfer-point/search"
         static let recentMemberTransfer = "\(HOST)\(POINTPOW_VERSION1)member/transfer-point/recent"
         static let memberTransfer = "\(HOST)\(POINTPOW_VERSION1)member/transfer-point/friend"
+        
+        
         
         static let memberSetting = "\(HOST)\(POINTPOW_VERSION1)member/setting"
         static let setPinCode = "\(HOST)\(POINTPOW_VERSION1)member/set-pin"
@@ -798,6 +802,7 @@ struct Constant {
                 static let PROFILE_PLACEHOLDER = "ic-gold-profile"
                 static let PROFILE_BACKGROUND_PLACEHOLDER = "bg-profile-image"
                 static let BANNER_PROMOTION_MOCK = "banner-mock1"
+                static let BANNER_PROMOTION_MOCK_DETAIL = "banner-mock1d"
                 static let BANNER_HOME_MOCK = "banner-mock1"
         }
     }

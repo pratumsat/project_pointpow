@@ -496,6 +496,15 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }
     }
     
+    func showTransectionFilter(_ animated:Bool , filterCallback:((_ filter:String)->Void)? = nil ){
+        if let vc:TransactionFilterViewController = self.storyboard?.instantiateViewController(withIdentifier: "TransactionFilterViewController") as? TransactionFilterViewController{
+            vc.filterCallback  =  {(filter) in
+                filterCallback?(filter)
+            }
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
     func showAboutView(_ animated:Bool){
         if let vc:AboutViewController = self.storyboard?.instantiateViewController(withIdentifier: "AboutViewController") as? AboutViewController {
             
@@ -1590,37 +1599,67 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             
         }
     }
-    
   
-    
-    func showPoPup(_ animated:Bool , dismissCallback:(()->Void)? = nil){
-        let presenter: Presentr = {
-            
-            let w = self.view.frame.width * 0.8
-            let width = ModalSize.custom(size: Float(w))
-            let height = ModalSize.custom(size: Float(w / 260 * 310))
-            
-            let center = ModalCenterPosition.center
-            let customType = PresentationType.custom(width: width, height: height, center: center)
-            
-            let customPresenter = Presentr(presentationType: customType)
-            customPresenter.roundCorners = true
-            customPresenter.cornerRadius = 10
-            customPresenter.dismissOnSwipe = true
-            customPresenter.dismissOnTap = true
-            
-            return customPresenter
-        }()
-    
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "PopUpViewController") as? PopUpViewController{
-        
-            vc.dismissView = {
-                dismissCallback?()
+    private func getPopup(_ avaliable:((_ model:[String:AnyObject])->Void)?  = nil){
+     
+        self.modelCtrl.getPopupPromotion(params: nil ,  true , succeeded: { (result) in
+            if let mResult = result as? [[String:AnyObject]] {
+                if let item = mResult.first {
+                      avaliable?(item)
+                }
+              
             }
-            self.viewPopup = vc.view
-            customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)
             
+            
+            self.refreshControl?.endRefreshing()
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                self.showMessagePrompt(message)
+            }
+            self.refreshControl?.endRefreshing()
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            self.refreshControl?.endRefreshing()
         }
+        
+    }
+    func showPoPup(_ animated:Bool , dismissCallback:(()->Void)? = nil){
+       
+        self.getPopup(){ (model) in
+            let presenter: Presentr = {
+                
+                let w = self.view.frame.width * 0.8
+                let width = ModalSize.custom(size: Float(w))
+                let height = ModalSize.custom(size: Float(w / 925 * 1105))
+                
+                let center = ModalCenterPosition.center
+                let customType = PresentationType.custom(width: width, height: height, center: center)
+                
+                let customPresenter = Presentr(presentationType: customType)
+                customPresenter.roundCorners = true
+                customPresenter.cornerRadius = 10
+                customPresenter.dismissOnSwipe = true
+                customPresenter.dismissOnTap = true
+                
+                return customPresenter
+            }()
+            
+            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "PopUpViewController") as? PopUpViewController{
+                vc.model = model
+                vc.dismissView = {
+                    dismissCallback?()
+                }
+                self.viewPopup = vc.view
+                self.customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)
+                
+            }
+        }
+        
+        
     }
     
     

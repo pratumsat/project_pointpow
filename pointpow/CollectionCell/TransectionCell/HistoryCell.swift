@@ -1,17 +1,16 @@
 //
-//  TransactionGoldCell.swift
+//  HistoryCell.swift
 //  pointpow
 //
-//  Created by thanawat on 21/2/2562 BE.
+//  Created by thanawat on 21/5/2562 BE.
 //  Copyright © 2562 abcpoint. All rights reserved.
 //
 
 import UIKit
 
-class TransactionGoldCell: UICollectionViewCell {
+class HistoryCell: UICollectionViewCell {
 
     @IBOutlet weak var unitLabel: UILabel!
-    @IBOutlet weak var shippingLabel: UILabel!
     @IBOutlet weak var heightLogoConstraint: NSLayoutConstraint!
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     

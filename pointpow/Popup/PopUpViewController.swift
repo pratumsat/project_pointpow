@@ -14,11 +14,24 @@ class PopUpViewController: BaseViewController {
     
     var dismissView:(()->Void)?
     
+    var model:[String:AnyObject]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.imageView.image = UIImage(named: "ic-bg-popup")
         
+        if let itemData = self.model {
+            let cover = itemData["cover"] as? String ?? ""
+
+            
+            if let url = URL(string: cover) {
+                self.imageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER))
+            }else{
+                self.imageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER)
+            }
+            
+        }
     }
     
     override func dismissPoPup() {
@@ -37,15 +50,6 @@ class PopUpViewController: BaseViewController {
         self.dismissPoPup()
         self.dismissView?()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }

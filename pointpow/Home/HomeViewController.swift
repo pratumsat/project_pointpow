@@ -171,9 +171,6 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
                 self.getUserInfo()
             }
         }
-        
-      
-        
     }
     
     override func reloadData() {

@@ -17,10 +17,15 @@ class PromotionViewController: BaseViewController , UICollectionViewDelegate , U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.title = NSLocalizedString("string-title-promotion", comment: "")
+        
         self.setUp()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.title = NSLocalizedString("string-title-promotion", comment: "")
+        self.navigationController?.isNavigationBarHidden = false
+    }
     
     func setUp(){
         
@@ -177,10 +182,5 @@ class PromotionViewController: BaseViewController , UICollectionViewDelegate , U
     }
 
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.navigationController?.isNavigationBarHidden = false
-    }
+   
 }

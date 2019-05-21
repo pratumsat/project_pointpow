@@ -307,44 +307,44 @@ extension UIView {
         self.layer.masksToBounds = true
     }
     func borderLightGroupTableColorProperties(borderWidth:CGFloat = 1.0){
-        self.layer.cornerRadius = self.frame.size.height/2;
+        self.layer.cornerRadius = self.frame.size.height/2
         self.layer.borderWidth = borderWidth
         self.layer.borderColor = UIColor.groupTableViewBackground.cgColor
         self.layer.masksToBounds = true
     }
     func borderLightGrayColorProperties(borderWidth:CGFloat = 1.0 ,  radius:CGFloat? = nil){
-        self.layer.cornerRadius = radius ?? self.frame.size.height/2;
+        self.layer.cornerRadius = radius ?? self.frame.size.height/2
         self.layer.borderWidth = borderWidth
         self.layer.borderColor = UIColor.lightGray.cgColor
         self.layer.masksToBounds = true
     }
     func borderBlackolorProperties(borderWidth:CGFloat = 1.0 ,  radius:CGFloat? = nil){
-        self.layer.cornerRadius = radius ?? self.frame.size.height/2;
+        self.layer.cornerRadius = radius ?? self.frame.size.height/2
         self.layer.borderWidth = borderWidth
         self.layer.borderColor = UIColor.black.cgColor
         self.layer.masksToBounds = true
     }
     
-    func borderDarkGrayColorProperties(borderWidth:CGFloat = 1.0){
-        self.layer.cornerRadius = self.frame.size.height/2;
+    func borderDarkGrayColorProperties(borderWidth:CGFloat = 1.0 , radius:CGFloat? = nil ){
+        self.layer.cornerRadius = radius ?? self.frame.size.height/2
         self.layer.borderWidth = borderWidth
         self.layer.borderColor = UIColor.darkGray.cgColor
         self.layer.masksToBounds = true
     }
     func borderWhiteProperties(borderWidth:CGFloat = 1.0){
-        self.layer.cornerRadius = self.frame.size.height/2;
+        self.layer.cornerRadius = self.frame.size.height/2
         self.layer.borderWidth = borderWidth
         self.layer.borderColor = UIColor.white.cgColor
         self.layer.masksToBounds = true
     }
     func borderProperties(borderWidth:CGFloat = 1.0){
-        self.layer.cornerRadius = self.frame.size.height/2;
+        self.layer.cornerRadius = self.frame.size.height/2
         self.layer.borderWidth = borderWidth
         self.layer.borderColor = self.backgroundColor?.cgColor
         self.layer.masksToBounds = true
     }
     func borderClearProperties(borderWidth:CGFloat = 1.0 , radius:CGFloat? = nil){
-        self.layer.cornerRadius = radius ?? self.frame.size.height/2;
+        self.layer.cornerRadius = radius ?? self.frame.size.height/2
         self.layer.borderWidth = borderWidth
         self.layer.borderColor = UIColor.clear.cgColor
         self.layer.masksToBounds = true
@@ -364,7 +364,7 @@ extension UIView {
         self.layer.masksToBounds = true
     }
     func ovalColorWhiteProperties(borderWidth:CGFloat = 1.0){
-        self.layer.cornerRadius = self.frame.size.width/2;
+        self.layer.cornerRadius = self.frame.size.width/2
         self.layer.borderColor =  UIColor.white.cgColor
         self.layer.borderWidth = borderWidth
         self.clipsToBounds = true;
@@ -374,7 +374,7 @@ extension UIView {
         self.clipsToBounds = true;
     }
     func ovalColoLightGrayProperties(borderWidth:CGFloat = 1.0){
-        self.layer.cornerRadius = self.frame.size.width/2;
+        self.layer.cornerRadius = self.frame.size.width/2
         self.layer.borderColor =  Constant.Colors.LINE_PROFILE.cgColor
         self.layer.borderWidth = borderWidth
         self.clipsToBounds = true;
@@ -700,6 +700,7 @@ struct Constant {
         static let forgotPasswordMobile  = "\(HOST)\(POINTPOW_VERSION1)reset-password-mobile"
         static let setNewPassword = "\(HOST)\(POINTPOW_VERSION1)set-new-password"
         static let promotion = "\(HOST)\(POINTPOW_VERSION1)promotions"
+        static let popUpPromotion = "\(HOST)\(POINTPOW_VERSION1)promotions/popup"
         
         static let userData = "\(HOST)\(POINTPOW_VERSION1)member/get"
         static let addImageProfile = "\(HOST)\(POINTPOW_VERSION1)member/upload-profile-image"

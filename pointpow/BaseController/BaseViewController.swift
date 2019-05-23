@@ -505,6 +505,16 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
+    func showTransectionFilterResultPage(_ titlePage:String, params:Parameters?,  _ animated:Bool){
+        
+        if let vc:TransectionFilterResultViewController = self.storyboard?.instantiateViewController(withIdentifier: "TransectionFilterResultViewController") as? TransectionFilterResultViewController{
+            
+            vc.mTitle = titlePage
+            vc.params = params
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
     func showAboutView(_ animated:Bool){
         if let vc:AboutViewController = self.storyboard?.instantiateViewController(withIdentifier: "AboutViewController") as? AboutViewController {
             
@@ -562,6 +572,13 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
+    func showPointPowIDView(_ animated:Bool){
+        if let vc:PointPowIDViewController  = self.storyboard?.instantiateViewController(withIdentifier: "PointPowIDViewController") as? PointPowIDViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    
     func showPointTransferView(_ animated:Bool){
         if let vc:PointTransferViewController  = self.storyboard?.instantiateViewController(withIdentifier: "PointTransferViewController") as? PointTransferViewController {
             
@@ -609,18 +626,36 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             vc.callbackFinish = {
                 finish?()
             }
+            //vc.transactionId = transaction_id
             self.present(vc, animated: animated, completion: nil)
         }
     }
     
-    func showPointFriendSummaryTransferView(_ animated:Bool , finish:(()->Void)? = nil){
-        if let vc:PointFreindSummaryNav  = self.storyboard?.instantiateViewController(withIdentifier: "PointFreindSummaryNav") as? PointFreindSummaryNav {
-            vc.callbackFinish = {
-                finish?()
+    func showPointFriendSummaryTransferView(_ transaction_id:String, titlePage:String, _ animated:Bool , finish:(()->Void)? = nil){
+        
+        if finish != nil {
+            if let vc:PointFreindSummaryNav  = self.storyboard?.instantiateViewController(withIdentifier: "PointFreindSummaryNav") as? PointFreindSummaryNav {
+                vc.callbackFinish = {
+                    finish?()
+                }
+                vc.titlePage = titlePage
+                vc.transactionId = transaction_id
+                self.present(vc, animated: animated, completion: nil)
             }
-            self.present(vc, animated: animated, completion: nil)
+        }else{
+            if let vc:PointFriendSummaryViewController  = self.storyboard?.instantiateViewController(withIdentifier: "PointFriendSummaryViewController") as? PointFriendSummaryViewController {
+                
+                vc.titlePage = titlePage
+                vc.transactionId = transaction_id
+                vc.hideFinishButton = true
+                self.navigationController?.pushViewController(vc, animated: animated)
+            }
         }
+        
+        
+
     }
+    
     
     
     func showGoldSavingResult(_ animated:Bool, transactionId:String, finish:(()->Void)? = nil){

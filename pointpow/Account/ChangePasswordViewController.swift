@@ -135,19 +135,19 @@ class ChangePasswordViewController: BaseViewController {
         self.errorNewPasswordLabel?.removeFromSuperview()
         self.errorConfirmNewPasswordLabel?.removeFromSuperview()
         
-        if confirm_new_password.isEmpty {
+        if confirm_new_password.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-confirm-pwd", comment: "")
             self.errorConfirmNewPasswordLabel =  self.confirmNewPasswordTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
             errorEmpty += 1
             
         }
-        if new_password.isEmpty {
+        if new_password.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-pwd", comment: "")
             self.errorNewPasswordLabel =  self.newPasswordTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
             errorEmpty += 1
             
         }
-        if old_password.isEmpty {
+        if old_password.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-old-pwd", comment: "")
             self.errorOldPasswordLabel =  self.passwordTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
             errorEmpty += 1

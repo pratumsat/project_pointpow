@@ -9,7 +9,17 @@
 import UIKit
 
 class ItemFriendSummaryCell: UICollectionViewCell {
-
+    
+    @IBOutlet weak var transectionLabel: UILabel!
+    @IBOutlet weak var serviceLabel: UILabel!
+   
+    @IBOutlet weak var statusImageView: UIImageView!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var receiverLabel: UILabel!
+    @IBOutlet weak var noteLabel: UILabel!
+    @IBOutlet weak var senderLabel: UILabel!
+    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var mView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()

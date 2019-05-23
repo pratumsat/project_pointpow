@@ -136,6 +136,8 @@
 		C12FD30F228D168100FB81B6 /* NotificationGoldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12FD30D228D168100FB81B6 /* NotificationGoldCell.xib */; };
 		C12FD312228EA48700FB81B6 /* ItemFriendSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12FD310228EA48700FB81B6 /* ItemFriendSearchCell.swift */; };
 		C12FD313228EA48700FB81B6 /* ItemFriendSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12FD311228EA48700FB81B6 /* ItemFriendSearchCell.xib */; };
+		C13948872296579E003E0527 /* PointPowIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13948862296579E003E0527 /* PointPowIDViewController.swift */; };
+		C139488922968D60003E0527 /* TransectionFilterResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C139488822968D60003E0527 /* TransectionFilterResultViewController.swift */; };
 		C13D99822199755B001A4794 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D99812199755B001A4794 /* ProfileViewController.swift */; };
 		C13D998521997938001A4794 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D998321997938001A4794 /* LogoutCell.swift */; };
 		C13D998621997938001A4794 /* LogoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13D998421997938001A4794 /* LogoutCell.xib */; };
@@ -409,6 +411,8 @@
 		C12FD30D228D168100FB81B6 /* NotificationGoldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationGoldCell.xib; sourceTree = "<group>"; };
 		C12FD310228EA48700FB81B6 /* ItemFriendSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFriendSearchCell.swift; sourceTree = "<group>"; };
 		C12FD311228EA48700FB81B6 /* ItemFriendSearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemFriendSearchCell.xib; sourceTree = "<group>"; };
+		C13948862296579E003E0527 /* PointPowIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointPowIDViewController.swift; sourceTree = "<group>"; };
+		C139488822968D60003E0527 /* TransectionFilterResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransectionFilterResultViewController.swift; sourceTree = "<group>"; };
 		C13D99812199755B001A4794 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C13D998321997938001A4794 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		C13D998421997938001A4794 /* LogoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutCell.xib; sourceTree = "<group>"; };
@@ -695,6 +699,7 @@
 			children = (
 				C10CA19921914AF900316DF3 /* TransactionViewController.swift */,
 				C15F16FC2293CEE6005E8E71 /* TransactionFilterViewController.swift */,
+				C139488822968D60003E0527 /* TransectionFilterResultViewController.swift */,
 			);
 			path = Transaction;
 			sourceTree = "<group>";
@@ -715,6 +720,7 @@
 				C121FB4A22853B2100043387 /* VerifyMobileNumberViewController.swift */,
 				C121FB4C22854E5100043387 /* PointLimitViewController.swift */,
 				C13D998C21997EF7001A4794 /* PersonalViewController.swift */,
+				C13948862296579E003E0527 /* PointPowIDViewController.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -1713,8 +1719,10 @@
 				C1B542DD219ABE9A0040DDE6 /* SettingViewController.swift in Sources */,
 				C1F761052216C261000A2CA9 /* SavingResultCell.swift in Sources */,
 				C121FB51228A641D00043387 /* NotificationStructHolder.swift in Sources */,
+				C13948872296579E003E0527 /* PointPowIDViewController.swift in Sources */,
 				C10CA1B92193E1D100316DF3 /* PromotionCampainCell.swift in Sources */,
 				C1892E14221E9CCC00F5412F /* GoldHistory.swift in Sources */,
+				C139488922968D60003E0527 /* TransectionFilterResultViewController.swift in Sources */,
 				C121FB4F228A640700043387 /* NotificationStruct.swift in Sources */,
 				C106BEB2220BED4E00E2331E /* BrowseImageCell.swift in Sources */,
 				C11A93B7218C00C800627B44 /* IntroCell1.swift in Sources */,

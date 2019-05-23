@@ -80,7 +80,7 @@ class ForgotPasswordViewController: BaseViewController {
         
         self.errorUsernamelLabel?.removeFromSuperview()
         
-        if username.isEmpty {
+        if username.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-username", comment: "")
             self.errorUsernamelLabel =  self.usernameTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 15 )
             errorEmpty += 1

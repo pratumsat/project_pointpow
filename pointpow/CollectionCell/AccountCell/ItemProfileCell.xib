@@ -57,6 +57,8 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="305" height="64"/>
             <connections>
+                <outlet property="arrowImageView" destination="tBV-vL-OHd" id="vQ4-i5-3XT"/>
+                <outlet property="marginRight" destination="QQH-PW-OjZ" id="Xtb-pG-Jcm"/>
                 <outlet property="nameLabel" destination="5WX-2p-r62" id="3F8-dG-OEw"/>
                 <outlet property="trailLabel" destination="e36-Th-oAM" id="wuq-Ro-8Zt"/>
             </connections>

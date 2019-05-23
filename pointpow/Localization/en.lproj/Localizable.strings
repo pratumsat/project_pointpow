@@ -10,6 +10,7 @@
 
 "title-map-office" = "แผนที่บริษัท Point Power";
 "nav-notification-title" = "การแจ้งเตือน";
+"string-title-pointpow-id" = "ตั้งค่า Point Pow ID";
 "string-title-about-pointpow" = "เกี่ยวกับ Point Pow";
 "string-title-point-limit" = "Point จำกัดต่อวัน";
 "string-title-promotion" = "โปรโมชั่น";
@@ -64,6 +65,12 @@
 "string-dailog-gold-transaction-status-success"= "ทำรายการสำเร็จ";
 "string-dialog-saved-slip" = "บันทึกสลิปเรียบร้อย";
 
+//history  transection
+"string-dailog-point-transaction-status-waitting"= "กำลังทำรายการ";
+"string-dailog-point-transaction-status-cancel"= "ยกเลิกการทำรายการ";
+"string-dailog-point-transaction-status-success"= "โอนพ้อยท์สำเร็จ";
+
+
 "string-dailog-gold-shipping-office-status-waiting" = "อยู่ระหว่างการส่งมอบ";
 "string-dailog-gold-shipping-office-status-success" = "ส่งมอบเรียนร้อย";
 "string-dailog-gold-shipping-thaipost-status-waiting" = "กำลังดำเนินการจัดส่ง";
@@ -75,6 +82,19 @@
 "string-status-gold-history-waiting" = "กำลังดำเนินการ";
 "string-title-history-saving" = "สะสมพ้อยท์";
 "string-title-history-withdraw" = "แลกทองคำ";
+
+//transection history list
+"string-status-transection-history-success" = "สำเร็จ";
+"string-status-transection-history-pending" = "กำลังดำเนินการ";
+"string-status-transection-history-cancel" = "ไม่สำเร็จ";
+"string-status-transection-history-service-pointsaving" = "ออมพ้อยท์แลกทองคำ";
+"string-status-transection-history-service-point-transfer" = "โอนพ้อยท์ให้เพื่อน";
+"string-status-transection-history-service-point-transfer-in" = "รับพ้อยท์จากเพื่อน";
+"string-status-transection-history-service-point-transfer-out" = "โอนพ้อยท์ให้เพื่อน";
+"string-status-transection-history-service-exchange" = "โอนพ้อยท์มา Point Pow";
+"string-status-transection-history-service-shopping" = "สิทธิพิเศษ แลกสินค้า/บริการ";
+
+
 //transaction sorry
 "string-not-found-item-transaction" = "ไม่พบข้อมูลการทำรายการ";
 "string-not-found-item-pomotion" = "ไม่พบข้อมูลโปรโมชั่น";
@@ -222,6 +242,7 @@
 "string-message-success-change-point-limit" = "บันทึกเรียบร้อย";
 "string-message-success-change-profile-infomation" = "บันทึกเรียบร้อย";
 "string-message-success-change-displayname" = "บันทึกเรียบร้อย";
+"string-message-success-pointpow-id" = "บันทึกเรียบร้อย";
 
 "alert-title-language" = "ภาษา";
 "alert-message-already-language" = "ภาษาปัจจุบันคือภาษา ";
@@ -245,7 +266,13 @@
 "string-dailog-title-add-favorite" = "ตั้งชื่อรายการโปรด";
 "string-dailog-title-edit-favorite" = "แก้ไขรายการโปรด";
 
+
+"string-dailog-title-save-pointpow-id" = "คุณต้องการบันทึก\nPoint Pow ID ใหม";
+
+
 "string-dailog-title-cancel-withdraw" = "ยืนยันการยกเลิก\nรายการแลกทองคำ";
+
+
 
 // address
 "string-dailog-title-delete-address" = "ยืนยันในการลบ\nที่อยู่ในการจัดส่งนี้";
@@ -334,7 +361,7 @@
 
 "string-error-empty-search" = "กรุณาใส่ keyword ที่ต้องการค้นหา";
 
-
+"string-error-empty-pointpow-id" = "กรุณาใส่ Point Pow ID";
 
 /*error*/
 "error-connect-server-cri" = "ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้, กรุณาตรวจสอบสัญญาณอินเทอร์เน็ตของท่านเพื่อเชื่อมต่ออีกครั้ง";

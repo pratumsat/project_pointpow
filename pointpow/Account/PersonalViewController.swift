@@ -456,31 +456,31 @@ class PersonalViewController: BaseViewController  {
         
         
         
-        if birthdate.isEmpty {
+        if birthdate.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-birth-date", comment: "")
             self.errorBirthdateLabel =  self.birthdayTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
             errorEmpty += 1
 
         }
-        if email.isEmpty {
+        if email.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-email", comment: "")
             self.errorEmailLabel =  self.emailTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
             errorEmpty += 1
             
         }
-        if personalID.isEmpty {
+        if personalID.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-personal-id", comment: "")
             self.errorPersonalIDLabel =  self.parsonalTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
             errorEmpty += 1
             
         }
-        if lastName.isEmpty {
+        if lastName.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-lastname", comment: "")
             self.errorLastnamelLabel =  self.lastNameTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
             errorEmpty += 1
             
         }
-        if firstName.isEmpty {
+        if firstName.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-firstname", comment: "")
             self.errorFirstNameLabel =  self.firstNameTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
             errorEmpty += 1

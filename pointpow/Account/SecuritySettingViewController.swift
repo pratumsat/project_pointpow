@@ -189,7 +189,7 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return 5
+            return 6
         }
         return 1
     }
@@ -199,7 +199,7 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
         if indexPath.section == 0 {
         
             switch indexPath.row {
-            case 0,2,3,4:
+            case 0,2,3,4,5:
                 if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemProfileCell", for: indexPath) as? ItemProfileCell{
                     cell = itemCell
                     
@@ -221,19 +221,50 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
                     if indexPath.row == 0{
                         itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change-pin", comment: "")
                         itemCell.trailLabel.text = ""
+                        itemCell.arrowImageView.isHidden = false
+                        itemCell.marginRight.constant = 20.0
+                        
                     }else if indexPath.row == 2{
+                        
+                        itemCell.nameLabel.text = NSLocalizedString("string-title-pointpow-id", comment: "")
+                        
+                        if let data = self.userData as? [String:AnyObject] {
+                            let pointpow_id = data["pointpow_id"] as? String ?? ""
+                            itemCell.trailLabel.text = pointpow_id
+                            
+                            if pointpow_id.isEmpty{
+                                itemCell.arrowImageView.isHidden = false
+                                itemCell.marginRight.constant = 20.0
+                            }else{
+                                itemCell.arrowImageView.isHidden = true
+                                itemCell.marginRight.constant = 0.0
+                            }
+                            
+                        }
+                       
+                        
+                    }else if indexPath.row == 3{
                         itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change-point-limit", comment: "")
                         let numberFormatter = NumberFormatter()
                         numberFormatter.numberStyle = .decimal
                         //numberFormatter.minimumFractionDigits = 2
                         itemCell.trailLabel.text = numberFormatter.string(from: limitpoint_perday)
-                    }else if indexPath.row == 3{
+                        itemCell.arrowImageView.isHidden = false
+                        itemCell.marginRight.constant = 20.0
+                        
+                    }else if indexPath.row == 4{
                         itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change-mobile", comment: "")
                         let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
                         itemCell.trailLabel.text = newMText.chunkFormatted()
-                    }else if indexPath.row == 4{
+                        itemCell.arrowImageView.isHidden = false
+                        itemCell.marginRight.constant = 20.0
+                        
+                    }else if indexPath.row == 5{
                         itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change-pwd", comment: "")
                         itemCell.trailLabel.text = dash
+                        itemCell.arrowImageView.isHidden = false
+                        itemCell.marginRight.constant = 20.0
+                        
                     }
                     
                     
@@ -304,14 +335,25 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
             
             }
             if indexPath.row == 2 {
+                //pointpowid
+                if let data = self.userData as? [String:AnyObject] {
+                    let pointpow_id = data["pointpow_id"] as? String ?? ""
+                    
+                    if pointpow_id.isEmpty {
+                        self.showPointPowIDView(true)
+                    }
+                }
+                
+            }
+            if indexPath.row == 3 {
                 self.item = .POINT_LIMIT
                 self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
             }
-            if indexPath.row == 3 {
+            if indexPath.row == 4 {
                 self.item = .CHANGE_MOBILE
                 self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
             }
-            if indexPath.row == 4 {
+            if indexPath.row == 5 {
                 self.item = .CHANGE_PWD
                 self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
             }

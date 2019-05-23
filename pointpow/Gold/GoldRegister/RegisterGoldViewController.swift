@@ -563,42 +563,42 @@ class RegisterGoldViewController: BaseViewController {
         
         
         
-        if birthdate.isEmpty {
+        if birthdate.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-birth-date", comment: "")
             self.errorBirthdateLabel =  self.birthdateTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 15 )
             errorEmpty += 1
             
         }
-        if laserId.isEmpty {
+        if laserId.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-laser-id", comment: "")
             self.errorLaserIdLabel =  self.laserIdTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 15 )
             errorEmpty += 1
             
         }
-        if personalID.isEmpty {
+        if personalID.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-personal-id", comment: "")
             self.errorPersonalIDLabel =  self.idcardTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 15 )
             errorEmpty += 1
             
         }
-        if mobile.isEmpty {
+        if mobile.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-mobile", comment: "")
             self.errorMobileLabel =  self.mobileTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 15 )
             errorEmpty += 1
             
         }
-        if email.isEmpty{
+        if email.trimmingCharacters(in: .whitespaces).isEmpty{
             emptyMessage = NSLocalizedString("string-error-empty-email", comment: "")
             self.errorEmailLabel =  self.emailTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 15 )
             errorEmpty += 1
         }
-        if lastName.isEmpty {
+        if lastName.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-lastname", comment: "")
             self.errorLastnamelLabel =  self.lastNameTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 10 )
             errorEmpty += 1
             
         }
-        if firstName.isEmpty {
+        if firstName.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-firstname", comment: "")
             self.errorFirstNameLabel =  self.firstNameTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 15 )
             errorEmpty += 1

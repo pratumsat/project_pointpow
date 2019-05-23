@@ -85,6 +85,15 @@ class ResultTransferViewController: BaseViewController  , UICollectionViewDelega
     var timer:Timer?
     
     var bgSlip:UIImage?
+    var hideFinishButton:Bool = false
+    var transactionId:String?{
+        didSet{
+            print("updateView")
+            print("transactionId \(transactionId ?? "no id")")
+            self.getDetail()
+        }
+    }
+    var transferResult:AnyObject?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,17 +108,41 @@ class ResultTransferViewController: BaseViewController  , UICollectionViewDelega
         self.view.addSubview(snapView!)
         self.view.sendSubviewToBack(snapView!)
         
-        self.title = NSLocalizedString("string-title-point-transfer", comment: "")
-        let finishButton = UIBarButtonItem(title: NSLocalizedString("string-title-finish-transfer", comment: ""), style: .plain, target: self, action: #selector(dismissTapped))
-        finishButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white,
-                                             NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.ITEM_TITLE )!]
-            , for: .normal)
-
-        
-        self.navigationItem.rightBarButtonItem = finishButton
-        
+        if !hideFinishButton {
+            
+            self.title = NSLocalizedString("string-title-point-transfer", comment: "")
+            let finishButton = UIBarButtonItem(title: NSLocalizedString("string-title-finish-transfer", comment: ""), style: .plain, target: self, action: #selector(dismissTapped))
+            finishButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white,
+                                                 NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.ITEM_TITLE )!]
+                , for: .normal)
+            
+            
+            self.navigationItem.rightBarButtonItem = finishButton
+            self.transactionId = (self.navigationController as? ResultTransferNav)?.transactionId
+        }
         self.setUp()
     }
+    
+    func getDetail(){
+        //        self.modelCtrl.detailTransactionHistory(transactionNumber: self.transactionId ?? "" ,true , succeeded: { (result) in
+        //            self.transferResult = result
+        //            self.resultCollectionView.reloadData()
+        //
+        //        }, error: { (error) in
+        //            if let mError = error as? [String:AnyObject]{
+        //                let message = mError["message"] as? String ?? ""
+        //                print(message)
+        //                self.showMessagePrompt(message)
+        //            }
+        //
+        //            print(error)
+        //        }) { (messageError) in
+        //            print("messageError")
+        //            self.handlerMessageError(messageError)
+        //
+        //        }
+    }
+    
     @objc func dismissTapped(){
         self.dismiss(animated: false) {
             (self.navigationController as? ResultTransferNav)?.callbackFinish?()

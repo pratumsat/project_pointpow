@@ -202,7 +202,7 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
     
     func searchFriend(_ keyword:String) {
         print("keyword = \(keyword)")
-        if keyword.isEmpty {
+        if keyword.trimmingCharacters(in: .whitespaces).isEmpty {
              self.showMessagePrompt(NSLocalizedString("string-error-empty-search", comment: ""))
             return
         }
@@ -317,7 +317,7 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
                 
                 cell = friendCell
                 
-                if let modelFriend = self.recentFriend?[indexPath.row]["friend"] as? [String:AnyObject] {
+                if let modelFriend = self.recentFriend?[indexPath.row]["receiver"] as? [String:AnyObject] {
                     let display_name = modelFriend["display_name"] as? String ?? ""
                     let first_name = modelFriend["first_name"] as? String ?? ""
                     let last_name = modelFriend["last_name"] as? String ?? ""

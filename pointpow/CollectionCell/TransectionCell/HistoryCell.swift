@@ -10,7 +10,7 @@ import UIKit
 
 class HistoryCell: UICollectionViewCell {
 
-    @IBOutlet weak var unitLabel: UILabel!
+  
     @IBOutlet weak var heightLogoConstraint: NSLayoutConstraint!
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     

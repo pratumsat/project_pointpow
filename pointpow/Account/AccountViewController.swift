@@ -301,13 +301,13 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
             
         }
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
         if section == 1 {
-            return CGSize(width: collectionView.frame.width, height: 50)
+            return UIEdgeInsets(top: 0, left: 0, bottom: 60, right: 0)
         }
-        return CGSize.zero
-        
+        return UIEdgeInsets.zero
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -233,20 +233,20 @@ class RegisterViewController: BaseViewController {
         self.errorConfirmPasswordLabel?.removeFromSuperview()
         self.infomationlabel.isHidden = false
        
-        if confirmPassword.isEmpty {
+        if confirmPassword.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-confirm-pwd", comment: "")
             self.errorConfirmPasswordLabel =  self.confirmPasswordTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 15 )
             errorEmpty += 1
         }
         
-        if password.isEmpty {
+        if password.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-pwd", comment: "")
             self.infomationlabel.isHidden = true
             self.errorPasswordLabel =  self.passwordTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 15 )
             errorEmpty += 1
         }
         
-        if username.isEmpty {
+        if username.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-username", comment: "")
             self.errorUsernamelLabel =  self.usernameTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 15 )
             errorEmpty += 1

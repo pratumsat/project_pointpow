@@ -165,13 +165,13 @@ class LoginViewController: BaseViewController {
         self.errorUsernamelLabel?.removeFromSuperview()
         self.errorPasswordLabel?.removeFromSuperview()
       
-        if password.isEmpty {
+        if password.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-pwd", comment: "")
             self.errorPasswordLabel =  self.passwordTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 15 )
             errorEmpty += 1
         }
         
-        if username.isEmpty {
+        if username.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-username", comment: "")
             self.errorUsernamelLabel =  self.usernameTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 15 )
             errorEmpty += 1

@@ -22,7 +22,6 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var displayNameLabel: UILabel!
     
-    var shadowImageView:UIImageView?
     var isSetHeight = false
     
     var startHome = false
@@ -338,16 +337,11 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         
         self.navigationController?.isNavigationBarHidden = true
         
-        if shadowImageView == nil {
-            shadowImageView = findShadowImage(under: navigationController!.navigationBar)
-        }
-        shadowImageView?.isHidden = true
-        
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        shadowImageView?.isHidden = false
+
     }
    
    
@@ -463,6 +457,13 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        if section == 1 {
+            return UIEdgeInsets(top: 0, left: 0, bottom: 60, right: 0)
+        }
+        return UIEdgeInsets.zero
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         

@@ -29,6 +29,7 @@ class PointLimitViewController: BaseViewController {
     }
     
     func setUp(){
+        self.backgroundImage?.image = nil
         self.saveButton.borderRedColorProperties(borderWidth: 1)
         
         self.pointlimitTextField.delegate = self

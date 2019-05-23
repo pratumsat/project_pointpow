@@ -10,6 +10,8 @@ import UIKit
 
 class PointFreindSummaryNav: BaseNavigationViewController {
 
+    var titlePage:String?
+    var transactionId:String?
     var callbackFinish:(()->Void)?
     override func viewDidLoad() {
         super.viewDidLoad()

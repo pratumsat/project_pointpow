@@ -160,15 +160,15 @@ class PromotionViewController: BaseViewController , UICollectionViewDelegate , U
         return CGSize(width: collectionView.frame.width, height: 20)
         
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+  
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
         
         let size = (self.promotionList?.count ?? 0) - 1
         if size == section {
-            return CGSize(width: collectionView.frame.width, height: 60)
+            return UIEdgeInsets(top: 0, left: 0, bottom: 60, right: 0)
         }
-        return CGSize.zero
-        
-        
+        return UIEdgeInsets.zero
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

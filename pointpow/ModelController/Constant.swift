@@ -716,6 +716,7 @@ struct Constant {
         static let recentMemberTransfer = "\(HOST)\(POINTPOW_VERSION1)member/transfer-point/recent"
         static let memberTransfer = "\(HOST)\(POINTPOW_VERSION1)member/transfer-point/friend"
         
+        static let transectionHistory = "\(HOST)\(POINTPOW_VERSION1)member/transfer-point/history"
         
         
         static let memberSetting = "\(HOST)\(POINTPOW_VERSION1)member/setting"
@@ -815,6 +816,7 @@ struct Constant {
         static let GRADIENT_1 = UIColor(rgb: 0xFF2158) //top
         static let GRADIENT_2 = UIColor(rgb: 0xFE2222) //bottom
         static let GREEN = UIColor(rgb: 0x43922B)
+        static let GREEN2 = UIColor(rgb: 0x1A9E47)
         static let ORANGE = UIColor(rgb: 0xF4B55A)
         static let COLOR_LLGRAY = UIColor(rgb: 0xEEEEEE)
     }

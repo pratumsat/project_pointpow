@@ -250,7 +250,16 @@
             <viewLayoutGuide key="safeArea" id="asl-WX-wdC"/>
             <size key="customSize" width="408" height="817"/>
             <connections>
+                <outlet property="amountLabel" destination="z2n-2N-k6I" id="eFg-2W-zHv"/>
+                <outlet property="dateLabel" destination="Apl-8U-1LR" id="U0b-qR-rPa"/>
                 <outlet property="mView" destination="Y4V-KM-xYL" id="ktE-X0-J1Z"/>
+                <outlet property="noteLabel" destination="a4I-Ph-Joq" id="25G-gc-mOJ"/>
+                <outlet property="receiverLabel" destination="Zsi-do-r3V" id="f54-NL-Zuw"/>
+                <outlet property="senderLabel" destination="kdO-Hr-V4O" id="cAA-cZ-JEj"/>
+                <outlet property="serviceLabel" destination="w3x-a6-42j" id="WPj-J8-4Tr"/>
+                <outlet property="statusImageView" destination="Kr0-3W-NWf" id="Rfx-Mk-zCi"/>
+                <outlet property="statusLabel" destination="IOg-Ps-ssb" id="KQM-r2-peg"/>
+                <outlet property="transectionLabel" destination="5yv-et-SWb" id="UMW-5l-gn9"/>
             </connections>
             <point key="canvasLocation" x="744" y="347.67616191904051"/>
         </collectionViewCell>

@@ -403,7 +403,7 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
             transCell.heightConstraint.constant = heightOfView
             
             
-            transCell.heightLogoConstraint.constant = heightOfView * 0.25
+            transCell.heightLogoConstraint.constant = heightOfView * 0.3
             
             if let size = self.goldHistory?[indexPath.section].items?.count  {
                 if (indexPath.row + 1) == size {
@@ -427,7 +427,7 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let width = collectionView.frame.width
-        return CGSize(width: width  , height: width / 300 * 80)
+        return CGSize(width: width  , height: 80.0)
         
         
     }

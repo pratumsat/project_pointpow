@@ -311,9 +311,5 @@ class PointFriendTransferViewController: BaseViewController {
             self.showPointFriendTransferReviewView(self.friendModel, amount: amount,
                                                    note: note,  true)
         }
-      
-
-        
-     
     }
 }

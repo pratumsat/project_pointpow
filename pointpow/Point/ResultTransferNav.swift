@@ -9,8 +9,9 @@
 import UIKit
 
 class ResultTransferNav: BaseNavigationViewController {
-
-     var callbackFinish:(()->Void)?
+    
+    var transactionId:String?
+    var callbackFinish:(()->Void)?
     override func viewDidLoad() {
         super.viewDidLoad()
 

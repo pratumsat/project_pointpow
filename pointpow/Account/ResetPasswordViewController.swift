@@ -135,13 +135,13 @@ class ResetPasswordViewController: BaseViewController {
         self.errorPasswordLabel?.removeFromSuperview()
         self.errorConfirmPasswordLabel?.removeFromSuperview()
         
-        if confirmPassword.isEmpty {
+        if confirmPassword.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-confirm-pwd", comment: "")
             self.errorConfirmPasswordLabel =  self.confirmNewPasswordTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
             errorEmpty += 1
         }
         
-        if password.isEmpty {
+        if password.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-pwd", comment: "")
             self.errorPasswordLabel =  self.newPasswordTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
             errorEmpty += 1

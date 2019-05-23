@@ -99,7 +99,7 @@ class DisplayNameViewController: BaseViewController {
         
         
         
-        if displayName.isEmpty {
+        if displayName.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-display-name", comment: "")
             errorEmpty += 1
         }

@@ -15,7 +15,8 @@ class TransactionViewController: BaseViewController  ,UICollectionViewDataSource
     
     var pointHistory:[PointHistory]?
     
-    var filter:String = ""
+    
+    var shadowImageView:UIImageView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,17 +34,23 @@ class TransactionViewController: BaseViewController  ,UICollectionViewDataSource
         
         self.tabBarController?.title = NSLocalizedString("string-title-transection", comment: "")
         self.navigationController?.isNavigationBarHidden = false
+        
+//        if shadowImageView == nil {
+//            shadowImageView = findShadowImage(under: navigationController!.navigationBar)
+//        }
+//        shadowImageView?.isHidden = true
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.tabBarController?.navigationItem.rightBarButtonItem = nil
+//        shadowImageView?.isHidden = false
     }
     
     
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-      
+        self.getDataHistory(clearData: false)
     }
     func setUp(){
         self.backgroundImage?.image = nil
@@ -59,16 +66,11 @@ class TransactionViewController: BaseViewController  ,UICollectionViewDataSource
         self.registerNib(self.historyCollectionView, "HistoryCell")
         self.registerHeaderNib(self.historyCollectionView, "HeaderCollectionReusableView")
         
-        //loaddata
-        self.getDataHistory(clearData: true)
         
     }
     @objc func filterTapped() {
       
-        self.showTransectionFilter(true) { (filter) in
-            self.filter = filter
-            //self.getDataHistory(clearData: false)
-        }
+        self.showTransectionFilter(true)
      
     }
     
@@ -86,50 +88,51 @@ class TransactionViewController: BaseViewController  ,UICollectionViewDataSource
             isLoading = true
         }
         
-        var parameter = "filter=\(self.filter)"
+        let params:Parameters = ["status" : "all",
+                                 "service" : "all"]
         
-        //modelCtrl.getPointHistory(params: nil , parameter: parameter , isLoading , succeeded: { (result) in
-        //
-        //    self.pointHistory =  self.getStatementList(result as! [[String : AnyObject]])
-            //            if self.cur_id == "" {
-            //                self.statement = statement
-            //            }else{
-            //                if let firstItem = statement.first {
-            //                    if self.statement?.last?.month == firstItem.month {
-            //                        if let items = firstItem.items {
-            //                            for each in items {
-            //                                self.statement?.last?.items?.append(each)
-            //                            }
-            //                        }
-            //                    }else{
-            //                        for each in  statement {
-            //                            self.statement?.append(each)
-            //                        }
-            //
-            //                    }
-            //                }
-            //            }
-//            avaliable?()
+        modelCtrl.getPointHistory(params: params , isLoading , succeeded: { (result) in
+        
+            self.pointHistory =  self.getStatementList(result as! [[String : AnyObject]])
+//                        if self.cur_id == "" {
+//                            self.statement = statement
+//                        }else{
+//                            if let firstItem = statement.first {
+//                                if self.statement?.last?.month == firstItem.month {
+//                                    if let items = firstItem.items {
+//                                        for each in items {
+//                                            self.statement?.last?.items?.append(each)
+//                                        }
+//                                    }
+//                                }else{
+//                                    for each in  statement {
+//                                        self.statement?.append(each)
+//                                    }
 //
-//            self.refreshControl?.endRefreshing()
-//        }, error: { (error) in
-//            if let mError = error as? [String:AnyObject]{
-//                let message = mError["message"] as? String ?? ""
-//                print(message)
-//                self.showMessagePrompt(message)
-//            }
-//            self.refreshControl?.endRefreshing()
-//            print(error)
-//        }) { (messageError) in
-//            print("messageError")
-//            self.handlerMessageError(messageError)
-//            self.refreshControl?.endRefreshing()
-//        }
+//                                }
+//                            }
+//                        }
+            avaliable?()
+
+            self.refreshControl?.endRefreshing()
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                self.showMessagePrompt(message)
+            }
+            self.refreshControl?.endRefreshing()
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            self.refreshControl?.endRefreshing()
+        }
     }
     
     
     
-    private func getStatementList(_ statements:[[String:AnyObject]]) -> [PointHistory] {
+    func getStatementList(_ statements:[[String:AnyObject]]) -> [PointHistory] {
         var statementList = [PointHistory]()
         for item in statements {
             let month = item["month"] as? String ?? ""
@@ -147,7 +150,6 @@ class TransactionViewController: BaseViewController  ,UICollectionViewDataSource
     func getDataHistory(clearData:Bool = false){
         if clearData {
             ///clear fiter
-            self.filter = ""
         }
         
         self.getHistory() {
@@ -195,23 +197,115 @@ class TransactionViewController: BaseViewController  ,UICollectionViewDataSource
             cell = transCell
             
             
-//            if let items = self.pointHistory?[indexPath.section].items?[indexPath.row] {
-//                let status = items["status"] as? String ?? ""
-//                let type = items["type"] as? String ?? ""
-//                let date = items["updated_at"] as? String ?? ""
-//
-//                transCell.dateLabel.text = date
-//
-//                var numberFormatter = NumberFormatter()
-//                numberFormatter.numberStyle = .decimal
-//                numberFormatter.minimumFractionDigits = 2
-//            }
+            if let items = self.pointHistory?[indexPath.section].items?[indexPath.row] {
+                var status = items["status"] as? String ?? ""
+                var pointable_type = items["pointable_type"] as? String ?? ""
+                var date = items["created_at"] as? String ?? ""
+                var mType = items["type"] as? String ?? ""
+                var point = items["point"] as? NSNumber ?? 0
+                
+                /*
+                date = "17-05-2562 16:01"
+                
+                if indexPath.row == 0 {
+                    pointable_type = "pointsaving"
+                    mType = "out"
+                    status = "success"
+                    point = NSNumber(value: 800)
+                    
+                }else if indexPath.row == 1 {
+                    pointable_type = "shopping"
+                    mType = "out"
+                    status = "success"
+                    point = NSNumber(value: 1800)
+                    
+                }else if indexPath.row == 2 {
+                    pointable_type = "exchange"
+                    mType = "in"
+                    status = "success"
+                    point = NSNumber(value: 3500)
+                    
+                }else if indexPath.row == 3 {
+                    pointable_type = "pointtransfer"
+                    mType = "out"
+                    status = "success"
+                    point = NSNumber(value: 20)
+                    
+                }else if indexPath.row == 4 {
+                    pointable_type = "exchange"
+                    mType = "in"
+                    status = "success"
+                    point = NSNumber(value: 1500)
+                    
+                }else if indexPath.row == 5 {
+                    pointable_type = "pointtransfer"
+                    mType = "in"
+                    status = "success"
+                    point = NSNumber(value: 200)
+                    
+                }else if indexPath.row == 6 {
+                    pointable_type = "pointtransfer"
+                    mType = "out"
+                    status = "success"
+                    point = NSNumber(value: 20)
+                    
+                }
+                */
+                
+
+                transCell.dateLabel.text = date
+
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                numberFormatter.minimumFractionDigits = 2
+                
+                transCell.amountLabel.text = numberFormatter.string(from: point)
+                
+                if status.lowercased() == "success" {
+                    transCell.statusLabel.text = NSLocalizedString("string-status-transection-history-success", comment: "")
+                
+                }else if status.lowercased() == "pending" {
+                    transCell.statusLabel.text = NSLocalizedString("string-status-transection-history-pending", comment: "")
+                
+                }else{
+                    transCell.statusLabel.text = NSLocalizedString("string-status-transection-history-cancel", comment: "")
+                }
+                
+                if mType.lowercased() == "out" {
+                    transCell.amountLabel.textColor = Constant.Colors.PRIMARY_COLOR
+                }else{
+                    transCell.amountLabel.textColor = Constant.Colors.GREEN2
+                    
+                }
+                
+                if pointable_type.lowercased() == "pointtransfer" {
+                    if mType.lowercased() == "out" {
+                        transCell.statusImageView.image = UIImage(named: "ic-service-type-point-transfer-out")
+                        transCell.titleLabel.text = NSLocalizedString("string-status-transection-history-service-point-transfer-out", comment: "")
+                    }else{
+                        transCell.statusImageView.image = UIImage(named: "ic-service-type-point-transfer-in")
+                        transCell.titleLabel.text = NSLocalizedString("string-status-transection-history-service-point-transfer-in", comment: "")
+                    }
+                
+                }else if pointable_type.lowercased() == "pointsaving" {
+                    transCell.statusImageView.image = UIImage(named: "ic-service-type-point-saving")
+                    transCell.titleLabel.text = NSLocalizedString("string-status-transection-history-service-pointsaving", comment: "")
+                
+                }else if pointable_type.lowercased() == "shopping" {
+                    transCell.statusImageView.image = UIImage(named: "ic-service-type-shopping")
+                    transCell.titleLabel.text = NSLocalizedString("string-status-transection-history-service-shopping", comment: "")
+                
+                }else if pointable_type.lowercased() == "exchange" {
+                    transCell.statusImageView.image = UIImage(named: "ic-service-type-exchange")
+                    transCell.titleLabel.text = NSLocalizedString("string-status-transection-history-service-exchange", comment: "")
+                }
+            }
             
             let heightOfView = transCell.bounds.height
             transCell.heightConstraint.constant = heightOfView
             
             
-            transCell.heightLogoConstraint.constant = heightOfView * 0.25
+            transCell.heightLogoConstraint.constant = heightOfView * 0.5
             
             if let size = self.pointHistory?[indexPath.section].items?.count  {
                 if (indexPath.row + 1) == size {
@@ -235,7 +329,7 @@ class TransactionViewController: BaseViewController  ,UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let width = collectionView.frame.width
-        return CGSize(width: width  , height: width / 300 * 80)
+        return CGSize(width: width  , height: 80)
         
         
     }
@@ -244,6 +338,14 @@ class TransactionViewController: BaseViewController  ,UICollectionViewDataSource
         return CGSize(width: collectionView.frame.width, height: 30.0)
         
     }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        let size = (self.pointHistory?.count ?? 0) - 1
+        if section == size {
+            return UIEdgeInsets(top: 0, left: 0, bottom: 60, right: 0)
+        }
+        return UIEdgeInsets.zero
+    }
+   
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header  = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderCollectionReusableView", for: indexPath) as! HeaderCollectionReusableView
@@ -262,14 +364,29 @@ class TransactionViewController: BaseViewController  ,UICollectionViewDataSource
         
         if let item = self.pointHistory?[indexPath.section].items?[indexPath.row] {
             let transaction_ref_id  = item["transaction_ref_id"] as? String ?? ""
-            let type = item["type"] as? String ?? ""
+            let pointable_type = item["pointable_type"] as? String ?? ""
+            let mType = item["type"] as? String ?? ""
             
-            if type == "saving" {
+            var titlePage = ""
+            
+            if pointable_type.lowercased() == "pointtransfer" {
+                if mType.lowercased() == "out" {
+                    titlePage = NSLocalizedString("string-status-transection-history-service-point-transfer-out", comment: "")
+                }else{
+                    titlePage = NSLocalizedString("string-status-transection-history-service-point-transfer-in", comment: "")
+                }
                 
-            }else{
+            }else if pointable_type.lowercased() == "shopping" {
+                titlePage = NSLocalizedString("string-status-transection-history-service-shopping", comment: "")
                 
+                
+            }else if pointable_type.lowercased() == "exchange" {
+                titlePage = NSLocalizedString("string-status-transection-history-service-exchange", comment: "")
             }
             
+            if pointable_type == "PointTransfer" {
+                self.showPointFriendSummaryTransferView(transaction_ref_id, titlePage:titlePage,  true)
+            }
             
         }
     }

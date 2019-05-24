@@ -134,14 +134,14 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
                     if let userData = self.userData as? [String:AnyObject] {
                         let mobile = userData["mobile"] as? String ?? ""
                     
-                        self.showMobilePhoneView(mobile, true)
+                        self.showMobilePhoneView(true, mobile)
                     }
                     
                     break
                 case .POINT_LIMIT:
                     if let data = self.dataSetting as? [String:AnyObject] {
                         let limit_pay = data["limit_pay"] as? NSNumber ?? 0
-                        self.showPointLimitView(limit_pay.stringValue, true)
+                        self.showPointLimitView(true, limit_pay.stringValue)
                     }
                    
                 }

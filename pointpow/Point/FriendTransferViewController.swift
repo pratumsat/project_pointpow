@@ -140,8 +140,14 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
     }
     
     @objc func popupQRTapped(){
-        self.showScanBarcodeForMember { (modelFriend, barcode) in
-            
+        
+        self.showPoPupChosenQRCode(true) { (choose) in
+            if choose == "myqrcode" {
+                self.showMyQRCodeView(true)
+            }else{
+                self.showScanBarcodeForMember { (modelFriend, barcode) in
+                }
+            }
         }
     }
    
@@ -295,10 +301,10 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
                     
                     
                     friendCell.didSelectImageView = {
-                        self.showPointFriendTransferView(modelFriend, true)
+                        self.showPointFriendTransferView(true, modelFriend)
                     }
                     friendCell.tappedCallback = {
-                        self.showPointFriendTransferView(modelFriend, true)
+                        self.showPointFriendTransferView(true, modelFriend)
                     }
                 
                 
@@ -345,7 +351,7 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
                     friendCell.didSelectImageView = {
                         let params:Parameters = ["mobile": mobile]
                         self.searchBy(params: params) { (model) in
-                            self.showPointFriendTransferView(model, true)
+                            self.showPointFriendTransferView(true, model)
                         }
                         
                         
@@ -353,7 +359,7 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
                     friendCell.tappedCallback = {
                         let params:Parameters = ["mobile": mobile]
                         self.searchBy(params: params) { (model) in
-                            self.showPointFriendTransferView(model, true)
+                            self.showPointFriendTransferView(true, model)
                         }
                     }
                     

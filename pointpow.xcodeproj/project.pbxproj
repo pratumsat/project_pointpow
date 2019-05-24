@@ -138,6 +138,8 @@
 		C12FD313228EA48700FB81B6 /* ItemFriendSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12FD311228EA48700FB81B6 /* ItemFriendSearchCell.xib */; };
 		C13948872296579E003E0527 /* PointPowIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13948862296579E003E0527 /* PointPowIDViewController.swift */; };
 		C139488922968D60003E0527 /* TransectionFilterResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C139488822968D60003E0527 /* TransectionFilterResultViewController.swift */; };
+		C139488B2297D881003E0527 /* MyQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C139488A2297D881003E0527 /* MyQRCodeViewController.swift */; };
+		C139488D2297F674003E0527 /* PopupChosenQRcodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C139488C2297F674003E0527 /* PopupChosenQRcodeViewController.swift */; };
 		C13D99822199755B001A4794 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D99812199755B001A4794 /* ProfileViewController.swift */; };
 		C13D998521997938001A4794 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D998321997938001A4794 /* LogoutCell.swift */; };
 		C13D998621997938001A4794 /* LogoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13D998421997938001A4794 /* LogoutCell.xib */; };
@@ -413,6 +415,8 @@
 		C12FD311228EA48700FB81B6 /* ItemFriendSearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemFriendSearchCell.xib; sourceTree = "<group>"; };
 		C13948862296579E003E0527 /* PointPowIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointPowIDViewController.swift; sourceTree = "<group>"; };
 		C139488822968D60003E0527 /* TransectionFilterResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransectionFilterResultViewController.swift; sourceTree = "<group>"; };
+		C139488A2297D881003E0527 /* MyQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQRCodeViewController.swift; sourceTree = "<group>"; };
+		C139488C2297F674003E0527 /* PopupChosenQRcodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupChosenQRcodeViewController.swift; sourceTree = "<group>"; };
 		C13D99812199755B001A4794 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C13D998321997938001A4794 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		C13D998421997938001A4794 /* LogoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutCell.xib; sourceTree = "<group>"; };
@@ -721,6 +725,7 @@
 				C121FB4C22854E5100043387 /* PointLimitViewController.swift */,
 				C13D998C21997EF7001A4794 /* PersonalViewController.swift */,
 				C13948862296579E003E0527 /* PointPowIDViewController.swift */,
+				C139488A2297D881003E0527 /* MyQRCodeViewController.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -1149,6 +1154,7 @@
 				C1247C532219B126005D6F7A /* PopupGoldPremiumViewController.swift */,
 				C1249EBE2238B25D00F56FA0 /* PopUpInfoThaiPostViewController.swift */,
 				C121B32C224C802D00D69B56 /* PopUpInfoLaserIdViewController.swift */,
+				C139488C2297F674003E0527 /* PopupChosenQRcodeViewController.swift */,
 			);
 			path = Popup;
 			sourceTree = "<group>";
@@ -1631,6 +1637,7 @@
 				C10CA1A42191755C00316DF3 /* PersonalPopupViewController.swift in Sources */,
 				C197FF2622081C72002F24E8 /* GoldPageViewController.swift in Sources */,
 				C1892E0D221E900900F5412F /* TransactionGoldCell.swift in Sources */,
+				C139488B2297D881003E0527 /* MyQRCodeViewController.swift in Sources */,
 				C127323C2253671C00A9EE74 /* WinnerLuckyDrawViewController.swift in Sources */,
 				C121FB4B22853B2100043387 /* VerifyMobileNumberViewController.swift in Sources */,
 				C1249EB42224E2CD00F56FA0 /* PopUpMapOfficeViewController.swift in Sources */,
@@ -1712,6 +1719,7 @@
 				C115FA5721A2B3EB008E7844 /* PointFriendSummaryViewController.swift in Sources */,
 				C127323622530CF700A9EE74 /* GoldEditPenddingNav.swift in Sources */,
 				C11BDFBC21A2BB3C00443D2D /* ItemConfirmSummaryCell.swift in Sources */,
+				C139488D2297F674003E0527 /* PopupChosenQRcodeViewController.swift in Sources */,
 				C1249EB72224EE0900F56FA0 /* WebViewMapViewController.swift in Sources */,
 				C1DEBE92218829D900CBB95F /* Scanner2ViewController.swift in Sources */,
 				C197FF422209401D002F24E8 /* LogoGoldCell.swift in Sources */,

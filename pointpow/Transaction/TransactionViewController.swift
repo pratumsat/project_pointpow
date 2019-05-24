@@ -367,31 +367,42 @@ class TransactionViewController: BaseViewController  ,UICollectionViewDataSource
             let pointable_type = item["pointable_type"] as? String ?? ""
             let mType = item["type"] as? String ?? ""
             
-            var titlePage = ""
+            
+           
             
             if pointable_type.lowercased() == "pointtransfer" {
-                if mType.lowercased() == "out" {
-                    titlePage = NSLocalizedString("string-status-transection-history-service-point-transfer-out", comment: "")
-                }else{
-                    titlePage = NSLocalizedString("string-status-transection-history-service-point-transfer-in", comment: "")
-                }
-                
-            }else if pointable_type.lowercased() == "shopping" {
-                titlePage = NSLocalizedString("string-status-transection-history-service-shopping", comment: "")
-                
-                
-            }else if pointable_type.lowercased() == "exchange" {
-                titlePage = NSLocalizedString("string-status-transection-history-service-exchange", comment: "")
+                let titlePage = getTitleNamgePage(pointable_type, mType)
+                self.showPointFriendSummaryTransferView(true, transaction_ref_id, titlePage:titlePage)
             }
-            
-            if pointable_type == "PointTransfer" {
-                self.showPointFriendSummaryTransferView(transaction_ref_id, titlePage:titlePage,  true)
+            if pointable_type.lowercased() == "pointsaving" {
+                self.showGoldSavingResult(true, transactionId: transaction_ref_id)
+            }
+            if pointable_type.lowercased() == "shopping" {
+            }
+            if pointable_type.lowercased() == "exchange" {
             }
             
         }
     }
     
-    
+    func getTitleNamgePage(_ pointable_type:String, _ mType:String)->String{
+        var titlePage = ""
+        if pointable_type.lowercased() == "pointtransfer" {
+            if mType.lowercased() == "out" {
+                titlePage = NSLocalizedString("string-status-transection-history-service-point-transfer-out", comment: "")
+            }else{
+                titlePage = NSLocalizedString("string-status-transection-history-service-point-transfer-in", comment: "")
+            }
+            
+        }else if pointable_type.lowercased() == "shopping" {
+            titlePage = NSLocalizedString("string-status-transection-history-service-shopping", comment: "")
+            
+            
+        }else if pointable_type.lowercased() == "exchange" {
+            titlePage = NSLocalizedString("string-status-transection-history-service-exchange", comment: "")
+        }
+        return titlePage
+    }
     
     
     

@@ -123,7 +123,7 @@ class PointFriendTransferReviewViewController: BaseViewController {
                         let transaction_id = mResult["transaction_ref_id"] as? String ?? ""
                         
                         let titlePage = NSLocalizedString("string-status-transection-history-service-point-transfer-out", comment: "")
-                        self.showPointFriendSummaryTransferView(transaction_id, titlePage:titlePage, true) {
+                        self.showPointFriendSummaryTransferView(true, transaction_id, titlePage:titlePage) {
                             self.navigationController?.popToRootViewController(animated: false)
                         }
                         
@@ -179,7 +179,7 @@ class PointFriendTransferReviewViewController: BaseViewController {
         }
         
         if self.note.isEmpty {
-            self.noteLabel.text = "-"
+            self.noteLabel.text = " "
         }else{
             self.noteLabel.text = self.note
         }

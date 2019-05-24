@@ -28,16 +28,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="236.5" height="78"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mo5-Py-zpF">
-                                <rect key="frame" x="28" y="19.5" width="180.5" height="39"/>
+                                <rect key="frame" x="34" y="19.5" width="168.5" height="39"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="เพิ่มในรายการโปรด" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="XVe-RE-fHY">
-                                        <rect key="frame" x="56.5" y="8" width="104" height="23.5"/>
-                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
+                                        <rect key="frame" x="56" y="9" width="92.5" height="21"/>
+                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
                                         <color key="textColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-star-outline" translatesAutoresizingMaskIntoConstraints="NO" id="9NQ-oM-VZE">
-                                        <rect key="frame" x="20" y="4" width="31.5" height="31"/>
+                                        <rect key="frame" x="20" y="4" width="31" height="31"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="9NQ-oM-VZE" secondAttribute="height" multiplier="1:1" id="5ux-0T-cfE"/>
@@ -66,16 +66,16 @@
                         <rect key="frame" x="256.5" y="0.0" width="236.5" height="78"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbe-89-WTV">
-                                <rect key="frame" x="51" y="19.5" width="134.5" height="39"/>
+                                <rect key="frame" x="54" y="19.5" width="128.5" height="39"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="บันทึก/แชร์" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="1W2-qM-q8f">
-                                        <rect key="frame" x="56" y="8" width="58.5" height="23.5"/>
-                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
+                                        <rect key="frame" x="56.5" y="9" width="52" height="21"/>
+                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
                                         <color key="textColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-share-outline" translatesAutoresizingMaskIntoConstraints="NO" id="YKM-Si-jmU">
-                                        <rect key="frame" x="20" y="4" width="31" height="31"/>
+                                        <rect key="frame" x="20" y="4" width="31.5" height="31"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="YKM-Si-jmU" secondAttribute="height" multiplier="1:1" id="4sf-qL-igQ"/>

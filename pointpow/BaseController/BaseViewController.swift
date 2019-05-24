@@ -496,6 +496,13 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }
     }
     
+    func showMyQRCodeView(_ animated:Bool){
+        if let vc:MyQRCodeViewController = self.storyboard?.instantiateViewController(withIdentifier: "MyQRCodeViewController") as? MyQRCodeViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    
     func showTransectionFilter(_ animated:Bool , filterCallback:((_ filter:String)->Void)? = nil ){
         if let vc:TransactionFilterViewController = self.storyboard?.instantiateViewController(withIdentifier: "TransactionFilterViewController") as? TransactionFilterViewController{
             vc.filterCallback  =  {(filter) in
@@ -505,7 +512,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
-    func showTransectionFilterResultPage(_ titlePage:String, params:Parameters?,  _ animated:Bool){
+    func showTransectionFilterResultPage(_ animated:Bool, _ titlePage:String, params:Parameters?){
         
         if let vc:TransectionFilterResultViewController = self.storyboard?.instantiateViewController(withIdentifier: "TransectionFilterResultViewController") as? TransectionFilterResultViewController{
             
@@ -528,7 +535,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
-    func showGoldProfileView(fromAccountPointPow:Bool = false, _ animated:Bool){
+    func showGoldProfileView(_ animated:Bool, fromAccountPointPow:Bool = false){
         if let vc:GoldProfileViewController = self.storyboard?.instantiateViewController(withIdentifier: "GoldProfileViewController") as? GoldProfileViewController {
             vc.fromAccountPointPow = fromAccountPointPow
             self.navigationController?.pushViewController(vc, animated: animated)
@@ -553,20 +560,20 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
-    func showDisplayNameView(_ displayName:String, _ animated:Bool){
+    func showDisplayNameView(_ animated:Bool, _ displayName:String){
         if let vc:DisplayNameViewController  = self.storyboard?.instantiateViewController(withIdentifier: "DisplayNameViewController") as? DisplayNameViewController {
             vc.displayName = displayName
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
-    func showMobilePhoneView(_ mobile:String, _ animated:Bool){
+    func showMobilePhoneView(_ animated:Bool, _ mobile:String){
         if let vc:MobileViewController  = self.storyboard?.instantiateViewController(withIdentifier: "MobileViewController") as? MobileViewController {
             vc.mobile = mobile
             
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
-    func showPointLimitView(_ amount:String, _ animated:Bool){
+    func showPointLimitView(_ animated:Bool, _ amount:String){
         if let vc:PointLimitViewController  = self.storyboard?.instantiateViewController(withIdentifier: "PointLimitViewController") as? PointLimitViewController {
             vc.pointlimit = amount
             self.navigationController?.pushViewController(vc, animated: animated)
@@ -591,7 +598,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
-    func showPPWebView(_ title:String, url:String, _ animated:Bool){
+    func showPPWebView( _ animated:Bool, _ title:String, url:String){
         if let vc:PPWebViewController  = self.storyboard?.instantiateViewController(withIdentifier: "PPWebViewController") as? PPWebViewController {
             vc.mTitle = title
             vc.mUrl = url
@@ -599,7 +606,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }
     }
     
-    func showResetPasswordView(forgotPassword:Bool = false, _ animated:Bool){
+    func showResetPasswordView(_ animated:Bool, forgotPassword:Bool = false){
         if let vc:ResetPasswordViewController  = self.storyboard?.instantiateViewController(withIdentifier: "ResetPasswordViewController") as? ResetPasswordViewController {
             vc.forgotPassword = forgotPassword
             self.navigationController?.pushViewController(vc, animated: animated)
@@ -631,7 +638,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }
     }
     
-    func showPointFriendSummaryTransferView(_ transaction_id:String, titlePage:String, _ animated:Bool , finish:(()->Void)? = nil){
+    func showPointFriendSummaryTransferView( _ animated:Bool, _ transaction_id:String, titlePage:String , finish:(()->Void)? = nil){
         
         if finish != nil {
             if let vc:PointFreindSummaryNav  = self.storyboard?.instantiateViewController(withIdentifier: "PointFreindSummaryNav") as? PointFreindSummaryNav {
@@ -712,14 +719,14 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     
     
     
-    func showPointFriendTransferView(_ friendModel:[String:AnyObject], _ animated:Bool){
+    func showPointFriendTransferView(_ animated:Bool, _ friendModel:[String:AnyObject]){
         if let vc:PointFriendTransferViewController  = self.storyboard?.instantiateViewController(withIdentifier: "PointFriendTransferViewController") as? PointFriendTransferViewController {
             vc.friendModel = friendModel
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
 
-    func showPointFriendTransferReviewView(_ friendModel:[String:AnyObject]?, amount:Double, note:String, _ animated:Bool){
+    func showPointFriendTransferReviewView(_ animated:Bool, _ friendModel:[String:AnyObject]?, amount:Double, note:String){
         if let vc:PointFriendTransferReviewViewController  = self.storyboard?.instantiateViewController(withIdentifier: "PointFriendTransferReviewViewController") as? PointFriendTransferReviewViewController {
             vc.friendModel = friendModel
             vc.amount = amount
@@ -1694,6 +1701,37 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             }
         }
         
+        
+    }
+    
+    func showPoPupChosenQRCode(_ animated:Bool , dismissCallback:((_ chooseType:String)->Void)? = nil){
+        
+        let presenter: Presentr = {
+            
+            let w = self.view.frame.width * 0.8
+            let width = ModalSize.custom(size: Float(w))
+            let height = ModalSize.custom(size: 160)
+            
+            let center = ModalCenterPosition.center
+            let customType = PresentationType.custom(width: width, height: height, center: center)
+            
+            let customPresenter = Presentr(presentationType: customType)
+            customPresenter.roundCorners = true
+            customPresenter.cornerRadius = 10
+            customPresenter.dismissOnSwipe = true
+            customPresenter.dismissOnTap = true
+            
+            return customPresenter
+        }()
+        
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "PopupChosenQRcodeViewController") as? PopupChosenQRcodeViewController{
+           
+            vc.dismissCallback = { (chooseType) in
+                dismissCallback?(chooseType)
+            }
+            self.customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)
+            
+        }
         
     }
     

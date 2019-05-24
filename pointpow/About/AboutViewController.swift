@@ -97,11 +97,11 @@ class AboutViewController: BaseViewController  , UICollectionViewDelegate , UICo
             
         }else if indexPath.row == 3{
             let title = NSLocalizedString("string-item-about-faq", comment: "")
-            self.showPPWebView(title, url: "", true)
+            self.showPPWebView(true, title, url: "")
             
         }else if indexPath.row == 4{
             let title = NSLocalizedString("string-item-about-howto", comment: "")
-            self.showPPWebView(title, url: "", true)
+            self.showPPWebView(true, title, url: "")
             
            
         }

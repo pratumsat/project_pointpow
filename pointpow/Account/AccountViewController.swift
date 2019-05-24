@@ -280,7 +280,7 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
                 self.showProfileView(true)
             }
             if indexPath.row == 2 {
-                //qr
+                self.showMyQRCodeView(true)
             }
             if indexPath.row == 3 {
                 self.showFavoriteView(true)

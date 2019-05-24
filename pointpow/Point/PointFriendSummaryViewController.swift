@@ -96,6 +96,7 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
     }
     var transferResult:AnyObject?
     var titlePage:String?
+    var heightSectionStatusCell = CGFloat(420)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,27 +133,22 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
     func getDetail(){
         self.modelCtrl.detailTransactionHistory(transactionNumber: self.transactionId ?? "" ,true , succeeded: { (result) in
             
-//             if let mData = result as? [String:AnyObject] {
-//                let mType = mData["type"] as? String ?? ""
-//                let pointable_type = mData["pointable_type"] as? String ?? ""
-//                
-//                if pointable_type.lowercased() == "pointtransfer" {
-//                    if mType.lowercased() == "out" {
-//                         self.title =  NSLocalizedString("string-status-transection-history-service-point-transfer-out", comment: "")
-//                       }else{
-//                        self.title = NSLocalizedString("string-status-transection-history-service-point-transfer-in", comment: "")
-//                    }
-//                
-//                }else if pointable_type.lowercased() == "shopping" {
-//                    self.title =  NSLocalizedString("string-status-transection-history-service-shopping", comment: "")
-//                    
-//                
-//                }else if pointable_type.lowercased() == "exchange" {
-//                    self.title = NSLocalizedString("string-status-transection-history-service-exchange", comment: "")
-//                }
-//                
-//            }
             self.transferResult = result
+            
+            if let mData = self.transferResult as? [String:AnyObject] {
+                let pointable_type = mData["pointable_type"] as? String ?? ""
+                let mType = mData["type"] as? String ?? ""
+                
+                if pointable_type.lowercased() == "pointtransfer" {
+                    if mType.lowercased() == "out" {
+                        self.heightSectionStatusCell = CGFloat(420)
+                    }else{
+                        self.heightSectionStatusCell = CGFloat(330)
+                    }
+                    
+                }
+            }
+            
             self.resultCollectionView.reloadData()
 
         }, error: { (error) in
@@ -209,12 +205,27 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
        
         return 1
     }
-    
+    func nameDisplay(_ model:[String:AnyObject]) ->String {
+        let pointpow_id = model["pointpow_id"] as? String ?? ""
+        let mobile = model["mobile"] as? String ?? ""
+        
+        if !pointpow_id.isEmpty {
+            return pointpow_id
+        }else{
+            return mobile
+        }
+        
+        
+    }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell:UICollectionViewCell?
         
         if indexPath.section == 0 {
             if let statusCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemFriendSummaryCell", for: indexPath) as? ItemFriendSummaryCell {
+               
+                if hideFinishButton {
+                    statusCell.bgSuccessImageView.image = nil
+                }
                 
                 if let mData = self.transferResult as? [String:AnyObject] {
                     let statusTransaction = mData["status"] as? String ?? ""
@@ -223,14 +234,22 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
                     let created_at = mData["created_at"] as? String ?? ""
                     let transaction_ref_id = mData["transaction_ref_id"] as? String ?? ""
                     let point = mData["point"] as? NSNumber ?? 0
-                    let sender = mData["sender"] as? [String:AnyObject] ?? [:]
-                    let receiver = mData["receiver"] as? [String:AnyObject] ?? [:]
+                    let note = mData["note"] as? String ?? ""
+                    
+                    let point_transfer = mData["point_transfer"] as? [String:AnyObject] ?? [:]
+                    let sender = point_transfer["sender"] as? [String:AnyObject] ?? [:]
+                    let receiver = point_transfer["receiver"] as? [String:AnyObject] ?? [:]
+                    
+                    statusCell.senderLabel.text = nameDisplay(sender)
+                    statusCell.receiverLabel.text = nameDisplay(receiver)
+                 
+                    statusCell.noteLabel.text = note
+                    
                     
                     let numberFormatter = NumberFormatter()
                     numberFormatter.numberStyle = .decimal
                     
-                    statusCell.receiverLabel.text = ""
-                    statusCell.senderLabel.text = ""
+                   
                     statusCell.amountLabel.text = "\(numberFormatter.string(from: point ) ?? "") Point Pow"
                     statusCell.dateLabel.text = created_at
                     statusCell.transectionLabel.text = transaction_ref_id
@@ -238,8 +257,17 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
                     if pointable_type.lowercased() == "pointtransfer" {
                         if mType.lowercased() == "out" {
                             statusCell.serviceLabel.text =  NSLocalizedString("string-status-transection-history-service-point-transfer-out", comment: "")
+                            
+                            statusCell.titleNoteLabel.isHidden = false
+                            statusCell.noteLabel.isHidden = false
+                            statusCell.notelineView.isHidden = false
+                            
                         }else{
                             statusCell.serviceLabel.text = NSLocalizedString("string-status-transection-history-service-point-transfer-in", comment: "")
+                            
+                            statusCell.titleNoteLabel.isHidden = true
+                            statusCell.noteLabel.isHidden = true
+                            statusCell.notelineView.isHidden = true
                         }
                         
                     }else if pointable_type.lowercased() == "shopping" {
@@ -279,25 +307,28 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
                     default:
                         break
                     }
+                    
+                    
+                    if !hideFinishButton {
+                        self.slipView = statusCell.mView.copyView()
+                        let allSubView = slipView!.allSubViewsOf(type: UIView.self)
+                        
+                        for itemView  in  allSubView {
+                            if let itemTag = itemView.viewWithTag(1) {
+                                itemTag.isHidden = true
+                            }
+                        }
+                        if !self.addSlipSuccess {
+                            self.addSlipImageView()
+                        }
+                    }
                 }
                 
              
                
                 cell = statusCell
                 
-                if !hideFinishButton {
-                    self.slipView = statusCell.mView.copyView()
-                    let allSubView = slipView!.allSubViewsOf(type: UIView.self)
-                    
-                    for itemView  in  allSubView {
-                        if let itemTag = itemView.viewWithTag(1) {
-                            itemTag.isHidden = true
-                        }
-                    }
-                    if !self.addSlipSuccess {
-                        self.addSlipImageView()
-                    }
-                }
+               
                 
                 
             }
@@ -373,7 +404,8 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
         
         if indexPath.section == 0 {
             let width = collectionView.frame.width - 40
-            let height = CGFloat(420) //(width/280*360) + addOnHeightModelDevice()
+            let height = self.heightSectionStatusCell
+            //CGFloat(420)
             return CGSize(width: width, height: height)
             
         }else if indexPath.section == 1 {

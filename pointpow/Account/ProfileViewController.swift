@@ -74,7 +74,7 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
                 let registerGold = userData["gold_saving_acc"] as? NSNumber ?? 0
                 
                 if registerGold.boolValue {
-                    self.showGoldProfileView(fromAccountPointPow : true , true)
+                    self.showGoldProfileView(true, fromAccountPointPow : true )
                 }else{
                     self.showPersonalView(true)
                 }
@@ -166,7 +166,7 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
                 if let userData = self.userData as? [String:AnyObject] {
                     let displayName = userData["display_name"] as? String ?? ""
                 
-                    self.showDisplayNameView(displayName, true)
+                    self.showDisplayNameView(true, displayName)
                     
                 }
                 

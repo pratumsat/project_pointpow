@@ -252,6 +252,7 @@ class NotificationTableViewController: BaseViewController, UITableViewDelegate, 
                 print("not found notification data")
                 self.addViewNotfoundData()
             }else{
+                self.tableView.backgroundView = nil
                 self.tableView.reloadData()
             }
         }

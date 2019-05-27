@@ -96,7 +96,7 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
     }
     var transferResult:AnyObject?
     var titlePage:String?
-    var heightSectionStatusCell = CGFloat(420)
+    var heightSectionStatusCell = CGFloat(470)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -141,9 +141,9 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
                 
                 if pointable_type.lowercased() == "pointtransfer" {
                     if mType.lowercased() == "out" {
-                        self.heightSectionStatusCell = CGFloat(420)
+                        self.heightSectionStatusCell = CGFloat(470)
                     }else{
-                        self.heightSectionStatusCell = CGFloat(330)
+                        self.heightSectionStatusCell = CGFloat(390)
                     }
                     
                 }
@@ -206,15 +206,26 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
         return 1
     }
     func nameDisplay(_ model:[String:AnyObject]) ->String {
-        let pointpow_id = model["pointpow_id"] as? String ?? ""
-        let mobile = model["mobile"] as? String ?? ""
+        let last_name = model["last_name"] as? String ?? ""
+        let first_name = model["first_name"] as? String ?? ""
         
-        if !pointpow_id.isEmpty {
-            return pointpow_id
+        
+        let fullname = "\(( (first_name.isEmpty) ? "" : first_name)) \(( (last_name.isEmpty) ? "" : last_name))"
+        
+        
+        if fullname.trimmingCharacters(in: .whitespaces).isEmpty {
+            return "-"
         }else{
-            return mobile
+            return fullname
         }
-        
+    }
+    func mobileDisplay(_ model:[String:AnyObject]) ->String {
+        var mobile = model["mobile"] as? String ?? ""
+   
+        mobile = mobile.substring(start: 0, end: 7)
+        mobile += "xxx"
+        let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
+        return newMText.chunkFormatted()
         
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -243,6 +254,11 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
                     statusCell.senderLabel.text = nameDisplay(sender)
                     statusCell.receiverLabel.text = nameDisplay(receiver)
                  
+                   
+                    statusCell.mobileSenderLabel.text = mobileDisplay(sender)
+                    statusCell.mobileReceiverLabel.text = mobileDisplay(receiver)
+                    
+                    
                     statusCell.noteLabel.text = note
                     
                     
@@ -345,9 +361,17 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
                 }
                 confirmCell.favorCallback = {
                     //add favorit
-                    self.showAddNameFavoritePopup(true, savedCallback: {
-                        print("saved")
-                    })
+
+                    if let mData = self.transferResult as? [String:AnyObject] {
+                        let transaction_ref_id = mData["transaction_ref_id"] as? String ?? ""
+                        let point = mData["point"] as? NSNumber ?? 0
+                        let pointable_type = mData["pointable_type"] as? String ?? ""
+                        
+                        self.showAddNameFavoritePopup(true, mType: pointable_type,
+                                                      transaction_ref_id: transaction_ref_id,
+                                                      amount: point.stringValue)
+                    }
+                    
                 }
                 
                 cell = confirmCell

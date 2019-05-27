@@ -712,9 +712,14 @@ struct Constant {
         static let changeMobile = "\(HOST)\(POINTPOW_VERSION1)member/change-mobile-number"
         static let verifyOTPNewMobileNumber  = "\(HOST)\(POINTPOW_VERSION1)member/verify-change-mobile-number"
         
+        static let scanQRMember = "\(HOST)\(POINTPOW_VERSION1)member/qr-code/check"
         static let searchMember = "\(HOST)\(POINTPOW_VERSION1)member/transfer-point/search"
         static let recentMemberTransfer = "\(HOST)\(POINTPOW_VERSION1)member/transfer-point/recent"
         static let memberTransfer = "\(HOST)\(POINTPOW_VERSION1)member/transfer-point/friend"
+        
+        
+        static let favouriteTransfer = "\(HOST)\(POINTPOW_VERSION1)member/transfer-point/favourites"
+        
         
         static let transectionHistory = "\(HOST)\(POINTPOW_VERSION1)member/transfer-point/history"
         

@@ -199,9 +199,9 @@ class ResultTransferViewController: BaseViewController  , UICollectionViewDelega
                 
                 favCell.favorCallback = {
                     //add favorit
-                    self.showAddNameFavoritePopup(true, savedCallback: {
-                        print("saved")
-                    })
+                    //self.showAddNameFavoritePopup(true, savedCallback: {
+                    //    print("saved")
+                    //})
                 }
                 cell = favCell
             }

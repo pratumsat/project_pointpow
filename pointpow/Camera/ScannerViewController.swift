@@ -9,6 +9,7 @@ import AVFoundation
 import UIKit
 import ZBarSDK
 import Photos
+import Alamofire
 
 extension ZBarSymbolSet: Sequence {
     
@@ -540,8 +541,43 @@ class ScannerViewController: BaseViewController ,AVCaptureMetadataOutputObjectsD
         }else{
             print("is QRCode")
         }
-        self.dismiss(animated: false, completion: nil)
         
+        if barcode {
+            //ignored
+            
+        }else{
+            let params:Parameters = ["qr": code]
+            self.modelCtrl.scanQRCode(params: params, succeeded: { (result) in
+                if let mResult = result as? [String:AnyObject]{
+                    print(mResult)
+                   
+                    self.dismiss(animated: false){
+                        self.barcodeCallback?(mResult as AnyObject, code)
+                    }
+                    
+                }
+            }, error: { (error) in
+                if let mError = error as? [String:AnyObject]{
+                    print(mError)
+                    if let mError = error as? [String:AnyObject]{
+                        let message = mError["message"] as? String ?? ""
+                        self.showMessagePrompt(message)
+                    }
+                    
+                    if (self.captureSession?.isRunning == false) {
+                        self.squareView?.frame = CGRect.zero
+                        self.captureSession.startRunning();
+                    }
+                }
+            }, failure: { (messageError) in
+                self.handlerMessageError(messageError , title: "")
+                
+                if (self.captureSession?.isRunning == false) {
+                    self.squareView?.frame = CGRect.zero
+                    self.captureSession.startRunning();
+                }
+            })
+        }
 //        if !barcode {
 //            self.modelCtrl.qrScan(qr_key: code, succeeded: { (result) in
 //

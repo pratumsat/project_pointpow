@@ -64,6 +64,8 @@ class PromotionViewController: BaseViewController , UICollectionViewDelegate , U
                     self.addViewNotfoundData()
                 }else{
                     self.promotionList = mResult
+                    
+                    self.promotionCollectionView.backgroundView = nil
                     self.promotionCollectionView.reloadData()
                 }
             }

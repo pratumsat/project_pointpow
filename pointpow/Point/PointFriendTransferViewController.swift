@@ -34,6 +34,9 @@ class PointFriendTransferViewController: BaseViewController {
             //print(friendModel)
         }
     }
+    var mNote:String?
+    var pointAmount:String?
+    
     let exchangeRate = 100
     let minPointTransfer = 100.0
     
@@ -87,23 +90,44 @@ class PointFriendTransferViewController: BaseViewController {
         self.noteTextField.delegate = self
         self.noteTextField.autocorrectionType = .no
         
+        
+        self.amountTextField.text = self.pointAmount
+        
+        
+        if let amount = self.pointAmount {
+            
+            self.amountTextField.text = amount
+        }else{
+            //default
+            self.amountTextField.text = "100"
+            self.disableImageView(lessImageView)
+        }
+        
+       
+        if let note = self.mNote {
+            self.countNoteLabel.text = "\(note.count)/40"
+            self.noteTextField.text = note
+        }
+        
+        
         if let modelFriend = self.friendModel {
-        //    let display_name = modelFriend["display_name"] as? String ?? ""
+            let display_name = modelFriend["display_name"] as? String ?? ""
             let first_name = modelFriend["first_name"] as? String ?? ""
-       //     let last_name = modelFriend["last_name"] as? String ?? ""
+            let last_name = modelFriend["last_name"] as? String ?? ""
             let pointpow_id = modelFriend["pointpow_id"] as? String ?? ""
             let mobile = modelFriend["mobile"] as? String ?? ""
             let picture_data = modelFriend["picture_data"] as? String ?? ""
-            let limit_pay_left = modelFriend["limit_pay_left"] as? NSNumber ?? 0
+            let limit_pay = modelFriend["limit_pay"] as? NSNumber ?? 0
        
+            
         
-            self.pointLimitOrder = limit_pay_left.doubleValue
+            self.pointLimitOrder = limit_pay.doubleValue
         
             //min transfer
             let numberFormatter = NumberFormatter()
             numberFormatter.numberStyle = .decimal
             numberFormatter.minimumFractionDigits = 0
-            let limitp = numberFormatter.string(from: limit_pay_left)
+            let limitp = numberFormatter.string(from: limit_pay)
             
             var prefixlimit = NSLocalizedString("string-point-transfer-point-limit-today", comment: "")
             prefixlimit += " \(limitp ?? "")"
@@ -115,18 +139,25 @@ class PointFriendTransferViewController: BaseViewController {
                 self.friendImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER)
             }
             
-            if !pointpow_id.isEmpty {
-                self.nameFriendLabel.text = "\(pointpow_id)"
+            //            let fullname = "\(( (first_name.isEmpty) ? "" : first_name)) \(( (last_name.isEmpty) ? "" : last_name))"
+            
+            let fullname = "\(( (first_name.isEmpty) ? "-" : first_name))"
+            
+            if !display_name.isEmpty {
+                self.nameFriendLabel.text = display_name
             }else{
-                self.nameFriendLabel.text = "\(( (first_name.isEmpty) ? "-" : first_name))"
+                self.nameFriendLabel.text = fullname
             }
-            self.ppIdFriendLabel.text = mobile
+            
+            if !pointpow_id.isEmpty {
+                self.ppIdFriendLabel.text = pointpow_id
+            }else{
+                self.ppIdFriendLabel.text = mobile
+            }
+            
         }
         
         
-        //default
-        self.amountTextField.text = "100"
-        self.disableImageView(lessImageView)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -149,9 +180,9 @@ class PointFriendTransferViewController: BaseViewController {
                 let pointpow_id = userData["pointpow_id"] as? String ?? ""
                 let pointBalance = userData["member_point"]?["total"] as? NSNumber ?? 0
                 let picture_data = userData["picture_data"] as? String ?? ""
-        //        let displayName = userData["display_name"] as? String ?? ""
+                let display_name = userData["display_name"] as? String ?? ""
                 let first_name = userData["first_name"] as? String ?? ""
-       //         let last_name = userData["last_name"] as? String ?? ""
+                let last_name = userData["last_name"] as? String ?? ""
                 let mobile = userData["mobile"] as? String ?? ""
                 
                 let numberFormatter = NumberFormatter()
@@ -164,13 +195,25 @@ class PointFriendTransferViewController: BaseViewController {
                 }else{
                     self.myProfileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER)
                 }
-                self.ppIdLabel.text = mobile
+               
                 self.pointBalanceLabel.text = "\(numberFormatter.string(from: pointBalance ) ?? "") Point Pow"
                
-                if !pointpow_id.isEmpty {
-                    self.nameLabel.text = "\(pointpow_id)"
+                
+                //            let fullname = "\(( (first_name.isEmpty) ? "" : first_name)) \(( (last_name.isEmpty) ? "" : last_name))"
+                
+                let fullname = "\(( (first_name.isEmpty) ? "-" : first_name))"
+              
+                if !display_name.isEmpty {
+                    self.nameLabel.text = display_name
                 }else{
-                    self.nameLabel.text = "\(( (first_name.isEmpty) ? "-" : first_name))"
+                    self.nameLabel.text = fullname
+                }
+                
+                if !pointpow_id.isEmpty {
+                    self.ppIdLabel.text = pointpow_id
+                }else{
+                    
+                    self.ppIdLabel.text = mobile
                 }
                 
             }

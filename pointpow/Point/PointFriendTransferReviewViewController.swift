@@ -58,11 +58,11 @@ class PointFriendTransferReviewViewController: BaseViewController {
             avaliable?()
             if let userData = self.userData as? [String:AnyObject] {
                 let pointpow_id = userData["pointpow_id"] as? String ?? ""
-               // let pointBalance = userData["member_point"]?["total"] as? NSNumber ?? 0
+                let pointBalance = userData["member_point"]?["total"] as? NSNumber ?? 0
                 let picture_data = userData["picture_data"] as? String ?? ""
-               // let displayName = userData["display_name"] as? String ?? ""
+                let display_name = userData["display_name"] as? String ?? ""
                 let first_name = userData["first_name"] as? String ?? ""
-               // let last_name = userData["last_name"] as? String ?? ""
+                let last_name = userData["last_name"] as? String ?? ""
                 let mobile = userData["mobile"] as? String ?? ""
                 
                 let numberFormatter = NumberFormatter()
@@ -75,14 +75,24 @@ class PointFriendTransferReviewViewController: BaseViewController {
                 }else{
                     self.myProfileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER)
                 }
-                self.ppIdLabel.text = mobile
                 
-                if !pointpow_id.isEmpty {
-                    self.nameLabel.text = "\(pointpow_id)"
+                
+                //            let fullname = "\(( (first_name.isEmpty) ? "" : first_name)) \(( (last_name.isEmpty) ? "" : last_name))"
+                
+                let fullname = "\(( (first_name.isEmpty) ? "-" : first_name))"
+                
+                if !display_name.isEmpty {
+                    self.nameLabel.text = display_name
                 }else{
-                    self.nameLabel.text = "\(( (first_name.isEmpty) ? "-" : first_name))"
+                    self.nameLabel.text = fullname
                 }
                 
+                if !pointpow_id.isEmpty {
+                    self.ppIdLabel.text = pointpow_id
+                }else{
+                    
+                    self.ppIdLabel.text = mobile
+                }
             }
             self.refreshControl?.endRefreshing()
         }, error: { (error) in
@@ -156,9 +166,9 @@ class PointFriendTransferReviewViewController: BaseViewController {
         self.backgroundImage?.image = nil
     
         if let modelFriend = self.friendModel {
-            //let display_name = modelFriend["display_name"] as? String ?? ""
+            let display_name = modelFriend["display_name"] as? String ?? ""
             let first_name = modelFriend["first_name"] as? String ?? ""
-            //     let last_name = modelFriend["last_name"] as? String ?? ""
+            let last_name = modelFriend["last_name"] as? String ?? ""
             let mobile = modelFriend["mobile"] as? String ?? ""
             let picture_data = modelFriend["picture_data"] as? String ?? ""
             let pointpow_id = modelFriend["pointpow_id"] as? String ?? ""
@@ -169,13 +179,22 @@ class PointFriendTransferReviewViewController: BaseViewController {
                 self.friendImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER)
             }
             
-        
-            if !pointpow_id.isEmpty {
-                self.nameFriendLabel.text = "\(pointpow_id)"
+//            let fullname = "\(( (first_name.isEmpty) ? "" : first_name)) \(( (last_name.isEmpty) ? "" : last_name))"
+
+            let fullname = "\(( (first_name.isEmpty) ? "-" : first_name))"
+            
+            if !display_name.isEmpty {
+                self.nameFriendLabel.text = display_name
             }else{
-                self.nameFriendLabel.text = "\(( (first_name.isEmpty) ? "-" : first_name))"
+                self.nameFriendLabel.text = fullname
             }
-            self.ppIdFriendLabel.text = mobile
+            
+            if !pointpow_id.isEmpty {
+                self.ppIdFriendLabel.text = pointpow_id
+            }else{
+                self.ppIdFriendLabel.text = mobile
+            }
+
         }
         
         if self.note.isEmpty {

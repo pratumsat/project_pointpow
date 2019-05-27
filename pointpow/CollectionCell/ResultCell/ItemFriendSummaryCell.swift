@@ -10,6 +10,8 @@ import UIKit
 
 class ItemFriendSummaryCell: UICollectionViewCell {
     
+    @IBOutlet weak var mobileReceiverLabel: UILabel!
+    @IBOutlet weak var mobileSenderLabel: UILabel!
     @IBOutlet weak var notelineView: UIView!
     @IBOutlet weak var titleNoteLabel: UILabel!
     @IBOutlet weak var bgSuccessImageView: UIImageView!

@@ -77,7 +77,7 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
                     self.addViewNotfoundData()
                 }else{
                     self.recentFriend  = mResults
-                  
+                    self.friendCollectionView.backgroundView = nil
                     self.friendCollectionView.reloadData()
                 }
                
@@ -145,8 +145,19 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
             if choose == "myqrcode" {
                 self.showMyQRCodeView(true)
             }else{
-                self.showScanBarcodeForMember { (modelFriend, barcode) in
+                self.showScanBarcodeForMember { (result, barcode) in
+                    
+                    if let mResult = result as? [String : AnyObject] {
+                        let qrType = mResult["type"] as? String ?? ""
+                        
+                        if qrType.lowercased() == "friend"{
+                            self.showPointFriendTransferView(true, mResult)
+                        }
+                        
+                    }
+                   
                 }
+                
             }
         }
     }

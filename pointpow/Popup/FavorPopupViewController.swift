@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class FavorPopupViewController: BaseViewController {
 
@@ -18,6 +19,9 @@ class FavorPopupViewController: BaseViewController {
     
     var didSave:(()->Void)?
     var favName:String?
+    var mType:String = ""
+    var amount:String = ""
+    var transaction_ref_id:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,9 +34,40 @@ class FavorPopupViewController: BaseViewController {
         self.windowSubview?.removeFromSuperview()
         self.windowSubview = nil
         
-        self.dismiss(animated: true) {
-            self.didSave?()
+        let params:Parameters = [  "type": self.mType,
+                                   "transaction_ref_id": self.transaction_ref_id,
+                                   "amount" : self.amount,
+                                   "alias": self.nameTextField.text!]
+        
+        self.modelCtrl.favoriteTransferPoint(params: params , true , succeeded: { (result) in
+         
+            self.showMessagePrompt2(NSLocalizedString("string-message-success-save-favourite-transfer", comment: ""), okCallback: {
+                
+                self.dismiss(animated: true) {
+                    self.didSave?()
+                }
+                
+            })
+            
+            
+            
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                self.showMessagePrompt(message)
+            }
+           
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+          
         }
+        
+        
+        
+        
     }
     
     override func dismissPoPup() {

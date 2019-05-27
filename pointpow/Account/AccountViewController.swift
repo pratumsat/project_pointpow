@@ -275,6 +275,7 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
             
             if indexPath.row == 0 {
                 //history
+                self.tabBarController?.selectedIndex = 3
             }
             if indexPath.row == 1 {
                 self.showProfileView(true)

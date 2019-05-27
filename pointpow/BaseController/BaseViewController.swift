@@ -719,9 +719,11 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     
     
     
-    func showPointFriendTransferView(_ animated:Bool, _ friendModel:[String:AnyObject]){
+    func showPointFriendTransferView(_ animated:Bool, _ friendModel:[String:AnyObject], note:String? = nil, pointAmount:String? = nil){
         if let vc:PointFriendTransferViewController  = self.storyboard?.instantiateViewController(withIdentifier: "PointFriendTransferViewController") as? PointFriendTransferViewController {
             vc.friendModel = friendModel
+            vc.mNote = note
+            vc.pointAmount = pointAmount
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
@@ -1393,7 +1395,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             
         }
     }
-    func showAddNameFavoritePopup(_ animated:Bool ,favName:String? = nil, savedCallback:(()->Void)? = nil ){
+    func showAddNameFavoritePopup(_ animated:Bool ,favName:String? = nil, mType:String, transaction_ref_id:String, amount:String, savedCallback:(()->Void)? = nil ){
         let presenter: Presentr = {
             
             let w = self.view.frame.width * 0.8
@@ -1415,7 +1417,10 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }()
         
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "FavorPopupViewController") as? FavorPopupViewController{
+            vc.mType = mType
             vc.favName = favName
+            vc.amount = amount
+            vc.transaction_ref_id = transaction_ref_id
             vc.didSave =  {
                 savedCallback?()
             }
@@ -1916,7 +1921,8 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         let ok = UIAlertAction(title: NSLocalizedString("string-button-ok", comment: ""), style: .cancel, handler: nil)
         alert.addAction(ok)
         
-        self.present(alert, animated: true, completion: nil)
+        //self.present(alert, animated: true, completion: nil)
+        alert.show()
     }
     
     func showMessagePrompt2(_ message:String , okCallback:(()->Void)? = nil){

@@ -14,6 +14,17 @@ class ItemConfirmSummaryCell: UICollectionViewCell {
     var favorCallback:(()->Void)?
     var shareCallback:(()->Void)?
     
+    var disableFav  = false {
+        didSet{
+            self.favoView.isUserInteractionEnabled = false
+            self.favoView.borderLightGrayColorProperties()
+            self.favoImageView.image = UIImage(named: "ic-star-outline-gray")
+            self.favoLabel.textColor = UIColor.lightGray
+        }
+    }
+    @IBOutlet weak var favoLabel: UILabel!
+    
+    @IBOutlet weak var favoImageView: UIImageView!
     @IBOutlet weak var favoView: UIView!
     @IBOutlet weak var saveView: UIView!
     override func awakeFromNib() {
@@ -41,7 +52,11 @@ class ItemConfirmSummaryCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.favoView.borderRedColorProperties()
+        if !disableFav {
+            self.favoView.borderRedColorProperties()
+        }
+       
+        
        
         self.saveView.borderRedColorProperties()
        

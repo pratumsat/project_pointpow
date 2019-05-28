@@ -70,10 +70,10 @@ class PointFriendTransferReviewViewController: BaseViewController {
                 numberFormatter.minimumFractionDigits = 2
                 
                 if let url = URL(string: picture_data) {
-                    self.myProfileImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER))
+                    self.myProfileImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
                     
                 }else{
-                    self.myProfileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER)
+                    self.myProfileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
                 }
                 
                 
@@ -174,9 +174,9 @@ class PointFriendTransferReviewViewController: BaseViewController {
             let pointpow_id = modelFriend["pointpow_id"] as? String ?? ""
             
             if let url = URL(string: picture_data) {
-                self.friendImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER))
+                self.friendImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
             }else{
-                self.friendImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER)
+                self.friendImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
             }
             
 //            let fullname = "\(( (first_name.isEmpty) ? "" : first_name)) \(( (last_name.isEmpty) ? "" : last_name))"

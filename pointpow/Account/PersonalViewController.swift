@@ -69,9 +69,9 @@ class PersonalViewController: BaseViewController  {
             })
             let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-gold-button-cancel", comment: ""), style: .default, handler: nil)
             
-            
-            alert.addAction(cancelButton)
             alert.addAction(okButton)
+            alert.addAction(cancelButton)
+            
             self.present(alert, animated: true, completion: nil)
         }else{
             self.navigationController?.popViewController(animated: true)

@@ -89,7 +89,7 @@ class PromotionCampainCell: UICollectionViewCell , UICollectionViewDelegate , UI
                 let path = itemData["path_mobile"] as? String ?? ""
                 
                 if let url = URL(string: path) {
-                    imageCell.imageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_BACKGROUND_PLACEHOLDER))
+                    imageCell.imageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_HOME_PLACEHOLDER))
                 }
                 
             }

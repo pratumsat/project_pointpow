@@ -586,9 +586,9 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }
     }
     
-    func showPointTransferView(_ animated:Bool){
+    func showPointTransferView(_ animated:Bool , isProfile:Bool){
         if let vc:PointTransferViewController  = self.storyboard?.instantiateViewController(withIdentifier: "PointTransferViewController") as? PointTransferViewController {
-            
+            vc.isProfile = isProfile
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
@@ -1449,9 +1449,9 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: nil)
         
         
-        
-        alert.addAction(cancelButton)
         alert.addAction(okButton)
+        alert.addAction(cancelButton)
+        
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -1949,9 +1949,9 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         let cancel = UIAlertAction(title: NSLocalizedString("string-dailog-title-button-cancel", comment: ""), style: .default, handler: nil)
         
         
-        
-        alert.addAction(cancel)
         alert.addAction(delete)
+        alert.addAction(cancel)
+        
         self.present(alert, animated: true, completion: nil)
     }
   
@@ -1998,18 +1998,23 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
                 }
                 
             }
-            confirmAlertCtrl.addAction(confirmAction)
+            
             
             let cancelAction = UIAlertAction(title: cancel, style: .default, handler: nil)
+            
+            confirmAlertCtrl.addAction(confirmAction)
             confirmAlertCtrl.addAction(cancelAction)
             
             self.present(confirmAlertCtrl, animated: true, completion: nil)
             
         }
         
-        confirmAlertCtrl.addAction(confirmAction)
         
-        let cancelAction = UIAlertAction(title: cancel, style: .cancel, handler: nil)
+        
+        let cancelAction = UIAlertAction(title: cancel, style: .default, handler: nil)
+        
+        
+        confirmAlertCtrl.addAction(confirmAction)
         confirmAlertCtrl.addAction(cancelAction)
         
         self.present(confirmAlertCtrl, animated: true, completion: nil)

@@ -132,9 +132,9 @@ class PromotionViewController: BaseViewController , UICollectionViewDelegate , U
                 itemCell.detailLabel.text = detail
                 
                 if let url = URL(string: cover) {
-                    itemCell.bannerImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_PROMOTION_MOCK))
+                    itemCell.bannerImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_PROMO_PLACEHOLDER))
                 }else{
-                    itemCell.bannerImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_PROMOTION_MOCK)
+                    itemCell.bannerImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_PROMO_PLACEHOLDER)
                 }
                 
             }

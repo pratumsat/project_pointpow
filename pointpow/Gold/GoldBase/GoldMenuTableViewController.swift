@@ -128,9 +128,9 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
                     let picture_data = data["picture_data"] as? String ?? ""
                     
                     if let url = URL(string: picture_data) {
-                        head.profileImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER))
+                        head.profileImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
                     }else{
-                        head.profileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER)
+                        head.profileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
                     }
                     
                     head.nameLabel.text = "\(first_name) \(last_name)"

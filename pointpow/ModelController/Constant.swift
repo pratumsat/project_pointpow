@@ -719,10 +719,9 @@ struct Constant {
         
         
         static let favouriteTransfer = "\(HOST)\(POINTPOW_VERSION1)member/transfer-point/favourites"
-        
-        
         static let transectionHistory = "\(HOST)\(POINTPOW_VERSION1)member/transfer-point/history"
         
+        static let providers = "\(HOST)\(POINTPOW_VERSION1)providers"
         
         static let memberSetting = "\(HOST)\(POINTPOW_VERSION1)member/setting"
         static let setPinCode = "\(HOST)\(POINTPOW_VERSION1)member/set-pin"
@@ -806,11 +805,12 @@ struct Constant {
         static let NOTIFICATION_SPLASH_LOCKAPP = "notification_lock_app"
         
             struct DefaultImaege{
-                static let PROFILE_PLACEHOLDER = "ic-gold-profile"
-                static let PROFILE_BACKGROUND_PLACEHOLDER = "bg-profile-image"
-                static let BANNER_PROMOTION_MOCK = "banner-mock1"
-                static let BANNER_PROMOTION_MOCK_DETAIL = "banner-mock1d"
-                static let BANNER_HOME_MOCK = "banner-mock1"
+                static let BANNER_HOME_PLACEHOLDER = "place-bg-banner-home"
+                static let BANNER_PROMO_PLACEHOLDER = "place-bg-banner-promo"
+                static let RECT_PLACEHOLDER = "place-bg-rect"
+                static let BACKGROUND_PROFILE_PLACEHOLDER = "place-bg-profile"
+                static let BANNER_PROMO_DETAIL_PLACEHOLDER = "place-bg-banner-promo-detail"
+                
         }
     }
     struct Colors {

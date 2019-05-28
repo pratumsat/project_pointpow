@@ -115,6 +115,8 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="493" height="78"/>
             <connections>
+                <outlet property="favoImageView" destination="9NQ-oM-VZE" id="ftZ-Cp-ENo"/>
+                <outlet property="favoLabel" destination="XVe-RE-fHY" id="rvf-2E-02N"/>
                 <outlet property="favoView" destination="05b-zo-Q9T" id="8BO-9q-Wgo"/>
                 <outlet property="saveView" destination="I4V-QQ-pLU" id="neV-bX-mJu"/>
             </connections>

@@ -362,14 +362,20 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
                 confirmCell.favorCallback = {
                     //add favorit
 
+                    
+                    
                     if let mData = self.transferResult as? [String:AnyObject] {
                         let transaction_ref_id = mData["transaction_ref_id"] as? String ?? ""
                         let point = mData["point"] as? NSNumber ?? 0
                         let pointable_type = mData["pointable_type"] as? String ?? ""
-                        
+
                         self.showAddNameFavoritePopup(true, mType: pointable_type,
                                                       transaction_ref_id: transaction_ref_id,
-                                                      amount: point.stringValue)
+                                                      amount: point.stringValue) {
+
+                                                        
+                                                        confirmCell.disableFav = true
+                        }
                     }
                     
                 }

@@ -300,9 +300,9 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
                     let pointpow_id = modelFriend["pointpow_id"] as? String ?? ""
                 
                     if let url = URL(string: picture_data) {
-                        friendCell.coverImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER))
+                        friendCell.coverImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
                     }else{
-                        friendCell.coverImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER)
+                        friendCell.coverImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
                     }
                     if !pointpow_id.isEmpty {
                         friendCell.nameLabel.text = "\(pointpow_id)"
@@ -344,9 +344,9 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
                     
                     
                     if let url = URL(string: picture_data) {
-                        friendCell.coverImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER))
+                        friendCell.coverImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
                     }else{
-                        friendCell.coverImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER)
+                        friendCell.coverImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
                     }
                     
                     

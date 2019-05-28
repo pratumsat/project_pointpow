@@ -32,7 +32,7 @@
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner-mock1" translatesAutoresizingMaskIntoConstraints="NO" id="oNC-a7-aiK">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oNC-a7-aiK">
                         <rect key="frame" x="10" y="33.5" width="429" height="135.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="oNC-a7-aiK" secondAttribute="height" multiplier="950:300" id="c41-Dc-Ted"/>
@@ -87,7 +87,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="banner-mock1" width="951" height="301"/>
         <image name="ic-arrow-right" width="9.6000003814697266" height="22.559999465942383"/>
     </resources>
 </document>

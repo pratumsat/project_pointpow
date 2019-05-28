@@ -83,7 +83,7 @@
                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner-mock1" translatesAutoresizingMaskIntoConstraints="NO" id="0EY-Wq-vHO">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0EY-Wq-vHO">
                         <rect key="frame" x="30" y="45" width="370" height="117"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="0EY-Wq-vHO" secondAttribute="height" multiplier="950:300" id="Vz6-c2-RiN"/>
@@ -145,7 +145,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="banner-mock1" width="951" height="301"/>
         <image name="ic-arrow-right" width="9.6000003814697266" height="22.559999465942383"/>
         <image name="ic-notification-adverties" width="100" height="100"/>
     </resources>

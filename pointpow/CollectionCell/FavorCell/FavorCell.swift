@@ -10,6 +10,8 @@ import UIKit
 
 class FavorCell: UICollectionViewCell {
 
+    @IBOutlet weak var editView: UIView!
+    @IBOutlet weak var deleteView: UIView!
     @IBOutlet weak var deleteImageView: UIImageView!
     @IBOutlet weak var editImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -21,12 +23,12 @@ class FavorCell: UICollectionViewCell {
         super.awakeFromNib()
         
         let edit = UITapGestureRecognizer(target: self, action: #selector(editTapped))
-        self.editImageView.isUserInteractionEnabled = true
-        self.editImageView.addGestureRecognizer(edit)
+        self.editView.isUserInteractionEnabled = true
+        self.editView.addGestureRecognizer(edit)
         
         let delete = UITapGestureRecognizer(target: self, action: #selector(deleteTapped))
-        self.deleteImageView.isUserInteractionEnabled = true
-        self.deleteImageView.addGestureRecognizer(delete)
+        self.deleteView.isUserInteractionEnabled = true
+        self.deleteView.addGestureRecognizer(delete)
         
     }
     

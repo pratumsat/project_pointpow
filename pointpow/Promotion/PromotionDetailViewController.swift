@@ -43,9 +43,9 @@ class PromotionDetailViewController: BaseViewController {
             self.detailLabel.text = detail
             
             if let url = URL(string: cover_detail) {
-                self.bannerLImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_PROMOTION_MOCK_DETAIL))
+                self.bannerLImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_PROMO_DETAIL_PLACEHOLDER))
             }else{
-                self.bannerLImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_PROMOTION_MOCK_DETAIL)
+                self.bannerLImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_PROMO_DETAIL_PLACEHOLDER)
             }
             
         }

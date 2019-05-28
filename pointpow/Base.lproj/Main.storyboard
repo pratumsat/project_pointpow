@@ -8267,7 +8267,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ข้อมูลส่วนตัว" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TjD-zH-XLO">
-                                        <rect key="frame" x="153" y="129" width="108.33333333333331" height="36.666666666666657"/>
+                                        <rect key="frame" x="133.66666666666669" y="129" width="146.66666666666669" height="32.666666666666657"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="28"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -8279,7 +8279,7 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qaB-EF-dwP">
-                                        <rect key="frame" x="20" y="545.66666666666663" width="374" height="40"/>
+                                        <rect key="frame" x="20" y="541.66666666666663" width="374" height="40"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="yVr-cV-PDh"/>
@@ -8293,77 +8293,77 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="นามสกุล" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbX-Rd-xeH">
-                                        <rect key="frame" x="20.000000000000004" y="269.66666666666669" width="41.333333333333343" height="21"/>
+                                        <rect key="frame" x="19.999999999999996" y="268" width="56.666666666666657" height="18.666666666666686"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KCc-5T-eAg">
-                                        <rect key="frame" x="20" y="375.66666666666669" width="374" height="40"/>
+                                        <rect key="frame" x="20" y="371.66666666666669" width="374" height="40"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LOY-tU-5lo">
-                                        <rect key="frame" x="20" y="285.66666666666669" width="374" height="40"/>
+                                        <rect key="frame" x="20" y="281.66666666666669" width="374" height="40"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u69-Ob-afl">
-                                        <rect key="frame" x="20" y="324.66666666666669" width="374" height="1"/>
+                                        <rect key="frame" x="20" y="320.66666666666669" width="374" height="1"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="UNA-FC-4BK"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="อีเมล" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFn-a7-VLi">
-                                        <rect key="frame" x="20" y="449.66666666666669" width="24.333333333333329" height="21"/>
+                                        <rect key="frame" x="20" y="448" width="34" height="18.666666666666686"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="เลขบัตรประชาชน" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fEa-Ol-A11">
-                                        <rect key="frame" x="20" y="359.66666666666669" width="80.333333333333329" height="21"/>
+                                        <rect key="frame" x="20.000000000000007" y="358" width="113.66666666666669" height="18.666666666666686"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tcb-jc-fxa">
-                                        <rect key="frame" x="20" y="234.66666666666669" width="374" height="1"/>
+                                        <rect key="frame" x="20" y="230.66666666666669" width="374" height="1"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="MnQ-Hu-qSu"/>
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wcQ-Yv-a69">
-                                        <rect key="frame" x="20" y="465.66666666666669" width="374" height="40"/>
+                                        <rect key="frame" x="20" y="461.66666666666669" width="374" height="40"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ชื่อ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WhR-vQ-Fu5">
-                                        <rect key="frame" x="20" y="179.66666666666666" width="14" height="21"/>
+                                        <rect key="frame" x="20" y="178" width="18.666666666666671" height="18.666666666666657"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N5G-kS-cgi">
-                                        <rect key="frame" x="20" y="414.66666666666669" width="374" height="1"/>
+                                        <rect key="frame" x="20" y="410.66666666666669" width="374" height="1"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="JZY-ML-jff"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xgN-qA-nic">
-                                        <rect key="frame" x="20" y="504.66666666666663" width="374" height="1"/>
+                                        <rect key="frame" x="20" y="500.66666666666663" width="374" height="1"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="zud-zG-3Py"/>
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hj3-2f-Pef">
-                                        <rect key="frame" x="20" y="195.66666666666666" width="374" height="40"/>
+                                        <rect key="frame" x="20" y="191.66666666666666" width="374" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="geE-we-neZ"/>
                                         </constraints>
@@ -8458,7 +8458,7 @@
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" verticalHuggingPriority="251" image="banner-mock1d" translatesAutoresizingMaskIntoConstraints="NO" id="Vlp-5k-FD1">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vlp-5k-FD1">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="184"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Vlp-5k-FD1" secondAttribute="height" multiplier="1125:500" id="rJX-Gg-jin"/>
@@ -9500,7 +9500,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="banner-mock1d" width="1125" height="500"/>
         <image name="bg-mange-circle" width="900" height="900"/>
         <image name="bg-mange-point" width="1125" height="1664"/>
         <image name="bg-office-map" width="1138" height="800"/>

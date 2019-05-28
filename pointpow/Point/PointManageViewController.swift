@@ -86,8 +86,13 @@ class PointManageViewController: BaseViewController {
     }
     
     @objc func transferPointTapped(){
+        if let data  = self.userData as? [String:AnyObject] {
+            let is_profile = data["is_profile"] as? NSNumber ?? 0
+            
+            self.showPointTransferView(true, isProfile: is_profile.boolValue)
+        }
         
-        //self.showPointTransferView(true)
+        
     }
     
     

@@ -182,9 +182,9 @@ class NotificationTableViewController: BaseViewController, UITableViewDelegate, 
                     itemCell.timeAgoLabel.text = timeAgoSinceDate(dateString: date)
                    
                     if let url = URL(string: image_url) {
-                        itemCell.bannerImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_PROMOTION_MOCK))
+                        itemCell.bannerImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_PROMO_PLACEHOLDER))
                     }else{
-                        itemCell.bannerImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_PROMOTION_MOCK)
+                        itemCell.bannerImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_PROMO_PLACEHOLDER)
                     }
                 }
                 

@@ -166,8 +166,9 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
             let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-gold-button-cancel", comment: ""), style: .default, handler: nil)
             
             
-            alert.addAction(cancelButton)
             alert.addAction(okButton)
+            alert.addAction(cancelButton)
+            
             self.present(alert, animated: true, completion: nil)
         }else{
             if !self.fromAccountPointPow {
@@ -1105,9 +1106,9 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
  
             let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-gold-button-cancel", comment: ""), style: .default, handler: nil)
             
-            
-            alert.addAction(cancelButton)
             alert.addAction(okButton)
+            alert.addAction(cancelButton)
+            
             self.present(alert, animated: true, completion: nil)
         }else{
             let emailNotValid = NSLocalizedString("string-error-invalid-email", comment: "")

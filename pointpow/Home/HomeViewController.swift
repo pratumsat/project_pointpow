@@ -278,10 +278,10 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
                 
                 
                 if let url  = URL(string: picture_data) {
-                    self.profileImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER))
+                    self.profileImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
                     
                 }else{
-                    self.profileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.PROFILE_PLACEHOLDER)
+                    self.profileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
                 }
                 
                 
@@ -439,7 +439,13 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
             }
             if indexPath.row == 2 {
                 
-                self.showPointTransferView(true)
+                
+                if let data  = self.userData as? [String:AnyObject] {
+                    let is_profile = data["is_profile"] as? NSNumber ?? 0
+                    
+                    self.showPointTransferView(true, isProfile: is_profile.boolValue)
+                }
+                
             }
             if indexPath.row == 3 {
                 if let data  = self.userData as? [String:AnyObject] {

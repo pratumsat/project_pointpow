@@ -196,10 +196,12 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
                     self.handlerMessageError(messageError)
                 }
             }
-            let cancelAction = UIAlertAction(title: cancel, style: .cancel, handler: nil)
+            let cancelAction = UIAlertAction(title: cancel, style: .default, handler: nil)
             
-            confirmAlertCtrl.addAction(cancelAction)
+            
             confirmAlertCtrl.addAction(confirmAction)
+            confirmAlertCtrl.addAction(cancelAction)
+            
             self.present(confirmAlertCtrl, animated: true, completion: nil)
             
         }

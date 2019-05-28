@@ -146,9 +146,9 @@ class FavoriteViewController: BaseViewController, UICollectionViewDelegate , UIC
                     let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: nil)
                     
                     
-                    
-                    alert.addAction(cancelButton)
                     alert.addAction(okButton)
+                    alert.addAction(cancelButton)
+                    
                     self.present(alert, animated: true, completion: nil)
                 }
                 
@@ -215,11 +215,13 @@ class FavoriteViewController: BaseViewController, UICollectionViewDelegate , UIC
                 if let mResult = result as? [String : AnyObject] {
                     
                     let point = mResult["point"] as? [String:AnyObject] ?? [:]
+                    let limit_pay = mResult["limit_pay"] as? NSNumber ?? 0
                     let note = point["note"] as? String ?? ""
                     let pointAmount = point["point"] as? NSNumber ?? 0
                     
+                    
                     var receiver = mResult["receiver"] as? [String:AnyObject] ?? [:]
-                    receiver["limit_pay"] = NSNumber(value: 13001)
+                    receiver["limit_pay"] = limit_pay
                    
                     
                     self.showPointFriendTransferView(true, receiver as [String : AnyObject],
@@ -250,7 +252,7 @@ class FavoriteViewController: BaseViewController, UICollectionViewDelegate , UIC
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let width = collectionView.frame.width
-        let height = CGFloat(50)
+        let height = CGFloat(60)
         return CGSize(width: width, height: height)
     }
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PPWebViewController: BaseViewController {
+class PPWebViewController: BaseViewController , UIWebViewDelegate{
 
     var mTitle:String?
     var mUrl:String?
@@ -18,9 +18,37 @@ class PPWebViewController: BaseViewController {
         super.viewDidLoad()
 
         self.title = mTitle
-        // Do any additional setup after loading the view.
+        
+        let backImage = UIImage(named: "ic-back-white")
+        let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(backViewTapped))
+        self.navigationItem.leftBarButtonItem = backButton
+        
+        self.mWeb.delegate = self
+        self.mWeb.scalesPageToFit = true
+        self.mWeb.contentMode = .scaleAspectFit
+        
+        if let url = self.mUrl {
+            if let myURL = URL(string: url.replace(target: "https", withString: "http")) {
+                let myURLRequest:URLRequest = URLRequest(url: myURL)
+                self.mWeb.loadRequest(myURLRequest)
+            }
+        }
     }
     
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        self.loadingView?.showLoading()
+    }
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        self.loadingView?.hideLoading()
+    }
+    
+    @objc func backViewTapped(){
+        if self.mWeb.canGoBack {
+            self.mWeb.goBack()
+            return
+        }
+        self.navigationController?.popViewController(animated: true)
+    }
 
     /*
     // MARK: - Navigation

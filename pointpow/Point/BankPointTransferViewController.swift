@@ -15,10 +15,12 @@ class BankPointTransferViewController: BaseViewController  {
     @IBOutlet weak var providerImageView: UIImageView!
     @IBOutlet weak var pointpowImageView: UIImageView!
     
+    @IBOutlet weak var providerNamgeLabel: UILabel!
     @IBOutlet weak var balancePointLabel: UILabel!
     
     @IBOutlet weak var amountTextField: UITextField!
     
+    @IBOutlet weak var providerPointNameLabel: UILabel!
     @IBOutlet weak var exchangeRateView: UIView!
     @IBOutlet weak var exchangeRateLabel: UILabel!
     @IBOutlet weak var transferButton: UIButton!
@@ -27,6 +29,14 @@ class BankPointTransferViewController: BaseViewController  {
     @IBOutlet weak var exchange2View: UIView!
     
 
+    var userData:AnyObject?
+    var itemData:[String:AnyObject]?
+    
+    var exchangeRate = 0
+    var minPointTransfer = 0.0
+    var pointLimitOrder = 0.0
+    var rate = 0.0
+    var pointName:String = "KTC Point"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +58,7 @@ class BankPointTransferViewController: BaseViewController  {
         self.moreImageView.ovalColorClearProperties()
     }
     
+   
     func setUp(){
         self.handlerEnterSuccess = { (pin) in
             
@@ -69,44 +80,224 @@ class BankPointTransferViewController: BaseViewController  {
         
       
         
+        let less = UITapGestureRecognizer(target: self, action: #selector(lessPointTapped))
+        self.lessImageView.isUserInteractionEnabled = true
+        self.lessImageView.addGestureRecognizer(less)
+        
+        
+        let more = UITapGestureRecognizer(target: self, action: #selector(morePointTapped))
+        self.moreImageView.isUserInteractionEnabled = true
+        self.moreImageView.addGestureRecognizer(more)
+        
+        
         self.amountTextField.delegate = self
         self.amountTextField.autocorrectionType = .no
         
         
+        if let data = self.itemData {
+            let provider_image = data["provider_image"] as? String ?? ""
+            let name = data["name"] as? String ?? ""
+            let exchange_rate = data["exchange_rate"] as? [[String:AnyObject]] ?? [[:]]
+            
+            if let firstExchangeRate = exchange_rate.first {
+                let minimum = firstExchangeRate["minimum"] as? NSNumber ?? 0
+                let point_in = firstExchangeRate["point_in"] as? NSNumber ?? 0
+                let point_out = firstExchangeRate["point_out"] as? NSNumber ?? 0
+                let rate = firstExchangeRate["rate"] as? NSNumber ?? 0
+                
+                self.rate = rate.doubleValue
+                self.exchangeRate = minimum.intValue
+                self.minPointTransfer = minimum.doubleValue
+                self.amountTextField.text = "\(minimum.intValue)"
+                
+                let txtExchange = "\(point_in) \(pointName) = \(point_out) Point Pow"
+                self.providerPointNameLabel.text = pointName
+                self.providerPointNameLabel.setLineSpacing(lineSpacing: 0, lineHeightMultiple: 0.9)
+                // for thai sans
+                
+                
+                self.exchangeRateLabel.text = txtExchange
+                
+                
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .none
+                numberFormatter.minimumFractionDigits = 0
+                
+                let toPointPow = minimum.doubleValue*rate.doubleValue
+                self.exchangeRate2Label.text = numberFormatter.string(from: NSNumber(value: toPointPow))
+            }
+            
+           self.providerNamgeLabel.text = name
+            
+            if let url = URL(string: provider_image) {
+                self.providerImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
+            }else{
+                self.providerImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
+            }
+            
+        }
     }
 
-//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-//        return 1
-//    }
-//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//        return self.providerList.count
-//    }
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        return "\(providerList[row])"
-//    }
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        self.transferFromTextField.text = "\(providerList[row])"
-//    }
-//
-//    override func textFieldDidBeginEditing(_ textField: UITextField) {    //delegate method
-//        super.textFieldDidBeginEditing(textField)
-//
-//        if textField  == self.transferFromTextField {
-//            if let frist = self.providerList.first {
-//                self.transferFromTextField.text = "\(frist)"
-//
-//            }
-//        }
-//    }
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//
-//        if textField  == self.transferFromTextField {
-//            return false
-//        }
-//
-//        return true
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.getUserInfo()
+        
+    }
+    
+    func getUserInfo(_ avaliable:(()->Void)?  = nil){
+        var isLoading:Bool = true
+        if self.userData != nil {
+            isLoading = false
+        }else{
+            isLoading = true
+        }
+        modelCtrl.getUserData(params: nil , isLoading , succeeded: { (result) in
+            self.userData = result
+            avaliable?()
+            if let userData = self.userData as? [String:AnyObject] {
+                //let pointpow_id = userData["pointpow_id"] as? String ?? ""
+                let pointBalance = userData["member_point"]?["total"] as? NSNumber ?? 0
+//                let picture_data = userData["picture_data"] as? String ?? ""
+//                let display_name = userData["display_name"] as? String ?? ""
+//                let first_name = userData["first_name"] as? String ?? ""
+//                let last_name = userData["last_name"] as? String ?? ""
+//                let mobile = userData["mobile"] as? String ?? ""
+                
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                numberFormatter.minimumFractionDigits = 2
+                
+           
+                self.balancePointLabel.text = "\(numberFormatter.string(from: pointBalance ) ?? "") Point Pow"
+                
+            }
+            self.refreshControl?.endRefreshing()
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                self.showMessagePrompt(message)
+            }
+            self.refreshControl?.endRefreshing()
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            self.refreshControl?.endRefreshing()
+        }
+    }
+    
+    @objc func lessPointTapped() {
+        let updatedText = self.amountTextField.text!
+        
+        var amount = 0.0
+        if  (Double(updatedText) != nil) {
+            amount = Double(updatedText)!
+        }
+        amount -= Double(exchangeRate)
+        
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .none
+        numberFormatter.minimumFractionDigits = 0
+        
+        self.amountTextField.text = numberFormatter.string(from: NSNumber(value: amount))
+        
+        if amount <= minPointTransfer {
+            self.amountTextField.text = "\(exchangeRate)"
+            disableImageView(self.lessImageView)
+        }else{
+            enableImageView(self.lessImageView)
+        }
+        
+        let toPointPow = amount*rate
+        self.exchangeRate2Label.text = numberFormatter.string(from: NSNumber(value: toPointPow))
+        
+    }
+    @objc func morePointTapped() {
+        let updatedText = self.amountTextField.text!
+        
+        var amount = 0.0
+        if  (Double(updatedText) != nil) {
+            amount = Double(updatedText)!
+        }
+        
+        amount += Double(exchangeRate)
+        
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .none
+        numberFormatter.minimumFractionDigits = 0
+        
+        self.amountTextField.text = numberFormatter.string(from: NSNumber(value: amount))
+        
+        enableImageView(self.lessImageView)
+        
+        let toPointPow = amount*rate
+        self.exchangeRate2Label.text = numberFormatter.string(from: NSNumber(value: toPointPow))
+    }
+    
+    
+    func disableImageView(_ image:UIImageView){
+        //image.ovalColorClearProperties()
+        image.backgroundColor = UIColor.groupTableViewBackground
+        image.isUserInteractionEnabled = false
+    }
+    func enableImageView(_ image:UIImageView){
+        //image.ovalColorClearProperties()
+        image.backgroundColor = Constant.Colors.PRIMARY_COLOR
+        image.isUserInteractionEnabled = true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+     
+        if textField == self.amountTextField {
+            let textRange = Range(range, in: textField.text!)!
+            let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
+            
+            
+            if  (Double(updatedText) != nil) {
+                let amount = Double(updatedText)!
+                if amount <= minPointTransfer {
+                    
+                    disableImageView(self.lessImageView)
+                    
+                }else{
+                    enableImageView(self.lessImageView)
+                }
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .none
+                numberFormatter.minimumFractionDigits = 0
+                let toPointPow = amount*rate
+                self.exchangeRate2Label.text = numberFormatter.string(from: NSNumber(value: toPointPow))
+            }else{
+                //return false
+            }
+        }
+        return true
+    }
+    
     @IBAction func transferTapped(_ sender: Any) {
-        self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
+        let updatedText = self.amountTextField.text!
+        
+        var amount = 0.0
+        if  (Double(updatedText) != nil) {
+            amount = Double(updatedText)!
+        }
+        if amount == 0 {
+            self.showMessagePrompt(NSLocalizedString("string-dailog-saving-point-pointspend-empty", comment: ""))
+            return
+        }
+        
+        if Int(amount)%exchangeRate == 0{
+            
+            
+            print("ok")
+            
+            
+        }else{
+            let message = NSLocalizedString("string-error-amount-fill", comment: "")
+            self.showMessagePrompt2("\(message) \(self.exchangeRate)")
+        }
+        //self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
     }
 }

@@ -606,6 +606,14 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }
     }
     
+    func showPaymentWebView( _ animated:Bool, _ title:String, url:String){
+        if let vc:PaymentViewController  = self.storyboard?.instantiateViewController(withIdentifier: "PaymentViewController") as? PaymentViewController {
+            vc.mTitle = title
+            vc.mUrl = url
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    
     func showResetPasswordView(_ animated:Bool, forgotPassword:Bool = false){
         if let vc:ResetPasswordViewController  = self.storyboard?.instantiateViewController(withIdentifier: "ResetPasswordViewController") as? ResetPasswordViewController {
             vc.forgotPassword = forgotPassword
@@ -621,9 +629,9 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     }
     
     
-    func showBankTransferView(_ animated:Bool){
+    func showBankTransferView(_ animated:Bool, itemData:[String:AnyObject]){
         if let vc:BankPointTransferViewController  = self.storyboard?.instantiateViewController(withIdentifier: "BankPointTransferViewController") as? BankPointTransferViewController {
-            
+            vc.itemData = itemData
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }

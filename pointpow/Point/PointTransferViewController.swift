@@ -14,6 +14,7 @@ class PointTransferViewController: BaseViewController , UICollectionViewDelegate
     var mProviders:[[String:AnyObject]]?
     var userData:AnyObject?
     var isProfile = false
+    var indexSelected = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -182,17 +183,8 @@ class PointTransferViewController: BaseViewController , UICollectionViewDelegate
         
         return cell!
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if !isProfile {
-            self.showPopupProfileInfomation(){
-                print("//callback saved profile")
-               
-                self.getUserInfo()
-            }
-            return
-        }
-        if let itemData = self.mProviders?[indexPath.row]{
+    func openProviderPage(_ indexSelected:Int){
+        if let itemData = self.mProviders?[indexSelected]{
             let show_form = itemData["show_form"] as? String ?? ""
             let name = itemData["name"] as? String ?? ""
             let webview_url = itemData["webview_url"] as? String ?? ""
@@ -202,12 +194,27 @@ class PointTransferViewController: BaseViewController , UICollectionViewDelegate
                 self.showPPWebView(true, name, url: webview_url)
             }else{
                 //online
-                self.showBankTransferView(true)
+                self.showBankTransferView(true, itemData : itemData)
+               
             }
         }
-        //if indexPath.row == 6 {
-        //    self.showBankTransferView(true)
-        //}
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if !isProfile {
+            self.indexSelected = indexPath.row
+            
+            self.showPopupProfileInfomation(){
+                print("//callback saved profile")
+                
+                self.getUserInfo(){
+                    self.openProviderPage(self.indexSelected)
+                }
+                
+            }
+            return
+        }
+        self.openProviderPage(indexPath.row)
+        
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
@@ -219,7 +226,7 @@ class PointTransferViewController: BaseViewController , UICollectionViewDelegate
         
         
         let width = collectionView.frame.width / 3
-        let height = width + 20
+        let height = width
         return CGSize(width: width, height: height)
     }
 }

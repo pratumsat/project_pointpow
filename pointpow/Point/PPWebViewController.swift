@@ -24,7 +24,7 @@ class PPWebViewController: BaseViewController , UIWebViewDelegate{
         self.navigationItem.leftBarButtonItem = backButton
         
         self.mWeb.delegate = self
-        self.mWeb.scalesPageToFit = true
+        self.mWeb.scalesPageToFit = false
         self.mWeb.contentMode = .scaleAspectFit
         
         if let url = self.mUrl {

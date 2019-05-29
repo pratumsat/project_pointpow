@@ -140,6 +140,10 @@
 		C139488922968D60003E0527 /* TransectionFilterResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C139488822968D60003E0527 /* TransectionFilterResultViewController.swift */; };
 		C139488B2297D881003E0527 /* MyQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C139488A2297D881003E0527 /* MyQRCodeViewController.swift */; };
 		C139488D2297F674003E0527 /* PopupChosenQRcodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C139488C2297F674003E0527 /* PopupChosenQRcodeViewController.swift */; };
+		C13D4FE4229E45F300516CE8 /* UIWebViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D4FE3229E45F300516CE8 /* UIWebViewExt.swift */; };
+		C13D4FE7229E464500516CE8 /* JSInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D4FE6229E464500516CE8 /* JSInterface.swift */; };
+		C13D4FE9229E474E00516CE8 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D4FE8229E474E00516CE8 /* PaymentViewController.swift */; };
+		C13D4FEB229E480600516CE8 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = C13D4FEA229E480600516CE8 /* index.html */; };
 		C13D99822199755B001A4794 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D99812199755B001A4794 /* ProfileViewController.swift */; };
 		C13D998521997938001A4794 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D998321997938001A4794 /* LogoutCell.swift */; };
 		C13D998621997938001A4794 /* LogoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13D998421997938001A4794 /* LogoutCell.xib */; };
@@ -417,6 +421,10 @@
 		C139488822968D60003E0527 /* TransectionFilterResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransectionFilterResultViewController.swift; sourceTree = "<group>"; };
 		C139488A2297D881003E0527 /* MyQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQRCodeViewController.swift; sourceTree = "<group>"; };
 		C139488C2297F674003E0527 /* PopupChosenQRcodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupChosenQRcodeViewController.swift; sourceTree = "<group>"; };
+		C13D4FE3229E45F300516CE8 /* UIWebViewExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIWebViewExt.swift; sourceTree = "<group>"; };
+		C13D4FE6229E464500516CE8 /* JSInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSInterface.swift; sourceTree = "<group>"; };
+		C13D4FE8229E474E00516CE8 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		C13D4FEA229E480600516CE8 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		C13D99812199755B001A4794 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C13D998321997938001A4794 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		C13D998421997938001A4794 /* LogoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutCell.xib; sourceTree = "<group>"; };
@@ -936,6 +944,15 @@
 			path = PromotionCell;
 			sourceTree = "<group>";
 		};
+		C13D4FE5229E463900516CE8 /* JSInterface */ = {
+			isa = PBXGroup;
+			children = (
+				C13D4FE6229E464500516CE8 /* JSInterface.swift */,
+				C13D4FE8229E474E00516CE8 /* PaymentViewController.swift */,
+			);
+			path = JSInterface;
+			sourceTree = "<group>";
+		};
 		C13D998721997AC4001A4794 /* HeadCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1072,6 +1089,7 @@
 		C1AD50782187F45600F74415 /* pointpow */ = {
 			isa = PBXGroup;
 			children = (
+				C13D4FE5229E463900516CE8 /* JSInterface */,
 				C121FB52228A651B00043387 /* Notification */,
 				C10CA1A5219185A000316DF3 /* Passcode */,
 				C197FF2422081C3F002F24E8 /* Gold */,
@@ -1102,6 +1120,7 @@
 				C1AD50822187F45900F74415 /* LaunchScreen.storyboard */,
 				C1AD50852187F45900F74415 /* Info.plist */,
 				C1249EBA2224F04D00F56FA0 /* map.jpg */,
+				C13D4FEA229E480600516CE8 /* index.html */,
 				C1249EB82224F03900F56FA0 /* map.html */,
 				C1AD50AA2187F7FF00F74415 /* Bridging-Header.h */,
 				C1DEBE8B2188115D00CBB95F /* GoogleService-Info.plist */,
@@ -1130,6 +1149,7 @@
 		C1AD50A72187F78700F74415 /* BaseController */ = {
 			isa = PBXGroup;
 			children = (
+				C13D4FE3229E45F300516CE8 /* UIWebViewExt.swift */,
 				C1AD50A82187F7B500F74415 /* BaseViewController.swift */,
 				C1DEBE9421882F6F00CBB95F /* BaseNavigationViewController.swift */,
 				C1817DA7219E7BFE009507DB /* CheckBox.swift */,
@@ -1423,6 +1443,7 @@
 				C12FD30F228D168100FB81B6 /* NotificationGoldCell.xib in Resources */,
 				C106BEB3220BED4E00E2331E /* BrowseImageCell.xib in Resources */,
 				C11BFCB0221BF70300F066DE /* WithDrawShippingThaiPostCell.xib in Resources */,
+				C13D4FEB229E480600516CE8 /* index.html in Resources */,
 				C1892E0E221E900900F5412F /* TransactionGoldCell.xib in Resources */,
 				C12FD313228EA48700FB81B6 /* ItemFriendSearchCell.xib in Resources */,
 				C169FFBF21C36E1300F9D354 /* Localizable.strings in Resources */,
@@ -1618,6 +1639,7 @@
 				C1AD50B22187FEE300F74415 /* ModelController.swift in Sources */,
 				C10D94B82209719F0083FA47 /* NavProfile.swift in Sources */,
 				C197FEDA21DC5616002F24E8 /* PopUpRegisterSuccessViewController.swift in Sources */,
+				C13D4FE4229E45F300516CE8 /* UIWebViewExt.swift in Sources */,
 				C121B32D224C802D00D69B56 /* PopUpInfoLaserIdViewController.swift in Sources */,
 				C127323F225380D500A9EE74 /* PickerLuckyDrawCell.swift in Sources */,
 				C142741721A539F5003CC246 /* PointFriendTransferReviewViewController.swift in Sources */,
@@ -1684,6 +1706,7 @@
 				C1B32E4222524367006AD7F2 /* ScheduleCell.swift in Sources */,
 				C11A93C4218FF3E200627B44 /* VerifyViewController.swift in Sources */,
 				C1AD50B52187FF4000F74415 /* Loading.swift in Sources */,
+				C13D4FE9229E474E00516CE8 /* PaymentViewController.swift in Sources */,
 				C1817D9D219C07DF009507DB /* ItemBankCell.swift in Sources */,
 				C121FB58228A66C100043387 /* HeaderViewDateTableViewCell.swift in Sources */,
 				C12FD30E228D168100FB81B6 /* NotificationGoldCell.swift in Sources */,
@@ -1693,6 +1716,7 @@
 				C1AD50AF2187FE9000F74415 /* PopUpViewController.swift in Sources */,
 				C11A93C0218C2AD900627B44 /* ForgotPasswordViewController.swift in Sources */,
 				C11A93BE218C20D100627B44 /* RegisterViewController.swift in Sources */,
+				C13D4FE7229E464500516CE8 /* JSInterface.swift in Sources */,
 				C10D94B1220960940083FA47 /* NameTableViewCell.swift in Sources */,
 				C103113C2212C932004396E0 /* GoldPendingVerifyViewController.swift in Sources */,
 				C12CCC612281590C00F26DCC /* PersonalDataViewController.swift in Sources */,

@@ -34,13 +34,16 @@ class ResetPasswordViewController: BaseViewController {
         
         self.title = NSLocalizedString("string-title-resetpassword", comment: "")
        
-        let cancelButton = UIBarButtonItem(title: NSLocalizedString("string-title-cancel-reset-pwd", comment: ""), style: .plain, target: self, action: #selector(cancelTapped))
-        cancelButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white,
-                                             NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.ITEM_TITLE )!]
-            , for: .normal)
+        if !forgotPassword {
+            let cancelButton = UIBarButtonItem(title: NSLocalizedString("string-title-cancel-reset-pwd", comment: ""), style: .plain, target: self, action: #selector(cancelTapped))
+            cancelButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white,
+                                                 NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.ITEM_TITLE )!]
+                , for: .normal)
+            
+            
+            self.navigationItem.leftBarButtonItem = cancelButton
+        }
         
-        
-        self.navigationItem.leftBarButtonItem = cancelButton
         
         
         self.setUp()

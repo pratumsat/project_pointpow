@@ -106,16 +106,6 @@ class ForgotPasswordViewController: BaseViewController {
                     self.showVerify(username, ref_id, forgotPassword: true, true)
                 }
                 
-                
-//                let message = NSLocalizedString("string-reset-password-send-mobile", comment: "")
-//                let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
-//                let ok = UIAlertAction(title: NSLocalizedString("string-button-ok", comment: ""), style: .cancel, handler: { (action) in
-//
-//                    self.navigationController?.popViewController(animated: true)
-//                })
-//                alert.addAction(ok)
-//                self.present(alert, animated: true, completion: nil)
-                
             }, error: { (error) in
                 if let mError = error as? [String:AnyObject]{
                     print(mError)
@@ -126,6 +116,7 @@ class ForgotPasswordViewController: BaseViewController {
             }, failure: { (messageError) in
                 self.handlerMessageError(messageError , title: "")
             })
+ 
  
             
             

@@ -224,10 +224,10 @@ class VerifyViewController: BaseViewController {
         let otp = self.otpTextField.text!
         //self.errorOTPlLabel?.removeFromSuperview()
 
-        let params:Parameters = ["ref_id" : self.ref_id ?? "",
+       let params:Parameters = ["ref_id" : self.ref_id ?? "",
                                  "otp" : otp,
                                  "mobile" : self.mobilePhone ?? ""]
-        
+        self.showResetPasswordView(true, forgotPassword: true)
         modelCtrl.verifyOTP(params: params, succeeded: { (result) in
             if let mResult = result as? [String:AnyObject]{
                 print(mResult)
@@ -242,9 +242,6 @@ class VerifyViewController: BaseViewController {
                     DataController.sharedInstance.setToken(access_token)
                 }
                 
-                
-                
-                
             }
         }, error: { (error) in
             if let mError = error as? [String:AnyObject]{
@@ -256,10 +253,8 @@ class VerifyViewController: BaseViewController {
         }, failure: { (messageError) in
             self.handlerMessageError(messageError , title: "")
         })
+ 
         
-//        let errorMessage = NSLocalizedString("string-error-otp", comment: "")
-//        self.errorOTPlLabel = self.otpTextField.addBottomLabelErrorMessage(errorMessage, marginLeft: 15)
-//        self.showMessagePrompt(errorMessage)
     }
     
    

@@ -717,6 +717,7 @@ struct Constant {
         static let recentMemberTransfer = "\(HOST)\(POINTPOW_VERSION1)member/transfer-point/recent"
         static let memberTransfer = "\(HOST)\(POINTPOW_VERSION1)member/transfer-point/friend"
         
+        static let memberExchange = "\(HOST)\(POINTPOW_VERSION1)member/exchange"
         
         static let favouriteTransfer = "\(HOST)\(POINTPOW_VERSION1)member/transfer-point/favourites"
         static let transectionHistory = "\(HOST)\(POINTPOW_VERSION1)member/transfer-point/history"
@@ -797,6 +798,9 @@ struct Constant {
         case left, right, top, bottom
     }
     struct DefaultConstansts {
+        static let TRANSECTION_SUCCESS = "TRANSECTION_SUCCESS"
+        static let TRANSECTION_FAIL = "TRANSECTION_FAIL"
+        static let TRANSECTION_CANCEL = "TRANSECTION_CANCEL"
         
         static let RESET_PIN = "RESET_PIN"
         static let RESET_PASSWORD = "RESET_PASSWORD"

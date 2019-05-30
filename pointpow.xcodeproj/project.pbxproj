@@ -144,6 +144,7 @@
 		C13D4FE7229E464500516CE8 /* JSInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D4FE6229E464500516CE8 /* JSInterface.swift */; };
 		C13D4FE9229E474E00516CE8 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D4FE8229E474E00516CE8 /* PaymentViewController.swift */; };
 		C13D4FEB229E480600516CE8 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = C13D4FEA229E480600516CE8 /* index.html */; };
+		C13D4FED229FA02800516CE8 /* NavPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D4FEC229FA02800516CE8 /* NavPaymentViewController.swift */; };
 		C13D99822199755B001A4794 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D99812199755B001A4794 /* ProfileViewController.swift */; };
 		C13D998521997938001A4794 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D998321997938001A4794 /* LogoutCell.swift */; };
 		C13D998621997938001A4794 /* LogoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13D998421997938001A4794 /* LogoutCell.xib */; };
@@ -425,6 +426,7 @@
 		C13D4FE6229E464500516CE8 /* JSInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSInterface.swift; sourceTree = "<group>"; };
 		C13D4FE8229E474E00516CE8 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		C13D4FEA229E480600516CE8 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		C13D4FEC229FA02800516CE8 /* NavPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavPaymentViewController.swift; sourceTree = "<group>"; };
 		C13D99812199755B001A4794 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C13D998321997938001A4794 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		C13D998421997938001A4794 /* LogoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutCell.xib; sourceTree = "<group>"; };
@@ -949,6 +951,7 @@
 			children = (
 				C13D4FE6229E464500516CE8 /* JSInterface.swift */,
 				C13D4FE8229E474E00516CE8 /* PaymentViewController.swift */,
+				C13D4FEC229FA02800516CE8 /* NavPaymentViewController.swift */,
 			);
 			path = JSInterface;
 			sourceTree = "<group>";
@@ -1700,6 +1703,7 @@
 				C1247C5122191898005D6F7A /* WithdrawCell.swift in Sources */,
 				C1AD50A92187F7B500F74415 /* BaseViewController.swift in Sources */,
 				C11BDFB821A2B95D00443D2D /* ItemFriendSummaryCell.swift in Sources */,
+				C13D4FED229FA02800516CE8 /* NavPaymentViewController.swift in Sources */,
 				C1F7610A2216E357000A2CA9 /* WithDrawMyGoldCell.swift in Sources */,
 				C1817D92219BF61E009507DB /* ItemFriendCell.swift in Sources */,
 				C11A93B1218BF69700627B44 /* MainNav.swift in Sources */,

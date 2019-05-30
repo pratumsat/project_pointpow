@@ -606,11 +606,14 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }
     }
     
-    func showPaymentWebView( _ animated:Bool, _ title:String, url:String){
-        if let vc:PaymentViewController  = self.storyboard?.instantiateViewController(withIdentifier: "PaymentViewController") as? PaymentViewController {
+    func showPaymentWebView( _ animated:Bool, _ title:String, url:String, callbackResult:((_ any:AnyObject)->Void)? = nil){
+        if let vc:NavPaymentViewController  = self.storyboard?.instantiateViewController(withIdentifier: "NavPaymentViewController") as? NavPaymentViewController {
             vc.mTitle = title
             vc.mUrl = url
-            self.navigationController?.pushViewController(vc, animated: animated)
+            vc.callbackResult = { (any) in
+                callbackResult?(any)
+            }
+            self.present(vc, animated: animated, completion: nil)
         }
     }
     

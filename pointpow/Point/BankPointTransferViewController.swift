@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class BankPointTransferViewController: BaseViewController  {
     
@@ -136,13 +137,10 @@ class BankPointTransferViewController: BaseViewController  {
             }
             
         }
+        
+        self.getUserInfo()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.getUserInfo()
-        
-    }
     
     func getUserInfo(_ avaliable:(()->Void)?  = nil){
         var isLoading:Bool = true
@@ -279,20 +277,70 @@ class BankPointTransferViewController: BaseViewController  {
     @IBAction func transferTapped(_ sender: Any) {
         let updatedText = self.amountTextField.text!
         
-        var amount = 0.0
-        if  (Double(updatedText) != nil) {
-            amount = Double(updatedText)!
+        var amount = 0
+        if  (Int(updatedText) != nil) {
+            amount = Int(updatedText)!
         }
         if amount == 0 {
             self.showMessagePrompt(NSLocalizedString("string-dailog-saving-point-pointspend-empty", comment: ""))
             return
         }
         
-        if Int(amount)%exchangeRate == 0{
+        if amount%exchangeRate == 0{
             
             
             print("ok")
+            self.showPaymentWebView(true, "", url: "") { (any) in
+                print("return result \n \(any)")
+                if let userInfo = any as? [String:AnyObject]{
+                    let status = userInfo["status"] as? String ?? ""
+                    let transection_ref_id = userInfo["transection_ref_id"] as? String ?? ""
+                    
+                    switch status {
+                    case "success", "fail" :
+                        self.showResultTransferView(true, finish: {
+                            self.navigationController?.popToRootViewController(animated: false)
+                        })
+                        break
+                    case "cancel":
+                        break
+                    default:
+                        break
+                        
+                    }
+                    
+                }
+            }
             
+            /*if let data = self.itemData {
+                let provider_id = data["id"] as? NSNumber ?? 0
+                let provider_image = data["provider_image"] as? String ?? ""
+                let name = data["name"] as? String ?? ""
+                let exchange_rate = data["exchange_rate"] as? [[String:AnyObject]] ?? [[:]]
+ 
+                let params:Parameters = ["provider_id" : provider_id.intValue,
+                                         "select_point" : amount,
+                                         "value_in" : amount]
+                
+                self.modelCtrl.exchangeTransferPoint(params: params , true , succeeded: { (result) in
+                    //success
+                    //if let mResult  = result as? [String:AnyObject] {
+                    //
+                    //}
+                }, error: { (error) in
+                    if let mError = error as? [String:AnyObject]{
+                        let message = mError["message"] as? String ?? ""
+                        print(message)
+                        self.showMessagePrompt(message)
+                    }
+                    
+                    print(error)
+                }) { (messageError) in
+                    print("messageError")
+                    self.handlerMessageError(messageError)
+                    
+                }
+             }*/
             
         }else{
             let message = NSLocalizedString("string-error-amount-fill", comment: "")

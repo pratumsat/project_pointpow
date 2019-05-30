@@ -13,18 +13,24 @@ class PaymentViewController: BaseViewController , UIWebViewDelegate{
     
     @IBOutlet weak var webView: UIWebView!
 
-    var mTitle:String?
-    var mUrl:String?
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = mTitle
+        self.title = NSLocalizedString("string-title-point-transfer", comment: "")
         
-        let backImage = UIImage(named: "ic-back-white")
-        let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(backViewTapped))
-        self.navigationItem.leftBarButtonItem = backButton
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(successTransection), name: NSNotification.Name(rawValue: Constant.DefaultConstansts.TRANSECTION_SUCCESS), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(failTransection), name: NSNotification.Name(rawValue: Constant.DefaultConstansts.TRANSECTION_FAIL), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(cancelTransection), name: NSNotification.Name(rawValue: Constant.DefaultConstansts.TRANSECTION_CANCEL), object: nil)
+        
+        
+//        let backImage = UIImage(named: "ic-back-white")
+//        let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(backViewTapped))
+//        self.navigationItem.leftBarButtonItem = backButton
         
         self.webView.delegate = self
         self.webView.scalesPageToFit = false
@@ -41,21 +47,54 @@ class PaymentViewController: BaseViewController , UIWebViewDelegate{
         
         self.webView.addJavascriptInterface(JSInterface(), forKey: "PointPowNative");
         self.webView.loadRequest(myURLRequest)
+        
+        
        
     }
+   
     func webViewDidStartLoad(_ webView: UIWebView) {
         self.loadingView?.showLoading()
     }
     func webViewDidFinishLoad(_ webView: UIWebView) {
         self.loadingView?.hideLoading()
     }
-    
-    @objc func backViewTapped(){
-        if self.webView.canGoBack {
-            self.webView.goBack()
-            return
-        }
-        self.navigationController?.popViewController(animated: true)
+    @objc func successTransection(_ notification:NSNotification){
+        self.dismiss(animated: false, completion: {
+            //success
+            if let userInfo = notification.userInfo as? [String:AnyObject]{
+                (self.navigationController as! NavPaymentViewController).callbackResult?(userInfo as AnyObject)
+            }
+            
+            
+        })
     }
+    @objc func failTransection(_ notification:NSNotification){
+        self.dismiss(animated: false, completion: {
+            //fail
+            if let userInfo = notification.userInfo as? [String:AnyObject]{
+                (self.navigationController as! NavPaymentViewController).callbackResult?(userInfo as AnyObject)
+            }
+        })
+    }
+    @objc func cancelTransection(_ notification:NSNotification){
+        self.dismiss(animated: true, completion: {
+            if let userInfo = notification.userInfo as? [String:AnyObject]{
+                (self.navigationController as! NavPaymentViewController).callbackResult?(userInfo as AnyObject)
+            }
+        })
+    }
+    @IBAction func dismissTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: {
+            //
+        })
+    }
+    
+//    @objc func backViewTapped(){
+//        if self.webView.canGoBack {
+//            self.webView.goBack()
+//            return
+//        }
+//        self.navigationController?.popViewController(animated: true)
+//    }
     
 }

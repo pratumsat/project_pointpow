@@ -229,30 +229,17 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
                     break
                     
                 }
-                if  indexPath.row % 3 == 1  {
+                
+                
+                switch indexPath.row {
+                case 0,1,3,4,6:
                     let right = UIView(frame: CGRect(x: item.frame.width - 1, y: 0 ,
                                                      width: 1,
                                                      height: item.frame.height  ))
                     right.backgroundColor = Constant.Colors.LINE_COLOR
                     item.addSubview(right)
-                    
-                    let left = UIView(frame: CGRect(x: 0, y: 0 ,
-                                                    width: 1,
-                                                    height: item.frame.height  ))
-                    left.backgroundColor = Constant.Colors.LINE_COLOR
-                    item.addSubview(left)
-                }
-                
-                
-                if indexPath.row ==  sizeArray-1 {
-                    if indexPath.row % 3 == 0 {
-                        let right = UIView(frame: CGRect(x: item.frame.width - 1, y: 0 ,
-                                                         width: 1,
-                                                         height: item.frame.height  ))
-                        right.backgroundColor = Constant.Colors.LINE_COLOR
-                        item.addSubview(right)
-                        
-                    }
+                default:
+                    break
                 }
                 
                 

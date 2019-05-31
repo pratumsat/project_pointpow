@@ -385,37 +385,42 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
                 case 0:
                     item.itemImageView.image = UIImage(named: "ic-home-gift")
                     item.nameLabel.text = NSLocalizedString("string-item-gift", comment: "")
+                    item.name2Label.text = NSLocalizedString("string-item-sub-gift", comment: "")
                 case 1:
                     item.itemImageView.image = UIImage(named: "ic-home-gold")
                     item.nameLabel.text = NSLocalizedString("string-item-gold", comment: "")
+                    item.name2Label.text = NSLocalizedString("string-item-sub-gold", comment: "")
                 case 2:
                     item.itemImageView.image = UIImage(named: "ic-home-transfer-point")
                     item.nameLabel.text = NSLocalizedString("string-item-transfer-point", comment: "")
+                    item.name2Label.text = NSLocalizedString("string-item-sub-transfer-point", comment: "")
                 case 3:
                     item.itemImageView.image = UIImage(named: "ic-home-transfer-friend")
                     item.nameLabel.text = NSLocalizedString("string-item-transfer-friend", comment: "")
+                    item.name2Label.text = NSLocalizedString("string-item-sub-transfer-friend", comment: "")
                 case 4:
                     item.itemImageView.image = UIImage(named: "ic-home-event")
                     item.nameLabel.text = NSLocalizedString("string-item-event", comment: "")
+                    item.name2Label.text = NSLocalizedString("string-item-sub-event", comment: "")
                 default:
                     break
                     
                 }
-                if  indexPath.row % 3 == 1  {
-                    let right = UIView(frame: CGRect(x: item.frame.width - 1, y: 0 ,
-                                                     width: 1,
-                                                     height: item.frame.height  ))
-                    right.backgroundColor = Constant.Colors.LINE_COLOR
-                    item.addSubview(right)
-                    
-                    let left = UIView(frame: CGRect(x: 0, y: 0 ,
-                                                    width: 1,
-                                                    height: item.frame.height  ))
-                    left.backgroundColor = Constant.Colors.LINE_COLOR
-                    item.addSubview(left)
-                    
+                item.name2Label.setLineSpacing(lineSpacing: 0, lineHeightMultiple: 0.9)
+                item.name2Label.textAlignment = .center
+                
+                switch indexPath.row {
+                    case 0,1,3,4:
+                        let right = UIView(frame: CGRect(x: item.frame.width - 1, y: 0 ,
+                                                         width: 1,
+                                                         height: item.frame.height  ))
+                        right.backgroundColor = Constant.Colors.LINE_COLOR
+                        item.addSubview(right)
+                default:
+                    break
                 }
                 
+              
                 
                 let lineBottom = UIView(frame: CGRect(x: 0, y: item.frame.height - 1 , width: collectionView.frame.width, height: 1 ))
                 lineBottom.backgroundColor = Constant.Colors.LINE_COLOR
@@ -479,7 +484,8 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
             return CGSize(width: width, height: height)
         }
         let width = collectionView.frame.width / 3
-        return CGSize(width: width, height: width)
+        let height = width + 20
+        return CGSize(width: width, height: height)
     }
    
 

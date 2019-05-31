@@ -227,7 +227,7 @@ class VerifyViewController: BaseViewController {
        let params:Parameters = ["ref_id" : self.ref_id ?? "",
                                  "otp" : otp,
                                  "mobile" : self.mobilePhone ?? ""]
-        self.showResetPasswordView(true, forgotPassword: true)
+
         modelCtrl.verifyOTP(params: params, succeeded: { (result) in
             if let mResult = result as? [String:AnyObject]{
                 print(mResult)

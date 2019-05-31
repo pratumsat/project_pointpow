@@ -114,6 +114,7 @@ class BankPointTransferViewController: BaseViewController  {
                 let txtExchange = "\(point_in) \(pointName) = \(point_out) Point Pow"
                 self.providerPointNameLabel.text = pointName
                 self.providerPointNameLabel.setLineSpacing(lineSpacing: 0, lineHeightMultiple: 0.9)
+                self.providerPointNameLabel.textAlignment = .center
                 // for thai sans
                 
                 

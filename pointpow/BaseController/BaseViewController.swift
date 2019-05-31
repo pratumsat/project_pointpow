@@ -1277,7 +1277,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
                 })
                 alert.addAction(ok)
                 alert.show()
-                
+          
             }, error: { (error) in
                 if let mError = error as? [String:AnyObject]{
                     let message = mError["message"] as? String ?? ""

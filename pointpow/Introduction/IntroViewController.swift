@@ -21,11 +21,18 @@ class IntroViewController: BaseViewController, UICollectionViewDelegate , UIColl
     }
     func setUp(){
         
-        
         self.pageControl.numberOfPages = 5
         self.introCollectionView.dataSource = self
         self.introCollectionView.delegate = self
         self.registerNib(self.introCollectionView, "IntroCell1")
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.loginButton.borderRedColorProperties(borderWidth: 0.5)
+        
+        self.registerButton.borderClearProperties(borderWidth: 1)
+        self.registerButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
     }
     
     override func viewWillAppear(_ animated: Bool) {

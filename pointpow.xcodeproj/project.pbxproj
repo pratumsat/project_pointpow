@@ -145,6 +145,8 @@
 		C13D4FE9229E474E00516CE8 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D4FE8229E474E00516CE8 /* PaymentViewController.swift */; };
 		C13D4FEB229E480600516CE8 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = C13D4FEA229E480600516CE8 /* index.html */; };
 		C13D4FED229FA02800516CE8 /* NavPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D4FEC229FA02800516CE8 /* NavPaymentViewController.swift */; };
+		C13D4FF022A6214800516CE8 /* ItemAccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D4FEE22A6214800516CE8 /* ItemAccountCell.swift */; };
+		C13D4FF122A6214800516CE8 /* ItemAccountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13D4FEF22A6214800516CE8 /* ItemAccountCell.xib */; };
 		C13D99822199755B001A4794 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D99812199755B001A4794 /* ProfileViewController.swift */; };
 		C13D998521997938001A4794 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D998321997938001A4794 /* LogoutCell.swift */; };
 		C13D998621997938001A4794 /* LogoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13D998421997938001A4794 /* LogoutCell.xib */; };
@@ -427,6 +429,8 @@
 		C13D4FE8229E474E00516CE8 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		C13D4FEA229E480600516CE8 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		C13D4FEC229FA02800516CE8 /* NavPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavPaymentViewController.swift; sourceTree = "<group>"; };
+		C13D4FEE22A6214800516CE8 /* ItemAccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemAccountCell.swift; sourceTree = "<group>"; };
+		C13D4FEF22A6214800516CE8 /* ItemAccountCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemAccountCell.xib; sourceTree = "<group>"; };
 		C13D99812199755B001A4794 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C13D998321997938001A4794 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		C13D998421997938001A4794 /* LogoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutCell.xib; sourceTree = "<group>"; };
@@ -891,6 +895,8 @@
 				C13D998421997938001A4794 /* LogoutCell.xib */,
 				C1817D9F219C1934009507DB /* SwitchCell.swift */,
 				C1817DA0219C1934009507DB /* SwitchCell.xib */,
+				C13D4FEE22A6214800516CE8 /* ItemAccountCell.swift */,
+				C13D4FEF22A6214800516CE8 /* ItemAccountCell.xib */,
 			);
 			path = AccountCell;
 			sourceTree = "<group>";
@@ -1457,6 +1463,7 @@
 				C10CA1BF219429D500316DF3 /* ImageCell.xib in Resources */,
 				C11BDFBD21A2BB3C00443D2D /* ItemConfirmSummaryCell.xib in Resources */,
 				C1AD50812187F45900F74415 /* Assets.xcassets in Resources */,
+				C13D4FF122A6214800516CE8 /* ItemAccountCell.xib in Resources */,
 				C1247C5222191898005D6F7A /* WithdrawCell.xib in Resources */,
 				C127324422538E9A00A9EE74 /* WinnerCollectionViewCell.xib in Resources */,
 				C10CA1BA2193E1D100316DF3 /* PromotionCampainCell.xib in Resources */,
@@ -1788,6 +1795,7 @@
 				C11BFCB3221C0CB700F066DE /* PopupShippingAddressViewController.swift in Sources */,
 				C1249EBD22378DBB00F56FA0 /* PopupEditAddressViewController.swift in Sources */,
 				C1DA27C722421C3B000C0715 /* WithDrawResultThaiPostSuccessCell.swift in Sources */,
+				C13D4FF022A6214800516CE8 /* ItemAccountCell.swift in Sources */,
 				C13D998A21997AD6001A4794 /* HeadCell.swift in Sources */,
 				C121FB62228AC67500043387 /* TermPointSavingViewController.swift in Sources */,
 			);

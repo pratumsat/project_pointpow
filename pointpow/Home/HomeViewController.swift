@@ -38,20 +38,45 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
             DataController.sharedInstance.setDefaultLanguage()
         }
         
-        self.setUp()
-        
-       
-        
-        fontList()
-        
         let fcmToken = Messaging.messaging().fcmToken ?? ""
         let params:Parameters = ["device_token": fcmToken]
         self.modelCtrl.updateFCMToken(params: params, error: nil)
         
         
+        
+        
+       
+        
+        ///fontList()
+        
+        
+        
+        self.setUp()
+        self.receiverNotification(nil)
       
+        NotificationCenter.default.addObserver(self, selector: #selector(receiverNotification), name: NSNotification.Name(rawValue: Constant.DefaultConstansts.NOTIFICATION_RECEIVER), object: nil)
+        
     }
    
+    @objc func receiverNotification(_ notification:NSNotification?){
+        if let notiStructHolder = DataController.sharedInstance.getNotificationArrayOfObjectData(){
+            guard let count = notiStructHolder.arrayNotification?.count  else { return }
+            if count <= 0 {
+                print("not found notification data")
+                self.notiView.isHidden = true
+                self.notiView.isUserInteractionEnabled = false
+                
+            }else{
+                print("found notification data")
+                self.notiView.isHidden = false
+                self.notiView.isUserInteractionEnabled = true
+            }
+        }else{
+            print("not found notification data")
+            self.notiView.isHidden = true
+            self.notiView.isUserInteractionEnabled = false
+        }
+    }
     
     func setUp(){
         self.hendleSetPasscodeSuccess = { (passcode, controller) in
@@ -358,7 +383,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 1 {
-            return 5
+            return 6
         }
         return 1
     }
@@ -383,25 +408,29 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
                 
                 switch indexPath.row {
                 case 0:
-                    item.itemImageView.image = UIImage(named: "ic-home-gift")
-                    item.nameLabel.text = NSLocalizedString("string-item-gift", comment: "")
-                    item.name2Label.text = NSLocalizedString("string-item-sub-gift", comment: "")
-                case 1:
-                    item.itemImageView.image = UIImage(named: "ic-home-gold")
-                    item.nameLabel.text = NSLocalizedString("string-item-gold", comment: "")
-                    item.name2Label.text = NSLocalizedString("string-item-sub-gold", comment: "")
-                case 2:
                     item.itemImageView.image = UIImage(named: "ic-home-transfer-point")
                     item.nameLabel.text = NSLocalizedString("string-item-transfer-point", comment: "")
                     item.name2Label.text = NSLocalizedString("string-item-sub-transfer-point", comment: "")
-                case 3:
+                case 1:
                     item.itemImageView.image = UIImage(named: "ic-home-transfer-friend")
                     item.nameLabel.text = NSLocalizedString("string-item-transfer-friend", comment: "")
                     item.name2Label.text = NSLocalizedString("string-item-sub-transfer-friend", comment: "")
+                case 2:
+                    item.itemImageView.image = UIImage(named: "ic-home-point-free")
+                    item.nameLabel.text = NSLocalizedString("string-item-free-point", comment: "")
+                    item.name2Label.text = NSLocalizedString("string-item-sub-free-point", comment: "")
+                case 3:
+                    item.itemImageView.image = UIImage(named: "ic-home-gold")
+                    item.nameLabel.text = NSLocalizedString("string-item-gold", comment: "")
+                    item.name2Label.text = NSLocalizedString("string-item-sub-gold", comment: "")
                 case 4:
-                    item.itemImageView.image = UIImage(named: "ic-home-event")
-                    item.nameLabel.text = NSLocalizedString("string-item-event", comment: "")
-                    item.name2Label.text = NSLocalizedString("string-item-sub-event", comment: "")
+                    item.itemImageView.image = UIImage(named: "ic-home-shopping")
+                    item.nameLabel.text = NSLocalizedString("string-item-shopping", comment: "")
+                    item.name2Label.text = NSLocalizedString("string-item-sub-shopping", comment: "")
+                case 5:
+                    item.itemImageView.image = UIImage(named: "ic-home-bills")
+                    item.nameLabel.text = NSLocalizedString("string-item-bills", comment: "")
+                    item.name2Label.text = NSLocalizedString("string-item-sub-bills", comment: "")
                 default:
                     break
                     
@@ -437,35 +466,53 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         return cell!
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.section == 1 {
-            if indexPath.row == 1 {
-                print("gold saving")
-                self.showGoldPage(true)
+        switch indexPath.row {
+        case 0:
+            if let data  = self.userData as? [String:AnyObject] {
+                let is_profile = data["is_profile"] as? NSNumber ?? 0
+                
+                self.showPointTransferView(true, isProfile: is_profile.boolValue)
             }
-            if indexPath.row == 2 {
+            break
+        case 1:
+            if let data  = self.userData as? [String:AnyObject] {
+                let is_profile = data["is_profile"] as? NSNumber ?? 0
                 
-                
-                if let data  = self.userData as? [String:AnyObject] {
-                    let is_profile = data["is_profile"] as? NSNumber ?? 0
-                    
-                    self.showPointTransferView(true, isProfile: is_profile.boolValue)
-                }
-                
-            }
-            if indexPath.row == 3 {
-                if let data  = self.userData as? [String:AnyObject] {
-                    let is_profile = data["is_profile"] as? NSNumber ?? 0
-                    
-                    if is_profile.boolValue {
-                       self.showFriendTransferView(true)
-                    }else{
-                        self.showPopupProfileInfomation(){
-                            self.showFriendTransferView(true)
-                        }
+                if is_profile.boolValue {
+                    self.showFriendTransferView(true)
+                }else{
+                    self.showPopupProfileInfomation(){
+                        self.showFriendTransferView(true)
                     }
                 }
             }
+            break
+        case 2:
+            //comming
+            break
+        case 3:
+            self.showGoldPage(true)
+            break
+        case 4:
+            //comming
+            
+            //text data notification
+            DataController.sharedInstance.clearNotificationArrayOfObjectData()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constant.DefaultConstansts.NOTIFICATION_RECEIVER), object: nil, userInfo: [:])
+            
+            break
+        case 5:
+            //comming
+            
+            //test data notification
+            mockaaw21Data()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constant.DefaultConstansts.NOTIFICATION_RECEIVER), object: nil, userInfo: [:])
+            break
+        default:
+            break
+            
         }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

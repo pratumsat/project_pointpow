@@ -111,7 +111,7 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
         self.addRefreshViewController(self.profileCollectionView)
         
         self.registerNib(self.profileCollectionView, "ProfileCell")
-        self.registerNib(self.profileCollectionView, "ItemServiceCell")
+        self.registerNib(self.profileCollectionView, "ItemAccountCell")
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
@@ -192,7 +192,7 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
             }
         }
         if indexPath.section == 1 {
-            if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemServiceCell", for: indexPath) as? ItemServiceCell {
+            if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemAccountCell", for: indexPath) as? ItemAccountCell {
                 cell = item
                 
                 switch indexPath.row {
@@ -219,7 +219,7 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
                 case 5:
                     item.itemImageView.image = UIImage(named: "ic-account-secue-setting")
                     item.nameLabel.text = NSLocalizedString("string-item-security-setting", comment: "")
-                    item.name2Label.text = ""
+                    item.name2Label.text = NSLocalizedString("string-item-security-setting2", comment: "")
                 case 6:
                     item.itemImageView.image = UIImage(named: "ic-account-about")
                     item.nameLabel.text = NSLocalizedString("string-item-about", comment: "")

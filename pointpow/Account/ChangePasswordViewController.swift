@@ -11,11 +11,12 @@ import Alamofire
 
 class ChangePasswordViewController: BaseViewController {
 
+    
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var confirmNewPasswordTextField: UITextField!
     @IBOutlet weak var newPasswordTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    
+    @IBOutlet weak var infomationlabel: UILabel!
     
     var eyeConfirmImageView:UIImageView?
     var eyeNewPassImageView:UIImageView?
@@ -134,18 +135,19 @@ class ChangePasswordViewController: BaseViewController {
         self.errorOldPasswordLabel?.removeFromSuperview()
         self.errorNewPasswordLabel?.removeFromSuperview()
         self.errorConfirmNewPasswordLabel?.removeFromSuperview()
+        self.infomationlabel.isHidden = false
         
         if confirm_new_password.trimmingCharacters(in: .whitespaces).isEmpty {
-            emptyMessage = NSLocalizedString("string-error-empty-confirm-pwd", comment: "")
+            emptyMessage = NSLocalizedString("string-error-empty-confirm-new-pwd", comment: "")
             self.errorConfirmNewPasswordLabel =  self.confirmNewPasswordTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
             errorEmpty += 1
             
         }
         if new_password.trimmingCharacters(in: .whitespaces).isEmpty {
-            emptyMessage = NSLocalizedString("string-error-empty-pwd", comment: "")
+            emptyMessage = NSLocalizedString("string-error-empty-new-pwd", comment: "")
             self.errorNewPasswordLabel =  self.newPasswordTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
             errorEmpty += 1
-            
+            self.infomationlabel.isHidden = true
         }
         if old_password.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-old-pwd", comment: "")
@@ -204,6 +206,7 @@ class ChangePasswordViewController: BaseViewController {
             errorMessagePassword = NSLocalizedString("string-error-invalid-confirm-pwd", comment: "")
             self.errorConfirmNewPasswordLabel =  self.confirmNewPasswordTextField.addBottomLabelErrorMessage(errorMessagePassword, marginLeft: 0 )
             errorPassowrd += 1
+            self.infomationlabel.isHidden = true
         }
         if !validPassword(password) {
             errorMessagePassword = NSLocalizedString("string-error-invalid-pwd", comment: "")

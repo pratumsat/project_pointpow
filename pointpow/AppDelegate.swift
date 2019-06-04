@@ -206,21 +206,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     func receiverData(_ userInfo:[AnyHashable:Any]){
+        
         print(userInfo)
-//        let id = userInfo["id"] as? String ?? "0"
-//        let image_url = userInfo["image_url"] as? String ?? ""
-//        let title = userInfo["title"] as? String ?? ""
-//        let detail = userInfo["detail"] as? String ?? ""
-//        let type = userInfo["type"] as? String ?? ""
-//        let ref_id = userInfo["ref_id"] as? String ?? ""
-//        let amount = userInfo["amount"] as? String ?? ""
-//        let date = userInfo["date"] as? String ?? ""
-//        let status = userInfo["status"] as? String ?? ""
         
-//        let newNotiModel = NotificationStruct(id: id, image_url: image_url, title: title, detail: detail, type: type ,ref_id: ref_id, amount:amount, date:date, status: status)
-//
-//        DataController.sharedInstance.saveNotifiacationArrayOfObjectData(newNoti: newNotiModel)
+        let id = userInfo["id"] as? String ?? "0"
+        let image_url = userInfo["image_url"] as? String ?? ""
+        let title = userInfo["title"] as? String ?? ""
+        let detail = userInfo["detail"] as? String ?? ""
+        let type = userInfo["type"] as? String ?? ""
+        let ref_id = userInfo["ref_id"] as? String ?? ""
+        let amount = userInfo["amount"] as? String ?? ""
+        let date = userInfo["date"] as? String ?? ""
+        let status = userInfo["status"] as? String ?? ""
+        let transfer_from = userInfo["transfer_from"] as? String ?? ""
+        let gold_unit = userInfo["gold_unit"] as? String ?? ""
+        let gold_amount = userInfo["gold_amount"] as? String ?? ""
         
+        let newNotiModel = NotificationStruct(id: id,
+                                              image_url: image_url,
+                                              title: title,
+                                              detail: detail,
+                                              type: type ,
+                                              ref_id: ref_id,
+                                              amount:amount,
+                                              date:date,
+                                              transfer_from:transfer_from,
+                                              gold_unit:gold_unit,
+                                              gold_amount:gold_amount)
+
+
+        DataController.sharedInstance.saveNotifiacationArrayOfObjectData(newNoti: newNotiModel)
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constant.DefaultConstansts.NOTIFICATION_RECEIVER), object: nil, userInfo: userInfo)
     }
 
 }

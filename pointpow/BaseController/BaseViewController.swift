@@ -1909,6 +1909,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         let confirmAction = UIAlertAction(title: confirm, style: .default) { _ in
             
             //Logout
+            DataController.sharedInstance.clearNotificationArrayOfObjectData()
             DataController.sharedInstance.setToken("")
              Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.reNewApplication), userInfo: nil, repeats: false)
             

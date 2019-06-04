@@ -27,37 +27,37 @@
                 <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-home-gift" translatesAutoresizingMaskIntoConstraints="NO" id="ykT-RC-nC9">
-                        <rect key="frame" x="25" y="0.0" width="150" height="150"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-home-transfer-point" translatesAutoresizingMaskIntoConstraints="NO" id="ykT-RC-nC9">
+                        <rect key="frame" x="40" y="10" width="120" height="120"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="ykT-RC-nC9" secondAttribute="height" multiplier="1:1" id="g0f-5L-7AW"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itt-68-WOz">
-                        <rect key="frame" x="10" y="135" width="180" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itt-68-WOz">
+                        <rect key="frame" x="10" y="120" width="180" height="21"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqW-Um-lIk">
-                        <rect key="frame" x="10" y="151" width="180" height="0.0"/>
-                        <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="14"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sub title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqW-Um-lIk">
+                        <rect key="frame" x="10" y="139" width="180" height="19.5"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="15"/>
                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="ykT-RC-nC9" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.75" id="IFf-QO-xBi"/>
+                <constraint firstItem="ykT-RC-nC9" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" multiplier="0.7" id="Aqm-QV-HH6"/>
+                <constraint firstItem="ykT-RC-nC9" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.6" id="IFf-QO-xBi"/>
                 <constraint firstItem="itt-68-WOz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="P1W-i0-cb4"/>
-                <constraint firstItem="ykT-RC-nC9" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="VmZ-tO-5qx"/>
                 <constraint firstItem="ykT-RC-nC9" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Ysl-Ro-i4L"/>
                 <constraint firstAttribute="trailing" secondItem="dqW-Um-lIk" secondAttribute="trailing" constant="10" id="hDz-ZT-7Xg"/>
                 <constraint firstItem="dqW-Um-lIk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="oQs-Vg-dW5"/>
                 <constraint firstItem="dqW-Um-lIk" firstAttribute="centerX" secondItem="itt-68-WOz" secondAttribute="centerX" id="pBY-2s-WHV"/>
-                <constraint firstItem="dqW-Um-lIk" firstAttribute="top" secondItem="itt-68-WOz" secondAttribute="bottom" constant="-5" id="psf-Fm-rwc"/>
+                <constraint firstItem="dqW-Um-lIk" firstAttribute="top" secondItem="itt-68-WOz" secondAttribute="bottom" constant="-2" id="psf-Fm-rwc"/>
                 <constraint firstAttribute="trailing" secondItem="itt-68-WOz" secondAttribute="trailing" constant="10" id="u65-5S-nDt"/>
-                <constraint firstItem="itt-68-WOz" firstAttribute="top" secondItem="ykT-RC-nC9" secondAttribute="bottom" constant="-15" id="uZJ-sL-944"/>
+                <constraint firstItem="itt-68-WOz" firstAttribute="top" secondItem="ykT-RC-nC9" secondAttribute="bottom" constant="-10" id="uZJ-sL-944"/>
                 <constraint firstItem="itt-68-WOz" firstAttribute="centerX" secondItem="ykT-RC-nC9" secondAttribute="centerX" id="zlY-wo-y6o"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -71,6 +71,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="ic-home-gift" width="300" height="300"/>
+        <image name="ic-home-transfer-point" width="300" height="300"/>
     </resources>
 </document>

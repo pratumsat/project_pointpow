@@ -48,8 +48,6 @@ class RegisterViewController: BaseViewController {
         //self.registerButton.borderClearProperties(borderWidth: 1)
         
         
-    
-        
         self.usernameTextField.setLeftPaddingPoints(40)
         self.passwordTextField.setLeftPaddingPoints(40)
         self.confirmPasswordTextField.setLeftPaddingPoints(40)

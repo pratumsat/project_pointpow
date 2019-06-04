@@ -186,6 +186,7 @@ class PersonalViewController: BaseViewController  {
     }
     func setUp(){
         self.addRefreshScrollViewController(self.mScrollView)
+        self.parsonalTextField.addDoneButtonToKeyboard()
         
         pickerView = UIDatePicker()
         pickerView!.datePickerMode = .date

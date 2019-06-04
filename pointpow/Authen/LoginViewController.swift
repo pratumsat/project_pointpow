@@ -56,6 +56,8 @@ class LoginViewController: BaseViewController {
             alert.show()
         }
         
+        
+        
         self.loginButton.borderClearProperties(borderWidth: 1)
         
         let forgot = UITapGestureRecognizer(target: self, action: #selector(forgotTapped))

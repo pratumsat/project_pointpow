@@ -22,7 +22,7 @@
 "string-title-forgotpassword" = "ลืมรหัสผ่าน?";
 "string-title-point-manage" = "จัดการพ้อยท์";
 "string-title-profile" = "โปรไฟล์";
-"string-title-profile-edit" = "แก้ไขโปรไฟล์";
+"string-title-profile-edit" = "แก้ไขข้อมูลส่วนตัว";
 "string-title-changepassword" = "เปลี่ยนรหัสผ่าน";
 "string-title-setting" = "การตั้งค่า";
 "string-title-security-setting" = "การตั้งค่าความปลอดภัย";
@@ -95,6 +95,11 @@
 "string-status-transection-history-service-exchange" = "โอนพ้อยท์มา Point Pow";
 "string-status-transection-history-service-shopping" = "สิทธิพิเศษ แลกสินค้า/บริการ";
 
+//Title Transection
+"string-title-transection-history-service-pointsaving" = "Saving";
+"string-title-transection-history-service-point-transfer" = "Member Transfer";
+"string-title-transection-history-service-exchange" = "Point Transfer";
+"string-title-transection-history-service-shopping" = "Shopping";
 
 //transaction sorry
 "string-not-found-item-transaction" = "ไม่พบข้อมูลการทำรายการ";
@@ -192,16 +197,18 @@
 
 
 /*Home*/
-"string-item-event" = "กิจกรรม";
-"string-item-gift" = "แลกสินค้า/บริการ";
-"string-item-gold" = "สะสมพ้อยท์";
-"string-item-transfer-point" = "โอนพ้อยท์";
-"string-item-transfer-friend" = "โอนพ้อยท์ให้เพื่อน";
+"string-item-bills" = "Service";
+"string-item-free-point" = "Free Point";
+"string-item-shopping" = "Shopping";
+"string-item-gold" = "Saving";
+"string-item-transfer-point" = "Point Transfer";
+"string-item-transfer-friend" = "Member Transfer";
 
-"string-item-sub-event" = "โอนพ้อยท์ระหว่างสมาชิก";
-"string-item-sub-gift" = "โอนพ้อยท์ระหว่างสมาชิก";
-"string-item-sub-gold" = "โอนพ้อยท์ระหว่างสมาชิก";
-"string-item-sub-transfer-point" = "โอนพ้อยท์ระหว่างสมาชิก";
+"string-item-sub-bills" = "ชำระค่าบริการ";
+"string-item-sub-free-point" = "รับพ้อยท์ฟรี";
+"string-item-sub-shopping" = "สินค้าและบริการ";
+"string-item-sub-gold" = "สะสมทองคำ";
+"string-item-sub-transfer-point" = "โอนพ้อยท์มาที่เรา";
 "string-item-sub-transfer-friend" = "โอนพ้อยท์ระหว่างสมาชิก";
 
 
@@ -212,7 +219,8 @@
 "string-item-bill" = "บิลของฉัน";
 "string-item-qr" = "คิวอาร์โค้ด";
 "string-item-profile" = "โปรไฟล์";
-"string-item-security-setting" = "ตั้งค่าความปลอดภัย";
+"string-item-security-setting" = "ตั้งค่า";
+"string-item-security-setting2" = "ความปลอดภัย";
 "string-item-about" = "เกี่ยวกับ";
 "string-item-about2" = "Point Pow";
 "string-item-setting" = "การตั้งค่า";
@@ -228,7 +236,7 @@
 /*Profile*/
 "string-item-profile-change-pin" = "เปลี่ยน PIN Code";
 "string-item-profile-change-point-limit" = "Point จำกัดต่อวัน";
-"string-item-profile-change" = "แก้ไขโปรไฟล์";
+"string-item-profile-change" = "แก้ไขข้อมูลส่วนตัว";
 "string-item-profile-change-displayname" = "Display Name";
 "string-item-profile-change-mobile" = "เปลี่ยนเบอร์มือถือ";
 "string-item-profile-change-email" = "อีเมล";
@@ -237,7 +245,7 @@
 "string-item-header-setting" = "การแจ้งเตือน";
 
 /*Setting*/
-"string-item-setting-profile-edit" = "แก้ไขโปรไฟล์";
+"string-item-setting-profile-edit" = "แก้ไขข้อมูลส่วนตัว";
 "string-item-setting-change-language" = "ภาษา";
 "string-item-setting-change-language-thai" = "ไทย";
 "string-item-setting-sms" = "SMS";

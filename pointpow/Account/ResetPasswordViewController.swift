@@ -13,6 +13,9 @@ class ResetPasswordViewController: BaseViewController {
     
     @IBOutlet weak var confirmButton: UIButton!
    
+    
+    @IBOutlet weak var infomationlabel: UILabel!
+    
     @IBOutlet weak var confirmNewPasswordTextField: UITextField!
     @IBOutlet weak var newPasswordTextField: UITextField!
    
@@ -137,6 +140,7 @@ class ResetPasswordViewController: BaseViewController {
         
         self.errorPasswordLabel?.removeFromSuperview()
         self.errorConfirmPasswordLabel?.removeFromSuperview()
+        self.infomationlabel.isHidden = false
         
         if confirmPassword.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-confirm-pwd", comment: "")
@@ -147,6 +151,7 @@ class ResetPasswordViewController: BaseViewController {
         if password.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-pwd", comment: "")
             self.errorPasswordLabel =  self.newPasswordTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
+            self.infomationlabel.isHidden = true
             errorEmpty += 1
         }
         
@@ -198,6 +203,7 @@ class ResetPasswordViewController: BaseViewController {
         var errorMessagePassword = ""
         if !validPassword(confirmPassword){
             errorMessagePassword = NSLocalizedString("string-error-invalid-confirm-pwd", comment: "")
+            self.infomationlabel.isHidden = true
             self.errorConfirmPasswordLabel =  self.confirmNewPasswordTextField.addBottomLabelErrorMessage(errorMessagePassword, marginLeft: 0 )
             errorPassowrd += 1
         }

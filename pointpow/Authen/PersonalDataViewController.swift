@@ -77,7 +77,7 @@ class PersonalDataViewController: BaseViewController {
         self.backgroundImage?.image = nil
         self.nextButton.borderClearProperties(borderWidth: 1)
         
-        
+        self.parsonalTextField.addDoneButtonToKeyboard()
         
         self.firstNameTextField.delegate = self
         self.lastNameTextField.delegate = self

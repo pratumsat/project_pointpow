@@ -89,27 +89,30 @@ class TransactionFilterViewController: BaseViewController {
         let params:Parameters = ["status" : "fail" ]
         self.showTransectionFilterResultPage(true, title, params: params)
     }
+    
+    
+    
     @objc func servicePointSavingTapped(){
         self.service = "PointSaving"
-        let title = NSLocalizedString("string-status-transection-history-service-pointsaving", comment: "")
+        let title = NSLocalizedString("string-title-transection-history-service-pointsaving", comment: "")
         let params:Parameters = ["service" : "PointSaving" ]
         self.showTransectionFilterResultPage(true, title, params: params)
     }
     @objc func servicePointTransferTapped(){
         self.service = "PointTransfer"
-        let title = NSLocalizedString("string-status-transection-history-service-point-transfer", comment: "")
+        let title = NSLocalizedString("string-title-transection-history-service-point-transfer", comment: "")
         let params:Parameters = ["service" : "PointTransfer" ]
         self.showTransectionFilterResultPage(true, title, params: params)
     }
     @objc func serviceExchangeTapped(){
         self.service = "Exchange"
-        let title = NSLocalizedString("string-status-transection-history-service-exchange", comment: "")
+        let title = NSLocalizedString("string-title-transection-history-service-exchange", comment: "")
         let params:Parameters = ["service" : "Exchange" ]
         self.showTransectionFilterResultPage(true, title, params: params)
     }
     @objc func serviceShoppingTapped(){
         self.service = "Shopping"
-        let title = NSLocalizedString("string-status-transection-history-service-shopping", comment: "")
+        let title = NSLocalizedString("string-title-transection-history-service-shopping", comment: "")
         let params:Parameters = ["service" : "Shopping" ]
         self.showTransectionFilterResultPage(true, title, params: params)
     }

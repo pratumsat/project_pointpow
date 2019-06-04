@@ -255,6 +255,13 @@ class PointFriendTransferViewController: BaseViewController {
             enableImageView(self.lessImageView)
         }
         
+        if let userData = self.userData as? [String:AnyObject] {
+            let pointBalance = userData["member_point"]?["total"] as? NSNumber ?? 0
+            
+            if amount < pointBalance.doubleValue {
+                enableImageView(self.moreImageView)
+            }
+        }
 
     }
     @objc func morePointTapped() {
@@ -267,6 +274,16 @@ class PointFriendTransferViewController: BaseViewController {
         
         amount += Double(exchangeRate)
         
+        if let userData = self.userData as? [String:AnyObject] {
+            let pointBalance = userData["member_point"]?["total"] as? NSNumber ?? 0
+           
+            if amount > pointBalance.doubleValue {
+                disableImageView(self.moreImageView)
+                return
+            }
+        }
+        
+        
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .none
         numberFormatter.minimumFractionDigits = 0
@@ -274,6 +291,9 @@ class PointFriendTransferViewController: BaseViewController {
         self.amountTextField.text = numberFormatter.string(from: NSNumber(value: amount))
         
         enableImageView(self.lessImageView)
+        
+       
+        
     }
     
     
@@ -309,25 +329,38 @@ class PointFriendTransferViewController: BaseViewController {
             let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
 
             
+            if updatedText.isEmpty {
+                textField.text = ""
+            }
             if  (Double(updatedText) != nil) {
                 let amount = Double(updatedText)!
                 if amount <= minPointTransfer {
-                    
                     disableImageView(self.lessImageView)
-                   
                 }else{
                     enableImageView(self.lessImageView)
                 }
+                
+                if let userData = self.userData as? [String:AnyObject] {
+                    let pointBalance = userData["member_point"]?["total"] as? NSNumber ?? 0
+                    
+                    if amount < pointBalance.doubleValue {
+                        enableImageView(self.moreImageView)
+                    }else{
+                        disableImageView(self.moreImageView)
+                    }
+                }
             }else{
-                //return false
+                return false
             }
+            
+            
         }
         return true
     }
     
     @IBAction func transferTapped(_ sender: Any) {
         let updatedText = self.amountTextField.text!
-        var note = self.noteTextField.text!
+        let note = self.noteTextField.text!
         
         
         if let userData = self.userData as? [String:AnyObject] {
@@ -348,6 +381,10 @@ class PointFriendTransferViewController: BaseViewController {
             }
             if self.pointLimitOrder  < amount {
                 self.showMessagePrompt(NSLocalizedString("string-dailog-point-over-limit-order", comment: ""))
+                return
+            }
+            if amount <= minPointTransfer {
+                self.showMessagePrompt(NSLocalizedString("string-dailog-transfer-point-pointspend-min", comment: ""))
                 return
             }
             

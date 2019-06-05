@@ -32,11 +32,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if !DataController.sharedInstance.getDefaultLanguage() {
-            UserDefaults.standard.set(["th"], forKey: "AppleLanguages")
-            UserDefaults.standard.synchronize()
-            DataController.sharedInstance.setDefaultLanguage()
-        }
+        
         
         let fcmToken = Messaging.messaging().fcmToken ?? ""
         let params:Parameters = ["device_token": fcmToken]

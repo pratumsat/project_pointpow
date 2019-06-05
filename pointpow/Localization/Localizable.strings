@@ -55,7 +55,6 @@
 "unit-baht" = "บาท";
 "unit-bar" = "แท่ง";
 
-
 // lucky draw
 "string-date-format-announce-at" = "รอบที่ {id} วันที่ {date}";
 "string-date-format-announce-at-completed" = "หมดเวลา";
@@ -72,11 +71,11 @@
 "string-dailog-point-transaction-status-cancel"= "ยกเลิกการทำรายการ";
 "string-dailog-point-transaction-status-success"= "โอนพ้อยท์สำเร็จ";
 
+
 "string-dailog-gold-shipping-office-status-waiting" = "อยู่ระหว่างการส่งมอบ";
 "string-dailog-gold-shipping-office-status-success" = "ส่งมอบเรียนร้อย";
 "string-dailog-gold-shipping-thaipost-status-waiting" = "กำลังดำเนินการจัดส่ง";
 "string-dailog-gold-shipping-thaipost-status-success" = "จัดส่งเรียบร้อย";
-
 
 "string-status-gold-history-all" = "ทั้งหมด";
 "string-status-gold-history-success" = "สำเร็จ";
@@ -102,7 +101,6 @@
 "string-title-transection-history-service-exchange" = "Point Transfer";
 "string-title-transection-history-service-shopping" = "Shopping";
 
-
 //transaction sorry
 "string-not-found-item-transaction" = "ไม่พบข้อมูลการทำรายการ";
 "string-not-found-item-pomotion" = "ไม่พบข้อมูลโปรโมชั่น";
@@ -111,8 +109,7 @@
 
 //gold register
 "string-message-alert-please-choose-image" = "กรุณาอัพโหลดรูป";
-"string-message-alert-please-check-box" = "กรุณายอมรับเงื่อนไขและข้อตกลง";
-
+"string-message-alert-please-check-box" = "กรุณาติ๊กยอมรับเงื่อนไขและข้อตกลง";
 
 //gold profile
 "string-dailog-change-data-confirm" = "ยืนยันการแก้ไขข้อมูล";
@@ -136,6 +133,7 @@
 
 "string-dailog-limit-point-min"= "จำกัดต่อวันตั้งแต่ 100 Point Pow ขึ้นไป";
 
+
 "string-dailog-saving-gold-amount-empty" = "กรุณาใส่จำนวนทองคำ";
 
 "string-dailog-saving-gold-pointspend-not-enogh" = "คุณมีทองคำไม่เพียงพอ สำหรับทำรายการนี้";
@@ -152,9 +150,7 @@
 "string-set-pincode-success" = "ตั้งค่า PIN Code สำเร็จ";
 "string-button-ok" = "ตกลง";
 
-
 "string-change-password-success" = "เปลี่ยนรหัสผ่านเรียบร้อย";
-
 
 /* ResultPointTransfer*/
 "string-point-result-success" = "โอนพ้อยท์สำเร็จ";
@@ -196,9 +192,11 @@
 "title-forgot-passcode-email-fill" = "อีเมล/เบอร์มือถือ";
 "title-forgot-passcode-confirm-otp" = "ยืนยันตัวตน";
 
+
 "title-forgot-passcode-send-otp" = "รหัส OTP";
 "title-forgot-passcode-confirm-otp-button" = "ยืนยันเบอร์มือถือ";
 "title-forgot-passcode-confirm-ref-otp" = "REF:";
+
 
 /*Home*/
 "string-item-bills" = "Service";
@@ -215,6 +213,7 @@
 "string-item-sub-transfer-point" = "โอนพ้อยท์มาที่เรา";
 "string-item-sub-transfer-friend" = "โอนพ้อยท์ระหว่างสมาชิก";
 
+
 /*Account*/
 "string-item-history" = "ประวัติ";
 "string-item-history2" = "การทำรายการ";
@@ -228,7 +227,6 @@
 "string-item-about2" = "Point Pow";
 "string-item-setting" = "การตั้งค่า";
 "string-item-favorite" = "รายการโปรด";
-
 
 /*About*/
 "string-item-about-faq" = "คำถามที่พบบ่อย";
@@ -285,36 +283,38 @@
 "exit-app-confirm-button" = "ยืนยัน";
 
 
-
-"string-take-option1" = "ถ่ายรูป";
-"string-take-option2" = "เลือกจากแกลลอรี่";
-"string-take-cancel" = "ยกเลิก";
-
-
 /*dialog*/
 "string-dailog-title-fill-firstname-lastname" = "กรุณาใส่ข้อมูลส่วนตัว\nก่อนทำรายการ";
 "string-dailog-button-cancel" = "ยกเลิก";
 "string-dailog-button-ok" = "ตกลง";
 "string-dailog-title-set-passcode" = "กรุณาตั้งรหัสความปลอดภัย";
+
 "string-dailog-title-delete-item-favorite" = "ต้องการลบรายการโปรด\n";
 "string-dailog-title-add-favorite" = "ตั้งชื่อรายการโปรด";
 "string-dailog-title-edit-favorite" = "แก้ไขรายการโปรด";
+
 
 "string-dailog-title-save-pointpow-id" = "คุณต้องการบันทึก\nPoint Pow ID ใหม";
 
 
 "string-dailog-title-cancel-withdraw" = "ยืนยันการยกเลิก\nรายการแลกทองคำ";
 
+
+
 // address
 "string-dailog-title-delete-address" = "ยืนยันในการลบ\nที่อยู่ในการจัดส่งนี้";
 "string-dailog-title-please-choose-address" = "กรุณาเลือกที่อยู่ในการจัดส่ง";
 
 
+"string-take-option1" = "ถ่ายรูป";
+"string-take-option2" = "เลือกจากแกลลอรี่";
+"string-take-cancel" = "ยกเลิก";
+
 /* Alert Invalid QR code*/
 "string-title-invalid-qr" = "Invalid QR code/Barcode";
 "string-message-invalid-qr" = "Please verify that the code is still valid and try again.";
-"string-line-up-qr" = "กรุณาวางตำแหน่ง QR Code\r\nให้อยู่กึ่งกลาง";
-"string-line-up-barcode" = "กรุณาวางตำแหน่ง Barcode\r\nให้อยู่กึ่งกลาง";
+"string-line-up-qr" = "Place the QR code at\r\nthe center of box for scan";
+"string-line-up-barcode" = "Place the barcode at the center of box for scan";
 "alert-confirm-phone" = "OK";
 
 "string-title-access-camera" = "Camera Don't Allow";
@@ -327,6 +327,8 @@
 /* scanning */
 "string-title-scan-fail" = "Scanning not supported";
 "string-message-scan-fail" = "Your device does not support scanning a code from an item. Please use a device with a camera.";
+
+
 
 "string-error-amount-fill" = "จำนวนพ้อยท์ไม่เป็นไปตามอัตราแลกเปลี่ยน\nโดยจำนวนพ้อยท์จะต้องเพิ่มขึ้น\nครั้งละ";
 
@@ -344,11 +346,11 @@
 "string-error-otp"  = "รหัส OTP ไม่ถูกต้อง กรุณาใส่ใหม่อีกครั้ง";
 "string-error-otp-empty"  = "กรุณาใส่รหัส OTP";
 
-
 "string-error-empty-old-pwd" = "กรุณาใส่รหัสผ่าน";
 "string-error-empty-new-pwd" = "กรุณาใส่รหัสผ่านใหม่";
 "string-error-empty-confirm-new-pwd" = "กรุณาใส่ยืนยันรหัสผ่านใหม่";
 "string-error-pwd-not-match" = "รหัสผ่านไม่ตรงกัน";
+
 
 "string-error-invalid-personal-id" = "เลขบัตรประชาชนไม่ถูกต้อง";
 "string-error-invalid-personal-id1" = "เลขบัตรประชาชนไม่ครบ 13 หลัก";
@@ -358,10 +360,11 @@
 /*verify*/
 "string-button-re-send"  = "ส่งอีกครั้ง";
 
+
 /*FingerPrint*/
-"error-problem-verifying"  = "เกิดปัญหาในการยืนยันตัวตนของคุณ";
-"error-problem-configured"  = "ระบบสแกนลายนิ้วมือ ไม่รู้จักลายนิ้วมือของคุณ";
-"string-dismiss-fingerprint" =  "ปิดหน้าจอนี้";
+"error-problem-verifying"  = "There was a problem verifying your identity.";
+"error-problem-configured"  = "Touch ID Does not recognize your fingerprint.";
+"string-dismiss-fingerprint" =  "Try to dismiss this screen";
 
 
 /* PopUp */
@@ -393,23 +396,24 @@
 "error-connect-server-internet" = "ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์, กรุณาตรวจสอบสัญญาณอินเทอร์เน็ตของท่านเพื่อเชื่อมต่ออีกครั้ง";
 "error-access-denied" = "ปฏิเสธการเข้าใช้";
 "error-access-denied-confirm" = "ตกลง";
+;
 
 
 /* delivery */
 "string-thaipost-delivery-box" = "กล่อง";
 "string-thaipost-delivery-value" = "ค่าจัดส่งและค่าประกัน กล่องที่";
 
-"string-last-year" = "ปีที่แล้ว";
-"string-last-month" = "เดือนที่แล้ว";
-"string-last-week" = "สัปดาห์ที่แล้ว";
-"string-yesterday"  = "เมื่อวานนี้";
-"string-hour-ago"  = "1 ชั่วโมงที่";
-"string-min-ago"  = "1 นาทีที่แล้ว";
-"string-just-now"  = "ปัจจุบัน";
-"string-seconds-ago" = "วินาทีที่แล้ว";
-"string-minutes-ago" = "นาทีที่แล้ว";
-"string-hours-ago" = "ชั่วโมงที่แล้ว";
-"string-days-ago" = "วันที่แล้ว";
-"string-weeks-ago" = "สัปดาห์ที่แล้ว";
-"string-months-ago" = "เดือนที่แล้ว";
-"string-years-ago" = "ปีที่แล้ว";
+"string-last-year" = "Last year";
+"string-last-month" = "Last month";
+"string-last-week" = "Last week";
+"string-yesterday"  = "Yesterday";
+"string-hour-ago"  = "An hour ago";
+"string-min-ago"  = "An minute ago";
+"string-just-now"  = "Just now";
+"string-seconds-ago" = "seconds ago";
+"string-minutes-ago" = "minutes ago";
+"string-hours-ago" = "hours ago";
+"string-days-ago" = "days ago";
+"string-weeks-ago" = "weeks ago";
+"string-months-ago" = "months ago";
+"string-years-ago" = "years ago";

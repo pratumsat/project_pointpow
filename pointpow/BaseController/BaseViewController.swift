@@ -1911,7 +1911,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             //Logout
             DataController.sharedInstance.clearNotificationArrayOfObjectData()
             DataController.sharedInstance.setToken("")
-             Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.reNewApplication), userInfo: nil, repeats: false)
+             Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(self.reNewApplication), userInfo: nil, repeats: false)
             
         }
         alert.addAction(confirmAction)
@@ -1979,46 +1979,28 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         let confirmAction = UIAlertAction(title: confirm, style: .default) { _ in
             print("confirm change")
             
-
-            let title = NSLocalizedString("title-exit-change", comment: "")
-            let message = NSLocalizedString("message-exit-change", comment: "")
-            let close = NSLocalizedString("close-exit-change", comment: "")
-            let cancel = NSLocalizedString("cancel-exit-change", comment: "")
-            let confirmAlertCtrl = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let params:Parameters = ["language"  : languageId]
             
-            let confirmAction = UIAlertAction(title: close, style: .destructive) { _ in
+            self.modelCtrl.memberSetting(params: params, true, succeeded: { (result) in
+                print(result)
                 DataController.sharedInstance.setLanguage(languageId)
+                self.refreshControl?.endRefreshing()
+                exit(EXIT_SUCCESS)
                 
-                let params:Parameters = ["language"  : languageId]
-                
-                self.modelCtrl.memberSetting(params: params, true, succeeded: { (result) in
-                    print(result)
-                    exit(EXIT_SUCCESS)
-                    self.refreshControl?.endRefreshing()
-                }, error: { (error) in
-                    if let mError = error as? [String:AnyObject]{
-                        let message = mError["message"] as? String ?? ""
-                        print(message)
-                        self.showMessagePrompt2(message)
-                    }
-                    self.refreshControl?.endRefreshing()
-                    print(error)
-                }) { (messageError) in
-                    print("messageError")
-                    self.handlerMessageError(messageError)
-                    self.refreshControl?.endRefreshing()
+            }, error: { (error) in
+                if let mError = error as? [String:AnyObject]{
+                    let message = mError["message"] as? String ?? ""
+                    print(message)
+                    self.showMessagePrompt2(message)
                 }
-                
+                self.refreshControl?.endRefreshing()
+                print(error)
+            }) { (messageError) in
+                print("messageError")
+                self.handlerMessageError(messageError)
+                self.refreshControl?.endRefreshing()
             }
-            
-            
-            let cancelAction = UIAlertAction(title: cancel, style: .default, handler: nil)
-            
-            confirmAlertCtrl.addAction(confirmAction)
-            confirmAlertCtrl.addAction(cancelAction)
-            
-            self.present(confirmAlertCtrl, animated: true, completion: nil)
-            
+
         }
         
         

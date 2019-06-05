@@ -20,6 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        //UserDefaults.standard.register(defaults: ["AppleLanguages": ["th", "en"]])
+        //UserDefaults.standard.synchronize()
+        //$(DEVELOPMENT_LANGUAGE)
+//        if !DataController.sharedInstance.getDefaultLanguage() {
+//            UserDefaults.standard.set(["th"], forKey: "AppleLanguages")
+//            UserDefaults.standard.synchronize()
+//            DataController.sharedInstance.setDefaultLanguage()
+//        }
         
         DataController.sharedInstance.retrieveToken()
         

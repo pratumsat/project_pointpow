@@ -431,6 +431,8 @@
 		C13D4FEC229FA02800516CE8 /* NavPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavPaymentViewController.swift; sourceTree = "<group>"; };
 		C13D4FEE22A6214800516CE8 /* ItemAccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemAccountCell.swift; sourceTree = "<group>"; };
 		C13D4FEF22A6214800516CE8 /* ItemAccountCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemAccountCell.xib; sourceTree = "<group>"; };
+		C13D501622A7C35A00516CE8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		C13D501822A7C36C00516CE8 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/Main.strings; sourceTree = "<group>"; };
 		C13D99812199755B001A4794 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C13D998321997938001A4794 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		C13D998421997938001A4794 /* LogoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutCell.xib; sourceTree = "<group>"; };
@@ -1846,6 +1848,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				C1AD507E2187F45600F74415 /* Base */,
+				C13D501622A7C35A00516CE8 /* en */,
+				C13D501822A7C36C00516CE8 /* th */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

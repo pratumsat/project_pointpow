@@ -5306,9 +5306,9 @@ class ModelController {
                                     let success = data["success"] as? NSNumber  ??  0
                                    
                                     if success.intValue == 1 {
-                                    
+                                        DataController.sharedInstance.clearNotificationArrayOfObjectData()
                                         DataController.sharedInstance.setToken("")
-                                         succeeded?("logut success" as AnyObject)
+                                        succeeded?("logut success" as AnyObject)
                                         
                                     }else{
                                         let messageError = data["message"] as? String  ??  ""

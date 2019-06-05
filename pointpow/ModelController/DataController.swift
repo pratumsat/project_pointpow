@@ -134,9 +134,10 @@ class DataController {
     }
     
     func setLanguage(_ languageId:String) {
-        UserDefaults.standard.set([languageId], forKey: "AppleLanguages")
+        UserDefaults.standard.set([languageId, getLanguage()], forKey: "AppleLanguages")
         UserDefaults.standard.synchronize()
     }
+    
     
     func getVersion() -> String {
         let dictionary = Bundle.main.infoDictionary!

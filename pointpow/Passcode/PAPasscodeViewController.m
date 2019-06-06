@@ -121,7 +121,7 @@ static NSTimeInterval AnimationDuration = 0.3;
     forgotLabel.font = [UIFont fontWithName:@"ThaiSansNeue-Bold" size:18];
     forgotLabel.textAlignment = NSTextAlignmentCenter;
     forgotLabel.numberOfLines = 0;
-    forgotLabel.textColor = [UIColor colorWithRed:20/255.0 green:92/255.0 blue:253/255.0 alpha:1];
+    forgotLabel.textColor = [UIColor darkGrayColor];
     
     NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc]
                                                   initWithString: NSLocalizedString(@"title-forgot-passcode", nil)];
@@ -587,8 +587,6 @@ static NSTimeInterval AnimationDuration = 0.3;
     
     if ([_delegate respondsToSelector:@selector(PAPasscodeViewControllerDidCancel:)]) {
 
-        
-        
         if(_lockscreenMode){
             self.navigationItem.leftBarButtonItem = nil;
             

@@ -147,6 +147,7 @@
 		C13D4FED229FA02800516CE8 /* NavPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D4FEC229FA02800516CE8 /* NavPaymentViewController.swift */; };
 		C13D4FF022A6214800516CE8 /* ItemAccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D4FEE22A6214800516CE8 /* ItemAccountCell.swift */; };
 		C13D4FF122A6214800516CE8 /* ItemAccountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13D4FEF22A6214800516CE8 /* ItemAccountCell.xib */; };
+		C13D503022A8B85300516CE8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C13D502E22A8B85300516CE8 /* Localizable.strings */; };
 		C13D99822199755B001A4794 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D99812199755B001A4794 /* ProfileViewController.swift */; };
 		C13D998521997938001A4794 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D998321997938001A4794 /* LogoutCell.swift */; };
 		C13D998621997938001A4794 /* LogoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13D998421997938001A4794 /* LogoutCell.xib */; };
@@ -164,7 +165,6 @@
 		C15F17042293D455005E8E71 /* HistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C15F17022293D455005E8E71 /* HistoryCell.xib */; };
 		C169FF9C21C25C8500F9D354 /* MobileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C169FF9B21C25C8500F9D354 /* MobileViewController.swift */; };
 		C169FF9E21C25C9200F9D354 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C169FF9D21C25C9200F9D354 /* EmailViewController.swift */; };
-		C169FFBF21C36E1300F9D354 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C169FFC121C36E1300F9D354 /* Localizable.strings */; };
 		C169FFC421C4D66600F9D354 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C169FFC321C4D66600F9D354 /* FavoriteViewController.swift */; };
 		C169FFC821C4F10100F9D354 /* FavorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C169FFC621C4F10100F9D354 /* FavorCell.swift */; };
 		C169FFC921C4F10100F9D354 /* FavorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C169FFC721C4F10100F9D354 /* FavorCell.xib */; };
@@ -431,8 +431,10 @@
 		C13D4FEC229FA02800516CE8 /* NavPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavPaymentViewController.swift; sourceTree = "<group>"; };
 		C13D4FEE22A6214800516CE8 /* ItemAccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemAccountCell.swift; sourceTree = "<group>"; };
 		C13D4FEF22A6214800516CE8 /* ItemAccountCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemAccountCell.xib; sourceTree = "<group>"; };
-		C13D501622A7C35A00516CE8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		C13D501822A7C36C00516CE8 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/Main.strings; sourceTree = "<group>"; };
+		C13D502C22A8B7FF00516CE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C13D502D22A8B7FF00516CE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C13D502F22A8B85300516CE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C13D503122A8B87700516CE8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C13D99812199755B001A4794 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C13D998321997938001A4794 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		C13D998421997938001A4794 /* LogoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutCell.xib; sourceTree = "<group>"; };
@@ -450,8 +452,6 @@
 		C15F17022293D455005E8E71 /* HistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryCell.xib; sourceTree = "<group>"; };
 		C169FF9B21C25C8500F9D354 /* MobileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileViewController.swift; sourceTree = "<group>"; };
 		C169FF9D21C25C9200F9D354 /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
-		C169FFC021C36E1300F9D354 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		C169FFC221C36E2400F9D354 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C169FFC321C4D66600F9D354 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		C169FFC621C4F10100F9D354 /* FavorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavorCell.swift; sourceTree = "<group>"; };
 		C169FFC721C4F10100F9D354 /* FavorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavorCell.xib; sourceTree = "<group>"; };
@@ -506,9 +506,7 @@
 		C1AD50762187F45600F74415 /* pointpow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pointpow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1AD50792187F45600F74415 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1AD507B2187F45600F74415 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C1AD507E2187F45600F74415 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C1AD50802187F45900F74415 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C1AD50832187F45900F74415 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C1AD50852187F45900F74415 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C1AD508A2187F45900F74415 /* pointpowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pointpowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1AD508E2187F45900F74415 /* pointpowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pointpowTests.swift; sourceTree = "<group>"; };
@@ -1117,7 +1115,6 @@
 				C11A93AC218BF64100627B44 /* Introduction */,
 				C1DEBE8E218828D700CBB95F /* Camera */,
 				C1DEBE8D2188178B00CBB95F /* pointpow.entitlements */,
-				C1DEBE8821880F2800CBB95F /* Localization */,
 				C1AD50B32187FF3000F74415 /* LoadingView */,
 				C197FEDF21E5D20B002F24E8 /* Model */,
 				C1AD50B02187FED900F74415 /* ModelController */,
@@ -1135,6 +1132,7 @@
 				C1249EB82224F03900F56FA0 /* map.html */,
 				C1AD50AA2187F7FF00F74415 /* Bridging-Header.h */,
 				C1DEBE8B2188115D00CBB95F /* GoogleService-Info.plist */,
+				C13D502E22A8B85300516CE8 /* Localizable.strings */,
 			);
 			path = pointpow;
 			sourceTree = "<group>";
@@ -1239,14 +1237,6 @@
 				C127324A2254584400A9EE74 /* WinnerHistoryLinkCell.xib */,
 			);
 			path = LuckyCell;
-			sourceTree = "<group>";
-		};
-		C1DEBE8821880F2800CBB95F /* Localization */ = {
-			isa = PBXGroup;
-			children = (
-				C169FFC121C36E1300F9D354 /* Localizable.strings */,
-			);
-			path = Localization;
 			sourceTree = "<group>";
 		};
 		C1DEBE8E218828D700CBB95F /* Camera */ = {
@@ -1457,7 +1447,6 @@
 				C13D4FEB229E480600516CE8 /* index.html in Resources */,
 				C1892E0E221E900900F5412F /* TransactionGoldCell.xib in Resources */,
 				C12FD313228EA48700FB81B6 /* ItemFriendSearchCell.xib in Resources */,
-				C169FFBF21C36E1300F9D354 /* Localizable.strings in Resources */,
 				C106BEAF220BEB3000E2331E /* GoldItemCell.xib in Resources */,
 				C1249EC5223E6FC600F56FA0 /* WithDrawThaiPostSummaryCell.xib in Resources */,
 				C1DEBE982188337500CBB95F /* ThaiSansNeue-Bold.ttf in Resources */,
@@ -1503,6 +1492,7 @@
 				C13D998621997938001A4794 /* LogoutCell.xib in Resources */,
 				C1273240225380D500A9EE74 /* PickerLuckyDrawCell.xib in Resources */,
 				C197FF3322083A6F002F24E8 /* GoldPriceCell.xib in Resources */,
+				C13D503022A8B85300516CE8 /* Localizable.strings in Resources */,
 				C121FB59228A66C100043387 /* HeaderViewDateTableViewCell.xib in Resources */,
 				C1F760FA2216998C000A2CA9 /* SavingSummaryCell.xib in Resources */,
 				C197FF3F22093D9B002F24E8 /* RegisterGoldCell.xib in Resources */,
@@ -1835,11 +1825,11 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C169FFC121C36E1300F9D354 /* Localizable.strings */ = {
+		C13D502E22A8B85300516CE8 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C169FFC021C36E1300F9D354 /* en */,
-				C169FFC221C36E2400F9D354 /* th */,
+				C13D502F22A8B85300516CE8 /* Base */,
+				C13D503122A8B87700516CE8 /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1847,9 +1837,7 @@
 		C1AD507D2187F45600F74415 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C1AD507E2187F45600F74415 /* Base */,
-				C13D501622A7C35A00516CE8 /* en */,
-				C13D501822A7C36C00516CE8 /* th */,
+				C13D502C22A8B7FF00516CE8 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1857,7 +1845,7 @@
 		C1AD50822187F45900F74415 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C1AD50832187F45900F74415 /* Base */,
+				C13D502D22A8B7FF00516CE8 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

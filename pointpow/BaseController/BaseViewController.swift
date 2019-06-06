@@ -892,6 +892,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             let navController = UINavigationController(rootViewController: enterPasscode!)
             navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.darkGray,
                                                                NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.TITLE )!]
+            navController.navigationBar.tintColor = Constant.Colors.PRIMARY_COLOR
             
             let presenter: Presentr = {
                 
@@ -1012,6 +1013,8 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         let navController = UINavigationController(rootViewController: enterPasscode!)
         navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.darkGray,
                                                            NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.TITLE )!]
+        navController.navigationBar.tintColor = Constant.Colors.PRIMARY_COLOR
+        
         let presenter: Presentr = {
             let w = self.view.frame.width
             let h = self.view.frame.height

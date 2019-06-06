@@ -81,7 +81,7 @@ class SettingViewController: BaseViewController, UICollectionViewDelegate , UICo
     func setUp(){
         var i = 0
         for lang  in language {
-            if DataController.sharedInstance.getLanguage() == lang.id {
+            if L102Language.currentAppleLanguage() == lang.id {
                 self.textLanguage = lang.lang
             }
             i += 1
@@ -282,7 +282,7 @@ class SettingViewController: BaseViewController, UICollectionViewDelegate , UICo
         
         var i = 0
         for lang  in language {
-            if DataController.sharedInstance.getLanguage() == lang.id {
+            if L102Language.currentAppleLanguage() == lang.id {
                 self.languageId = lang.id
                 self.textLanguage = lang.lang
                 self.selectedRow = i
@@ -294,7 +294,7 @@ class SettingViewController: BaseViewController, UICollectionViewDelegate , UICo
         
     }
     @objc func selectLanguage(){
-        if DataController.sharedInstance.getLanguage() == self.language[selectedRow].id {
+        if L102Language.currentAppleLanguage() == self.language[selectedRow].id {
             dummyview?.resignFirstResponder()
             return
         }
@@ -311,7 +311,7 @@ class SettingViewController: BaseViewController, UICollectionViewDelegate , UICo
             let userTappedOnSelectedRow = selectedRowFrame.contains(tapRecognizer.location(in: self.pickerView))
             if userTappedOnSelectedRow {
                 let selectedRow = self.pickerView!.selectedRow(inComponent: 0)
-                if DataController.sharedInstance.getLanguage() == self.language[selectedRow].id {
+                if L102Language.currentAppleLanguage() == self.language[selectedRow].id {
                     dummyview?.resignFirstResponder()
                     return
                 }

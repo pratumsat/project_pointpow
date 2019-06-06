@@ -20,13 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        L102Localizer.RegisterMethodChangeLanguage()
         
-        //$(DEVELOPMENT_LANGUAGE)
-//        if !DataController.sharedInstance.getDefaultLanguage() {
-//            UserDefaults.standard.set(["th"], forKey: "AppleLanguages")
-//            UserDefaults.standard.synchronize()
-//            DataController.sharedInstance.setDefaultLanguage()
-//        }
+        
+        if !DataController.sharedInstance.getDefaultLanguage() {
+            L102Language.setAppleLAnguageTo(lang: "th")
+            DataController.sharedInstance.setDefaultLanguage()
+        }
         
         DataController.sharedInstance.retrieveToken()
         

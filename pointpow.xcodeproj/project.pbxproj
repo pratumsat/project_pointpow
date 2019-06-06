@@ -148,6 +148,8 @@
 		C13D4FF022A6214800516CE8 /* ItemAccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D4FEE22A6214800516CE8 /* ItemAccountCell.swift */; };
 		C13D4FF122A6214800516CE8 /* ItemAccountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13D4FEF22A6214800516CE8 /* ItemAccountCell.xib */; };
 		C13D503022A8B85300516CE8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C13D502E22A8B85300516CE8 /* Localizable.strings */; };
+		C13D503422A8E95700516CE8 /* L102Localizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D503322A8E95700516CE8 /* L102Localizer.swift */; };
+		C13D503622A8E9F000516CE8 /* L102Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D503522A8E9F000516CE8 /* L102Language.swift */; };
 		C13D99822199755B001A4794 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D99812199755B001A4794 /* ProfileViewController.swift */; };
 		C13D998521997938001A4794 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D998321997938001A4794 /* LogoutCell.swift */; };
 		C13D998621997938001A4794 /* LogoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13D998421997938001A4794 /* LogoutCell.xib */; };
@@ -435,6 +437,13 @@
 		C13D502D22A8B7FF00516CE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C13D502F22A8B85300516CE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C13D503122A8B87700516CE8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C13D503322A8E95700516CE8 /* L102Localizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L102Localizer.swift; sourceTree = "<group>"; };
+		C13D503522A8E9F000516CE8 /* L102Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L102Language.swift; sourceTree = "<group>"; };
+		C13D503722A8EEEC00516CE8 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/Main.strings; sourceTree = "<group>"; };
+		C13D503822A8EEEC00516CE8 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		C13D503922A8EEED00516CE8 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C13D503A22A8EF0400516CE8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		C13D503B22A8EF2000516CE8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		C13D99812199755B001A4794 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C13D998321997938001A4794 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		C13D998421997938001A4794 /* LogoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutCell.xib; sourceTree = "<group>"; };
@@ -962,6 +971,15 @@
 			path = JSInterface;
 			sourceTree = "<group>";
 		};
+		C13D503222A8E92600516CE8 /* Localizer */ = {
+			isa = PBXGroup;
+			children = (
+				C13D503322A8E95700516CE8 /* L102Localizer.swift */,
+				C13D503522A8E9F000516CE8 /* L102Language.swift */,
+			);
+			path = Localizer;
+			sourceTree = "<group>";
+		};
 		C13D998721997AC4001A4794 /* HeadCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1098,6 +1116,7 @@
 		C1AD50782187F45600F74415 /* pointpow */ = {
 			isa = PBXGroup;
 			children = (
+				C13D503222A8E92600516CE8 /* Localizer */,
 				C13D4FE5229E463900516CE8 /* JSInterface */,
 				C121FB52228A651B00043387 /* Notification */,
 				C10CA1A5219185A000316DF3 /* Passcode */,
@@ -1748,6 +1767,7 @@
 				C11BDFBC21A2BB3C00443D2D /* ItemConfirmSummaryCell.swift in Sources */,
 				C139488D2297F674003E0527 /* PopupChosenQRcodeViewController.swift in Sources */,
 				C1249EB72224EE0900F56FA0 /* WebViewMapViewController.swift in Sources */,
+				C13D503622A8E9F000516CE8 /* L102Language.swift in Sources */,
 				C1DEBE92218829D900CBB95F /* Scanner2ViewController.swift in Sources */,
 				C197FF422209401D002F24E8 /* LogoGoldCell.swift in Sources */,
 				C11A93AE218BF67F00627B44 /* IntroNav.swift in Sources */,
@@ -1781,6 +1801,7 @@
 				C1892E18221EB9DC00F5412F /* PopupGoldHistoryFilterViewController.swift in Sources */,
 				C12CCC652282B43A00F26DCC /* PromoCell.swift in Sources */,
 				C13D998D21997EF7001A4794 /* PersonalViewController.swift in Sources */,
+				C13D503422A8E95700516CE8 /* L102Localizer.swift in Sources */,
 				C142741D21A68154003CC246 /* ResetPasswordViewController.swift in Sources */,
 				C10D94B42209717E0083FA47 /* NavGoldPage.swift in Sources */,
 				C1DA27C3224200C2000C0715 /* WithDrawResultThaiPostCell.swift in Sources */,
@@ -1830,6 +1851,7 @@
 			children = (
 				C13D502F22A8B85300516CE8 /* Base */,
 				C13D503122A8B87700516CE8 /* en */,
+				C13D503922A8EEED00516CE8 /* th */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1838,6 +1860,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				C13D502C22A8B7FF00516CE8 /* Base */,
+				C13D503722A8EEEC00516CE8 /* th */,
+				C13D503B22A8EF2000516CE8 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1846,6 +1870,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				C13D502D22A8B7FF00516CE8 /* Base */,
+				C13D503822A8EEEC00516CE8 /* th */,
+				C13D503A22A8EF0400516CE8 /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

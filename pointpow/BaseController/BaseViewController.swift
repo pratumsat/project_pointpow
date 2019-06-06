@@ -1986,9 +1986,10 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             
             self.modelCtrl.memberSetting(params: params, true, succeeded: { (result) in
                 print(result)
-                DataController.sharedInstance.setLanguage(languageId)
+                L102Language.setAppleLAnguageTo(lang: languageId)
                 self.refreshControl?.endRefreshing()
-                exit(EXIT_SUCCESS)
+                //exit(EXIT_SUCCESS)
+                Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(self.reNewApplication), userInfo: nil, repeats: false)
                 
             }, error: { (error) in
                 if let mError = error as? [String:AnyObject]{

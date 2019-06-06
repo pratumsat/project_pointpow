@@ -100,7 +100,7 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.language = DataController.sharedInstance.getLanguage()
+        self.language = L102Language.currentAppleLanguage()
         
         self.setUp()
         

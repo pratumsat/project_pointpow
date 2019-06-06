@@ -121,22 +121,22 @@ class DataController {
         }
         return false
     }
-  
-    func getLanguage() -> String {
-        var langStr = "en"
-        let saveLang = UserDefaults.standard.object(forKey: "AppleLanguages") as? [String] ?? nil
-        if saveLang != nil {
-            langStr = saveLang![0].substring(start: 0, end: 2)
-        }else{
-            langStr = Locale.current.languageCode!
-        }
-        return langStr.lowercased()
-    }
-    
-    func setLanguage(_ languageId:String) {
-        UserDefaults.standard.set([languageId, getLanguage()], forKey: "AppleLanguages")
-        UserDefaults.standard.synchronize()
-    }
+
+//    func getLanguage() -> String {
+//        var langStr = "en"
+//        let saveLang = UserDefaults.standard.object(forKey: "AppleLanguages") as? [String] ?? nil
+//        if saveLang != nil {
+//            langStr = saveLang![0].substring(start: 0, end: 2)
+//        }else{
+//            langStr = Locale.current.languageCode!
+//        }
+//        return langStr.lowercased()
+//    }
+//
+//    func setLanguage(_ languageId:String) {
+//        UserDefaults.standard.set([languageId, getLanguage()], forKey: "AppleLanguages")
+//        UserDefaults.standard.synchronize()
+//    }
     
     
     func getVersion() -> String {

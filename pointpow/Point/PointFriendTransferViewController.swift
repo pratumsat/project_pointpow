@@ -383,7 +383,7 @@ class PointFriendTransferViewController: BaseViewController {
                 self.showMessagePrompt(NSLocalizedString("string-dailog-point-over-limit-order", comment: ""))
                 return
             }
-            if amount <= minPointTransfer {
+            if amount < minPointTransfer {
                 self.showMessagePrompt(NSLocalizedString("string-dailog-transfer-point-pointspend-min", comment: ""))
                 return
             }

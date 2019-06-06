@@ -415,10 +415,14 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
         return CGSize.zero
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        if section == 1 {
-            return CGSize(width: collectionView.frame.width, height: 20)
-        }
         
+        if !hideFinishButton {
+            if section == 1 {
+                return CGSize(width: collectionView.frame.width, height: 30)
+            }
+        }else{
+            return CGSize(width: collectionView.frame.width, height: 30)
+        }
         return CGSize.zero
     }
     

@@ -71,7 +71,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lmh-Zl-EJv">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="dbX-Sw-Tts">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -125,14 +125,14 @@
                             <constraint firstItem="lmh-Zl-EJv" firstAttribute="trailing" secondItem="4N8-Dp-AuF" secondAttribute="trailing" id="6M5-Rd-ey4"/>
                             <constraint firstItem="4N8-Dp-AuF" firstAttribute="trailing" secondItem="LY4-Qy-o7X" secondAttribute="trailing" constant="20" id="B3y-tB-s5G"/>
                             <constraint firstItem="LY4-Qy-o7X" firstAttribute="height" secondItem="ipg-6I-om7" secondAttribute="height" id="QmH-S5-Fqq"/>
-                            <constraint firstItem="lmh-Zl-EJv" firstAttribute="top" secondItem="0lg-zN-8fx" secondAttribute="top" id="RJI-8m-38y"/>
+                            <constraint firstItem="lmh-Zl-EJv" firstAttribute="top" secondItem="4N8-Dp-AuF" secondAttribute="top" id="RJI-8m-38y"/>
                             <constraint firstItem="ipg-6I-om7" firstAttribute="top" secondItem="cl9-Un-Wfu" secondAttribute="bottom" constant="10" id="S1A-6Y-rAR"/>
                             <constraint firstItem="LY4-Qy-o7X" firstAttribute="leading" secondItem="4N8-Dp-AuF" secondAttribute="leading" constant="20" id="XGC-ig-x5l"/>
                             <constraint firstItem="lmh-Zl-EJv" firstAttribute="leading" secondItem="4N8-Dp-AuF" secondAttribute="leading" id="bGi-lo-plf"/>
-                            <constraint firstItem="4N8-Dp-AuF" firstAttribute="bottom" secondItem="lmh-Zl-EJv" secondAttribute="bottom" id="cgK-iL-2tR"/>
+                            <constraint firstAttribute="bottom" secondItem="lmh-Zl-EJv" secondAttribute="bottom" id="cgK-iL-2tR"/>
                             <constraint firstItem="LY4-Qy-o7X" firstAttribute="top" secondItem="ipg-6I-om7" secondAttribute="bottom" constant="10" id="hzg-nf-mQu"/>
                             <constraint firstItem="cl9-Un-Wfu" firstAttribute="centerX" secondItem="0lg-zN-8fx" secondAttribute="centerX" id="kFK-Oy-sjY"/>
-                            <constraint firstItem="lmh-Zl-EJv" firstAttribute="bottom" secondItem="LY4-Qy-o7X" secondAttribute="bottom" constant="30" id="o4x-hx-TQH"/>
+                            <constraint firstItem="4N8-Dp-AuF" firstAttribute="bottom" secondItem="LY4-Qy-o7X" secondAttribute="bottom" constant="30" id="o4x-hx-TQH"/>
                             <constraint firstItem="4N8-Dp-AuF" firstAttribute="trailing" secondItem="ipg-6I-om7" secondAttribute="trailing" constant="20" id="tDa-J7-tfT"/>
                             <constraint firstItem="ipg-6I-om7" firstAttribute="leading" secondItem="4N8-Dp-AuF" secondAttribute="leading" constant="20" id="xrO-BQ-7V4"/>
                         </constraints>
@@ -144,6 +144,7 @@
                         <outlet property="loginButton" destination="LY4-Qy-o7X" id="zHn-0Z-jp0"/>
                         <outlet property="pageControl" destination="cl9-Un-Wfu" id="MEs-B6-T7I"/>
                         <outlet property="registerButton" destination="ipg-6I-om7" id="APh-0P-3gT"/>
+                        <outlet property="topCollectionConstraint" destination="RJI-8m-38y" id="7At-Wy-AJM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pJ8-aD-s2Z" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -10,49 +10,56 @@ import UIKit
 
 class IntroViewController: BaseViewController, UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
+    @IBOutlet weak var topCollectionConstraint: NSLayoutConstraint!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var introCollectionView: UICollectionView!
+    
+    var default_marginTopTitle = CGFloat(40)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       self.setUp()
+       
+           self.setUp()
     }
     func setUp(){
+        if #available(iOS 11.0, *) {
+            let window = UIApplication.shared.keyWindow
+            let topPadding = window?.safeAreaInsets.top
+            
+            self.topCollectionConstraint.constant -= topPadding ?? 0
+        }
         
-        self.pageControl.numberOfPages = 5
+        self.backgroundImage?.image = nil
+        
+        self.pageControl.numberOfPages = 4
         self.introCollectionView.dataSource = self
         self.introCollectionView.delegate = self
+        self.introCollectionView.showsHorizontalScrollIndicator = false
         self.registerNib(self.introCollectionView, "IntroCell1")
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         self.loginButton.borderRedColorProperties(borderWidth: 0.5)
-        
         self.registerButton.borderClearProperties(borderWidth: 1)
         self.registerButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = .clear
-         (self.navigationController as! IntroNav).hideStatusBar()
+        self.navigationController?.isNavigationBarHidden = true
+        self.isHiddenStatusBar = true
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-        self.navigationController?.navigationBar.shadowImage = nil
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = nil
-        (self.navigationController as! IntroNav).showStatusBar()
+        self.navigationController?.isNavigationBarHidden = false
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+     
     }
     
     @IBAction func loginTapped(_ sender: Any) {
@@ -67,7 +74,7 @@ class IntroViewController: BaseViewController, UICollectionViewDelegate , UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -75,8 +82,42 @@ class IntroViewController: BaseViewController, UICollectionViewDelegate , UIColl
         
         
         if let intro = collectionView.dequeueReusableCell(withReuseIdentifier: "IntroCell1", for: indexPath) as? IntroCell1 {
-                cell = intro
+            
+            
+            switch indexPath.row {
+            case 0:
+                intro.imageView.image = UIImage(named: "bg-intro-1")
+                intro.titleLabel.text = NSLocalizedString("string-title-intro-1", comment: "")
+                intro.subTitleLabel.text = NSLocalizedString("string-sub-title-intro-1", comment: "")
+                break
+            case 1:
+                intro.imageView.image = UIImage(named: "bg-intro-2")
+                intro.titleLabel.text = NSLocalizedString("string-title-intro-2", comment: "")
+                intro.subTitleLabel.text = NSLocalizedString("string-sub-title-intro-2", comment: "")
+                break
+            case 2:
+                intro.imageView.image = UIImage(named: "bg-intro-3")
+                intro.titleLabel.text = NSLocalizedString("string-title-intro-3", comment: "")
+                intro.subTitleLabel.text = NSLocalizedString("string-sub-title-intro-3", comment: "")
+                break
+            case 3:
+                intro.imageView.image = UIImage(named: "bg-intro-4")
+                intro.titleLabel.text = NSLocalizedString("string-title-intro-4", comment: "")
+                intro.subTitleLabel.text = NSLocalizedString("string-sub-title-intro-4", comment: "")
+                break
+            default:
+                break
             }
+            if #available(iOS 11.0, *) {
+                let window = UIApplication.shared.keyWindow
+                let topPadding = window?.safeAreaInsets.top
+                
+                intro.topTitleConstraint.constant = default_marginTopTitle + (topPadding ?? 0)
+            }
+            
+            cell = intro
+            
+        }
       
         if cell == nil {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as UICollectionViewCell
@@ -87,18 +128,20 @@ class IntroViewController: BaseViewController, UICollectionViewDelegate , UIColl
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        var topSafeArea: CGFloat
-       // var bottomSafeArea: CGFloat
+       
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        var screenHeight = screenSize.height
         
         if #available(iOS 11.0, *) {
-            topSafeArea = view.safeAreaInsets.top
-      //      bottomSafeArea = view.safeAreaInsets.bottom
-        } else {
-            topSafeArea = topLayoutGuide.length
-      //      bottomSafeArea = bottomLayoutGuide.length
+            let window = UIApplication.shared.keyWindow
+            let topPadding = window?.safeAreaInsets.top
+            
+            screenHeight += topPadding ?? 0
         }
-        let height = collectionView.frame.height + topSafeArea
-        return CGSize(width: collectionView.frame.width, height: height)
+        
+        let height = screenHeight
+        return CGSize(width: screenWidth, height: height)
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

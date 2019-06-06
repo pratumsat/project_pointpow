@@ -150,6 +150,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
             print("notLogin")
             self.showIntroduce(false) {
                 //success
+                DataController.sharedInstance.setResetPinToken("")
                 self.startLoadAPI()
             }
         }

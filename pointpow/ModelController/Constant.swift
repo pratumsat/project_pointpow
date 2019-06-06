@@ -754,11 +754,7 @@ struct Constant {
         static let subdistricts = "\(HOST)\(POINTPOW_VERSION1)subdistricts"
         
     }
-    struct PathImages {
-        static let profile = "\(PointPowAPI.HOST)\(PointPowAPI.POINTPOW_VERSION1)member/image/profile"
-        static let background = "\(PointPowAPI.HOST)\(PointPowAPI.POINTPOW_VERSION1)member/image/profile-background"
-        static let idCard = "\(PointPowAPI.HOST)\(PointPowAPI.POINTPOW_VERSION1)gold-saving/get/id-card"
-    }
+    
     struct TopViewController{
         static var top: UIViewController? {
             get {

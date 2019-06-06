@@ -45,6 +45,7 @@ class LoginViewController: BaseViewController {
             let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
             let ok = UIAlertAction(title: NSLocalizedString("string-button-ok", comment: ""), style: .cancel, handler: { (action) in
                 
+                
                 controller.dismiss(animated: false, completion: { () in
                     //
                     self.dismiss(animated: false, completion: {

@@ -121,7 +121,7 @@ static NSTimeInterval AnimationDuration = 0.3;
     forgotLabel.font = [UIFont fontWithName:@"ThaiSansNeue-Bold" size:18];
     forgotLabel.textAlignment = NSTextAlignmentCenter;
     forgotLabel.numberOfLines = 0;
-    forgotLabel.textColor = [UIColor darkGrayColor];
+    forgotLabel.textColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1];
     
     NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc]
                                                   initWithString: NSLocalizedString(@"title-forgot-passcode", nil)];
@@ -148,6 +148,7 @@ static NSTimeInterval AnimationDuration = 0.3;
     failedAttemptsLabel.font = [UIFont fontWithName:@"ThaiSansNeue-Regular" size:18];
     failedAttemptsLabel.textAlignment = NSTextAlignmentCenter;
     failedAttemptsLabel.numberOfLines = 0;
+    failedAttemptsLabel.text = @" ";
     [contentView addSubview:failedAttemptsLabel];
     
     
@@ -563,7 +564,7 @@ static NSTimeInterval AnimationDuration = 0.3;
     
     [constraints addObject:[NSLayoutConstraint constraintWithItem:forgotLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
     
-    [constraints addObject:[NSLayoutConstraint constraintWithItem:forgotLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:failedAttemptsLabel attribute:NSLayoutAttributeBottom multiplier:1 constant:10]];
+    [constraints addObject:[NSLayoutConstraint constraintWithItem:forgotLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:failedAttemptsLabel attribute:NSLayoutAttributeBottom multiplier:1 constant:20]];
     
     
     [constraints addObject:[NSLayoutConstraint constraintWithItem:confirmOTPButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeBottom multiplier:1 constant:-100]];
@@ -591,7 +592,8 @@ static NSTimeInterval AnimationDuration = 0.3;
             self.navigationItem.leftBarButtonItem = nil;
             
         }else{
-            self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
+            self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
+                                                     initWithTitle:NSLocalizedString(@"title-cancel-passcode", nil) style:UIBarButtonItemStylePlain target:self action:@selector(cancel:)];
             
         }
     }
@@ -796,7 +798,9 @@ static NSTimeInterval AnimationDuration = 0.3;
         self.navigationItem.leftBarButtonItem = nil;
         
     }else{
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
+        
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
+                                                 initWithTitle:NSLocalizedString(@"title-cancel-passcode", nil) style:UIBarButtonItemStylePlain target:self action:@selector(cancel:)];
         
     }
 }

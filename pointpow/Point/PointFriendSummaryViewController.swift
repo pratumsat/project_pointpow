@@ -189,7 +189,6 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
         self.resultCollectionView.showsVerticalScrollIndicator = false
         self.registerNib(self.resultCollectionView, "ItemFriendSummaryCell")
         self.registerNib(self.resultCollectionView, "ItemConfirmSummaryCell")
-        self.registerNib(self.resultCollectionView, "LogoGoldCell")
         self.registerHeaderNib(self.resultCollectionView, "HeadCell")
     
     }
@@ -382,13 +381,7 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
                 
                 cell = confirmCell
             }
-        }else{
-            if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "LogoGoldCell", for: indexPath) as? LogoGoldCell {
-                cell = item
-                
-            }
         }
-      
         
         
         if cell == nil {
@@ -455,14 +448,4 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
         }
       
     }
-
-
 }
-/*
- 
- if let img  = captureView.snapshotImage()  {
-    UIImageWriteToSavedPhotosAlbum(img, nil, nil, nil)
- 
- }
- 
- */

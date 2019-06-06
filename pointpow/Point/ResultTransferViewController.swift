@@ -157,12 +157,14 @@ class ResultTransferViewController: BaseViewController  , UICollectionViewDelega
         
         self.registerNib(self.resultCollectionView, "ItemListResultCell")
         self.registerNib(self.resultCollectionView, "ItemFavorCell")
-        self.registerNib(self.resultCollectionView, "LogoGoldCell")
         self.registerHeaderNib(self.resultCollectionView, "HeadCell")
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
+        if !hideFinishButton {
+            return 2
+        }
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -205,11 +207,6 @@ class ResultTransferViewController: BaseViewController  , UICollectionViewDelega
                 }
                 cell = favCell
             }
-        }else{
-            if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "LogoGoldCell", for: indexPath) as? LogoGoldCell {
-                cell = item
-                
-            }
         }
      
         
@@ -233,6 +230,17 @@ class ResultTransferViewController: BaseViewController  , UICollectionViewDelega
         
         return CGSize.zero
     }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        
+        if !hideFinishButton {
+            if section == 1 {
+                return CGSize(width: collectionView.frame.width, height: 30)
+            }
+        }else{
+            return CGSize(width: collectionView.frame.width, height: 30)
+        }
+        return CGSize.zero
+    }
     
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -246,7 +254,7 @@ class ResultTransferViewController: BaseViewController  , UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0 {
             let width = collectionView.frame.width - 40
-            let height = CGFloat(400) //width/360*400
+            let height = CGFloat(400)
             return CGSize(width: width, height: height)
             
         }else if indexPath.section == 1 {

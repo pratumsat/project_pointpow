@@ -4923,19 +4923,19 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CxE-Xz-pbj">
                                         <rect key="frame" x="20" y="113.99999999999997" width="374" height="299.33333333333326"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="อัพโหลดภาพของตนเองพร้อมบัตรประชาชน" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1yb-Hp-Pnf">
-                                                <rect key="frame" x="12" y="8" width="350" height="26"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="อัพโหลดภาพของตนเองพร้อมบัตรประชาชน" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="1yb-Hp-Pnf">
+                                                <rect key="frame" x="5" y="8" width="364" height="26"/>
                                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="โปรดใช้บัตรประชาชนฉบับจริงเท่านั้น" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bej-WH-UJf">
-                                                <rect key="frame" x="18.666666666666671" y="29" width="170.33333333333331" height="21"/>
+                                                <rect key="frame" x="11.666666666666671" y="29" width="170.33333333333331" height="21"/>
                                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ywx-Nk-bhh">
-                                                <rect key="frame" x="12" y="25.333333333333343" width="6.6666666666666679" height="28.666666666666671"/>
+                                                <rect key="frame" x="5" y="25.333333333333343" width="6.6666666666666679" height="28.666666666666671"/>
                                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="22"/>
                                                 <color key="textColor" red="1" green="0.035294117649999998" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
@@ -4998,14 +4998,14 @@
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="yh4-h0-uhX" secondAttribute="bottom" constant="12" id="0Fq-X7-HXZ"/>
                                             <constraint firstItem="Bej-WH-UJf" firstAttribute="leading" secondItem="ywx-Nk-bhh" secondAttribute="trailing" id="HfT-lm-wAZ"/>
-                                            <constraint firstItem="1yb-Hp-Pnf" firstAttribute="leading" secondItem="CxE-Xz-pbj" secondAttribute="leading" constant="12" id="HkD-bX-qmy"/>
+                                            <constraint firstItem="1yb-Hp-Pnf" firstAttribute="leading" secondItem="CxE-Xz-pbj" secondAttribute="leading" constant="5" id="HkD-bX-qmy"/>
                                             <constraint firstItem="V6y-Jk-gQH" firstAttribute="centerX" secondItem="CxE-Xz-pbj" secondAttribute="centerX" id="Lsu-Mh-1EB"/>
                                             <constraint firstItem="V6y-Jk-gQH" firstAttribute="width" secondItem="CxE-Xz-pbj" secondAttribute="width" multiplier="0.55" id="QdM-x3-BjQ"/>
                                             <constraint firstItem="ywx-Nk-bhh" firstAttribute="centerY" secondItem="Bej-WH-UJf" secondAttribute="centerY" id="UAJ-wo-0wz"/>
                                             <constraint firstItem="Bej-WH-UJf" firstAttribute="top" secondItem="1yb-Hp-Pnf" secondAttribute="bottom" constant="-5" id="bFS-a8-Wfx"/>
-                                            <constraint firstAttribute="trailing" secondItem="1yb-Hp-Pnf" secondAttribute="trailing" constant="12" id="cNy-Rv-PzT"/>
+                                            <constraint firstAttribute="trailing" secondItem="1yb-Hp-Pnf" secondAttribute="trailing" constant="5" id="cNy-Rv-PzT"/>
                                             <constraint firstItem="V6y-Jk-gQH" firstAttribute="top" secondItem="Bej-WH-UJf" secondAttribute="bottom" constant="10" id="g3F-vB-Exu"/>
-                                            <constraint firstItem="ywx-Nk-bhh" firstAttribute="leading" secondItem="CxE-Xz-pbj" secondAttribute="leading" constant="12" id="gla-Ou-K5c"/>
+                                            <constraint firstItem="ywx-Nk-bhh" firstAttribute="leading" secondItem="CxE-Xz-pbj" secondAttribute="leading" constant="5" id="gla-Ou-K5c"/>
                                             <constraint firstItem="yh4-h0-uhX" firstAttribute="top" secondItem="V6y-Jk-gQH" secondAttribute="bottom" constant="15" id="rIY-ku-iLu"/>
                                             <constraint firstItem="yh4-h0-uhX" firstAttribute="centerX" secondItem="CxE-Xz-pbj" secondAttribute="centerX" id="tbS-7u-LvF"/>
                                             <constraint firstItem="1yb-Hp-Pnf" firstAttribute="top" secondItem="CxE-Xz-pbj" secondAttribute="top" constant="8" id="ude-G7-i6I"/>

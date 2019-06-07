@@ -323,9 +323,10 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
                 let resizeImage = chosenImage.resizeUIImage(targetSize: CGSize(width: 400.0, height: 400.0))
                 
                 self.isUploadProfile = true
+                self.profileImageView = resizeImage
                 self.uploadProfileImage(resizeImage)
                 
-                self.profileImageView = resizeImage
+                
                 
                 
             }else{
@@ -333,9 +334,10 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
                 let resizeImage = chosenImage.resizeUIImage(targetSize: CGSize(width: 370, height: 300))
                
                 self.isUploadProfile = true
+                self.bgProfileImageView = resizeImage
                 self.uploadBackgroundImage(resizeImage)
                 
-                self.bgProfileImageView = resizeImage
+                
             }
         
         }

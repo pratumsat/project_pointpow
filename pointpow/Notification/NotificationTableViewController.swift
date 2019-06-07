@@ -233,7 +233,7 @@ class NotificationTableViewController: BaseViewController, UITableViewDelegate, 
         }else{
             return NSLocalizedString("unit-baht", comment: "")
         }
-        return ""
+
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -251,6 +251,9 @@ class NotificationTableViewController: BaseViewController, UITableViewDelegate, 
             if count <= 0 {
                 print("not found notification data")
                 self.addViewNotfoundData()
+                DataController.sharedInstance.clearNotificationArrayOfObjectData()
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constant.DefaultConstansts.NOTIFICATION_RECEIVER), object: nil, userInfo: [:])
+                
             }else{
                 self.tableView.backgroundView = nil
                 self.tableView.reloadData()

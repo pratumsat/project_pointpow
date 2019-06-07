@@ -263,7 +263,7 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
                     
                     let numberFormatter = NumberFormatter()
                     numberFormatter.numberStyle = .decimal
-                    
+                    numberFormatter.minimumFractionDigits = 2
                    
                     statusCell.amountLabel.text = "\(numberFormatter.string(from: point ) ?? "") Point Pow"
                     statusCell.dateLabel.text = created_at

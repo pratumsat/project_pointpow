@@ -73,8 +73,9 @@ class VerifyViewController: BaseViewController {
         self.usernameTextField.autocorrectionType = .no
         
         if let mobile = self.mobilePhone {
-            let newText = String(mobile.filter({ $0 != "-" }).prefix(10))
-            self.usernameTextField.text = newText.chunkFormatted()
+            //let newText = String(mobile.filter({ $0 != "-" }).prefix(10))
+            //self.usernameTextField.text = newText.chunkFormatted()
+            self.usernameTextField.text = mobile
         }
         self.usernameTextField.textColor = UIColor.lightGray
         self.usernameTextField.isEnabled = false
@@ -165,16 +166,17 @@ class VerifyViewController: BaseViewController {
             }else{
                 self.clearImageView?.isHidden = false
             }
+            return newLength <= 10
             
-            let text = textField.text ?? ""
+            //let text = textField.text ?? ""
             
-            if string.count == 0 {
-                textField.text = String(text.dropLast()).chunkFormatted()
-            }  else {
-                let newText = String((text + string).filter({ $0 != "-" }).prefix(10))
-                textField.text = newText.chunkFormatted()
-            }
-            return false
+//            if string.count == 0 {
+//                textField.text = String(text.dropLast()).chunkFormatted()
+//            }  else {
+//                let newText = String((text + string).filter({ $0 != "-" }).prefix(10))
+//                textField.text = newText.chunkFormatted()
+//            }
+//            return false
             
         }
         return true

@@ -65,19 +65,21 @@ class DisplayNameViewController: BaseViewController {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField  == self.displayNameTextField {
+
+        if textField == self.displayNameTextField {
             let startingLength = textField.text?.count ?? 0
             let lengthToAdd = string.count
             let lengthToReplace = range.length
             
             let newLength = startingLength + lengthToAdd - lengthToReplace
-            //return newLength <= 20
-            
+           
             if newLength == 0 {
                 self.clearImageView?.isHidden = true
             }else{
                 self.clearImageView?.isHidden = false
             }
+            return newLength <= 20
+            
         }
       
         return true

@@ -124,15 +124,15 @@ class PointPowIDViewController: BaseViewController {
             
             let newLength = startingLength + lengthToAdd - lengthToReplace
             
-            if newLength <= 20 {
-                self.countlimitLabel.text = "\(newLength)/20"
+            if newLength <= 10 {
+                self.countlimitLabel.text = "\(newLength)/10"
             }
             if newLength == 0 {
                 self.clearImageView?.isHidden = true
             }else{
                 self.clearImageView?.isHidden = false
             }
-            return newLength <= 20
+            return newLength <= 10
             
         }
         

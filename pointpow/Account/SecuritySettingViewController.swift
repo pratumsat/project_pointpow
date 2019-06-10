@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 class SecuritySettingViewController: BaseViewController, UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
@@ -20,7 +21,7 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
     let dash = "\u{25CF}\u{25CF}\u{25CF}\u{25CF}\u{25CF}\u{25CF}\u{25CF}\u{25CF}"
     
     var sectionItem = 0
-    
+    var toggleSwitch:UISwitch?
     @IBOutlet weak var settingCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +48,7 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
         self.getUserInfo() {
             success += 1
             if success == 2 {
-                self.sectionItem = 2
+                self.sectionItem = 1
                 self.settingCollectionView.reloadData()
                 self.refreshControl?.endRefreshing()
             }
@@ -55,7 +56,7 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
         self.getMemberSetting(){
             success += 1
             if success == 2 {
-                self.sectionItem = 2
+                self.sectionItem = 1
                 self.settingCollectionView.reloadData()
                 self.refreshControl?.endRefreshing()
             }
@@ -180,7 +181,7 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
         self.registerHeaderNib(self.settingCollectionView, "HeadCell")
         self.registerNib(self.settingCollectionView, "ItemProfileCell")
         self.registerNib(self.settingCollectionView, "SwitchCell")
-        self.registerNib(self.settingCollectionView, "LogoutCell")
+        //self.registerNib(self.settingCollectionView, "LogoutCell")
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -278,18 +279,33 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
                 
                 if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SwitchCell", for: indexPath) as? SwitchCell {
                     cell = itemCell
-                    
+
                     itemCell.nameLabel.text = NSLocalizedString("string-item-setting-faceid", comment: "")
-                    
+
                     let isFaceID = DataController.sharedInstance.getFaceID()
                     itemCell.toggleSwitch.isOn = isFaceID
                     itemCell.typeValue = "face_id"
+                    itemCell.toggleSwitch.isUserInteractionEnabled  = false
+                    self.toggleSwitch = itemCell.toggleSwitch
                     itemCell.toggleValueCallback = {(toggleValue, typeValue) in
+
+
+
+                        let currentType = LAContext().biometricType
+                        if currentType == .none  {
+                            itemCell.toggleSwitch.isOn = false
+                            self.showMessagePrompt2(NSLocalizedString("error-problem-fingerprint-not-support", comment: ""))
+                            return
+                        }else{
+                            itemCell.toggleSwitch.isOn = true
+                        }
+
                         print("\(typeValue) : \(toggleValue)")
+
                         DataController.sharedInstance.setFaceID(toggleValue)
                     }
-                    
-                    
+
+
                     let lineBottom = UIView(frame: CGRect(x: 0, y: itemCell.frame.height - 1 , width: collectionView.frame.width, height: 1 ))
                     lineBottom.backgroundColor = Constant.Colors.LINE_PROFILE
                     itemCell.addSubview(lineBottom)
@@ -300,21 +316,21 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
             }
             
         }else{
-            if let logOutCell = collectionView.dequeueReusableCell(withReuseIdentifier: "LogoutCell", for: indexPath) as? LogoutCell {
-                cell = logOutCell
-                
-                logOutCell.logoutLabel.text = NSLocalizedString("string-item-profile-logout", comment: "")
-                logOutCell.logoutLabel.textColor = Constant.Colors.PRIMARY_COLOR
-                
-                let lineTop = UIView(frame: CGRect(x: 0, y: 0 , width: collectionView.frame.width, height: 1 ))
-                lineTop.backgroundColor = Constant.Colors.LINE_PROFILE
-                logOutCell.addSubview(lineTop)
-                
-                
-                let lineBottom = UIView(frame: CGRect(x: 0, y: logOutCell.frame.height - 1 , width: collectionView.frame.width, height: 1 ))
-                lineBottom.backgroundColor = Constant.Colors.LINE_PROFILE
-                logOutCell.addSubview(lineBottom)
-            }
+//            if let logOutCell = collectionView.dequeueReusableCell(withReuseIdentifier: "LogoutCell", for: indexPath) as? LogoutCell {
+//                cell = logOutCell
+//
+//                logOutCell.logoutLabel.text = NSLocalizedString("string-item-profile-logout", comment: "")
+//                logOutCell.logoutLabel.textColor = Constant.Colors.PRIMARY_COLOR
+//
+//                let lineTop = UIView(frame: CGRect(x: 0, y: 0 , width: collectionView.frame.width, height: 1 ))
+//                lineTop.backgroundColor = Constant.Colors.LINE_PROFILE
+//                logOutCell.addSubview(lineTop)
+//
+//
+//                let lineBottom = UIView(frame: CGRect(x: 0, y: logOutCell.frame.height - 1 , width: collectionView.frame.width, height: 1 ))
+//                lineBottom.backgroundColor = Constant.Colors.LINE_PROFILE
+//                logOutCell.addSubview(lineBottom)
+//            }
         }
         
       
@@ -333,6 +349,25 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
                 self.item = .CHANGE_PIN
                 self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
             
+            }
+            if indexPath.row == 1 {
+                let currentType = LAContext().biometricType
+                
+                
+                if currentType == .none  {
+                   
+                    self.showMessagePrompt2(NSLocalizedString("error-problem-fingerprint-not-support", comment: ""))
+                    return
+                }else{
+                    let toggleValue = !self.toggleSwitch!.isOn
+                    DataController.sharedInstance.setFaceID(toggleValue)
+                    
+                    self.toggleSwitch?.isOn = toggleValue
+                }
+                
+                //print("\(typeValue) : \(toggleValue)")
+                //let toggleValue = !self.toggleSwitch!.isOn
+                //DataController.sharedInstance.setFaceID(toggleValue)
             }
             if indexPath.row == 2 {
                 //pointpowid
@@ -358,38 +393,39 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
                 self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
             }
         }
-        if indexPath.section == 1 {
-            
-            let title = NSLocalizedString("exit-app-title", comment: "")
-            let message = NSLocalizedString("exit-app-message", comment: "")
-            let confirm = NSLocalizedString("exit-app-confirm-button", comment: "")
-            let cancel = NSLocalizedString("exit-app-cancel-button", comment: "")
-            let confirmAlertCtrl = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            
-            let confirmAction = UIAlertAction(title: confirm, style: .default) { _ in
-                
-                self.modelCtrl.logOut(succeeded: { (result) in
-                    Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(self.reNewApplication), userInfo: nil, repeats: false)
-                }, error: { (error) in
-                    if let mError = error as? [String:AnyObject]{
-                        let message = mError["message"] as? String ?? ""
-                        print(message)
-                        self.showMessagePrompt(message)
-                    }
-                    print(error)
-                }) { (messageError) in
-                    print("messageError")
-                    self.handlerMessageError(messageError)
-                }
-            }
-            let cancelAction = UIAlertAction(title: cancel, style: .default, handler: nil)
-           
-            confirmAlertCtrl.addAction(confirmAction)
-            confirmAlertCtrl.addAction(cancelAction)
-            
-            
-            self.present(confirmAlertCtrl, animated: true, completion: nil)
-        }
+        
+//        if indexPath.section == 1 {
+//
+//            let title = NSLocalizedString("exit-app-title", comment: "")
+//            let message = NSLocalizedString("exit-app-message", comment: "")
+//            let confirm = NSLocalizedString("exit-app-confirm-button", comment: "")
+//            let cancel = NSLocalizedString("exit-app-cancel-button", comment: "")
+//            let confirmAlertCtrl = UIAlertController(title: title, message: message, preferredStyle: .alert)
+//
+//            let confirmAction = UIAlertAction(title: confirm, style: .default) { _ in
+//
+//                self.modelCtrl.logOut(succeeded: { (result) in
+//                    Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(self.reNewApplication), userInfo: nil, repeats: false)
+//                }, error: { (error) in
+//                    if let mError = error as? [String:AnyObject]{
+//                        let message = mError["message"] as? String ?? ""
+//                        print(message)
+//                        self.showMessagePrompt(message)
+//                    }
+//                    print(error)
+//                }) { (messageError) in
+//                    print("messageError")
+//                    self.handlerMessageError(messageError)
+//                }
+//            }
+//            let cancelAction = UIAlertAction(title: cancel, style: .default, handler: nil)
+//
+//            confirmAlertCtrl.addAction(confirmAction)
+//            confirmAlertCtrl.addAction(cancelAction)
+//
+//
+//            self.present(confirmAlertCtrl, animated: true, completion: nil)
+//        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {

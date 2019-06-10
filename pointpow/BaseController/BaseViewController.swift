@@ -768,6 +768,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             print("TouchID_OFF!!")
             return
         }
+        
         print("TouchID_ON!!")
         
         loginProcess(policy: policy!) { (stringResult) in
@@ -1123,9 +1124,9 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
                     if let mResult = result as? [String:AnyObject] {
                         let ref_id = mResult["ref_id"] as? String ?? ""
                         
-                        let newText = String(mobile.filter({ $0 != "-" }).prefix(10))
-                        let mobileFormat = newText.chunkFormatted()
-                        controller.showMobileOTP(mobileFormat, refOTP: ref_id)
+                        //let newText = String(mobile.filter({ $0 != "-" }).prefix(10))
+                        //let mobileFormat = newText.chunkFormatted()
+                        controller.showMobileOTP(mobile, refOTP: ref_id)
                     }
                     
                 }, error: { (error) in
@@ -1195,9 +1196,9 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
                     print(mResult)
                     let ref_id = mResult["ref_id"] as? String ?? ""
                     
-                    let newText = String(mobile.filter({ $0 != "-" }).prefix(10))
-                    let mobileFormat = newText.chunkFormatted()
-                    controller.actionResend(mobileFormat, refOTP: ref_id)
+                    //let newText = String(mobile.filter({ $0 != "-" }).prefix(10))
+                    //let mobileFormat = newText.chunkFormatted()
+                    controller.actionResend(mobile, refOTP: ref_id)
                     
                     self.sendButtonResend = resendBtn
                     self.updateButtonResend()

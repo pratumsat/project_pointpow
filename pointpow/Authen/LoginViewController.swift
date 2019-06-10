@@ -116,16 +116,17 @@ class LoginViewController: BaseViewController {
             }else{
                 self.clearImageView?.isHidden = false
             }
+            return newLength <= 10
             //Mobile
-            let text = textField.text ?? ""
-            
-            if string.count == 0 {
-                textField.text = String(text.dropLast()).chunkFormatted()
-            }  else {
-                let newText = String((text + string).filter({ $0 != "-" }).prefix(10))
-                textField.text = newText.chunkFormatted()
-            }
-            return false
+//            let text = textField.text ?? ""
+//
+//            if string.count == 0 {
+//                textField.text = String(text.dropLast()).chunkFormatted()
+//            }  else {
+//                let newText = String((text + string).filter({ $0 != "-" }).prefix(10))
+//                textField.text = newText.chunkFormatted()
+//            }
+//            return false
         }
         return true
         

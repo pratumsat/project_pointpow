@@ -144,7 +144,8 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
                             profileCell.profileImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
                             
                         }else{
-                            profileCell.profileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
+                            profileCell.profileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.DEFAULT_AVATAR_PLACEHOLDER)
+                            //profileCell.profileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
                         }
                         
                     }
@@ -155,7 +156,8 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
                         if let url = URL(string: picture_background) {
                             profileCell.backgroundImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.BACKGROUND_PROFILE_PLACEHOLDER))
                         }else{
-                            profileCell.backgroundImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.BACKGROUND_PROFILE_PLACEHOLDER)
+                            profileCell.backgroundImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.DEFAULT_COVER_PLACEHOLDER)
+                            //profileCell.backgroundImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.BACKGROUND_PROFILE_PLACEHOLDER)
                         }
                         
                         
@@ -340,6 +342,8 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
                 
             }
         
+        }else{
+            self.showMessagePrompt2(NSLocalizedString("string-error-video", comment: ""))
         }
         
     }

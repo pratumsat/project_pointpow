@@ -222,8 +222,9 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
             let newText = String((pid).filter({ $0 != "-" }).prefix(13))
             self.idcardTextField.text = newText.chunkFormattedPersonalID()
             
-            let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
-            self.mobileTextField.text =  newMText.chunkFormatted()
+            //let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
+            //self.mobileTextField.text =  newMText.chunkFormatted()
+            self.mobileTextField.text =  mobile
         
             let newLText = String((laser_id).filter({ $0 != "-" }).prefix(12))
             self.laserIdTextField.text =  newLText.chunkFormattedLaserID()
@@ -590,17 +591,17 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
             }else{
                 self.clearImageView4?.isHidden = false
             }
-            
+            return newLength <= 10
             //Mobile
-            let text = textField.text ?? ""
-            
-            if string.count == 0 {
-                textField.text = String(text.dropLast()).chunkFormatted()
-            }  else {
-                let newText = String((text + string).filter({ $0 != "-" }).prefix(10))
-                textField.text = newText.chunkFormatted()
-            }
-            return false
+//            let text = textField.text ?? ""
+//            
+//            if string.count == 0 {
+//                textField.text = String(text.dropLast()).chunkFormatted()
+//            }  else {
+//                let newText = String((text + string).filter({ $0 != "-" }).prefix(10))
+//                textField.text = newText.chunkFormatted()
+//            }
+//            return false
             
         }
         if textField  == self.emailTextField {

@@ -20,7 +20,7 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
         didSet{
             if friendModel == nil && recentFriend == nil{
                 
-                self.addViewNotfoundData()
+                //self.addViewNotfoundData()
             }else{
                 self.friendCollectionView.backgroundView = nil
             }
@@ -74,7 +74,7 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
             if let mResults = result as? [[String:AnyObject]] {
                 
                 if mResults.count <= 0 {
-                    self.addViewNotfoundData()
+                    //self.addViewNotfoundData()
                 }else{
                     self.recentFriend  = mResults
                     self.friendCollectionView.backgroundView = nil

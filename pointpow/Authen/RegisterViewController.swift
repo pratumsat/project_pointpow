@@ -152,16 +152,18 @@ class RegisterViewController: BaseViewController {
             }else{
                 self.clearImageView?.isHidden = false
             }
-            //Mobile
-            let text = textField.text ?? ""
+            return newLength <= 10
             
-            if string.count == 0 {
-                textField.text = String(text.dropLast()).chunkFormatted()
-            }  else {
-                let newText = String((text + string).filter({ $0 != "-" }).prefix(10))
-                textField.text = newText.chunkFormatted()
-            }
-            return false
+            //Mobile
+            //let text = textField.text ?? ""
+            
+//            if string.count == 0 {
+//                textField.text = String(text.dropLast()).chunkFormatted()
+//            }  else {
+//                let newText = String((text + string).filter({ $0 != "-" }).prefix(10))
+//                textField.text = newText.chunkFormatted()
+//            }
+//            return false
         }
         return true
         

@@ -91,13 +91,13 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
         self.profileCollectionView.showsVerticalScrollIndicator = false
         
         self.registerNib(self.profileCollectionView, "ItemProfileCell")
-        self.registerNib(self.profileCollectionView, "LogoutCell")
+        //self.registerNib(self.profileCollectionView, "LogoutCell")
         self.registerHeaderNib(self.profileCollectionView, "HeadCell")
         
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -131,23 +131,23 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
                 itemCell.addSubview(lineBottom)
             }
         }
-        if indexPath.section == 1 {
-            if let logOutCell = collectionView.dequeueReusableCell(withReuseIdentifier: "LogoutCell", for: indexPath) as? LogoutCell {
-                cell = logOutCell
-
-                logOutCell.logoutLabel.text = NSLocalizedString("string-item-profile-logout", comment: "")
-                logOutCell.logoutLabel.textColor = Constant.Colors.PRIMARY_COLOR
-                
-                let lineTop = UIView(frame: CGRect(x: 0, y: 0 , width: collectionView.frame.width, height: 1 ))
-                lineTop.backgroundColor = Constant.Colors.LINE_PROFILE
-                logOutCell.addSubview(lineTop)
-                
-                
-                let lineBottom = UIView(frame: CGRect(x: 0, y: logOutCell.frame.height - 1 , width: collectionView.frame.width, height: 1 ))
-                lineBottom.backgroundColor = Constant.Colors.LINE_PROFILE
-                logOutCell.addSubview(lineBottom)
-            }
-        }
+//        if indexPath.section == 1 {
+//            if let logOutCell = collectionView.dequeueReusableCell(withReuseIdentifier: "LogoutCell", for: indexPath) as? LogoutCell {
+//                cell = logOutCell
+//
+//                logOutCell.logoutLabel.text = NSLocalizedString("string-item-profile-logout", comment: "")
+//                logOutCell.logoutLabel.textColor = Constant.Colors.PRIMARY_COLOR
+//
+//                let lineTop = UIView(frame: CGRect(x: 0, y: 0 , width: collectionView.frame.width, height: 1 ))
+//                lineTop.backgroundColor = Constant.Colors.LINE_PROFILE
+//                logOutCell.addSubview(lineTop)
+//
+//
+//                let lineBottom = UIView(frame: CGRect(x: 0, y: logOutCell.frame.height - 1 , width: collectionView.frame.width, height: 1 ))
+//                lineBottom.backgroundColor = Constant.Colors.LINE_PROFILE
+//                logOutCell.addSubview(lineBottom)
+//            }
+//        }
         
         if cell == nil {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as UICollectionViewCell
@@ -172,39 +172,39 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
                 
             }
         }
-        if indexPath.section == 1 {
-            
-            let title = NSLocalizedString("exit-app-title", comment: "")
-            let message = NSLocalizedString("exit-app-message", comment: "")
-            let confirm = NSLocalizedString("exit-app-confirm-button", comment: "")
-            let cancel = NSLocalizedString("exit-app-cancel-button", comment: "")
-            let confirmAlertCtrl = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            
-            let confirmAction = UIAlertAction(title: confirm, style: .default) { _ in
-               
-                self.modelCtrl.logOut(succeeded: { (result) in
-                    Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(self.reNewApplication), userInfo: nil, repeats: false)
-                }, error: { (error) in
-                    if let mError = error as? [String:AnyObject]{
-                        let message = mError["message"] as? String ?? ""
-                        print(message)
-                        self.showMessagePrompt(message)
-                    }
-                    print(error)
-                }) { (messageError) in
-                    print("messageError")
-                    self.handlerMessageError(messageError)
-                }
-            }
-            let cancelAction = UIAlertAction(title: cancel, style: .default, handler: nil)
-            
-            
-            confirmAlertCtrl.addAction(confirmAction)
-            confirmAlertCtrl.addAction(cancelAction)
-            
-            self.present(confirmAlertCtrl, animated: true, completion: nil)
-            
-        }
+//        if indexPath.section == 1 {
+//
+//            let title = NSLocalizedString("exit-app-title", comment: "")
+//            let message = NSLocalizedString("exit-app-message", comment: "")
+//            let confirm = NSLocalizedString("exit-app-confirm-button", comment: "")
+//            let cancel = NSLocalizedString("exit-app-cancel-button", comment: "")
+//            let confirmAlertCtrl = UIAlertController(title: title, message: message, preferredStyle: .alert)
+//
+//            let confirmAction = UIAlertAction(title: confirm, style: .default) { _ in
+//
+//                self.modelCtrl.logOut(succeeded: { (result) in
+//                    Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(self.reNewApplication), userInfo: nil, repeats: false)
+//                }, error: { (error) in
+//                    if let mError = error as? [String:AnyObject]{
+//                        let message = mError["message"] as? String ?? ""
+//                        print(message)
+//                        self.showMessagePrompt(message)
+//                    }
+//                    print(error)
+//                }) { (messageError) in
+//                    print("messageError")
+//                    self.handlerMessageError(messageError)
+//                }
+//            }
+//            let cancelAction = UIAlertAction(title: cancel, style: .default, handler: nil)
+//
+//
+//            confirmAlertCtrl.addAction(confirmAction)
+//            confirmAlertCtrl.addAction(cancelAction)
+//
+//            self.present(confirmAlertCtrl, animated: true, completion: nil)
+//
+//        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {

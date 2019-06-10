@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import LocalAuthentication
 
 extension UIAlertController {
     
@@ -269,10 +269,10 @@ extension UIView {
         }
     }
     func blurImage(){
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)  
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = self.bounds
-        blurEffectView.alpha = 0.8
+        blurEffectView.alpha = 0.9
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight] // for supporting device rotation
         self.addSubview(blurEffectView)
     }
@@ -681,6 +681,35 @@ public extension UIDevice {
     }
     
 }
+extension LAContext {
+    enum BiometricType: String {
+        case none
+        case touchID
+        case faceID
+    }
+    
+    var biometricType: BiometricType {
+        var error: NSError?
+        
+        guard self.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) else {
+            // Capture these recoverable error thru Crashlytics
+            return .none
+        }
+        
+        if #available(iOS 11.0, *) {
+            switch self.biometryType {
+            case .none:
+                return .none
+            case .touchID:
+                return .touchID
+            case .faceID:
+                return .faceID
+            }
+        } else {
+            return  self.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) ? .touchID : .none
+        }
+    }
+}
 
 struct Constant {
     struct PointPowAPI {
@@ -811,7 +840,8 @@ struct Constant {
                 static let RECT_PLACEHOLDER = "place-bg-rect"
                 static let BACKGROUND_PROFILE_PLACEHOLDER = "place-bg-profile"
                 static let BANNER_PROMO_DETAIL_PLACEHOLDER = "place-bg-banner-promo-detail"
-                
+                static let DEFAULT_AVATAR_PLACEHOLDER = "ic-default-avatar"
+                static let DEFAULT_COVER_PLACEHOLDER = "ic-default-cover"
         }
     }
     struct Colors {

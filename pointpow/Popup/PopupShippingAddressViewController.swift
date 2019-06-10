@@ -113,8 +113,9 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
                 
                 self.nameTextField.text = "\(first_name) \(last_name)"
                 
-                let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
-                self.numberPhoneTextField.text =  newMText.chunkFormatted()
+                //let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
+                //self.numberPhoneTextField.text =  newMText.chunkFormatted()
+                self.numberPhoneTextField.text = mobile
                 
                 self.nameTextField.isEnabled = false
                 self.numberPhoneTextField.isEnabled = false
@@ -578,15 +579,17 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
             }else{
                 self.clearImageView2?.isHidden = false
             }
-            let text = textField.text ?? ""
+            return newLength <= 10
             
-            if string.count == 0 {
-                textField.text = String(text.dropLast()).chunkFormatted()
-            }  else {
-                let newText = String((text + string).filter({ $0 != "-" }).prefix(10))
-                textField.text = newText.chunkFormatted()
-            }
-            return false
+//            let text = textField.text ?? ""
+//
+//            if string.count == 0 {
+//                textField.text = String(text.dropLast()).chunkFormatted()
+//            }  else {
+//                let newText = String((text + string).filter({ $0 != "-" }).prefix(10))
+//                textField.text = newText.chunkFormatted()
+//            }
+//            return false
             
         }
         

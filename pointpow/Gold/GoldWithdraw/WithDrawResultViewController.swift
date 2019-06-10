@@ -46,7 +46,7 @@ class WithDrawResultViewController: BaseViewController  , UICollectionViewDelega
             slipView!.widthAnchor.constraint(equalToConstant: 450).isActive = true
             slipView!.heightAnchor.constraint(equalToConstant: 770).isActive = true
             
-            let logo = UIImageView(image: UIImage(named: "ic-logo"))
+            let logo = UIImageView(image: UIImage(named: "ic-gold-logo-pp"))
             logo.contentMode = .scaleAspectFit
             logo.translatesAutoresizingMaskIntoConstraints = false
             snap.addSubview(logo)

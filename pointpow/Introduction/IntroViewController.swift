@@ -43,7 +43,8 @@ class IntroViewController: BaseViewController, UICollectionViewDelegate , UIColl
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.loginButton.borderRedColorProperties(borderWidth: 0.5)
+        //self.loginButton.borderRedColorProperties(borderWidth: 0.5)
+        self.loginButton.borderClearProperties(borderWidth: 1)
         self.registerButton.borderClearProperties(borderWidth: 1)
         self.registerButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
     }

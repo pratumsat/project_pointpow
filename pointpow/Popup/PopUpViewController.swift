@@ -25,11 +25,12 @@ class PopUpViewController: BaseViewController {
             let cover = itemData["cover"] as? String ?? ""
 
             
-            if let url = URL(string: cover) {
-                self.imageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
-            }else{
-                self.imageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
-            }
+//            if let url = URL(string: cover) {
+//                self.imageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
+//            }else{
+//                self.imageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
+//            }
+            self.imageView.image = UIImage(named:"ic-bg-popup")
             
         }
     }

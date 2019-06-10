@@ -24,7 +24,10 @@ class SwitchCell: UICollectionViewCell {
         self.toggleSwitch.tintColor = UIColor.groupTableViewBackground
         self.toggleSwitch.layer.cornerRadius = self.toggleSwitch.frame.height / 2
         self.toggleSwitch.backgroundColor = UIColor.groupTableViewBackground
+        
+        
     }
+  
     @IBAction func toggleTapped(_ sender: Any) {
         self.toggleValueCallback?(toggleSwitch.isOn , self.typeValue ?? "")
     }

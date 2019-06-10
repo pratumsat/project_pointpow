@@ -64,7 +64,13 @@ class DataController {
     func getSaveSlip() -> Bool {
         return data["save_slip"] as? Bool ?? false
     }
-   
+    func setCurrentPointBalance(_ value:NSNumber){
+        data["current_point_balance"] = value
+    }
+    func getCurrentPointBalance()-> NSNumber{
+        return data["current_point_balance"] as? NSNumber ?? 0
+    }
+    
     func setFaceID(_ faceID:Bool){
         UserDefaults.standard.set(faceID, forKey: Constant.CacheNotification.USER_FACE_ID_CACHE)
         UserDefaults.standard.synchronize()

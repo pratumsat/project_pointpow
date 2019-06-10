@@ -27,6 +27,13 @@ class PointManageViewController: BaseViewController {
     }
     
     func setUp(){
+        let currentPoint = DataController.sharedInstance.getCurrentPointBalance()
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.minimumFractionDigits = 2
+        
+        self.pointBalanceLabel.text = numberFormatter.string(from: currentPoint)
+            
         self.backgroundImage?.image = nil
                 
         let friend = UITapGestureRecognizer(target: self, action: #selector(friendTransferTapped))

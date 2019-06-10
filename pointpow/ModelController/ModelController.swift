@@ -1662,6 +1662,8 @@ class ModelController {
                     if success.intValue == 1 {
                         
                         if let result = data["result"] as? [String:AnyObject] {
+                            let pointBalance = result["member_point"]?["total"] as? NSNumber ?? 0
+                            DataController.sharedInstance.setCurrentPointBalance(pointBalance)
                             succeeded?(result as AnyObject)
                         }
                         

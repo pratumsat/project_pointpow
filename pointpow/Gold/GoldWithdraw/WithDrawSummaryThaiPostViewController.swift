@@ -71,7 +71,15 @@ class WithDrawSummaryThaiPostViewController: BaseViewController, UICollectionVie
                                      "address_id": (self.addressModel?["id"] as? NSNumber)?.intValue ?? 0]
             print(params)
             
-            
+            var v:UIView = self.view
+            if let nav = self.navigationController{
+                if let rootNav = nav.navigationController{
+                    v = rootNav.view
+                }else{
+                    v = nav.view
+                }
+            }
+            self.loadingView?.mRootView = v
          
             self.modelCtrl.withdrawGold(params: params, true , succeeded: { (result) in
                 if let data = result as? [String:AnyObject]{

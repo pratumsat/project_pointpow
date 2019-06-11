@@ -125,33 +125,35 @@ class PointFriendTransferReviewViewController: BaseViewController {
                 let params:Parameters = ["mobile" : mobile,
                                          "amount" : self.amount,
                                          "note" : self.note]
-                
+                if let loading = self.loadingView{
+                    loading.mRootView = self.view
+                }
                 self.modelCtrl.friendTransferPoint(params: params , true , succeeded: { (result) in
-                    
+
                     //success
                     if let mResult  = result as? [String:AnyObject] {
                         let transaction_id = mResult["transaction_ref_id"] as? String ?? ""
-                        
+
                         let titlePage = NSLocalizedString("string-status-transection-history-service-point-transfer-out", comment: "")
                         self.showPointFriendSummaryTransferView(true, transaction_id, titlePage:titlePage) {
                             self.navigationController?.popToRootViewController(animated: false)
                         }
-                        
+
                     }
-                    
-                    
+
+
                 }, error: { (error) in
                     if let mError = error as? [String:AnyObject]{
                         let message = mError["message"] as? String ?? ""
                         print(message)
                         self.showMessagePrompt(message)
                     }
-                    
+
                     print(error)
                 }) { (messageError) in
                     print("messageError")
                     self.handlerMessageError(messageError)
-                    
+
                 }
             }
             

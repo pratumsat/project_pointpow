@@ -33,6 +33,16 @@ class ConfirmSavingViewController: BaseViewController , UICollectionViewDelegate
             let params:Parameters = ["pointpow_spend": self.modelSaving.pointSpend ?? "0",
                                      "pin": pin]
             
+            var v:UIView = self.view
+            if let nav = self.navigationController{
+                if let rootNav = nav.navigationController{
+                    v = rootNav.view
+                }else{
+                    v = nav.view
+                }
+            }
+            self.loadingView?.mRootView = v
+            
             self.modelCtrl.savingGold(params: params, true , succeeded: { (result) in
                 if let data = result as? [String:AnyObject]{
                     let transactionId = data["saving"]?["transaction_no"] as? String ?? ""

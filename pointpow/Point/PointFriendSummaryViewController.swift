@@ -48,7 +48,7 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
             
             logo.centerXAnchor.constraint(equalTo: snap.centerXAnchor, constant: 0).isActive = true
             logo.widthAnchor.constraint(equalTo: snap.widthAnchor, multiplier: 0.5).isActive = true
-            logo.bottomAnchor.constraint(equalTo: slipView!.topAnchor, constant: 0).isActive = true
+            logo.bottomAnchor.constraint(equalTo: slipView!.topAnchor, constant: -20).isActive = true
             
             
             slipView!.drawLightningView(width : CGFloat(450), height: CGFloat(770))

@@ -91,7 +91,7 @@ class NotificationTableViewController: BaseViewController, UITableViewDelegate, 
             return 130
         }else if objects[indexPath.section].type.lowercased()  == "adverties" {
             let width = tableView.frame.width - 50
-            let heightImage = (width)/950*300
+            let heightImage = (width)/960*300
             let height = heightImage + 140
             return height
             

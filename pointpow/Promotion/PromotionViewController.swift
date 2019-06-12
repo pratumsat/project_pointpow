@@ -177,7 +177,7 @@ class PromotionViewController: BaseViewController , UICollectionViewDelegate , U
         
         let width = collectionView.frame.width - 20
         
-        let heightImage = (width-20)/950*300
+        let heightImage = (width-20)/960*300
         
         let height = heightImage + 120
         return CGSize(width: width, height: height)

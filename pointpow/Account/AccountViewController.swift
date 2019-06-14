@@ -132,7 +132,7 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
                 
                 if let userData = self.userData as? [String:AnyObject] {
                     let pointpowId = userData["pointpow_id"] as? String ?? "-"
-                    let displayName = userData["display_name"] as? String ?? "-"
+                    let displayName = userData["display_name"] as? String ?? " "
                     let pointBalance = userData["member_point"]?["total"] as? NSNumber ?? 0
                     let picture_data = userData["picture_data"] as? String ?? ""
                     let picture_background = userData["picture_background"] as? String ?? ""

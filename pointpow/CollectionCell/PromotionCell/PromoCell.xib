@@ -21,19 +21,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PromoCell" id="gTV-IL-0wX" customClass="PromoCell" customModule="pointpow" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="449" height="280"/>
+            <rect key="frame" x="0.0" y="0.0" width="449" height="322"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="449" height="280"/>
+                <rect key="frame" x="0.0" y="0.0" width="449" height="322"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ลดราคาสินค้า 20%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zuc-9d-O9o">
-                        <rect key="frame" x="10" y="5" width="429" height="23.5"/>
-                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oNC-a7-aiK">
-                        <rect key="frame" x="10" y="33.5" width="429" height="135.5"/>
+                        <rect key="frame" x="10" y="10" width="429" height="135.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="oNC-a7-aiK" secondAttribute="height" multiplier="950:300" id="c41-Dc-Ted"/>
                         </constraints>
@@ -58,12 +53,16 @@
                             <constraint firstAttribute="width" secondItem="00s-NP-tA0" secondAttribute="height" multiplier="1:1" id="NOJ-Ol-WTb"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ลดราคาสินค้า 20%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zuc-9d-O9o">
+                        <rect key="frame" x="10" y="150.5" width="429" height="23.5"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="l4B-yI-NkW" firstAttribute="leading" secondItem="oNC-a7-aiK" secondAttribute="leading" id="2Fz-dt-A9o"/>
-                <constraint firstItem="zuc-9d-O9o" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="6Os-uU-7Ja"/>
                 <constraint firstAttribute="trailing" secondItem="zuc-9d-O9o" secondAttribute="trailing" constant="10" id="8Qg-rs-Tju"/>
                 <constraint firstItem="00s-NP-tA0" firstAttribute="leading" secondItem="I7c-ds-Vq4" secondAttribute="trailing" id="AT1-bQ-NWg"/>
                 <constraint firstItem="oNC-a7-aiK" firstAttribute="leading" secondItem="zuc-9d-O9o" secondAttribute="leading" id="Iy1-oy-FDY"/>
@@ -71,19 +70,20 @@
                 <constraint firstItem="l4B-yI-NkW" firstAttribute="trailing" secondItem="oNC-a7-aiK" secondAttribute="trailing" id="bFN-eL-zuf"/>
                 <constraint firstItem="zuc-9d-O9o" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="e6T-B0-u5c"/>
                 <constraint firstItem="I7c-ds-Vq4" firstAttribute="top" secondItem="l4B-yI-NkW" secondAttribute="bottom" constant="4" id="eDG-Of-t7n"/>
-                <constraint firstItem="oNC-a7-aiK" firstAttribute="top" secondItem="zuc-9d-O9o" secondAttribute="bottom" constant="5" id="fdu-hg-eYY"/>
+                <constraint firstItem="zuc-9d-O9o" firstAttribute="top" secondItem="oNC-a7-aiK" secondAttribute="bottom" constant="5" id="fdu-hg-eYY"/>
                 <constraint firstItem="oNC-a7-aiK" firstAttribute="trailing" secondItem="zuc-9d-O9o" secondAttribute="trailing" id="flQ-Fr-taD"/>
                 <constraint firstItem="00s-NP-tA0" firstAttribute="trailing" secondItem="oNC-a7-aiK" secondAttribute="trailing" id="kdB-CS-vvE"/>
-                <constraint firstItem="l4B-yI-NkW" firstAttribute="top" secondItem="oNC-a7-aiK" secondAttribute="bottom" constant="5" id="qN7-g6-uMk"/>
+                <constraint firstItem="l4B-yI-NkW" firstAttribute="top" secondItem="zuc-9d-O9o" secondAttribute="bottom" id="qN7-g6-uMk"/>
+                <constraint firstItem="oNC-a7-aiK" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="xgl-7T-5XT"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="449" height="280"/>
+            <size key="customSize" width="449" height="322"/>
             <connections>
                 <outlet property="bannerImageView" destination="oNC-a7-aiK" id="etg-9H-NBs"/>
                 <outlet property="detailLabel" destination="l4B-yI-NkW" id="sXj-Xf-1FN"/>
                 <outlet property="titleLabel" destination="zuc-9d-O9o" id="aru-fr-drH"/>
             </connections>
-            <point key="canvasLocation" x="90.400000000000006" y="155.62218890554723"/>
+            <point key="canvasLocation" x="90.400000000000006" y="136.73163418290855"/>
         </collectionViewCell>
     </objects>
     <resources>

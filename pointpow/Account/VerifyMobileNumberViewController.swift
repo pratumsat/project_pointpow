@@ -94,9 +94,9 @@ class VerifyMobileNumberViewController: BaseViewController {
         return String(format: "%02d:%02d", prodMinutes, prodSeconds)
     }
     func resetButton(){
-        self.sendButton.borderRedColorProperties(borderWidth: 1)
+        self.sendButton.borderGreen2ColorProperties(borderWidth: 1)
         self.sendButton.setTitle(NSLocalizedString("string-button-re-send", comment: ""), for: .normal)
-        self.sendButton.setTitleColor(UIColor.red, for: .normal)
+        self.sendButton.setTitleColor(Constant.Colors.GREEN2, for: .normal)
         self.sendButton.isEnabled = true
     }
     func countDown(_ time: Double){
@@ -161,9 +161,22 @@ class VerifyMobileNumberViewController: BaseViewController {
             //success
             self.showMessagePrompt2(NSLocalizedString("string-message-success-change-mobile", comment: "")) {
                 //ok callback
+//                if let security = self.navigationController?.viewControllers[1] as? SecuritySettingViewController {
+//                    self.navigationController?.popToViewController(security, animated: false)
+//                }
                 
-                if let security = self.navigationController?.viewControllers[1] as? SecuritySettingViewController {
-                    self.navigationController?.popToViewController(security, animated: false)
+                self.modelCtrl.logOut(succeeded: { (result) in
+                    Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(self.reNewApplicationLogin), userInfo: nil, repeats: false)
+                }, error: { (error) in
+                    if let mError = error as? [String:AnyObject]{
+                        let message = mError["message"] as? String ?? ""
+                        print(message)
+                        self.showMessagePrompt(message)
+                    }
+                    print(error)
+                }) { (messageError) in
+                    print("messageError")
+                    self.handlerMessageError(messageError)
                 }
                 
             }

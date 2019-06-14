@@ -269,12 +269,13 @@ extension UIView {
         }
     }
     func blurImage(){
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)  
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = self.bounds
-        blurEffectView.alpha = 0.9
+        blurEffectView.alpha = 0.85
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight] // for supporting device rotation
         self.addSubview(blurEffectView)
+     
     }
     func applyGradient(colours: [UIColor]) -> Void {
         self.applyGradient(colours, locations: nil)
@@ -304,6 +305,12 @@ extension UIView {
         self.layer.cornerRadius = radius ?? self.frame.size.height/2
         self.layer.borderWidth = borderWidth
         self.layer.borderColor = Constant.Colors.PRIMARY_COLOR.cgColor
+        self.layer.masksToBounds = true
+    }
+    func borderGreen2ColorProperties(borderWidth:CGFloat = 1.0, radius:CGFloat? = nil){
+        self.layer.cornerRadius = radius ?? self.frame.size.height/2
+        self.layer.borderWidth = borderWidth
+        self.layer.borderColor = Constant.Colors.GREEN2.cgColor
         self.layer.masksToBounds = true
     }
     func borderLightGroupTableColorProperties(borderWidth:CGFloat = 1.0){

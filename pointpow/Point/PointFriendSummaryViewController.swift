@@ -138,15 +138,23 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
             if let mData = self.transferResult as? [String:AnyObject] {
                 let pointable_type = mData["pointable_type"] as? String ?? ""
                 let mType = mData["type"] as? String ?? ""
+                let note = mData["note"] as? String ?? ""
                 
                 if pointable_type.lowercased() == "pointtransfer" {
                     if mType.lowercased() == "out" {
-                        self.heightSectionStatusCell = CGFloat(470)
+                        
+                        if note.trimmingCharacters(in: .whitespaces).isEmpty {
+                            self.heightSectionStatusCell = CGFloat(390)
+                        }else{
+                            self.heightSectionStatusCell = CGFloat(470)
+                        }
+                        
                     }else{
                         self.heightSectionStatusCell = CGFloat(390)
                     }
-                    
                 }
+                
+                
             }
             
             self.resultCollectionView.reloadData()
@@ -273,9 +281,18 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
                         if mType.lowercased() == "out" {
                             statusCell.serviceLabel.text =  NSLocalizedString("string-status-transection-history-service-point-transfer-out", comment: "")
                             
-                            statusCell.titleNoteLabel.isHidden = false
-                            statusCell.noteLabel.isHidden = false
-                            statusCell.notelineView.isHidden = false
+                            if note.trimmingCharacters(in: .whitespaces).isEmpty {
+                                statusCell.titleNoteLabel.isHidden = true
+                                statusCell.noteLabel.isHidden = true
+                                statusCell.notelineView.isHidden = true
+                            }else{
+                                
+                                statusCell.titleNoteLabel.isHidden = false
+                                statusCell.noteLabel.isHidden = false
+                                statusCell.notelineView.isHidden = false
+                                
+                            }
+                            
                             
                         }else{
                             statusCell.serviceLabel.text = NSLocalizedString("string-status-transection-history-service-point-transfer-in", comment: "")

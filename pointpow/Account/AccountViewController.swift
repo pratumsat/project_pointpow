@@ -45,8 +45,8 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.upload?.cancel()
-        profileImageView = nil
-        bgProfileImageView = nil
+        //profileImageView = nil
+        //bgProfileImageView = nil
         
     }
   
@@ -137,27 +137,25 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
                     let picture_data = userData["picture_data"] as? String ?? ""
                     let picture_background = userData["picture_background"] as? String ?? ""
                     
-                    if let image = self.profileImageView {
-                        profileCell.profileImageView.image = image
+                    if let _ = self.profileImageView {
+                        profileCell.profileImageView.image = self.profileImageView
                     }else{
                         if let url = URL(string: picture_data) {
                             profileCell.profileImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
                             
                         }else{
-                            profileCell.profileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.DEFAULT_AVATAR_PLACEHOLDER)
-                            //profileCell.profileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
+                            profileCell.profileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
                         }
                         
                     }
                     
-                    if let image = self.bgProfileImageView {
-                        profileCell.backgroundImageView.image = image
+                    if let _ = self.bgProfileImageView {
+                        profileCell.backgroundImageView.image = self.bgProfileImageView
                     }else{
                         if let url = URL(string: picture_background) {
                             profileCell.backgroundImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.BACKGROUND_PROFILE_PLACEHOLDER))
                         }else{
-                            profileCell.backgroundImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.DEFAULT_COVER_PLACEHOLDER)
-                            //profileCell.backgroundImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.BACKGROUND_PROFILE_PLACEHOLDER)
+                            profileCell.backgroundImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.BACKGROUND_PROFILE_PLACEHOLDER)
                         }
                         
                         
@@ -304,7 +302,7 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
         
         if indexPath.section == 0 {
             let width = collectionView.frame.width
-            let height = width/370*300
+            let height = width/370*320
             return CGSize(width: width, height: height)
         }
         

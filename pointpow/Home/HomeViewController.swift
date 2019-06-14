@@ -148,14 +148,16 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
             })
         }else{
             print("notLogin")
-            self.showIntroduce(false) {
+            let require_login = (self.navigationController as! MainNav).require_login
+            
+            self.showIntroduce(false,  require_login : require_login ) {
                 //success
                 DataController.sharedInstance.setResetPinToken("")
                 self.startLoadAPI()
             }
         }
        
-        // not token
+        // not use token
         self.getBanner() {
             self.homeCollectionView.reloadData()
         }
@@ -276,7 +278,8 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
             self.userData = result
             
             if let data  = result as? [String:AnyObject] {
-              
+                let pointpowId = data["pointpow_id"] as? String ?? ""
+                var mobile = data["mobile"] as? String ?? ""
                 //let status = data["status"] as? String ?? ""
                 let is_pin = data["is_pin"] as? NSNumber ?? 0
                 let first_name = data["first_name"] as? String ?? ""
@@ -291,12 +294,23 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
                 
                 self.pointBalanceLabel.text = numberFormatter.string(from: pointBalance )
                 
-                
-                if display_name.isEmpty {
-                    self.displayNameLabel.text = "\(first_name)"
-                }else{
-                    self.displayNameLabel.text = "\(display_name)"
+                //Display name / First name / Point Pow ID / Mobile Number
+                var showName = ""
+                if !mobile.isEmpty {
+                    mobile = mobile.substring(start: 0, end: 7)
+                    mobile += "xxx"
+                    showName = mobile
                 }
+                if !pointpowId.isEmpty {
+                    showName = pointpowId
+                }
+                if !first_name.isEmpty {
+                    showName = first_name
+                }
+                if !display_name.isEmpty {
+                    showName = display_name
+                }
+                self.displayNameLabel.text = showName
                 
                 
                 if let url  = URL(string: picture_data) {

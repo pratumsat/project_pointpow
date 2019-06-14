@@ -157,7 +157,7 @@ class PointTransferViewController: BaseViewController , UICollectionViewDelegate
                 cell = item
                 
                 if let itemData = self.mProviders?[indexPath.row]{
-                    let provider_image = itemData["provider_image"] as? String ?? ""
+                    let provider_image = itemData["provider_image_url"] as? String ?? ""
                     let name = itemData["name"] as? String ?? ""
                     
                     item.providerLabel.text = name

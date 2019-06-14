@@ -96,20 +96,18 @@ class DisplayNameViewController: BaseViewController {
     @IBAction func confirmTapped(_ sender: Any) {
         let displayName = self.displayNameTextField.text!
         
-        var errorEmpty = 0
-        var emptyMessage = ""
-        
-        
-        
-        if displayName.trimmingCharacters(in: .whitespaces).isEmpty {
-            emptyMessage = NSLocalizedString("string-error-empty-display-name", comment: "")
-            errorEmpty += 1
-        }
-        
-        if errorEmpty > 0 {
-            self.showMessagePrompt(emptyMessage)
-            return
-        }
+//        var errorEmpty = 0
+//        var emptyMessage = ""
+
+//        if displayName.trimmingCharacters(in: .whitespaces).isEmpty {
+//            emptyMessage = NSLocalizedString("string-error-empty-display-name", comment: "")
+//            errorEmpty += 1
+//        }
+//
+//        if errorEmpty > 0 {
+//            self.showMessagePrompt(emptyMessage)
+//            return
+//        }
         
         //post displayname
         let params:Parameters = ["display_name"  : displayName]

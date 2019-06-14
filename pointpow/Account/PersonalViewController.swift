@@ -11,12 +11,20 @@ import Alamofire
 
 class PersonalViewController: BaseViewController  {
 
-    @IBOutlet weak var birthdayTextField: UITextField!
+    @IBOutlet weak var fview: UIView!
+    @IBOutlet weak var lview: UIView!
+    @IBOutlet weak var eview: UIView!
+    @IBOutlet weak var idview: UIView!
+    @IBOutlet weak var birthdateView: UIView!
+    
+    @IBOutlet weak var birthdateTextField: UITextField!
     @IBOutlet weak var parsonalTextField: UITextField!
-    @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    
+    
+    @IBOutlet weak var nextButton: UIButton!
     
     @IBOutlet weak var mScrollView: UIScrollView!
     
@@ -159,8 +167,8 @@ class PersonalViewController: BaseViewController  {
                 formatter.locale = Locale(identifier: "th")
                 formatter.dateFormat = "dd MMMM yyyy"
                 
-                self.birthdayTextField.text = formatter.string(from: d1)
-                self.currentBirthdate = self.birthdayTextField.text!
+                self.birthdateTextField.text = formatter.string(from: d1)
+                self.currentBirthdate = self.birthdateTextField.text!
             }
             
             
@@ -177,7 +185,7 @@ class PersonalViewController: BaseViewController  {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "th")
         formatter.dateFormat = "dd MMMM yyyy"
-        self.birthdayTextField.text = formatter.string(from: pickerView!.date)
+        self.birthdateTextField.text = formatter.string(from: pickerView!.date)
         self.view.endEditing(true)
     }
     
@@ -205,10 +213,10 @@ class PersonalViewController: BaseViewController  {
         
         
         
-        self.birthdayTextField.tintColor = UIColor.clear
-        self.birthdayTextField.isUserInteractionEnabled = true
-        self.birthdayTextField.inputView = pickerView
-        self.birthdayTextField.inputAccessoryView = toolbar
+        self.birthdateTextField.tintColor = UIColor.clear
+        self.birthdateTextField.isUserInteractionEnabled = true
+        self.birthdateTextField.inputView = pickerView
+        self.birthdateTextField.inputAccessoryView = toolbar
         
           
         self.backgroundImage?.image = nil
@@ -218,7 +226,7 @@ class PersonalViewController: BaseViewController  {
         self.firstNameTextField.delegate = self
         self.lastNameTextField.delegate = self
         self.parsonalTextField.delegate = self
-        self.birthdayTextField.delegate = self
+        self.birthdateTextField.delegate = self
         self.emailTextField.delegate = self
         
         
@@ -226,8 +234,15 @@ class PersonalViewController: BaseViewController  {
         self.firstNameTextField.autocorrectionType = .no
         self.lastNameTextField.autocorrectionType = .no
         self.parsonalTextField.autocorrectionType = .no
-        self.birthdayTextField.autocorrectionType = .no
+        self.birthdateTextField.autocorrectionType = .no
         self.emailTextField.autocorrectionType = .no
+        
+        self.firstNameTextField.setLeftPaddingPoints(40)
+        self.lastNameTextField.setLeftPaddingPoints(10)
+        self.emailTextField.setLeftPaddingPoints(40)
+        self.parsonalTextField.setLeftPaddingPoints(40)
+        self.birthdateTextField.setLeftPaddingPoints(40)
+        
         
         self.clearImageView = self.firstNameTextField.addRightButton(UIImage(named: "ic-x")!)
         let tap = UITapGestureRecognizer(target: self, action: #selector(clearFirstNameTapped))
@@ -264,7 +279,11 @@ class PersonalViewController: BaseViewController  {
         }else{
             self.disableButton()
         }
-        
+       
+    }
+    override func textFieldDidBeginEditing(_ textField: UITextField) {
+        super.textFieldDidBeginEditing(textField)
+        self.addColorLineView(textField)
     }
     
     func hasChangeData() -> Bool {
@@ -283,7 +302,7 @@ class PersonalViewController: BaseViewController  {
             if self.parsonalTextField.text?.replace(target: "-", withString: "") != pid {
                 return true
             }
-            if self.birthdayTextField.text != self.currentBirthdate {
+            if self.birthdateTextField.text != self.currentBirthdate {
                 return true
             }
             if self.emailTextField.text != email {
@@ -374,7 +393,7 @@ class PersonalViewController: BaseViewController  {
             }
             
         }
-        if textField == self.birthdayTextField {
+        if textField == self.birthdateTextField {
             return false
         }
         
@@ -412,13 +431,13 @@ class PersonalViewController: BaseViewController  {
             self.lastNameTextField.becomeFirstResponder()
         }
         if textField == self.lastNameTextField {
-            self.parsonalTextField.becomeFirstResponder()
-        }
-        if textField == self.parsonalTextField {
             self.emailTextField.becomeFirstResponder()
         }
         if textField == self.emailTextField {
-            self.birthdayTextField.becomeFirstResponder()
+            self.parsonalTextField.becomeFirstResponder()
+        }
+        if textField == self.parsonalTextField {
+            self.birthdateTextField.becomeFirstResponder()
         }
         
         return true
@@ -434,6 +453,59 @@ class PersonalViewController: BaseViewController  {
         return "1"
     }
     
+    func clearColorLineView(){
+        fview.backgroundColor = UIColor.groupTableViewBackground
+        lview.backgroundColor = UIColor.groupTableViewBackground
+        eview.backgroundColor = UIColor.groupTableViewBackground
+        idview.backgroundColor = UIColor.groupTableViewBackground
+        birthdateView.backgroundColor = UIColor.groupTableViewBackground
+        
+    }
+    func addColorLineView(_ textField:UITextField){
+        switch textField {
+        case firstNameTextField:
+            fview.backgroundColor = UIColor.darkGray
+            lview.backgroundColor = UIColor.groupTableViewBackground
+            eview.backgroundColor = UIColor.groupTableViewBackground
+            idview.backgroundColor = UIColor.groupTableViewBackground
+            birthdateView.backgroundColor = UIColor.groupTableViewBackground
+            break
+        case lastNameTextField:
+            fview.backgroundColor = UIColor.groupTableViewBackground
+            lview.backgroundColor = UIColor.darkGray
+            eview.backgroundColor = UIColor.groupTableViewBackground
+            idview.backgroundColor = UIColor.groupTableViewBackground
+            birthdateView.backgroundColor = UIColor.groupTableViewBackground
+            break
+        case emailTextField:
+            fview.backgroundColor = UIColor.groupTableViewBackground
+            lview.backgroundColor = UIColor.groupTableViewBackground
+            eview.backgroundColor = UIColor.darkText
+            
+            idview.backgroundColor = UIColor.groupTableViewBackground
+            
+            birthdateView.backgroundColor = UIColor.groupTableViewBackground
+            break
+        case parsonalTextField:
+            fview.backgroundColor = UIColor.groupTableViewBackground
+            lview.backgroundColor = UIColor.groupTableViewBackground
+            eview.backgroundColor = UIColor.groupTableViewBackground
+            idview.backgroundColor = UIColor.darkText
+            birthdateView.backgroundColor = UIColor.groupTableViewBackground
+            break
+        
+        case birthdateTextField:
+            fview.backgroundColor = UIColor.groupTableViewBackground
+            lview.backgroundColor = UIColor.groupTableViewBackground
+            eview.backgroundColor = UIColor.groupTableViewBackground
+            idview.backgroundColor = UIColor.groupTableViewBackground
+            birthdateView.backgroundColor = UIColor.darkText
+            break
+            
+        default:
+            break
+        }
+    }
     
    
     
@@ -450,7 +522,7 @@ class PersonalViewController: BaseViewController  {
         let lastName = self.lastNameTextField.text!
         let personalID  = self.parsonalTextField.text!
         let email  = self.emailTextField.text!
-        let birthdate = self.birthdayTextField.text!
+        let birthdate = self.birthdateTextField.text!
         
         var errorEmpty = 0
         var emptyMessage = ""
@@ -459,31 +531,31 @@ class PersonalViewController: BaseViewController  {
         
         if birthdate.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-birth-date", comment: "")
-            self.errorBirthdateLabel =  self.birthdayTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
+            self.errorBirthdateLabel =  self.birthdateTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 15 )
             errorEmpty += 1
 
         }
         if email.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-email", comment: "")
-            self.errorEmailLabel =  self.emailTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
+            self.errorEmailLabel =  self.emailTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 15 )
             errorEmpty += 1
             
         }
         if personalID.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-personal-id", comment: "")
-            self.errorPersonalIDLabel =  self.parsonalTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
+            self.errorPersonalIDLabel =  self.parsonalTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 15 )
             errorEmpty += 1
             
         }
         if lastName.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-lastname", comment: "")
-            self.errorLastnamelLabel =  self.lastNameTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
+            self.errorLastnamelLabel =  self.lastNameTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 10 )
             errorEmpty += 1
             
         }
         if firstName.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-firstname", comment: "")
-            self.errorFirstNameLabel =  self.firstNameTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
+            self.errorFirstNameLabel =  self.firstNameTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 15 )
             errorEmpty += 1
         }
         
@@ -514,6 +586,7 @@ class PersonalViewController: BaseViewController  {
            
             self.showMessagePrompt2(NSLocalizedString("string-message-success-change-profile-infomation", comment: "")) {
                 //ok callback
+                self.clearColorLineView()
                 self.getUserInfo(){
                     self.updateView()
                 }
@@ -523,11 +596,13 @@ class PersonalViewController: BaseViewController  {
             }, error: { (error) in
                 if let mError = error as? [String:AnyObject]{
                     print(mError)
+                    self.clearColorLineView()
                     let message = mError["message"] as? String ?? ""
                     //self.errorOTPlLabel = self.otpTextField.addBottomLabelErrorMessage(message, marginLeft: 15)
                     self.showMessagePrompt(message)
                 }
             }, failure: { (messageError) in
+                self.clearColorLineView()
                 self.handlerMessageError(messageError , title: "")
             })
             
@@ -556,7 +631,7 @@ class PersonalViewController: BaseViewController  {
         if errorMobile > 0 {
             
             self.showMessagePrompt(errorMessage)
-            self.errorPersonalIDLabel =  self.parsonalTextField.addBottomLabelErrorMessage(errorMessage , marginLeft: 0)
+            self.errorPersonalIDLabel =  self.parsonalTextField.addBottomLabelErrorMessage(errorMessage , marginLeft: 15)
             return false
         }
         return true

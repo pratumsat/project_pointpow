@@ -295,7 +295,7 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
                     let display_name = modelFriend["display_name"] as? String ?? ""
                     let first_name = modelFriend["first_name"] as? String ?? ""
                     let last_name = modelFriend["last_name"] as? String ?? ""
-                    let mobile = modelFriend["mobile"] as? String ?? ""
+                    var mobile = modelFriend["mobile"] as? String ?? ""
                     let picture_data = modelFriend["picture_data"] as? String ?? ""
                     let pointpow_id = modelFriend["pointpow_id"] as? String ?? ""
                 
@@ -304,12 +304,25 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
                     }else{
                         friendCell.coverImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
                     }
-                    if !pointpow_id.isEmpty {
-                        friendCell.nameLabel.text = "\(pointpow_id)"
-                    }else{
-                        friendCell.nameLabel.text = "\(mobile)"
-                    }
                     
+                    
+                    //Display name / First name / Point Pow ID / Mobile Number
+                    var showName = ""
+                    if !mobile.isEmpty {
+                        mobile = mobile.substring(start: 0, end: 7)
+                        mobile += "xxx"
+                        showName = mobile
+                    }
+                    if !pointpow_id.isEmpty {
+                        showName = pointpow_id
+                    }
+                    if !first_name.isEmpty {
+                        showName = first_name
+                    }
+                    if !display_name.isEmpty {
+                        showName = display_name
+                    }
+                    friendCell.nameLabel.text = showName
                     
                     friendCell.didSelectImageView = {
                         self.showPointFriendTransferView(true, modelFriend)
@@ -338,7 +351,7 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
                     let display_name = modelFriend["display_name"] as? String ?? ""
                     let first_name = modelFriend["first_name"] as? String ?? ""
                     let last_name = modelFriend["last_name"] as? String ?? ""
-                    let mobile = modelFriend["mobile"] as? String ?? ""
+                    var mobile = modelFriend["mobile"] as? String ?? ""
                     let picture_data = modelFriend["picture_data"] as? String ?? ""
                     let pointpow_id = modelFriend["pointpow_id"] as? String ?? ""
                     
@@ -349,12 +362,24 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
                         friendCell.coverImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
                     }
                     
-                    
-                    if !pointpow_id.isEmpty {
-                        friendCell.nameLabel.text = "\(pointpow_id)"
-                    }else{
-                        friendCell.nameLabel.text = "\(mobile)"
+    
+                    //Display name / First name / Point Pow ID / Mobile Number
+                    var showName = ""
+                    if !mobile.isEmpty {
+                        mobile = mobile.substring(start: 0, end: 7)
+                        mobile += "xxx"
+                        showName = mobile
                     }
+                    if !pointpow_id.isEmpty {
+                        showName = pointpow_id
+                    }
+                    if !first_name.isEmpty {
+                        showName = first_name
+                    }
+                    if !display_name.isEmpty {
+                        showName = display_name
+                    }
+                    friendCell.nameLabel.text = showName
                  
                     
                     

@@ -10,11 +10,17 @@ import UIKit
 
 class MainNav: BaseNavigationViewController {
 
+    
+    var require_login = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
        
     }
+    
+    
     
 
     /*

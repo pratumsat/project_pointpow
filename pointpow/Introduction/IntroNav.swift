@@ -11,7 +11,9 @@ import Presentr
 
 class IntroNav: BaseNavigationViewController {
 
+    var require_login = false
     var callbackFinish:(()->Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

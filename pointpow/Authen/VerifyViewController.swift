@@ -118,9 +118,9 @@ class VerifyViewController: BaseViewController {
         return String(format: "%02d:%02d", prodMinutes, prodSeconds)
     }
     func resetButton(){
-        self.sendButton.borderRedColorProperties(borderWidth: 1)
+        self.sendButton.borderGreen2ColorProperties(borderWidth: 1)
         self.sendButton.setTitle(NSLocalizedString("string-button-re-send", comment: ""), for: .normal)
-        self.sendButton.setTitleColor(UIColor.red, for: .normal)
+        self.sendButton.setTitleColor(Constant.Colors.GREEN2, for: .normal)
         self.sendButton.isEnabled = true
     }
     func countDown(_ time: Double){

@@ -121,7 +121,7 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
                     itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change-displayname", comment: "")
                     
                     if let userData = self.userData as? [String:AnyObject] {
-                        let displayName = userData["display_name"] as? String ?? ""
+                        let displayName = userData["display_name"] as? String ?? " "
                         itemCell.trailLabel.text = displayName
                     }
                     

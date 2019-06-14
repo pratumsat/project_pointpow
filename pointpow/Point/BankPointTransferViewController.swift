@@ -96,7 +96,7 @@ class BankPointTransferViewController: BaseViewController  {
         
         
         if let data = self.itemData {
-            let provider_image = data["provider_image"] as? String ?? ""
+            let provider_image = data["provider_image_url"] as? String ?? ""
             let name = data["name"] as? String ?? ""
             let exchange_rate = data["exchange_rate"] as? [[String:AnyObject]] ?? [[:]]
             
@@ -315,7 +315,7 @@ class BankPointTransferViewController: BaseViewController  {
             
             /*if let data = self.itemData {
                 let provider_id = data["id"] as? NSNumber ?? 0
-                let provider_image = data["provider_image"] as? String ?? ""
+                let provider_image = data["provider_image_url"] as? String ?? ""
                 let name = data["name"] as? String ?? ""
                 let exchange_rate = data["exchange_rate"] as? [[String:AnyObject]] ?? [[:]]
  

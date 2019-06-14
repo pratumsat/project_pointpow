@@ -132,6 +132,10 @@ class PointPowIDViewController: BaseViewController {
             }else{
                 self.clearImageView?.isHidden = false
             }
+            
+            if !isValidString(string){
+                return false
+            }
             return newLength <= 10
             
         }

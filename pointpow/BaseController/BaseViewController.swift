@@ -346,12 +346,17 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     }
 
     
-    func showIntroduce(_ animated:Bool, finish:(()->Void)? = nil){
+    func showIntroduce(_ animated:Bool, require_login:Bool = false,  finish:(()->Void)? = nil){
         if let vc:IntroNav = self.storyboard?.instantiateViewController(withIdentifier: "IntroNav") as? IntroNav {
+            
+            vc.require_login = require_login
+            
             vc.callbackFinish = {
                 finish?()
             }
+            
             self.present(vc, animated: animated, completion: nil)
+            
         }
     }
     func showLogin(_ animated:Bool){
@@ -486,6 +491,14 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     
     @objc func reNewApplication(){
         UIApplication.shared.keyWindow?.rootViewController = storyboard!.instantiateViewController(withIdentifier: "MainNav")
+    }
+    @objc func reNewApplicationLogin(){
+        
+        if let vc = storyboard!.instantiateViewController(withIdentifier: "MainNav") as? MainNav {
+            vc.require_login = true
+            UIApplication.shared.keyWindow?.rootViewController = vc
+        }
+        
     }
     
     
@@ -1326,7 +1339,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         
     }
     
-    private var countDownResend:Int = 300
+    private var countDownResend:Int = 30
     private var timerResend:Timer?
     private var sendButtonResend: UIButton?
     
@@ -1336,9 +1349,9 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         self.sendButtonResend?.setTitleColor(UIColor.lightGray, for: .normal)
     }
     private  func resetButtonResend(){
-        self.sendButtonResend?.borderRedColorProperties(borderWidth: 1)
+        self.sendButtonResend?.borderGreen2ColorProperties(borderWidth: 1)
         self.sendButtonResend?.setTitle(NSLocalizedString("string-button-re-send", comment: ""), for: .normal)
-        self.sendButtonResend?.setTitleColor(UIColor.red, for: .normal)
+        self.sendButtonResend?.setTitleColor(Constant.Colors.GREEN2, for: .normal)
         self.sendButtonResend?.isEnabled = true
     }
     private func countDownResend(_ time: Double){
@@ -1362,7 +1375,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     }
     private func removeCountDownLableResend() {
         //finish
-        countDownResend = 300
+        countDownResend = 30
         timerResend?.invalidate()
         timerResend = nil
        

@@ -21,9 +21,15 @@ class IntroViewController: BaseViewController, UICollectionViewDelegate , UIColl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
-           self.setUp()
+        self.setUp()
+        
+        let require_login = (self.navigationController as! IntroNav).require_login
+        if require_login {
+            self.showLogin(false)
+        }
+        
     }
+    
     func setUp(){
         if #available(iOS 11.0, *) {
             let window = UIApplication.shared.keyWindow

@@ -166,8 +166,9 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
             let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-gold-button-cancel", comment: ""), style: .default, handler: nil)
             
             
-            alert.addAction(okButton)
+            
             alert.addAction(cancelButton)
+            alert.addAction(okButton)
             
             self.present(alert, animated: true, completion: nil)
         }else{
@@ -1023,7 +1024,7 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
         }
         
        
-        
+        guard validateFirstNameLastName(firstName, lname: lastName) else { return }
         guard validateLaserId(laserId) else { return }
         guard validateIDcard(personalID) else { return }
         guard validateMobile(mobile) else { return }
@@ -1107,8 +1108,9 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
  
             let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-gold-button-cancel", comment: ""), style: .default, handler: nil)
             
-            alert.addAction(okButton)
+            
             alert.addAction(cancelButton)
+            alert.addAction(okButton)
             
             self.present(alert, animated: true, completion: nil)
         }else{
@@ -1119,6 +1121,27 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
         
         
         
+    }
+    func validateFirstNameLastName(_ fname:String, lname:String)->Bool {
+        var error = 0
+        var errorMessage = NSLocalizedString("string-error-invalid-fname", comment: "")
+        
+        if !isValidName2Digit(lname){
+            error += 1
+            errorMessage = NSLocalizedString("string-error-invalid-lname", comment: "")
+            self.errorLastnamelLabel = self.lastNameTextField.addBottomLabelErrorMessage(errorMessage , marginLeft: 10)
+        }
+        if !isValidName2Digit(fname){
+            error += 1
+            errorMessage = NSLocalizedString("string-error-invalid-fname", comment: "")
+            self.errorFirstNameLabel = self.firstNameTextField.addBottomLabelErrorMessage(errorMessage, marginLeft: 15)
+        }
+        if error > 0 {
+            self.showMessagePrompt(errorMessage)
+            return false
+        }
+        
+        return true
     }
     
     func validateLaserId(_ id:String)->Bool {

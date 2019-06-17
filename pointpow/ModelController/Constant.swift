@@ -148,7 +148,7 @@ extension UITextField {
         
         label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: marginBottom).isActive = true
         label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: marginLeft).isActive = true
-        
+        label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
         
         
         return label
@@ -973,6 +973,20 @@ func isValidString(_ str:String) -> Bool{
     }else{
         return false
     }
+}
+
+func isValidName2Digit(_ str:String) -> Bool{
+    if str.isEmpty {
+        return false
+    }
+    guard !isValidNumber(str) else {return false}
+    guard isValidString(str) else {return false}
+    
+    if str.count < 2 {
+        return false
+    }
+    
+    return true
 }
 
 func isValidName(_ str:String) -> Bool{

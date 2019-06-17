@@ -351,7 +351,7 @@ class PersonalPopupViewController: BaseViewController {
             return
         }
 
-    
+        guard validateFirstNameLastName(firstName, lname: lastName) else { return }
         guard validateIDcard(personalID) else { return }
         
         if isValidEmail(email) {
@@ -429,7 +429,27 @@ class PersonalPopupViewController: BaseViewController {
         return false
     }
     
-    
+    func validateFirstNameLastName(_ fname:String, lname:String)->Bool {
+        var error = 0
+        var errorMessage = NSLocalizedString("string-error-invalid-fname", comment: "")
+        
+        if !isValidName2Digit(lname){
+            error += 1
+            errorMessage = NSLocalizedString("string-error-invalid-lname", comment: "")
+            self.errorLastnamelLabel = self.lastNameTextField.addBottomLabelErrorMessage(errorMessage , marginLeft: 0)
+        }
+        if !isValidName2Digit(fname){
+            error += 1
+            errorMessage = NSLocalizedString("string-error-invalid-fname", comment: "")
+            self.errorFirstNameLabel = self.firstNameTextField.addBottomLabelErrorMessage(errorMessage, marginLeft: 0)
+        }
+        if error > 0 {
+            self.showMessagePrompt(errorMessage)
+            return false
+        }
+        
+        return true
+    }
     func validateIDcard(_ id:String)-> Bool{
         var errorMobile = 0
         var errorMessage = ""

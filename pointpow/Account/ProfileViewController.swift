@@ -172,39 +172,6 @@ class ProfileViewController: BaseViewController , UICollectionViewDelegate , UIC
                 
             }
         }
-//        if indexPath.section == 1 {
-//
-//            let title = NSLocalizedString("exit-app-title", comment: "")
-//            let message = NSLocalizedString("exit-app-message", comment: "")
-//            let confirm = NSLocalizedString("exit-app-confirm-button", comment: "")
-//            let cancel = NSLocalizedString("exit-app-cancel-button", comment: "")
-//            let confirmAlertCtrl = UIAlertController(title: title, message: message, preferredStyle: .alert)
-//
-//            let confirmAction = UIAlertAction(title: confirm, style: .default) { _ in
-//
-//                self.modelCtrl.logOut(succeeded: { (result) in
-//                    Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(self.reNewApplication), userInfo: nil, repeats: false)
-//                }, error: { (error) in
-//                    if let mError = error as? [String:AnyObject]{
-//                        let message = mError["message"] as? String ?? ""
-//                        print(message)
-//                        self.showMessagePrompt(message)
-//                    }
-//                    print(error)
-//                }) { (messageError) in
-//                    print("messageError")
-//                    self.handlerMessageError(messageError)
-//                }
-//            }
-//            let cancelAction = UIAlertAction(title: cancel, style: .default, handler: nil)
-//
-//
-//            confirmAlertCtrl.addAction(confirmAction)
-//            confirmAlertCtrl.addAction(cancelAction)
-//
-//            self.present(confirmAlertCtrl, animated: true, completion: nil)
-//
-//        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {

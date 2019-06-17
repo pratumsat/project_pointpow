@@ -400,8 +400,9 @@ extension WithDrawResultViewController {
                 let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: nil)
                 
                 
-                alert.addAction(okButton)
+                
                 alert.addAction(cancelButton)
+                alert.addAction(okButton)
                 
                 self.present(alert, animated: true, completion: nil)
             }
@@ -541,9 +542,10 @@ extension WithDrawResultViewController {
                 let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: nil)
                 
                 
-                alert.addAction(okButton)
+                
                 alert.addAction(cancelButton)
-
+                alert.addAction(okButton)
+                
                 self.present(alert, animated: true, completion: nil)
             }
             
@@ -769,8 +771,9 @@ extension WithDrawResultViewController {
                 let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: nil)
                 
                 
-                alert.addAction(okButton)
+            
                 alert.addAction(cancelButton)
+                alert.addAction(okButton)
             
                 self.present(alert, animated: true, completion: nil)
             }

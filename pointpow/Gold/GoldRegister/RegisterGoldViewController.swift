@@ -615,7 +615,7 @@ class RegisterGoldViewController: BaseViewController {
             return
         }
         
-        
+        guard validateFirstNameLastName(firstName, lname: lastName) else { return }
         guard validateLaserId(laserId) else { return }
         guard validateIDcard(personalID) else { return }
         guard validateMobile(mobile) else { return }
@@ -644,6 +644,27 @@ class RegisterGoldViewController: BaseViewController {
             self.errorEmailLabel =  self.emailTextField.addBottomLabelErrorMessage(emailNotValid, marginLeft: 0 )
         }
        
+    }
+    func validateFirstNameLastName(_ fname:String, lname:String)->Bool {
+        var error = 0
+        var errorMessage = NSLocalizedString("string-error-invalid-fname", comment: "")
+        
+        if !isValidName2Digit(lname){
+            error += 1
+            errorMessage = NSLocalizedString("string-error-invalid-lname", comment: "")
+            self.errorLastnamelLabel = self.lastNameTextField.addBottomLabelErrorMessage(errorMessage , marginLeft: 10)
+        }
+        if !isValidName2Digit(fname){
+            error += 1
+            errorMessage = NSLocalizedString("string-error-invalid-fname", comment: "")
+            self.errorFirstNameLabel = self.firstNameTextField.addBottomLabelErrorMessage(errorMessage, marginLeft: 15)
+        }
+        if error > 0 {
+            self.showMessagePrompt(errorMessage)
+            return false
+        }
+        
+        return true
     }
     func validateLaserId(_ id:String)->Bool {
         var errorMobile = 0

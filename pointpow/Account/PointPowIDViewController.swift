@@ -109,8 +109,9 @@ class PointPowIDViewController: BaseViewController {
         let cancel = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: nil)
         
         
-        alert.addAction(confirm)
+        
         alert.addAction(cancel)
+        alert.addAction(confirm)
         
         self.present(alert, animated: true, completion: nil)
     }

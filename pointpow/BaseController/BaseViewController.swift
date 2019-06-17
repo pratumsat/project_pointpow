@@ -1477,8 +1477,9 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: nil)
         
         
-        alert.addAction(okButton)
+        
         alert.addAction(cancelButton)
+        alert.addAction(okButton)
         
         self.present(alert, animated: true, completion: nil)
     }
@@ -1978,8 +1979,9 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         let cancel = UIAlertAction(title: NSLocalizedString("string-dailog-title-button-cancel", comment: ""), style: .default, handler: nil)
         
         
-        alert.addAction(delete)
+        
         alert.addAction(cancel)
+        alert.addAction(delete)
         
         self.present(alert, animated: true, completion: nil)
     }
@@ -2026,8 +2028,8 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         let cancelAction = UIAlertAction(title: cancel, style: .default, handler: nil)
         
         
-        confirmAlertCtrl.addAction(confirmAction)
         confirmAlertCtrl.addAction(cancelAction)
+        confirmAlertCtrl.addAction(confirmAction)
         
         self.present(confirmAlertCtrl, animated: true, completion: nil)
 
@@ -2200,8 +2202,10 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         let actionCancel = UIAlertAction(title: cancel, style: .cancel) { (action) in }
         
         
-        alert.addAction(actionSetting)
+        
         alert.addAction(actionCancel)
+        alert.addAction(actionSetting)
+        
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -2227,8 +2231,9 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         let actionCancel = UIAlertAction(title: cancel, style: .cancel) { (action) in }
         
         
-        alert.addAction(actionSetting)
         alert.addAction(actionCancel)
+        alert.addAction(actionSetting)
+        
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -2241,7 +2246,4 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     @objc func moreTapped(){
         self.moreImageView?.animationTapped()
     }
-    
-    
-   
 }

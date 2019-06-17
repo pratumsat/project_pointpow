@@ -151,7 +151,8 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
                         let qrType = mResult["type"] as? String ?? ""
                         
                         if qrType.lowercased() == "friend"{
-                            self.showPointFriendTransferView(true, mResult)
+                           
+                            self.showNextStepTransfer(mResult)
                         }
                         
                     }
@@ -270,7 +271,17 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
         }
         return true
     }
-    
+    func showNextStepTransfer(_ modelFriend:[String:AnyObject]){
+        let is_profile = modelFriend["is_profile"] as? NSNumber ?? 0
+        if is_profile.boolValue {
+            self.showPointFriendTransferView(true, modelFriend)
+        }else{
+            self.showMessagePrompt2(NSLocalizedString("string-error-friendข-account-not-activated", comment: "")) {
+                //callback click ok
+            }
+        }
+        
+    }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
@@ -307,12 +318,12 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
                     
                     
                     //Display name / First name / Point Pow ID / Mobile Number
-                    var showName = ""
-                    if !mobile.isEmpty {
-                        mobile = mobile.substring(start: 0, end: 7)
-                        mobile += "xxx"
-                        showName = mobile
-                    }
+                    var showName = mobile
+//                    if !showName.isEmpty {
+//                        showName = showName.substring(start: 0, end: 7)
+//                        showName += "xxx"
+//
+//                    }
                     if !pointpow_id.isEmpty {
                         showName = pointpow_id
                     }
@@ -325,10 +336,10 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
                     friendCell.nameLabel.text = showName
                     
                     friendCell.didSelectImageView = {
-                        self.showPointFriendTransferView(true, modelFriend)
+                        self.showNextStepTransfer(modelFriend)
                     }
                     friendCell.tappedCallback = {
-                        self.showPointFriendTransferView(true, modelFriend)
+                        self.showNextStepTransfer(modelFriend)
                     }
                 
                 
@@ -364,12 +375,11 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
                     
     
                     //Display name / First name / Point Pow ID / Mobile Number
-                    var showName = ""
-                    if !mobile.isEmpty {
-                        mobile = mobile.substring(start: 0, end: 7)
-                        mobile += "xxx"
-                        showName = mobile
-                    }
+                    var showName = mobile
+                    //if !showName.isEmpty {
+                        //showName = showName.substring(start: 0, end: 7)
+                        //showName += "xxx"
+                    //}
                     if !pointpow_id.isEmpty {
                         showName = pointpow_id
                     }
@@ -387,7 +397,7 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
                     friendCell.didSelectImageView = {
                         let params:Parameters = ["mobile": mobile]
                         self.searchBy(params: params) { (model) in
-                            self.showPointFriendTransferView(true, model)
+                            self.showNextStepTransfer(model)
                         }
                         
                         
@@ -395,7 +405,7 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
                     friendCell.tappedCallback = {
                         let params:Parameters = ["mobile": mobile]
                         self.searchBy(params: params) { (model) in
-                            self.showPointFriendTransferView(true, model)
+                            self.showNextStepTransfer(model)
                         }
                     }
                     

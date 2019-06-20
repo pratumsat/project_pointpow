@@ -38,7 +38,7 @@ class PromotionCampainCell: UICollectionViewCell , UICollectionViewDelegate , UI
     }
     func setTimer() {
         if self.x < count {
-            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(autoScroll), userInfo: nil,  repeats: true)
+            timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(autoScroll), userInfo: nil,  repeats: true)
         }
         
     }

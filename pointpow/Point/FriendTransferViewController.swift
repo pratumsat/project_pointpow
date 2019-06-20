@@ -52,6 +52,7 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
         if self.friendModel != nil {
             return
         }
+        
         let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         var centerpoint = view.center
         centerpoint.y -= self.view.frame.height*0.2

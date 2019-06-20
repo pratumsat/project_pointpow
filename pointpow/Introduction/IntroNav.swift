@@ -21,10 +21,9 @@ class IntroNav: BaseNavigationViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(resetPassword), name: NSNotification.Name(rawValue: Constant.DefaultConstansts.RESET_PASSWORD), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(verifyEmailRegister), name: NSNotification.Name(rawValue: Constant.DefaultConstansts.VERIFI_EMAIL_REGISTER), object: nil)
-        
-        
-        
+  
     }
+   
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
   

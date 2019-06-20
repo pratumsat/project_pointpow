@@ -84,7 +84,7 @@ class BankPointTransferViewController: BaseViewController  {
         let less = UITapGestureRecognizer(target: self, action: #selector(lessPointTapped))
         self.lessImageView.isUserInteractionEnabled = true
         self.lessImageView.addGestureRecognizer(less)
-        
+        self.lessImageView.isUserInteractionEnabled = false
         
         let more = UITapGestureRecognizer(target: self, action: #selector(morePointTapped))
         self.moreImageView.isUserInteractionEnabled = true
@@ -249,7 +249,7 @@ class BankPointTransferViewController: BaseViewController  {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         if textField == self.amountTextField {
-            let textRange = Range(range, in: textField.text!)!
+            guard let textRange = Range(range, in: textField.text!) else { return true}
             let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
             
             

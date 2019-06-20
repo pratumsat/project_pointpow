@@ -27,6 +27,7 @@ class PersonalDataViewController: BaseViewController {
     var errorPersonalIDLabel:UILabel?
     var errorEmailLabel:UILabel?
     
+    var dismiss:(()->Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +41,13 @@ class PersonalDataViewController: BaseViewController {
         
         self.navigationItem.rightBarButtonItem = skipButton
         
+        
+        
+        DataController.sharedInstance.setResetPinToken("")
         self.setUp()
     }
+   
+    
     @objc func skipTapped(){
         self.showSettingPassCodeModalView()
     }
@@ -65,7 +71,8 @@ class PersonalDataViewController: BaseViewController {
                 controller.dismiss(animated: false, completion: { () in
                     //
                     self.dismiss(animated: false, completion: {
-                        (self.navigationController as? IntroNav)?.callbackFinish?()
+                    //    (self.navigationController as? IntroNav)?.callbackFinish?()
+                        self.dismiss?()
                     })
                 })
             })

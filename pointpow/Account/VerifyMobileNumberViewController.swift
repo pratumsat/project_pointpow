@@ -60,8 +60,8 @@ class VerifyMobileNumberViewController: BaseViewController {
         self.usernameTextField.autocorrectionType = .no
         
         if let mobile = self.mobilePhone {
-            let newText = String(mobile.filter({ $0 != "-" }).prefix(10))
-            self.usernameTextField.text = newText.chunkFormatted()
+            //let newText = String(mobile.filter({ $0 != "-" }).prefix(10))
+            self.usernameTextField.text = mobile
         }
         self.usernameTextField.textColor = UIColor.lightGray
         self.usernameTextField.isEnabled = false

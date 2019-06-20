@@ -329,7 +329,7 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
     
         
         if textField == self.pointpowTextField {
-            let textRange = Range(range, in: textField.text!)!
+            guard let textRange = Range(range, in: textField.text!) else { return true}
             let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
 
             

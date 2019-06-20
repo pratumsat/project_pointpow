@@ -242,7 +242,11 @@ class VerifyViewController: BaseViewController {
                 if self.forgotPassword {
                     self.showResetPasswordView(true, forgotPassword: true)
                 }else{
-                    self.showPersonalData(true)
+                    self.showPersonalData(true){
+                        self.dismiss(animated: false, completion: {
+                            (self.navigationController as? IntroNav)?.callbackFinish?()
+                        })
+                    }
                     DataController.sharedInstance.setToken(access_token)
                 }
                 

@@ -231,7 +231,7 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
    
         
         if textField == self.amountTextField {
-            let textRange = Range(range, in: textField.text!)!
+            guard let textRange = Range(range, in: textField.text!) else { return true}
             let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
             
             

@@ -383,10 +383,24 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }
     }
     
-    func showPersonalData(_ animated:Bool){
+    func showPersonalData(_ animated:Bool , dissmissCallback:(()->Void)?){
         if let vc:PersonalDataViewController = self.storyboard?.instantiateViewController(withIdentifier: "PersonalDataViewController") as? PersonalDataViewController {
             
-            self.navigationController?.pushViewController(vc, animated: animated)
+            //self.navigationController?.pushViewController(vc, animated: animated)
+            
+            let navController = BaseNavigationViewController(rootViewController: vc)
+            navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white,
+                                                               NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.TITLE )!]
+            navController.navigationBar.tintColor = UIColor.white
+            navController.navigationBar.backgroundColor  = Constant.Colors.PRIMARY_COLOR
+            navController.navigationBar.barTintColor = Constant.Colors.PRIMARY_COLOR
+            navController.navigationBar.isTranslucent = true;
+            
+            vc.dismiss = {
+                dissmissCallback?()
+            }
+            
+            self.present(navController, animated: animated, completion: nil)
         }
     }
     func showRegister(_ animated:Bool){
@@ -1057,7 +1071,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     func paPasscodeViewControllerDidEnterPasscodeResult(_ controller: PAPasscodeViewController!, didEnterPassCode passcode: String!) {
         print("enter passcode: \(passcode ?? "unknow")")
         
-        let params:Parameters = ["pin" : Int(passcode)!]
+        let params:Parameters = ["pin" : passcode!]
         self.modelCtrl.enterPinCode(params: params, true, succeeded: { (result) in
             controller.dismiss(animated: false, completion: { () in
                 if !self.LOCKSCREEN {
@@ -1068,8 +1082,6 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
                 }
                 self.LOCKSCREEN = false
                 self.startApp = false
-                
-                
                 
             })
         }, error: { (error) in

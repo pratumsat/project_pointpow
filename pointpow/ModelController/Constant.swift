@@ -594,6 +594,11 @@ extension URL {
 }
 
 extension String {
+   
+    func isCompose(of thaiWord:String) -> Bool {
+        return self.range(of: thaiWord, options: .literal) != nil ? true : false
+    }
+    
     func chunkFormatted(withChunkSize chunkSize: Int = 3, withSeparator separator: Character = "-") -> String {
         return self.filter { $0 != separator }.chunk(n: chunkSize).map{ String($0) }.joined(separator: String(separator))
     }
@@ -981,7 +986,7 @@ func isValidName2Digit(_ str:String) -> Bool{
     }
     guard !isValidNumber(str) else {return false}
     guard isValidString(str) else {return false}
-   
+
     if str.count < 2 {
         return false
     }

@@ -117,6 +117,7 @@ class PersonalDataViewController: BaseViewController {
         
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    
         if textField  == self.firstNameTextField {
             let startingLength = textField.text?.count ?? 0
             let lengthToAdd = string.count

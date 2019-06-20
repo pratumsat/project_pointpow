@@ -506,6 +506,7 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
     }
    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+  
         
         if textField  == self.firstNameTextField {
             let startingLength = textField.text?.count ?? 0

@@ -316,6 +316,7 @@ class PersonalViewController: BaseViewController  {
     
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+       
         if textField  == self.firstNameTextField {
             let startingLength = textField.text?.count ?? 0
             let lengthToAdd = string.count
@@ -508,9 +509,6 @@ class PersonalViewController: BaseViewController  {
         }
     }
     
-   
-    
-    
     @IBAction func saveTapped(_ sender: Any) {
         
         errorFirstNameLabel?.removeFromSuperview()
@@ -634,6 +632,7 @@ class PersonalViewController: BaseViewController  {
             self.showMessagePrompt(errorMessage)
             return false
         }
+        
         
         return true
     }

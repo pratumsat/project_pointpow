@@ -155,6 +155,7 @@ class VerifyMobileNumberViewController: BaseViewController {
        
         let params:Parameters = ["ref_id" : self.ref_id ?? "",
                                  "otp" : otp,
+                                 "app_os": "ios",
                                  "new_mobile_number" : self.mobilePhone ?? ""]
         
         modelCtrl.verifyOTPNewMobileNumber(params: params, succeeded: { (result) in

@@ -36,7 +36,7 @@ class VerifyViewController: BaseViewController {
     var forgotPassword:Bool = false {
         didSet{
             if forgotPassword {
-                countDown = 300
+                countDown = 60
             }else{
                 countDown = 60
             }
@@ -103,11 +103,11 @@ class VerifyViewController: BaseViewController {
     func updateButton(){
         self.sendButton.borderLightGrayColorProperties(borderWidth: 1)
      
-        if forgotPassword {
-            self.sendButton.setTitle("\(prodTimeString(time: TimeInterval(countDown)) )", for: .normal)
-        }else{
+        //if forgotPassword {
+        //    self.sendButton.setTitle("\(prodTimeString(time: TimeInterval(countDown)) )", for: .normal)
+        //}else{
             self.sendButton.setTitle("\(countDown)", for: .normal)
-        }
+        //}
         self.sendButton.setTitleColor(UIColor.lightGray, for: .normal)
         
     }
@@ -140,7 +140,7 @@ class VerifyViewController: BaseViewController {
     func removeCountDownLable() {
         //finish
         if forgotPassword {
-            countDown = 300
+            countDown = 60
         }else{
             countDown = 60
         }
@@ -153,6 +153,7 @@ class VerifyViewController: BaseViewController {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 
+   
         if textField  == self.usernameTextField {
             let startingLength = textField.text?.count ?? 0
             let lengthToAdd = string.count
@@ -228,7 +229,8 @@ class VerifyViewController: BaseViewController {
 
        let params:Parameters = ["ref_id" : self.ref_id ?? "",
                                  "otp" : otp,
-                                 "mobile" : self.mobilePhone ?? ""]
+                                 "mobile" : self.mobilePhone ?? "",
+                                 "app_os" : "ios"]
 
         modelCtrl.verifyOTP(params: params, succeeded: { (result) in
             if let mResult = result as? [String:AnyObject]{

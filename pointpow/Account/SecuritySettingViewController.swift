@@ -230,10 +230,10 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
                         itemCell.nameLabel.text = NSLocalizedString("string-title-pointpow-id", comment: "")
                         
                         if let data = self.userData as? [String:AnyObject] {
-                            let pointpow_id = data["pointpow_id"] as? String ?? ""
+                            let pointpow_id = data["pointpow_id"] as? String ?? "-"
                             itemCell.trailLabel.text = pointpow_id
                             
-                            if pointpow_id.isEmpty{
+                            if pointpow_id == "-" {
                                 itemCell.arrowImageView.isHidden = false
                                 itemCell.marginRight.constant = 20.0
                             }else{

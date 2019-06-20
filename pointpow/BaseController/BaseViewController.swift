@@ -1246,7 +1246,8 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             let mobile = mobileNumber.replace(target: "-", withString: "")
             let params:Parameters = ["ref_id" : ref ?? "",
                                      "otp" : otp ?? "",
-                                     "mobile" : mobile]
+                                     "mobile" : mobile,
+                                     "app_os": "ios"]
             
             modelCtrl.verifyOTP(params: params, succeeded: { (result) in
                 if let mResult = result as? [String:AnyObject]{
@@ -1339,13 +1340,14 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         
     }
     
-    private var countDownResend:Int = 30
+    private var countDownResend:Int = 60
     private var timerResend:Timer?
     private var sendButtonResend: UIButton?
     
     private func updateButtonResend(){
         self.sendButtonResend?.borderLightGrayColorProperties(borderWidth: 1)
-        self.sendButtonResend?.setTitle("\(prodTimeString(time: TimeInterval(countDownResend)))", for: .normal)
+        //self.sendButtonResend?.setTitle("\(prodTimeString(time: TimeInterval(countDownResend)))", for: .normal)
+        self.sendButtonResend?.setTitle("\(countDownResend)", for: .normal)
         self.sendButtonResend?.setTitleColor(UIColor.lightGray, for: .normal)
     }
     private  func resetButtonResend(){
@@ -1375,7 +1377,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     }
     private func removeCountDownLableResend() {
         //finish
-        countDownResend = 30
+        countDownResend = 60
         timerResend?.invalidate()
         timerResend = nil
        

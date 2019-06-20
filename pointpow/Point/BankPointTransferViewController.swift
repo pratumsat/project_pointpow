@@ -248,7 +248,6 @@ class BankPointTransferViewController: BaseViewController  {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-     
         if textField == self.amountTextField {
             let textRange = Range(range, in: textField.text!)!
             let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)

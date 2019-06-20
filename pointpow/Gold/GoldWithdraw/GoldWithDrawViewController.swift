@@ -228,6 +228,7 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
         
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+   
         
         if textField == self.amountTextField {
             let textRange = Range(range, in: textField.text!)!

@@ -326,6 +326,7 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
     }
   
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    
         
         if textField == self.pointpowTextField {
             let textRange = Range(range, in: textField.text!)!

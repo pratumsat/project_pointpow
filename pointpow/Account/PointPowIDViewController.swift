@@ -118,6 +118,7 @@ class PointPowIDViewController: BaseViewController {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
+     
         if textField == self.pointpowIdTextField {
             let startingLength = textField.text?.count ?? 0
             let lengthToAdd = string.count
@@ -125,17 +126,18 @@ class PointPowIDViewController: BaseViewController {
             
             let newLength = startingLength + lengthToAdd - lengthToReplace
             
-            if newLength <= 10 {
-                self.countlimitLabel.text = "\(newLength)/10"
+            if !isValidString(string){
+                return false
             }
+            
             if newLength == 0 {
                 self.clearImageView?.isHidden = true
             }else{
                 self.clearImageView?.isHidden = false
             }
             
-            if !isValidString(string){
-                return false
+            if newLength <= 10 {
+                self.countlimitLabel.text = "\(newLength)/10"
             }
             return newLength <= 10
             

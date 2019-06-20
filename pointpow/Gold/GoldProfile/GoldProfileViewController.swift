@@ -452,6 +452,12 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
         formatter.dateFormat = "dd MMMM yyyy"
         self.birthdateTextField.text = formatter.string(from: pickerView!.date)
         self.view.endEditing(true)
+        
+        if hasChangeData("", typeValue: "birthdate"){
+            self.enableButton()
+        }else{
+            self.disableButton()
+        }
     }
     
     @objc func cancelDatePicker(){
@@ -460,15 +466,11 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
 
     func textFieldDidEndEditing(_ textField: UITextField) {
         
-        if hasChangeData(){
-            self.enableButton()
-        }else{
-            self.disableButton()
-        }
+     
         
     }
     
-    func hasChangeData() -> Bool {
+    func hasChangeData(_ txt:String , typeValue:String) -> Bool {
         if let data  = self.userData as? [String:AnyObject] {
             let email = data["goldsaving_member"]?["email"]as? String ?? ""
             let citizen_id = data["goldsaving_member"]?["citizen_id"]as? String ?? ""
@@ -476,24 +478,55 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
             let last_name = data["goldsaving_member"]?["lastname"]as? String ?? ""
             let first_name = data["goldsaving_member"]?["firstname"] as? String ?? ""
             
-            if self.firstNameTextField.text != first_name || (self.idCardPhoto != nil) {
-                return true
+            if typeValue == "first_name"{
+                if txt != first_name  || (self.idCardPhoto != nil){
+                    return true
+                }
             }
-            if self.lastNameTextField.text != last_name || (self.idCardPhoto != nil)  {
-                return true
+            if typeValue == "last_name"{
+                if txt != last_name  || (self.idCardPhoto != nil){
+                    return true
+                }
             }
-            if self.laserIdTextField.text?.replace(target: "-", withString: "") != laser_id || (self.idCardPhoto != nil)  {
-                return true
+            if typeValue == "laser_id" {
+                if txt.replace(target: "-", withString: "") != laser_id  || (self.idCardPhoto != nil){
+                    return true
+                }
             }
-            if self.idcardTextField.text?.replace(target: "-", withString: "") != citizen_id || (self.idCardPhoto != nil)  {
-                return true
+            if typeValue == "pid"{
+                if txt.replace(target: "-", withString: "") != citizen_id  || (self.idCardPhoto != nil){
+                    return true
+                }
             }
-            if self.birthdateTextField.text != self.currentBirthdate || (self.idCardPhoto != nil)  {
-                return true
+            if typeValue == "email"{
+                if txt != email  || (self.idCardPhoto != nil){
+                    return true
+                }
             }
-            if self.emailTextField.text != email || (self.idCardPhoto != nil) {
-                return true
+            if typeValue == "birthdate" {
+                if self.birthdateTextField.text != self.currentBirthdate || (self.idCardPhoto != nil){
+                    return true
+                }
             }
+
+//            if self.firstNameTextField.text != first_name || (self.idCardPhoto != nil) {
+//                return true
+//            }
+//            if self.lastNameTextField.text != last_name || (self.idCardPhoto != nil)  {
+//                return true
+//            }
+//            if self.laserIdTextField.text?.replace(target: "-", withString: "") != laser_id || (self.idCardPhoto != nil)  {
+//                return true
+//            }
+//            if self.idcardTextField.text?.replace(target: "-", withString: "") != citizen_id || (self.idCardPhoto != nil)  {
+//                return true
+//            }
+//            if self.birthdateTextField.text != self.currentBirthdate || (self.idCardPhoto != nil)  {
+//                return true
+//            }
+//            if self.emailTextField.text != email || (self.idCardPhoto != nil) {
+//                return true
+//            }
         }
         
         return false
@@ -507,6 +540,9 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
   
+        let textRange = Range(range, in: textField.text!)!
+        let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
+        
         
         if textField  == self.firstNameTextField {
             let startingLength = textField.text?.count ?? 0
@@ -522,6 +558,12 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
                 self.clearImageView?.isHidden = true
             }else{
                 self.clearImageView?.isHidden = false
+            }
+            
+            if hasChangeData(updatedText, typeValue: "first_name"){
+                self.enableButton()
+            }else{
+                self.disableButton()
             }
             
             if isValidName(string) {
@@ -545,6 +587,12 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
                 self.clearImageView2?.isHidden = false
             }
            
+            if hasChangeData(updatedText, typeValue: "last_name"){
+                self.enableButton()
+            }else{
+                self.disableButton()
+            }
+            
             if isValidName(string) {
                 return true
             }else{
@@ -574,6 +622,14 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
             }  else {
                 let newText = String((text + string).filter({ $0 != "-" }).prefix(13))
                 textField.text = newText.chunkFormattedPersonalID()
+            }
+            
+            if newLength <= 17 {
+                if hasChangeData(updatedText, typeValue: "pid"){
+                    self.enableButton()
+                }else{
+                    self.disableButton()
+                }
             }
             
             
@@ -619,6 +675,11 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
             }else{
                 self.clearImageView5?.isHidden = false
             }
+            if hasChangeData(updatedText, typeValue: "email"){
+                self.enableButton()
+            }else{
+                self.disableButton()
+            }
             
         }
         if textField  == self.laserIdTextField {
@@ -634,6 +695,9 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
             }else{
                 self.clearImageView6?.isHidden = false
             }
+            
+           
+            
             if newLength <= 2 {
                 if !isValidName(string) {
                     return false
@@ -652,6 +716,16 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
                 let newText = String((text + string).filter({ $0 != "-" }).prefix(12))
                 textField.text = newText.chunkFormattedLaserID()
             }
+            
+            if newLength <= 14 {
+                if hasChangeData(updatedText, typeValue: "laser_id"){
+                    self.enableButton()
+                }else{
+                    self.disableButton()
+                }
+            }
+            
+            
             return false
             
         }

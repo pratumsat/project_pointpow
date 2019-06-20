@@ -61,6 +61,11 @@ class PointPowIDViewController: BaseViewController {
             self.showMessagePrompt(NSLocalizedString("string-error-empty-pointpow-id", comment: ""))
             return
         }
+        if !isValidPointPow2Digit(pointpowId){
+            self.showMessagePrompt(NSLocalizedString("string-error-invalid-pointpow-id", comment: ""))
+            return
+        }
+        
        
         
         self.confirmSavePointPowID() {
@@ -96,6 +101,8 @@ class PointPowIDViewController: BaseViewController {
         
         
     }
+   
+    
     func confirmSavePointPowID(_ confirmCallback:(()->Void)?){
         
         let alert = UIAlertController(title: NSLocalizedString("string-dailog-title-save-pointpow-id", comment: ""),
@@ -126,9 +133,12 @@ class PointPowIDViewController: BaseViewController {
             
             let newLength = startingLength + lengthToAdd - lengthToReplace
             
-            if !isValidString(string){
-                return false
+            if !string.isEmpty {
+                if !isEnglishCharacters(string){
+                    return false
+                }
             }
+            
             
             if newLength == 0 {
                 self.clearImageView?.isHidden = true

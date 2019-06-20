@@ -44,7 +44,7 @@ class PersonalViewController: BaseViewController  {
     var errorBirthdateLabel:UILabel?
     
     var userData:AnyObject?
-     var currentBirthdate = ""
+    var currentBirthdate = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -170,6 +170,8 @@ class PersonalViewController: BaseViewController  {
                 
                 self.birthdateTextField.text = formatter.string(from: d1)
                 self.currentBirthdate = self.birthdateTextField.text!
+                
+                
             }
             
             
@@ -188,6 +190,12 @@ class PersonalViewController: BaseViewController  {
         formatter.dateFormat = "dd MMMM yyyy"
         self.birthdateTextField.text = formatter.string(from: pickerView!.date)
         self.view.endEditing(true)
+        
+        if hasChangeData("", typeValue: "birthdate"){
+            self.enableButton()
+        }else{
+            self.disableButton()
+        }
     }
     
     @objc func cancelDatePicker(){
@@ -275,11 +283,6 @@ class PersonalViewController: BaseViewController  {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
        
-        if hasChangeData(){
-            self.enableButton()
-        }else{
-            self.disableButton()
-        }
        
     }
     override func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -287,28 +290,40 @@ class PersonalViewController: BaseViewController  {
         self.addColorLineView(textField)
     }
     
-    func hasChangeData() -> Bool {
+    func hasChangeData(_ txt:String , typeValue:String) -> Bool {
         if let data  = self.userData as? [String:AnyObject] {
             let email = data["email"]as? String ?? ""
             let pid = data["pid"]as? String ?? ""
             let last_name = data["last_name"]as? String ?? ""
             let first_name = data["first_name"] as? String ?? ""
             
-            if self.firstNameTextField.text != first_name {
-                return true
+            if typeValue == "first_name" {
+                if txt != first_name {
+                    return true
+                }
             }
-            if self.lastNameTextField.text != last_name {
-                return true
+            if typeValue == "last_name" {
+                if txt != last_name {
+                    return true
+                }
             }
-            if self.parsonalTextField.text?.replace(target: "-", withString: "") != pid {
-                return true
+            if typeValue == "pid" {
+                if txt.replace(target: "-", withString: "") != pid {
+                    return true
+                }
             }
-            if self.birthdateTextField.text != self.currentBirthdate {
-                return true
+            if typeValue == "email" {
+                if txt != email {
+                    return true
+                }
             }
-            if self.emailTextField.text != email {
-                return true
+            if typeValue == "birthdate" {
+                if self.birthdateTextField.text != self.currentBirthdate {
+                    return true
+                }
             }
+            
+
         }
         
         return false
@@ -316,7 +331,10 @@ class PersonalViewController: BaseViewController  {
     
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-       
+        let textRange = Range(range, in: textField.text!)!
+        let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
+        
+        
         if textField  == self.firstNameTextField {
             let startingLength = textField.text?.count ?? 0
             let lengthToAdd = string.count
@@ -330,11 +348,20 @@ class PersonalViewController: BaseViewController  {
             }else{
                 self.clearImageView?.isHidden = false
             }
+            
+            
+            if hasChangeData(updatedText, typeValue: "first_name"){
+                self.enableButton()
+            }else{
+                self.disableButton()
+            }
+            
             if isValidName(string) {
                 return true
             }else{
                 return false
             }
+            
         }
         if textField  == self.lastNameTextField {
             let startingLength = textField.text?.count ?? 0
@@ -349,6 +376,12 @@ class PersonalViewController: BaseViewController  {
             }else{
                 self.clearImageView2?.isHidden = false
             }
+            if hasChangeData(updatedText, typeValue: "last_name"){
+                self.enableButton()
+            }else{
+                self.disableButton()
+            }
+            
             if isValidName(string) {
                 return true
             }else{
@@ -378,6 +411,14 @@ class PersonalViewController: BaseViewController  {
                 let newText = String((text + string).filter({ $0 != "-" }).prefix(13))
                 textField.text = newText.chunkFormattedPersonalID()
             }
+            if newLength <= 17 {
+                if hasChangeData(updatedText, typeValue: "pid"){
+                    self.enableButton()
+                }else{
+                    self.disableButton()
+                }
+            }
+            
             return false
         }
         if textField  == self.emailTextField {
@@ -392,6 +433,12 @@ class PersonalViewController: BaseViewController  {
                 self.clearImageView4?.isHidden = true
             }else{
                 self.clearImageView4?.isHidden = false
+            }
+            
+            if hasChangeData(updatedText, typeValue: "email"){
+                self.enableButton()
+            }else{
+                self.disableButton()
             }
             
         }

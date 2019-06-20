@@ -981,14 +981,31 @@ func isValidName2Digit(_ str:String) -> Bool{
     }
     guard !isValidNumber(str) else {return false}
     guard isValidString(str) else {return false}
-    
+   
     if str.count < 2 {
         return false
     }
     
     return true
 }
-
+func isValidPointPow2Digit(_ str:String) -> Bool{
+    if str.isEmpty {
+        return false
+    }
+    guard !isEnglishCharacters(str) else {return false}
+    if str.count < 2 {
+        return false
+    }
+    
+    return true
+}
+func isEnglishCharacters(_ str:String) -> Bool {
+    let englishRegEx = "[A-Z0-9a-z]"
+    
+    let string = NSPredicate(format:"SELF MATCHES %@", englishRegEx)
+    return string.evaluate(with: str)
+    
+}
 func isValidName(_ str:String) -> Bool{
     if str.isEmpty {
         return true

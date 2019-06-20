@@ -177,7 +177,10 @@ class PersonalPopupViewController: BaseViewController {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-     
+        
+        let textRange = Range(range, in: textField.text!)!
+        let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
+        
         if textField  == self.firstNameTextField {
             let startingLength = textField.text?.count ?? 0
             let lengthToAdd = string.count
@@ -191,6 +194,13 @@ class PersonalPopupViewController: BaseViewController {
             }else{
                 self.clearImageView?.isHidden = false
             }
+            
+            if hasChangeData(updatedText, typeValue: "first_name"){
+                self.enableButton()
+            }else{
+                self.disableButton()
+            }
+            
             if isValidName(string) {
                 return true
             }else{
@@ -209,6 +219,12 @@ class PersonalPopupViewController: BaseViewController {
                 self.clearImageView2?.isHidden = true
             }else{
                 self.clearImageView2?.isHidden = false
+            }
+            
+            if hasChangeData(updatedText, typeValue: "last_name"){
+                self.enableButton()
+            }else{
+                self.disableButton()
             }
             if isValidName(string) {
                 return true
@@ -239,6 +255,15 @@ class PersonalPopupViewController: BaseViewController {
                 let newText = String((text + string).filter({ $0 != "-" }).prefix(13))
                 textField.text = newText.chunkFormattedPersonalID()
             }
+            
+            if newLength <= 17 {
+                if hasChangeData(updatedText, typeValue: "pid"){
+                    self.enableButton()
+                }else{
+                    self.disableButton()
+                }
+            }
+            
             return false
             
         }
@@ -254,6 +279,12 @@ class PersonalPopupViewController: BaseViewController {
                 self.clearImageView4?.isHidden = true
             }else{
                 self.clearImageView4?.isHidden = false
+            }
+            
+            if hasChangeData(updatedText, typeValue: "email"){
+                self.enableButton()
+            }else{
+                self.disableButton()
             }
            
         }
@@ -398,33 +429,38 @@ class PersonalPopupViewController: BaseViewController {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
-        if hasChangeData(){
-            self.enableButton()
-        }else{
-            self.disableButton()
-        }
+      
         
     }
     
-    func hasChangeData() -> Bool {
+    func hasChangeData(_ txt:String , typeValue:String) -> Bool {
         if let data  = self.userData as? [String:AnyObject] {
             let email = data["email"]as? String ?? ""
             let pid = data["pid"]as? String ?? ""
             let last_name = data["last_name"]as? String ?? ""
             let first_name = data["first_name"] as? String ?? ""
             
-            if self.firstNameTextField.text != first_name {
-                return true
+            if typeValue == "first_name" {
+                if txt != first_name {
+                    return true
+                }
             }
-            if self.lastNameTextField.text != last_name {
-                return true
+            if typeValue == "last_name" {
+                if txt != last_name {
+                    return true
+                }
             }
-            if self.parsonalTextField.text?.replace(target: "-", withString: "") != pid {
-                return true
+            if typeValue == "pid" {
+                if txt.replace(target: "-", withString: "") != pid {
+                    return true
+                }
             }
-            if self.optionTextField.text != email {
-                return true
+            if typeValue == "email" {
+                if txt != email {
+                    return true
+                }
             }
+           
         }
         
         return false

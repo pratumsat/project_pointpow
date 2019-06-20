@@ -9043,7 +9043,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fqr-fl-lSf">
-                                        <rect key="frame" x="20" y="167" width="374" height="40"/>
+                                        <rect key="frame" x="20" y="167.33333333333334" width="374" height="40"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="4LV-IJ-Aqo"/>
@@ -9063,9 +9063,8 @@
                                             <constraint firstAttribute="height" constant="1" id="YCH-XG-BnN"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hY5-65-LTX">
-                                        <rect key="frame" x="20" y="88" width="374" height="39"/>
-                                        <string key="text">Point Pow ID คือ ชื่อผู้ใช้งานเฉพาะสำหรับคุณ ที่ช่วยให้ผู้ใช้คนอื่นโอนพ้อยท์ให้คุณได้ง่ายขึ้นเมื่อกดบันทึกแล้วจะไม่สามารถเปลี่ยนแปลงได้</string>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*กรุณากรอกตัวอักษร (A-Z, a-z, 0-9) อย่างน้อย 2 ตัว" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hY5-65-LTX">
+                                        <rect key="frame" x="20" y="88" width="374" height="19.666666666666671"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -9076,9 +9075,15 @@
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*Point Pow ID คือ รหัสบัญชีผู้ใช้งานเฉพาะสำหรับคุณ" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iGL-QL-9zr">
+                                        <rect key="frame" x="20" y="107.66666666666666" width="374" height="19.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="Fqr-fl-lSf" firstAttribute="top" secondItem="hY5-65-LTX" secondAttribute="bottom" constant="40" id="0vE-Kc-F3I"/>
+                                    <constraint firstItem="iGL-QL-9zr" firstAttribute="trailing" secondItem="5to-hL-ml2" secondAttribute="trailing" id="49Q-cm-FGg"/>
                                     <constraint firstItem="5to-hL-ml2" firstAttribute="top" secondItem="1qX-vo-1xv" secondAttribute="top" constant="40" id="6Yx-vq-Ac7"/>
                                     <constraint firstAttribute="trailing" secondItem="5to-hL-ml2" secondAttribute="trailing" id="7AA-i2-ZGR"/>
                                     <constraint firstItem="EZ6-vD-7xb" firstAttribute="bottom" secondItem="5to-hL-ml2" secondAttribute="top" id="9fn-Xq-Ox8"/>
@@ -9088,11 +9093,14 @@
                                     <constraint firstItem="L2t-vh-feY" firstAttribute="leading" secondItem="5to-hL-ml2" secondAttribute="leading" id="J6x-rS-DQ7"/>
                                     <constraint firstItem="L2t-vh-feY" firstAttribute="trailing" secondItem="5to-hL-ml2" secondAttribute="trailing" id="Les-Mf-1DE"/>
                                     <constraint firstAttribute="bottom" secondItem="Fqr-fl-lSf" secondAttribute="bottom" constant="10" id="Smd-5w-H8G"/>
+                                    <constraint firstItem="iGL-QL-9zr" firstAttribute="top" secondItem="hY5-65-LTX" secondAttribute="bottom" id="UMO-dR-ABw"/>
                                     <constraint firstItem="hY5-65-LTX" firstAttribute="top" secondItem="5to-hL-ml2" secondAttribute="bottom" constant="8" id="XKE-vq-6pu"/>
                                     <constraint firstItem="Fqr-fl-lSf" firstAttribute="leading" secondItem="5to-hL-ml2" secondAttribute="leading" id="Z2v-BU-jWH"/>
                                     <constraint firstItem="hY5-65-LTX" firstAttribute="leading" secondItem="5to-hL-ml2" secondAttribute="leading" id="cCc-Fb-OlT"/>
+                                    <constraint firstItem="iGL-QL-9zr" firstAttribute="leading" secondItem="5to-hL-ml2" secondAttribute="leading" id="gA8-zd-Khh"/>
                                     <constraint firstItem="EZ6-vD-7xb" firstAttribute="trailing" secondItem="5to-hL-ml2" secondAttribute="trailing" id="ixF-U9-4bC"/>
                                     <constraint firstItem="5to-hL-ml2" firstAttribute="centerX" secondItem="1qX-vo-1xv" secondAttribute="centerX" id="l8F-LJ-8bh"/>
+                                    <constraint firstItem="Fqr-fl-lSf" firstAttribute="top" secondItem="iGL-QL-9zr" secondAttribute="bottom" constant="40" id="nge-qG-GuP"/>
                                     <constraint firstItem="Fqr-fl-lSf" firstAttribute="trailing" secondItem="5to-hL-ml2" secondAttribute="trailing" id="pak-13-fIZ"/>
                                 </constraints>
                             </scrollView>

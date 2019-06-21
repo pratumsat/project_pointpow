@@ -237,13 +237,13 @@ class PointFriendTransferViewController: BaseViewController {
         let updatedText = self.amountTextField.text!
         
         var amount = 0.0
-        if  (Double(updatedText) != nil) {
-            amount = Double(updatedText)!
+        if let iPoint = Int(updatedText.replace(target: ",", withString: "")){
+            amount = Double(iPoint)
         }
         amount -= Double(exchangeRate)
         
         let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .none
+        numberFormatter.numberStyle = .decimal
         numberFormatter.minimumFractionDigits = 0
         
         self.amountTextField.text = numberFormatter.string(from: NSNumber(value: amount))
@@ -268,8 +268,8 @@ class PointFriendTransferViewController: BaseViewController {
         let updatedText = self.amountTextField.text!
         
         var amount = 0.0
-        if  (Double(updatedText) != nil) {
-           amount = Double(updatedText)!
+        if let iPoint = Int(updatedText.replace(target: ",", withString: "")){
+           amount = Double(iPoint)
         }
         
         amount += Double(exchangeRate)
@@ -285,7 +285,7 @@ class PointFriendTransferViewController: BaseViewController {
         
         
         let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .none
+        numberFormatter.numberStyle = .decimal
         numberFormatter.minimumFractionDigits = 0
         
         self.amountTextField.text = numberFormatter.string(from: NSNumber(value: amount))
@@ -333,8 +333,8 @@ class PointFriendTransferViewController: BaseViewController {
             if updatedText.isEmpty {
                 textField.text = ""
             }
-            if  (Double(updatedText) != nil) {
-                let amount = Double(updatedText)!
+            if let iPoint = Int(updatedText.replace(target: ",", withString: "")){
+                let amount = Double(iPoint)
                 if amount <= minPointTransfer {
                     disableImageView(self.lessImageView)
                 }else{
@@ -349,6 +349,14 @@ class PointFriendTransferViewController: BaseViewController {
                     }else{
                         disableImageView(self.moreImageView)
                     }
+                }
+                
+                if let iPoint = Int(updatedText.replace(target: ",", withString: "")){
+                    let numberFormatter = NumberFormatter()
+                    numberFormatter.numberStyle = .decimal
+                    
+                    textField.text = numberFormatter.string(from: NSNumber(value: iPoint))
+                    return false
                 }
             }else{
                 return false
@@ -368,8 +376,8 @@ class PointFriendTransferViewController: BaseViewController {
             let pointBalance = userData["member_point"]?["total"] as? NSNumber ?? 0
             
             var amount = 0.0
-            if  (Double(updatedText) != nil) {
-                amount = Double(updatedText)!
+            if let iPoint = Int(updatedText.replace(target: ",", withString: "")){
+                amount = Double(iPoint)
             }
             
             if amount == 0 {

@@ -598,6 +598,13 @@ extension String {
         return self.range(of: thaiWord, options: .literal) != nil ? true : false
     }
     
+    func isDecimal()->Bool{
+        let formatter = NumberFormatter()
+        formatter.allowsFloats = true
+        formatter.locale = Locale.current
+        return formatter.number(from: self) != nil
+    }
+    
     func chunkFormatted(withChunkSize chunkSize: Int = 3, withSeparator separator: Character = "-") -> String {
         return self.filter { $0 != separator }.chunk(n: chunkSize).map{ String($0) }.joined(separator: String(separator))
     }

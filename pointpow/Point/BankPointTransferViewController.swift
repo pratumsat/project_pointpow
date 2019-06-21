@@ -109,7 +109,7 @@ class BankPointTransferViewController: BaseViewController  {
                 self.rate = rate.doubleValue
                 self.exchangeRate = minimum.intValue
                 self.minPointTransfer = minimum.doubleValue
-                self.amountTextField.text = "\(minimum.intValue)"
+                
                 
                 let txtExchange = "\(point_in) \(pointName) = \(point_out) Point Pow"
                 self.providerPointNameLabel.text = pointName
@@ -122,8 +122,10 @@ class BankPointTransferViewController: BaseViewController  {
                 
                 
                 let numberFormatter = NumberFormatter()
-                numberFormatter.numberStyle = .none
+                numberFormatter.numberStyle = .decimal
                 numberFormatter.minimumFractionDigits = 0
+                
+                self.amountTextField.text = numberFormatter.string(from: NSNumber(value: minimum.intValue))
                 
                 let toPointPow = minimum.doubleValue*rate.doubleValue
                 self.exchangeRate2Label.text = numberFormatter.string(from: NSNumber(value: toPointPow))
@@ -190,40 +192,51 @@ class BankPointTransferViewController: BaseViewController  {
         let updatedText = self.amountTextField.text!
         
         var amount = 0.0
-        if  (Double(updatedText) != nil) {
-            amount = Double(updatedText)!
+        if let iPoint = Int(updatedText.replace(target: ",", withString: "")){
+            amount = Double(iPoint)
         }
         amount -= Double(exchangeRate)
         
         let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .none
+        numberFormatter.numberStyle = .decimal
         numberFormatter.minimumFractionDigits = 0
         
         self.amountTextField.text = numberFormatter.string(from: NSNumber(value: amount))
         
+        let toPointPow = amount*rate
+        self.exchangeRate2Label.text = numberFormatter.string(from: NSNumber(value: toPointPow))
+        
+        
         if amount <= minPointTransfer {
-            self.amountTextField.text = "\(exchangeRate)"
+            
+            let numberFormatter = NumberFormatter()
+            numberFormatter.numberStyle = .decimal
+            numberFormatter.minimumFractionDigits = 0
+            
+            self.amountTextField.text = numberFormatter.string(from: NSNumber(value: self.exchangeRate))
+            
+            let toPointPow = self.minPointTransfer*self.rate
+            self.exchangeRate2Label.text = numberFormatter.string(from: NSNumber(value: toPointPow))
+            
             disableImageView(self.lessImageView)
         }else{
             enableImageView(self.lessImageView)
         }
         
-        let toPointPow = amount*rate
-        self.exchangeRate2Label.text = numberFormatter.string(from: NSNumber(value: toPointPow))
         
     }
     @objc func morePointTapped() {
         let updatedText = self.amountTextField.text!
         
         var amount = 0.0
-        if  (Double(updatedText) != nil) {
-            amount = Double(updatedText)!
+        if let iPoint = Int(updatedText.replace(target: ",", withString: "")){
+            amount = Double(iPoint)
         }
         
         amount += Double(exchangeRate)
         
         let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .none
+        numberFormatter.numberStyle = .decimal
         numberFormatter.minimumFractionDigits = 0
         
         self.amountTextField.text = numberFormatter.string(from: NSNumber(value: amount))
@@ -253,22 +266,24 @@ class BankPointTransferViewController: BaseViewController  {
             let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
             
             
-            if  (Double(updatedText) != nil) {
-                let amount = Double(updatedText)!
+            if let iPoint = Int(updatedText.replace(target: ",", withString: "")){
+                let amount = Double(iPoint)
                 if amount <= minPointTransfer {
-                    
                     disableImageView(self.lessImageView)
-                    
                 }else{
                     enableImageView(self.lessImageView)
                 }
-                let numberFormatter = NumberFormatter()
-                numberFormatter.numberStyle = .none
-                numberFormatter.minimumFractionDigits = 0
-                let toPointPow = amount*rate
-                self.exchangeRate2Label.text = numberFormatter.string(from: NSNumber(value: toPointPow))
+                
+                if let iPoint = Int(updatedText.replace(target: ",", withString: "")){
+                    let numberFormatter = NumberFormatter()
+                    numberFormatter.numberStyle = .decimal
+                    textField.text = numberFormatter.string(from: NSNumber(value: iPoint))
+                    let toPointPow = amount*rate
+                    self.exchangeRate2Label.text = numberFormatter.string(from: NSNumber(value: toPointPow))
+                    return false
+                }
             }else{
-                //return false
+                return false
             }
         }
         return true
@@ -278,8 +293,8 @@ class BankPointTransferViewController: BaseViewController  {
         let updatedText = self.amountTextField.text!
         
         var amount = 0
-        if  (Int(updatedText) != nil) {
-            amount = Int(updatedText)!
+        if let iPoint = Int(updatedText.replace(target: ",", withString: "")){
+            amount = Int(iPoint)
         }
         if amount == 0 {
             self.showMessagePrompt(NSLocalizedString("string-dailog-saving-point-pointspend-empty", comment: ""))

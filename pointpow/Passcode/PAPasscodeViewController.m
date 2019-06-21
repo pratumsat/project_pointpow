@@ -498,7 +498,7 @@ static NSTimeInterval AnimationDuration = 0.3;
     
     
     
-    [constraints addObject:[NSLayoutConstraint constraintWithItem:resendOTPButton attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:verifyMobileTextField attribute:NSLayoutAttributeRight multiplier:1 constant:0]];
+    [constraints addObject:[NSLayoutConstraint constraintWithItem:resendOTPButton attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:verifyOTPTextField attribute:NSLayoutAttributeRight multiplier:1 constant:20]];
     
     [constraints addObject:[NSLayoutConstraint constraintWithItem:refOTPLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:verifyOTPTextField attribute:NSLayoutAttributeBottom multiplier:1 constant:10]];
     

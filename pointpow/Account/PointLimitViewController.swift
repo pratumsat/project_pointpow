@@ -36,7 +36,12 @@ class PointLimitViewController: BaseViewController {
         self.pointlimitTextField.autocorrectionType = .no
         
         if let point = self.pointlimit {
-            self.pointlimitTextField.text = point
+            let numberFormatter = NumberFormatter()
+            numberFormatter.numberStyle = .decimal
+            if let iPont = Int(point) {
+                self.pointlimitTextField.text = numberFormatter.string(from: NSNumber(value: iPont))
+            }
+          
         }
     }
    
@@ -52,7 +57,7 @@ class PointLimitViewController: BaseViewController {
             }
             
         }
-        let params:Parameters = ["limit_pay"  : point]
+        let params:Parameters = ["limit_pay"  : point.replace(target: ",", withString: "")]
         
         self.modelCtrl.memberSetting(params: params, true, succeeded: { (result) in
             print(result)
@@ -79,11 +84,26 @@ class PointLimitViewController: BaseViewController {
             self.handlerMessageError(messageError)
             self.refreshControl?.endRefreshing()
         }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        
-        
-      
-        
+        if textField == self.pointlimitTextField{
+            guard let textRange = Range(range, in: textField.text!) else { return true}
+            let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
+            
+            if let iPoint = Int(updatedText.replace(target: ",", withString: "")){
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                
+                textField.text = numberFormatter.string(from: NSNumber(value: iPoint))
+                return false
+            }
+            
+            
+            
+        }
+        return true
     }
 
 }

@@ -9202,7 +9202,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQw-XF-zMD">
-                                        <rect key="frame" x="20" y="461.66666666666669" width="374" height="40"/>
+                                        <rect key="frame" x="20" y="481.66666666666663" width="374" height="40"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="gXD-7K-oTY"/>
@@ -9225,7 +9225,7 @@
                                     <constraint firstAttribute="bottom" secondItem="bQw-XF-zMD" secondAttribute="bottom" constant="60" id="YmU-DW-dvw"/>
                                     <constraint firstAttribute="trailing" secondItem="bQw-XF-zMD" secondAttribute="trailing" constant="20" id="cQk-Dg-6Qw"/>
                                     <constraint firstItem="bQw-XF-zMD" firstAttribute="centerX" secondItem="I9j-Qg-CDW" secondAttribute="centerX" id="dRo-UE-7Mn"/>
-                                    <constraint firstItem="bQw-XF-zMD" firstAttribute="top" secondItem="sG8-CN-eAm" secondAttribute="bottom" constant="20" id="sbP-d0-Ils"/>
+                                    <constraint firstItem="bQw-XF-zMD" firstAttribute="top" secondItem="sG8-CN-eAm" secondAttribute="bottom" constant="40" id="sbP-d0-Ils"/>
                                     <constraint firstItem="I9j-Qg-CDW" firstAttribute="centerX" secondItem="ZqK-zL-ItD" secondAttribute="centerX" id="vXH-Hn-LAD"/>
                                     <constraint firstItem="I9j-Qg-CDW" firstAttribute="centerY" secondItem="ZqK-zL-ItD" secondAttribute="centerY" multiplier="0.6" id="wJF-uH-bVO"/>
                                     <constraint firstItem="sG8-CN-eAm" firstAttribute="top" secondItem="tXl-zV-wI6" secondAttribute="bottom" id="zrB-9u-n7g"/>

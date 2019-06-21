@@ -1249,7 +1249,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         print("Confirm OTP \(otp!)")
         print("Confirm REF \(ref!)")
         
-        if otp.isEmpty {
+        if otp.trimmingCharacters(in: .whitespaces).isEmpty {
             self.showMessagePrompt2(NSLocalizedString("string-error-otp-empty", comment: "")) {
                 //ok callback
             }

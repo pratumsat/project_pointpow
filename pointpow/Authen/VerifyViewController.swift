@@ -227,6 +227,14 @@ class VerifyViewController: BaseViewController {
         let otp = self.otpTextField.text!
         //self.errorOTPlLabel?.removeFromSuperview()
 
+        if otp.trimmingCharacters(in: .whitespaces).isEmpty{
+            print("isEmpty")
+            self.showMessagePrompt(NSLocalizedString("string-error-empty-otp", comment: ""))
+            return
+        }
+        
+        
+        
        let params:Parameters = ["ref_id" : self.ref_id ?? "",
                                  "otp" : otp,
                                  "mobile" : self.mobilePhone ?? "",

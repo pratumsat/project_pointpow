@@ -152,7 +152,13 @@ class VerifyMobileNumberViewController: BaseViewController {
     }
     @IBAction func verifyTapped(_ sender: Any) {
         let otp = self.otpTextField.text!
-       
+        
+        if otp.trimmingCharacters(in: .whitespaces).isEmpty{
+            print("isEmpty")
+            self.showMessagePrompt(NSLocalizedString("string-error-empty-otp", comment: ""))
+            return
+        }
+        
         let params:Parameters = ["ref_id" : self.ref_id ?? "",
                                  "otp" : otp,
                                  "app_os": "ios",

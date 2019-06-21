@@ -5,7 +5,6 @@
 //  Created by thanawat on 11/9/2561 BE.
 //  Copyright © 2561 abcpoint. All rights reserved.
 //
-
 import Foundation
 import UIKit
 import LocalAuthentication
@@ -987,7 +986,7 @@ func isValidName2Digit(_ str:String) -> Bool{
     guard !isValidNumber(str) else {return false}
     guard isValidString(str) else {return false}
 
-    if str.count < 2 {
+    if ConstantObjectiveC.getDigitForThaiLanguage(str) < 2 {
         return false
     }
     

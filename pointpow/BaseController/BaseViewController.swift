@@ -1352,14 +1352,14 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         
     }
     
-    private var countDownResend:Int = 60
+    private var countDownResend:Int = 300
     private var timerResend:Timer?
     private var sendButtonResend: UIButton?
     
     private func updateButtonResend(){
         self.sendButtonResend?.borderLightGrayColorProperties(borderWidth: 1)
-        //self.sendButtonResend?.setTitle("\(prodTimeString(time: TimeInterval(countDownResend)))", for: .normal)
-        self.sendButtonResend?.setTitle("\(countDownResend)", for: .normal)
+        self.sendButtonResend?.setTitle("\(prodTimeString(time: TimeInterval(countDownResend)))", for: .normal)
+        //self.sendButtonResend?.setTitle("\(countDownResend)", for: .normal)
         self.sendButtonResend?.setTitleColor(UIColor.lightGray, for: .normal)
     }
     private  func resetButtonResend(){
@@ -1389,7 +1389,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     }
     private func removeCountDownLableResend() {
         //finish
-        countDownResend = 60
+        countDownResend = 300
         timerResend?.invalidate()
         timerResend = nil
        

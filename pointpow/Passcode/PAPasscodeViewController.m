@@ -64,7 +64,7 @@ static NSTimeInterval AnimationDuration = 0.3;
     UIView *view = [[UIView alloc] init];
     view.backgroundColor = [UIColor whiteColor]; //[UIColor colorWithWhite:0.9 alpha:1.0];
     
- 
+
     
     // contentView is set to the visible area (below nav bar, above keyboard)
     contentView = [[UIScrollView alloc] init];

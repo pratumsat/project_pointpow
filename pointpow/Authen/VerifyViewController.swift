@@ -36,7 +36,7 @@ class VerifyViewController: BaseViewController {
     var forgotPassword:Bool = false {
         didSet{
             if forgotPassword {
-                countDown = 60
+                countDown = 300
             }else{
                 countDown = 60
             }
@@ -103,11 +103,11 @@ class VerifyViewController: BaseViewController {
     func updateButton(){
         self.sendButton.borderLightGrayColorProperties(borderWidth: 1)
      
-        //if forgotPassword {
-        //    self.sendButton.setTitle("\(prodTimeString(time: TimeInterval(countDown)) )", for: .normal)
-        //}else{
+        if forgotPassword {
+            self.sendButton.setTitle("\(prodTimeString(time: TimeInterval(countDown)) )", for: .normal)
+        }else{
             self.sendButton.setTitle("\(countDown)", for: .normal)
-        //}
+        }
         self.sendButton.setTitleColor(UIColor.lightGray, for: .normal)
         
     }
@@ -140,7 +140,7 @@ class VerifyViewController: BaseViewController {
     func removeCountDownLable() {
         //finish
         if forgotPassword {
-            countDown = 60
+            countDown = 300
         }else{
             countDown = 60
         }

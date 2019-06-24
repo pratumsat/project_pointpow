@@ -1929,6 +1929,10 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             self.AlertMessageDialogOK(NSLocalizedString("error-connect-server", comment: ""))
             return
         }
+        if messageError == "429"{
+            self.AlertMessageDialogOK(NSLocalizedString("error-connect-server-to-many-request", comment: ""))
+            return
+        }
         self.AlertMessageDialogOK(messageError , title: title)
     }
     

@@ -178,6 +178,12 @@ class ModelController {
                     return
                     
                 }
+              
+               if  response.response?.statusCode == 429 {
+                    failure?("429")
+                    return
+               }
+               
                 if let data = response.data {
                     if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
                         

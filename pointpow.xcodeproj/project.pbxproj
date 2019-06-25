@@ -65,6 +65,19 @@
 		C11A93C0218C2AD900627B44 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93BF218C2AD900627B44 /* ForgotPasswordViewController.swift */; };
 		C11A93C4218FF3E200627B44 /* VerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11A93C3218FF3E200627B44 /* VerifyViewController.swift */; };
 		C11AFC7322BCBE3800573C27 /* ConstantObjectiveC.m in Sources */ = {isa = PBXBuildFile; fileRef = C11AFC7222BCBE3800573C27 /* ConstantObjectiveC.m */; };
+		C11AFC7822C1C2D000573C27 /* ShoppingSWRevealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11AFC7722C1C2D000573C27 /* ShoppingSWRevealViewController.swift */; };
+		C11AFC7A22C1D8ED00573C27 /* MainTabbarShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11AFC7922C1D8ED00573C27 /* MainTabbarShoppingViewController.swift */; };
+		C11AFC7C22C1DE4C00573C27 /* ShoppingNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11AFC7B22C1DE4C00573C27 /* ShoppingNavViewController.swift */; };
+		C11AFC7E22C1DE8A00573C27 /* ShoppingMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11AFC7D22C1DE8A00573C27 /* ShoppingMenuTableViewController.swift */; };
+		C11AFC8022C1DEEA00573C27 /* ShoppingHomeNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11AFC7F22C1DEEA00573C27 /* ShoppingHomeNavViewController.swift */; };
+		C11AFC8622C1DF5E00573C27 /* HomeShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11AFC8522C1DF5E00573C27 /* HomeShoppingViewController.swift */; };
+		C11AFC8822C1DF7100573C27 /* ProductShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11AFC8722C1DF7100573C27 /* ProductShoppingViewController.swift */; };
+		C11AFC8A22C1DF8300573C27 /* PromotionShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11AFC8922C1DF8300573C27 /* PromotionShoppingViewController.swift */; };
+		C11AFC8C22C1DF9200573C27 /* AccountShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11AFC8B22C1DF9200573C27 /* AccountShoppingViewController.swift */; };
+		C11AFC8E22C1DFAA00573C27 /* ShoppingBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11AFC8D22C1DFAA00573C27 /* ShoppingBaseViewController.swift */; };
+		C11AFC9022C1DFFA00573C27 /* EmptyShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11AFC8F22C1DFFA00573C27 /* EmptyShoppingViewController.swift */; };
+		C11AFC9422C23E5500573C27 /* SubCateShoppingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11AFC9222C23E5500573C27 /* SubCateShoppingCell.swift */; };
+		C11AFC9522C23E5500573C27 /* SubCateShoppingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C11AFC9322C23E5500573C27 /* SubCateShoppingCell.xib */; };
 		C11B740B21BF67F700D0E769 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11B740A21BF67F700D0E769 /* DataController.swift */; };
 		C11BDFB821A2B95D00443D2D /* ItemFriendSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11BDFB621A2B95D00443D2D /* ItemFriendSummaryCell.swift */; };
 		C11BDFB921A2B95D00443D2D /* ItemFriendSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C11BDFB721A2B95D00443D2D /* ItemFriendSummaryCell.xib */; };
@@ -355,6 +368,19 @@
 		C11AC1D92270621100B7922F /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		C11AFC7222BCBE3800573C27 /* ConstantObjectiveC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConstantObjectiveC.m; sourceTree = "<group>"; };
 		C11AFC7422BCBE5900573C27 /* ConstantObjectiveC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConstantObjectiveC.h; sourceTree = "<group>"; };
+		C11AFC7722C1C2D000573C27 /* ShoppingSWRevealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingSWRevealViewController.swift; sourceTree = "<group>"; };
+		C11AFC7922C1D8ED00573C27 /* MainTabbarShoppingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbarShoppingViewController.swift; sourceTree = "<group>"; };
+		C11AFC7B22C1DE4C00573C27 /* ShoppingNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingNavViewController.swift; sourceTree = "<group>"; };
+		C11AFC7D22C1DE8A00573C27 /* ShoppingMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingMenuTableViewController.swift; sourceTree = "<group>"; };
+		C11AFC7F22C1DEEA00573C27 /* ShoppingHomeNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingHomeNavViewController.swift; sourceTree = "<group>"; };
+		C11AFC8522C1DF5E00573C27 /* HomeShoppingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeShoppingViewController.swift; sourceTree = "<group>"; };
+		C11AFC8722C1DF7100573C27 /* ProductShoppingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductShoppingViewController.swift; sourceTree = "<group>"; };
+		C11AFC8922C1DF8300573C27 /* PromotionShoppingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionShoppingViewController.swift; sourceTree = "<group>"; };
+		C11AFC8B22C1DF9200573C27 /* AccountShoppingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountShoppingViewController.swift; sourceTree = "<group>"; };
+		C11AFC8D22C1DFAA00573C27 /* ShoppingBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingBaseViewController.swift; sourceTree = "<group>"; };
+		C11AFC8F22C1DFFA00573C27 /* EmptyShoppingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyShoppingViewController.swift; sourceTree = "<group>"; };
+		C11AFC9222C23E5500573C27 /* SubCateShoppingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCateShoppingCell.swift; sourceTree = "<group>"; };
+		C11AFC9322C23E5500573C27 /* SubCateShoppingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubCateShoppingCell.xib; sourceTree = "<group>"; };
 		C11B740A21BF67F700D0E769 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		C11BDFB621A2B95D00443D2D /* ItemFriendSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFriendSummaryCell.swift; sourceTree = "<group>"; };
 		C11BDFB721A2B95D00443D2D /* ItemFriendSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemFriendSummaryCell.xib; sourceTree = "<group>"; };
@@ -863,6 +889,7 @@
 		C11A93B4218C00A000627B44 /* CollectionCell */ = {
 			isa = PBXGroup;
 			children = (
+				C11AFC9122C23DD400573C27 /* ShoppingBaseCell */,
 				C15F17002293D439005E8E71 /* TransectionCell */,
 				C12CCC622282B42000F26DCC /* PromotionCell */,
 				C1B32E3B22521850006AD7F2 /* LuckyCell */,
@@ -894,6 +921,73 @@
 				C12CCC602281590C00F26DCC /* PersonalDataViewController.swift */,
 			);
 			path = Authen;
+			sourceTree = "<group>";
+		};
+		C11AFC7522C1C27500573C27 /* Shopping */ = {
+			isa = PBXGroup;
+			children = (
+				C11AFC8422C1DF4C00573C27 /* Account */,
+				C11AFC8322C1DF4500573C27 /* Promotion */,
+				C11AFC8222C1DF3F00573C27 /* Product */,
+				C11AFC8122C1DF3A00573C27 /* Home */,
+				C11AFC7622C1C29500573C27 /* ShoppingBase */,
+			);
+			path = Shopping;
+			sourceTree = "<group>";
+		};
+		C11AFC7622C1C29500573C27 /* ShoppingBase */ = {
+			isa = PBXGroup;
+			children = (
+				C11AFC7B22C1DE4C00573C27 /* ShoppingNavViewController.swift */,
+				C11AFC7722C1C2D000573C27 /* ShoppingSWRevealViewController.swift */,
+				C11AFC7F22C1DEEA00573C27 /* ShoppingHomeNavViewController.swift */,
+				C11AFC7922C1D8ED00573C27 /* MainTabbarShoppingViewController.swift */,
+				C11AFC7D22C1DE8A00573C27 /* ShoppingMenuTableViewController.swift */,
+				C11AFC8D22C1DFAA00573C27 /* ShoppingBaseViewController.swift */,
+				C11AFC8F22C1DFFA00573C27 /* EmptyShoppingViewController.swift */,
+			);
+			path = ShoppingBase;
+			sourceTree = "<group>";
+		};
+		C11AFC8122C1DF3A00573C27 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				C11AFC8522C1DF5E00573C27 /* HomeShoppingViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		C11AFC8222C1DF3F00573C27 /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				C11AFC8722C1DF7100573C27 /* ProductShoppingViewController.swift */,
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
+		C11AFC8322C1DF4500573C27 /* Promotion */ = {
+			isa = PBXGroup;
+			children = (
+				C11AFC8922C1DF8300573C27 /* PromotionShoppingViewController.swift */,
+			);
+			path = Promotion;
+			sourceTree = "<group>";
+		};
+		C11AFC8422C1DF4C00573C27 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				C11AFC8B22C1DF9200573C27 /* AccountShoppingViewController.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		C11AFC9122C23DD400573C27 /* ShoppingBaseCell */ = {
+			isa = PBXGroup;
+			children = (
+				C11AFC9222C23E5500573C27 /* SubCateShoppingCell.swift */,
+				C11AFC9322C23E5500573C27 /* SubCateShoppingCell.xib */,
+			);
+			path = ShoppingBaseCell;
 			sourceTree = "<group>";
 		};
 		C120D7CB21955B3000F9EEBB /* AccountCell */ = {
@@ -1134,6 +1228,7 @@
 				C10D94AE220960790083FA47 /* TableCell */,
 				C11A93B4218C00A000627B44 /* CollectionCell */,
 				C11A93AF218BF68A00627B44 /* Main */,
+				C11AFC7522C1C27500573C27 /* Shopping */,
 				C11A93AC218BF64100627B44 /* Introduction */,
 				C1DEBE8E218828D700CBB95F /* Camera */,
 				C1DEBE8D2188178B00CBB95F /* pointpow.entitlements */,
@@ -1506,6 +1601,7 @@
 				C107CF2E221FD52800C50B8C /* WithDrawResultPointPowSuccessCell.xib in Resources */,
 				C1DEBE992188337500CBB95F /* ThaiSansNeue-Regular.ttf in Resources */,
 				C120D7D321955BC900F9EEBB /* ItemProfileCell.xib in Resources */,
+				C11AFC9522C23E5500573C27 /* SubCateShoppingCell.xib in Resources */,
 				C11BFCAC221BEEF200F066DE /* WidthDrawShippingPointPowCell.xib in Resources */,
 				C127323A225314DB00A9EE74 /* LuckyDrawPrivacyCell.xib in Resources */,
 				C1F7610B2216E357000A2CA9 /* WithDrawMyGoldCell.xib in Resources */,
@@ -1636,6 +1732,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C11DD35622687AF30085EFBE /* RegisterGoldViewController.swift in Sources */,
+				C11AFC8022C1DEEA00573C27 /* ShoppingHomeNavViewController.swift in Sources */,
 				C11DD35322681EF70085EFBE /* WinnerCollectionViewCell.swift in Sources */,
 				C1EB9434224E8AFF004D73A7 /* PAPasscodeViewController.h in Sources */,
 				C1AD50B72188000B00F74415 /* Constant.swift in Sources */,
@@ -1656,9 +1753,11 @@
 				C1E7B17F21AFCDCB00DA8B82 /* PointFreindSummaryNav.swift in Sources */,
 				C1B542DB219A85590040DDE6 /* ChangePasswordViewController.swift in Sources */,
 				C127323422530CA100A9EE74 /* GoldEditPenddingViewController.swift in Sources */,
+				C11AFC8822C1DF7100573C27 /* ProductShoppingViewController.swift in Sources */,
 				C1AD507C2187F45600F74415 /* ViewController.swift in Sources */,
 				C169FFC421C4D66600F9D354 /* FavoriteViewController.swift in Sources */,
 				C1249EC4223E6FC600F56FA0 /* WithDrawThaiPostSummaryCell.swift in Sources */,
+				C11AFC7E22C1DE8A00573C27 /* ShoppingMenuTableViewController.swift in Sources */,
 				C121FB67228BE4AA00043387 /* NotificationTableViewCell.swift in Sources */,
 				C11A93BC218C20C700627B44 /* LoginViewController.swift in Sources */,
 				C10D94BA220971B10083FA47 /* NavHistory.swift in Sources */,
@@ -1678,6 +1777,7 @@
 				C1817DAA219E7F18009507DB /* BankPointTransferViewController.swift in Sources */,
 				C10CA1A221914F2E00316DF3 /* MainTabbarViewController.swift in Sources */,
 				C11BFCAF221BF70300F066DE /* WithDrawShippingThaiPostCell.swift in Sources */,
+				C11AFC7C22C1DE4C00573C27 /* ShoppingNavViewController.swift in Sources */,
 				C181F06A220D8566003F7C70 /* ProfileTableViewCell.swift in Sources */,
 				C15F16FD2293CEE6005E8E71 /* TransactionFilterViewController.swift in Sources */,
 				C1F761022216BB95000A2CA9 /* SavingResultViewController.swift in Sources */,
@@ -1689,6 +1789,7 @@
 				C127323C2253671C00A9EE74 /* WinnerLuckyDrawViewController.swift in Sources */,
 				C121FB4B22853B2100043387 /* VerifyMobileNumberViewController.swift in Sources */,
 				C1249EB42224E2CD00F56FA0 /* PopUpMapOfficeViewController.swift in Sources */,
+				C11AFC8E22C1DFAA00573C27 /* ShoppingBaseViewController.swift in Sources */,
 				C121FB54228A652F00043387 /* NotificationTableViewController.swift in Sources */,
 				C1817D99219C041F009507DB /* PointTransferViewController.swift in Sources */,
 				C11BFCA4221BC5D900F066DE /* GoldWithDrawChooseShippingViewController.swift in Sources */,
@@ -1702,6 +1803,7 @@
 				C142741A21A553EE003CC246 /* ItemFavorCell.swift in Sources */,
 				C1DEBE9521882F6F00CBB95F /* BaseNavigationViewController.swift in Sources */,
 				C1AD507A2187F45600F74415 /* AppDelegate.swift in Sources */,
+				C11AFC8622C1DF5E00573C27 /* HomeShoppingViewController.swift in Sources */,
 				C10CA1A8219185AB00316DF3 /* PAPasscodeViewController.m in Sources */,
 				C10D94BE220978B60083FA47 /* NavWithdraw.swift in Sources */,
 				C1E7B17D21AFCD7E00DA8B82 /* ResultTransferNav.swift in Sources */,
@@ -1730,6 +1832,7 @@
 				C13D4FED229FA02800516CE8 /* NavPaymentViewController.swift in Sources */,
 				C1F7610A2216E357000A2CA9 /* WithDrawMyGoldCell.swift in Sources */,
 				C1817D92219BF61E009507DB /* ItemFriendCell.swift in Sources */,
+				C11AFC8A22C1DF8300573C27 /* PromotionShoppingViewController.swift in Sources */,
 				C11A93B1218BF69700627B44 /* MainNav.swift in Sources */,
 				C1B32E4222524367006AD7F2 /* ScheduleCell.swift in Sources */,
 				C11A93C4218FF3E200627B44 /* VerifyViewController.swift in Sources */,
@@ -1747,6 +1850,7 @@
 				C13D4FE7229E464500516CE8 /* JSInterface.swift in Sources */,
 				C10D94B1220960940083FA47 /* NameTableViewCell.swift in Sources */,
 				C103113C2212C932004396E0 /* GoldPendingVerifyViewController.swift in Sources */,
+				C11AFC9022C1DFFA00573C27 /* EmptyShoppingViewController.swift in Sources */,
 				C12CCC612281590C00F26DCC /* PersonalDataViewController.swift in Sources */,
 				C1892E03221CFCD500F5412F /* WithDrawResultNav.swift in Sources */,
 				C1247C542219B126005D6F7A /* PopupGoldPremiumViewController.swift in Sources */,
@@ -1796,8 +1900,11 @@
 				C120D7CE21955BB500F9EEBB /* ProfileCell.swift in Sources */,
 				C107CF30222157E900C50B8C /* WithDrawSummaryOfficeViewController.swift in Sources */,
 				C10CA1AC219298C500316DF3 /* EmptyViewController.swift in Sources */,
+				C11AFC7A22C1D8ED00573C27 /* MainTabbarShoppingViewController.swift in Sources */,
+				C11AFC7822C1C2D000573C27 /* ShoppingSWRevealViewController.swift in Sources */,
 				C13D998521997938001A4794 /* LogoutCell.swift in Sources */,
 				C1DEBE902188297B00CBB95F /* ScannerViewController.swift in Sources */,
+				C11AFC9422C23E5500573C27 /* SubCateShoppingCell.swift in Sources */,
 				C1817DA4219E6A2E009507DB /* PPWebViewController.swift in Sources */,
 				C107CF2D221FD52800C50B8C /* WithDrawResultPointPowSuccessCell.swift in Sources */,
 				C197FF2C22082527002F24E8 /* GoldWithDrawViewController.swift in Sources */,
@@ -1808,6 +1915,7 @@
 				C12CCC652282B43A00F26DCC /* PromoCell.swift in Sources */,
 				C13D998D21997EF7001A4794 /* PersonalViewController.swift in Sources */,
 				C13D503422A8E95700516CE8 /* L102Localizer.swift in Sources */,
+				C11AFC8C22C1DF9200573C27 /* AccountShoppingViewController.swift in Sources */,
 				C142741D21A68154003CC246 /* ResetPasswordViewController.swift in Sources */,
 				C10D94B42209717E0083FA47 /* NavGoldPage.swift in Sources */,
 				C1DA27C3224200C2000C0715 /* WithDrawResultThaiPostCell.swift in Sources */,

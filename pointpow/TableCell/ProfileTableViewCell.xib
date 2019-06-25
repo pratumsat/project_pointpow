@@ -25,7 +25,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TT6-7w-bVu">
-                        <rect key="frame" x="137" y="33.5" width="110" height="110"/>
+                        <rect key="frame" x="73" y="33.5" width="110" height="110"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KTi-GO-xGJ">
                                 <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
@@ -46,13 +46,13 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="67t-o4-Ews">
-                        <rect key="frame" x="189.5" y="148.5" width="5" height="21"/>
+                        <rect key="frame" x="125.5" y="148.5" width="5" height="21"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ygV-qC-BA9">
-                        <rect key="frame" x="143.5" y="169.5" width="97.5" height="21"/>
+                        <rect key="frame" x="79.5" y="169.5" width="97.5" height="21"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gold Saving ID :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mr3-Ji-jEU">
                                 <rect key="frame" x="0.0" y="0.0" width="87.5" height="21"/>
@@ -79,7 +79,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gic-26-3fP">
-                        <rect key="frame" x="167.5" y="190.5" width="49.5" height="21"/>
+                        <rect key="frame" x="103.5" y="190.5" width="49.5" height="21"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="สถานะ :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ek-XR-9Os">
                                 <rect key="frame" x="0.0" y="0.0" width="39.5" height="21"/>
@@ -117,7 +117,7 @@
                     <constraint firstItem="ygV-qC-BA9" firstAttribute="centerX" secondItem="TT6-7w-bVu" secondAttribute="centerX" id="ZEI-S3-YWj"/>
                     <constraint firstItem="gic-26-3fP" firstAttribute="centerX" secondItem="TT6-7w-bVu" secondAttribute="centerX" id="gud-IL-lf1"/>
                     <constraint firstItem="ygV-qC-BA9" firstAttribute="top" secondItem="67t-o4-Ews" secondAttribute="bottom" id="m3X-xt-UQo"/>
-                    <constraint firstItem="TT6-7w-bVu" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" multiplier="1.2" id="pB7-Qo-0hE"/>
+                    <constraint firstItem="TT6-7w-bVu" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" multiplier="0.8" id="pB7-Qo-0hE"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

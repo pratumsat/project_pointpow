@@ -446,7 +446,8 @@ extension UIImage{
         
         return image!
     }
-    func resizeUIImage(targetSize: CGSize) -> UIImage {
+    
+    func resizeUIImage2(targetSize: CGSize) -> UIImage {
         let size = self.size
         
         let widthRatio  = targetSize.width  / self.size.width
@@ -470,8 +471,35 @@ extension UIImage{
         UIGraphicsEndImageContext()
         
         return  newImage!
-        //cropToBounds(image: newImage!, size: CGSize(width: targetSize.width/2, height: targetSize.height/2))
+        //return cropToBounds(image: newImage!, size: CGSize(width: targetSize.width/2, height: targetSize.height/2))
     }
+    func resizeUIImage(targetSize: CGSize) -> UIImage {
+        let size = self.size
+        
+        let widthRatio  = targetSize.width  / self.size.width
+        let heightRatio = targetSize.height / self.size.height
+        
+        // Figure out what our orientation is, and use that to form the rectangle
+        var newSize: CGSize
+        if(widthRatio > heightRatio) {
+            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
+        } else {
+            newSize = CGSize(width: size.width * widthRatio, height: size.height * widthRatio)
+        }
+        
+        // This is the rect that we've calculated out and this is what is actually used below
+        let rect = CGRect(x:0, y:0, width:newSize.width, height:newSize.height)
+        
+        // Actually do the resizing to the rect using the ImageContext stuff
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        self.draw(in: rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        //return  newImage!
+        return cropToBounds(image: newImage!, size: CGSize(width: targetSize.width/2, height: targetSize.height/2))
+    }
+    
     private func cropToBounds(image: UIImage, size: CGSize) -> UIImage {
         guard let cgimage = image.cgImage else { return image }
         
@@ -818,6 +846,11 @@ struct Constant {
                     let front = topViewController(from: (view as! GoldSWRevealViewController).frontViewController)
                     return front
                 }
+                if view is ShoppingSWRevealViewController {
+                    
+                    let front = topViewController(from: (view as! ShoppingSWRevealViewController).frontViewController)
+                    return front
+                }
                 return view
                 
             } else if let presentedViewController = viewController?.presentedViewController {
@@ -864,7 +897,7 @@ struct Constant {
     }
     struct Colors {
         static let SELECTED_RED = UIColor(rgb: 0xFCE2E6)
-        static let PRIMARY_COLOR = UIColor(rgb: 0xFF002F)
+        static let PRIMARY_COLOR = UIColor(rgb: 0xDF252D)
         static let LINE_COLOR = UIColor.groupTableViewBackground
         static let LINE_PROFILE = UIColor(rgb: 0xCCCCCC)
         static let GRADIENT_1 = UIColor(rgb: 0xFF2158) //top
@@ -900,6 +933,7 @@ struct Constant {
             static let SEGMENT = CGFloat(18.0)
             static let VALUE_EXPEND = CGFloat(18.0)
             static let VALUE_EXPEND2 = CGFloat(22.0)
+            static let CATE_SHOPPING = CGFloat(15.0)
         }
        
         //Noto Sans Thai
@@ -1078,6 +1112,18 @@ func heightForView(text:String, font:UIFont, width:CGFloat, lineHeight:Bool = fa
     
     return label.frame.height
 }
+
+func widthForView(text:String, font:UIFont) -> CGFloat{
+    let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude))
+    label.numberOfLines = 1
+    label.lineBreakMode = NSLineBreakMode.byWordWrapping
+    label.font = font
+    label.text = text
+    label.sizeToFit()
+    
+    return label.frame.width
+}
+
 func heightForViewWithDraw(_ countViewResult:Int, width:CGFloat  ,height:CGFloat = 250, rowHeight:CGFloat = CGFloat(40)) -> CGFloat{
     
     var sumheight = CGFloat(0)

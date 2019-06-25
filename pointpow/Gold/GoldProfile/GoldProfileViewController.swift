@@ -83,10 +83,10 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
             if (self.revealViewController() != nil) {
                 self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
                 self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-                self.navigationItem.rightBarButtonItem?.target = revealViewController()
+                //self.navigationItem.rightBarButtonItem?.target = revealViewController()
                 
             }
-            self.navigationItem.rightBarButtonItem?.action = #selector(SWRevealViewController.rightRevealToggle(_:))
+            //self.navigationItem.rightBarButtonItem?.action = #selector(SWRevealViewController.rightRevealToggle(_:))
         
         }else{
             self.navigationItem.rightBarButtonItem = nil
@@ -917,7 +917,7 @@ class GoldProfileViewController: BaseViewController ,UIImagePickerControllerDele
             }
             
             // square for profile
-            let resizeImage = chosenImage.resizeUIImage(targetSize: CGSize(width: 400.0, height: 400.0))
+            let resizeImage = chosenImage.resizeUIImage2(targetSize: CGSize(width: 400.0, height: 400.0))
             self.idCardPhoto = resizeImage
             
             if let imageData = resizeImage.pngData() {

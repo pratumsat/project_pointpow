@@ -46,11 +46,11 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
         if (self.revealViewController() != nil) {
             self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-            self.navigationItem.rightBarButtonItem?.target = revealViewController()
+            //self.navigationItem.rightBarButtonItem?.target = revealViewController()
             
         }
         
-        self.navigationItem.rightBarButtonItem?.action = #selector(SWRevealViewController.rightRevealToggle(_:))
+        //self.navigationItem.rightBarButtonItem?.action = #selector(SWRevealViewController.rightRevealToggle(_:))
         
         
         self.title  = NSLocalizedString("string-title-gold-page-withdraw", comment: "")

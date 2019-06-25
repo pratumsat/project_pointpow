@@ -506,10 +506,11 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
             break
         case 4:
             //comming
+            self.showShoppingPage(true)
             
             //text data notification
-            DataController.sharedInstance.clearNotificationArrayOfObjectData()
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constant.DefaultConstansts.NOTIFICATION_RECEIVER), object: nil, userInfo: [:])
+            //DataController.sharedInstance.clearNotificationArrayOfObjectData()
+            //NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constant.DefaultConstansts.NOTIFICATION_RECEIVER), object: nil, userInfo: [:])
             
             break
         case 5:

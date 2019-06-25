@@ -153,7 +153,7 @@ class RegisterGoldstep2ViewController: BaseViewController ,UIImagePickerControll
             }
             
             // square for profile
-            let resizeImage = chosenImage.resizeUIImage(targetSize: CGSize(width: 400.0, height: 400.0))
+            let resizeImage = chosenImage.resizeUIImage2(targetSize: CGSize(width: 400.0, height: 400.0))
             self.idCardPhoto = resizeImage
             self.tupleModel?.image = self.idCardPhoto
             

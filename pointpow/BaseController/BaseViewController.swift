@@ -292,18 +292,27 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }
         
     }
+    func showShoppingPage(_ animated:Bool){
+        
+        if let vc:ShoppingNavViewController = self.storyboard?.instantiateViewController(withIdentifier: "ShoppingNavViewController") as? ShoppingNavViewController {
+            
+            self.present(vc, animated: animated, completion: nil)
+        }
+    }
+    
+    
+    
+    
+    
     func showGoldPage(_ animated:Bool){
         
         if let vc:GoldNavViewController = self.storyboard?.instantiateViewController(withIdentifier: "GoldNavViewController") as? GoldNavViewController {
             
             self.present(vc, animated: animated, completion: nil)
-            
-         
         }
-      
-        
-        
     }
+    
+    
     
     func confirmGoldSavingPage(_ animated:Bool, modelSaving:(pointBalance:Double?, pointSpend:Double?, goldReceive:Double?, currentGoldprice:Double?)){
         if let vc:ConfirmSavingViewController  = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmSavingViewController") as? ConfirmSavingViewController {

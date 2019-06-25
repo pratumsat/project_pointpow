@@ -23,11 +23,11 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
     var isRegistered  = false {
         didSet{
             if isRegistered {
-                self.navigationItem.rightBarButtonItem = self.menuBarButton
+                self.navigationItem.leftBarButtonItem = self.menuBarButton
                 self.revealViewController()?.panGestureRecognizer()?.isEnabled = true
                 
                 //open menu click
-                self.navigationItem.rightBarButtonItem?.action = #selector(SWRevealViewController.rightRevealToggle(_:))
+                self.navigationItem.leftBarButtonItem?.action = #selector(SWRevealViewController.revealToggle(_:))
                 
                 if self.statusMemberGold == "waiting"{
                    self.arrayItem = self.arrayItem_registered_waiting_edit
@@ -47,7 +47,7 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
                 }
                 
             }else{
-                self.navigationItem.rightBarButtonItem = nil
+                self.navigationItem.leftBarButtonItem = nil
                 self.revealViewController()?.panGestureRecognizer()?.isEnabled = false
                 
                 self.arrayItem = self.arrayItem_no_registered
@@ -74,7 +74,7 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
         if (self.revealViewController() != nil) {
             self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-            self.navigationItem.rightBarButtonItem?.target = revealViewController()
+            //self.navigationItem.rightBarButtonItem?.target = revealViewController()
             
         }
         

@@ -320,7 +320,7 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
         if let chosenImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
             if chooseProfile {
                 // square for profile
-                let resizeImage = chosenImage.resizeUIImage(targetSize: CGSize(width: 400.0, height: 400.0))
+                let resizeImage = chosenImage.resizeUIImage(targetSize: CGSize(width: 300.0, height: 300.0))
                 
                 self.isUploadProfile = true
                 self.profileImageView = resizeImage
@@ -330,8 +330,8 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
                 
                 
             }else{
-                // square for background
-                let resizeImage = chosenImage.resizeUIImage(targetSize: CGSize(width: 370, height: 300))
+                // rect for background
+                let resizeImage = chosenImage.resizeUIImage2(targetSize: CGSize(width: 370, height: 300))
                
                 self.isUploadProfile = true
                 self.bgProfileImageView = resizeImage

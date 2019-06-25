@@ -3584,16 +3584,16 @@
                         <viewLayoutGuide key="safeArea" id="8RE-Wp-zY8"/>
                     </view>
                     <navigationItem key="navigationItem" id="Qkq-Nl-wos">
-                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="736-Zw-qez">
+                        <barButtonItem key="leftBarButtonItem" image="ic-gold-menu-1" id="736-Zw-qez"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="N4W-nY-PVV">
                             <connections>
-                                <action selector="dismissTapped:" destination="gpO-IA-2td" id="UDf-xx-YR6"/>
+                                <action selector="dismissTapped:" destination="gpO-IA-2td" id="Pv2-Lk-Frs"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="ic-gold-menu-1" id="N4W-nY-PVV"/>
                     </navigationItem>
                     <connections>
                         <outlet property="homeCollectionView" destination="H2q-Im-t4r" id="9Mn-yt-XRI"/>
-                        <outlet property="menuBarButton" destination="N4W-nY-PVV" id="QWy-rV-Gb0"/>
+                        <outlet property="menuBarButton" destination="736-Zw-qez" id="M45-ZP-CGe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BBv-1s-BmU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3659,7 +3659,7 @@
                     <navigationItem key="navigationItem" id="W9K-5r-7a2"/>
                     <connections>
                         <segue destination="SJQ-E8-2EB" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="o11-1W-aQq"/>
-                        <segue destination="4RT-UG-1wS" kind="custom" identifier="sw_right" customClass="SWRevealViewControllerSegueSetController" id="8yo-W7-wQD"/>
+                        <segue destination="4RT-UG-1wS" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="8yo-W7-wQD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SPB-lu-8tn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3733,7 +3733,6 @@
                                 <action selector="bViewTapped:" destination="49O-jg-kjR" id="hTn-Io-YBn"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="ic-gold-menu-1" id="38K-cG-MhT"/>
                     </navigationItem>
                     <connections>
                         <outlet property="withDrawCollectionView" destination="Lhr-jO-itL" id="3Gf-Sv-py9"/>
@@ -5939,7 +5938,6 @@
                                 <action selector="bViewTapped:" destination="lyZ-DZ-mnd" id="RM8-n9-vRa"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="ic-gold-menu-1" id="Tq8-5J-B75"/>
                     </navigationItem>
                     <size key="freeformSize" width="414" height="1500"/>
                     <connections>
@@ -7809,7 +7807,6 @@
                                 <action selector="bViewTapped:" destination="36V-oo-Xj3" id="GBz-W5-vNO"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="ic-gold-menu-1" id="mtF-Nn-9y3"/>
                     </navigationItem>
                     <connections>
                         <outlet property="luckyDrawCollectionView" destination="x4f-O6-e2E" id="Yat-Bg-vIz"/>
@@ -9591,6 +9588,226 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zZa-ec-sVr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-604" y="4110"/>
+        </scene>
+        <!--Shopping Nav View Controller-->
+        <scene sceneID="PQ2-3H-tFD">
+            <objects>
+                <navigationController storyboardIdentifier="ShoppingNavViewController" id="KK5-3l-3eO" customClass="ShoppingNavViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Lr7-cZ-OZY">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.78823529410000004" green="0.1647058824" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="23"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="dBd-DU-8mA" kind="relationship" relationship="rootViewController" id="93L-Hx-wyu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LQp-VM-wFZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6178" y="-338"/>
+        </scene>
+        <!--ShoppingSW Reveal View Controller-->
+        <scene sceneID="FzJ-bd-AhB">
+            <objects>
+                <viewController storyboardIdentifier="ShoppingSWRevealViewController" id="dBd-DU-8mA" customClass="ShoppingSWRevealViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hkg-s4-OBe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="dqA-Wd-AJj"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="4pU-dR-grW"/>
+                    <connections>
+                        <segue destination="mgX-3Y-tN0" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="OSU-3n-E0A"/>
+                        <segue destination="vDG-P6-Dze" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="HZt-Zq-cu8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fa0-gU-8qX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5443" y="-338"/>
+        </scene>
+        <!--Shopping Menu Table View Controller-->
+        <scene sceneID="2fV-Vg-BRS">
+            <objects>
+                <viewController storyboardIdentifier="ShoppingMenuTableViewController" id="mgX-3Y-tN0" customClass="ShoppingMenuTableViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ftb-6e-dBW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3Gw-Jc-AdL">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="ZD7-tf-W0g">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZD7-tf-W0g" id="f51-4r-p6y">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3Gw-Jc-AdL" firstAttribute="leading" secondItem="Xa3-XL-BQ0" secondAttribute="leading" id="1vw-Uu-tak"/>
+                            <constraint firstItem="Xa3-XL-BQ0" firstAttribute="bottom" secondItem="3Gw-Jc-AdL" secondAttribute="bottom" id="cv5-oc-VYQ"/>
+                            <constraint firstItem="Xa3-XL-BQ0" firstAttribute="trailing" secondItem="3Gw-Jc-AdL" secondAttribute="trailing" id="hMg-cm-9C9"/>
+                            <constraint firstItem="3Gw-Jc-AdL" firstAttribute="top" secondItem="Xa3-XL-BQ0" secondAttribute="top" id="ocY-n3-2D5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Xa3-XL-BQ0"/>
+                    </view>
+                    <connections>
+                        <outlet property="menuTableView" destination="3Gw-Jc-AdL" id="6UK-wJ-lhY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j9V-0D-vPi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5443" y="344"/>
+        </scene>
+        <!--Shopping Tabbar Nav View Controller-->
+        <scene sceneID="V2a-WG-enp">
+            <objects>
+                <navigationController storyboardIdentifier="ShoppingTabbarNavViewController" id="vDG-P6-Dze" customClass="ShoppingTabbarNavViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qxB-Ro-N0c">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.78823529410000004" green="0.1647058824" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="23"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="JmN-LC-hSf" kind="relationship" relationship="rootViewController" id="PjW-9e-Ajj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tod-BD-8gS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4600" y="-338"/>
+        </scene>
+        <!--Main Tabbar Shopping View Controller-->
+        <scene sceneID="cSn-KL-tUY">
+            <objects>
+                <tabBarController storyboardIdentifier="MainTabbarShoppingViewController" id="JmN-LC-hSf" customClass="MainTabbarShoppingViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="muL-Hs-96k">
+                        <barButtonItem key="leftBarButtonItem" image="ic-gold-menu-1" id="iZC-60-2BE"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="BGp-WH-PfF">
+                            <connections>
+                                <action selector="dismissTapped:" destination="JmN-LC-hSf" id="UDT-7U-367"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZHf-Hy-LQk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Adx-I1-r9I" kind="relationship" relationship="viewControllers" id="Xxe-QH-Mmj"/>
+                        <segue destination="xKG-RC-CgN" kind="relationship" relationship="viewControllers" id="Sv6-aw-PdZ"/>
+                        <segue destination="thi-04-m6D" kind="relationship" relationship="viewControllers" id="57B-dS-Dly"/>
+                        <segue destination="ohi-S4-ML1" kind="relationship" relationship="viewControllers" id="06O-oR-4ae"/>
+                        <segue destination="ugs-QD-kOt" kind="relationship" relationship="viewControllers" id="KkB-57-ftJ"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y0y-5Q-zEl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3738" y="-338"/>
+        </scene>
+        <!--Empty Shopping View Controller-->
+        <scene sceneID="kMw-RS-YR9">
+            <objects>
+                <viewController storyboardIdentifier="EmptyShoppingViewController" id="thi-04-m6D" customClass="EmptyShoppingViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3OZ-Kf-QlA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Ybt-T4-Hnp"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" id="RZu-Mj-wS0"/>
+                    <navigationItem key="navigationItem" id="4h8-EN-5aa"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TqY-hc-to9" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4600" y="-1140"/>
+        </scene>
+        <!--หน้าแรก-->
+        <scene sceneID="Txn-PY-sb2">
+            <objects>
+                <viewController storyboardIdentifier="HomeShoppingViewController" id="Adx-I1-r9I" customClass="HomeShoppingViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="m4l-be-t3W">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="TVe-Io-CFj"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="หน้าแรก" id="N9O-o0-KyJ"/>
+                    <navigationItem key="navigationItem" id="eVU-rs-341"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bAR-1W-S8y" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6178" y="-1140"/>
+        </scene>
+        <!--สินค้า-->
+        <scene sceneID="dk7-qp-qzN">
+            <objects>
+                <viewController storyboardIdentifier="ProductShoppingViewController" id="xKG-RC-CgN" customClass="ProductShoppingViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VPM-rr-77S">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="tVY-Nq-ph1"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="สินค้า" id="FHH-a2-VJt"/>
+                    <navigationItem key="navigationItem" id="2a6-MF-2fs"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rkC-27-f6H" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5443" y="-1140"/>
+        </scene>
+        <!--โปรโมชั่น-->
+        <scene sceneID="EdM-8M-Xi2">
+            <objects>
+                <viewController storyboardIdentifier="PromotionShoppingViewController" id="ohi-S4-ML1" customClass="PromotionShoppingViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0VR-sx-EA1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="RCG-B3-h0F"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="โปรโมชั่น" id="Zl3-Lr-4jU"/>
+                    <navigationItem key="navigationItem" id="hZB-2R-bYG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="557-Vs-ZxQ" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3739" y="-1140"/>
+        </scene>
+        <!--บัญชีผู้ใช้-->
+        <scene sceneID="wso-cR-ybw">
+            <objects>
+                <viewController storyboardIdentifier="AccountShoppingViewController" id="ugs-QD-kOt" customClass="AccountShoppingViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bMH-EZ-xhY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="uOX-IM-uqI"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="บัญชีผู้ใช้" id="8CN-bM-d4M"/>
+                    <navigationItem key="navigationItem" id="YhW-Rg-j1s"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oh5-9h-ceP" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2899" y="-1140"/>
         </scene>
     </scenes>
     <resources>

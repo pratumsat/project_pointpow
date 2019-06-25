@@ -81,7 +81,7 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
         self.menuTableView.delegate = self
         
        
-        
+        self.menuTableView.separatorInset = .zero
         self.menuTableView.tableFooterView = UIView()
         self.registerTableViewNib(self.menuTableView, "NameTableViewCell")
         self.registerTableViewNib(self.menuTableView, "ProfileTableViewCell")

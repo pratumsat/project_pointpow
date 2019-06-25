@@ -1,20 +1,35 @@
 //
-//  MainTabbarViewController.swift
+//  MainTabbarShoppingViewController.swift
 //  pointpow
 //
-//  Created by thanawat on 6/11/2561 BE.
-//  Copyright © 2561 abcpoint. All rights reserved.
+//  Created by thanawat on 25/6/2562 BE.
+//  Copyright © 2562 abcpoint. All rights reserved.
 //
 
 import UIKit
 
-class MainTabbarViewController: UITabBarController , UITabBarControllerDelegate {
+class MainTabbarShoppingViewController: UITabBarController , UITabBarControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpImageView()
         
+        if self.revealViewController() != nil {
+            self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            
+            self.navigationItem.leftBarButtonItem?.action = #selector(SWRevealViewController.revealToggle(_:))
+            
+
+        }
+        
+    
     }
+    
+    @IBAction func dismissTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
     func setUpImageView(){
         self.delegate = self
@@ -58,7 +73,7 @@ class MainTabbarViewController: UITabBarController , UITabBarControllerDelegate 
         clickView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
         
-        let point = UITapGestureRecognizer(target: self, action: #selector(pointTapped))
+        let point = UITapGestureRecognizer(target: self, action: #selector(cartTapped))
         clickView.isUserInteractionEnabled = true
         clickView.addGestureRecognizer(point)
         
@@ -77,42 +92,31 @@ class MainTabbarViewController: UITabBarController , UITabBarControllerDelegate 
     
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        if  viewController is EmptyViewController {
-            if let vc:PointManageViewController = self.storyboard?.instantiateViewController(withIdentifier: "PointManageViewController") as? PointManageViewController {
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
+        if  viewController is EmptyShoppingViewController {
+            self.showCart()
         }
-        return !(viewController is EmptyViewController)
+        return !(viewController is EmptyShoppingViewController)
     }
-    @objc func pointTapped(){
+    
+    @objc func cartTapped(){
+        self.showCart()
+    }
+    
+    func showCart(){
         if let vc:PointManageViewController = self.storyboard?.instantiateViewController(withIdentifier: "PointManageViewController") as? PointManageViewController {
-            
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
-
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-      
-        //self.navigationController?.isNavigationBarHidden = true
-//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-//        self.navigationController?.navigationBar.shadowImage = UIImage()
-//        self.navigationController?.navigationBar.isTranslucent = true
-//        self.navigationController?.view.backgroundColor = .clear
-//
+        
         
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-       
-       // self.navigationController?.isNavigationBarHidden = false
-//        self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-//        self.navigationController?.navigationBar.shadowImage = nil
-//        self.navigationController?.navigationBar.isTranslucent = true
-//        self.navigationController?.view.backgroundColor = nil
         
     }
-    
 
 }

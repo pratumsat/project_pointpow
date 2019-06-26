@@ -128,9 +128,36 @@ extension UILabel{
         attributedString.addAttribute(NSAttributedString.Key.kern,
                                       value: spacing,
                                       range: NSMakeRange(0, attributedString.length))
+        
         self.attributedText = attributedString
+    }
+    
+    func underlineCharacters(_ title:String){
+        let attributedString = NSMutableAttributedString(string: title)
         
+        attributedString.addAttribute(NSAttributedString.Key.underlineStyle,
+                                      value: NSUnderlineStyle.single.rawValue,
+                                      range: NSRange(location: 0, length: title.count))
+            
+        self.attributedText = attributedString
+    }
+    
+    func removeUnderlineCharacters(_ title:String){
+        let attributedString = NSMutableAttributedString(string: title)
+       
+        self.attributedText = attributedString
+    }
+    
+    func stuckCharacters(_ title:String){
+        let attributedString = NSMutableAttributedString(string: title)
+        attributedString.addAttribute(NSAttributedString.Key.strikethroughStyle,
+                                     value: 2,
+                                     range: NSRange(location: 0, length: title.count))
+        attributedString.addAttribute(NSAttributedString.Key.strikethroughColor,
+                                      value: UIColor.red,
+                                      range: NSRange(location: 0, length: title.count))
         
+        self.attributedText = attributedString
     }
 }
 

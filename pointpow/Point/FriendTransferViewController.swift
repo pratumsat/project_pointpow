@@ -325,13 +325,13 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
 //                        showName += "xxx"
 //
 //                    }
-                    if !pointpow_id.isEmpty {
+                    if !pointpow_id.trimmingCharacters(in: .whitespaces).isEmpty {
                         showName = pointpow_id
                     }
-                    if !first_name.isEmpty {
+                    if !first_name.trimmingCharacters(in: .whitespaces).isEmpty {
                         showName = first_name
                     }
-                    if !display_name.isEmpty {
+                    if !display_name.trimmingCharacters(in: .whitespaces).isEmpty {
                         showName = display_name
                     }
                     friendCell.nameLabel.text = showName
@@ -381,13 +381,13 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
                         //showName = showName.substring(start: 0, end: 7)
                         //showName += "xxx"
                     //}
-                    if !pointpow_id.isEmpty {
+                    if !pointpow_id.trimmingCharacters(in: .whitespaces).isEmpty {
                         showName = pointpow_id
                     }
-                    if !first_name.isEmpty {
+                    if !first_name.trimmingCharacters(in: .whitespaces).isEmpty {
                         showName = first_name
                     }
-                    if !display_name.isEmpty {
+                    if !display_name.trimmingCharacters(in: .whitespaces).isEmpty {
                         showName = display_name
                     }
                     friendCell.nameLabel.text = showName

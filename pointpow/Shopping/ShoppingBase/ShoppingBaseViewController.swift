@@ -12,6 +12,8 @@ class ShoppingBaseViewController: BaseViewController ,UICollectionViewDelegate ,
 
     var shadowImageView:UIImageView?
     var searchCallback:((_ keyword:String)->Void)?
+    var collapseCallback:((_ collapse:Bool)->Void)?
+    
     var searchTextField:ShoppingSearchCustomTextField?
     var searchView:UIView?
     var categoryView:UIView?
@@ -23,11 +25,21 @@ class ShoppingBaseViewController: BaseViewController ,UICollectionViewDelegate ,
     
     var heightMainCategoryView:NSLayoutConstraint?
     
+    var selectSubcate:Int?
+    
+    var cateLists = [["name": "ALL", "image" : UIImage(named: "ic-home-shopping")!],
+                     ["name": "Cate1", "image" : UIImage(named: "ic-home-shopping")!],
+                     ["name": "Cate2", "image" : UIImage(named: "ic-home-shopping")!],
+                     ["name": "Cate3", "image" : UIImage(named: "ic-home-shopping")!],
+                     ["name": "Cate4", "image" : UIImage(named: "ic-home-shopping")!],
+                     ["name": "Cate5", "image" : UIImage(named: "ic-home-shopping")!]]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.backgroundImage?.image = nil
         self.hiddenShadowImageView()
+        
         
         
     }
@@ -43,8 +55,8 @@ class ShoppingBaseViewController: BaseViewController ,UICollectionViewDelegate ,
     
     @objc func categoryTapped(sender: UITapGestureRecognizer){
         let tag = sender.view?.tag
-        print(tag)
-        
+    
+        self.selectSubcate = nil
         self.dataItemSubCates = [["name":"Mobiles"],
                                  ["name":"Tablets"],
                                  ["name":"Laptops"],
@@ -55,27 +67,30 @@ class ShoppingBaseViewController: BaseViewController ,UICollectionViewDelegate ,
                                  ["name":"Security Cameras"],
                                  ["name":"Digital Cameras"],
                                  ["name":"Gadgets"]] as [[String : AnyObject]]
-      
-        if tag == 1 {
-            // all
+        if tag == 0 {
+            self.collapseCallback?(true)
             
             self.subCategoryCollectionView?.alpha = 1
-            UIView.animate(withDuration: 0.5) {
-                self.heightMainCategoryView?.constant = 80.0
+            UIView.animate(withDuration: 0.1) {
+                self.heightMainCategoryView?.constant = 100.0
                 self.subCategoryCollectionView?.alpha = 0
                 self.subCategoryCollectionView?.isHidden = true
             }
             
         }else{
+            self.collapseCallback?(false)
+            
             self.addSubCate()
             
             
             self.subCategoryCollectionView?.alpha = 0
-            UIView.animate(withDuration: 0.5) {
-                self.heightMainCategoryView?.constant = 110.0
+            UIView.animate(withDuration: 0.1) {
+                self.heightMainCategoryView?.constant = 130.0
                 self.subCategoryCollectionView?.alpha = 1
                 self.subCategoryCollectionView?.isHidden = false
             }
+            
+            
             
         }
         
@@ -120,7 +135,7 @@ extension ShoppingBaseViewController {
         shadowImageView?.isHidden = false
     }
     
-    func addSearchView(){
+    func addSearchView() -> UIView {
         //let vFrame  = self.view.frame
         searchView = UIView()
         searchView!.backgroundColor = Constant.Colors.PRIMARY_COLOR
@@ -155,7 +170,7 @@ extension ShoppingBaseViewController {
         searchImageView.translatesAutoresizingMaskIntoConstraints = false
         searchView!.addSubview(searchImageView)
         
-        searchImageView.centerYAnchor.constraint(equalTo: searchView!.centerYAnchor, constant: 0).isActive = true
+        searchImageView.centerYAnchor.constraint(equalTo: searchTextField!.centerYAnchor, constant: 0).isActive = true
         searchImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
         searchImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
         searchImageView.trailingAnchor.constraint(equalTo: searchTextField!.trailingAnchor, constant: -20).isActive = true
@@ -164,31 +179,41 @@ extension ShoppingBaseViewController {
         searchImageView.isUserInteractionEnabled = true
         searchImageView.addGestureRecognizer(tapSearch)
         
+        return searchView!
     }
     
-    func addCategoryView(){
+    func addCategoryView(_ searchView:UIView){
         categoryView = UIView()
         categoryView!.translatesAutoresizingMaskIntoConstraints = false
         
         mainCategoryView = UIView()
-        mainCategoryView!.backgroundColor = UIColor.groupTableViewBackground
+        //mainCategoryView!.backgroundColor = UIColor.groupTableViewBackground
         mainCategoryView!.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(mainCategoryView!)
         
-        mainCategoryView!.topAnchor.constraint(equalTo: searchView!.bottomAnchor, constant: 0).isActive = true
+        mainCategoryView!.topAnchor.constraint(equalTo: searchView.bottomAnchor, constant: 0).isActive = true
         mainCategoryView!.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
         mainCategoryView!.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0).isActive = true
-        self.heightMainCategoryView = mainCategoryView!.heightAnchor.constraint(equalToConstant: 80.0)
+        self.heightMainCategoryView = mainCategoryView!.heightAnchor.constraint(equalToConstant: 100.0)
         self.heightMainCategoryView!.isActive = true
         
+         self.cateViews = []
+        var index = 0
+        for itemCate in cateLists {
+            let name = itemCate["name"] as? String ?? ""
+            let image = itemCate["image"] as? UIImage ?? UIImage(named: Constant.DefaultConstansts.DefaultImaege.DEFAULT_AVATAR_PLACEHOLDER)!
+            
+            if index == 0 {
+                cateViews!.append(addCate(name, icon: image, leftView:nil, tag: index))
+            }else{
+                cateViews!.append(addCate(name, icon: image, leftView: cateViews![index-1], tag: index))
+            }
+          
+            
+            index += 1
+        }
        
-        self.cateViews = []
-        cateViews!.append(addCate("cate1", icon: UIImage(named: "ic-mobile")!, leftView:nil, tag: 1))
-        cateViews!.append(addCate("cate22", icon: UIImage(named: "ic-mobile")!, leftView:cateViews![0], tag: 2))
-        cateViews!.append(addCate("cate33", icon: UIImage(named: "ic-mobile")!, leftView:cateViews![1], tag: 3))
-        cateViews!.append(addCate("cate44", icon: UIImage(named: "ic-mobile")!, leftView:cateViews![2], tag: 4))
-        cateViews!.append(addCate("cate55", icon: UIImage(named: "ic-mobile")!, leftView:cateViews![3], tag: 5))
-        cateViews!.append(addCate("cate66", icon: UIImage(named: "ic-mobile")!, leftView:cateViews![4], tag: 6))
+       
         
         
         mainCategoryView!.addSubview(categoryView!)
@@ -197,6 +222,8 @@ extension ShoppingBaseViewController {
         categoryView!.centerXAnchor.constraint(equalTo: mainCategoryView!.centerXAnchor, constant: 0).isActive = true
         categoryView!.topAnchor.constraint(equalTo: mainCategoryView!.topAnchor, constant: 10).isActive = true
 
+        
+        
         let layout = UICollectionViewFlowLayout()
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 5
@@ -206,6 +233,10 @@ extension ShoppingBaseViewController {
         subCategoryCollectionView!.translatesAutoresizingMaskIntoConstraints = false
         subCategoryCollectionView!.delegate = self
         subCategoryCollectionView!.dataSource = self
+        subCategoryCollectionView!.showsHorizontalScrollIndicator = false
+        subCategoryCollectionView!.backgroundColor = UIColor.orange
+        
+        self.registerHeaderNib(subCategoryCollectionView!, "HeaderSectionCell")
         self.registerNib(subCategoryCollectionView!, "SubCateShoppingCell")
         
         
@@ -215,7 +246,7 @@ extension ShoppingBaseViewController {
         subCategoryCollectionView!.trailingAnchor.constraint(equalTo: mainCategoryView!.trailingAnchor, constant: -5).isActive = true
         
         subCategoryCollectionView!.topAnchor.constraint(equalTo: categoryView!.bottomAnchor, constant: 5).isActive = true
-        subCategoryCollectionView!.bottomAnchor.constraint(equalTo: mainCategoryView!.bottomAnchor, constant: -10).isActive = true
+        subCategoryCollectionView!.bottomAnchor.constraint(equalTo: mainCategoryView!.bottomAnchor, constant: -5).isActive = true
         subCategoryCollectionView!.isHidden = true
     }
 
@@ -235,6 +266,7 @@ extension ShoppingBaseViewController {
         image.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         image.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
         image.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1).isActive = true
+        image.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1).isActive = true
         
         let title = UILabel()
         title.text = name
@@ -254,13 +286,14 @@ extension ShoppingBaseViewController {
         
         view.topAnchor.constraint(equalTo: categoryView!.topAnchor, constant: 0).isActive = true
         view.widthAnchor.constraint(equalTo: categoryView!.widthAnchor, multiplier: 0.166).isActive = true
-        view.heightAnchor.constraint(equalTo: categoryView!.heightAnchor, constant: 0).isActive = true
+        view.bottomAnchor.constraint(equalTo: categoryView!.bottomAnchor, constant: 0).isActive = true
         
         
         if leftView == nil {
             view.leftAnchor.constraint(equalTo: categoryView!.leftAnchor, constant: 0).isActive = true
         
             categoryView!.bottomAnchor.constraint(equalTo: title.bottomAnchor, constant: 0).isActive = true
+        
         }else{
             view.leftAnchor.constraint(equalTo: leftView!.rightAnchor, constant: 0).isActive = true
         }
@@ -290,8 +323,21 @@ extension ShoppingBaseViewController {
             cell = itemCell
            
             if let array = self.dataItemSubCates {
-                  let name = array[indexPath.row]["name"] as? String ?? ""
-                itemCell.nameLabel.text = name
+                let name = array[indexPath.row]["name"] as? String ?? ""
+                
+                //itemCell.nameLabel.text = name
+                itemCell.nameLabel.textColor = UIColor.white
+                
+                if let select = self.selectSubcate {
+                    if select == indexPath.row {
+                        itemCell.nameLabel.underlineCharacters(name)
+                    }else{
+                        itemCell.nameLabel.removeUnderlineCharacters(name)
+                    }
+                }else{
+                    itemCell.nameLabel.removeUnderlineCharacters(name)
+                }
+                
             }
         
         }
@@ -304,15 +350,12 @@ extension ShoppingBaseViewController {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("didSelectItemAt \(indexPath.row)")
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize.zero
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets.zero
+        //print("didSelectItemAt \(indexPath.row)")
+     
+        
+        self.selectSubcate = indexPath.row
+        self.subCategoryCollectionView?.reloadData()
+       
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -326,6 +369,17 @@ extension ShoppingBaseViewController {
         }
     
         return CGSize(width: 60.0, height: 30.0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header  = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderSectionCell", for: indexPath) as! HeaderSectionCell
+        header.backgroundColor = Constant.Colors.COLOR_LLGRAY
+        return header
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize.zero
+        
     }
 }
 

@@ -296,18 +296,18 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
                 
                 //Display name / First name / Point Pow ID / Mobile Number
                 var showName = ""
-                if !mobile.isEmpty {
+                if !mobile.trimmingCharacters(in: .whitespaces).isEmpty {
                     mobile = mobile.substring(start: 0, end: 7)
                     mobile += "xxx"
                     showName = mobile
                 }
-                if !pointpowId.isEmpty {
+                if !pointpowId.trimmingCharacters(in: .whitespaces).isEmpty {
                     showName = pointpowId
                 }
-                if !first_name.isEmpty {
+                if !first_name.trimmingCharacters(in: .whitespaces).isEmpty {
                     showName = first_name
                 }
-                if !display_name.isEmpty {
+                if !display_name.trimmingCharacters(in: .whitespaces).isEmpty {
                     showName = display_name
                 }
                 self.displayNameLabel.text = showName

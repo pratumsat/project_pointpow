@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="ThaiSansNeue-Bold.ttf">
+            <string>ThaiSansNeue-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingProductCell" id="gTV-IL-0wX" customClass="ShoppingProductCell" customModule="pointpow" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="243" height="367"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="243" height="367"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="place-bg-profile" translatesAutoresizingMaskIntoConstraints="NO" id="nWJ-dS-Wxu">
+                        <rect key="frame" x="0.0" y="10" width="243" height="243"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="nWJ-dS-Wxu" secondAttribute="height" multiplier="1:1" id="S5l-Uv-ewD"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yml-3f-keh">
+                        <rect key="frame" x="5" y="253" width="233" height="39"/>
+                        <mutableString key="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</mutableString>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
+                        <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="950 Point Pow" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uyH-fl-jU1">
+                        <rect key="frame" x="5" y="292" width="233" height="19.5"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="350 Point Pow" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2J-S8-ygj">
+                        <rect key="frame" x="5" y="316.5" width="233" height="26"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="uyH-fl-jU1" secondAttribute="trailing" constant="5" id="2Ph-dY-P8K"/>
+                <constraint firstItem="yml-3f-keh" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="2kR-HP-0mk"/>
+                <constraint firstItem="uyH-fl-jU1" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="6Yl-yr-Zbb"/>
+                <constraint firstItem="yml-3f-keh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="HgO-1u-HbI"/>
+                <constraint firstAttribute="trailing" secondItem="yml-3f-keh" secondAttribute="trailing" constant="5" id="TI4-fk-Lx6"/>
+                <constraint firstItem="s2J-S8-ygj" firstAttribute="top" secondItem="uyH-fl-jU1" secondAttribute="bottom" constant="5" id="Wtn-am-Het"/>
+                <constraint firstItem="nWJ-dS-Wxu" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="aNl-Vv-biI"/>
+                <constraint firstAttribute="trailing" secondItem="nWJ-dS-Wxu" secondAttribute="trailing" id="ad5-f1-RnE"/>
+                <constraint firstItem="uyH-fl-jU1" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="bBv-gC-gRu"/>
+                <constraint firstItem="nWJ-dS-Wxu" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="eSQ-VT-SEq"/>
+                <constraint firstItem="yml-3f-keh" firstAttribute="top" secondItem="nWJ-dS-Wxu" secondAttribute="bottom" id="j5S-u2-3kf"/>
+                <constraint firstItem="s2J-S8-ygj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="rAY-Wi-ZhT"/>
+                <constraint firstItem="uyH-fl-jU1" firstAttribute="top" secondItem="yml-3f-keh" secondAttribute="bottom" id="s09-8c-uAP"/>
+                <constraint firstAttribute="trailing" secondItem="s2J-S8-ygj" secondAttribute="trailing" constant="5" id="yWE-Fi-4Gj"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="302" height="378"/>
+            <connections>
+                <outlet property="amountLabel" destination="s2J-S8-ygj" id="szF-in-n19"/>
+                <outlet property="desLabel" destination="yml-3f-keh" id="AnU-v9-9fw"/>
+                <outlet property="discountLabel" destination="uyH-fl-jU1" id="kPk-GS-Wit"/>
+                <outlet property="productImageView" destination="nWJ-dS-Wxu" id="bsi-g9-lHH"/>
+            </connections>
+            <point key="canvasLocation" x="-26.399999999999999" y="195.6521739130435"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="place-bg-profile" width="370" height="301"/>
+    </resources>
+</document>

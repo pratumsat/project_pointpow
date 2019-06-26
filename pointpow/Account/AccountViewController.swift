@@ -131,8 +131,10 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
             if let profileCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileCell", for: indexPath) as? ProfileCell{
                 
                 if let userData = self.userData as? [String:AnyObject] {
+                    let first_name = userData["first_name"] as? String ?? ""
+                    var mobile = userData["mobile"] as? String ?? ""
                     let pointpowId = userData["pointpow_id"] as? String ?? "-"
-                    let displayName = userData["display_name"] as? String ?? " "
+                    let display_name = userData["display_name"] as? String ?? " "
                     let pointBalance = userData["member_point"]?["total"] as? NSNumber ?? 0
                     let picture_data = userData["picture_data"] as? String ?? ""
                     let picture_background = userData["picture_background"] as? String ?? ""
@@ -168,7 +170,22 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
                     profileCell.pointBalanceLabel.text = numberFormatter.string(from: pointBalance )
                     
                     
-                    profileCell.displayNameLabel.text = displayName
+                    //Display name / First name / Point Pow ID / Mobile Number
+                    var showName = ""
+                    if !mobile.trimmingCharacters(in: .whitespaces).isEmpty {
+                        mobile = mobile.substring(start: 0, end: 7)
+                        mobile += "xxx"
+                        showName = mobile
+                    }
+                    if !first_name.trimmingCharacters(in: .whitespaces).isEmpty {
+                        showName = first_name
+                    }
+                    if !display_name.trimmingCharacters(in: .whitespaces).isEmpty {
+                        showName = display_name
+                    }
+                    profileCell.displayNameLabel.text = showName
+                    
+                    
                     profileCell.pointpowIdLabel.text = pointpowId
                     
               

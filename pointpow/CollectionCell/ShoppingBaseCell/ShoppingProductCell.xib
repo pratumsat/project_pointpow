@@ -32,7 +32,7 @@
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yml-3f-keh">
                         <rect key="frame" x="5" y="253" width="233" height="39"/>
-                        <mutableString key="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</mutableString>
+                        <string key="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
                         <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -44,7 +44,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="350 Point Pow" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2J-S8-ygj">
-                        <rect key="frame" x="5" y="316.5" width="233" height="26"/>
+                        <rect key="frame" x="5" y="311.5" width="233" height="26"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -58,7 +58,7 @@
                 <constraint firstItem="uyH-fl-jU1" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="6Yl-yr-Zbb"/>
                 <constraint firstItem="yml-3f-keh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="HgO-1u-HbI"/>
                 <constraint firstAttribute="trailing" secondItem="yml-3f-keh" secondAttribute="trailing" constant="5" id="TI4-fk-Lx6"/>
-                <constraint firstItem="s2J-S8-ygj" firstAttribute="top" secondItem="uyH-fl-jU1" secondAttribute="bottom" constant="5" id="Wtn-am-Het"/>
+                <constraint firstItem="s2J-S8-ygj" firstAttribute="top" secondItem="uyH-fl-jU1" secondAttribute="bottom" id="Wtn-am-Het"/>
                 <constraint firstItem="nWJ-dS-Wxu" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="aNl-Vv-biI"/>
                 <constraint firstAttribute="trailing" secondItem="nWJ-dS-Wxu" secondAttribute="trailing" id="ad5-f1-RnE"/>
                 <constraint firstItem="uyH-fl-jU1" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="bBv-gC-gRu"/>

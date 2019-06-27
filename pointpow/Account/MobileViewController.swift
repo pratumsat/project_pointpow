@@ -107,8 +107,17 @@ class MobileViewController: BaseViewController {
             emptyMessage = NSLocalizedString("string-error-empty-mobile", comment: "")
          
             errorEmpty += 1
-            
         }
+        
+        if let myMobile = self.mobile {
+            
+            if mobile == myMobile {
+                emptyMessage = NSLocalizedString("string-error-duplicate-mobile", comment: "")
+                errorEmpty += 1
+            }
+        }
+        
+        
         if errorEmpty > 0 {
             self.showMessagePrompt(emptyMessage)
             return

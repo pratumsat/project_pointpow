@@ -197,7 +197,8 @@ class VerifyViewController: BaseViewController {
         self.sendButton.isEnabled = false
         self.countDown(1.0)
         
-        let params:Parameters = ["mobile" : mobilePhone ?? "" ]
+        let params:Parameters = ["mobile" : mobilePhone ?? "",
+                                 "request_id": DataController.sharedInstance.getRequestId()]
         
         modelCtrl.resendOTP(params: params, succeeded: { (result) in
             if let mResult = result as? [String:AnyObject]{
@@ -235,9 +236,8 @@ class VerifyViewController: BaseViewController {
         
         
         
-       let params:Parameters = ["ref_id" : self.ref_id ?? "",
+       let params:Parameters = [ "ref_id" : self.ref_id ?? "",
                                  "otp" : otp,
-                                 "mobile" : self.mobilePhone ?? "",
                                  "app_os" : "ios"]
 
         modelCtrl.verifyOTP(params: params, succeeded: { (result) in

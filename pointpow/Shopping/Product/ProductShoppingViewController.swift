@@ -40,16 +40,18 @@ class ProductShoppingViewController: ShoppingBaseViewController {
         self.collapseCallback = { (collpse) in
             if collpse {
                 self.countSection = 1
-                self.topConstraintCollectionView.constant = 140.0
+                self.topConstraintCollectionView.constant = 120.0 + self.sizeOfViewCateInit
             }else{
                 self.countSection = 2
-                self.topConstraintCollectionView.constant = 170.0
+                self.topConstraintCollectionView.constant = 120.0 + self.sizeOfViewCate
             }
         }
         
         
         self.setUp()
+        
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.title = cateName
@@ -59,12 +61,17 @@ class ProductShoppingViewController: ShoppingBaseViewController {
         super.categoryTapped(sender: sender)
         let tag = sender.view?.tag ?? 0
         
-        self.cateName = self.cateLists[tag]["name"] as? String ?? ""
+        if tag == 0 {
+            self.cateName = NSLocalizedString("string-item-shopping-cate-all", comment: "")
+        }else{
+            self.cateName = self.cateLists[tag]["name"] as? String ?? ""
+        }
+        
     }
     
     func setUp(){
         //start top
-        self.topConstraintCollectionView.constant = 140.0
+        self.topConstraintCollectionView.constant = 120.0 + self.sizeOfViewCateInit
         
         if let layout = self.productCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.minimumInteritemSpacing = 0
@@ -228,7 +235,7 @@ extension ProductShoppingViewController {
             if self.countSection == 1 {
                 header.headerNameLabel.text = self.cateName
             }else{
-                header.headerNameLabel.text = "Recommended"
+                header.headerNameLabel.text = NSLocalizedString("string-item-shopping-cate-head-recommend", comment: "")
             }
             
             break
@@ -248,7 +255,7 @@ extension ProductShoppingViewController {
             return super.collectionView(collectionView, layout: collectionViewLayout, referenceSizeForHeaderInSection: section)
         }
         
-        return CGSize(width: collectionView.frame.width, height: 30.0)
+        return CGSize(width: collectionView.frame.width, height: 50.0)
         
     }
     

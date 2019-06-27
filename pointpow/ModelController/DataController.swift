@@ -119,6 +119,13 @@ class DataController {
         return token
     }
     
+    func setRequestId(_ request_id:String){
+        data["request_id"] = request_id as AnyObject
+    }
+    func getRequestId() -> String{
+        return data["request_id"] as? String ?? ""
+    }
+    
     
     func isLogin() -> Bool {
         let token = data["token"] as? String ?? ""

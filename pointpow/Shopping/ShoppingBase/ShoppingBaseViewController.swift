@@ -23,17 +23,19 @@ class ShoppingBaseViewController: BaseViewController ,UICollectionViewDelegate ,
     var cateViews:[UIView]?
     var dataItemSubCates:[[String:AnyObject]]?
     
-    var heightMainCategoryView:NSLayoutConstraint?
+    var sizeOfViewCate = CGFloat(0)
+    var sizeOfViewCateInit = CGFloat(0)
     
     var selectSubcate:Int?
     
-    var cateLists = [["name": "ALL", "image" : UIImage(named: "ic-home-shopping")!],
+    var cateLists = [["name": "Cate0", "image" : UIImage(named: "ic-home-shopping")!],
                      ["name": "Cate1", "image" : UIImage(named: "ic-home-shopping")!],
                      ["name": "Cate2", "image" : UIImage(named: "ic-home-shopping")!],
                      ["name": "Cate3", "image" : UIImage(named: "ic-home-shopping")!],
                      ["name": "Cate4", "image" : UIImage(named: "ic-home-shopping")!],
                      ["name": "Cate5", "image" : UIImage(named: "ic-home-shopping")!]]
     
+    var heightMainCategoryView:NSLayoutConstraint?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,7 +43,10 @@ class ShoppingBaseViewController: BaseViewController ,UICollectionViewDelegate ,
         self.hiddenShadowImageView()
         
         
+        let widthCate = self.view.frame.width*0.9
+        self.sizeOfViewCate = (widthCate*0.166) * 0.5
         
+        self.sizeOfViewCateInit = self.sizeOfViewCate/2
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -72,7 +77,7 @@ class ShoppingBaseViewController: BaseViewController ,UICollectionViewDelegate ,
             
             self.subCategoryCollectionView?.alpha = 1
             UIView.animate(withDuration: 0.1) {
-                self.heightMainCategoryView?.constant = 100.0
+                self.heightMainCategoryView?.constant = 80.0 + self.sizeOfViewCateInit
                 self.subCategoryCollectionView?.alpha = 0
                 self.subCategoryCollectionView?.isHidden = true
             }
@@ -85,7 +90,7 @@ class ShoppingBaseViewController: BaseViewController ,UICollectionViewDelegate ,
             
             self.subCategoryCollectionView?.alpha = 0
             UIView.animate(withDuration: 0.1) {
-                self.heightMainCategoryView?.constant = 130.0
+                self.heightMainCategoryView?.constant = 80.0 + self.sizeOfViewCate
                 self.subCategoryCollectionView?.alpha = 1
                 self.subCategoryCollectionView?.isHidden = false
             }
@@ -187,17 +192,17 @@ extension ShoppingBaseViewController {
         categoryView!.translatesAutoresizingMaskIntoConstraints = false
         
         mainCategoryView = UIView()
-        //mainCategoryView!.backgroundColor = UIColor.groupTableViewBackground
+        mainCategoryView!.backgroundColor = UIColor.groupTableViewBackground
         mainCategoryView!.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(mainCategoryView!)
         
         mainCategoryView!.topAnchor.constraint(equalTo: searchView.bottomAnchor, constant: 0).isActive = true
         mainCategoryView!.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
         mainCategoryView!.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0).isActive = true
-        self.heightMainCategoryView = mainCategoryView!.heightAnchor.constraint(equalToConstant: 100.0)
+        self.heightMainCategoryView = mainCategoryView!.heightAnchor.constraint(equalToConstant: (80.0 + self.sizeOfViewCateInit))
         self.heightMainCategoryView!.isActive = true
         
-         self.cateViews = []
+        self.cateViews = []
         var index = 0
         for itemCate in cateLists {
             let name = itemCate["name"] as? String ?? ""
@@ -220,8 +225,8 @@ extension ShoppingBaseViewController {
         
         categoryView!.widthAnchor.constraint(equalTo: mainCategoryView!.widthAnchor, multiplier: 0.9).isActive = true
         categoryView!.centerXAnchor.constraint(equalTo: mainCategoryView!.centerXAnchor, constant: 0).isActive = true
-        categoryView!.topAnchor.constraint(equalTo: mainCategoryView!.topAnchor, constant: 10).isActive = true
-
+        categoryView!.topAnchor.constraint(equalTo: mainCategoryView!.topAnchor, constant: 0).isActive = true
+        
         
         
         let layout = UICollectionViewFlowLayout()
@@ -245,8 +250,10 @@ extension ShoppingBaseViewController {
         subCategoryCollectionView!.leadingAnchor.constraint(equalTo: mainCategoryView!.leadingAnchor, constant: 5).isActive = true
         subCategoryCollectionView!.trailingAnchor.constraint(equalTo: mainCategoryView!.trailingAnchor, constant: -5).isActive = true
         
-        subCategoryCollectionView!.topAnchor.constraint(equalTo: categoryView!.bottomAnchor, constant: 5).isActive = true
-        subCategoryCollectionView!.bottomAnchor.constraint(equalTo: mainCategoryView!.bottomAnchor, constant: -5).isActive = true
+        subCategoryCollectionView!.topAnchor.constraint(equalTo: categoryView!.bottomAnchor, constant: 0).isActive = true
+       
+        subCategoryCollectionView!.bottomAnchor.constraint(equalTo: mainCategoryView!.bottomAnchor, constant: 0).isActive = true
+       
         subCategoryCollectionView!.isHidden = true
     }
 

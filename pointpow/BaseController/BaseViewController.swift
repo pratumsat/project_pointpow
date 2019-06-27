@@ -1220,7 +1220,8 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         print("mobile = \(mobileNumber)")
         
         let mobile = mobileNumber.replace(target: "-", withString: "")
-        let params:Parameters = ["mobile" : mobile ]
+        let params:Parameters = ["mobile" : mobile,
+                                 "request_id": DataController.sharedInstance.getRequestId() ]
         
         modelCtrl.resendOTP(params: params, succeeded: { (result) in
             if let mResult = result as? [String:AnyObject]{
@@ -1256,7 +1257,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     }
     func paPasscodeViewControllerConfirmOTP(_ controller: PAPasscodeViewController!, didEnterOTP otp: String!, refOTP ref: String!, mobileNumber:String!) {
         print("Confirm OTP \(otp!)")
-        print("Confirm REF \(ref!)")
+        print("Confirm REF \(ref)")
         
         if otp.trimmingCharacters(in: .whitespaces).isEmpty {
             self.showMessagePrompt2(NSLocalizedString("string-error-otp-empty", comment: "")) {
@@ -1264,17 +1265,20 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             }
         }else{
             // pass otp
-            let mobile = mobileNumber.replace(target: "-", withString: "")
+            //let mobile = mobileNumber.replace(target: "-", withString: "")
             let params:Parameters = ["ref_id" : ref ?? "",
                                      "otp" : otp ?? "",
-                                     "mobile" : mobile,
                                      "app_os": "ios"]
             
             modelCtrl.verifyOTP(params: params, succeeded: { (result) in
                 if let mResult = result as? [String:AnyObject]{
                     print(mResult)
-                    let access_token  = result["access_token"] as? String ?? ""
-                    DataController.sharedInstance.setToken(access_token)
+                    
+                    let reset_token  = result["reset_token"] as? String ?? ""
+                    DataController.sharedInstance.setResetPinToken(reset_token)
+                    
+                    //let access_token  = result["access_token"] as? String ?? ""
+                    //DataController.sharedInstance.setToken(access_token)
                     
                     controller.becomeSetPinCode()
                     

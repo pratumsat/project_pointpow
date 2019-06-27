@@ -936,7 +936,7 @@ static NSTimeInterval AnimationDuration = 0.3;
 -(void) buttonClickedConfirmOTP:(UIButton*)sender{
     NSLog(@"otp = %@", verifyOTPTextField.text);
     
-    [_delegate PAPasscodeViewControllerConfirmOTP:self didEnterOTP:verifyOTPTextField.text refOTP:refOTPLabel.text mobileNumber:verifyMobileTextField.text];
+    [_delegate PAPasscodeViewControllerConfirmOTP:self didEnterOTP:verifyOTPTextField.text refOTP: _refID mobileNumber:verifyMobileTextField.text];
 }
 -(void) buttonResendConfirmOTP:(UIButton*)sender{
     NSLog(@"resend otp");
@@ -1027,6 +1027,8 @@ static NSTimeInterval AnimationDuration = 0.3;
     NSLog(@"mobile = %@", mobile);
     NSLog(@"refOTP = %@", ref);
     
+    _refID = ref;
+    
     NSString *refOTP = [NSString stringWithFormat: @"%@ %@", NSLocalizedString(@"title-forgot-passcode-confirm-ref-otp", nil), ref];
     refOTPLabel.text = refOTP;
     verifyMobileTextField.text = mobile;
@@ -1034,6 +1036,8 @@ static NSTimeInterval AnimationDuration = 0.3;
 -(void)showMobileOTP:(NSString *)mobile refOTP:(NSString *)ref {
     NSLog(@"mobile = %@", mobile);
     NSLog(@"refOTP = %@", ref);
+    
+    _refID = ref;
     
     [_delegate PAPasscodeViewControllerDidLoadViewOTP:self resendButton:resendOTPButton];
     [self showScreenForPhase:2 animated:YES];

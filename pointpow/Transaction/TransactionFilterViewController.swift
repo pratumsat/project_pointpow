@@ -93,9 +93,9 @@ class TransactionFilterViewController: BaseViewController {
     
     
     @objc func servicePointSavingTapped(){
-        self.service = "PointSaving"
+        self.service = "PointSpend"
         let title = NSLocalizedString("string-title-transection-history-service-pointsaving", comment: "")
-        let params:Parameters = ["service" : "PointSaving" ]
+        let params:Parameters = ["service" : "PointSpend" ]
         self.showTransectionFilterResultPage(true, title, params: params)
     }
     @objc func servicePointTransferTapped(){

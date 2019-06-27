@@ -203,7 +203,7 @@ class TransactionViewController: BaseViewController  ,UICollectionViewDataSource
                 var date = items["created_at"] as? String ?? ""
                 var mType = items["type"] as? String ?? ""
                 var point = items["point"] as? NSNumber ?? 0
-                
+                var pointable_type_service = items["pointable_type_service"] as? String ?? ""
                 /*
                 date = "17-05-2562 16:01"
                 
@@ -279,6 +279,7 @@ class TransactionViewController: BaseViewController  ,UICollectionViewDataSource
                 }
                 
                 if pointable_type.lowercased() == "pointtransfer" {
+                    
                     if mType.lowercased() == "out" {
                         transCell.statusImageView.image = UIImage(named: "ic-service-type-point-transfer-out")
                         transCell.titleLabel.text = NSLocalizedString("string-status-transection-history-service-point-transfer-out", comment: "")
@@ -287,17 +288,27 @@ class TransactionViewController: BaseViewController  ,UICollectionViewDataSource
                         transCell.titleLabel.text = NSLocalizedString("string-status-transection-history-service-point-transfer-in", comment: "")
                     }
                 
-                }else if pointable_type.lowercased() == "pointsaving" {
-                    transCell.statusImageView.image = UIImage(named: "ic-service-type-point-saving")
-                    transCell.titleLabel.text = NSLocalizedString("string-status-transection-history-service-pointsaving", comment: "")
-                
-                }else if pointable_type.lowercased() == "shopping" {
-                    transCell.statusImageView.image = UIImage(named: "ic-service-type-shopping")
-                    transCell.titleLabel.text = NSLocalizedString("string-status-transection-history-service-shopping", comment: "")
-                
-                }else if pointable_type.lowercased() == "exchange" {
-                    transCell.statusImageView.image = UIImage(named: "ic-service-type-exchange")
-                    transCell.titleLabel.text = NSLocalizedString("string-status-transection-history-service-exchange", comment: "")
+                }else if pointable_type.lowercased() == "pointspend" {
+                    
+                    if pointable_type_service.lowercased() == "saving"{
+                        transCell.statusImageView.image = UIImage(named: "ic-service-type-point-saving")
+                        transCell.titleLabel.text = NSLocalizedString("string-status-transection-history-service-pointsaving", comment: "")
+                        
+                    
+                    }else if pointable_type_service.lowercased() == "shopping"{
+                        transCell.statusImageView.image = UIImage(named: "ic-service-type-shopping")
+                        transCell.titleLabel.text = NSLocalizedString("string-status-transection-history-service-shopping", comment: "")
+                        
+                    }
+                    
+                }else if pointable_type.lowercased() == "pointrefill" {
+                    
+                    if pointable_type_service.lowercased() == "refill"{
+                        transCell.statusImageView.image = UIImage(named: "ic-service-type-exchange")
+                        transCell.titleLabel.text = NSLocalizedString("string-status-transection-history-service-exchange", comment: "")
+                        
+                    }
+                    
                 }
             }
             

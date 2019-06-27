@@ -2,4 +2,86 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "pointpow/BaseController/BaseViewController.swift"
+            timestampString = "583322615.030968"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1226"
+            endingLineNumber = "1226"
+            landmarkName = "paPasscodeViewControllerResendOTP(_:resend:callbackMobileNumber:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "pointpow.BaseViewController.paPasscodeViewControllerResendOTP(_: Swift.Optional&lt;__C.PAPasscodeViewController&gt;, resend: Swift.Optional&lt;__C.UIButton&gt;, callbackMobileNumber: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "pointpow"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thanawat/pointpow/pointpow/BaseController/BaseViewController.swift"
+                  timestampString = "583322615.23642"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1226"
+                  endingLineNumber = "1226"
+                  offsetFromSymbolStart = "1609">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.AnyObject) -&gt; () in pointpow.BaseViewController.paPasscodeViewControllerResendOTP(_: Swift.Optional&lt;__C.PAPasscodeViewController&gt;, resend: Swift.Optional&lt;__C.UIButton&gt;, callbackMobileNumber: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "pointpow"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thanawat/pointpow/pointpow/BaseController/BaseViewController.swift"
+                  timestampString = "583322615.238812"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1227"
+                  endingLineNumber = "1227"
+                  offsetFromSymbolStart = "126">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "pointpow/BaseController/BaseViewController.swift"
+            timestampString = "583322615.0311249"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1230"
+            endingLineNumber = "1230"
+            landmarkName = "paPasscodeViewControllerResendOTP(_:resend:callbackMobileNumber:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "pointpow/BaseController/BaseViewController.swift"
+            timestampString = "583322615.031176"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1163"
+            endingLineNumber = "1163"
+            landmarkName = "paPasscodeViewControllerDidResetEmail(_:didResetEmailPinCode:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

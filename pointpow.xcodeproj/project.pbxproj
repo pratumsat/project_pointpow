@@ -273,6 +273,14 @@
 		C1F0C07122C34B9900A49BAA /* RecommendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1F0C06F22C34B9900A49BAA /* RecommendCell.xib */; };
 		C1F0C07622C34E1D00A49BAA /* ShoppingProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F0C07422C34E1D00A49BAA /* ShoppingProductCell.swift */; };
 		C1F0C07722C34E1D00A49BAA /* ShoppingProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1F0C07522C34E1D00A49BAA /* ShoppingProductCell.xib */; };
+		C1F0C07A22C4711600A49BAA /* BannerShoppingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F0C07822C4711600A49BAA /* BannerShoppingCell.swift */; };
+		C1F0C07B22C4711600A49BAA /* BannerShoppingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1F0C07922C4711600A49BAA /* BannerShoppingCell.xib */; };
+		C1F0C07E22C4942500A49BAA /* SpecialHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F0C07C22C4942500A49BAA /* SpecialHeaderCell.swift */; };
+		C1F0C07F22C4942500A49BAA /* SpecialHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1F0C07D22C4942500A49BAA /* SpecialHeaderCell.xib */; };
+		C1F0C08322C4A81900A49BAA /* PageViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F0C08122C4A81900A49BAA /* PageViewCollectionViewCell.swift */; };
+		C1F0C08422C4A81900A49BAA /* PageViewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1F0C08222C4A81900A49BAA /* PageViewCollectionViewCell.xib */; };
+		C1F0C08722C4B00300A49BAA /* PageViewFooterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F0C08522C4B00300A49BAA /* PageViewFooterCollectionViewCell.swift */; };
+		C1F0C08822C4B00300A49BAA /* PageViewFooterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1F0C08622C4B00300A49BAA /* PageViewFooterCollectionViewCell.xib */; };
 		C1F760F5221692FD000A2CA9 /* SavingConfirmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F760F3221692FD000A2CA9 /* SavingConfirmCell.swift */; };
 		C1F760F6221692FD000A2CA9 /* SavingConfirmCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1F760F4221692FD000A2CA9 /* SavingConfirmCell.xib */; };
 		C1F760F92216998C000A2CA9 /* SavingSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F760F72216998C000A2CA9 /* SavingSummaryCell.swift */; };
@@ -594,6 +602,14 @@
 		C1F0C06F22C34B9900A49BAA /* RecommendCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendCell.xib; sourceTree = "<group>"; };
 		C1F0C07422C34E1D00A49BAA /* ShoppingProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingProductCell.swift; sourceTree = "<group>"; };
 		C1F0C07522C34E1D00A49BAA /* ShoppingProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingProductCell.xib; sourceTree = "<group>"; };
+		C1F0C07822C4711600A49BAA /* BannerShoppingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerShoppingCell.swift; sourceTree = "<group>"; };
+		C1F0C07922C4711600A49BAA /* BannerShoppingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BannerShoppingCell.xib; sourceTree = "<group>"; };
+		C1F0C07C22C4942500A49BAA /* SpecialHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialHeaderCell.swift; sourceTree = "<group>"; };
+		C1F0C07D22C4942500A49BAA /* SpecialHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpecialHeaderCell.xib; sourceTree = "<group>"; };
+		C1F0C08122C4A81900A49BAA /* PageViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewCollectionViewCell.swift; sourceTree = "<group>"; };
+		C1F0C08222C4A81900A49BAA /* PageViewCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PageViewCollectionViewCell.xib; sourceTree = "<group>"; };
+		C1F0C08522C4B00300A49BAA /* PageViewFooterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewFooterCollectionViewCell.swift; sourceTree = "<group>"; };
+		C1F0C08622C4B00300A49BAA /* PageViewFooterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PageViewFooterCollectionViewCell.xib; sourceTree = "<group>"; };
 		C1F760F3221692FD000A2CA9 /* SavingConfirmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingConfirmCell.swift; sourceTree = "<group>"; };
 		C1F760F4221692FD000A2CA9 /* SavingConfirmCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavingConfirmCell.xib; sourceTree = "<group>"; };
 		C1F760F72216998C000A2CA9 /* SavingSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingSummaryCell.swift; sourceTree = "<group>"; };
@@ -901,6 +917,7 @@
 		C11A93B4218C00A000627B44 /* CollectionCell */ = {
 			isa = PBXGroup;
 			children = (
+				C1F0C08022C4A7D800A49BAA /* ShoppingPageCell */,
 				C11AFC9122C23DD400573C27 /* ShoppingBaseCell */,
 				C15F17002293D439005E8E71 /* TransectionCell */,
 				C12CCC622282B42000F26DCC /* PromotionCell */,
@@ -1004,6 +1021,10 @@
 				C1F0C06F22C34B9900A49BAA /* RecommendCell.xib */,
 				C1F0C07422C34E1D00A49BAA /* ShoppingProductCell.swift */,
 				C1F0C07522C34E1D00A49BAA /* ShoppingProductCell.xib */,
+				C1F0C07822C4711600A49BAA /* BannerShoppingCell.swift */,
+				C1F0C07922C4711600A49BAA /* BannerShoppingCell.xib */,
+				C1F0C07C22C4942500A49BAA /* SpecialHeaderCell.swift */,
+				C1F0C07D22C4942500A49BAA /* SpecialHeaderCell.xib */,
 			);
 			path = ShoppingBaseCell;
 			sourceTree = "<group>";
@@ -1394,6 +1415,17 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		C1F0C08022C4A7D800A49BAA /* ShoppingPageCell */ = {
+			isa = PBXGroup;
+			children = (
+				C1F0C08122C4A81900A49BAA /* PageViewCollectionViewCell.swift */,
+				C1F0C08222C4A81900A49BAA /* PageViewCollectionViewCell.xib */,
+				C1F0C08522C4B00300A49BAA /* PageViewFooterCollectionViewCell.swift */,
+				C1F0C08622C4B00300A49BAA /* PageViewFooterCollectionViewCell.xib */,
+			);
+			path = ShoppingPageCell;
+			sourceTree = "<group>";
+		};
 		C1F760F22216922F000A2CA9 /* GoldSavingCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1590,6 +1622,8 @@
 				C11A93B8218C00C800627B44 /* IntroCell1.xib in Resources */,
 				C10CA1BF219429D500316DF3 /* ImageCell.xib in Resources */,
 				C11BDFBD21A2BB3C00443D2D /* ItemConfirmSummaryCell.xib in Resources */,
+				C1F0C08422C4A81900A49BAA /* PageViewCollectionViewCell.xib in Resources */,
+				C1F0C08822C4B00300A49BAA /* PageViewFooterCollectionViewCell.xib in Resources */,
 				C1AD50812187F45900F74415 /* Assets.xcassets in Resources */,
 				C13D4FF122A6214800516CE8 /* ItemAccountCell.xib in Resources */,
 				C1247C5222191898005D6F7A /* WithdrawCell.xib in Resources */,
@@ -1597,6 +1631,7 @@
 				C10CA1BA2193E1D100316DF3 /* PromotionCampainCell.xib in Resources */,
 				C107CF3B222269E000C50B8C /* AddressViewCell.xib in Resources */,
 				C1F0C07122C34B9900A49BAA /* RecommendCell.xib in Resources */,
+				C1F0C07B22C4711600A49BAA /* BannerShoppingCell.xib in Resources */,
 				C169FFC921C4F10100F9D354 /* FavorCell.xib in Resources */,
 				C1892E12221E92BE00F5412F /* HeaderCollectionReusableView.xib in Resources */,
 				C11BDFB921A2B95D00443D2D /* ItemFriendSummaryCell.xib in Resources */,
@@ -1633,6 +1668,7 @@
 				C13D998621997938001A4794 /* LogoutCell.xib in Resources */,
 				C1273240225380D500A9EE74 /* PickerLuckyDrawCell.xib in Resources */,
 				C197FF3322083A6F002F24E8 /* GoldPriceCell.xib in Resources */,
+				C1F0C07F22C4942500A49BAA /* SpecialHeaderCell.xib in Resources */,
 				C13D503022A8B85300516CE8 /* Localizable.strings in Resources */,
 				C121FB59228A66C100043387 /* HeaderViewDateTableViewCell.xib in Resources */,
 				C1F760FA2216998C000A2CA9 /* SavingSummaryCell.xib in Resources */,
@@ -1767,6 +1803,7 @@
 				C10CA1A021914B8900316DF3 /* PointManageViewController.swift in Sources */,
 				C1273239225314DB00A9EE74 /* LuckyDrawPrivacyCell.swift in Sources */,
 				C181F063220C00B8003F7C70 /* SaveButtonProfileCell.swift in Sources */,
+				C1F0C07E22C4942500A49BAA /* SpecialHeaderCell.swift in Sources */,
 				C1817D8E219BD32B009507DB /* FriendTransferViewController.swift in Sources */,
 				C1B32E462252674D006AD7F2 /* CountDownCell.swift in Sources */,
 				C1F760F92216998C000A2CA9 /* SavingSummaryCell.swift in Sources */,
@@ -1805,6 +1842,7 @@
 				C15F16FD2293CEE6005E8E71 /* TransactionFilterViewController.swift in Sources */,
 				C1F761022216BB95000A2CA9 /* SavingResultViewController.swift in Sources */,
 				C197FF3E22093D9B002F24E8 /* RegisterGoldCell.swift in Sources */,
+				C1F0C08722C4B00300A49BAA /* PageViewFooterCollectionViewCell.swift in Sources */,
 				C10CA1A42191755C00316DF3 /* PersonalPopupViewController.swift in Sources */,
 				C197FF2622081C72002F24E8 /* GoldPageViewController.swift in Sources */,
 				C1892E0D221E900900F5412F /* TransactionGoldCell.swift in Sources */,
@@ -1823,6 +1861,7 @@
 				C1F760FD22169B6D000A2CA9 /* ConfirmButtonCell.swift in Sources */,
 				C1B32E392251EB37006AD7F2 /* NavLuckyDraw.swift in Sources */,
 				C10D94AD22095EA20083FA47 /* GoldMenuTableViewController.swift in Sources */,
+				C1F0C07A22C4711600A49BAA /* BannerShoppingCell.swift in Sources */,
 				C142741A21A553EE003CC246 /* ItemFavorCell.swift in Sources */,
 				C1DEBE9521882F6F00CBB95F /* BaseNavigationViewController.swift in Sources */,
 				C1AD507A2187F45600F74415 /* AppDelegate.swift in Sources */,
@@ -1850,6 +1889,7 @@
 				C11AFC7322BCBE3800573C27 /* ConstantObjectiveC.m in Sources */,
 				C121FB5C228A815F00043387 /* AboutViewController.swift in Sources */,
 				C1247C5122191898005D6F7A /* WithdrawCell.swift in Sources */,
+				C1F0C08322C4A81900A49BAA /* PageViewCollectionViewCell.swift in Sources */,
 				C1AD50A92187F7B500F74415 /* BaseViewController.swift in Sources */,
 				C11BDFB821A2B95D00443D2D /* ItemFriendSummaryCell.swift in Sources */,
 				C13D4FED229FA02800516CE8 /* NavPaymentViewController.swift in Sources */,

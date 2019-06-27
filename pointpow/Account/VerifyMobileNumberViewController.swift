@@ -124,7 +124,9 @@ class VerifyMobileNumberViewController: BaseViewController {
         self.sendButton.isEnabled = false
         self.countDown(1.0)
         
-        let params:Parameters = ["mobile" : mobilePhone ?? "" ]
+        let params:Parameters = ["mobile" : mobilePhone ?? "",
+                                 "request_id": DataController.sharedInstance.getRequestId()]
+        
         
         modelCtrl.resendOTP(params: params, succeeded: { (result) in
             if let mResult = result as? [String:AnyObject]{

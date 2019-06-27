@@ -87,7 +87,7 @@ typedef enum {
 @property (readonly) BOOL forgotPin;
 @property (assign) BOOL lockPin;
 @property (assign) BOOL lockscreenMode;
-
+@property (strong) NSString *refID;
 
 
 - (void)setTitlePasscode:(NSString*)messageError;

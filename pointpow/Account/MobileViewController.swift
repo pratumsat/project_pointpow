@@ -133,6 +133,9 @@ class MobileViewController: BaseViewController {
         self.modelCtrl.changeMobileNumber(params: params, succeeded: { (result) in
             if let mResult = result as? [String: AnyObject] {
                 let ref_id = mResult["ref_id"] as? String ?? ""
+                let request_id  = mResult["request_id"] as? String ?? ""
+                DataController.sharedInstance.setRequestId(request_id)
+                
                 self.showMobileVerify(mobileNumber, ref_id, true)
                 
             }

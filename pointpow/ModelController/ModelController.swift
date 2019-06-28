@@ -817,14 +817,14 @@ class ModelController {
                     
                     if success.intValue == 1 {
                         
-                        if let result = data["result"] as? [String:AnyObject] {
+                        
                             if let result = data["result"] as? [String:AnyObject] {
                                 let request_id  = result["request_id"] as? String ?? ""
                                 DataController.sharedInstance.setRequestId(request_id)
                                 succeeded?(result as AnyObject)
                                 
                             }
-                        }
+                        
                     }else{
                         let messageError = data["message"] as? String  ??  ""
                         let field = data["field"] as? String  ??  ""
@@ -902,8 +902,9 @@ class ModelController {
                     if success.intValue == 1 {
                         
                         if let result = data["result"] as? [String:AnyObject] {
-                            let reset_token  = result["reset_token"] as? String ?? ""
-                            DataController.sharedInstance.setResetPasswordToken(reset_token)
+                            let request_id  = result["request_id"] as? String ?? ""
+                            DataController.sharedInstance.setRequestId(request_id)
+                            
                             succeeded?(result as AnyObject)
                         }
                     }else{

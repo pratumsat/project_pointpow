@@ -35,7 +35,7 @@ class HomeShoppingViewController: ShoppingBaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.title = NSLocalizedString("string-item-shopping", comment: "")
+        self.tabBarController?.title = NSLocalizedString("string-title-shopping-home", comment: "")
     }
     
     
@@ -246,7 +246,7 @@ extension HomeShoppingViewController {
             
             if !self.cd.running {
                 
-                cd.initializeTimer("2019-06-28 00:00:00")
+                cd.initializeTimer("2019-06-29 00:00:00")
                 cd.startTimer(pUpdateActionHandler: { (timeString) in
                     
                     

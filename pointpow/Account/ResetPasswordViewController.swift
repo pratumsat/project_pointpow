@@ -189,6 +189,8 @@ class ResetPasswordViewController: BaseViewController {
         }, error: { (error) in
            if let mError = error as? [String:AnyObject]{
                 print(mError)
+                let message = mError["message"] as? String ?? ""
+                self.AlertMessageDialogOK(message , title: "")
             }
         }, failure: { (messageError) in
             self.handlerMessageError(messageError , title: "")

@@ -245,9 +245,11 @@ class VerifyViewController: BaseViewController {
                 print(mResult)
                 
                 let access_token  = result["access_token"] as? String ?? ""
+                let reset_token  = result["reset_token"] as? String ?? ""
                 
             
                 if self.forgotPassword {
+                    DataController.sharedInstance.setResetPasswordToken(reset_token)
                     self.showResetPasswordView(true, forgotPassword: true)
                 }else{
                     self.showPersonalData(true){

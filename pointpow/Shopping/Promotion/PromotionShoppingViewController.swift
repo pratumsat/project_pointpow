@@ -15,7 +15,10 @@ class PromotionShoppingViewController: ShoppingBaseViewController {
 
         // Do any additional setup after loading the view.
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.title = NSLocalizedString("string-title-shopping-promotion", comment: "")
+    }
 
     /*
     // MARK: - Navigation

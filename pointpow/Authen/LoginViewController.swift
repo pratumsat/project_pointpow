@@ -201,10 +201,12 @@ class LoginViewController: BaseViewController {
                 let status = mResult["status"] as? String ?? ""
                 let ref_id = mResult["ref_id"] as? String ?? ""
                 let is_pin = mResult["is_pin"] as? NSNumber ?? 0
+                let request_id  = mResult["request_id"] as? String ?? ""
                 
                 
                 
                 if status != "active" {
+                    DataController.sharedInstance.setRequestId(request_id)
                     self.showVerify(mobile, ref_id, true)
                     return
                 }

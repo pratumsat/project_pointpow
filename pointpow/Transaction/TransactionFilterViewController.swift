@@ -105,9 +105,9 @@ class TransactionFilterViewController: BaseViewController {
         self.showTransectionFilterResultPage(true, title, params: params)
     }
     @objc func serviceExchangeTapped(){
-        self.service = "Exchange"
+        self.service = "PointRefill"
         let title = NSLocalizedString("string-title-transection-history-service-exchange", comment: "")
-        let params:Parameters = ["service" : "Exchange" ]
+        let params:Parameters = ["service" : "PointRefill" ]
         self.showTransectionFilterResultPage(true, title, params: params)
     }
     @objc func serviceShoppingTapped(){

@@ -338,6 +338,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
+   
     
     func showWithDrawSummaryThaiPostView(_ animated:Bool,
                                          withdrawData:(pointBalance:Double, premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double, goldPrice:Int))?,
@@ -512,6 +513,17 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }
     }
     
+    
+    func showProductDetail(_ animated:Bool, product_id:String){
+        
+        if let vc:ProductDetailViewController  = self.storyboard?.instantiateViewController(withIdentifier: "ProductDetailViewController") as? ProductDetailViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    
+    
+    
     @objc func reNewApplication(){
         UIApplication.shared.keyWindow?.rootViewController = storyboard!.instantiateViewController(withIdentifier: "MainNav")
     }
@@ -634,7 +646,14 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
-    func showPPWebView( _ animated:Bool, _ title:String, url:String){
+    func showPPWebView( _ animated:Bool, _ title:String, htmlString:String){
+        if let vc:PPWebViewController  = self.storyboard?.instantiateViewController(withIdentifier: "PPWebViewController") as? PPWebViewController {
+            vc.mTitle = title
+            vc.htmlString = htmlString
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    func showPPWebViewURL( _ animated:Bool, _ title:String, url:String){
         if let vc:PPWebViewController  = self.storyboard?.instantiateViewController(withIdentifier: "PPWebViewController") as? PPWebViewController {
             vc.mTitle = title
             vc.mUrl = url

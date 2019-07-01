@@ -64,7 +64,7 @@ class PromotionCampainCell: UICollectionViewCell , UICollectionViewDelegate , UI
         self.slideCollectionView.delegate = self
         self.slideCollectionView.dataSource = self
         
-        
+        self.slideCollectionView.showsHorizontalScrollIndicator  = false
         let nibName = "ImageCell"
         let nib = UINib(nibName: nibName, bundle: nil)
         self.slideCollectionView.register(nib, forCellWithReuseIdentifier: nibName)

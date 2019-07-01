@@ -147,6 +147,9 @@ extension ProductShoppingViewController {
                 if let productCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingProductCell", for: indexPath) as? ShoppingProductCell {
                     cell = productCell
                     
+                    if let url = URL(string: "https://f.btwcdn.com/store-37976/product-thumb/dad5aa1e-b42c-215d-b283-5c9ca53d3d9b.jpg") {
+                        productCell.productImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_HOME_PLACEHOLDER))
+                    }
                 }
             }else{
                 if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendCell", for: indexPath) as? RecommendCell {
@@ -161,6 +164,10 @@ extension ProductShoppingViewController {
         case 1:
             if let productCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingProductCell", for: indexPath) as? ShoppingProductCell {
                 cell = productCell
+                
+                if let url = URL(string: "https://f.btwcdn.com/store-37976/product-thumb/dad5aa1e-b42c-215d-b283-5c9ca53d3d9b.jpg") {
+                    productCell.productImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_HOME_PLACEHOLDER))
+                }
             
                 productCell.discountLabel.isHidden = true
             }

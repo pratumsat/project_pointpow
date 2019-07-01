@@ -961,6 +961,7 @@ struct Constant {
             static let VALUE_EXPEND = CGFloat(18.0)
             static let VALUE_EXPEND2 = CGFloat(22.0)
             static let CATE_SHOPPING = CGFloat(15.0)
+            static let CONTENT_HTML = CGFloat(18.0)
         }
        
         //Noto Sans Thai

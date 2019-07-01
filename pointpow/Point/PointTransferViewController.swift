@@ -187,11 +187,11 @@ class PointTransferViewController: BaseViewController , UICollectionViewDelegate
         if let itemData = self.mProviders?[indexSelected]{
             let show_form = itemData["show_form"] as? String ?? ""
             let name = itemData["name"] as? String ?? ""
-            let webview_url = itemData["webview_url"] as? String ?? ""
+            let description = itemData["description"] as? String ?? ""
             
             if show_form.lowercased() == "n" {
                 //offline
-                self.showPPWebView(true, name, url: webview_url)
+                self.showPPWebView(true, name, htmlString: description)
             }else{
                 //online
                 self.showBankTransferView(true, itemData : itemData)

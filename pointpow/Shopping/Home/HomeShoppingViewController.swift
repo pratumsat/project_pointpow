@@ -105,7 +105,7 @@ extension HomeShoppingViewController {
             return 1
             
         case 4:
-            return 8
+            return 4
             
         default:
             break
@@ -135,6 +135,9 @@ extension HomeShoppingViewController {
             
         case 1:
             if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendCell", for: indexPath) as? RecommendCell {
+                itemCell.itemClickCallback = { (product) in
+                    self.showProductDetail(true, product_id: "")
+                }
                 
                 cell = itemCell
             }
@@ -154,6 +157,10 @@ extension HomeShoppingViewController {
         case 4:
             if let productCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingProductCell", for: indexPath) as? ShoppingProductCell {
                 cell = productCell
+                
+                if let url = URL(string: "https://f.btwcdn.com/store-37976/product-thumb/dad5aa1e-b42c-215d-b283-5c9ca53d3d9b.jpg") {
+                    productCell.productImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_HOME_PLACEHOLDER))
+                }
                 
                 productCell.discountLabel.isHidden = true
             }
@@ -246,7 +253,7 @@ extension HomeShoppingViewController {
             
             if !self.cd.running {
                 
-                cd.initializeTimer("2019-06-29 00:00:00")
+                cd.initializeTimer("2019-07-2 00:00:00")
                 cd.startTimer(pUpdateActionHandler: { (timeString) in
                     
                     

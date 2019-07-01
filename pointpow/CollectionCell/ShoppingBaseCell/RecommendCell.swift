@@ -14,6 +14,8 @@ class RecommendCell: UICollectionViewCell , UICollectionViewDelegate , UICollect
     
     var recomendItems:[String:AnyObject]?
     
+    var itemClickCallback:((_ product:AnyObject)->Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -45,7 +47,10 @@ class RecommendCell: UICollectionViewCell , UICollectionViewDelegate , UICollect
         if let productCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingProductCell", for: indexPath) as? ShoppingProductCell {
             cell = productCell
 
-
+            if let url = URL(string: "https://f.btwcdn.com/store-37976/product-thumb/dad5aa1e-b42c-215d-b283-5c9ca53d3d9b.jpg") {
+                productCell.productImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_HOME_PLACEHOLDER))
+            }
+            
             productCell.disCountValue = "1200 Point Pow"
         }
         
@@ -55,6 +60,11 @@ class RecommendCell: UICollectionViewCell , UICollectionViewDelegate , UICollect
         
         return cell!
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //recomendItems
+        self.itemClickCallback?("product" as AnyObject)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
         return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)

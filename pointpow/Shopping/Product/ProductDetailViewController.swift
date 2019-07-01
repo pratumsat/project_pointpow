@@ -127,6 +127,7 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
         
         self.amountTextField.delegate = self
         self.amountTextField.autocorrectionType = .no
+        self.amountTextField.text = "1"
         
     
     
@@ -218,11 +219,11 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
         
         if textField == self.amountTextField {
             guard let textRange = Range(range, in: textField.text!) else { return true}
-            let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
+            var updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
             
             
             if updatedText.isEmpty {
-                textField.text = ""
+                updatedText = "1"
             }
             if let iPoint = Int(updatedText.replace(target: ",", withString: "")){
                 let amount = Double(iPoint)

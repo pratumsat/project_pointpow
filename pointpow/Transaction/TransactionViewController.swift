@@ -377,7 +377,7 @@ class TransactionViewController: BaseViewController  ,UICollectionViewDataSource
             let transaction_ref_id  = item["transaction_ref_id"] as? String ?? ""
             let pointable_type = item["pointable_type"] as? String ?? ""
             let mType = item["type"] as? String ?? ""
-            
+            let pointable_type_service = item["pointable_type_service"] as? String ?? ""
             
            
             
@@ -385,13 +385,21 @@ class TransactionViewController: BaseViewController  ,UICollectionViewDataSource
                 let titlePage = getTitleNamgePage(pointable_type, mType)
                 self.showPointFriendSummaryTransferView(true, transaction_ref_id, titlePage:titlePage)
             }
-            if pointable_type.lowercased() == "pointsaving" {
-                self.showGoldSavingResult(true, transactionId: transaction_ref_id)
+            if pointable_type.lowercased() == "pointspend" {
+                
+                if pointable_type_service.lowercased() == "saving"{
+                    self.showGoldSavingResult(true, transactionId: transaction_ref_id)
+                }
+                if pointable_type_service.lowercased() == "shopping"{
+                    
+                }
+                
             }
-            if pointable_type.lowercased() == "shopping" {
-            }
-            if pointable_type.lowercased() == "exchange" {
-            }
+            
+            //if pointable_type.lowercased() == "shopping" {
+            //}
+            //if pointable_type.lowercased() == "exchange" {
+            //}
             
         }
     }

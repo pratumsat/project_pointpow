@@ -500,6 +500,8 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
             break
         case 2:
             //comming
+            self.showMessagePrompt2("พบกับบริการ รับพ้อยท์ฟรี\nเร็วๆนี้")
+            
             break
         case 3:
             self.showGoldPage(true)
@@ -515,7 +517,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
             break
         case 5:
             //comming
-            
+            self.showMessagePrompt2("พบกับบริการ ชำระค่าบริการ\nเร็วๆนี้")
             //test data notification
             mockaaw21Data()
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constant.DefaultConstansts.NOTIFICATION_RECEIVER), object: nil, userInfo: [:])

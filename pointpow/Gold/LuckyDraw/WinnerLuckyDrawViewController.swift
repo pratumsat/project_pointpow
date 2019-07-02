@@ -76,8 +76,9 @@ class WinnerLuckyDrawViewController: BaseViewController , UICollectionViewDelega
                     self.selectLinkFacebook = link
                     
                     self.selectBanner = []
-                    self.selectBanner?.append(schedule)
-                    
+                    //self.selectBanner?.append(schedule)
+                    let path_mobile = schedule["path_mobile"] as? String ?? ""
+                    self.selectBanner?.append(["path_mobile": path_mobile as AnyObject])
                     
                 }
                 

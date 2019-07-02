@@ -90,9 +90,10 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
                 let scheduleModel = data["schedule"] as? [String:AnyObject] ?? [:]
                 self.schedule = scheduleModel
                 
-                let bannerModel = scheduleModel["banner"] as? [String:AnyObject] ?? [:]
+                //let bannerModel = scheduleModel["banner"] as? [String:AnyObject] ?? [:]
+                let path_mobile  = scheduleModel["path_mobile"] as? String ?? ""
                 self.banner = []
-                self.banner?.append(bannerModel)
+                self.banner?.append(["path_mobile": path_mobile as AnyObject])
             }
             
             avaliable?()

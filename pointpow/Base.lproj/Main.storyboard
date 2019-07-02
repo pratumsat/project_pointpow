@@ -10225,7 +10225,7 @@
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PqY-Lp-7Zf">
-                                        <rect key="frame" x="132.66666666666666" y="255.66666666666669" width="148.99999999999997" height="25"/>
+                                        <rect key="frame" x="132.66666666666666" y="265.66666666666669" width="148.99999999999997" height="25"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ยอมรับ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihx-AK-WUy">
                                                 <rect key="frame" x="30" y="3.3333333333333144" width="30.333333333333329" height="18.333333333333332"/>
@@ -10277,8 +10277,8 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="LAa-rM-fnz" firstAttribute="centerX" secondItem="RL5-uh-L4W" secondAttribute="centerX" id="15e-A4-h5g"/>
-                                    <constraint firstItem="LAa-rM-fnz" firstAttribute="top" secondItem="PqY-Lp-7Zf" secondAttribute="bottom" constant="40" id="5Th-NF-SKi"/>
-                                    <constraint firstItem="PqY-Lp-7Zf" firstAttribute="top" secondItem="XtH-Hf-vzL" secondAttribute="bottom" constant="30" id="7pM-fE-TBW"/>
+                                    <constraint firstItem="LAa-rM-fnz" firstAttribute="top" secondItem="PqY-Lp-7Zf" secondAttribute="bottom" constant="30" id="5Th-NF-SKi"/>
+                                    <constraint firstItem="PqY-Lp-7Zf" firstAttribute="top" secondItem="XtH-Hf-vzL" secondAttribute="bottom" constant="40" id="7pM-fE-TBW"/>
                                     <constraint firstItem="gEi-nv-L5g" firstAttribute="top" secondItem="8HQ-xW-MxD" secondAttribute="bottom" constant="30" id="83E-4e-O8N"/>
                                     <constraint firstItem="8HQ-xW-MxD" firstAttribute="centerX" secondItem="RL5-uh-L4W" secondAttribute="centerX" id="BJA-7o-t1f"/>
                                     <constraint firstItem="gEi-nv-L5g" firstAttribute="centerX" secondItem="RL5-uh-L4W" secondAttribute="centerX" id="Rob-fE-2pV"/>

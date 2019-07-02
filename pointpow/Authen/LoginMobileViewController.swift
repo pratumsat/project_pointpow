@@ -132,21 +132,26 @@ class LoginMobileViewController: LoginViewController {
                 let request_id  = mResult["request_id"] as? String ?? ""
                 
                 
+               
                 
-                if status != "active" {
-                    DataController.sharedInstance.setRequestId(request_id)
-                    self.showVerify(mobile, ref_id, true)
-                    return
-                }
+                DataController.sharedInstance.setRequestId(request_id)
+                self.showVerify(mobile, ref_id,  true)
                 
-                if !is_pin.boolValue {
-                    self.showSettingPassCodeModalView(NSLocalizedString("title-set-passcode", comment: ""), lockscreen: true)
-                    return
-                }
-         
-                self.dismiss(animated: true, completion: {
-                    (self.navigationController as? IntroNav)?.callbackFinish?()
-                })
+                
+//                if status != "active" {
+//                    DataController.sharedInstance.setRequestId(request_id)
+//                    self.showVerify(mobile, ref_id, true)
+//                    return
+//                }
+//
+//                if !is_pin.boolValue {
+//                    self.showSettingPassCodeModalView(NSLocalizedString("title-set-passcode", comment: ""), lockscreen: true)
+//                    return
+//                }
+//
+//                self.dismiss(animated: true, completion: {
+//                    (self.navigationController as? IntroNav)?.callbackFinish?()
+//                })
   
             }
         }, error: { (error) in

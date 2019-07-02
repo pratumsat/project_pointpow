@@ -244,20 +244,32 @@ class VerifyViewController: BaseViewController {
             if let mResult = result as? [String:AnyObject]{
                 print(mResult)
                 
-                let access_token  = result["access_token"] as? String ?? ""
-                let reset_token  = result["reset_token"] as? String ?? ""
-                
+                let access_token  = mResult["access_token"] as? String ?? ""
+                let reset_token  = mResult["reset_token"] as? String ?? ""
+                let is_profile = mResult["is_profile"] as? NSNumber ?? 0
             
                 if self.forgotPassword {
                     DataController.sharedInstance.setResetPasswordToken(reset_token)
                     self.showResetPasswordView(true, forgotPassword: true)
                 }else{
-                    self.showPersonalData(true){
+                    
+                    DataController.sharedInstance.setToken(access_token)
+                    
+                    if !is_profile.boolValue {
+                        self.showPersonalData(true){
+                            self.dismiss(animated: false, completion: {
+                                (self.navigationController as? IntroNav)?.callbackFinish?()
+                            })
+                        }
+                    }else{
                         self.dismiss(animated: false, completion: {
                             (self.navigationController as? IntroNav)?.callbackFinish?()
                         })
                     }
-                    DataController.sharedInstance.setToken(access_token)
+
+                    
+                    
+                    
                 }
                 
             }

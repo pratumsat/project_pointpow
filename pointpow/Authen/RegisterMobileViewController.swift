@@ -37,7 +37,6 @@ class RegisterMobileViewController: RegisterViewController {
         self.termLabel.isUserInteractionEnabled =  true
         self.termLabel.addGestureRecognizer(term)
         
-        
         self.checkBox.toggle  = { (isCheck) in
             self.validateData()
         }

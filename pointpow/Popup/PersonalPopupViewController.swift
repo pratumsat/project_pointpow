@@ -177,6 +177,7 @@ class PersonalPopupViewController: BaseViewController {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+     
         
         guard let textRange = Range(range, in: textField.text!) else { return true}
         let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)

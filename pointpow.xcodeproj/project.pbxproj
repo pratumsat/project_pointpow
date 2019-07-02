@@ -217,6 +217,8 @@
 		C18A1CE222112D2A002CAF4C /* RegisterGoldstep2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18A1CE122112D2A002CAF4C /* RegisterGoldstep2ViewController.swift */; };
 		C18A1CE422113712002CAF4C /* RegisterGoldstep3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18A1CE322113712002CAF4C /* RegisterGoldstep3ViewController.swift */; };
 		C18A1CE622118BC9002CAF4C /* GoldSWRevealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18A1CE522118BC9002CAF4C /* GoldSWRevealViewController.swift */; };
+		C190F40322CB159D000EF24D /* RegisterMobileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190F40222CB159D000EF24D /* RegisterMobileViewController.swift */; };
+		C190F40522CB170A000EF24D /* LoginMobileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190F40422CB170A000EF24D /* LoginMobileViewController.swift */; };
 		C197FEDA21DC5616002F24E8 /* PopUpRegisterSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FED921DC5616002F24E8 /* PopUpRegisterSuccessViewController.swift */; };
 		C197FEDE21DC8E98002F24E8 /* ResetNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FEDD21DC8E98002F24E8 /* ResetNav.swift */; };
 		C197FF2622081C72002F24E8 /* GoldPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FF2522081C72002F24E8 /* GoldPageViewController.swift */; };
@@ -539,6 +541,8 @@
 		C18A1CE122112D2A002CAF4C /* RegisterGoldstep2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGoldstep2ViewController.swift; sourceTree = "<group>"; };
 		C18A1CE322113712002CAF4C /* RegisterGoldstep3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGoldstep3ViewController.swift; sourceTree = "<group>"; };
 		C18A1CE522118BC9002CAF4C /* GoldSWRevealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldSWRevealViewController.swift; sourceTree = "<group>"; };
+		C190F40222CB159D000EF24D /* RegisterMobileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterMobileViewController.swift; sourceTree = "<group>"; };
+		C190F40422CB170A000EF24D /* LoginMobileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMobileViewController.swift; sourceTree = "<group>"; };
 		C197FED921DC5616002F24E8 /* PopUpRegisterSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpRegisterSuccessViewController.swift; sourceTree = "<group>"; };
 		C197FEDD21DC8E98002F24E8 /* ResetNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetNav.swift; sourceTree = "<group>"; };
 		C197FF2522081C72002F24E8 /* GoldPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldPageViewController.swift; sourceTree = "<group>"; };
@@ -948,6 +952,8 @@
 				C11A93BF218C2AD900627B44 /* ForgotPasswordViewController.swift */,
 				C11A93C3218FF3E200627B44 /* VerifyViewController.swift */,
 				C12CCC602281590C00F26DCC /* PersonalDataViewController.swift */,
+				C190F40222CB159D000EF24D /* RegisterMobileViewController.swift */,
+				C190F40422CB170A000EF24D /* LoginMobileViewController.swift */,
 			);
 			path = Authen;
 			sourceTree = "<group>";
@@ -1797,6 +1803,7 @@
 				C1AD50B72188000B00F74415 /* Constant.swift in Sources */,
 				C107CF36222263AD00C50B8C /* PopupShippingMyAddressViewController.swift in Sources */,
 				C10CA19A21914AF900316DF3 /* TransactionViewController.swift in Sources */,
+				C190F40322CB159D000EF24D /* RegisterMobileViewController.swift in Sources */,
 				C11A93B3218BF6D200627B44 /* IntroViewController.swift in Sources */,
 				C10CA19421914A3B00316DF3 /* HomeViewController.swift in Sources */,
 				C103113F2212CBAC004396E0 /* GoldPenddingVerifyNav.swift in Sources */,
@@ -1902,6 +1909,7 @@
 				C11A93C4218FF3E200627B44 /* VerifyViewController.swift in Sources */,
 				C1AD50B52187FF4000F74415 /* Loading.swift in Sources */,
 				C13D4FE9229E474E00516CE8 /* PaymentViewController.swift in Sources */,
+				C190F40522CB170A000EF24D /* LoginMobileViewController.swift in Sources */,
 				C1F0C07022C34B9900A49BAA /* RecommendCell.swift in Sources */,
 				C1817D9D219C07DF009507DB /* ItemBankCell.swift in Sources */,
 				C121FB58228A66C100043387 /* HeaderViewDateTableViewCell.swift in Sources */,

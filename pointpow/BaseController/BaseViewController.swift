@@ -375,6 +375,25 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
+    
+    func showLoginMobile(_ animated:Bool){
+        if let vc:LoginMobileViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginMobileViewController") as? LoginMobileViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    func showRegister(_ animated:Bool){
+        if let vc:RegisterViewController = self.storyboard?.instantiateViewController(withIdentifier: "RegisterViewController") as? RegisterViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    func showRegisterMobile(_ animated:Bool){
+        if let vc:RegisterMobileViewController = self.storyboard?.instantiateViewController(withIdentifier: "RegisterMobileViewController") as? RegisterMobileViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
     func showVerify(_ mobilePhone:String, _ ref_id:String, forgotPassword:Bool = false, _ animated:Bool){
         if let vc:VerifyViewController = self.storyboard?.instantiateViewController(withIdentifier: "VerifyViewController") as? VerifyViewController {
             vc.mobilePhone = mobilePhone
@@ -413,12 +432,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             self.present(navController, animated: animated, completion: nil)
         }
     }
-    func showRegister(_ animated:Bool){
-        if let vc:RegisterViewController = self.storyboard?.instantiateViewController(withIdentifier: "RegisterViewController") as? RegisterViewController {
-            
-            self.navigationController?.pushViewController(vc, animated: animated)
-        }
-    }
+    
     func showMapFullViewController(_ animated:Bool , dissmissCallback:(()->Void)?){
         if let vc:WebViewMapViewController = self.storyboard?.instantiateViewController(withIdentifier: "WebViewMapViewController") as? WebViewMapViewController {
             

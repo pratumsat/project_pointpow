@@ -59,6 +59,22 @@ class VerifyViewController: BaseViewController {
         self.removeCountDownLable()
     }
     func setUp(){
+        self.hendleSetPasscodeSuccess = { (passcode, controller) in
+            
+            let message = NSLocalizedString("string-register-pincode-success", comment: "")
+            let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+            let ok = UIAlertAction(title: NSLocalizedString("string-button-ok", comment: ""), style: .cancel, handler: { (action) in
+                
+                controller.dismiss(animated: false, completion: { () in
+                    self.dismiss(animated: false, completion: {
+                        (self.navigationController as? IntroNav)?.callbackFinish?()
+                    })
+                })
+            })
+            alert.addAction(ok)
+            alert.show()
+        }
+        
         self.sendButton.borderRedColorProperties(borderWidth: 1)  
         self.verifyButton.borderClearProperties(borderWidth: 1)
         
@@ -154,6 +170,7 @@ class VerifyViewController: BaseViewController {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 
    
+        
         if textField  == self.usernameTextField {
             let startingLength = textField.text?.count ?? 0
             let lengthToAdd = string.count
@@ -169,15 +186,6 @@ class VerifyViewController: BaseViewController {
             }
             return newLength <= 10
             
-            //let text = textField.text ?? ""
-            
-//            if string.count == 0 {
-//                textField.text = String(text.dropLast()).chunkFormatted()
-//            }  else {
-//                let newText = String((text + string).filter({ $0 != "-" }).prefix(10))
-//                textField.text = newText.chunkFormatted()
-//            }
-//            return false
             
         }
         return true
@@ -244,20 +252,36 @@ class VerifyViewController: BaseViewController {
             if let mResult = result as? [String:AnyObject]{
                 print(mResult)
                 
-                let access_token  = result["access_token"] as? String ?? ""
-                let reset_token  = result["reset_token"] as? String ?? ""
+                let access_token  = mResult["access_token"] as? String ?? ""
+                let reset_token  = mResult["reset_token"] as? String ?? ""
+                let member = mResult["member"] as? [String:AnyObject] ?? [:]
+                let is_profile = member["is_profile"] as? NSNumber ?? 0
+                let is_pin = member["is_pin"] as? NSNumber ?? 0
                 
-            
                 if self.forgotPassword {
                     DataController.sharedInstance.setResetPasswordToken(reset_token)
                     self.showResetPasswordView(true, forgotPassword: true)
                 }else{
-                    self.showPersonalData(true){
-                        self.dismiss(animated: false, completion: {
-                            (self.navigationController as? IntroNav)?.callbackFinish?()
-                        })
-                    }
+                    
                     DataController.sharedInstance.setToken(access_token)
+                    
+                    if !is_profile.boolValue && !is_pin.boolValue {
+                        self.showPersonalData(true){
+                            self.dismiss(animated: false, completion: {
+                                (self.navigationController as? IntroNav)?.callbackFinish?()
+                            })
+                        }
+                    }else{
+                        if !is_pin.boolValue {
+                            self.showSettingPassCodeModalView(NSLocalizedString("title-set-passcode", comment: ""), lockscreen: true)
+                            return
+                        }else{
+                            self.dismiss(animated: false, completion: {
+                                (self.navigationController as? IntroNav)?.callbackFinish?()
+                            })
+                        }
+                    }
+                    
                 }
                 
             }

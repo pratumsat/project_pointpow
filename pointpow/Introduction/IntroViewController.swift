@@ -25,7 +25,8 @@ class IntroViewController: BaseViewController, UICollectionViewDelegate , UIColl
         
         let require_login = (self.navigationController as! IntroNav).require_login
         if require_login {
-            self.showLogin(false)
+            //self.showLogin(false)
+            self.showLoginMobile(true)
         }
         
     }
@@ -70,10 +71,12 @@ class IntroViewController: BaseViewController, UICollectionViewDelegate , UIColl
     }
     
     @IBAction func loginTapped(_ sender: Any) {
-        self.showLogin(true)
+        //self.showLogin(true)
+        self.showLoginMobile(true)
     }
     @IBAction func registerTapped(_ sender: Any) {
-        self.showRegister(true)
+        //self.showRegister(true)
+        self.showRegisterMobile(true)
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

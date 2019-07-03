@@ -213,6 +213,7 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
         textField.resignFirstResponder()
         
         let keyword = self.searchTextField.text!
+        
         self.searchFriend(keyword)
         
         return true

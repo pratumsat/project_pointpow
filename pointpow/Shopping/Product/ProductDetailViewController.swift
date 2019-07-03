@@ -216,7 +216,6 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        
         if textField == self.amountTextField {
             guard let textRange = Range(range, in: textField.text!) else { return true}
             var updatedText = textField.text!.replacingCharacters(in: textRange, with: string)

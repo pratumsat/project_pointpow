@@ -262,7 +262,7 @@ class VerifyViewController: BaseViewController {
                     DataController.sharedInstance.setResetPasswordToken(reset_token)
                     self.showResetPasswordView(true, forgotPassword: true)
                 }else{
-                    
+                    /* Mobile Only*/
                     DataController.sharedInstance.setToken(access_token)
                     
                     if !is_profile.boolValue && !is_pin.boolValue {

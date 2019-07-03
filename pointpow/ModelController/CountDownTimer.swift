@@ -48,7 +48,7 @@ public class DateCountDownTimer{
         if let targedDate = dateFormatter.date(from: dateString) {
             // Calculating the difference of dates for timer
             let calendar = NSCalendar.current
-            let unitFlags: Set<Calendar.Component> = [.minute, .hour, .day, .weekOfYear, .month, .year, .second]
+            let unitFlags: Set<Calendar.Component> = [.second, .minute, .hour, .day, .month, .year]
             let component = calendar.dateComponents(unitFlags, from: currentDate, to: targedDate)
             let days = component.day!
             let hours = component.hour!

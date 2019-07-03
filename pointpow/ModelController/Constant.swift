@@ -1182,7 +1182,7 @@ func convertDateOfDay(_ dateString:String) -> String {
     if let d1 = dateFormatter.date(from: dateString){
         
         let calendar = NSCalendar.current
-        let unitFlags: Set<Calendar.Component> = [.minute, .hour, .day, .weekOfYear, .month, .year, .second]
+        let unitFlags: Set<Calendar.Component> = [.second, .minute, .hour, .day, .month, .year]
         let components = calendar.dateComponents(unitFlags, from: d1)
         
         
@@ -1204,7 +1204,7 @@ func convertDateRegister(_ dateString:String , format:String = "dd-MM-yyyy HH:mm
     if let d1 = dateFormatter.date(from: dateString){
         
         let calendar = NSCalendar.current
-        let unitFlags: Set<Calendar.Component> = [.minute, .hour, .day, .weekOfYear, .month, .year, .second]
+        let unitFlags: Set<Calendar.Component> = [.second, .minute, .hour, .day, .month, .year]
         let components = calendar.dateComponents(unitFlags, from: d1)
         
         
@@ -1230,7 +1230,7 @@ func convertDate(_ dateString:String , format:String = "dd-MM-yyyy HH:mm") -> St
     if let d1 = dateFormatter.date(from: dateString){
         
         let calendar = NSCalendar.current
-        let unitFlags: Set<Calendar.Component> = [.minute, .hour, .day, .weekOfYear, .month, .year, .second]
+        let unitFlags: Set<Calendar.Component> = [.second, .minute, .hour, .day, .month, .year]
         let components = calendar.dateComponents(unitFlags, from: d1)
         
         
@@ -1258,7 +1258,7 @@ func convertBuddhaToChris(_ dateString:String, _ format:String = "dd-MM-yyyy HH:
     if let d1 = dateFormatter.date(from: dateString){
         print(d1)
         let calendar = NSCalendar.current
-        let unitFlags: Set<Calendar.Component> = [.day, .month, .year, .hour, .minute]
+        let unitFlags: Set<Calendar.Component> = [.second, .minute, .hour, .day, .month, .year]
         let components = calendar.dateComponents(unitFlags, from: d1)
         
         let year  = components.year! - 543
@@ -1281,7 +1281,7 @@ func compareLiveTime(_ destinationDate:String) -> Bool{
     if let targedDate = dateFormatter.date(from: destinationDate) {
         // Calculating the difference of dates for timer
         let calendar = NSCalendar.current
-        let unitFlags: Set<Calendar.Component> = [.minute, .hour, .day, .weekOfYear, .month, .year, .second]
+        let unitFlags: Set<Calendar.Component> = [.second, .minute, .hour, .day, .month, .year]
         let component = calendar.dateComponents(unitFlags, from: currentDate, to: targedDate)
         let days = component.day!
         let hours = component.hour!
@@ -1309,7 +1309,7 @@ func validateTransactionTime(_ dateString:String) -> Bool {
     if let d1 = dateFormatter.date(from: nDate){
         
         let calendar = NSCalendar.current
-        let unitFlags: Set<Calendar.Component> = [.minute, .hour, .day, .weekOfYear, .month, .year, .second]
+        let unitFlags: Set<Calendar.Component> = [.second, .minute, .hour, .day, .month, .year]
         let components = calendar.dateComponents(unitFlags, from: d1)
         
         
@@ -1380,7 +1380,7 @@ func dateNow() -> String {
     let d1 = Date()
     
     let calendar = NSCalendar.current
-    let unitFlags: Set<Calendar.Component> = [.minute, .hour, .day, .weekOfYear, .month, .year, .second]
+    let unitFlags: Set<Calendar.Component> = [.second, .minute, .hour, .day, .month, .year]
     let components = calendar.dateComponents(unitFlags, from: d1)
     
     
@@ -1402,7 +1402,7 @@ func timeAgoSinceDate(dateString:String, numericDates:Bool = false) -> String {
     dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
     if let date = dateFormatter.date(from: convertDate(dateString)){
         let calendar = NSCalendar.current
-        let unitFlags: Set<Calendar.Component> = [.minute, .hour, .day, .weekOfYear, .month, .year, .second]
+        let unitFlags: Set<Calendar.Component> = [.second, .minute, .hour, .day, .month, .year]
         let now = NSDate()
         let earliest = now.earlierDate(date as Date)
         let latest = (earliest == now as Date) ? date : now as Date

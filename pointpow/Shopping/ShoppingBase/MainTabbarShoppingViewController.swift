@@ -103,7 +103,7 @@ class MainTabbarShoppingViewController: UITabBarController , UITabBarControllerD
     }
     
     func showCart(){
-        if let vc:PointManageViewController = self.storyboard?.instantiateViewController(withIdentifier: "PointManageViewController") as? PointManageViewController {
+        if let vc:CartViewController = self.storyboard?.instantiateViewController(withIdentifier: "CartViewController") as? CartViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

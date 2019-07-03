@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="ThaiSansNeue-Bold.ttf">
+            <string>ThaiSansNeue-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CartSummaryCell" id="rrc-ph-lkr" customClass="CartSummaryCell" customModule="pointpow" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="466" height="111"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="466" height="111"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="สรุปรายการสั่งซื้อ" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z3N-TA-GUo">
+                        <rect key="frame" x="16" y="10" width="434" height="29"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="22"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ยอดรวม" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fen-TQ-ky2">
+                        <rect key="frame" x="16" y="39" width="52" height="26"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
+                        <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(จำนวน 2 ชิ้น)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6J-JC-sDh">
+                        <rect key="frame" x="78" y="39" width="90" height="26"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
+                        <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="ยอดรวมทั้งหมด" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KsA-uc-E1j">
+                        <rect key="frame" x="16" y="65" width="310" height="26"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
+                        <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Point Pow" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QuR-F1-wrk">
+                        <rect key="frame" x="384.5" y="65" width="65.5" height="26"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JRB-6D-H3E">
+                        <rect key="frame" x="336" y="65" width="38.5" height="26"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Fen-TQ-ky2" firstAttribute="leading" secondItem="Z3N-TA-GUo" secondAttribute="leading" id="0K7-lY-nTx"/>
+                <constraint firstItem="Z3N-TA-GUo" firstAttribute="top" secondItem="rrc-ph-lkr" secondAttribute="top" constant="10" id="12k-6s-Tcy"/>
+                <constraint firstItem="s6J-JC-sDh" firstAttribute="leading" secondItem="Fen-TQ-ky2" secondAttribute="trailing" constant="10" id="2JR-Hz-7bH"/>
+                <constraint firstItem="KsA-uc-E1j" firstAttribute="top" secondItem="Fen-TQ-ky2" secondAttribute="bottom" id="CjJ-Nq-AqT"/>
+                <constraint firstItem="Fen-TQ-ky2" firstAttribute="top" secondItem="Z3N-TA-GUo" secondAttribute="bottom" id="WnP-Jd-Aty"/>
+                <constraint firstItem="QuR-F1-wrk" firstAttribute="leading" secondItem="JRB-6D-H3E" secondAttribute="trailing" constant="10" id="cQg-zz-Dsz"/>
+                <constraint firstAttribute="trailing" secondItem="Z3N-TA-GUo" secondAttribute="trailing" constant="16" id="feR-3Y-obc"/>
+                <constraint firstItem="s6J-JC-sDh" firstAttribute="centerY" secondItem="Fen-TQ-ky2" secondAttribute="centerY" id="iQ8-Q1-YQd"/>
+                <constraint firstItem="KsA-uc-E1j" firstAttribute="centerY" secondItem="QuR-F1-wrk" secondAttribute="centerY" id="ll4-h8-kji"/>
+                <constraint firstItem="KsA-uc-E1j" firstAttribute="leading" secondItem="Z3N-TA-GUo" secondAttribute="leading" id="rAO-0s-wlT"/>
+                <constraint firstItem="JRB-6D-H3E" firstAttribute="leading" secondItem="KsA-uc-E1j" secondAttribute="trailing" constant="10" id="rFA-NG-zxp"/>
+                <constraint firstItem="Z3N-TA-GUo" firstAttribute="leading" secondItem="rrc-ph-lkr" secondAttribute="leading" constant="16" id="sv3-hk-IEn"/>
+                <constraint firstItem="JRB-6D-H3E" firstAttribute="centerY" secondItem="QuR-F1-wrk" secondAttribute="centerY" id="tEG-tC-piE"/>
+                <constraint firstAttribute="trailing" secondItem="QuR-F1-wrk" secondAttribute="trailing" constant="16" id="wWA-eb-y65"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="UyK-M8-Scg"/>
+            <size key="customSize" width="466" height="111"/>
+            <point key="canvasLocation" x="169.59999999999999" y="-5.8470764617691158"/>
+        </collectionViewCell>
+    </objects>
+</document>

@@ -234,6 +234,17 @@
 		C197FF3F22093D9B002F24E8 /* RegisterGoldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C197FF3D22093D9B002F24E8 /* RegisterGoldCell.xib */; };
 		C197FF422209401D002F24E8 /* LogoGoldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197FF402209401D002F24E8 /* LogoGoldCell.swift */; };
 		C197FF432209401D002F24E8 /* LogoGoldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C197FF412209401D002F24E8 /* LogoGoldCell.xib */; };
+		C19BEEF522CCA25D00855FBF /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19BEEF422CCA25D00855FBF /* CartViewController.swift */; };
+		C19BEEF922CCA5E500855FBF /* CartPointBalanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19BEEF722CCA5E500855FBF /* CartPointBalanceCell.swift */; };
+		C19BEEFA22CCA5E500855FBF /* CartPointBalanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C19BEEF822CCA5E500855FBF /* CartPointBalanceCell.xib */; };
+		C19BEEFD22CCAA7B00855FBF /* ItenCartProductSelectAllCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19BEEFB22CCAA7B00855FBF /* ItenCartProductSelectAllCell.swift */; };
+		C19BEEFE22CCAA7B00855FBF /* ItenCartProductSelectAllCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C19BEEFC22CCAA7B00855FBF /* ItenCartProductSelectAllCell.xib */; };
+		C19BEF0122CCB2A500855FBF /* ItemCartProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19BEEFF22CCB2A500855FBF /* ItemCartProductCell.swift */; };
+		C19BEF0222CCB2A500855FBF /* ItemCartProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C19BEF0022CCB2A500855FBF /* ItemCartProductCell.xib */; };
+		C19BEF0522CCCCED00855FBF /* CartSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19BEF0322CCCCED00855FBF /* CartSummaryCell.swift */; };
+		C19BEF0622CCCCED00855FBF /* CartSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C19BEF0422CCCCED00855FBF /* CartSummaryCell.xib */; };
+		C19BEF0922CCD56A00855FBF /* CartHowtoSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19BEF0722CCD56A00855FBF /* CartHowtoSummary.swift */; };
+		C19BEF0A22CCD56A00855FBF /* CartHowtoSummary.xib in Resources */ = {isa = PBXBuildFile; fileRef = C19BEF0822CCD56A00855FBF /* CartHowtoSummary.xib */; };
 		C1AD507A2187F45600F74415 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AD50792187F45600F74415 /* AppDelegate.swift */; };
 		C1AD507C2187F45600F74415 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AD507B2187F45600F74415 /* ViewController.swift */; };
 		C1AD50812187F45900F74415 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1AD50802187F45900F74415 /* Assets.xcassets */; };
@@ -558,6 +569,17 @@
 		C197FF3D22093D9B002F24E8 /* RegisterGoldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterGoldCell.xib; sourceTree = "<group>"; };
 		C197FF402209401D002F24E8 /* LogoGoldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoGoldCell.swift; sourceTree = "<group>"; };
 		C197FF412209401D002F24E8 /* LogoGoldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoGoldCell.xib; sourceTree = "<group>"; };
+		C19BEEF422CCA25D00855FBF /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		C19BEEF722CCA5E500855FBF /* CartPointBalanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPointBalanceCell.swift; sourceTree = "<group>"; };
+		C19BEEF822CCA5E500855FBF /* CartPointBalanceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartPointBalanceCell.xib; sourceTree = "<group>"; };
+		C19BEEFB22CCAA7B00855FBF /* ItenCartProductSelectAllCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItenCartProductSelectAllCell.swift; sourceTree = "<group>"; };
+		C19BEEFC22CCAA7B00855FBF /* ItenCartProductSelectAllCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItenCartProductSelectAllCell.xib; sourceTree = "<group>"; };
+		C19BEEFF22CCB2A500855FBF /* ItemCartProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCartProductCell.swift; sourceTree = "<group>"; };
+		C19BEF0022CCB2A500855FBF /* ItemCartProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCartProductCell.xib; sourceTree = "<group>"; };
+		C19BEF0322CCCCED00855FBF /* CartSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartSummaryCell.swift; sourceTree = "<group>"; };
+		C19BEF0422CCCCED00855FBF /* CartSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartSummaryCell.xib; sourceTree = "<group>"; };
+		C19BEF0722CCD56A00855FBF /* CartHowtoSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartHowtoSummary.swift; sourceTree = "<group>"; };
+		C19BEF0822CCD56A00855FBF /* CartHowtoSummary.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartHowtoSummary.xib; sourceTree = "<group>"; };
 		C1AD50762187F45600F74415 /* pointpow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pointpow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1AD50792187F45600F74415 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1AD507B2187F45600F74415 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -921,6 +943,7 @@
 		C11A93B4218C00A000627B44 /* CollectionCell */ = {
 			isa = PBXGroup;
 			children = (
+				C19BEEF622CCA5C700855FBF /* CartCell */,
 				C1F0C08022C4A7D800A49BAA /* ShoppingPageCell */,
 				C11AFC9122C23DD400573C27 /* ShoppingBaseCell */,
 				C15F17002293D439005E8E71 /* TransectionCell */,
@@ -961,6 +984,7 @@
 		C11AFC7522C1C27500573C27 /* Shopping */ = {
 			isa = PBXGroup;
 			children = (
+				C19BEEF322CCA24500855FBF /* Orders */,
 				C11AFC8422C1DF4C00573C27 /* Account */,
 				C11AFC8322C1DF4500573C27 /* Promotion */,
 				C11AFC8222C1DF3F00573C27 /* Product */,
@@ -1232,6 +1256,31 @@
 				C197FF412209401D002F24E8 /* LogoGoldCell.xib */,
 			);
 			path = GoldHomeCell;
+			sourceTree = "<group>";
+		};
+		C19BEEF322CCA24500855FBF /* Orders */ = {
+			isa = PBXGroup;
+			children = (
+				C19BEEF422CCA25D00855FBF /* CartViewController.swift */,
+			);
+			path = Orders;
+			sourceTree = "<group>";
+		};
+		C19BEEF622CCA5C700855FBF /* CartCell */ = {
+			isa = PBXGroup;
+			children = (
+				C19BEEF722CCA5E500855FBF /* CartPointBalanceCell.swift */,
+				C19BEEF822CCA5E500855FBF /* CartPointBalanceCell.xib */,
+				C19BEEFB22CCAA7B00855FBF /* ItenCartProductSelectAllCell.swift */,
+				C19BEEFC22CCAA7B00855FBF /* ItenCartProductSelectAllCell.xib */,
+				C19BEEFF22CCB2A500855FBF /* ItemCartProductCell.swift */,
+				C19BEF0022CCB2A500855FBF /* ItemCartProductCell.xib */,
+				C19BEF0322CCCCED00855FBF /* CartSummaryCell.swift */,
+				C19BEF0422CCCCED00855FBF /* CartSummaryCell.xib */,
+				C19BEF0722CCD56A00855FBF /* CartHowtoSummary.swift */,
+				C19BEF0822CCD56A00855FBF /* CartHowtoSummary.xib */,
+			);
+			path = CartCell;
 			sourceTree = "<group>";
 		};
 		C1AD506D2187F45600F74415 = {
@@ -1629,6 +1678,7 @@
 				C11A93B8218C00C800627B44 /* IntroCell1.xib in Resources */,
 				C10CA1BF219429D500316DF3 /* ImageCell.xib in Resources */,
 				C11BDFBD21A2BB3C00443D2D /* ItemConfirmSummaryCell.xib in Resources */,
+				C19BEF0222CCB2A500855FBF /* ItemCartProductCell.xib in Resources */,
 				C1F0C08422C4A81900A49BAA /* PageViewCollectionViewCell.xib in Resources */,
 				C1F0C08822C4B00300A49BAA /* PageViewFooterCollectionViewCell.xib in Resources */,
 				C1AD50812187F45900F74415 /* Assets.xcassets in Resources */,
@@ -1654,13 +1704,16 @@
 				C120D7CF21955BB500F9EEBB /* ProfileCell.xib in Resources */,
 				C115FA4F219ECB85008E7844 /* ItemListResultCell.xib in Resources */,
 				C1249EB92224F03900F56FA0 /* map.html in Resources */,
+				C19BEF0A22CCD56A00855FBF /* CartHowtoSummary.xib in Resources */,
 				C181F06B220D8566003F7C70 /* ProfileTableViewCell.xib in Resources */,
 				C1817D93219BF61F009507DB /* ItemFriendCell.xib in Resources */,
 				C197FF3B22083AE9002F24E8 /* SavingCell.xib in Resources */,
 				C197FF432209401D002F24E8 /* LogoGoldCell.xib in Resources */,
 				C1F761062216C261000A2CA9 /* SavingResultCell.xib in Resources */,
 				C107CF2E221FD52800C50B8C /* WithDrawResultPointPowSuccessCell.xib in Resources */,
+				C19BEF0622CCCCED00855FBF /* CartSummaryCell.xib in Resources */,
 				C1DEBE992188337500CBB95F /* ThaiSansNeue-Regular.ttf in Resources */,
+				C19BEEFE22CCAA7B00855FBF /* ItenCartProductSelectAllCell.xib in Resources */,
 				C1F0C07722C34E1D00A49BAA /* ShoppingProductCell.xib in Resources */,
 				C120D7D321955BC900F9EEBB /* ItemProfileCell.xib in Resources */,
 				C11AFC9522C23E5500573C27 /* SubCateShoppingCell.xib in Resources */,
@@ -1672,6 +1725,7 @@
 				C13D998B21997AD6001A4794 /* HeadCell.xib in Resources */,
 				C1DA27C4224200C2000C0715 /* WithDrawResultThaiPostCell.xib in Resources */,
 				C1B32E472252674D006AD7F2 /* CountDownCell.xib in Resources */,
+				C19BEEFA22CCA5E500855FBF /* CartPointBalanceCell.xib in Resources */,
 				C13D998621997938001A4794 /* LogoutCell.xib in Resources */,
 				C1273240225380D500A9EE74 /* PickerLuckyDrawCell.xib in Resources */,
 				C197FF3322083A6F002F24E8 /* GoldPriceCell.xib in Resources */,
@@ -1802,6 +1856,7 @@
 				C1EB9434224E8AFF004D73A7 /* PAPasscodeViewController.h in Sources */,
 				C1AD50B72188000B00F74415 /* Constant.swift in Sources */,
 				C107CF36222263AD00C50B8C /* PopupShippingMyAddressViewController.swift in Sources */,
+				C19BEEF522CCA25D00855FBF /* CartViewController.swift in Sources */,
 				C10CA19A21914AF900316DF3 /* TransactionViewController.swift in Sources */,
 				C190F40322CB159D000EF24D /* RegisterMobileViewController.swift in Sources */,
 				C11A93B3218BF6D200627B44 /* IntroViewController.swift in Sources */,
@@ -1885,6 +1940,7 @@
 				C169FF9E21C25C9200F9D354 /* EmailViewController.swift in Sources */,
 				C15F17032293D455005E8E71 /* HistoryCell.swift in Sources */,
 				C106BEA6220AC01400E2331E /* ConfirmSavingViewController.swift in Sources */,
+				C19BEEF922CCA5E500855FBF /* CartPointBalanceCell.swift in Sources */,
 				C1B32E4922526855006AD7F2 /* CountDownTimer.swift in Sources */,
 				C115FA4A219EC511008E7844 /* ResultTransferViewController.swift in Sources */,
 				C15F16FF2293D23E005E8E71 /* PointHistory.swift in Sources */,
@@ -1894,6 +1950,7 @@
 				C115FA5521A2A40F008E7844 /* PointFriendTransferViewController.swift in Sources */,
 				C169FFC821C4F10100F9D354 /* FavorCell.swift in Sources */,
 				C121FB60228AC39500043387 /* TermPointPowViewController.swift in Sources */,
+				C19BEEFD22CCAA7B00855FBF /* ItenCartProductSelectAllCell.swift in Sources */,
 				C11AFC7322BCBE3800573C27 /* ConstantObjectiveC.m in Sources */,
 				C121FB5C228A815F00043387 /* AboutViewController.swift in Sources */,
 				C1247C5122191898005D6F7A /* WithdrawCell.swift in Sources */,
@@ -1906,6 +1963,7 @@
 				C11AFC8A22C1DF8300573C27 /* PromotionShoppingViewController.swift in Sources */,
 				C11A93B1218BF69700627B44 /* MainNav.swift in Sources */,
 				C1B32E4222524367006AD7F2 /* ScheduleCell.swift in Sources */,
+				C19BEF0522CCCCED00855FBF /* CartSummaryCell.swift in Sources */,
 				C11A93C4218FF3E200627B44 /* VerifyViewController.swift in Sources */,
 				C1AD50B52187FF4000F74415 /* Loading.swift in Sources */,
 				C13D4FE9229E474E00516CE8 /* PaymentViewController.swift in Sources */,
@@ -1950,6 +2008,7 @@
 				C11BDFBC21A2BB3C00443D2D /* ItemConfirmSummaryCell.swift in Sources */,
 				C139488D2297F674003E0527 /* PopupChosenQRcodeViewController.swift in Sources */,
 				C1249EB72224EE0900F56FA0 /* WebViewMapViewController.swift in Sources */,
+				C19BEF0122CCB2A500855FBF /* ItemCartProductCell.swift in Sources */,
 				C13D503622A8E9F000516CE8 /* L102Language.swift in Sources */,
 				C1DEBE92218829D900CBB95F /* Scanner2ViewController.swift in Sources */,
 				C197FF422209401D002F24E8 /* LogoGoldCell.swift in Sources */,
@@ -1958,6 +2017,7 @@
 				C1F761052216C261000A2CA9 /* SavingResultCell.swift in Sources */,
 				C121FB51228A641D00043387 /* NotificationStructHolder.swift in Sources */,
 				C13948872296579E003E0527 /* PointPowIDViewController.swift in Sources */,
+				C19BEF0922CCD56A00855FBF /* CartHowtoSummary.swift in Sources */,
 				C10CA1B92193E1D100316DF3 /* PromotionCampainCell.swift in Sources */,
 				C1892E14221E9CCC00F5412F /* GoldHistory.swift in Sources */,
 				C139488922968D60003E0527 /* TransectionFilterResultViewController.swift in Sources */,

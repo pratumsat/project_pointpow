@@ -271,12 +271,11 @@ class TransactionViewController: BaseViewController  ,UICollectionViewDataSource
                     transCell.statusLabel.text = NSLocalizedString("string-status-transection-history-cancel", comment: "")
                 }
                 
-                if mType.lowercased() == "out" {
-                    transCell.amountLabel.textColor = Constant.Colors.PRIMARY_COLOR
-                }else{
-                    transCell.amountLabel.textColor = Constant.Colors.GREEN2
-                    
-                }
+                //if mType.lowercased() == "out" {
+                   // transCell.amountLabel.textColor = Constant.Colors.PRIMARY_COLOR
+                //}else{
+                   // transCell.amountLabel.textColor = Constant.Colors.GREEN2
+                //}
                 
                 if pointable_type.lowercased() == "pointtransfer" {
                     
@@ -316,7 +315,7 @@ class TransactionViewController: BaseViewController  ,UICollectionViewDataSource
             transCell.heightConstraint.constant = heightOfView
             
             
-            transCell.heightLogoConstraint.constant = heightOfView * 0.5
+            transCell.heightLogoConstraint.constant = heightOfView * 0.3
             
             if let size = self.pointHistory?[indexPath.section].items?.count  {
                 if (indexPath.row + 1) == size {

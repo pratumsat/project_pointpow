@@ -12,6 +12,9 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
 
     @IBOutlet weak var cartCollectionView: UICollectionView!
     var userData:AnyObject?
+    
+    var countSection = 8
+    
     var currentPointBalance:String? {
         didSet{
             self.cartCollectionView.reloadData()
@@ -47,6 +50,9 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         self.registerNib(self.cartCollectionView, "ItemCartProductCell")
         self.registerNib(self.cartCollectionView, "CartSummaryCell")
         self.registerNib(self.cartCollectionView, "CartHowtoSummary")
+        self.registerNib(self.cartCollectionView, "CartAddressShippingCell")
+        self.registerNib(self.cartCollectionView, "CartAdressTaxInvoiceCell")
+        self.registerNib(self.cartCollectionView, "CartNextButtonCell")
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -90,7 +96,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
     
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 5
+        return self.countSection
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -118,31 +124,50 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             if let selectCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItenCartProductSelectAllCell", for: indexPath) as? ItenCartProductSelectAllCell {
                 cell = selectCell
                 
-                selectCell.backgroundColor = UIColor.lightGray
+                //selectCell.backgroundColor = UIColor.lightGray
             }
         }
         if indexPath.section == 2 {
             if let productCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCartProductCell", for: indexPath) as? ItemCartProductCell {
                 cell = productCell
                 
-                productCell.backgroundColor = UIColor.cyan
+                //productCell.backgroundColor = UIColor.cyan
             }
         }
         if indexPath.section == 3 {
             if let sumCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CartSummaryCell", for: indexPath) as? CartSummaryCell {
                 cell = sumCell
                 
-                sumCell.backgroundColor = UIColor.brown
+                //sumCell.backgroundColor = UIColor.white
             }
         }
         if indexPath.section == 4 {
             if let howtoCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CartHowtoSummary", for: indexPath) as? CartHowtoSummary {
                 cell = howtoCell
                 
-                howtoCell.backgroundColor = UIColor.cyan
+                //howtoCell.backgroundColor = UIColor.lightGray
             }
         }
-        
+        if indexPath.section == 5 {
+            if let addressCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CartAddressShippingCell", for: indexPath) as? CartAddressShippingCell {
+                cell = addressCell
+                
+                //addressCell.backgroundColor = UIColor.cyan
+            }
+        }
+        if indexPath.section == 6 {
+            if let taxInvoiceCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CartAdressTaxInvoiceCell", for: indexPath) as? CartAdressTaxInvoiceCell {
+                cell = taxInvoiceCell
+                
+                //taxInvoiceCell.backgroundColor = UIColor.white
+            }
+        }
+        if indexPath.section == 7 {
+            if let nextCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CartNextButtonCell", for: indexPath) as? CartNextButtonCell {
+                cell = nextCell
+                
+            }
+        }
         if cell == nil {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as UICollectionViewCell
         }
@@ -151,6 +176,15 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        if section == self.countSection - 1 {
+            return UIEdgeInsets(top: 0, left: 0, bottom: 60, right: 0)
+        }
+        
+        return UIEdgeInsets.zero
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -164,16 +198,29 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             return CGSize(width: collectionView.frame.width, height: height)
         }
         if indexPath.section == 2 {
-            let height = CGFloat(120.0)
+            let height = CGFloat(140.0)
             return CGSize(width: collectionView.frame.width, height: height)
         }
         if indexPath.section == 3 {
-            let height = CGFloat(120.0)
+            let height = CGFloat(130.0)
             return CGSize(width: collectionView.frame.width, height: height)
         }
         if indexPath.section == 4 {
-            let height = CGFloat(120.0)
+            let height = CGFloat(200.0)
             return CGSize(width: collectionView.frame.width, height: height)
+        }
+        if indexPath.section == 5 {
+            let height = CGFloat(140.0)
+            return CGSize(width: collectionView.frame.width, height: height)
+        }
+        if indexPath.section == 6 {
+            let height = CGFloat(140.0)
+            return CGSize(width: collectionView.frame.width, height: height)
+        }
+        if indexPath.section == 7 {
+            let width = collectionView.frame.width - 40
+            let height = CGFloat(40)
+            return CGSize(width: width, height: height)
         }
         return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }

@@ -35,14 +35,14 @@ class PromotionDetailViewController: BaseViewController {
     func updateView(){
         if let itemData = self.promotionModel {
             let title = itemData["title"] as? String ?? ""
-            let cover_detail = itemData["cover_detail"] as? String ?? ""
-            let detail = itemData["detail"] as? String ?? ""
+            let path_mobile = itemData["path_mobile"] as? String ?? ""
+            let description = itemData["description"] as? String ?? ""
             
             self.title = title
             self.titleLabel.text = title
-            self.detailLabel.text = detail
+            self.detailLabel.text = description
             
-            if let url = URL(string: cover_detail) {
+            if let url = URL(string: path_mobile) {
                 self.bannerLImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_PROMO_DETAIL_PLACEHOLDER))
             }else{
                 self.bannerLImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_PROMO_DETAIL_PLACEHOLDER)

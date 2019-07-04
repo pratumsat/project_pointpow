@@ -25,7 +25,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s6t-yo-pLr" customClass="CheckBox" customModule="pointpow" customModuleProvider="target">
-                        <rect key="frame" x="16" y="7.5" width="35" height="35"/>
+                        <rect key="frame" x="10" y="7.5" width="35" height="35"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="s6t-yo-pLr" secondAttribute="height" multiplier="1:1" id="Z84-m6-dlX"/>
@@ -33,14 +33,14 @@
                         </constraints>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-fav-delete" translatesAutoresizingMaskIntoConstraints="NO" id="ffh-mp-1Lv">
-                        <rect key="frame" x="378" y="12.5" width="25" height="25"/>
+                        <rect key="frame" x="384" y="12.5" width="25" height="25"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="ffh-mp-1Lv" secondAttribute="height" multiplier="1:1" id="GSH-rL-ver"/>
                             <constraint firstAttribute="width" constant="25" id="qaD-jo-Yrm"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ทั้งหมด" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5CT-qM-r42">
-                        <rect key="frame" x="61" y="12" width="43.5" height="26"/>
+                        <rect key="frame" x="55" y="12" width="43.5" height="26"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                         <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -48,12 +48,12 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="s6t-yo-pLr" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="5xw-O7-P54"/>
+                <constraint firstItem="s6t-yo-pLr" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="5xw-O7-P54"/>
                 <constraint firstItem="ffh-mp-1Lv" firstAttribute="centerY" secondItem="s6t-yo-pLr" secondAttribute="centerY" id="99C-bG-4jn"/>
                 <constraint firstItem="s6t-yo-pLr" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="RrD-D3-TeW"/>
                 <constraint firstItem="5CT-qM-r42" firstAttribute="leading" secondItem="s6t-yo-pLr" secondAttribute="trailing" constant="10" id="bAZ-f1-F8D"/>
                 <constraint firstItem="5CT-qM-r42" firstAttribute="centerY" secondItem="s6t-yo-pLr" secondAttribute="centerY" id="iK5-Dg-pjz"/>
-                <constraint firstAttribute="trailing" secondItem="ffh-mp-1Lv" secondAttribute="trailing" constant="16" id="zV9-Mr-S5M"/>
+                <constraint firstAttribute="trailing" secondItem="ffh-mp-1Lv" secondAttribute="trailing" constant="10" id="zV9-Mr-S5M"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="419" height="50"/>

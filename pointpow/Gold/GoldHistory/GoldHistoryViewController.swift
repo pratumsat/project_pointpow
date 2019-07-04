@@ -316,7 +316,8 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
                     
                     transCell.amountLabel.text  = numberFormatter.string(from: gold_price)
                     transCell.titleLabel.text = NSLocalizedString("string-title-history-saving", comment: "")
-                    transCell.statusImageView.image = UIImage(named: "ic-saving")
+                    //transCell.statusImageView.image = UIImage(named: "ic-saving")
+                    transCell.statusImageView.image = UIImage(named: "ic-service-type-point-transfer-in")
                     transCell.shippingLabel.isHidden  = true
                     transCell.unitLabel.text = "PP"
                     
@@ -324,13 +325,13 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
                     transCell.shippingLabel.isHidden = true
                     
                     if status.lowercased() == "success" {
-                        transCell.statusLabel.textColor = Constant.Colors.GREEN
+                        //transCell.statusLabel.textColor = Constant.Colors.GREEN
                         transCell.statusLabel.text = NSLocalizedString("string-status-gold-history-success", comment: "")
                         
                         
                     }
                     if status.lowercased() == "cancel" {
-                        transCell.statusLabel.textColor = Constant.Colors.PRIMARY_COLOR
+                        //transCell.statusLabel.textColor = Constant.Colors.PRIMARY_COLOR
                         transCell.statusLabel.text = NSLocalizedString("string-status-gold-history-cancel", comment: "")
                         
                         
@@ -381,17 +382,18 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
                     
                     transCell.amountLabel.text = numberFormatter.string(from: gold_withdraw)
                     transCell.titleLabel.text = NSLocalizedString("string-title-history-withdraw", comment: "")
-                    transCell.statusImageView.image = UIImage(named: "ic-withdraw")
+                    //transCell.statusImageView.image = UIImage(named: "ic-withdraw")
+                    transCell.statusImageView.image = UIImage(named: "ic-service-type-shopping")
                     
                     
                     if status.lowercased() == "success" {
-                        transCell.statusLabel.textColor = Constant.Colors.GREEN
+                        //transCell.statusLabel.textColor = Constant.Colors.GREEN
                         transCell.statusLabel.text = NSLocalizedString("string-status-gold-history-success", comment: "")
                         
                         transCell.shippingLabel.isHidden = false
                     }
                     if status.lowercased() == "cancel" {
-                        transCell.statusLabel.textColor = Constant.Colors.PRIMARY_COLOR
+                        //transCell.statusLabel.textColor = Constant.Colors.PRIMARY_COLOR
                         transCell.statusLabel.text = NSLocalizedString("string-status-gold-history-cancel", comment: "")
                         
                         transCell.shippingLabel.isHidden = true

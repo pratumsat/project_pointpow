@@ -125,13 +125,13 @@ class PromotionViewController: BaseViewController , UICollectionViewDelegate , U
 
             if let itemData = self.promotionList?[indexPath.section] {
                 let title = itemData["title"] as? String ?? ""
-                let cover = itemData["cover"] as? String ?? ""
-                let detail = itemData["detail"] as? String ?? ""
+                let path_mobile_thumbnail = itemData["path_mobile_thumbnail"] as? String ?? ""
+                let shot_description = itemData["shot_description"] as? String ?? ""
                 
                 itemCell.titleLabel.text = title
-                itemCell.detailLabel.text = detail
+                itemCell.detailLabel.text = shot_description
                 
-                if let url = URL(string: cover) {
+                if let url = URL(string: path_mobile_thumbnail) {
                     itemCell.bannerImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_PROMO_PLACEHOLDER))
                 }else{
                     itemCell.bannerImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_PROMO_PLACEHOLDER)
@@ -177,7 +177,7 @@ class PromotionViewController: BaseViewController , UICollectionViewDelegate , U
         
         let width = collectionView.frame.width - 20
         
-        let heightImage = (width-20)/960*300
+        let heightImage = (width-20)/950*400
         
         let height = heightImage + 120
         return CGSize(width: width, height: height)

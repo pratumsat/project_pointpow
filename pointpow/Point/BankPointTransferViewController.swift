@@ -37,7 +37,7 @@ class BankPointTransferViewController: BaseViewController  {
     var minPointTransfer = 0.0
     var pointLimitOrder = 0.0
     var rate = 0.0
-    var pointName:String = "KTC Point"
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,7 +98,11 @@ class BankPointTransferViewController: BaseViewController  {
         if let data = self.itemData {
             let provider_image = data["provider_image_url"] as? String ?? ""
             let name = data["name"] as? String ?? ""
+            let point_name = data["point_name"] as? String ?? ""
             let exchange_rate = data["exchange_rate"] as? [[String:AnyObject]] ?? [[:]]
+            
+            
+            
             
             if let firstExchangeRate = exchange_rate.first {
                 let minimum = firstExchangeRate["minimum"] as? NSNumber ?? 0
@@ -111,8 +115,8 @@ class BankPointTransferViewController: BaseViewController  {
                 self.minPointTransfer = minimum.doubleValue
                 
                 
-                let txtExchange = "\(point_in) \(pointName) = \(point_out) Point Pow"
-                self.providerPointNameLabel.text = pointName
+                let txtExchange = "\(point_in) \(point_name) = \(point_out) Point Pow"
+                self.providerPointNameLabel.text = point_name
                 self.providerPointNameLabel.setLineSpacing(lineSpacing: 0, lineHeightMultiple: 0.9)
                 self.providerPointNameLabel.textAlignment = .center
                 // for thai sans

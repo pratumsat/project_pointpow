@@ -22,6 +22,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var displayNameLabel: UILabel!
     
+    @IBOutlet weak var scanImageVIew: UIImageView!
     var isSetHeight = false
     
     var startHome = false
@@ -126,6 +127,12 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         self.notiView.addGestureRecognizer(bell2)
         
         
+        let scan = UITapGestureRecognizer(target: self, action: #selector(scanTapped))
+        self.scanImageVIew.isUserInteractionEnabled = true
+        self.scanImageVIew.addGestureRecognizer(scan)
+        
+        
+        
         if DataController.sharedInstance.isLogin() {
             self.getUserInfo({
                 self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""), lockscreen: true, startApp : true, animated : false)
@@ -165,6 +172,29 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         self.getGoldPremiumPrice()
         
        
+    }
+    @objc func scanTapped(){
+        self.showScanBarcodeForMember { (result, barcode) in
+            if let mResult = result as? [String : AnyObject] {
+                let qrType = mResult["type"] as? String ?? ""
+                
+                if qrType.lowercased() == "friend"{
+                    self.showNextStepTransfer(mResult)
+                    
+                }
+            }
+        }
+    }
+    func showNextStepTransfer(_ modelFriend:[String:AnyObject]){
+        let is_profile = modelFriend["is_profile"] as? NSNumber ?? 0
+        if is_profile.boolValue {
+            self.showPointFriendTransferView(true, modelFriend)
+        }else{
+            self.showMessagePrompt2(NSLocalizedString("string-error-friendข-account-not-activated", comment: "")) {
+                //callback click ok
+            }
+        }
+        
     }
     
     func startLoadAPI(){

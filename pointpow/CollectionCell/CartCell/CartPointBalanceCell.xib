@@ -25,13 +25,13 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Point Balance :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IkE-gJ-JMC">
-                        <rect key="frame" x="16" y="12" width="97.5" height="26"/>
+                        <rect key="frame" x="10" y="12" width="97.5" height="26"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                         <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="0.00 Point Pow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZC-Kh-Bhb">
-                        <rect key="frame" x="123.5" y="9.5" width="222.5" height="31.5"/>
+                        <rect key="frame" x="117.5" y="9.5" width="234.5" height="31.5"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="24"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -41,9 +41,9 @@
             <constraints>
                 <constraint firstItem="sZC-Kh-Bhb" firstAttribute="centerY" secondItem="IkE-gJ-JMC" secondAttribute="centerY" id="EXY-xg-mdN"/>
                 <constraint firstItem="IkE-gJ-JMC" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Eeo-Ez-OX5"/>
-                <constraint firstItem="IkE-gJ-JMC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="HK8-7e-Kgc"/>
+                <constraint firstItem="IkE-gJ-JMC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="HK8-7e-Kgc"/>
                 <constraint firstItem="sZC-Kh-Bhb" firstAttribute="leading" secondItem="IkE-gJ-JMC" secondAttribute="trailing" constant="10" id="fAJ-J5-NNU"/>
-                <constraint firstAttribute="trailing" secondItem="sZC-Kh-Bhb" secondAttribute="trailing" constant="16" id="nNX-JU-qlu"/>
+                <constraint firstAttribute="trailing" secondItem="sZC-Kh-Bhb" secondAttribute="trailing" constant="10" id="nNX-JU-qlu"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="362" height="50"/>

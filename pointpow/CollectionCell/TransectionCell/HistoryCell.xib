@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,10 +21,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HistoryCell" id="cPr-Me-wTG" customClass="HistoryCell" customModule="pointpow" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="409" height="105"/>
+            <rect key="frame" x="0.0" y="0.0" width="286" height="105"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="409" height="105"/>
+                <rect key="frame" x="0.0" y="0.0" width="286" height="105"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" horizontalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="Bv4-b8-hDn">
@@ -43,28 +43,28 @@
                             <constraint firstAttribute="height" constant="30" id="x9t-ms-chx"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="XFK-xa-VoK">
-                        <rect key="frame" x="67" y="29" width="30.5" height="23.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="XFK-xa-VoK">
+                        <rect key="frame" x="67" y="29" width="33" height="23.5"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
-                        <color key="textColor" white="0.24708369006849321" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="EEu-Gn-UXi">
-                        <rect key="frame" x="67" y="47.5" width="30.5" height="21"/>
+                        <rect key="frame" x="67" y="47.5" width="33" height="21"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="16"/>
-                        <color key="textColor" white="0.2470836901" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="U9o-GZ-hkh">
-                        <rect key="frame" x="340" y="47.5" width="53" height="21"/>
+                        <rect key="frame" x="217" y="47.5" width="53" height="21"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="16"/>
-                        <color key="textColor" red="0.18872657418251038" green="0.18872657418251038" blue="0.18872657418251038" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" text="5,000.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jfa-8e-85Z">
-                        <rect key="frame" x="341" y="29" width="52" height="23.5"/>
-                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
-                        <color key="textColor" red="0.10196078431372549" green="0.61960784313725492" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
+                        <rect key="frame" x="212" y="28" width="58" height="26"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -86,7 +86,7 @@
                 <constraint firstItem="Bv4-b8-hDn" firstAttribute="leading" secondItem="cPr-Me-wTG" secondAttribute="leading" constant="40" id="y6E-QG-usl"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="jF8-fX-xqn"/>
-            <size key="customSize" width="409" height="105"/>
+            <size key="customSize" width="286" height="105"/>
             <connections>
                 <outlet property="amountLabel" destination="jfa-8e-85Z" id="ABf-Ny-u3D"/>
                 <outlet property="dateLabel" destination="EEu-Gn-UXi" id="S57-cW-WeD"/>
@@ -96,7 +96,7 @@
                 <outlet property="statusLabel" destination="U9o-GZ-hkh" id="KmB-BQ-Dbh"/>
                 <outlet property="titleLabel" destination="XFK-xa-VoK" id="2uM-hP-jrU"/>
             </connections>
-            <point key="canvasLocation" x="81" y="11"/>
+            <point key="canvasLocation" x="-17.600000000000001" y="10.344827586206897"/>
         </collectionViewCell>
     </objects>
 </document>

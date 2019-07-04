@@ -159,8 +159,9 @@ class PointTransferViewController: BaseViewController , UICollectionViewDelegate
                 if let itemData = self.mProviders?[indexPath.row]{
                     let provider_image = itemData["provider_image_url"] as? String ?? ""
                     let name = itemData["name"] as? String ?? ""
+                    let point_name = itemData["point_name"] as? String ?? ""
                     
-                    item.providerLabel.text = name
+                    item.providerLabel.text = point_name
                     
                     if let url = URL(string: provider_image) {
                         item.coverImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))

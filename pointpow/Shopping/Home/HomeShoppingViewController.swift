@@ -253,7 +253,7 @@ extension HomeShoppingViewController {
             
             if !self.cd.running {
                 
-                cd.initializeTimer("2019-07-2 00:00:00")
+                cd.initializeTimer("2019-07-6 00:00:00")
                 cd.startTimer(pUpdateActionHandler: { (timeString) in
                     
                     

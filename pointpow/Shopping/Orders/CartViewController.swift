@@ -101,7 +101,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 2 {
-            return 4
+            return 2
         }
         return 1
     }
@@ -176,7 +176,11 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 5 {
+            self.showShoppingAddAddressPage(true)
+        }
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         

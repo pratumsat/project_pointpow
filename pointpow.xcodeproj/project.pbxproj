@@ -99,6 +99,7 @@
 		C120D7CF21955BB500F9EEBB /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C120D7CD21955BB500F9EEBB /* ProfileCell.xib */; };
 		C120D7D221955BC900F9EEBB /* ItemProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120D7D021955BC900F9EEBB /* ItemProfileCell.swift */; };
 		C120D7D321955BC900F9EEBB /* ItemProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C120D7D121955BC900F9EEBB /* ItemProfileCell.xib */; };
+		C1214E1322CF422B00DA5C42 /* ShoppingAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1214E1222CF422B00DA5C42 /* ShoppingAddressViewController.swift */; };
 		C121B32D224C802D00D69B56 /* PopUpInfoLaserIdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C121B32C224C802D00D69B56 /* PopUpInfoLaserIdViewController.swift */; };
 		C121FB4B22853B2100043387 /* VerifyMobileNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C121FB4A22853B2100043387 /* VerifyMobileNumberViewController.swift */; };
 		C121FB4D22854E5100043387 /* PointLimitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C121FB4C22854E5100043387 /* PointLimitViewController.swift */; };
@@ -433,6 +434,7 @@
 		C120D7CD21955BB500F9EEBB /* ProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
 		C120D7D021955BC900F9EEBB /* ItemProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemProfileCell.swift; sourceTree = "<group>"; };
 		C120D7D121955BC900F9EEBB /* ItemProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemProfileCell.xib; sourceTree = "<group>"; };
+		C1214E1222CF422B00DA5C42 /* ShoppingAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingAddressViewController.swift; sourceTree = "<group>"; };
 		C121B32C224C802D00D69B56 /* PopUpInfoLaserIdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpInfoLaserIdViewController.swift; sourceTree = "<group>"; };
 		C121FB4A22853B2100043387 /* VerifyMobileNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyMobileNumberViewController.swift; sourceTree = "<group>"; };
 		C121FB4C22854E5100043387 /* PointLimitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointLimitViewController.swift; sourceTree = "<group>"; };
@@ -996,6 +998,7 @@
 		C11AFC7522C1C27500573C27 /* Shopping */ = {
 			isa = PBXGroup;
 			children = (
+				C1214E1122CF420E00DA5C42 /* Address */,
 				C19BEEF322CCA24500855FBF /* Orders */,
 				C11AFC8422C1DF4C00573C27 /* Account */,
 				C11AFC8322C1DF4500573C27 /* Promotion */,
@@ -1087,6 +1090,14 @@
 				C13D4FEF22A6214800516CE8 /* ItemAccountCell.xib */,
 			);
 			path = AccountCell;
+			sourceTree = "<group>";
+		};
+		C1214E1122CF420E00DA5C42 /* Address */ = {
+			isa = PBXGroup;
+			children = (
+				C1214E1222CF422B00DA5C42 /* ShoppingAddressViewController.swift */,
+			);
+			path = Address;
 			sourceTree = "<group>";
 		};
 		C121FB52228A651B00043387 /* Notification */ = {
@@ -2009,6 +2020,7 @@
 				C1247C542219B126005D6F7A /* PopupGoldPremiumViewController.swift in Sources */,
 				C121FB4D22854E5100043387 /* PointLimitViewController.swift in Sources */,
 				C1817DA1219C1934009507DB /* SwitchCell.swift in Sources */,
+				C1214E1322CF422B00DA5C42 /* ShoppingAddressViewController.swift in Sources */,
 				C11BFCAB221BEEF200F066DE /* WidthDrawShippingPointPowCell.swift in Sources */,
 				C10931AA2244BCB200C1F33E /* GoldNavViewController.swift in Sources */,
 				C106BEAE220BEB3000E2331E /* GoldItemCell.swift in Sources */,

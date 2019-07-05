@@ -153,7 +153,6 @@ class LuckyDrawPrivacyCell: UICollectionViewCell {
         
     }
     
-    
     @objc func expandableHowToTapped(){
         self.expandablePrivacyCallback?(onPrivacy ? heightViewPrivacy : hideViewPrivacy)
         self.heightPrivacyViewConstraint.constant = onPrivacy ? heightViewPrivacy : hideViewPrivacy

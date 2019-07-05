@@ -19,18 +19,18 @@ class PopUpViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.imageView.image = UIImage(named: "ic-bg-popup")
+        
         
         if let itemData = self.model {
-            let cover = itemData["cover"] as? String ?? ""
+            let path_mobile = itemData["path_mobile"] as? String ?? ""
 
             
-//            if let url = URL(string: cover) {
-//                self.imageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
-//            }else{
-//                self.imageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
-//            }
-            self.imageView.image = UIImage(named:"ic-bg-popup")
+            if let url = URL(string: path_mobile) {
+                self.imageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
+            }else{
+                self.imageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
+            }
+            //self.imageView.image = UIImage(named:"ic-bg-popup")
             
         }
     }

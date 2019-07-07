@@ -177,7 +177,11 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 5 {
-            self.showShoppingAddAddressPage(true)
+            self.showShoppingAddressPage(true)
+        }
+        if indexPath.section == 6 {
+            self.showTaxInvoiceAddressPage(true)
+            
         }
     }
     

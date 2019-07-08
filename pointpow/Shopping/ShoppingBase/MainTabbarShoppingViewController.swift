@@ -43,7 +43,7 @@ class MainTabbarShoppingViewController: UITabBarController , UITabBarControllerD
         shadowViewRight.translatesAutoresizingMaskIntoConstraints = false
         
         let image = UIImageView()
-        image.image = UIImage(named: "ic-tab-logo")
+        image.image = UIImage(named: "ic-shopping-logo-cart")
         image.contentMode = .scaleAspectFit
         image.isUserInteractionEnabled = false
         image.translatesAutoresizingMaskIntoConstraints = false

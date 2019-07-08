@@ -151,10 +151,10 @@ extension UILabel{
     func stuckCharacters(_ title:String){
         let attributedString = NSMutableAttributedString(string: title)
         attributedString.addAttribute(NSAttributedString.Key.strikethroughStyle,
-                                     value: 2,
+                                     value: 1,
                                      range: NSRange(location: 0, length: title.count))
         attributedString.addAttribute(NSAttributedString.Key.strikethroughColor,
-                                      value: UIColor.red,
+                                      value: UIColor.lightGray,
                                       range: NSRange(location: 0, length: title.count))
         
         self.attributedText = attributedString
@@ -787,8 +787,12 @@ extension LAContext {
 struct Constant {
     struct PointPowAPI {
         
+        static let PATH_IMAGE_SERVICE = "http://103.27.201.106/dev-pointpow/imageservice/public/storage/"
+        
         static let HOST = "http://103.27.201.106/dev-pointpow/api/public/api/"
         static let POINTPOW_VERSION1 = "v1/"
+        
+        
         static let updateMember  = "\(HOST)\(POINTPOW_VERSION1)member/update"
         static let updateDeviceToken  = "\(HOST)\(POINTPOW_VERSION1)member/update-device-token"
         static let addDeviceToken = "\(HOST)\(POINTPOW_VERSION1)device-token"
@@ -854,7 +858,14 @@ struct Constant {
         static let province = "\(HOST)\(POINTPOW_VERSION1)provinces"
         static let districts = "\(HOST)\(POINTPOW_VERSION1)districts"
         static let subdistricts = "\(HOST)\(POINTPOW_VERSION1)subdistricts"
+       
+        static let  SECRET_SHOPPING = "LA9EtBoX2w2Z1pB"
+        static let APP_ID = "15"
+        static let shoppingBanner = "\(HOST)privilege/banners?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
+        static let specailDeal = "\(HOST)privilege/special-deals?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
         
+        static let hotRedemption = "\(HOST)privilege/hot-redem?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
+        static let recommend_byCate = "\(HOST)privilege/recommended/{{cate}}?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
     }
     
     struct TopViewController{
@@ -933,6 +944,15 @@ struct Constant {
         static let GREEN2 = UIColor(rgb: 0x1A9E47)
         static let ORANGE = UIColor(rgb: 0xF4B55A)
         static let COLOR_LLGRAY = UIColor(rgb: 0xEEEEEE)
+        
+        
+        //cate
+        static let CATE1 = UIColor(rgb: 0xEA3E4E)
+        static let CATE2 = UIColor(rgb: 0x6066EC)
+        static let CATE3 = UIColor(rgb: 0xE95E7A)
+        static let CATE4 = UIColor(rgb: 0xD771B7)
+        static let CATE5 = UIColor(rgb: 0xEC7937)
+        static let CATE6 = UIColor(rgb: 0xEB5584)
     }
     struct Fonts {
         struct Size {
@@ -962,6 +982,7 @@ struct Constant {
             static let VALUE_EXPEND2 = CGFloat(22.0)
             static let CATE_SHOPPING = CGFloat(15.0)
             static let CONTENT_HTML = CGFloat(18.0)
+            static let SEARCH_SHOPPING = CGFloat(20.0)
         }
        
         //Noto Sans Thai
@@ -1548,4 +1569,10 @@ func mockaaw21Data(){
     DataController.sharedInstance.saveNotifiacationArrayOfObjectData(newNoti: newNotiModel)
 }
 
+
+func getFullPathImageView(_ model:[String:AnyObject]) ->String{
+    let attachment = model["attachment"] as? [String:AnyObject] ?? [:]
+    let full_location = attachment["full_location"] as? String ?? ""
+    return full_location
+}
 

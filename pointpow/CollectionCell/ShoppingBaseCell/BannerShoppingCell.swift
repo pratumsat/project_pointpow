@@ -23,9 +23,11 @@ class BannerShoppingCell: PromotionCampainCell {
             cell = imageCell
             
             if let itemData = self.itemBanner?[indexPath.row] {
-                let path = itemData["path_mobile"] as? String ?? ""
+                let attachment = itemData["attachment"] as? [String:AnyObject] ?? [:]
+                let full_location = attachment["full_location"] as? String ?? ""
                 
-                if let url = URL(string: path) {
+              
+                if let url = URL(string: full_location) {
                     imageCell.imageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_HOME_PLACEHOLDER))
                 }
                 

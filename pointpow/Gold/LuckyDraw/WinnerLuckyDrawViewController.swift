@@ -240,7 +240,7 @@ class WinnerLuckyDrawViewController: BaseViewController , UICollectionViewDelega
         
         if indexPath.section == 0 {
             let width = collectionView.frame.width
-            let height = width/1799*720
+            let height = width/950*400
             return CGSize(width: width, height: height)
         }else if indexPath.section == 1 {
             let width = collectionView.frame.width

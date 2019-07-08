@@ -25,27 +25,35 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="place-bg-profile" translatesAutoresizingMaskIntoConstraints="NO" id="nWJ-dS-Wxu">
-                        <rect key="frame" x="0.0" y="10" width="243" height="243"/>
+                        <rect key="frame" x="0.0" y="0.0" width="243" height="243"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="nWJ-dS-Wxu" secondAttribute="height" multiplier="1:1" id="S5l-Uv-ewD"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yml-3f-keh">
-                        <rect key="frame" x="5" y="253" width="233" height="39"/>
-                        <string key="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="place-bg-profile" translatesAutoresizingMaskIntoConstraints="NO" id="ADu-9n-S6a">
+                        <rect key="frame" x="0.0" y="0.0" width="73" height="73"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem Ipsum is simply dummy text of the printing and typesetting industry " lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yml-3f-keh">
+                        <rect key="frame" x="5" y="243" width="233" height="39"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="950 Point Pow" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uyH-fl-jU1">
-                        <rect key="frame" x="5" y="292" width="233" height="19.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="950 Point Pow" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uyH-fl-jU1">
+                        <rect key="frame" x="5" y="305" width="71.5" height="19.5"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="350 Point Pow" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2J-S8-ygj">
-                        <rect key="frame" x="5" y="311.5" width="233" height="26"/>
-                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="350" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2J-S8-ygj">
+                        <rect key="frame" x="5" y="324.5" width="29.5" height="32.5"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="25"/>
+                        <color key="textColor" red="0.87450980389999999" green="0.1450980392" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Point Pow/฿" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pLs-I4-FMJ">
+                        <rect key="frame" x="39.5" y="330" width="71" height="23.5"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -53,25 +61,29 @@
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="uyH-fl-jU1" secondAttribute="trailing" constant="5" id="2Ph-dY-P8K"/>
                 <constraint firstItem="yml-3f-keh" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="2kR-HP-0mk"/>
-                <constraint firstItem="uyH-fl-jU1" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="6Yl-yr-Zbb"/>
                 <constraint firstItem="yml-3f-keh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="HgO-1u-HbI"/>
+                <constraint firstItem="ADu-9n-S6a" firstAttribute="top" secondItem="nWJ-dS-Wxu" secondAttribute="top" id="O6u-TD-ZsE"/>
+                <constraint firstItem="s2J-S8-ygj" firstAttribute="top" secondItem="uyH-fl-jU1" secondAttribute="bottom" id="OJf-vL-L3d"/>
+                <constraint firstItem="pLs-I4-FMJ" firstAttribute="leading" secondItem="s2J-S8-ygj" secondAttribute="trailing" constant="5" id="OhF-EH-QFl"/>
                 <constraint firstAttribute="trailing" secondItem="yml-3f-keh" secondAttribute="trailing" constant="5" id="TI4-fk-Lx6"/>
-                <constraint firstItem="s2J-S8-ygj" firstAttribute="top" secondItem="uyH-fl-jU1" secondAttribute="bottom" id="Wtn-am-Het"/>
                 <constraint firstItem="nWJ-dS-Wxu" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="aNl-Vv-biI"/>
                 <constraint firstAttribute="trailing" secondItem="nWJ-dS-Wxu" secondAttribute="trailing" id="ad5-f1-RnE"/>
                 <constraint firstItem="uyH-fl-jU1" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="bBv-gC-gRu"/>
-                <constraint firstItem="nWJ-dS-Wxu" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="eSQ-VT-SEq"/>
+                <constraint firstItem="nWJ-dS-Wxu" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="eSQ-VT-SEq"/>
                 <constraint firstItem="yml-3f-keh" firstAttribute="top" secondItem="nWJ-dS-Wxu" secondAttribute="bottom" id="j5S-u2-3kf"/>
+                <constraint firstAttribute="bottom" secondItem="s2J-S8-ygj" secondAttribute="bottom" constant="10" id="jZU-tM-XTz"/>
                 <constraint firstItem="s2J-S8-ygj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="rAY-Wi-ZhT"/>
-                <constraint firstItem="uyH-fl-jU1" firstAttribute="top" secondItem="yml-3f-keh" secondAttribute="bottom" id="s09-8c-uAP"/>
-                <constraint firstAttribute="trailing" secondItem="s2J-S8-ygj" secondAttribute="trailing" constant="5" id="yWE-Fi-4Gj"/>
+                <constraint firstItem="pLs-I4-FMJ" firstAttribute="centerY" secondItem="s2J-S8-ygj" secondAttribute="centerY" constant="1" id="rf0-RK-Y6J"/>
+                <constraint firstItem="ADu-9n-S6a" firstAttribute="width" secondItem="ADu-9n-S6a" secondAttribute="height" multiplier="1:1" id="tzY-hD-EyB"/>
+                <constraint firstItem="ADu-9n-S6a" firstAttribute="leading" secondItem="nWJ-dS-Wxu" secondAttribute="leading" id="uuY-vZ-SZ5"/>
+                <constraint firstItem="ADu-9n-S6a" firstAttribute="width" secondItem="nWJ-dS-Wxu" secondAttribute="width" multiplier="0.3" id="wRR-Wm-RrJ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="302" height="378"/>
             <connections>
                 <outlet property="amountLabel" destination="s2J-S8-ygj" id="szF-in-n19"/>
+                <outlet property="brandImageView" destination="ADu-9n-S6a" id="yC6-9g-69h"/>
                 <outlet property="desLabel" destination="yml-3f-keh" id="AnU-v9-9fw"/>
                 <outlet property="discountLabel" destination="uyH-fl-jU1" id="kPk-GS-Wit"/>
                 <outlet property="productImageView" destination="nWJ-dS-Wxu" id="bsi-g9-lHH"/>

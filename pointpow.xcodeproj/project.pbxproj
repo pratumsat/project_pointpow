@@ -95,6 +95,12 @@
 		C11DD35322681EF70085EFBE /* WinnerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C127324122538E9A00A9EE74 /* WinnerCollectionViewCell.swift */; };
 		C11DD3542268536A0085EFBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1AD507D2187F45600F74415 /* Main.storyboard */; };
 		C11DD35622687AF30085EFBE /* RegisterGoldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10D94AA22094AAF0083FA47 /* RegisterGoldViewController.swift */; };
+		C11E619822D3312800753E52 /* ShoppingHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11E619622D3312800753E52 /* ShoppingHeaderCell.swift */; };
+		C11E619922D3312800753E52 /* ShoppingHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C11E619722D3312800753E52 /* ShoppingHeaderCell.xib */; };
+		C11E619C22D334E700753E52 /* ShoppingRectProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11E619A22D334E700753E52 /* ShoppingRectProductCell.swift */; };
+		C11E619D22D334E700753E52 /* ShoppingRectProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C11E619B22D334E700753E52 /* ShoppingRectProductCell.xib */; };
+		C11E61A022D3366100753E52 /* Recommend2Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11E619E22D3366100753E52 /* Recommend2Cell.swift */; };
+		C11E61A122D3366100753E52 /* Recommend2Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C11E619F22D3366100753E52 /* Recommend2Cell.xib */; };
 		C120D7CE21955BB500F9EEBB /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120D7CC21955BB500F9EEBB /* ProfileCell.swift */; };
 		C120D7CF21955BB500F9EEBB /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C120D7CD21955BB500F9EEBB /* ProfileCell.xib */; };
 		C120D7D221955BC900F9EEBB /* ItemProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120D7D021955BC900F9EEBB /* ItemProfileCell.swift */; };
@@ -433,6 +439,12 @@
 		C11BFCAD221BF70300F066DE /* WithDrawShippingThaiPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawShippingThaiPostCell.swift; sourceTree = "<group>"; };
 		C11BFCAE221BF70300F066DE /* WithDrawShippingThaiPostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithDrawShippingThaiPostCell.xib; sourceTree = "<group>"; };
 		C11BFCB2221C0CB700F066DE /* PopupShippingAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupShippingAddressViewController.swift; sourceTree = "<group>"; };
+		C11E619622D3312800753E52 /* ShoppingHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingHeaderCell.swift; sourceTree = "<group>"; };
+		C11E619722D3312800753E52 /* ShoppingHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingHeaderCell.xib; sourceTree = "<group>"; };
+		C11E619A22D334E700753E52 /* ShoppingRectProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingRectProductCell.swift; sourceTree = "<group>"; };
+		C11E619B22D334E700753E52 /* ShoppingRectProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingRectProductCell.xib; sourceTree = "<group>"; };
+		C11E619E22D3366100753E52 /* Recommend2Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recommend2Cell.swift; sourceTree = "<group>"; };
+		C11E619F22D3366100753E52 /* Recommend2Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Recommend2Cell.xib; sourceTree = "<group>"; };
 		C120D7CC21955BB500F9EEBB /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		C120D7CD21955BB500F9EEBB /* ProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
 		C120D7D021955BC900F9EEBB /* ItemProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemProfileCell.swift; sourceTree = "<group>"; };
@@ -1077,6 +1089,12 @@
 				C1F0C07922C4711600A49BAA /* BannerShoppingCell.xib */,
 				C1F0C07C22C4942500A49BAA /* SpecialHeaderCell.swift */,
 				C1F0C07D22C4942500A49BAA /* SpecialHeaderCell.xib */,
+				C11E619622D3312800753E52 /* ShoppingHeaderCell.swift */,
+				C11E619722D3312800753E52 /* ShoppingHeaderCell.xib */,
+				C11E619A22D334E700753E52 /* ShoppingRectProductCell.swift */,
+				C11E619B22D334E700753E52 /* ShoppingRectProductCell.xib */,
+				C11E619E22D3366100753E52 /* Recommend2Cell.swift */,
+				C11E619F22D3366100753E52 /* Recommend2Cell.xib */,
 			);
 			path = ShoppingBaseCell;
 			sourceTree = "<group>";
@@ -1711,6 +1729,7 @@
 				C1892E0E221E900900F5412F /* TransactionGoldCell.xib in Resources */,
 				C12FD313228EA48700FB81B6 /* ItemFriendSearchCell.xib in Resources */,
 				C106BEAF220BEB3000E2331E /* GoldItemCell.xib in Resources */,
+				C11E619D22D334E700753E52 /* ShoppingRectProductCell.xib in Resources */,
 				C1249EC5223E6FC600F56FA0 /* WithDrawThaiPostSummaryCell.xib in Resources */,
 				C1DEBE982188337500CBB95F /* ThaiSansNeue-Bold.ttf in Resources */,
 				C11A93B8218C00C800627B44 /* IntroCell1.xib in Resources */,
@@ -1758,6 +1777,7 @@
 				C1F0C07722C34E1D00A49BAA /* ShoppingProductCell.xib in Resources */,
 				C120D7D321955BC900F9EEBB /* ItemProfileCell.xib in Resources */,
 				C11AFC9522C23E5500573C27 /* SubCateShoppingCell.xib in Resources */,
+				C11E619922D3312800753E52 /* ShoppingHeaderCell.xib in Resources */,
 				C11BFCAC221BEEF200F066DE /* WidthDrawShippingPointPowCell.xib in Resources */,
 				C127323A225314DB00A9EE74 /* LuckyDrawPrivacyCell.xib in Resources */,
 				C1F0C06D22C3126900A49BAA /* HeaderSectionCell.xib in Resources */,
@@ -1771,6 +1791,7 @@
 				C1273240225380D500A9EE74 /* PickerLuckyDrawCell.xib in Resources */,
 				C197FF3322083A6F002F24E8 /* GoldPriceCell.xib in Resources */,
 				C1F0C07F22C4942500A49BAA /* SpecialHeaderCell.xib in Resources */,
+				C11E61A122D3366100753E52 /* Recommend2Cell.xib in Resources */,
 				C13D503022A8B85300516CE8 /* Localizable.strings in Resources */,
 				C121FB59228A66C100043387 /* HeaderViewDateTableViewCell.xib in Resources */,
 				C1F760FA2216998C000A2CA9 /* SavingSummaryCell.xib in Resources */,
@@ -2029,9 +2050,11 @@
 				C12CCC612281590C00F26DCC /* PersonalDataViewController.swift in Sources */,
 				C1892E03221CFCD500F5412F /* WithDrawResultNav.swift in Sources */,
 				C1214E1722D2178100DA5C42 /* ShoppingAddShippingAddressViewController.swift in Sources */,
+				C11E619C22D334E700753E52 /* ShoppingRectProductCell.swift in Sources */,
 				C1247C542219B126005D6F7A /* PopupGoldPremiumViewController.swift in Sources */,
 				C121FB4D22854E5100043387 /* PointLimitViewController.swift in Sources */,
 				C1817DA1219C1934009507DB /* SwitchCell.swift in Sources */,
+				C11E61A022D3366100753E52 /* Recommend2Cell.swift in Sources */,
 				C1214E1322CF422B00DA5C42 /* ShoppingAddressViewController.swift in Sources */,
 				C11BFCAB221BEEF200F066DE /* WidthDrawShippingPointPowCell.swift in Sources */,
 				C10931AA2244BCB200C1F33E /* GoldNavViewController.swift in Sources */,
@@ -2098,6 +2121,7 @@
 				C13D998D21997EF7001A4794 /* PersonalViewController.swift in Sources */,
 				C13D503422A8E95700516CE8 /* L102Localizer.swift in Sources */,
 				C11AFC8C22C1DF9200573C27 /* AccountShoppingViewController.swift in Sources */,
+				C11E619822D3312800753E52 /* ShoppingHeaderCell.swift in Sources */,
 				C142741D21A68154003CC246 /* ResetPasswordViewController.swift in Sources */,
 				C10D94B42209717E0083FA47 /* NavGoldPage.swift in Sources */,
 				C1DA27C3224200C2000C0715 /* WithDrawResultThaiPostCell.swift in Sources */,

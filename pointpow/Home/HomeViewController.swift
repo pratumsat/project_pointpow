@@ -264,7 +264,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
             
         }
     }
-    func getBanner(_ avaliable:(()->Void)?  = nil){
+    private func getBanner(_ avaliable:(()->Void)?  = nil){
         var isLoading:Bool = true
         if self.banner != nil {
             isLoading = false
@@ -274,8 +274,8 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         
         modelCtrl.getBanner(params: nil , isLoading , succeeded: { (result) in
             
-            if let items = result as? [[String:AnyObject]] {
-                self.banner = items
+            if let mResult = result as? [[String:AnyObject]] {
+                self.banner = mResult
             }
             avaliable?()
             
@@ -571,7 +571,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         
         if indexPath.section == 0 {
             let width = collectionView.frame.width
-            let height = width/1799*720
+            let height = width/950*400
             return CGSize(width: width, height: height)
         }
         let width = collectionView.frame.width / 3

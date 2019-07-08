@@ -15,7 +15,17 @@ class PageViewFooterCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    override var bounds : CGRect {
+        didSet {
+            self.layoutIfNeeded()
+        }
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.moreButton.borderRedColorProperties()
+        
+    }
     @IBAction func moreTapped(_ sender: Any) {
     }
 }

@@ -158,7 +158,7 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
         
     }
     
-    func getBanner(_ avaliable:(()->Void)?  = nil){
+    private func getBanner(_ avaliable:(()->Void)?  = nil){
         var isLoading:Bool = true
         if self.banner != nil {
             isLoading = false
@@ -168,14 +168,14 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
         
         modelCtrl.getBanner(params: nil , isLoading , succeeded: { (result) in
             
-            if let items = result as? [[String:AnyObject]] {
-                self.banner = []
-                for item  in items {
-                    let type = item["type"] as? String ?? ""
-                    if type == "luckydraw" {
-                        self.banner?.append(item)
-                    }
-                }
+            if let mResult = result as? [[String:AnyObject]] {
+                self.banner = mResult
+               // for item  in items {
+                    //let type = item["type"] as? String ?? ""
+                    //if type == "luckydraw" {
+                       // self.banner?.append(item)
+                    //}
+                //}
             }
             avaliable?()
             
@@ -559,7 +559,7 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
         
         if menu == "banner"{
             let width = collectionView.frame.width
-            let height = width/1799*720
+            let height = width/950*400
             return CGSize(width: width, height: height)
         }
         if menu == "logo" {

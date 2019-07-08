@@ -15,19 +15,15 @@ class ShoppingProductCell: UICollectionViewCell {
     @IBOutlet weak var desLabel: UILabel!
     @IBOutlet weak var productImageView: UIImageView!
     
-    var disCountValue:String? {
-        didSet{
-            if let text = disCountValue {
-                self.discountLabel?.stuckCharacters(text)
-            }
-            
-        }
-    }
+    @IBOutlet weak var brandImageView: UIImageView!
+   
     
     override func awakeFromNib() {
         super.awakeFromNib()
      
-     
+        self.updateLayerCornerRadiusProperties(5.0)
+        self.contentView.updateLayerCornerRadiusProperties(5.0)
+        self.shadowCellProperties()
     }
 
 }

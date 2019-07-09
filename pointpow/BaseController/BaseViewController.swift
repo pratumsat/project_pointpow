@@ -115,6 +115,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     }
     
     @objc func showSplashLock(notification:NSNotification){
+        //return
         if DataController.sharedInstance.isLogin() {
             if let top = Constant.TopViewController.top {
                 if self == top  {

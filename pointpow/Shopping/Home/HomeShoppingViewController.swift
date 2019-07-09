@@ -240,7 +240,7 @@ class HomeShoppingViewController: ShoppingBaseViewController {
     }
     func setUp(){
         //start top
-        self.topConstraintCollectionView.constant = 120.0 + self.sizeOfViewCateInit
+        self.topConstraintCollectionView.constant = 130.0 + self.sizeOfViewCateInit
         
         if let layout = self.productCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.minimumInteritemSpacing = 0
@@ -504,11 +504,12 @@ extension HomeShoppingViewController {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
+       
         if section == 3 {
             return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
         }
         if section == 4 {
-            return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+            return UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
         }
         if section == 5 {
             return UIEdgeInsets(top: 30, left: 10, bottom: 60, right: 10)

@@ -25,7 +25,7 @@ class ProductShoppingViewController: ShoppingBaseViewController {
             self.tabBarController?.title = cateName
         }
     }
-    var initHeightViewCate = CGFloat(140.0)
+    var initHeightViewCate = CGFloat(130.0)
     
     var searchView:UIView?
     var mainCateView:UIView?

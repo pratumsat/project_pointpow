@@ -157,13 +157,13 @@ class ShoppingBaseViewController: BaseViewController ,UICollectionViewDelegate ,
                     x = CGFloat(widthForView + 5)
                     print(x)
                     self.selectUnderLine?.frame.origin.x = x
-                    self.mainCategoryView?.layoutIfNeeded()
+                    //self.mainCategoryView?.layoutIfNeeded()
                 }
             }
         }) { (completed) in
             //completed
         }
-        
+    
      
         
     }
@@ -349,10 +349,10 @@ extension ShoppingBaseViewController {
         
         
         if allProduct {
-            self.heightMainCategoryView = mainCategoryView.heightAnchor.constraint(equalToConstant: (100.0 + self.sizeOfViewCateInit))
+            self.heightMainCategoryView = mainCategoryView.heightAnchor.constraint(equalToConstant: (90.0 + self.sizeOfViewCateInit))
             self.heightMainCategoryView!.isActive = true
         }else{
-            self.heightMainCategoryView = mainCategoryView.heightAnchor.constraint(equalToConstant: (80.0 + self.sizeOfViewCateInit))
+            self.heightMainCategoryView = mainCategoryView.heightAnchor.constraint(equalToConstant: (90.0 + self.sizeOfViewCateInit))
             self.heightMainCategoryView!.isActive = true
         }
         
@@ -376,9 +376,11 @@ extension ShoppingBaseViewController {
         
         categoryView!.leadingAnchor.constraint(equalTo: mainCategoryView.leadingAnchor, constant: 5).isActive = true
         categoryView!.trailingAnchor.constraint(equalTo: mainCategoryView.trailingAnchor, constant: -5).isActive = true
-        
         categoryView!.topAnchor.constraint(equalTo: mainCategoryView.topAnchor, constant: 5).isActive = true
         
+        let widthCate = self.view.frame.width*0.9
+        let height = (widthCate*0.166)
+        categoryView!.heightAnchor.constraint(equalToConstant: height).isActive = true
         
         
         let layout = UICollectionViewFlowLayout()
@@ -410,19 +412,20 @@ extension ShoppingBaseViewController {
         subCategoryCollectionView!.isHidden = true
         
         
-        underlineView = UIView()
-        underlineView!.translatesAutoresizingMaskIntoConstraints = false
-        underlineView!.backgroundColor = UIColor.groupTableViewBackground
-        mainCategoryView.addSubview(underlineView!)
-        
-        underlineView!.topAnchor.constraint(equalTo: categoryView!.bottomAnchor, constant: 10).isActive = true
-        underlineView!.leadingAnchor.constraint(equalTo: mainCategoryView.leadingAnchor, constant: 0).isActive = true
-        underlineView!.trailingAnchor.constraint(equalTo: mainCategoryView.trailingAnchor, constant: 0).isActive = true
-        underlineView!.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
         self.mainCategoryView = mainCategoryView
         
         if allProduct {
+            underlineView = UIView()
+            underlineView!.translatesAutoresizingMaskIntoConstraints = false
+            underlineView!.backgroundColor = UIColor.groupTableViewBackground
+            mainCategoryView.addSubview(underlineView!)
+            
+            underlineView!.topAnchor.constraint(equalTo: categoryView!.bottomAnchor, constant: 10).isActive = true
+            underlineView!.leadingAnchor.constraint(equalTo: mainCategoryView.leadingAnchor, constant: 0).isActive = true
+            underlineView!.trailingAnchor.constraint(equalTo: mainCategoryView.trailingAnchor, constant: 0).isActive = true
+            underlineView!.heightAnchor.constraint(equalToConstant: 1).isActive = true
+            
             self.selectedCategory(0)
         }
         return mainCategoryView
@@ -465,13 +468,11 @@ extension ShoppingBaseViewController {
         
         view.topAnchor.constraint(equalTo: categoryView!.topAnchor, constant: 0).isActive = true
         view.widthAnchor.constraint(equalTo: categoryView!.widthAnchor, multiplier: 0.166).isActive = true
-        view.bottomAnchor.constraint(equalTo: categoryView!.bottomAnchor, constant: 0).isActive = true
+        view.bottomAnchor.constraint(equalTo: title.bottomAnchor, constant: 0).isActive = true
         
         
         if leftView == nil {
             view.leftAnchor.constraint(equalTo: categoryView!.leftAnchor, constant: 0).isActive = true
-        
-            categoryView!.bottomAnchor.constraint(equalTo: title.bottomAnchor, constant: 0).isActive = true
         
         }else{
             view.leftAnchor.constraint(equalTo: leftView!.rightAnchor, constant: 0).isActive = true

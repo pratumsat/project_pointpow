@@ -18,18 +18,18 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SpecialHeaderCell" id="gTV-IL-0wX" customClass="SpecialHeaderCell" customModule="pointpow" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="401" height="60"/>
+            <rect key="frame" x="0.0" y="0.0" width="401" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="401" height="60"/>
+                <rect key="frame" x="0.0" y="0.0" width="401" height="50"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fIv-m7-COG">
-                        <rect key="frame" x="10" y="10" width="381" height="40"/>
+                        <rect key="frame" x="10" y="5" width="381" height="40"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7y9-uX-Ubx">
-                        <rect key="frame" x="10" y="10" width="111" height="40"/>
+                        <rect key="frame" x="10" y="5" width="111" height="40"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SPECIAL DEAL" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="HKS-NL-tW4">
                                 <rect key="frame" x="10" y="7" width="91" height="26"/>
@@ -46,7 +46,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmk-Gf-Zfi">
-                        <rect key="frame" x="275" y="15" width="30" height="30"/>
+                        <rect key="frame" x="275" y="10" width="30" height="30"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="00" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9S-fF-DDs">
                                 <rect key="frame" x="5.5" y="0.5" width="19" height="29"/>
@@ -63,12 +63,12 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text=":" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YmF-Sg-b20">
-                        <rect key="frame" x="307" y="17" width="4" height="26"/>
+                        <rect key="frame" x="307" y="12" width="4" height="26"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tfr-N8-8UI">
-                        <rect key="frame" x="313" y="15" width="30" height="30"/>
+                        <rect key="frame" x="313" y="10" width="30" height="30"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="00" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qs7-79-Pgj">
                                 <rect key="frame" x="5.5" y="0.5" width="19" height="29"/>
@@ -84,12 +84,12 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text=":" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bWr-Wp-PzK">
-                        <rect key="frame" x="345" y="17" width="4" height="26"/>
+                        <rect key="frame" x="345" y="12" width="4" height="26"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rld-9D-tbL">
-                        <rect key="frame" x="351" y="15" width="30" height="30"/>
+                        <rect key="frame" x="351" y="10" width="30" height="30"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="00" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XZv-eb-oe4">
                                 <rect key="frame" x="5.5" y="0.5" width="19" height="29"/>
@@ -110,8 +110,8 @@
                 <constraint firstItem="Tfr-N8-8UI" firstAttribute="leading" secondItem="YmF-Sg-b20" secondAttribute="trailing" constant="2" id="8oz-E9-F8B"/>
                 <constraint firstItem="dmk-Gf-Zfi" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="9bl-TP-SCz"/>
                 <constraint firstItem="dmk-Gf-Zfi" firstAttribute="bottom" secondItem="7y9-uX-Ubx" secondAttribute="bottom" constant="-5" id="AC7-4J-VTK"/>
-                <constraint firstAttribute="bottom" secondItem="7y9-uX-Ubx" secondAttribute="bottom" constant="10" id="Bhl-2h-6tP"/>
-                <constraint firstItem="7y9-uX-Ubx" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="Bzo-2T-LBx"/>
+                <constraint firstAttribute="bottom" secondItem="7y9-uX-Ubx" secondAttribute="bottom" constant="5" id="Bhl-2h-6tP"/>
+                <constraint firstItem="7y9-uX-Ubx" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="Bzo-2T-LBx"/>
                 <constraint firstItem="Tfr-N8-8UI" firstAttribute="bottom" secondItem="dmk-Gf-Zfi" secondAttribute="bottom" id="DIL-Dm-Pz2"/>
                 <constraint firstItem="Rld-9D-tbL" firstAttribute="top" secondItem="dmk-Gf-Zfi" secondAttribute="top" id="Deo-N7-dWt"/>
                 <constraint firstAttribute="trailing" secondItem="Rld-9D-tbL" secondAttribute="trailing" constant="20" id="EnS-k3-pMt"/>

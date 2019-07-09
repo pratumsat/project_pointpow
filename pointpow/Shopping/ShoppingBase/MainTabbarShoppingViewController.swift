@@ -79,13 +79,13 @@ class MainTabbarShoppingViewController: UITabBarController , UITabBarControllerD
         
         
         
-        tabBar.topAnchor.constraint(equalTo: shadowViewLeft.topAnchor, constant: 2).isActive = true
-        shadowViewLeft.heightAnchor.constraint(equalToConstant: 2).isActive = true
+        tabBar.topAnchor.constraint(equalTo: shadowViewLeft.bottomAnchor, constant: 0).isActive = true
+        shadowViewLeft.heightAnchor.constraint(equalToConstant: 1).isActive = true
         shadowViewLeft.leadingAnchor.constraint(equalTo: tabBar.leadingAnchor, constant: 0).isActive = true
         shadowViewLeft.trailingAnchor.constraint(equalTo: image.leadingAnchor, constant: 8).isActive = true
         
-        tabBar.topAnchor.constraint(equalTo: shadowViewRight.topAnchor, constant: 2).isActive = true
-        shadowViewRight.heightAnchor.constraint(equalToConstant: 2).isActive = true
+        tabBar.topAnchor.constraint(equalTo: shadowViewRight.bottomAnchor, constant: 0).isActive = true
+        shadowViewRight.heightAnchor.constraint(equalToConstant: 1).isActive = true
         shadowViewRight.trailingAnchor.constraint(equalTo: tabBar.trailingAnchor, constant: 0).isActive = true
         shadowViewRight.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: -8).isActive = true
     }

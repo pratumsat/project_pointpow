@@ -866,6 +866,7 @@ struct Constant {
         
         static let hotRedemption = "\(HOST)privilege/hot-redem?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
         static let recommend_byCate = "\(HOST)privilege/recommended/{{cate}}?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
+        static let recommend_all = "\(HOST)privilege/recommended?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
     }
     
     struct TopViewController{
@@ -953,6 +954,8 @@ struct Constant {
         static let CATE4 = UIColor(rgb: 0xD771B7)
         static let CATE5 = UIColor(rgb: 0xEC7937)
         static let CATE6 = UIColor(rgb: 0xEB5584)
+        static let HOT_REDEMP_GRADIENT_1 = UIColor(rgb: 0xFF942A) //top ff942e
+        static let HOT_REDEMP_GRADIENT_2 = UIColor(rgb: 0xFFD262) //bottom ffd262
     }
     struct Fonts {
         struct Size {

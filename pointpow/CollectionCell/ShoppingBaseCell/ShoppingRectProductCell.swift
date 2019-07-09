@@ -25,6 +25,6 @@ class ShoppingRectProductCell: ShoppingProductCell {
         super.layoutSubviews()
         
         self.bfView.ovalColorClearProperties()
-        
+        self.bfView.applyGradient(colours: [Constant.Colors.HOT_REDEMP_GRADIENT_1, Constant.Colors.HOT_REDEMP_GRADIENT_2])
     }
 }

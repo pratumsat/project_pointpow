@@ -26,7 +26,7 @@ class HomeShoppingViewController: ShoppingBaseViewController {
     var mainCateView:UIView?
     
     
-    var cateId = 1 {
+    var cateId = 0 {
         didSet{
             getRecommendByCate {
                 let indexSet = IndexSet(integer: 4)
@@ -37,7 +37,18 @@ class HomeShoppingViewController: ShoppingBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        cateLists = [["name": NSLocalizedString("string-item-shopping-cate-1", comment: ""),
+                      "image" : UIImage(named: "ic-shopping-cate-1")!],
+                     ["name": NSLocalizedString("string-item-shopping-cate-2", comment: ""),
+                      "image" : UIImage(named: "ic-shopping-cate-2")!],
+                     ["name": NSLocalizedString("string-item-shopping-cate-3", comment: ""),
+                      "image" : UIImage(named: "ic-shopping-cate-3")!],
+                     ["name": NSLocalizedString("string-item-shopping-cate-4", comment: ""),
+                      "image" : UIImage(named: "ic-shopping-cate-4")!],
+                     ["name": NSLocalizedString("string-item-shopping-cate-5", comment: ""),
+                      "image" : UIImage(named: "ic-shopping-cate-5")!],
+                     ["name": NSLocalizedString("string-item-shopping-cate-6", comment: ""),
+                      "image" : UIImage(named: "ic-shopping-cate-6")!]]
         
         
         
@@ -353,6 +364,7 @@ extension HomeShoppingViewController {
         case 3:
             if let pageCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PageViewCollectionViewCell", for: indexPath) as? PageViewCollectionViewCell {
 
+              
                 pageCell.selectedCallback  = { (cateId) in
                     self.cateId = cateId
                 }
@@ -466,16 +478,16 @@ extension HomeShoppingViewController {
             return CGSize(width: width, height: height)
             
         case 1:
-            let height = (width/2 - 15) + 100
+            let height = (width/2 - 15) + 110
             return CGSize(width: width, height: height)
         case 2:
             let height = CGFloat(160) //(width/2 - 15) + 100
             return CGSize(width: width, height: height)
         case 3:
-            let height = 100.0 + self.sizeOfViewCateInit
+            let height = 90.0 + self.sizeOfViewCateInit
             return CGSize(width: width - 10, height: height)
         case 4:
-            let height = (width/2 - 15) + 100
+            let height = (width/2 - 15) + 110
             return CGSize(width: width/2 - 15, height: height)
         case 5:
             let width = collectionView.frame.width - 40
@@ -492,12 +504,16 @@ extension HomeShoppingViewController {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
+        if section == 3 {
+            return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+        }
         if section == 4 {
             return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         }
         if section == 5 {
             return UIEdgeInsets(top: 30, left: 10, bottom: 60, right: 10)
         }
+       
         
         return UIEdgeInsets.zero
     }
@@ -520,7 +536,7 @@ extension HomeShoppingViewController {
             
             if !self.cd.running {
                 
-                cd.initializeTimer("2019-07-9 00:00:00")
+                cd.initializeTimer("2019-07-10 00:00:00")
                 cd.startTimer(pUpdateActionHandler: { (timeString) in
                     
                     
@@ -573,11 +589,14 @@ extension HomeShoppingViewController {
         case 0,4,5:
             return CGSize.zero
         case 1:
-            return CGSize(width: collectionView.frame.width, height: 60.0)
-        default:
-            let width = collectionView.frame.width - 20
-            let height = CGFloat(50.0)
+            return CGSize(width: collectionView.frame.width, height: 50.0)
+            
+        case 2,3:
+            let width = collectionView.frame.width
+            let height = collectionView.frame.width/10*1  //CGFloat(50.0)
             return CGSize(width: width, height: height)
+        default:
+            return CGSize.zero
         }
         
     }

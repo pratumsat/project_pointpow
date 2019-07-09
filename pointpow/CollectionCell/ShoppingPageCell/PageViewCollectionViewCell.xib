@@ -33,7 +33,7 @@
                                     <constraint firstAttribute="width" secondItem="jRl-KG-uLa" secondAttribute="height" multiplier="1:1" id="KAP-jD-k0U"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="สินค้าทั้งหมด" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bES-0g-M9v">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ทั้งหมด" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bES-0g-M9v">
                                 <rect key="frame" x="0.0" y="69.5" width="99.5" height="19.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
                                 <color key="textColor" red="0.91764705882352937" green="0.24313725490196078" blue="0.30588235294117649" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -186,6 +186,13 @@
                             <constraint firstItem="607-V8-NHH" firstAttribute="centerX" secondItem="pnJ-Q0-v50" secondAttribute="centerX" id="gg0-t0-7oK"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wWI-Qb-Jbu">
+                        <rect key="frame" x="0.0" y="99" width="597" height="1"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="ZI7-ZL-tP2"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -202,8 +209,11 @@
                 <constraint firstItem="pnJ-Q0-v50" firstAttribute="width" secondItem="P8I-5I-0t5" secondAttribute="width" id="c2Q-v7-hfz"/>
                 <constraint firstItem="eYS-18-Mdv" firstAttribute="top" secondItem="P8I-5I-0t5" secondAttribute="top" id="c5u-aN-mV1"/>
                 <constraint firstItem="eYS-18-Mdv" firstAttribute="leading" secondItem="BRt-eS-wc2" secondAttribute="trailing" id="cAf-8N-RWe"/>
+                <constraint firstAttribute="trailing" secondItem="wWI-Qb-Jbu" secondAttribute="trailing" id="fTu-E4-gCi"/>
                 <constraint firstItem="pnJ-Q0-v50" firstAttribute="leading" secondItem="oa2-BS-ACW" secondAttribute="trailing" id="hF4-6y-OUb"/>
+                <constraint firstItem="wWI-Qb-Jbu" firstAttribute="top" secondItem="P8I-5I-0t5" secondAttribute="bottom" constant="10" id="iIo-ft-nHG"/>
                 <constraint firstItem="oa2-BS-ACW" firstAttribute="leading" secondItem="eYS-18-Mdv" secondAttribute="trailing" id="jrG-M4-Jb3"/>
+                <constraint firstItem="wWI-Qb-Jbu" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="k8m-1Z-boX"/>
                 <constraint firstItem="P8I-5I-0t5" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.1666" id="oQP-3J-JdJ"/>
                 <constraint firstItem="BRt-eS-wc2" firstAttribute="width" secondItem="P8I-5I-0t5" secondAttribute="width" id="sIW-TW-lBs"/>
                 <constraint firstItem="oa2-BS-ACW" firstAttribute="width" secondItem="P8I-5I-0t5" secondAttribute="width" id="stn-Pi-hq3"/>
@@ -230,6 +240,7 @@
                 <outlet property="cate5View" destination="oa2-BS-ACW" id="Wxa-AU-mc5"/>
                 <outlet property="cate6ImageView" destination="607-V8-NHH" id="R0E-Ns-sXV"/>
                 <outlet property="cate6View" destination="pnJ-Q0-v50" id="1aD-b8-anc"/>
+                <outlet property="underlineView" destination="wWI-Qb-Jbu" id="qcL-uP-YGV"/>
             </connections>
             <point key="canvasLocation" x="159.19999999999999" y="149.32533733133434"/>
         </collectionViewCell>

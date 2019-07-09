@@ -25,25 +25,46 @@ class ProductShoppingViewController: ShoppingBaseViewController {
             self.tabBarController?.title = cateName
         }
     }
+    var initHeightViewCate = CGFloat(140.0)
     
+    var searchView:UIView?
+    var mainCateView:UIView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
-        let searchView = self.addSearchView()
-        self.addCategoryView(searchView)
+        
+        cateLists = [["name": NSLocalizedString("string-item-shopping-cate-1", comment: ""),
+                      "image" : UIImage(named: "ic-shopping-cate-r-1")!],
+                     ["name": NSLocalizedString("string-item-shopping-cate-2", comment: ""),
+                      "image" : UIImage(named: "ic-shopping-cate-r-2")!],
+                     ["name": NSLocalizedString("string-item-shopping-cate-3", comment: ""),
+                      "image" : UIImage(named: "ic-shopping-cate-r-3")!],
+                     ["name": NSLocalizedString("string-item-shopping-cate-4", comment: ""),
+                      "image" : UIImage(named: "ic-shopping-cate-r-4")!],
+                     ["name": NSLocalizedString("string-item-shopping-cate-5", comment: ""),
+                      "image" : UIImage(named: "ic-shopping-cate-r-5")!],
+                     ["name": NSLocalizedString("string-item-shopping-cate-6", comment: ""),
+                      "image" : UIImage(named: "ic-shopping-cate-r-6")!]]
+        
+        
+        self.searchView?.removeFromSuperview()
+        self.mainCateView?.removeFromSuperview()
+        
+        self.searchView = self.addSearchView()
+        self.mainCateView =  self.addCategoryView(self.searchView!, allProduct: true)
         
         self.searchCallback = { (keyword) in
             print("ketyword: \(keyword)")
         }
+        
         self.collapseCallback = { (collpse) in
             if collpse {
                 self.countSection = 1
-                self.topConstraintCollectionView.constant = 120.0 + self.sizeOfViewCateInit
+                self.topConstraintCollectionView.constant = self.initHeightViewCate + self.sizeOfViewCateInit
             }else{
                 self.countSection = 2
-                self.topConstraintCollectionView.constant = 120.0 + self.sizeOfViewCate
+                self.topConstraintCollectionView.constant = self.initHeightViewCate + self.sizeOfViewCate
             }
         }
         
@@ -71,7 +92,7 @@ class ProductShoppingViewController: ShoppingBaseViewController {
     
     func setUp(){
         //start top
-        self.topConstraintCollectionView.constant = 120.0 + self.sizeOfViewCateInit
+        self.topConstraintCollectionView.constant = self.initHeightViewCate + self.sizeOfViewCateInit
         
         if let layout = self.productCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.minimumInteritemSpacing = 0

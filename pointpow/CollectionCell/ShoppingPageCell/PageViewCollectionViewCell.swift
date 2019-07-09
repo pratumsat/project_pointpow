@@ -10,6 +10,7 @@ import UIKit
 
 class PageViewCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var underlineView: UIView!
     @IBOutlet weak var cate6View: UIView!
     @IBOutlet weak var cate6ImageView: UIImageView!
     @IBOutlet weak var caet6Label: UILabel!
@@ -62,6 +63,9 @@ class PageViewCollectionViewCell: UICollectionViewCell {
     
     var selectedCallback:((_ cateNumber:Int)->Void)?
     
+    var selectUnderLine:UIView?
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -89,32 +93,122 @@ class PageViewCollectionViewCell: UICollectionViewCell {
         self.cate6View.isUserInteractionEnabled = true
         self.cate6View.addGestureRecognizer(cate6)
         
-        self.selectedCategory(1)
+        self.selectedCategory(0)
+       
+        
+        
+        
+    }
+    override var bounds : CGRect {
+        didSet {
+            self.layoutIfNeeded()
+        }
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
+   
+    
+    func updateUnderLineView2(_ position:Int){
+        if selectUnderLine == nil {
+            selectUnderLine = UIView()
+            selectUnderLine!.translatesAutoresizingMaskIntoConstraints = false
+            addSubview(selectUnderLine!)
+
+            selectUnderLine?.centerYAnchor.constraint(equalTo: underlineView.centerYAnchor, constant: 0).isActive = true
+            selectUnderLine?.heightAnchor.constraint(equalToConstant: 2).isActive = true
+
+            selectUnderLine?.backgroundColor = cate1Items[0]["color"] as? UIColor ?? nil
+            selectUnderLine?.leadingAnchor.constraint(equalTo: caet1View.leadingAnchor, constant: 0).isActive = true
+            selectUnderLine?.trailingAnchor.constraint(equalTo: caet1View.trailingAnchor, constant: 0).isActive = true
+
+        }
+        
+        var widthForView = CGFloat(0)
+        switch position {
+        case 0:
+            widthForView = caet1View.frame.origin.x
+            selectUnderLine?.backgroundColor = cate1Items[0]["color"] as? UIColor ?? nil
+           
+            break
+        case 1:
+            widthForView = cate2View.frame.origin.x
+            selectUnderLine?.backgroundColor = cate2Items[0]["color"] as? UIColor ?? nil
+            
+            
+            break
+        case 2:
+            widthForView = cate3View.frame.origin.x
+            selectUnderLine?.backgroundColor = cate3Items[0]["color"] as? UIColor ?? nil
+            
+            
+            break
+        case 3:
+            widthForView = cate4View.frame.origin.x
+            selectUnderLine?.backgroundColor = cate4Items[0]["color"] as? UIColor ?? nil
+          
+            
+            break
+        case 4:
+            widthForView = cate5View.frame.origin.x
+            selectUnderLine?.backgroundColor = cate5Items[0]["color"] as? UIColor ?? nil
+           
+            
+            break
+        case 5:
+            widthForView = cate6View.frame.origin.x
+            selectUnderLine?.backgroundColor = cate6Items[0]["color"] as? UIColor ?? nil
+           
+            
+            break
+        default:
+            break
+        }
+ 
+        UIView.animate(withDuration: 0.2,  delay: 0, options:.beginFromCurrentState,animations: {
+            //start animation
+            if let frame = self.selectUnderLine?.frame {
+                var x = frame.origin.x
+                let y = frame.origin.y
+                if y > 0 {
+                    x = CGFloat(widthForView)
+                    
+                    self.selectUnderLine?.frame.origin.x = x
+                    self.layoutIfNeeded()
+                }
+            }
+        }) { (completed) in
+            //completed
+        }
+        
+     
+        
     }
     
     @objc func cate1Tapped(){
-        self.selectedCategory(1)
+        self.selectedCategory(0)
     }
     @objc func cate2Tapped(){
-        self.selectedCategory(2)
+        self.selectedCategory(1)
     }
     @objc func cate3Tapped(){
-        self.selectedCategory(3)
+        self.selectedCategory(2)
     }
     @objc func cate4Tapped(){
-        self.selectedCategory(4)
+        self.selectedCategory(3)
     }
     @objc func cate5Tapped(){
-        self.selectedCategory(5)
+        self.selectedCategory(4)
     }
     @objc func cate6Tapped(){
-        self.selectedCategory(6)
+        self.selectedCategory(5)
     }
     func selectedCategory(_ position:Int){
         selectedCallback?(position)
+        updateUnderLineView2(position)
         
         switch position {
-        case 1:
+        case 0:
             
             self.cate1ImageView.image = cate1Items[0]["image"] as? UIImage ?? nil
             self.cate1Label.textColor = cate1Items[0]["color"] as? UIColor ?? nil
@@ -133,8 +227,10 @@ class PageViewCollectionViewCell: UICollectionViewCell {
             
             self.cate6ImageView.image = cate6Items[1]["image"] as? UIImage ?? nil
             self.caet6Label.textColor = cate6Items[1]["color"] as? UIColor ?? nil
+            
+            
             break
-        case 2:
+        case 1:
             
             self.cate1ImageView.image = cate1Items[1]["image"] as? UIImage ?? nil
             self.cate1Label.textColor = cate1Items[1]["color"] as? UIColor ?? nil
@@ -154,7 +250,7 @@ class PageViewCollectionViewCell: UICollectionViewCell {
             self.cate6ImageView.image = cate6Items[1]["image"] as? UIImage ?? nil
             self.caet6Label.textColor = cate6Items[1]["color"] as? UIColor ?? nil
             break
-        case 3:
+        case 2:
             
             self.cate1ImageView.image = cate1Items[1]["image"] as? UIImage ?? nil
             self.cate1Label.textColor = cate1Items[1]["color"] as? UIColor ?? nil
@@ -174,7 +270,7 @@ class PageViewCollectionViewCell: UICollectionViewCell {
             self.cate6ImageView.image = cate6Items[1]["image"] as? UIImage ?? nil
             self.caet6Label.textColor = cate6Items[1]["color"] as? UIColor ?? nil
             break
-        case 4:
+        case 3:
             
             self.cate1ImageView.image = cate1Items[1]["image"] as? UIImage ?? nil
             self.cate1Label.textColor = cate1Items[1]["color"] as? UIColor ?? nil
@@ -194,7 +290,7 @@ class PageViewCollectionViewCell: UICollectionViewCell {
             self.cate6ImageView.image = cate6Items[1]["image"] as? UIImage ?? nil
             self.caet6Label.textColor = cate6Items[1]["color"] as? UIColor ?? nil
             break
-        case 5:
+        case 4:
             
             self.cate1ImageView.image = cate1Items[1]["image"] as? UIImage ?? nil
             self.cate1Label.textColor = cate1Items[1]["color"] as? UIColor ?? nil
@@ -215,7 +311,7 @@ class PageViewCollectionViewCell: UICollectionViewCell {
             self.caet6Label.textColor = cate6Items[1]["color"] as? UIColor ?? nil
             
             break
-        case 6:
+        case 5:
         
             self.cate1ImageView.image = cate1Items[1]["image"] as? UIImage ?? nil
             self.cate1Label.textColor = cate1Items[1]["color"] as? UIColor ?? nil

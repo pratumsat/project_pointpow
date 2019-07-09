@@ -34,13 +34,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="73" height="73"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem Ipsum is simply dummy text of the printing and typesetting industry " lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yml-3f-keh">
-                        <rect key="frame" x="5" y="243" width="233" height="39"/>
+                        <rect key="frame" x="5" y="247" width="233" height="39"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="950 Point Pow" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uyH-fl-jU1">
-                        <rect key="frame" x="5" y="305" width="71.5" height="19.5"/>
+                        <rect key="frame" x="5" y="309" width="71.5" height="19.5"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -57,22 +57,32 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mV5-G4-bqI">
+                        <rect key="frame" x="0.0" y="243" width="243" height="1"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="fVM-IJ-s4q"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="yml-3f-keh" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="2kR-HP-0mk"/>
+                <constraint firstItem="mV5-G4-bqI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="8Zc-Yq-Mia"/>
                 <constraint firstItem="yml-3f-keh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="HgO-1u-HbI"/>
                 <constraint firstItem="ADu-9n-S6a" firstAttribute="top" secondItem="nWJ-dS-Wxu" secondAttribute="top" id="O6u-TD-ZsE"/>
-                <constraint firstItem="s2J-S8-ygj" firstAttribute="top" secondItem="uyH-fl-jU1" secondAttribute="bottom" id="OJf-vL-L3d"/>
+                <constraint firstItem="s2J-S8-ygj" firstAttribute="top" secondItem="uyH-fl-jU1" secondAttribute="bottom" constant="-4" id="OJf-vL-L3d"/>
                 <constraint firstItem="pLs-I4-FMJ" firstAttribute="leading" secondItem="s2J-S8-ygj" secondAttribute="trailing" constant="5" id="OhF-EH-QFl"/>
                 <constraint firstAttribute="trailing" secondItem="yml-3f-keh" secondAttribute="trailing" constant="5" id="TI4-fk-Lx6"/>
                 <constraint firstItem="nWJ-dS-Wxu" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="aNl-Vv-biI"/>
+                <constraint firstAttribute="trailing" secondItem="mV5-G4-bqI" secondAttribute="trailing" id="aXJ-FY-TmR"/>
                 <constraint firstAttribute="trailing" secondItem="nWJ-dS-Wxu" secondAttribute="trailing" id="ad5-f1-RnE"/>
                 <constraint firstItem="uyH-fl-jU1" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="bBv-gC-gRu"/>
                 <constraint firstItem="nWJ-dS-Wxu" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="eSQ-VT-SEq"/>
-                <constraint firstItem="yml-3f-keh" firstAttribute="top" secondItem="nWJ-dS-Wxu" secondAttribute="bottom" id="j5S-u2-3kf"/>
+                <constraint firstItem="yml-3f-keh" firstAttribute="top" secondItem="mV5-G4-bqI" secondAttribute="bottom" constant="3" id="jCx-C7-Pch"/>
                 <constraint firstAttribute="bottom" secondItem="s2J-S8-ygj" secondAttribute="bottom" constant="10" id="jZU-tM-XTz"/>
+                <constraint firstItem="mV5-G4-bqI" firstAttribute="top" secondItem="nWJ-dS-Wxu" secondAttribute="bottom" id="nnp-5h-SLl"/>
                 <constraint firstItem="s2J-S8-ygj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="rAY-Wi-ZhT"/>
                 <constraint firstItem="pLs-I4-FMJ" firstAttribute="centerY" secondItem="s2J-S8-ygj" secondAttribute="centerY" constant="1" id="rf0-RK-Y6J"/>
                 <constraint firstItem="ADu-9n-S6a" firstAttribute="width" secondItem="ADu-9n-S6a" secondAttribute="height" multiplier="1:1" id="tzY-hD-EyB"/>

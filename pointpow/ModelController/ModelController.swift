@@ -2725,7 +2725,13 @@ class ModelController {
             self.loadingStart?()
         }
         
-        let url = Constant.PointPowAPI.recommend_byCate.replace(target: "{{cate}}", withString: "\(cateId)")
+        var url = Constant.PointPowAPI.recommend_all
+        if cateId == 0 {
+            url = Constant.PointPowAPI.recommend_all
+        }else{
+            url = Constant.PointPowAPI.recommend_byCate.replace(target: "{{cate}}", withString: "\(cateId)")
+        }
+        
         Alamofire.request("\(url)&limit=\(limit)" , method: .get ,
                           parameters : nil
             ).validate().responseJSON { response in

@@ -10,6 +10,10 @@ import UIKit
 
 class ItemListResultCell: UICollectionViewCell {
 
+    
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var statusImageView: UIImageView!
+    
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var pointLabel: UILabel!
     @IBOutlet weak var from_pointLabel: UILabel!

@@ -22,6 +22,9 @@ class SavingViewController: BaseViewController, UICollectionViewDelegate , UICol
     var isRegistered  = false {
         didSet{
             self.arrayItem = self.arrayItem_registered
+            if self.point_balance.doubleValue <= 0 {
+                self.arrayItem.remove(at: 1)
+            }
             self.homeCollectionView.reloadData()
         }
     }

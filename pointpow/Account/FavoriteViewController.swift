@@ -218,7 +218,7 @@ class FavoriteViewController: BaseViewController, UICollectionViewDelegate , UIC
                     let point = mResult["point"] as? [String:AnyObject] ?? [:]
                     let limit_pay = mResult["limit_pay"] as? NSNumber ?? 0
                     let note = point["note"] as? String ?? ""
-                    let pointAmount = point["point"] as? NSNumber ?? 0
+                    let pointAmount = mResult["amount"] as? NSNumber ?? 0
                     
                     
                     var receiver = mResult["receiver"] as? [String:AnyObject] ?? [:]

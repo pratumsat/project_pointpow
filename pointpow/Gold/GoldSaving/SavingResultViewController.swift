@@ -84,6 +84,8 @@ class SavingResultViewController: BaseViewController , UICollectionViewDelegate 
     
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
+        guard (self.savingResult != nil) else { return 0 }
+        
         return 2
     }
     

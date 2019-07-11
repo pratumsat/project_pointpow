@@ -31,8 +31,6 @@ class FavorPopupViewController: BaseViewController {
     }
     
     @IBAction func saveTapped(_ sender: Any) {
-        self.windowSubview?.removeFromSuperview()
-        self.windowSubview = nil
         
         let params:Parameters = [  "type": self.mType,
                                    "transaction_ref_id": self.transaction_ref_id,
@@ -42,6 +40,9 @@ class FavorPopupViewController: BaseViewController {
         self.modelCtrl.favoriteTransferPoint(params: params , true , succeeded: { (result) in
          
             self.showMessagePrompt2(NSLocalizedString("string-message-success-save-favourite-transfer", comment: ""), okCallback: {
+                
+                self.windowSubview?.removeFromSuperview()
+                self.windowSubview = nil
                 
                 self.dismiss(animated: true) {
                     self.didSave?()

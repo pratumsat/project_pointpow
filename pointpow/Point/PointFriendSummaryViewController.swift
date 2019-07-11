@@ -202,6 +202,8 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
+         guard (self.transferResult != nil) else { return 0 }
+        
         if !hideFinishButton {
             return 2
         }

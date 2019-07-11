@@ -163,6 +163,8 @@ class ResultTransferViewController: BaseViewController  , UICollectionViewDelega
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
+        guard (self.transferResult != nil) else { return 0 }
+        
         if !hideFinishButton {
             return 2
         }
@@ -190,39 +192,73 @@ class ResultTransferViewController: BaseViewController  , UICollectionViewDelega
          
                 if let data = transferResult {
                     let created_at = data["created_at"] as? String ?? ""
-                    let point = data["point"] as? NSNumber ?? 0
                     
+                    let transaction_ref_id = data["transaction_ref_id"] as? String ?? ""
+                    let statusTransaction = data["status"] as? String ?? ""
+                    
+                    let point_refill = data["point_refill"] as? [String:AnyObject] ?? [:]
+                    let value_in = point_refill["value_in"] as? NSNumber ?? 0
+                    let value_out = point_refill["value_out"] as? NSNumber ?? 0
+                    let provider = point_refill["provider"] as? [String:AnyObject] ?? [:]
+                    let point_name = provider["point_name"] as? String ?? ""
+                    
+                    let numberFormatter = NumberFormatter()
+                    numberFormatter.numberStyle = .decimal
+                    numberFormatter.minimumFractionDigits = 2
+                    
+                    
+                    itemCell.fromLabel.text = point_name
+                    itemCell.from_pointLabel.text = "\(numberFormatter.string(from: value_in ) ?? "") Point"
+                   
+                    itemCell.transection_ref_Label.text = transaction_ref_id
                     itemCell.dateLabel.text = created_at
-                }
-                
-                /*
-                 "created_at" = "27-06-2562 17:40";
-                 id = 498;
-                 "member_id" = 59;
-                 note = "<null>";
-                 point = 100;
-                 "pointable_id" = 5;
-                 "pointable_type" = PointRefill;
-                 "pointable_type_service" = Refill;
-                 status = success;
-                 "transaction_ref_id" = PPPR1561632036frQk;
-                 type = in;
-                 "updated_at" = "27-06-2562 17:40";
-                 */
-                
-                if !hideFinishButton {
-                    self.slipView = itemCell.mView.copyView()
-                    let allSubView = slipView!.allSubViewsOf(type: UIView.self)
                     
-                    for itemView  in  allSubView {
-                        if let itemTag = itemView.viewWithTag(1) {
-                            itemTag.isHidden = true
+                    
+                    
+                   
+                    itemCell.pointLabel.text = "\(numberFormatter.string(from: value_out ) ?? "") Point Pow"
+                    
+                    switch statusTransaction.lowercased() {
+                    case "success":
+                        itemCell.statusImageView.image = UIImage(named: "ic-status-success2")
+                        itemCell.statusLabel.textColor = Constant.Colors.GREEN
+                        itemCell.statusLabel.text = NSLocalizedString("string-dailog-point-transaction-status-success", comment: "")
+                        
+                        break
+                    case "pending":
+                        itemCell.statusImageView.image = UIImage(named: "ic-status-waitting")
+                        itemCell.statusLabel.textColor = Constant.Colors.ORANGE
+                        itemCell.statusLabel.text = NSLocalizedString("string-dailog-point-transaction-status-waitting", comment: "")
+                        
+                        break
+                    case "fail":
+                        itemCell.statusImageView.image = UIImage(named: "ic-status-cancel")
+                        itemCell.statusLabel.textColor = Constant.Colors.PRIMARY_COLOR
+                        itemCell.statusLabel.text = NSLocalizedString("string-dailog-point-transaction-status-fail", comment: "")
+                        
+                        break
+                    default:
+                        break
+                    }
+                    
+                    if !hideFinishButton {
+                        self.slipView = itemCell.mView.copyView()
+                        let allSubView = slipView!.allSubViewsOf(type: UIView.self)
+                        
+                        for itemView  in  allSubView {
+                            if let itemTag = itemView.viewWithTag(1) {
+                                itemTag.isHidden = true
+                            }
+                        }
+                        if !self.addSlipSuccess {
+                            self.addSlipImageView()
                         }
                     }
-                    if !self.addSlipSuccess {
-                        self.addSlipImageView()
-                    }
                 }
+                
+              
+                
+              
             }
         }else if indexPath.section == 1 {
             if let favCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemFavorCell", for: indexPath) as? ItemFavorCell {

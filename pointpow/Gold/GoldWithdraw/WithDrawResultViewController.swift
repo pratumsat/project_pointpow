@@ -1066,6 +1066,7 @@ extension WithDrawResultViewController {
 extension WithDrawResultViewController{
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
+        guard (self.withDrawResult != nil) else { return 0 }
         return 2
     }
     

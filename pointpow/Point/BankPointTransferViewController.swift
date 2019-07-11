@@ -335,35 +335,7 @@ class BankPointTransferViewController: BaseViewController  {
                 }
             }
             
-            /*if let data = self.itemData {
-                let provider_id = data["id"] as? NSNumber ?? 0
-                let provider_image = data["provider_image_url"] as? String ?? ""
-                let name = data["name"] as? String ?? ""
-                let exchange_rate = data["exchange_rate"] as? [[String:AnyObject]] ?? [[:]]
- 
-                let params:Parameters = ["provider_id" : provider_id.intValue,
-                                         "select_point" : amount,
-                                         "value_in" : amount]
-                
-                self.modelCtrl.exchangeTransferPoint(params: params , true , succeeded: { (result) in
-                    //success
-                    //if let mResult  = result as? [String:AnyObject] {
-                    //
-                    //}
-                }, error: { (error) in
-                    if let mError = error as? [String:AnyObject]{
-                        let message = mError["message"] as? String ?? ""
-                        print(message)
-                        self.showMessagePrompt(message)
-                    }
-                    
-                    print(error)
-                }) { (messageError) in
-                    print("messageError")
-                    self.handlerMessageError(messageError)
-                    
-                }
-             }*/
+            
             
         }else{
             let message = NSLocalizedString("string-error-amount-fill", comment: "")

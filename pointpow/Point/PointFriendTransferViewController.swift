@@ -62,6 +62,13 @@ class PointFriendTransferViewController: BaseViewController {
     
     func setUp(){
         
+
+        if let url = URL(string: DataController.sharedInstance.getProfilPath()) {
+            self.myProfileImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
+            
+        }else{
+            self.myProfileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
+        }
        
         self.backgroundImage?.image = nil
         
@@ -159,7 +166,11 @@ class PointFriendTransferViewController: BaseViewController {
         
         
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = false
+    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.getUserInfo()
@@ -189,12 +200,16 @@ class PointFriendTransferViewController: BaseViewController {
                 numberFormatter.numberStyle = .decimal
                 numberFormatter.minimumFractionDigits = 2
                 
-                if let url = URL(string: picture_data) {
-                    self.myProfileImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
-                    
-                }else{
-                    self.myProfileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
+                
+                if DataController.sharedInstance.getProfilPath().isEmpty {
+                    if let url = URL(string: picture_data) {
+                        self.myProfileImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
+                        
+                    }else{
+                        self.myProfileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
+                    }
                 }
+                
                
                 self.pointBalanceLabel.text = "\(numberFormatter.string(from: pointBalance ) ?? "") Point Pow"
                
@@ -310,6 +325,7 @@ class PointFriendTransferViewController: BaseViewController {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
  
+        
         if textField == self.noteTextField {
             let startingLength = textField.text?.count ?? 0
             let lengthToAdd = string.count

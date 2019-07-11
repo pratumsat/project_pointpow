@@ -139,6 +139,9 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
                     let picture_data = userData["picture_data"] as? String ?? ""
                     let picture_background = userData["picture_background"] as? String ?? ""
                     
+                    
+                
+                    
                     if let _ = self.profileImageView {
                         profileCell.profileImageView.image = self.profileImageView
                     }else{

@@ -319,7 +319,7 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
                     //transCell.statusImageView.image = UIImage(named: "ic-saving")
                     transCell.statusImageView.image = UIImage(named: "ic-service-type-point-transfer-in")
                     transCell.shippingLabel.isHidden  = true
-                    transCell.unitLabel.text = "PP"
+                    transCell.unitLabel.text = "Point"
                     
                     
                     transCell.shippingLabel.isHidden = true

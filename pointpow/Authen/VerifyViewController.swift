@@ -171,6 +171,7 @@ class VerifyViewController: BaseViewController {
 
    
         
+        
         if textField  == self.usernameTextField {
             let startingLength = textField.text?.count ?? 0
             let lengthToAdd = string.count

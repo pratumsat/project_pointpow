@@ -13,6 +13,21 @@ class ItemFavorCell: UICollectionViewCell {
     
     var favorCallback:(()->Void)?
     
+  
+    var shareCallback:(()->Void)?
+    
+    var disableFav  = false {
+        didSet{
+            self.favoView.isUserInteractionEnabled = false
+            self.favoView.borderLightGrayColorProperties()
+            self.favoImageView.image = UIImage(named: "ic-star-outline-gray")
+            self.favoLabel.textColor = UIColor.lightGray
+        }
+    }
+    @IBOutlet weak var favoLabel: UILabel!
+    
+    @IBOutlet weak var favoImageView: UIImageView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,11 +48,13 @@ class ItemFavorCell: UICollectionViewCell {
             self.layoutIfNeeded()
         }
     }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.favoView.borderRedColorProperties()
-        
+        if !disableFav {
+            self.favoView.borderRedColorProperties()
+        }
         
     }
 }

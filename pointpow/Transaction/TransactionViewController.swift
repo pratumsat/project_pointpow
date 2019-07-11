@@ -394,6 +394,13 @@ class TransactionViewController: BaseViewController  ,UICollectionViewDataSource
                 }
                 
             }
+            if pointable_type.lowercased() == "pointrefill" {
+                if pointable_type_service.lowercased() == "refill"{
+                    self.showRefillPointTransferView(true, transaction_ref_id)
+                }
+                
+            }
+            
             
             //if pointable_type.lowercased() == "shopping" {
             //}

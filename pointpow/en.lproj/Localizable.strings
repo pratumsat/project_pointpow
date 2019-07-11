@@ -51,12 +51,13 @@
 "string-title-my-qr-code" = "My QR Code";
 
 // gold
-"string-title-gold-page" = "สะสมพ้อยท์";
+"string-title-gold-page-result" = "ออมพ้อยท์";
+"string-title-gold-page" = "Point Saving";
 "string-title-gold-page-withdraw" = "แลกทองคำ";
-"string-title-gold-register1" = "สมัครบัญชีสะสมพ้อยท์";
+"string-title-gold-register1" = "สมัครบัญชีออมพ้อยท์";
 "string-title-gold-register3" = "ยืนยันการสมัคร";
 "title-gold-pendding-verify" = "การยืนยันตัวตน";
-"title-gold-pendding-confirm-saving" = "ยืนยันรายการสะสมพ้อยท์";
+"title-gold-pendding-confirm-saving" = "ยืนยันรายการออมพ้อยท์";
 "title-gold-pendding-confirm-withdraw" = "ยืนยันการทำรายการแลกทองคำ";
 "string-title-gold-page-luckydraw" = "Lucky Draw";
 "unit-salueng" = "สลึง";
@@ -89,7 +90,7 @@
 "string-status-gold-history-success" = "สำเร็จ";
 "string-status-gold-history-cancel" = "ยกเลิก";
 "string-status-gold-history-waiting" = "กำลังดำเนินการ";
-"string-title-history-saving" = "สะสมพ้อยท์";
+"string-title-history-saving" = "ออมพ้อยท์";
 "string-title-history-withdraw" = "แลกทองคำ";
 
 //transection history list
@@ -123,21 +124,21 @@
 "string-dailog-change-data-confirm" = "ยืนยันการแก้ไขข้อมูล";
 "string-dailog-gold-button-cancel" = "ยกเลิก";
 "string-dailog-gold-button-confirm" = "ยืนยัน";
-"string-dailog-gold-profile-saving"= "สะสมพ้อยท์";
+"string-dailog-gold-profile-saving"= "ออมพ้อยท์";
 "string-dailog-gold-profile-withdraw"= "แลกทองคำ";
 "string-dailog-gold-profile-history"= "ประวัติการทำรายการ";
 "string-dailog-gold-profile-lucky-draw" = "Lucky Draw";
 "string-dailog-gold-profile-status-waitting"= "รอการตรวจสอบ";
 "string-dailog-gold-profile-status-fail"= "ไม่ผ่านการตรวจสอบ";
 "string-dailog-gold-profile-status-approve"= "ผ่านการตรวจสอบ";
-"string-dailog-gold-profile-no-register"= "กรุณาเปิดบัญชีสะสมพ้อยท์";
+"string-dailog-gold-profile-no-register"= "กรุณาเปิดบัญชีออมพ้อยท์";
 
 "string-dailog-back-view-profile" = "คุณยืนยันที่จะออกจากหน้านี้หรือไม่";
 
 "string-dailog-point-over-limit-order" = "พ้อยจำกัดต่อวันของท่านไม่เพียงพอ สำหรับทำรายการนี้";
 "string-dailog-saving-point-not-enough"= "พ้อยท์ของท่านไม่เพียงพอ สำหรับทำรายการนี้";
 "string-dailog-saving-point-pointspend-empty"= "กรุณาใส่จำนวนพ้อย";
-"string-dailog-saving-point-pointspend-min"= "สะสมพ้อยท์ได้ตั้งแต่ 100 Point Pow ขึ้นไป";
+"string-dailog-saving-point-pointspend-min"= "ออมพ้อยท์ได้ตั้งแต่ 100 Point Pow ขึ้นไป";
 
 "string-dailog-limit-point-min"= "จำกัดต่อวันตั้งแต่ 100 Point Pow ขึ้นไป";
 
@@ -446,7 +447,7 @@
 
 "string-sub-title-intro-1" = "ศูนย์รวมพ้อยท์ และการใช้พ้อยท์";
 "string-sub-title-intro-2" = "โอนพ้อยท์จากบัตรเครดิต บัตรสะสมคะแนน";
-"string-sub-title-intro-3" = "สะสมพ้อยท์เพื่อแลกทองคำ";
+"string-sub-title-intro-3" = "ออมพ้อยท์เพื่อแลกทองคำ";
 "string-sub-title-intro-4" = "พ้อยท์แลกสินค้า และบริการได้มากมาย";
 
 "string-error-video" = "กรุณาเลือกเป็นไฟล์รูปภาพ";
@@ -475,3 +476,5 @@
 "string-item-shopping-cate-6" = "คูปอง";
 
 "string-symbol-point-baht" = "Point Pow/฿";
+
+"string-string-not-found-product" = "ไม่พบสินค้า";

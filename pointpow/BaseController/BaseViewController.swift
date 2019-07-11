@@ -119,7 +119,9 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         if DataController.sharedInstance.isLogin() {
             if let top = Constant.TopViewController.top {
                 if self == top  {
-                    self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""), lockscreen: true)
+                    if DataController.sharedInstance.countTimeLockScreen(){
+                        self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""), lockscreen: true)
+                    }
                 }
             }
         }
@@ -743,6 +745,30 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }
     }
     
+    
+    func showRefillPointTransferView( _ animated:Bool, _ transaction_id:String, finish:(()->Void)? = nil){
+        
+        if finish != nil {
+            if let vc:ResultTransferNav  = self.storyboard?.instantiateViewController(withIdentifier: "ResultTransferNav") as? ResultTransferNav {
+                vc.callbackFinish = {
+                    finish?()
+                }
+            
+                vc.transactionId = transaction_id
+                self.present(vc, animated: animated, completion: nil)
+            }
+        }else{
+            if let vc:ResultTransferViewController  = self.storyboard?.instantiateViewController(withIdentifier: "ResultTransferViewController") as? ResultTransferViewController {
+                
+                vc.transactionId = transaction_id
+                vc.hideFinishButton = true
+                self.navigationController?.pushViewController(vc, animated: animated)
+            }
+        }
+        
+        
+        
+    }
     func showPointFriendSummaryTransferView( _ animated:Bool, _ transaction_id:String, titlePage:String , finish:(()->Void)? = nil){
         
         if finish != nil {
@@ -1149,7 +1175,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
                 }
                 self.LOCKSCREEN = false
                 self.startApp = false
-                
+                DataController.sharedInstance.setTimeLatest()
             })
         }, error: { (error) in
             if let mError = error as? [String:AnyObject]{
@@ -1275,7 +1301,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     }
     func paPasscodeViewControllerResendOTP(_ controller: PAPasscodeViewController!, resend resendBtn: UIButton!, callbackMobileNumber mobileNumber: String!) {
         
-        print("mobile = \(mobileNumber)")
+        //print("mobile = \(mobileNumber)")
         
         let mobile = mobileNumber.replace(target: "-", withString: "")
         let params:Parameters = ["mobile" : mobile,

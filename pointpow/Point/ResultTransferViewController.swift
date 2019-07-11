@@ -120,27 +120,29 @@ class ResultTransferViewController: BaseViewController  , UICollectionViewDelega
             self.navigationItem.rightBarButtonItem = finishButton
             self.transactionId = (self.navigationController as? ResultTransferNav)?.transactionId
         }
+        
+        self.title = NSLocalizedString("string-title-point-transfer", comment: "")
         self.setUp()
     }
     
     func getDetail(){
-        //        self.modelCtrl.detailTransactionHistory(transactionNumber: self.transactionId ?? "" ,true , succeeded: { (result) in
-        //            self.transferResult = result
-        //            self.resultCollectionView.reloadData()
-        //
-        //        }, error: { (error) in
-        //            if let mError = error as? [String:AnyObject]{
-        //                let message = mError["message"] as? String ?? ""
-        //                print(message)
-        //                self.showMessagePrompt(message)
-        //            }
-        //
-        //            print(error)
-        //        }) { (messageError) in
-        //            print("messageError")
-        //            self.handlerMessageError(messageError)
-        //
-        //        }
+        self.modelCtrl.detailTransactionHistory(transactionNumber: self.transactionId ?? "" ,true , succeeded: { (result) in
+            self.transferResult = result
+            self.resultCollectionView.reloadData()
+            
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                self.showMessagePrompt(message)
+            }
+            
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            
+        }
     }
     
     @objc func dismissTapped(){
@@ -180,30 +182,67 @@ class ResultTransferViewController: BaseViewController  , UICollectionViewDelega
         if indexPath.section == 0 {
             if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemListResultCell", for: indexPath) as? ItemListResultCell {
                 
-              
+                if hideFinishButton {
+                    itemCell.bgsuccessImageView.image = nil
+                }
 
                 cell = itemCell
-                
-                self.slipView = itemCell.mView.copyView()
-                let allSubView = slipView!.allSubViewsOf(type: UIView.self)
-                
-                for itemView  in  allSubView {
-                    if let itemTag = itemView.viewWithTag(1) {
-                        itemTag.isHidden = true
-                    }
+         
+                if let data = transferResult {
+                    let created_at = data["created_at"] as? String ?? ""
+                    let point = data["point"] as? NSNumber ?? 0
+                    
+                    itemCell.dateLabel.text = created_at
                 }
-                if !self.addSlipSuccess {
-                    self.addSlipImageView()
+                
+                /*
+                 "created_at" = "27-06-2562 17:40";
+                 id = 498;
+                 "member_id" = 59;
+                 note = "<null>";
+                 point = 100;
+                 "pointable_id" = 5;
+                 "pointable_type" = PointRefill;
+                 "pointable_type_service" = Refill;
+                 status = success;
+                 "transaction_ref_id" = PPPR1561632036frQk;
+                 type = in;
+                 "updated_at" = "27-06-2562 17:40";
+                 */
+                
+                if !hideFinishButton {
+                    self.slipView = itemCell.mView.copyView()
+                    let allSubView = slipView!.allSubViewsOf(type: UIView.self)
+                    
+                    for itemView  in  allSubView {
+                        if let itemTag = itemView.viewWithTag(1) {
+                            itemTag.isHidden = true
+                        }
+                    }
+                    if !self.addSlipSuccess {
+                        self.addSlipImageView()
+                    }
                 }
             }
         }else if indexPath.section == 1 {
             if let favCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemFavorCell", for: indexPath) as? ItemFavorCell {
                 
                 favCell.favorCallback = {
-                    //add favorit
-                    //self.showAddNameFavoritePopup(true, savedCallback: {
-                    //    print("saved")
-                    //})
+                    
+                    if let mData = self.transferResult as? [String:AnyObject] {
+                        let transaction_ref_id = mData["transaction_ref_id"] as? String ?? ""
+                        let point = mData["point"] as? NSNumber ?? 0
+                        let pointable_type = mData["pointable_type"] as? String ?? ""
+                        
+                        self.showAddNameFavoritePopup(true, mType: pointable_type,
+                                                      transaction_ref_id: transaction_ref_id,
+                                                      amount: point.stringValue) {
+                                                        
+                                                        
+                                                        favCell.disableFav = true
+                        }
+                    }
+
                 }
                 cell = favCell
             }

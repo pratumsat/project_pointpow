@@ -30,6 +30,8 @@ class ShoppingBaseViewController: BaseViewController ,UICollectionViewDelegate ,
         }
     }
     
+    
+    
     var selectSubcate:Int?
     
 
@@ -211,25 +213,46 @@ class ShoppingBaseViewController: BaseViewController ,UICollectionViewDelegate ,
  
     }
     
+    private  func getSubCateByCate(_ cateId:Int ,_ avaliable:(()->Void)?  = nil){
+        var isLoading:Bool = true
+        if self.dataItemSubCates != nil {
+            isLoading = true
+        }else{
+            isLoading = true
+        }
+        
+        
+        modelCtrl.getSubCateByCateShopping(cateId:cateId,  isLoading , succeeded: { (result) in
+
+            if let mResult = result as? [[String:AnyObject]] {
+                self.dataItemSubCates = mResult
+
+            }
+            avaliable?()
+
+
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                self.showMessagePrompt(message)
+            }
+            self.refreshControl?.endRefreshing()
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            self.refreshControl?.endRefreshing()
+        }
+
+    }
     
     @objc func categoryTapped(sender: UITapGestureRecognizer){
-        let tag = sender.view?.tag
+        let tag = sender.view?.tag ?? 0
         
-        
-        self.dataItemSubCates = [["name":"Mobiles"],
-                                 ["name":"Tablets"],
-                                 ["name":"Laptops"],
-                                 ["name":"Desktops"],
-                                 ["name":"Gaming Consoles"],
-                                 ["name":"Car Cameras"],
-                                 ["name":"Action/Video Cameras"],
-                                 ["name":"Security Cameras"],
-                                 ["name":"Digital Cameras"],
-                                 ["name":"Gadgets"]] as [[String : AnyObject]]
         if tag == 0 {
             self.collapseCallback?(true)
-            self.heightMainCategoryView?.constant = 100.0 + self.sizeOfViewCateInit
-            //self.mainCategoryView?.layoutIfNeeded()
+            self.heightMainCategoryView?.constant = 90.0 + self.sizeOfViewCateInit
             self.subCategoryCollectionView?.isHidden = true
             
             
@@ -238,14 +261,17 @@ class ShoppingBaseViewController: BaseViewController ,UICollectionViewDelegate ,
             self.collapseCallback?(false)
 
             
-            self.heightMainCategoryView?.constant = 100.0 + self.sizeOfViewCate
+            self.heightMainCategoryView?.constant = 90.0 + self.sizeOfViewCate
             self.mainCategoryView?.layoutIfNeeded()
             self.subCategoryCollectionView?.isHidden = false
-            self.addSubCate()
+            
            
+            self.getSubCateByCate(tag) {
+                self.addSubCate()
+            }
         }
         
-        self.selectedCategory(tag ?? 0)
+        self.selectedCategory(tag)
         
     }
     
@@ -505,17 +531,17 @@ extension ShoppingBaseViewController {
             if let array = self.dataItemSubCates {
                 let name = array[indexPath.row]["name"] as? String ?? ""
                 
-                //itemCell.nameLabel.text = name
+                itemCell.nameLabel.text = name
                 itemCell.nameLabel.textColor = UIColor.black
                 
                 if let select = self.selectSubcate {
                     if select == indexPath.row {
-                        itemCell.nameLabel.underlineCharacters(name)
+                        //selected
                     }else{
-                        itemCell.nameLabel.removeUnderlineCharacters(name)
+                        //unselected
                     }
                 }else{
-                    itemCell.nameLabel.removeUnderlineCharacters(name)
+                    //unselected
                 }
                 
             }
@@ -530,8 +556,8 @@ extension ShoppingBaseViewController {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //print("didSelectItemAt \(indexPath.row)")
-     
+        print("didSelectItemAt ID Cate: \(self.dataItemSubCates![indexPath.row])")
+        
         
         self.selectSubcate = indexPath.row
         self.subCategoryCollectionView?.reloadData()

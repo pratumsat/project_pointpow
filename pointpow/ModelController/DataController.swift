@@ -31,6 +31,52 @@ class DataController {
         }
     }
     
+    func getProfilPath() -> String{
+        return self.data["profilPath"] as? String ?? ""
+    }
+    
+    func setProfilPath(_ url:String ){
+         self.data["profilPath"] = url as AnyObject
+    }
+    
+    func countTimeLockScreen() -> Bool{
+        
+        let latest = self.data["timeStemp"] as? String ?? ""
+        
+        
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.locale = Locale(identifier: "en")
+        
+        guard let targedDate = dateFormatter.date(from: latest) else {return true}
+        guard let current = dateFormatter.date(from: getCurrentTimeStamp(dateToConvert: Date())) else {return true}
+        let calendar = NSCalendar.current
+        let unitFlags: Set<Calendar.Component> = [.second, .minute, .hour, .day, .month, .year]
+        let component = calendar.dateComponents(unitFlags, from: targedDate, to: current)
+        
+        let minutes = component.minute!
+        
+        
+        if minutes >= 2 {
+            return true
+        }else{
+            return false
+        }
+    }
+    func setTimeLatest(){
+        let timeStemp = getCurrentTimeStamp(dateToConvert: Date())
+        self.data["timeStemp"] = timeStemp as AnyObject
+    }
+    
+    func getCurrentTimeStamp(dateToConvert: Date) -> String {
+        let objDateformat: DateFormatter = DateFormatter()
+        objDateformat.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        objDateformat.locale = Locale(identifier: "en")
+        let strTime: String = objDateformat.string(from: dateToConvert as Date) 
+        return strTime
+    }
+    
     func setDataGoldPremium(_ data:AnyObject){
         UserDefaults.standard.set(data, forKey: "dataGoldPremiumPrice")
         UserDefaults.standard.synchronize()

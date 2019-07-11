@@ -26,7 +26,7 @@ class SavingResultViewController: BaseViewController , UICollectionViewDelegate 
         super.viewDidLoad()
 
 
-        self.title = NSLocalizedString("string-title-gold-page", comment: "")
+        self.title = NSLocalizedString("string-title-gold-page-result", comment: "")
         
         
         if !hideFinishButton {

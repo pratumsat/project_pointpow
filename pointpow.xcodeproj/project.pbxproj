@@ -101,6 +101,8 @@
 		C11E619D22D334E700753E52 /* ShoppingRectProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C11E619B22D334E700753E52 /* ShoppingRectProductCell.xib */; };
 		C11E61A022D3366100753E52 /* Recommend2Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11E619E22D3366100753E52 /* Recommend2Cell.swift */; };
 		C11E61A122D3366100753E52 /* Recommend2Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C11E619F22D3366100753E52 /* Recommend2Cell.xib */; };
+		C11E61A422D5E6AA00753E52 /* NotFoundItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11E61A222D5E6A900753E52 /* NotFoundItemCell.swift */; };
+		C11E61A522D5E6AA00753E52 /* NotFoundItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C11E61A322D5E6A900753E52 /* NotFoundItemCell.xib */; };
 		C120D7CE21955BB500F9EEBB /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120D7CC21955BB500F9EEBB /* ProfileCell.swift */; };
 		C120D7CF21955BB500F9EEBB /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C120D7CD21955BB500F9EEBB /* ProfileCell.xib */; };
 		C120D7D221955BC900F9EEBB /* ItemProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120D7D021955BC900F9EEBB /* ItemProfileCell.swift */; };
@@ -160,6 +162,8 @@
 		C12FD30F228D168100FB81B6 /* NotificationGoldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12FD30D228D168100FB81B6 /* NotificationGoldCell.xib */; };
 		C12FD312228EA48700FB81B6 /* ItemFriendSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12FD310228EA48700FB81B6 /* ItemFriendSearchCell.swift */; };
 		C12FD313228EA48700FB81B6 /* ItemFriendSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12FD311228EA48700FB81B6 /* ItemFriendSearchCell.xib */; };
+		C139366A22D6F5610006C10F /* NavSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = C139366922D6F5610006C10F /* NavSaving.swift */; };
+		C139366C22D6F56D0006C10F /* SavingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C139366B22D6F56D0006C10F /* SavingViewController.swift */; };
 		C13948872296579E003E0527 /* PointPowIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13948862296579E003E0527 /* PointPowIDViewController.swift */; };
 		C139488922968D60003E0527 /* TransectionFilterResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C139488822968D60003E0527 /* TransectionFilterResultViewController.swift */; };
 		C139488B2297D881003E0527 /* MyQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C139488A2297D881003E0527 /* MyQRCodeViewController.swift */; };
@@ -445,6 +449,8 @@
 		C11E619B22D334E700753E52 /* ShoppingRectProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingRectProductCell.xib; sourceTree = "<group>"; };
 		C11E619E22D3366100753E52 /* Recommend2Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recommend2Cell.swift; sourceTree = "<group>"; };
 		C11E619F22D3366100753E52 /* Recommend2Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Recommend2Cell.xib; sourceTree = "<group>"; };
+		C11E61A222D5E6A900753E52 /* NotFoundItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotFoundItemCell.swift; sourceTree = "<group>"; };
+		C11E61A322D5E6A900753E52 /* NotFoundItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotFoundItemCell.xib; sourceTree = "<group>"; };
 		C120D7CC21955BB500F9EEBB /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		C120D7CD21955BB500F9EEBB /* ProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
 		C120D7D021955BC900F9EEBB /* ItemProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemProfileCell.swift; sourceTree = "<group>"; };
@@ -505,6 +511,8 @@
 		C12FD30D228D168100FB81B6 /* NotificationGoldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationGoldCell.xib; sourceTree = "<group>"; };
 		C12FD310228EA48700FB81B6 /* ItemFriendSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFriendSearchCell.swift; sourceTree = "<group>"; };
 		C12FD311228EA48700FB81B6 /* ItemFriendSearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemFriendSearchCell.xib; sourceTree = "<group>"; };
+		C139366922D6F5610006C10F /* NavSaving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavSaving.swift; sourceTree = "<group>"; };
+		C139366B22D6F56D0006C10F /* SavingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingViewController.swift; sourceTree = "<group>"; };
 		C13948862296579E003E0527 /* PointPowIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointPowIDViewController.swift; sourceTree = "<group>"; };
 		C139488822968D60003E0527 /* TransectionFilterResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransectionFilterResultViewController.swift; sourceTree = "<group>"; };
 		C139488A2297D881003E0527 /* MyQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQRCodeViewController.swift; sourceTree = "<group>"; };
@@ -756,6 +764,8 @@
 				C106BEA5220AC01400E2331E /* ConfirmSavingViewController.swift */,
 				C1F760FF2216BB70000A2CA9 /* SavingResultNav.swift */,
 				C1F761012216BB95000A2CA9 /* SavingResultViewController.swift */,
+				C139366922D6F5610006C10F /* NavSaving.swift */,
+				C139366B22D6F56D0006C10F /* SavingViewController.swift */,
 			);
 			path = GoldSaving;
 			sourceTree = "<group>";
@@ -1530,6 +1540,8 @@
 		C1F0C08022C4A7D800A49BAA /* ShoppingPageCell */ = {
 			isa = PBXGroup;
 			children = (
+				C11E61A222D5E6A900753E52 /* NotFoundItemCell.swift */,
+				C11E61A322D5E6A900753E52 /* NotFoundItemCell.xib */,
 				C1F0C08122C4A81900A49BAA /* PageViewCollectionViewCell.swift */,
 				C1F0C08222C4A81900A49BAA /* PageViewCollectionViewCell.xib */,
 				C1F0C08522C4B00300A49BAA /* PageViewFooterCollectionViewCell.swift */,
@@ -1787,6 +1799,7 @@
 				C1DA27C4224200C2000C0715 /* WithDrawResultThaiPostCell.xib in Resources */,
 				C1B32E472252674D006AD7F2 /* CountDownCell.xib in Resources */,
 				C19BEEFA22CCA5E500855FBF /* CartPointBalanceCell.xib in Resources */,
+				C11E61A522D5E6AA00753E52 /* NotFoundItemCell.xib in Resources */,
 				C13D998621997938001A4794 /* LogoutCell.xib in Resources */,
 				C1273240225380D500A9EE74 /* PickerLuckyDrawCell.xib in Resources */,
 				C197FF3322083A6F002F24E8 /* GoldPriceCell.xib in Resources */,
@@ -1966,6 +1979,7 @@
 				C11BFCAF221BF70300F066DE /* WithDrawShippingThaiPostCell.swift in Sources */,
 				C11AFC7C22C1DE4C00573C27 /* ShoppingNavViewController.swift in Sources */,
 				C181F06A220D8566003F7C70 /* ProfileTableViewCell.swift in Sources */,
+				C11E61A422D5E6AA00753E52 /* NotFoundItemCell.swift in Sources */,
 				C15F16FD2293CEE6005E8E71 /* TransactionFilterViewController.swift in Sources */,
 				C1F761022216BB95000A2CA9 /* SavingResultViewController.swift in Sources */,
 				C197FF3E22093D9B002F24E8 /* RegisterGoldCell.swift in Sources */,
@@ -2039,6 +2053,7 @@
 				C12FD30E228D168100FB81B6 /* NotificationGoldCell.swift in Sources */,
 				C181F066220C0392003F7C70 /* GoldHistoryViewController.swift in Sources */,
 				C127324B2254584400A9EE74 /* WinnerHistoryLinkCell.swift in Sources */,
+				C139366A22D6F5610006C10F /* NavSaving.swift in Sources */,
 				C10CA1B12193E01200316DF3 /* ItemServiceCell.swift in Sources */,
 				C1AD50AF2187FE9000F74415 /* PopUpViewController.swift in Sources */,
 				C11A93C0218C2AD900627B44 /* ForgotPasswordViewController.swift in Sources */,
@@ -2094,6 +2109,7 @@
 				C139488922968D60003E0527 /* TransectionFilterResultViewController.swift in Sources */,
 				C121FB4F228A640700043387 /* NotificationStruct.swift in Sources */,
 				C106BEB2220BED4E00E2331E /* BrowseImageCell.swift in Sources */,
+				C139366C22D6F56D0006C10F /* SavingViewController.swift in Sources */,
 				C11A93B7218C00C800627B44 /* IntroCell1.swift in Sources */,
 				C1247C572219B2E7005D6F7A /* NextButtonCell.swift in Sources */,
 				C10CA1AA21918E3C00316DF3 /* PasscodeSettingViewController.swift in Sources */,

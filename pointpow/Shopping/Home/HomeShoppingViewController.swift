@@ -69,7 +69,7 @@ class HomeShoppingViewController: ShoppingBaseViewController {
         }
     }
     
-    func callAPI(_ loadSuccess:(()->Void)?  = nil){
+    func callAPI(_ reload:Bool = false, _ loadSuccess:(()->Void)?  = nil){
         var success = 0
         getBanner() {
             success += 1
@@ -92,7 +92,7 @@ class HomeShoppingViewController: ShoppingBaseViewController {
                 self.refreshControl?.endRefreshing()
             }
         }
-        getRecommendByCate() {
+        getRecommendByCate(reloadData: reload) {
             success += 1
             if success == 4 {
                 loadSuccess?()
@@ -102,12 +102,15 @@ class HomeShoppingViewController: ShoppingBaseViewController {
     }
     
     
-    private  func getRecommendByCate(_ avaliable:(()->Void)?  = nil){
+    private  func getRecommendByCate(reloadData:Bool = false , _ avaliable:(()->Void)?  = nil){
         var isLoading:Bool = true
         if self.cateItems != nil {
-            isLoading = false
+            isLoading = true
         }else{
             isLoading = true
+        }
+        if reloadData {
+            isLoading = false
         }
         
         
@@ -133,8 +136,10 @@ class HomeShoppingViewController: ShoppingBaseViewController {
             self.handlerMessageError(messageError)
             self.refreshControl?.endRefreshing()
         }
+    
     }
-  private  func getBanner(_ avaliable:(()->Void)?  = nil){
+  
+    private  func getBanner(_ avaliable:(()->Void)?  = nil){
         var isLoading:Bool = true
         if self.banner != nil {
             isLoading = false
@@ -270,7 +275,7 @@ class HomeShoppingViewController: ShoppingBaseViewController {
     
     override func reloadData() {
         //get data by refresh
-        self.callAPI(){
+        self.callAPI(true){
             self.searchView?.removeFromSuperview()
             self.mainCateView?.removeFromSuperview()
             
@@ -581,6 +586,7 @@ extension HomeShoppingViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
         
         if collectionView != productCollectionView {
             return super.collectionView(collectionView, layout: collectionViewLayout, referenceSizeForHeaderInSection: section)

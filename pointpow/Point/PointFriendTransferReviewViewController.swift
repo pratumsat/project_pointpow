@@ -69,11 +69,14 @@ class PointFriendTransferReviewViewController: BaseViewController {
                 numberFormatter.numberStyle = .decimal
                 numberFormatter.minimumFractionDigits = 2
                 
-                if let url = URL(string: picture_data) {
-                    self.myProfileImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
-                    
-                }else{
-                    self.myProfileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
+               
+                if DataController.sharedInstance.getProfilPath().isEmpty {
+                    if let url = URL(string: picture_data) {
+                        self.myProfileImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
+                        
+                    }else{
+                        self.myProfileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
+                    }
                 }
                 
                 
@@ -118,6 +121,15 @@ class PointFriendTransferReviewViewController: BaseViewController {
     }
     
     func setUp(){
+        
+        if let url = URL(string: DataController.sharedInstance.getProfilPath()) {
+            self.myProfileImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
+            
+        }else{
+            self.myProfileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
+        }
+
+        
         self.handlerEnterSuccess = { (pin) in
             if let modelFriend = self.friendModel {
                 let mobile = modelFriend["mobile"] as? String ?? ""

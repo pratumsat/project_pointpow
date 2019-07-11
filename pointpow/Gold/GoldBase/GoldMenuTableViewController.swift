@@ -10,6 +10,7 @@ import UIKit
 
 class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource  {
 
+    @IBOutlet weak var bgProfileImageView: UIImageView!
     var userData:AnyObject?
     @IBOutlet weak var menuTableView: UITableView!
     var memberGoldData:AnyObject?
@@ -24,6 +25,7 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
         super.viewDidLoad()
 
         setUp()
+        self.bgProfileImageView.blurImage()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -53,6 +55,15 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
                 
                 self.inprogress_withdraw = inprogress_withdraw
                 self.statusMemberGold = status
+                
+                let picture_background = data["picture_background"] as? String ?? ""
+                
+                if let url = URL(string: picture_background) {
+                    self.bgProfileImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
+                }else{
+                    self.bgProfileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
+                }
+                
             }
             
             avaliable?()
@@ -90,7 +101,6 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.view.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
         
     }
     
@@ -162,15 +172,19 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
              
                 if indexPath.row == 0 {
                     item.nameLabel.text = NSLocalizedString("string-dailog-gold-profile-saving", comment: "")
+                    item.menuImageView.image = UIImage(named: "ic-gold-menu-saving")
                 }
                 if indexPath.row == 1 {
                     item.nameLabel.text = NSLocalizedString("string-dailog-gold-profile-withdraw", comment: "")
+                    item.menuImageView.image = UIImage(named: "ic-gold-menu-withdraw")
                 }
                 if indexPath.row == 2 {
                     item.nameLabel.text = NSLocalizedString("string-dailog-gold-profile-lucky-draw", comment: "")
+                    item.menuImageView.image = UIImage(named: "ic-gold-menu-lucky")
                 }
                 if indexPath.row == 3 {
                     item.nameLabel.text = NSLocalizedString("string-dailog-gold-profile-history", comment: "")
+                    item.menuImageView.image = UIImage(named: "ic-gold-menu-history")
                 }
             }
         }
@@ -256,20 +270,12 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
         if indexPath.section == 1 {
             if indexPath.row == 0 {
                 // "Saving"
-                if let saving = self.storyboard?.instantiateViewController(withIdentifier: "NavGoldPage") as? NavGoldPage {
+                if let withdraw = self.storyboard?.instantiateViewController(withIdentifier: "NavSaving") as? NavSaving {
                     
-                    self.revealViewController()?.pushFrontViewController(saving, animated: true)
-                    
-                }
-            }
+                    self.revealViewController()?.pushFrontViewController(withdraw, animated: true)
+                }            }
             if indexPath.row == 1 {
-                // "Withdraw"
-                //if self.inprogress_withdraw != nil  && !(self.inprogress_withdraw!.isEmpty) {
-                //
-                //    let userInfo = ["showTransaction": inprogress_withdraw]
-                //    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "messageAlert"), object: nil, userInfo: userInfo as [String:AnyObject])
-                //    return
-                //}
+                //withdraw
                 if let withdraw = self.storyboard?.instantiateViewController(withIdentifier: "NavWithdraw") as? NavWithdraw {
                     
                     self.revealViewController()?.pushFrontViewController(withdraw, animated: true)

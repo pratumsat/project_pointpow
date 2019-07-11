@@ -33,22 +33,29 @@ class PaymentViewController: BaseViewController , UIWebViewDelegate{
 //        self.navigationItem.leftBarButtonItem = backButton
         
         self.webView.delegate = self
-        self.webView.scalesPageToFit = false
+        self.webView.scalesPageToFit = true
         self.webView.contentMode = .scaleAspectFit
-        
+        self.webView.addJavascriptInterface(JSInterface(), forKey: "PointPowNative");
         
         //TEST Load local html file into web view
-        let myProjectBundle:Bundle = Bundle.main
+        //let myProjectBundle:Bundle = Bundle.main
         
-        let filePath:String = myProjectBundle.path(forResource: "index", ofType: "html")!
+       // let filePath:String = myProjectBundle.path(forResource: "index", ofType: "html")!
+        //let myURL = URL(string: filePath);
+        //let myURLRequest:URLRequest = URLRequest(url: myURL!)
         
-        let myURL = URL(string: filePath);
-        let myURLRequest:URLRequest = URLRequest(url: myURL!)
-        
-        self.webView.addJavascriptInterface(JSInterface(), forKey: "PointPowNative");
-        self.webView.loadRequest(myURLRequest)
+        //self.webView.addJavascriptInterface(JSInterface(), forKey: "PointPowNative");
+        //self.webView.loadRequest(myURLRequest)
         
         
+        if let url = (self.navigationController as! NavPaymentViewController).mUrl {
+            let token = DataController.sharedInstance.getToken()
+            if let myURL = URL(string: url) {
+                var myURLRequest:URLRequest = URLRequest(url: myURL)
+                myURLRequest.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+                self.webView.loadRequest(myURLRequest)
+            }
+        }
        
     }
    

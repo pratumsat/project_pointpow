@@ -867,6 +867,11 @@ struct Constant {
         static let hotRedemption = "\(HOST)privilege/hot-redem?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
         static let recommend_byCate = "\(HOST)privilege/recommended/{{cate}}?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
         static let recommend_all = "\(HOST)privilege/recommended?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
+        
+        static let product_all = "\(HOST)privilege/products?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
+        static let product_ByCate = "\(HOST)privilege/products/{{cate}}?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
+        static let subCateByCate = "\(HOST)privilege/products/sub-category/{{cate}}?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
+        
     }
     
     struct TopViewController{
@@ -1324,6 +1329,7 @@ func compareLiveTime(_ destinationDate:String) -> Bool{
     }
     return false
 }
+
 func validateTransactionTime(_ dateString:String) -> Bool {
     //2017-03-29 20:15
     let dateFormatter = DateFormatter()

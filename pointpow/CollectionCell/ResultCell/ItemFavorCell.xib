@@ -73,6 +73,8 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="388" height="87"/>
             <connections>
+                <outlet property="favoImageView" destination="ipN-o7-E0u" id="WHB-vt-XKy"/>
+                <outlet property="favoLabel" destination="NuB-KT-Z1a" id="aDJ-Kw-X45"/>
                 <outlet property="favoView" destination="sm2-Zj-opH" id="X5o-Tl-0Yb"/>
             </connections>
             <point key="canvasLocation" x="112" y="183.95802098950526"/>

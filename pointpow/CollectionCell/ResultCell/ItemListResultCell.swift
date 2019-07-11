@@ -10,6 +10,12 @@ import UIKit
 
 class ItemListResultCell: UICollectionViewCell {
 
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var pointLabel: UILabel!
+    @IBOutlet weak var from_pointLabel: UILabel!
+    @IBOutlet weak var fromLabel: UILabel!
+    @IBOutlet weak var transection_ref_Label: UILabel!
+    @IBOutlet weak var bgsuccessImageView: UIImageView!
     @IBOutlet weak var mView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()

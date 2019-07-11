@@ -335,6 +335,8 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
             if updatedText.isEmpty {
                 return true
             }
+           
+            
             
             if isValidNumber(updatedText) {
                 let point = Double(updatedText)!
@@ -417,10 +419,19 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
                     }
                     let gramToPoint = Double(currentGoldprice.intValue)/15.244
                     
-                    
-                    let sum = String(format: "%.04f", floor(point_balance.doubleValue/gramToPoint * 10000) / 10000)
-                    
+                    let totalGram = floor(point_balance.doubleValue/gramToPoint * 10000) / 10000
+                    let sum = String(format: "%.04f", totalGram)
                     item.goldExchangeLabel.text = "\(sum)"
+                    
+                    
+                    let weightToSalueng = 15.244/4
+                    
+                    let amountSalueng = totalGram/weightToSalueng
+                    let amountBaht = amountSalueng/4
+                    let diffAmountBaht = Int(amountSalueng)%4
+                    
+                    item.bahtLabel.text = "\(Int(amountBaht))"
+                    item.saleungLabel.text = "\(Int(diffAmountBaht))"
                 }
             }
         }
@@ -435,7 +446,18 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
                 
                 self.pointpowTextField = item.pointpowTextField
                 self.savingUpdateButton = item.savingButton
-                self.disableButton()
+                
+                if let amount = self.pointpowTextField?.text!.replace(target: ",", withString: "") {
+                    if !amount.isEmpty && Int(amount)! >= 100{
+                        self.enableButton()
+                    }else{
+                        self.disableButton()
+                    }
+                }else{
+                    self.disableButton()
+                }
+               
+                
                 
                 if let data  = self.userData as? [String:AnyObject] {
                     let pointBalance = data["member_point"]?["total"] as? NSNumber ?? 0
@@ -578,7 +600,7 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
         }
         if menu == "goldbalance"{
             let width = collectionView.frame.width - 40
-            let height = CGFloat(160) //width/375*250
+            let height = CGFloat(200) //160
             return CGSize(width: width, height: height)
         }
         if menu == "saving"{

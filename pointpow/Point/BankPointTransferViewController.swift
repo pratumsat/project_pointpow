@@ -265,7 +265,7 @@ class BankPointTransferViewController: BaseViewController  {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
     
-        
+   
         if textField == self.amountTextField {
             guard let textRange = Range(range, in: textField.text!) else { return true}
             let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
@@ -308,9 +308,10 @@ class BankPointTransferViewController: BaseViewController  {
         
         if amount%exchangeRate == 0{
             
-            
+            let parameters  = self.itemData?["parameters"] as? [String:AnyObject] ?? [:]
+            let endPoint = parameters["endpoint"] as? String ?? ""
             print("ok")
-            self.showPaymentWebView(true, "", url: "") { (any) in
+            self.showPaymentWebView(true, "Transfer Point", url: endPoint) { (any) in
                 print("return result \n \(any)")
                 if let userInfo = any as? [String:AnyObject]{
                     let status = userInfo["status"] as? String ?? ""
@@ -318,9 +319,11 @@ class BankPointTransferViewController: BaseViewController  {
                     
                     switch status {
                     case "success", "fail" :
-                        self.showResultTransferView(true, finish: {
+                        
+                        self.showRefillPointTransferView(true, transection_ref_id , finish:  {
                             self.navigationController?.popToRootViewController(animated: false)
                         })
+                        
                         break
                     case "cancel":
                         break

@@ -80,21 +80,28 @@ class ShoppingMenuTableViewController: BaseViewController, UITableViewDelegate, 
             
             if indexPath.row == 0 {
                 item.nameLabel.text = "home"
+                 item.menuImageView.image = UIImage(named: "ic-gold-menu-saving")
             }
             if indexPath.row == 1 {
                 item.nameLabel.text = "product"
+                 item.menuImageView.image = UIImage(named: "ic-gold-menu-saving")
             }
             if indexPath.row == 2 {
                 item.nameLabel.text = "How to"
+                 item.menuImageView.image = UIImage(named: "ic-gold-menu-saving")
             }
             if indexPath.row == 3 {
                 item.nameLabel.text = "Q/A"
+                 item.menuImageView.image = UIImage(named: "ic-gold-menu-saving")
             }
             if indexPath.row == 4 {
                 item.nameLabel.text = "term and condition"
+                 item.menuImageView.image = UIImage(named: "ic-gold-menu-saving")
             }
+            
             if indexPath.row == 5 {
                 item.nameLabel.text = "privacy"
+                 item.menuImageView.image = UIImage(named: "ic-gold-menu-saving")
             }
         }
         

@@ -1170,11 +1170,6 @@ extension WithDrawResultViewController{
                 let shipping = data["withdraw_transaction"]?["shipping"] as? [String:AnyObject] ?? [:]
                 let statusShipping = shipping["status"] as? String ?? ""
                 let type = shipping["type"] as? String ?? ""
-                
-//                let shipping_and_insurance = data["withdraw_transaction"]?["shipping_and_insurance"] as? [[String:AnyObject]] ?? [[:]]
-//                let address = data["withdraw_transaction"]?["address"] as? [String:AnyObject] ?? [:]
-//                let full_address = address["full_address"] as? String ?? ""
-//                let total_shipping_price = data["withdraw_transaction"]?["total_shipping_price"] as? NSNumber ?? 0
 
                 switch type.lowercased() {
                 case "office" :
@@ -1227,7 +1222,7 @@ extension WithDrawResultViewController{
             }
             
             
- 
+            height += 20.0
             return CGSize(width: width, height: height)
  
         }else{

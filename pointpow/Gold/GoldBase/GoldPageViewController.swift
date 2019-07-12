@@ -160,11 +160,11 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
     
     private func getBanner(_ avaliable:(()->Void)?  = nil){
         var isLoading:Bool = true
-        if self.banner != nil {
-            isLoading = false
-        }else{
-            isLoading = true
-        }
+//        if self.banner != nil {
+//            isLoading = false
+//        }else{
+//            isLoading = true
+//        }
         
         modelCtrl.getBanner(params: nil , isLoading , succeeded: { (result) in
             
@@ -196,11 +196,11 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
     }
     func getGoldPrice(_ avaliable:(()->Void)?  = nil){
         var isLoading:Bool = true
-        if self.goldPrice != nil {
-            isLoading = false
-        }else{
-            isLoading = true
-        }
+//        if self.goldPrice != nil {
+//            isLoading = false
+//        }else{
+//            isLoading = true
+//        }
         
         modelCtrl.getGoldPrice(params: nil , isLoading , succeeded: { (result) in
             self.goldPrice = result
@@ -225,11 +225,11 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
     func getUserInfo(_ avaliable:(()->Void)?  = nil){
         
         var isLoading:Bool = true
-        if self.userData != nil {
-            isLoading = false
-        }else{
-            isLoading = true
-        }
+//        if self.userData != nil {
+//            isLoading = false
+//        }else{
+//            isLoading = true
+//        }
         
         
         modelCtrl.getUserData(params: nil , isLoading , succeeded: { (result) in

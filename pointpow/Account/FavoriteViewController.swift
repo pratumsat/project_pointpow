@@ -219,15 +219,21 @@ class FavoriteViewController: BaseViewController, UICollectionViewDelegate , UIC
                     let limit_pay = mResult["limit_pay"] as? NSNumber ?? 0
                     let note = point["note"] as? String ?? ""
                     let pointAmount = mResult["amount"] as? NSNumber ?? 0
+                    let type = mResult["type"] as? String ?? ""
+                    
                     
                     
                     var receiver = mResult["receiver"] as? [String:AnyObject] ?? [:]
                     receiver["limit_pay"] = limit_pay
                    
+                    if type.lowercased() == "pointtransfer" {
+                        self.showPointFriendTransferView(true, receiver as [String : AnyObject],
+                                                         note: note ,
+                                                         pointAmount: pointAmount.stringValue)
+                    }else{
+                        //pointrefill
+                    }
                     
-                    self.showPointFriendTransferView(true, receiver as [String : AnyObject],
-                                                     note: note ,
-                                                     pointAmount: pointAmount.stringValue)
                 }
             
                 

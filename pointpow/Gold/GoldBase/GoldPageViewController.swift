@@ -153,9 +153,6 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
                 self.refreshControl?.endRefreshing()
             }
         }
-        
-        
-        
     }
     
     private func getBanner(_ avaliable:(()->Void)?  = nil){

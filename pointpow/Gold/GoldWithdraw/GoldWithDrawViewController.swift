@@ -18,13 +18,13 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
             self.amountTextField?.delegate = self    
         }
     }
+    var sectionCount = 0
+    
     var itemReload = false
     var pointBalance:Double = 0.0
     
-    //var goldBalanceLabel:UILabel?
+    
     var gold_balance:NSNumber = NSNumber(value: 0.0)
-    var point_Balance:NSNumber = NSNumber(value: 0.0)
-    var gold_Price:NSNumber = NSNumber(value: 0.0)
     
     var drawCount = 0
     var amountToUnit:(amount:Int, unit:Int , price:Double , goldPrice:Int)?
@@ -66,6 +66,11 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
                 
                 self.revealViewController()?.pushFrontViewController(profile, animated: true)
             }
+        }
+    }
+    override func reloadData() {
+        getDataMember() {
+            self.updateView()
         }
     }
     
@@ -121,11 +126,11 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
     }
     func getGoldPrice(_ avaliable:(()->Void)?  = nil){
         var isLoading:Bool = true
-        if self.goldPrice != nil {
-            isLoading = false
-        }else{
-            isLoading = true
-        }
+//        if self.goldPrice != nil {
+//            isLoading = false
+//        }else{
+//            isLoading = true
+//        }
         
         modelCtrl.getGoldPrice(params: nil , isLoading , succeeded: { (result) in
             self.goldPrice = result
@@ -149,11 +154,11 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
     func getUserInfo(_ avaliable:(()->Void)?  = nil){
         
         var isLoading:Bool = true
-        if self.userData != nil {
-            isLoading = false
-        }else{
-            isLoading = true
-        }
+//        if self.userData != nil {
+//            isLoading = false
+//        }else{
+//            isLoading = true
+//        }
         
         
         modelCtrl.getUserData(params: nil , isLoading , succeeded: { (result) in
@@ -180,21 +185,19 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
     
     
     func updateView(){
+        self.sectionCount = 5
+        
         if let data  = self.userData as? [String:AnyObject] {
             let point_balance = data["goldsaving_member"]?["point_balance"] as? NSNumber ?? 0
-            self.point_Balance = point_balance
-            
-            var currentGoldprice = NSNumber(value: 0.0)
             if let gold  = self.goldPrice as? [String:AnyObject] {
-                currentGoldprice = gold["open_sell_price"] as? NSNumber ?? 0
-                self.gold_Price = currentGoldprice
+                let currentGoldprice = gold["open_sell_price"] as? NSNumber ?? 0
+                let gramToPoint = Double(currentGoldprice.intValue)/15.244
+                self.gold_balance = NSNumber(value:floor(point_balance.doubleValue/gramToPoint * 10000) / 10000)
+                
+                self.withDrawCollectionView.reloadData()
             }
-            let gramToPoint = Double(currentGoldprice.intValue)/15.244
-            //let sum = String(format: "%.04f", floor(point_balance.doubleValue/gramToPoint * 10000) / 10000)
-            
-            self.gold_balance = NSNumber(value:floor(point_balance.doubleValue/gramToPoint * 10000) / 10000)
         }
-        self.withDrawCollectionView.reloadData()
+        
     }
     
     func setUp(){
@@ -206,8 +209,12 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
         self.withDrawCollectionView.delegate = self
         self.withDrawCollectionView.dataSource = self
         self.withDrawCollectionView.showsVerticalScrollIndicator = false
+       
         
-        self.registerNib(self.withDrawCollectionView, "WithDrawMyGoldCell")
+        self.addRefreshViewController(self.withDrawCollectionView)
+        self.registerNib(self.withDrawCollectionView, "GoldPriceCell")
+        self.registerNib(self.withDrawCollectionView, "MyGoldCell")
+        
         self.registerNib(self.withDrawCollectionView, "WithdrawCell")
         self.registerNib(self.withDrawCollectionView, "NextButtonCell")
         self.registerNib(self.withDrawCollectionView, "LogoGoldCell")
@@ -285,7 +292,7 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
 
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 4
+        return self.sectionCount
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -297,31 +304,63 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
         
         
         if indexPath.section == 0 {
-            if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "WithDrawMyGoldCell", for: indexPath) as? WithDrawMyGoldCell {
+            //goldprice
+            if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "GoldPriceCell", for: indexPath) as? GoldPriceCell{
                 cell = item
                 
-                
-                var numberFormatter = NumberFormatter()
-                numberFormatter.numberStyle = .decimal
-                
-                item.goldPriceLabel.text = numberFormatter.string(from: self.gold_Price)
-                
-                numberFormatter = NumberFormatter()
-                numberFormatter.numberStyle = .decimal
-                numberFormatter.minimumFractionDigits = 4
-                
-                item.goldBalanceLabel.text = numberFormatter.string(from: self.gold_balance)
-                
-                numberFormatter = NumberFormatter()
-                numberFormatter.numberStyle = .decimal
-                numberFormatter.minimumFractionDigits = 2
-                
-                item.pointTotalLabel.text = numberFormatter.string(from: self.point_Balance)
-                
-                //self.goldBalanceLabel = item.goldBalanceLabel
+                if let data  = self.goldPrice as? [String:AnyObject] {
+                    let buyPrice = data["open_buy_price"] as? NSNumber ?? 0
+                    let sellPrice = data["open_sell_price"] as? NSNumber ?? 0
+                    
+                    let created_at = data["updated_at"] as? String ?? ""
+                    
+                    item.dateLabel.text  = created_at
+                    
+                    let numberFormatter = NumberFormatter()
+                    numberFormatter.numberStyle = .decimal
+                    
+                    item.buyPriceLabel.text  = numberFormatter.string(from: buyPrice)
+                    item.sellPriceLabel.text = numberFormatter.string(from: sellPrice)
+                    
+                }
             }
             
         } else if indexPath.section == 1 {
+            //myprice
+            if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "MyGoldCell", for: indexPath) as? MyGoldCell {
+                cell = item
+                
+                if let data  = self.userData as? [String:AnyObject] {
+                    let point_balance = data["goldsaving_member"]?["point_balance"] as? NSNumber ?? 0
+                    
+                    let numberFormatter = NumberFormatter()
+                    numberFormatter.numberStyle = .decimal
+                    numberFormatter.minimumFractionDigits = 2
+                    item.pointTotalLabel.text = numberFormatter.string(from: point_balance)
+                    
+                    var currentGoldprice = NSNumber(value: 0.0)
+                    if let data  = self.goldPrice as? [String:AnyObject] {
+                        currentGoldprice = data["open_sell_price"] as? NSNumber ?? 0
+                    }
+                    let gramToPoint = Double(currentGoldprice.intValue)/15.244
+                    
+                    let totalGram = floor(point_balance.doubleValue/gramToPoint * 10000) / 10000
+                    let sum = String(format: "%.04f", totalGram)
+                    item.goldExchangeLabel.text = "\(sum)"
+                    
+                    
+                    let weightToSalueng = 15.244/4
+                    
+                    let amountSalueng = totalGram/weightToSalueng
+                    let amountBaht = amountSalueng/4
+                    let diffAmountBaht = Int(amountSalueng)%4
+                    
+                    item.bahtLabel.text = "\(Int(amountBaht))"
+                    item.saleungLabel.text = "\(Int(diffAmountBaht))"
+                }
+            }
+            
+        } else if indexPath.section == 2 {
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "WithdrawCell", for: indexPath) as? WithdrawCell {
                 cell = item
                 
@@ -397,7 +436,7 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
                    self.withDrawCell = item
                 
             }
-        } else if indexPath.section == 2 {
+        } else if indexPath.section == 3 {
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "NextButtonCell", for: indexPath) as? NextButtonCell {
                 cell = item
                 
@@ -416,10 +455,10 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
                         
                         
                     }else{
-                         
-                            if goldbalance < 0 {
+                         if goldbalance < 0 {
                                 self.showMessagePrompt(NSLocalizedString("string-dailog-saving-gold-pointspend-not-enogh", comment: ""))
-                            }else{
+                          
+                         }else{
                             
                                 if let amountunit = self.amountToUnit {
                                 
@@ -434,17 +473,8 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
                                     self.chooseShippingPage(true ,withdrawData:  self.withdrawData!)
                                     
                                 }
-                                
-                            
                             }
-                            
-                            
                         }
-                        
-                        
-                    
-                    
-                    
                 }
                 
             }
@@ -467,7 +497,7 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         
-        if section == 2  {
+        if section == 3  {
             return CGSize(width: collectionView.frame.width, height: 30)
         }
         return CGSize(width: collectionView.frame.width, height: 20)
@@ -483,11 +513,19 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
         
         
         if indexPath.section == 0 {
-            
+            //goldprice
             let width = collectionView.frame.width - 40
-            let height = CGFloat(180)
+            let height = CGFloat(150)
             return CGSize(width: width, height: height)
-        } else if indexPath.section == 1 {
+            
+        }else if indexPath.section == 1 {
+            //mygold
+            let width = collectionView.frame.width - 40
+            let height = CGFloat(200)
+            return CGSize(width: width, height: height)
+            
+            
+        }else if indexPath.section == 2 {
            
             let width = collectionView.frame.width - 40
             var h2 = CGFloat(0)
@@ -498,7 +536,8 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
             }
             
             return CGSize(width: width, height: h2)
-        } else if indexPath.section == 2 {
+            
+        } else if indexPath.section == 3 {
             
             let width = collectionView.frame.width - 40
             let height = CGFloat(40)

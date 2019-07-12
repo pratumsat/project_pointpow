@@ -156,7 +156,7 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
         self.amountTextField.setRightPaddingPoints(10)
         
         //self.unitTextField.borderRedColorProperties(borderWidth: 1)
-        self.unitTextField.setRightPaddingPoints(40)
+        self.unitTextField.setRightPaddingPoints(30)
         
     
 //        self.amountTextField.delegate = self
@@ -183,54 +183,6 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
     @objc func infoTapped(){
         self.infoCallback?()
     }
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        
-//        if textField == self.amountTextField {
-//            let textRange = Range(range, in: textField.text!)!
-//            let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
-//        
-//            if updatedText.isEmpty {
-//                self.amountTextField.text = "0"
-//                self.premiumLabel.text = "0"
-//                
-//                self.withDrawData = (premium : "\(0)" , goldReceive: [])
-//                self.goldSpendCallback?(0 , self.selectedUnits)
-//                
-//                return true
-//            }
-//            
-//            if  isValidNumber(updatedText) {
-//                
-//                let amount = Double(updatedText)!
-//               
-//                if self.selectedUnits == 0 {
-//                    if amount > 200 {
-//                        self.amountTextField?.text = "200"
-//                        calSalueng("200")
-//                        return false
-//                    }else{
-//                        calSalueng(updatedText)
-//                    }
-//                   
-//                }else{
-//                    if amount > 50 {
-//                        self.amountTextField?.text = "50"
-//                        calBaht("50")
-//                        return false
-//                    }else{
-//                        calBaht(updatedText)
-//                    }
-//                    
-//                }
-//            }else{
-//                return false
-//            }
-//            
-//        }
-//        
-//        return true
-//    }
-
     
     func updateView(){
         
@@ -516,8 +468,6 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-      
-        
         self.selectedUnits = row
         self.unitTextField.text = "\(self.units[row])"
         
@@ -533,7 +483,7 @@ class WithdrawCell: UICollectionViewCell ,UIPickerViewDelegate , UIPickerViewDat
     override func layoutSubviews() {
         super.layoutSubviews()
         
-     
+        self.headView.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
     }
 }
 

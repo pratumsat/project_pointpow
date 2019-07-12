@@ -11,13 +11,20 @@ import Alamofire
 
 class WithDrawSummaryThaiPostViewController: BaseViewController, UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    var withdrawData:(pointBalance:Double, premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double, goldPrice:Int))?{
+    var withdrawData:(pointBalance:Double, premium:Int, goldbalance:Double, goldAmountToUnit:(amount:Int, unit:Int , price:Double, goldPrice:Int), goldReceive:[(amount:Int,unit:String)]? )?{
         didSet{
             print(withdrawData!)
+            
+            for item in withdrawData!.goldReceive! {
+                if item.amount != 0 {
+                    self.rowBar += 1
+                }
+                
+            }
         }
     }
    
-    
+    var rowBar = 0
     
     var addressModel: [String:AnyObject]?
     var ems:Int?
@@ -48,7 +55,7 @@ class WithDrawSummaryThaiPostViewController: BaseViewController, UICollectionVie
             
             var rawAddress = "\(self.name!)"
             rawAddress += " \(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
-            rawAddress += " \(self.mobile!)"
+            rawAddress += "\n\(self.mobile!)"
             
             self.shippingAddress = rawAddress
         }
@@ -126,6 +133,83 @@ class WithDrawSummaryThaiPostViewController: BaseViewController, UICollectionVie
       
         
     }
+    func goldFormat(gold_received:[(amount:Int,unit:String)]) -> NSAttributedString {
+        var j = 0
+        var gr:[(amount:Int,unit:String)] = []
+        for item in gold_received {
+            if item.amount != 0 {
+                gr.append(item)
+            }
+            j += 1
+        }
+        let unitSalueng = NSLocalizedString("unit-salueng", comment: "")
+        let unitBaht = NSLocalizedString("unit-baht", comment: "")
+        let unitBar = NSLocalizedString("unit-bar", comment: "")
+        
+        let txtAttr = NSMutableAttributedString(string: "")
+        let amountAttribute = [ NSAttributedString.Key.font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 25.0)! ]
+        
+        let unitAttribute = [ NSAttributedString.Key.font: UIFont(name: Constant.Fonts.THAI_SANS_REGULAR, size: 16.0)! ]
+        
+        var i = 0
+        for item in gr {
+            let unit = item.unit
+            let amount = item.amount
+            
+            if amount == 0 {
+                
+                continue
+            }
+            if unit.lowercased() == "1salueng"{
+                
+                txtAttr.append(NSMutableAttributedString(string: "1 ", attributes: amountAttribute ))
+                txtAttr.append(NSMutableAttributedString(string: unitSalueng, attributes: unitAttribute ))
+                
+            }
+            if unit.lowercased() == "2salueng"{
+                
+                txtAttr.append(NSMutableAttributedString(string: "2 ", attributes: amountAttribute ))
+                txtAttr.append(NSMutableAttributedString(string: unitSalueng, attributes: unitAttribute ))
+                
+            }
+            if unit.lowercased() == "1baht"{
+                
+                txtAttr.append(NSMutableAttributedString(string: "1 ", attributes: amountAttribute ))
+                txtAttr.append(NSMutableAttributedString(string: unitBaht, attributes: unitAttribute ))
+                
+            }
+            if unit.lowercased() == "2baht"{
+                
+                txtAttr.append(NSMutableAttributedString(string: "2 ", attributes: amountAttribute ))
+                txtAttr.append(NSMutableAttributedString(string: unitBaht, attributes: unitAttribute ))
+                
+            }
+            if unit.lowercased() == "5baht"{
+                
+                txtAttr.append(NSMutableAttributedString(string: "5 ", attributes: amountAttribute ))
+                txtAttr.append(NSMutableAttributedString(string: unitBaht, attributes: unitAttribute ))
+                
+            }
+            if unit.lowercased() == "10baht"{
+                
+                txtAttr.append(NSMutableAttributedString(string: "10 ", attributes: amountAttribute ))
+                txtAttr.append(NSMutableAttributedString(string: unitBaht, attributes: unitAttribute ))
+                
+            }
+            if i == (gr.count - 1)  {
+                txtAttr.append(NSMutableAttributedString(string: " \(amount) ", attributes: amountAttribute ))
+                txtAttr.append(NSMutableAttributedString(string: "\(unitBar)", attributes: unitAttribute ))
+            }else{
+                txtAttr.append(NSMutableAttributedString(string: " \(amount) ", attributes: amountAttribute ))
+                txtAttr.append(NSMutableAttributedString(string: "\(unitBar)\n", attributes: unitAttribute ))
+            }
+            
+            i += 1
+        }
+        return txtAttr
+        
+    }
+    
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 3
@@ -161,7 +245,12 @@ class WithDrawSummaryThaiPostViewController: BaseViewController, UICollectionVie
                 numberFormatter.numberStyle = .decimal
                 numberFormatter.minimumFractionDigits = 2
 
-               // item.goldBalanceLabel.text = numberFormatter.string(from: NSNumber(value: self.withdrawData!.goldbalance))
+               
+                if let received = self.withdrawData?.goldReceive {
+                    //item.formatGoldReceiveLabel.text = self.goldFormat(gold_received: received)
+                    item.formatGoldReceiveLabel.attributedText = self.goldFormat(gold_received: received)
+                }
+                
                 let pb = self.withdrawData!.pointBalance
                 item.goldBalanceLabel.text = numberFormatter.string(from: NSNumber(value: pb))
                 
@@ -302,8 +391,10 @@ class WithDrawSummaryThaiPostViewController: BaseViewController, UICollectionVie
         if indexPath.section == 0 {
             
             let width = collectionView.frame.width - 40
-            let height = heightForView(text: self.shippingAddress, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 18)!,
-                                       width: width - 20) + 470 + self.heightExpand
+            
+            let heightForAddress = heightForView(text: self.shippingAddress, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 18)!, width: width - 20)
+            
+            let height = heightForViewWithDraw(self.rowBar, width: width , height: CGFloat(490) , rowHeight: 30.0)  + self.heightExpand + heightForAddress
             return CGSize(width: width, height: height)
             
         }else if indexPath.section == 1 {

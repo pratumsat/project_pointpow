@@ -113,7 +113,7 @@ class ConfirmSavingViewController: BaseViewController , UICollectionViewDelegate
                 
                 item.pointPowSpanLabel.text = numberFormatter.string(from: NSNumber(value: self.modelSaving.pointSpend!))
                 
-              item.pointPointBalanceLabel.text =  numberFormatter.string(from: NSNumber(value: self.modelSaving.pointBalance!))
+              item.pointPointBalanceLabel.text =  numberFormatter.string(from: NSNumber(value: self.modelSaving.pointSpend!))
                 
                 
             }

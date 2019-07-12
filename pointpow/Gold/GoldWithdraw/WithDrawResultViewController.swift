@@ -124,8 +124,13 @@ class WithDrawResultViewController: BaseViewController  , UICollectionViewDelega
                 let gold_received = data["withdraw_transaction"]?["gold_received"] as? [[String:AnyObject]] ?? [[:]]
                 let created_at = data["updated_at"] as? String ?? ""
                 
-                self.rowBar = gold_received.count
-                
+                //self.rowBar = gold_received.count
+                for item in gold_received {
+                    let amount = item["amount"] as? NSNumber ?? 0
+                    if amount != 0 {
+                        self.rowBar += 1
+                    }
+                }
               
                 if validateTransactionTime(created_at) {
                     self.timeOutDate = CGFloat(80)
@@ -1163,6 +1168,7 @@ extension WithDrawResultViewController{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
+        var heightAddress = CGFloat(0)
         if indexPath.section == 0 {
             
             let width = collectionView.frame.width - 40
@@ -1174,8 +1180,16 @@ extension WithDrawResultViewController{
                 let statusShipping = shipping["status"] as? String ?? ""
                 let type = shipping["type"] as? String ?? ""
 
+                let address = data["withdraw_transaction"]?["address"] as? [String:AnyObject] ?? [:]
+                let full_address = address["full_address"] as? String ?? ""
+                let mobile = address["mobile"] as? String ?? ""
+            
+                
+                
+                
                 switch type.lowercased() {
                 case "office" :
+                    
                     if statusTransaction.lowercased() == "cancel" {
                         //transaction cancel
                         height = heightForViewWithDraw(self.rowBar, width: width , height: CGFloat(400) , rowHeight: 20.0)
@@ -1192,6 +1206,7 @@ extension WithDrawResultViewController{
                         }
                         
                     }
+                   
                     break
                 case "thaipost" :
                     if statusTransaction.lowercased() == "cancel" {
@@ -1201,7 +1216,7 @@ extension WithDrawResultViewController{
                         //transaction success
                         if statusShipping != "success" {
                            
-                            height = heightForViewWithDraw(self.rowBar, width: width , height: CGFloat(620) , rowHeight: 20.0) + self.heightExpand
+                            height = heightForViewWithDraw(self.rowBar, width: width , height: CGFloat(600) , rowHeight: 20.0) + self.heightExpand
                             
                             height +=  self.timeOutDate
                             
@@ -1211,9 +1226,14 @@ extension WithDrawResultViewController{
                             }
                         }else{
                             if self.hideFinishButton {
-                                height = heightForViewWithDraw(self.rowBar, width: width , height: CGFloat(650) , rowHeight: 20.0) + self.heightExpand
+                                height = heightForViewWithDraw(self.rowBar, width: width , height: CGFloat(600) , rowHeight: 20.0) + self.heightExpand
                             }
                         }
+                        
+                    }
+                    let fulladdress = "\(full_address)\n\(mobile)"
+                    if !fulladdress.trimmingCharacters(in: .whitespaces).isEmpty {
+                        heightAddress = heightForView(text: fulladdress, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 18)!, width: width - 20)
                         
                     }
                     break
@@ -1224,8 +1244,8 @@ extension WithDrawResultViewController{
                 
             }
             
-            
-            height += 40.0
+            height += 20.0
+            height += heightAddress
             return CGSize(width: width, height: height)
  
         }else{

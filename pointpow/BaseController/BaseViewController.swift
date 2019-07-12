@@ -350,7 +350,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     }
     
 
-    func chooseShippingPage(_ animated:Bool, withdrawData:(pointBalance:Double, premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double, goldPrice:Int))?){
+    func chooseShippingPage(_ animated:Bool, withdrawData:(pointBalance:Double, premium:Int, goldbalance:Double, goldAmountToUnit:(amount:Int, unit:Int , price:Double, goldPrice:Int), goldReceive:[(amount:Int,unit:String)]? )?){
         if let vc:GoldWithDrawChooseShippingViewController  = self.storyboard?.instantiateViewController(withIdentifier: "GoldWithDrawChooseShippingViewController") as? GoldWithDrawChooseShippingViewController {
     
             vc.withdrawData = withdrawData
@@ -358,7 +358,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }
     }
     
-    func showWithDrawSummaryOfficeView(_ animated:Bool, withdrawData:(pointBalance:Double, premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double, goldPrice:Int))?){
+    func showWithDrawSummaryOfficeView(_ animated:Bool, withdrawData:(pointBalance:Double, premium:Int, goldbalance:Double, goldAmountToUnit:(amount:Int, unit:Int , price:Double, goldPrice:Int), goldReceive:[(amount:Int,unit:String)]? )?){
         
         if let vc:WithDrawSummaryOfficeViewController  = self.storyboard?.instantiateViewController(withIdentifier: "WithDrawSummaryOfficeViewController") as? WithDrawSummaryOfficeViewController {
             vc.withdrawData  = withdrawData
@@ -368,7 +368,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
    
     
     func showWithDrawSummaryThaiPostView(_ animated:Bool,
-                                         withdrawData:(pointBalance:Double, premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double, goldPrice:Int))?,
+                                         withdrawData:(pointBalance:Double, premium:Int, goldbalance:Double, goldAmountToUnit:(amount:Int, unit:Int , price:Double, goldPrice:Int), goldReceive:[(amount:Int,unit:String)]? )?,
                                          addressModel: [String:AnyObject] , ems:Int ,fee: Int, name:String, mobile:String){
         
         if let vc:WithDrawSummaryThaiPostViewController  = self.storyboard?.instantiateViewController(withIdentifier: "WithDrawSummaryThaiPostViewController") as? WithDrawSummaryThaiPostViewController {

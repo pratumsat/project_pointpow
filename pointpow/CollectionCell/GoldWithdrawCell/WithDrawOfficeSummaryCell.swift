@@ -9,7 +9,8 @@
 import UIKit
 
 class WithDrawOfficeSummaryCell: UICollectionViewCell {
-
+    @IBOutlet weak var formatGoldReceiveLabel: UILabel!
+    
     @IBOutlet weak var premiumLabel: UILabel!
     @IBOutlet weak var goldBalanceLabel: UILabel!
     @IBOutlet weak var unitLabel: UILabel!
@@ -32,5 +33,6 @@ class WithDrawOfficeSummaryCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
        
+        self.headView.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
     }
 }

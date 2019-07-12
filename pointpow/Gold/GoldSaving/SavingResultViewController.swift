@@ -158,7 +158,7 @@ class SavingResultViewController: BaseViewController , UICollectionViewDelegate 
         
         if indexPath.section == 0 {
             let width = collectionView.frame.width - 40
-            let height =  CGFloat(260)
+            let height =  CGFloat(270)
             return CGSize(width: width, height: height)
         }else{
             let width = collectionView.frame.width

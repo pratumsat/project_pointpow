@@ -276,8 +276,8 @@ class SavingViewController: BaseViewController, UICollectionViewDelegate , UICol
                 return true
             }
             
-            if isValidNumber(updatedText) {
-                let point = Double(updatedText)!
+            if isValidNumber(updatedText.replace(target: ",", withString: "")) {
+                let point = Double(updatedText.replace(target: ",", withString: ""))!
                 if point >= 100 {
                     self.enableButton()
                 }else{
@@ -285,6 +285,13 @@ class SavingViewController: BaseViewController, UICollectionViewDelegate , UICol
                 }
                 
             }else{
+                return false
+            }
+            if let iPoint = Int(updatedText.replace(target: ",", withString: "")){
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                
+                textField.text = numberFormatter.string(from: NSNumber(value: iPoint))
                 return false
             }
             
@@ -400,7 +407,7 @@ class SavingViewController: BaseViewController, UICollectionViewDelegate , UICol
                         
                         var pointBalance:NSNumber = NSNumber(value: 0.0)
                         var currentGoldprice:NSNumber = NSNumber(value: 0)
-                        let pointSpend:NSNumber = NSNumber(value: Double(self.pointpowTextField?.text! ?? "0")!)
+                        let pointSpend:NSNumber = NSNumber(value: Double(self.pointpowTextField?.text!.replace(target: ",", withString: "") ?? "0")!)
                         //var goldReceive:NSNumber = NSNumber(value: 0.0)
                         
                         
@@ -415,7 +422,7 @@ class SavingViewController: BaseViewController, UICollectionViewDelegate , UICol
                             currentGoldprice = data["open_sell_price"] as? NSNumber ?? 0
                             
                             
-                            let ppspend = self.pointpowTextField?.text! ?? ""
+                            let ppspend = self.pointpowTextField?.text!.replace(target: ",", withString: "") ?? ""
                             if ppspend.isEmpty {
                                 self.showMessagePrompt(NSLocalizedString("string-dailog-saving-point-pointspend-empty", comment: ""))
                                 return

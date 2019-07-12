@@ -45,12 +45,7 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
             }
         }
         
-        
-        
         self.setUp()
-        
-     
-
         
     }
     

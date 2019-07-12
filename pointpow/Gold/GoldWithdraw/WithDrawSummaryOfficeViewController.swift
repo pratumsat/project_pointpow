@@ -11,13 +11,21 @@ import Alamofire
 
 class WithDrawSummaryOfficeViewController: BaseViewController, UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    var withdrawData:(pointBalance:Double, premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double, goldPrice:Int))?{
+    var withdrawData:(pointBalance:Double, premium:Int, goldbalance:Double, goldAmountToUnit:(amount:Int, unit:Int , price:Double, goldPrice:Int), goldReceive:[(amount:Int,unit:String)]? )?{
         didSet{
             print(withdrawData!)
             
+            
+            for item in withdrawData!.goldReceive! {
+                if item.amount != 0 {
+                   self.rowBar += 1
+                }
+
+            }
+            
         }
     }
-    
+    var rowBar = 0
     
     @IBOutlet weak var summaryCollectionView: UICollectionView!
     override func viewDidLoad() {
@@ -126,6 +134,11 @@ class WithDrawSummaryOfficeViewController: BaseViewController, UICollectionViewD
                     item.unitLabel.text = NSLocalizedString("unit-baht", comment: "")
                 }
                 
+            
+                if let received = self.withdrawData?.goldReceive {
+                    item.formatGoldReceiveLabel.attributedText = self.goldFormat(gold_received: received)
+                }
+                
                 var numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal
                 
@@ -135,10 +148,10 @@ class WithDrawSummaryOfficeViewController: BaseViewController, UICollectionViewD
                 numberFormatter.numberStyle = .decimal
                 numberFormatter.minimumFractionDigits = 2
                 
-//                item.goldBalanceLabel.text = numberFormatter.string(from: NSNumber(value: self.withdrawData!.goldbalance))
                 let pb = self.withdrawData!.pointBalance
                 item.goldBalanceLabel.text = numberFormatter.string(from: NSNumber(value: pb))
                 cell = item
+                
             }
             
         }else if indexPath.section == 1 {
@@ -167,6 +180,83 @@ class WithDrawSummaryOfficeViewController: BaseViewController, UICollectionViewD
         return cell!
     }
     
+    func goldFormat(gold_received:[(amount:Int,unit:String)]) -> NSAttributedString {
+        var j = 0
+        var gr:[(amount:Int,unit:String)] = []
+        for item in gold_received {
+            if item.amount != 0 {
+                gr.append(item)
+            }
+            j += 1
+        }
+        let unitSalueng = NSLocalizedString("unit-salueng", comment: "")
+        let unitBaht = NSLocalizedString("unit-baht", comment: "")
+        let unitBar = NSLocalizedString("unit-bar", comment: "")
+        
+        let txtAttr = NSMutableAttributedString(string: "")
+        let amountAttribute = [ NSAttributedString.Key.font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 25.0)! ]
+        
+        let unitAttribute = [ NSAttributedString.Key.font: UIFont(name: Constant.Fonts.THAI_SANS_REGULAR, size: 16.0)! ]
+        
+        var i = 0
+        for item in gr {
+            let unit = item.unit
+            let amount = item.amount
+            
+            if amount == 0 {
+                
+                continue
+            }
+            if unit.lowercased() == "1salueng"{
+                
+                txtAttr.append(NSMutableAttributedString(string: "1 ", attributes: amountAttribute ))
+                txtAttr.append(NSMutableAttributedString(string: unitSalueng, attributes: unitAttribute ))
+                
+            }
+            if unit.lowercased() == "2salueng"{
+                
+                txtAttr.append(NSMutableAttributedString(string: "2 ", attributes: amountAttribute ))
+                txtAttr.append(NSMutableAttributedString(string: unitSalueng, attributes: unitAttribute ))
+                
+            }
+            if unit.lowercased() == "1baht"{
+                
+                txtAttr.append(NSMutableAttributedString(string: "1 ", attributes: amountAttribute ))
+                txtAttr.append(NSMutableAttributedString(string: unitBaht, attributes: unitAttribute ))
+                
+            }
+            if unit.lowercased() == "2baht"{
+                
+                txtAttr.append(NSMutableAttributedString(string: "2 ", attributes: amountAttribute ))
+                txtAttr.append(NSMutableAttributedString(string: unitBaht, attributes: unitAttribute ))
+                
+            }
+            if unit.lowercased() == "5baht"{
+                
+                txtAttr.append(NSMutableAttributedString(string: "5 ", attributes: amountAttribute ))
+                txtAttr.append(NSMutableAttributedString(string: unitBaht, attributes: unitAttribute ))
+                
+            }
+            if unit.lowercased() == "10baht"{
+                
+                txtAttr.append(NSMutableAttributedString(string: "10 ", attributes: amountAttribute ))
+                txtAttr.append(NSMutableAttributedString(string: unitBaht, attributes: unitAttribute ))
+                
+            }
+            if i == (gr.count - 1)  {
+                txtAttr.append(NSMutableAttributedString(string: " \(amount) ", attributes: amountAttribute ))
+                txtAttr.append(NSMutableAttributedString(string: "\(unitBar)", attributes: unitAttribute ))
+            }else{
+                txtAttr.append(NSMutableAttributedString(string: " \(amount) ", attributes: amountAttribute ))
+                txtAttr.append(NSMutableAttributedString(string: "\(unitBar)\n", attributes: unitAttribute ))
+            }
+            
+            i += 1
+        }
+        return txtAttr
+        
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         
         if section == 1 {
@@ -188,7 +278,7 @@ class WithDrawSummaryOfficeViewController: BaseViewController, UICollectionViewD
         if indexPath.section == 0 {
             
             let width = collectionView.frame.width - 40
-            let height = CGFloat(270)
+            let height = heightForViewWithDraw(self.rowBar, width: width , height: CGFloat(330) , rowHeight: 30.0)
             return CGSize(width: width, height: height)
         }else if indexPath.section == 1 {
             

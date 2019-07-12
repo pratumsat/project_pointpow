@@ -28,7 +28,7 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
     
     var drawCount = 0
     var amountToUnit:(amount:Int, unit:Int , price:Double , goldPrice:Int)?
-    var withdrawData:(pointBalance:Double, premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double, goldPrice:Int))?
+    var withdrawData:(pointBalance:Double, premium:Int, goldbalance:Double, goldAmountToUnit:(amount:Int, unit:Int , price:Double, goldPrice:Int), goldReceive:[(amount:Int,unit:String)]? )?
     
     var sumWeight:Double = 0.00
     
@@ -466,7 +466,11 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
                                         let point_balance = data["goldsaving_member"]?["point_balance"] as? NSNumber ?? 0
                                         
                                         self.pointBalance = point_balance.doubleValue - amountunit.price
-                                        self.withdrawData = (pointBalance: self.pointBalance, premium: premium, goldbalance: goldbalance,  goldAmountToUnit: amountunit)
+                                        self.withdrawData = (pointBalance: self.pointBalance,
+                                                             premium: premium,
+                                                             goldbalance: goldbalance,
+                                                             goldAmountToUnit: amountunit,
+                                                             goldReceive: self.withDrawCell?.withDrawData?.goldReceive)
                                     }
                                     
                                    

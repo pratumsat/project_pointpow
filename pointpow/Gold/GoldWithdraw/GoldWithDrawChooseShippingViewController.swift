@@ -20,7 +20,7 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
     
     var heightAddressView:CGFloat = CGFloat(0)
     
-    var withdrawData:(pointBalance:Double, premium:Int, goldbalance:Double,goldAmountToUnit:(amount:Int, unit:Int , price:Double, goldPrice:Int))?{
+    var withdrawData:(pointBalance:Double, premium:Int, goldbalance:Double, goldAmountToUnit:(amount:Int, unit:Int , price:Double, goldPrice:Int), goldReceive:[(amount:Int,unit:String)]? )?{
         didSet{
             print(withdrawData!)
         }

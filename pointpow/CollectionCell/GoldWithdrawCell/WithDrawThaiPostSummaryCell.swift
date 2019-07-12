@@ -9,6 +9,9 @@
 import UIKit
 
 class WithDrawThaiPostSummaryCell: UICollectionViewCell {
+    
+    @IBOutlet weak var formatGoldReceiveLabel: UILabel!
+    
     @IBOutlet weak var goldAmountLabel: UILabel!
     @IBOutlet weak var headView: UIView!
     @IBOutlet weak var unitLabel: UILabel!
@@ -145,6 +148,8 @@ class WithDrawThaiPostSummaryCell: UICollectionViewCell {
     }
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        self.headView.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
        
     }
 }

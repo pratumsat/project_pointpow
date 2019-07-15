@@ -38,6 +38,13 @@ class DataController {
     func setProfilPath(_ url:String ){
          self.data["profilPath"] = url as AnyObject
     }
+    func getBgProfilPath() -> String{
+        return self.data["bg_profilPath"] as? String ?? ""
+    }
+    
+    func setBgProfilPath(_ url:String ){
+        self.data["bg_profilPath"] = url as AnyObject
+    }
     
     func countTimeLockScreen() -> Bool{
         

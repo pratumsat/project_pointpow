@@ -3738,7 +3738,7 @@
                         <viewLayoutGuide key="safeArea" id="Jas-nQ-Vka"/>
                     </view>
                     <navigationItem key="navigationItem" id="b46-vb-BEE">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="ic-back-white" id="5sp-nJ-xgg">
+                        <barButtonItem key="leftBarButtonItem" image="ic-back-white" id="5sp-nJ-xgg">
                             <inset key="imageInsets" minX="-10" minY="2" maxX="10" maxY="-2"/>
                             <connections>
                                 <action selector="bViewTapped:" destination="49O-jg-kjR" id="hTn-Io-YBn"/>
@@ -7812,7 +7812,7 @@
                         <viewLayoutGuide key="safeArea" id="KFg-2F-5Yn"/>
                     </view>
                     <navigationItem key="navigationItem" id="TBr-rb-NlM">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="ic-back-white" id="86T-9E-6LP">
+                        <barButtonItem key="leftBarButtonItem" image="ic-back-white" id="86T-9E-6LP">
                             <inset key="imageInsets" minX="-10" minY="2" maxX="10" maxY="-2"/>
                             <connections>
                                 <action selector="bViewTapped:" destination="36V-oo-Xj3" id="GBz-W5-vNO"/>
@@ -9649,6 +9649,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OSg-UG-qge">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3Gw-Jc-AdL">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -9668,13 +9671,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="3Gw-Jc-AdL" firstAttribute="leading" secondItem="Xa3-XL-BQ0" secondAttribute="leading" id="1vw-Uu-tak"/>
+                            <constraint firstItem="OSg-UG-qge" firstAttribute="leading" secondItem="Xa3-XL-BQ0" secondAttribute="leading" id="50D-Ol-Wd3"/>
+                            <constraint firstAttribute="bottom" secondItem="OSg-UG-qge" secondAttribute="bottom" id="Bfr-5T-FdX"/>
+                            <constraint firstItem="OSg-UG-qge" firstAttribute="top" secondItem="ftb-6e-dBW" secondAttribute="top" id="Rr2-lB-YBj"/>
                             <constraint firstItem="Xa3-XL-BQ0" firstAttribute="bottom" secondItem="3Gw-Jc-AdL" secondAttribute="bottom" id="cv5-oc-VYQ"/>
                             <constraint firstItem="Xa3-XL-BQ0" firstAttribute="trailing" secondItem="3Gw-Jc-AdL" secondAttribute="trailing" id="hMg-cm-9C9"/>
                             <constraint firstItem="3Gw-Jc-AdL" firstAttribute="top" secondItem="Xa3-XL-BQ0" secondAttribute="top" id="ocY-n3-2D5"/>
+                            <constraint firstItem="OSg-UG-qge" firstAttribute="trailing" secondItem="Xa3-XL-BQ0" secondAttribute="trailing" id="xhM-Qu-Z2k"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xa3-XL-BQ0"/>
                     </view>
                     <connections>
+                        <outlet property="bgProfileImageView" destination="OSg-UG-qge" id="fQQ-Gt-vse"/>
                         <outlet property="menuTableView" destination="3Gw-Jc-AdL" id="6UK-wJ-lhY"/>
                     </connections>
                 </viewController>
@@ -11152,7 +11160,7 @@
                         <viewLayoutGuide key="safeArea" id="mpS-sG-3ia"/>
                     </view>
                     <navigationItem key="navigationItem" id="jxX-5o-qgS">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="ic-back-white" id="GzG-x9-A5s">
+                        <barButtonItem key="leftBarButtonItem" image="ic-back-white" id="GzG-x9-A5s">
                             <inset key="imageInsets" minX="-10" minY="2" maxX="10" maxY="-2"/>
                             <connections>
                                 <action selector="bViewTapped:" destination="cq8-Qv-wKR" id="4n1-nj-63Q"/>

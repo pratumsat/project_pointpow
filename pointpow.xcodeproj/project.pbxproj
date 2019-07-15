@@ -103,6 +103,10 @@
 		C11E61A122D3366100753E52 /* Recommend2Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C11E619F22D3366100753E52 /* Recommend2Cell.xib */; };
 		C11E61A422D5E6AA00753E52 /* NotFoundItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11E61A222D5E6A900753E52 /* NotFoundItemCell.swift */; };
 		C11E61A522D5E6AA00753E52 /* NotFoundItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C11E61A322D5E6A900753E52 /* NotFoundItemCell.xib */; };
+		C120312D22DC1C9A0013C1A1 /* ProfileShoppingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120312B22DC1C9A0013C1A1 /* ProfileShoppingTableViewCell.swift */; };
+		C120312E22DC1C9A0013C1A1 /* ProfileShoppingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C120312C22DC1C9A0013C1A1 /* ProfileShoppingTableViewCell.xib */; };
+		C120313122DC3D6A0013C1A1 /* SectionFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120312F22DC3D6A0013C1A1 /* SectionFilterCell.swift */; };
+		C120313222DC3D6A0013C1A1 /* SectionFilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C120313022DC3D6A0013C1A1 /* SectionFilterCell.xib */; };
 		C120D7CE21955BB500F9EEBB /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120D7CC21955BB500F9EEBB /* ProfileCell.swift */; };
 		C120D7CF21955BB500F9EEBB /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C120D7CD21955BB500F9EEBB /* ProfileCell.xib */; };
 		C120D7D221955BC900F9EEBB /* ItemProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120D7D021955BC900F9EEBB /* ItemProfileCell.swift */; };
@@ -451,6 +455,10 @@
 		C11E619F22D3366100753E52 /* Recommend2Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Recommend2Cell.xib; sourceTree = "<group>"; };
 		C11E61A222D5E6A900753E52 /* NotFoundItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotFoundItemCell.swift; sourceTree = "<group>"; };
 		C11E61A322D5E6A900753E52 /* NotFoundItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotFoundItemCell.xib; sourceTree = "<group>"; };
+		C120312B22DC1C9A0013C1A1 /* ProfileShoppingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileShoppingTableViewCell.swift; sourceTree = "<group>"; };
+		C120312C22DC1C9A0013C1A1 /* ProfileShoppingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileShoppingTableViewCell.xib; sourceTree = "<group>"; };
+		C120312F22DC3D6A0013C1A1 /* SectionFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionFilterCell.swift; sourceTree = "<group>"; };
+		C120313022DC3D6A0013C1A1 /* SectionFilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionFilterCell.xib; sourceTree = "<group>"; };
 		C120D7CC21955BB500F9EEBB /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		C120D7CD21955BB500F9EEBB /* ProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
 		C120D7D021955BC900F9EEBB /* ItemProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemProfileCell.swift; sourceTree = "<group>"; };
@@ -944,6 +952,8 @@
 				C10D94B0220960940083FA47 /* NameTableViewCell.xib */,
 				C181F068220D8566003F7C70 /* ProfileTableViewCell.swift */,
 				C181F069220D8566003F7C70 /* ProfileTableViewCell.xib */,
+				C120312B22DC1C9A0013C1A1 /* ProfileShoppingTableViewCell.swift */,
+				C120312C22DC1C9A0013C1A1 /* ProfileShoppingTableViewCell.xib */,
 			);
 			path = TableCell;
 			sourceTree = "<group>";
@@ -1105,6 +1115,8 @@
 				C11E619B22D334E700753E52 /* ShoppingRectProductCell.xib */,
 				C11E619E22D3366100753E52 /* Recommend2Cell.swift */,
 				C11E619F22D3366100753E52 /* Recommend2Cell.xib */,
+				C120312F22DC3D6A0013C1A1 /* SectionFilterCell.swift */,
+				C120313022DC3D6A0013C1A1 /* SectionFilterCell.xib */,
 			);
 			path = ShoppingBaseCell;
 			sourceTree = "<group>";
@@ -1782,6 +1794,7 @@
 				C197FF3B22083AE9002F24E8 /* SavingCell.xib in Resources */,
 				C197FF432209401D002F24E8 /* LogoGoldCell.xib in Resources */,
 				C1F761062216C261000A2CA9 /* SavingResultCell.xib in Resources */,
+				C120312E22DC1C9A0013C1A1 /* ProfileShoppingTableViewCell.xib in Resources */,
 				C107CF2E221FD52800C50B8C /* WithDrawResultPointPowSuccessCell.xib in Resources */,
 				C19BEF0622CCCCED00855FBF /* CartSummaryCell.xib in Resources */,
 				C1DEBE992188337500CBB95F /* ThaiSansNeue-Regular.ttf in Resources */,
@@ -1798,6 +1811,7 @@
 				C13D998B21997AD6001A4794 /* HeadCell.xib in Resources */,
 				C1DA27C4224200C2000C0715 /* WithDrawResultThaiPostCell.xib in Resources */,
 				C1B32E472252674D006AD7F2 /* CountDownCell.xib in Resources */,
+				C120313222DC3D6A0013C1A1 /* SectionFilterCell.xib in Resources */,
 				C19BEEFA22CCA5E500855FBF /* CartPointBalanceCell.xib in Resources */,
 				C11E61A522D5E6AA00753E52 /* NotFoundItemCell.xib in Resources */,
 				C13D998621997938001A4794 /* LogoutCell.xib in Resources */,
@@ -2037,6 +2051,7 @@
 				C1AD50A92187F7B500F74415 /* BaseViewController.swift in Sources */,
 				C11BDFB821A2B95D00443D2D /* ItemFriendSummaryCell.swift in Sources */,
 				C13D4FED229FA02800516CE8 /* NavPaymentViewController.swift in Sources */,
+				C120313122DC3D6A0013C1A1 /* SectionFilterCell.swift in Sources */,
 				C1F7610A2216E357000A2CA9 /* WithDrawMyGoldCell.swift in Sources */,
 				C1817D92219BF61E009507DB /* ItemFriendCell.swift in Sources */,
 				C11AFC8A22C1DF8300573C27 /* PromotionShoppingViewController.swift in Sources */,
@@ -2081,6 +2096,7 @@
 				C120D7D221955BC900F9EEBB /* ItemProfileCell.swift in Sources */,
 				C1249EBF2238B25D00F56FA0 /* PopUpInfoThaiPostViewController.swift in Sources */,
 				C1249EC1223E18B600F56FA0 /* WithDrawSummaryThaiPostViewController.swift in Sources */,
+				C120312D22DC1C9A0013C1A1 /* ProfileShoppingTableViewCell.swift in Sources */,
 				C11BFCA7221BE72000F066DE /* WithDrawChooseShippingCell.swift in Sources */,
 				C12FD312228EA48700FB81B6 /* ItemFriendSearchCell.swift in Sources */,
 				C19BEF1122CD9A4500855FBF /* CartAdressTaxInvoiceCell.swift in Sources */,

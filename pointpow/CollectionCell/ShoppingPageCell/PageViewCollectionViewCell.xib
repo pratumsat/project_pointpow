@@ -18,176 +18,123 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PageViewCollectionViewCell" id="gTV-IL-0wX" customClass="PageViewCollectionViewCell" customModule="pointpow" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="597" height="298"/>
+            <rect key="frame" x="0.0" y="0.0" width="597" height="102"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="597" height="298"/>
+                <rect key="frame" x="0.0" y="0.0" width="597" height="102"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P8I-5I-0t5">
-                        <rect key="frame" x="0.0" y="0.0" width="99.5" height="89"/>
+                        <rect key="frame" x="0.0" y="0.0" width="99.5" height="29.5"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-shopping-cate-r-1-active" translatesAutoresizingMaskIntoConstraints="NO" id="jRl-KG-uLa">
-                                <rect key="frame" x="15" y="0.0" width="69.5" height="69.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="jRl-KG-uLa" secondAttribute="height" multiplier="1:1" id="KAP-jD-k0U"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ทั้งหมด" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bES-0g-M9v">
-                                <rect key="frame" x="0.0" y="69.5" width="99.5" height="19.5"/>
+                                <rect key="frame" x="0.0" y="5" width="99.5" height="19.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
-                                <color key="textColor" red="0.91764705882352937" green="0.24313725490196078" blue="0.30588235294117649" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="bES-0g-M9v" firstAttribute="top" secondItem="jRl-KG-uLa" secondAttribute="bottom" id="0dk-ds-zgl"/>
-                            <constraint firstItem="bES-0g-M9v" firstAttribute="width" secondItem="P8I-5I-0t5" secondAttribute="width" id="6ZV-Qn-to8"/>
-                            <constraint firstItem="jRl-KG-uLa" firstAttribute="top" secondItem="P8I-5I-0t5" secondAttribute="top" id="W9d-v2-jX5"/>
-                            <constraint firstAttribute="bottom" secondItem="bES-0g-M9v" secondAttribute="bottom" id="dCj-zk-flR"/>
-                            <constraint firstItem="jRl-KG-uLa" firstAttribute="centerX" secondItem="P8I-5I-0t5" secondAttribute="centerX" id="lON-XZ-i0m"/>
-                            <constraint firstItem="jRl-KG-uLa" firstAttribute="width" secondItem="P8I-5I-0t5" secondAttribute="width" multiplier="0.7" id="s5c-H7-28a"/>
-                            <constraint firstItem="bES-0g-M9v" firstAttribute="centerX" secondItem="jRl-KG-uLa" secondAttribute="centerX" id="t7l-8k-PpL"/>
+                            <constraint firstItem="bES-0g-M9v" firstAttribute="leading" secondItem="P8I-5I-0t5" secondAttribute="leading" id="GWW-6W-peF"/>
+                            <constraint firstAttribute="bottom" secondItem="bES-0g-M9v" secondAttribute="bottom" constant="5" id="dCj-zk-flR"/>
+                            <constraint firstItem="bES-0g-M9v" firstAttribute="top" secondItem="P8I-5I-0t5" secondAttribute="top" constant="5" id="daD-M5-L8a"/>
+                            <constraint firstAttribute="trailing" secondItem="bES-0g-M9v" secondAttribute="trailing" id="g6h-wK-AAP"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ibD-cp-6yl">
-                        <rect key="frame" x="99.5" y="0.0" width="99.5" height="89"/>
+                        <rect key="frame" x="99.5" y="0.0" width="99.5" height="29.5"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-shopping-cate-r-2-active" translatesAutoresizingMaskIntoConstraints="NO" id="KyU-Oq-Km9">
-                                <rect key="frame" x="15" y="0.0" width="69.5" height="69.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="KyU-Oq-Km9" secondAttribute="height" multiplier="1:1" id="hyi-Fg-qQT"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="แฟชั่น" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1d5-K4-wR3">
-                                <rect key="frame" x="0.0" y="69.5" width="99.5" height="19.5"/>
+                                <rect key="frame" x="0.0" y="5" width="99.5" height="19.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
-                                <color key="textColor" red="0.37647058823529411" green="0.40000000000000002" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="1d5-K4-wR3" firstAttribute="width" secondItem="ibD-cp-6yl" secondAttribute="width" id="3HR-a8-UAP"/>
-                            <constraint firstItem="1d5-K4-wR3" firstAttribute="centerX" secondItem="KyU-Oq-Km9" secondAttribute="centerX" id="O3a-FJ-lEM"/>
-                            <constraint firstItem="1d5-K4-wR3" firstAttribute="top" secondItem="KyU-Oq-Km9" secondAttribute="bottom" id="YoY-su-AKR"/>
-                            <constraint firstAttribute="bottom" secondItem="1d5-K4-wR3" secondAttribute="bottom" id="ZXS-8n-vBx"/>
-                            <constraint firstItem="KyU-Oq-Km9" firstAttribute="width" secondItem="ibD-cp-6yl" secondAttribute="width" multiplier="0.7" id="aGr-jb-HRD"/>
-                            <constraint firstItem="KyU-Oq-Km9" firstAttribute="centerX" secondItem="ibD-cp-6yl" secondAttribute="centerX" id="jja-mY-npi"/>
-                            <constraint firstItem="KyU-Oq-Km9" firstAttribute="top" secondItem="ibD-cp-6yl" secondAttribute="top" id="ssH-yB-boH"/>
+                            <constraint firstAttribute="trailing" secondItem="1d5-K4-wR3" secondAttribute="trailing" id="8Uo-Dq-O9M"/>
+                            <constraint firstAttribute="bottom" secondItem="1d5-K4-wR3" secondAttribute="bottom" constant="5" id="ZXS-8n-vBx"/>
+                            <constraint firstItem="1d5-K4-wR3" firstAttribute="top" secondItem="ibD-cp-6yl" secondAttribute="top" constant="5" id="boX-Bz-hQp"/>
+                            <constraint firstItem="1d5-K4-wR3" firstAttribute="leading" secondItem="ibD-cp-6yl" secondAttribute="leading" id="s92-EM-ugk"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BRt-eS-wc2">
-                        <rect key="frame" x="199" y="0.0" width="99.5" height="89"/>
+                        <rect key="frame" x="199" y="0.0" width="99.5" height="29.5"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-shopping-cate-r-3-active" translatesAutoresizingMaskIntoConstraints="NO" id="ihX-AC-ssq">
-                                <rect key="frame" x="15" y="0.0" width="69.5" height="69.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="ihX-AC-ssq" secondAttribute="height" multiplier="1:1" id="Drl-PI-veD"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="แก็ดแจ็ต" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUz-63-eGM">
-                                <rect key="frame" x="0.0" y="69.5" width="99.5" height="19.5"/>
+                                <rect key="frame" x="0.0" y="5" width="99.5" height="19.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
-                                <color key="textColor" red="0.9137254901960784" green="0.36862745098039218" blue="0.47843137254901957" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="RUz-63-eGM" firstAttribute="top" secondItem="ihX-AC-ssq" secondAttribute="bottom" id="G0g-Pc-BSj"/>
-                            <constraint firstItem="ihX-AC-ssq" firstAttribute="top" secondItem="BRt-eS-wc2" secondAttribute="top" id="H2a-cB-Crb"/>
-                            <constraint firstItem="ihX-AC-ssq" firstAttribute="centerX" secondItem="BRt-eS-wc2" secondAttribute="centerX" id="Hzv-f3-twx"/>
-                            <constraint firstItem="RUz-63-eGM" firstAttribute="centerX" secondItem="ihX-AC-ssq" secondAttribute="centerX" id="NAX-Ny-IQW"/>
-                            <constraint firstItem="RUz-63-eGM" firstAttribute="width" secondItem="BRt-eS-wc2" secondAttribute="width" id="aDd-U1-Vh2"/>
-                            <constraint firstAttribute="bottom" secondItem="RUz-63-eGM" secondAttribute="bottom" id="aLO-fU-vzl"/>
-                            <constraint firstItem="ihX-AC-ssq" firstAttribute="width" secondItem="BRt-eS-wc2" secondAttribute="width" multiplier="0.7" id="q1i-08-ynY"/>
+                            <constraint firstAttribute="trailing" secondItem="RUz-63-eGM" secondAttribute="trailing" id="00y-bH-RH0"/>
+                            <constraint firstAttribute="bottom" secondItem="RUz-63-eGM" secondAttribute="bottom" constant="5" id="aLO-fU-vzl"/>
+                            <constraint firstItem="RUz-63-eGM" firstAttribute="top" secondItem="BRt-eS-wc2" secondAttribute="top" constant="5" id="jam-mP-Poa"/>
+                            <constraint firstItem="RUz-63-eGM" firstAttribute="leading" secondItem="BRt-eS-wc2" secondAttribute="leading" id="wgW-qE-gMf"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eYS-18-Mdv">
-                        <rect key="frame" x="298.5" y="0.0" width="99.5" height="89"/>
+                        <rect key="frame" x="298.5" y="0.0" width="99.5" height="29.5"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-shopping-cate-r-4-active" translatesAutoresizingMaskIntoConstraints="NO" id="RB8-W7-6YA">
-                                <rect key="frame" x="15" y="0.0" width="69.5" height="69.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="RB8-W7-6YA" secondAttribute="height" multiplier="1:1" id="bh0-M7-oRh"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ไลฟ์สไตล์" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UiP-yI-E8s">
-                                <rect key="frame" x="0.0" y="69.5" width="99.5" height="19.5"/>
+                                <rect key="frame" x="0.0" y="5" width="99.5" height="19.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
-                                <color key="textColor" red="0.84313725490196079" green="0.44313725490196076" blue="0.71764705882352942" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="RB8-W7-6YA" firstAttribute="centerX" secondItem="eYS-18-Mdv" secondAttribute="centerX" id="2Oj-Oo-evk"/>
-                            <constraint firstItem="RB8-W7-6YA" firstAttribute="top" secondItem="eYS-18-Mdv" secondAttribute="top" id="E3r-Xg-6Zi"/>
-                            <constraint firstItem="UiP-yI-E8s" firstAttribute="top" secondItem="RB8-W7-6YA" secondAttribute="bottom" id="Fj7-qw-ExX"/>
-                            <constraint firstItem="RB8-W7-6YA" firstAttribute="width" secondItem="eYS-18-Mdv" secondAttribute="width" multiplier="0.7" id="aLu-oR-THC"/>
-                            <constraint firstItem="UiP-yI-E8s" firstAttribute="centerX" secondItem="RB8-W7-6YA" secondAttribute="centerX" id="kwM-4g-STd"/>
-                            <constraint firstAttribute="bottom" secondItem="UiP-yI-E8s" secondAttribute="bottom" id="ugc-X8-oiT"/>
-                            <constraint firstItem="UiP-yI-E8s" firstAttribute="width" secondItem="eYS-18-Mdv" secondAttribute="width" id="vsE-QC-V8a"/>
+                            <constraint firstItem="UiP-yI-E8s" firstAttribute="leading" secondItem="eYS-18-Mdv" secondAttribute="leading" id="S6w-ZY-Ozj"/>
+                            <constraint firstItem="UiP-yI-E8s" firstAttribute="top" secondItem="eYS-18-Mdv" secondAttribute="top" constant="5" id="muq-ch-2sm"/>
+                            <constraint firstAttribute="trailing" secondItem="UiP-yI-E8s" secondAttribute="trailing" id="pB2-BK-hgh"/>
+                            <constraint firstAttribute="bottom" secondItem="UiP-yI-E8s" secondAttribute="bottom" constant="5" id="ugc-X8-oiT"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oa2-BS-ACW">
-                        <rect key="frame" x="398" y="0.0" width="99.5" height="89"/>
+                        <rect key="frame" x="398" y="0.0" width="99.5" height="29.5"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-shopping-cate-r-5-active" translatesAutoresizingMaskIntoConstraints="NO" id="QDJ-Ws-Jqg">
-                                <rect key="frame" x="15" y="0.0" width="69.5" height="69.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="QDJ-Ws-Jqg" secondAttribute="height" multiplier="1:1" id="SoB-BR-6Hx"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ท่องเที่ยว" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sfg-yT-I8J">
-                                <rect key="frame" x="0.0" y="69.5" width="99.5" height="19.5"/>
+                                <rect key="frame" x="0.0" y="5" width="99.5" height="19.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
-                                <color key="textColor" red="0.92549019607843142" green="0.47450980392156861" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Sfg-yT-I8J" firstAttribute="width" secondItem="oa2-BS-ACW" secondAttribute="width" id="1hX-vx-uQm"/>
-                            <constraint firstItem="QDJ-Ws-Jqg" firstAttribute="width" secondItem="oa2-BS-ACW" secondAttribute="width" multiplier="0.7" id="LXz-xg-7ki"/>
-                            <constraint firstItem="Sfg-yT-I8J" firstAttribute="top" secondItem="QDJ-Ws-Jqg" secondAttribute="bottom" id="Pbh-Ki-j4P"/>
-                            <constraint firstAttribute="bottom" secondItem="Sfg-yT-I8J" secondAttribute="bottom" id="bHB-wE-O0r"/>
-                            <constraint firstItem="QDJ-Ws-Jqg" firstAttribute="top" secondItem="oa2-BS-ACW" secondAttribute="top" id="etE-by-97w"/>
-                            <constraint firstItem="QDJ-Ws-Jqg" firstAttribute="centerX" secondItem="oa2-BS-ACW" secondAttribute="centerX" id="gxq-se-PJF"/>
-                            <constraint firstItem="Sfg-yT-I8J" firstAttribute="centerX" secondItem="QDJ-Ws-Jqg" secondAttribute="centerX" id="lyI-DG-zkT"/>
+                            <constraint firstItem="Sfg-yT-I8J" firstAttribute="leading" secondItem="oa2-BS-ACW" secondAttribute="leading" id="E0M-kH-rIY"/>
+                            <constraint firstAttribute="trailing" secondItem="Sfg-yT-I8J" secondAttribute="trailing" id="YCE-rg-rs0"/>
+                            <constraint firstAttribute="bottom" secondItem="Sfg-yT-I8J" secondAttribute="bottom" constant="5" id="bHB-wE-O0r"/>
+                            <constraint firstItem="Sfg-yT-I8J" firstAttribute="top" secondItem="oa2-BS-ACW" secondAttribute="top" constant="5" id="gQ1-HA-PKw"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pnJ-Q0-v50">
-                        <rect key="frame" x="497.5" y="0.0" width="99.5" height="89"/>
+                        <rect key="frame" x="497.5" y="0.0" width="99.5" height="29.5"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-shopping-cate-r-6-active" translatesAutoresizingMaskIntoConstraints="NO" id="607-V8-NHH">
-                                <rect key="frame" x="14.5" y="0.0" width="70" height="69.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="607-V8-NHH" secondAttribute="height" multiplier="1:1" id="UMu-tu-udV"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="คูปอง" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUC-Z7-SuP">
-                                <rect key="frame" x="0.0" y="69.5" width="99.5" height="19.5"/>
+                                <rect key="frame" x="0.0" y="5" width="99.5" height="19.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
-                                <color key="textColor" red="0.92156862745098034" green="0.33333333333333331" blue="0.51764705882352935" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="607-V8-NHH" firstAttribute="width" secondItem="pnJ-Q0-v50" secondAttribute="width" multiplier="0.7" id="9Ju-4m-Cqj"/>
-                            <constraint firstItem="607-V8-NHH" firstAttribute="top" secondItem="pnJ-Q0-v50" secondAttribute="top" id="9Vb-BG-yN0"/>
-                            <constraint firstItem="RUC-Z7-SuP" firstAttribute="centerX" secondItem="607-V8-NHH" secondAttribute="centerX" id="Ahw-2p-TbM"/>
-                            <constraint firstItem="RUC-Z7-SuP" firstAttribute="top" secondItem="607-V8-NHH" secondAttribute="bottom" id="DLI-5L-pdL"/>
+                            <constraint firstItem="RUC-Z7-SuP" firstAttribute="leading" secondItem="pnJ-Q0-v50" secondAttribute="leading" id="VZl-WB-wI2"/>
                             <constraint firstItem="RUC-Z7-SuP" firstAttribute="width" secondItem="pnJ-Q0-v50" secondAttribute="width" id="XS6-5C-6Y3"/>
-                            <constraint firstAttribute="bottom" secondItem="RUC-Z7-SuP" secondAttribute="bottom" id="fzq-lZ-KNg"/>
-                            <constraint firstItem="607-V8-NHH" firstAttribute="centerX" secondItem="pnJ-Q0-v50" secondAttribute="centerX" id="gg0-t0-7oK"/>
+                            <constraint firstAttribute="trailing" secondItem="RUC-Z7-SuP" secondAttribute="trailing" id="ZH5-9Z-ytZ"/>
+                            <constraint firstAttribute="bottom" secondItem="RUC-Z7-SuP" secondAttribute="bottom" constant="5" id="fzq-lZ-KNg"/>
+                            <constraint firstItem="RUC-Z7-SuP" firstAttribute="top" secondItem="pnJ-Q0-v50" secondAttribute="top" constant="5" id="uAM-uN-98k"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wWI-Qb-Jbu">
-                        <rect key="frame" x="0.0" y="99" width="597" height="1"/>
+                        <rect key="frame" x="0.0" y="39.5" width="597" height="1"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="ZI7-ZL-tP2"/>
@@ -220,7 +167,7 @@
                 <constraint firstItem="ibD-cp-6yl" firstAttribute="leading" secondItem="P8I-5I-0t5" secondAttribute="trailing" id="uSI-j1-MDp"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="597" height="298"/>
+            <size key="customSize" width="597" height="102"/>
             <connections>
                 <outlet property="caet1View" destination="P8I-5I-0t5" id="x28-c8-74j"/>
                 <outlet property="caet2Label" destination="1d5-K4-wR3" id="dmD-LA-TS9"/>
@@ -228,29 +175,15 @@
                 <outlet property="caet4Label" destination="UiP-yI-E8s" id="1UK-Zh-Wa0"/>
                 <outlet property="caet5Label" destination="Sfg-yT-I8J" id="5ZT-d9-ozM"/>
                 <outlet property="caet6Label" destination="RUC-Z7-SuP" id="W6i-lb-rVm"/>
-                <outlet property="cate1ImageView" destination="jRl-KG-uLa" id="pkx-aq-F9C"/>
                 <outlet property="cate1Label" destination="bES-0g-M9v" id="IW8-30-pbx"/>
-                <outlet property="cate2ImageView" destination="KyU-Oq-Km9" id="O4J-lY-7Ks"/>
                 <outlet property="cate2View" destination="ibD-cp-6yl" id="F5K-mY-3c7"/>
-                <outlet property="cate3ImageView" destination="ihX-AC-ssq" id="Z9E-3G-eTH"/>
                 <outlet property="cate3View" destination="BRt-eS-wc2" id="hDu-nO-g4E"/>
-                <outlet property="cate4ImageView" destination="RB8-W7-6YA" id="SOR-la-giU"/>
                 <outlet property="cate4View" destination="eYS-18-Mdv" id="meF-gB-yRa"/>
-                <outlet property="cate5ImageView" destination="QDJ-Ws-Jqg" id="cS0-Nx-Jju"/>
                 <outlet property="cate5View" destination="oa2-BS-ACW" id="Wxa-AU-mc5"/>
-                <outlet property="cate6ImageView" destination="607-V8-NHH" id="R0E-Ns-sXV"/>
                 <outlet property="cate6View" destination="pnJ-Q0-v50" id="1aD-b8-anc"/>
                 <outlet property="underlineView" destination="wWI-Qb-Jbu" id="qcL-uP-YGV"/>
             </connections>
-            <point key="canvasLocation" x="159.19999999999999" y="149.32533733133434"/>
+            <point key="canvasLocation" x="159.19999999999999" y="61.169415292353825"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="ic-shopping-cate-r-1-active" width="60" height="60"/>
-        <image name="ic-shopping-cate-r-2-active" width="60" height="60"/>
-        <image name="ic-shopping-cate-r-3-active" width="60" height="60"/>
-        <image name="ic-shopping-cate-r-4-active" width="60" height="60"/>
-        <image name="ic-shopping-cate-r-5-active" width="60" height="60"/>
-        <image name="ic-shopping-cate-r-6-active" width="60" height="60"/>
-    </resources>
 </document>

@@ -52,16 +52,21 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
                 let _ = data["gold_saving_acc"] as? NSNumber ?? 0
                 let status = data["goldsaving_member"]?["status"] as? String ?? ""
                 let inprogress_withdraw = data["goldsaving_member"]?["inprogress_withdraw"] as? String ?? ""
+                let picture_background = data["picture_background"] as? String ?? ""
+                
+                
                 
                 self.inprogress_withdraw = inprogress_withdraw
                 self.statusMemberGold = status
                 
-                let picture_background = data["picture_background"] as? String ?? ""
                 
-                if let url = URL(string: picture_background) {
-                    self.bgProfileImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
-                }else{
-                    self.bgProfileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
+                if DataController.sharedInstance.getBgProfilPath().isEmpty {
+                    if let url = URL(string: picture_background) {
+                        self.bgProfileImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
+                    }else{
+                        self.bgProfileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
+                    }
+                    
                 }
                 
             }
@@ -86,6 +91,12 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
    
     func setUp(){
         
+        if let url = URL(string: DataController.sharedInstance.getBgProfilPath()) {
+            self.bgProfileImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
+            
+        }else{
+            self.bgProfileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
+        }
         self.backgroundImage?.image = nil
         
         self.menuTableView.dataSource = self
@@ -130,6 +141,15 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
             if let head = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell", for: indexPath) as? ProfileTableViewCell {
                 cell = head
                
+                if !DataController.sharedInstance.getProfilPath().isEmpty {
+                    if let url = URL(string: DataController.sharedInstance.getProfilPath()) {
+                        head.profileImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
+                        
+                    }else{
+                        head.profileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
+                    }
+                }
+                
                 if let data  = self.userData as? [String:AnyObject] {
                     let first_name = data["first_name"] as? String ?? ""
                     let last_name = data["last_name"] as? String ?? ""
@@ -137,10 +157,13 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
                     let status = data["goldsaving_member"]?["status"] as? String ?? ""
                     let picture_data = data["picture_data"] as? String ?? ""
                     
-                    if let url = URL(string: picture_data) {
-                        head.profileImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
-                    }else{
-                        head.profileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
+                    if DataController.sharedInstance.getProfilPath().isEmpty {
+                        if let url = URL(string: picture_data) {
+                            head.profileImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
+                            
+                        }else{
+                            head.profileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
+                        }
                     }
                     
                     head.nameLabel.text = "\(first_name) \(last_name)"
@@ -169,7 +192,6 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
             if let item = tableView.dequeueReusableCell(withIdentifier: "NameTableViewCell", for: indexPath) as? NameTableViewCell{
                 cell = item
                 
-             
                 if indexPath.row == 0 {
                     item.nameLabel.text = NSLocalizedString("string-dailog-gold-profile-saving", comment: "")
                     item.menuImageView.image = UIImage(named: "ic-gold-menu-saving")

@@ -489,8 +489,8 @@ extension HomeShoppingViewController {
             let height = CGFloat(160) //(width/2 - 15) + 100
             return CGSize(width: width, height: height)
         case 3:
-            let height = 90.0 + self.sizeOfViewCateInit
-            return CGSize(width: width - 10, height: height)
+            let height = CGFloat(50) //90.0 + self.sizeOfViewCateInit
+            return CGSize(width: width, height: height)
         case 4:
             let height = (width/2 - 15) + 110
             return CGSize(width: width/2 - 15, height: height)

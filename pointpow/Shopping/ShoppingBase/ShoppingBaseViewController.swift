@@ -31,34 +31,48 @@ class ShoppingBaseViewController: BaseViewController ,UICollectionViewDelegate ,
     }
     
     
-    
+    var selectCateItem:Int = 0
     var selectSubcate:Int?
     
 
     var cate1Items = [["color" : Constant.Colors.CATE1,
                        "image": UIImage(named: "ic-shopping-cate-r-1-active")!],
-                      ["color" : UIColor.lightGray,
+                      ["color" : UIColor.darkGray,
                        "image": UIImage(named: "ic-shopping-cate-r-1")!]]
     var cate2Items = [["color" : Constant.Colors.CATE2,
                        "image": UIImage(named: "ic-shopping-cate-r-2-active")!],
-                      ["color" : UIColor.lightGray,
+                      ["color" : UIColor.darkGray,
                        "image": UIImage(named: "ic-shopping-cate-r-2")!]]
     var cate3Items = [["color" : Constant.Colors.CATE3,
                        "image": UIImage(named: "ic-shopping-cate-r-3-active")!],
-                      ["color" : UIColor.lightGray,
+                      ["color" : UIColor.darkGray,
                        "image": UIImage(named: "ic-shopping-cate-r-3")!]]
     var cate4Items = [["color" : Constant.Colors.CATE4,
                        "image": UIImage(named: "ic-shopping-cate-r-4-active")!],
-                      ["color" : UIColor.lightGray,
+                      ["color" : UIColor.darkGray,
                        "image": UIImage(named: "ic-shopping-cate-r-4")!]]
     var cate5Items = [["color" : Constant.Colors.CATE5,
                        "image": UIImage(named: "ic-shopping-cate-r-5-active")!],
-                      ["color" : UIColor.lightGray,
+                      ["color" : UIColor.darkGray,
                        "image": UIImage(named: "ic-shopping-cate-r-5")!]]
     var cate6Items = [["color" : Constant.Colors.CATE6,
                        "image": UIImage(named: "ic-shopping-cate-r-6-active")!],
-                      ["color" : UIColor.lightGray,
+                      ["color" : UIColor.darkGray,
                        "image": UIImage(named: "ic-shopping-cate-r-6")!]]
+    
+    var colorCateLists = [["color1" : Constant.Colors.ALL_GRADIENT_1,
+                           "color2" : Constant.Colors.ALL_GRADIENT_2],
+                          ["color1" : Constant.Colors.FASHION_GRADIENT_1,
+                           "color2" : Constant.Colors.FASHION_GRADIENT_2],
+                          ["color1" : Constant.Colors.GADGET_GRADIENT_1,
+                           "color2" : Constant.Colors.GADGET_GRADIENT_2],
+                          ["color1" : Constant.Colors.LIFESTYLE_GRADIENT_1,
+                           "color2" : Constant.Colors.LIFESTYLE_GRADIENT_2],
+                          ["color1" : Constant.Colors.TRAVEL_GRADIENT_1,
+                           "color2" : Constant.Colors.TRAVEL_GRADIENT_2],
+                          ["color1" : Constant.Colors.COUPON_GRADIENT_1,
+                           "color2" : Constant.Colors.COUPON_GRADIENT_2,]]
+    
     
     var cateLists = [["name": NSLocalizedString("string-item-shopping-cate-1", comment: ""),
                       "image" : UIImage(named: "ic-shopping-cate-r-1")!],
@@ -156,10 +170,10 @@ class ShoppingBaseViewController: BaseViewController ,UICollectionViewDelegate ,
                 var x = frame.origin.x
                 let y = frame.origin.y
                 if y > 0 {
-                    x = CGFloat(widthForView + 5)
+                    x = CGFloat(widthForView)
                     print(x)
                     self.selectUnderLine?.frame.origin.x = x
-                    //self.mainCategoryView?.layoutIfNeeded()
+                    
                 }
             }
         }) { (completed) in
@@ -252,7 +266,7 @@ class ShoppingBaseViewController: BaseViewController ,UICollectionViewDelegate ,
         
         if tag == 0 {
             self.collapseCallback?(true)
-            self.heightMainCategoryView?.constant = 90.0 + self.sizeOfViewCateInit
+            self.heightMainCategoryView?.constant = 95.0 + self.sizeOfViewCateInit
             self.subCategoryCollectionView?.isHidden = true
             
             
@@ -261,7 +275,7 @@ class ShoppingBaseViewController: BaseViewController ,UICollectionViewDelegate ,
             self.collapseCallback?(false)
 
             
-            self.heightMainCategoryView?.constant = 90.0 + self.sizeOfViewCate
+            self.heightMainCategoryView?.constant = 95.0 + self.sizeOfViewCate
             self.mainCategoryView?.layoutIfNeeded()
             self.subCategoryCollectionView?.isHidden = false
             
@@ -271,6 +285,7 @@ class ShoppingBaseViewController: BaseViewController ,UICollectionViewDelegate ,
             }
         }
         
+        self.selectCateItem = tag
         self.selectedCategory(tag)
         
     }
@@ -375,7 +390,7 @@ extension ShoppingBaseViewController {
         
         
         if allProduct {
-            self.heightMainCategoryView = mainCategoryView.heightAnchor.constraint(equalToConstant: (90.0 + self.sizeOfViewCateInit))
+            self.heightMainCategoryView = mainCategoryView.heightAnchor.constraint(equalToConstant: (95.0 + self.sizeOfViewCateInit))
             self.heightMainCategoryView!.isActive = true
         }else{
             self.heightMainCategoryView = mainCategoryView.heightAnchor.constraint(equalToConstant: (90.0 + self.sizeOfViewCateInit))
@@ -400,8 +415,8 @@ extension ShoppingBaseViewController {
         }
         mainCategoryView.addSubview(categoryView!)
         
-        categoryView!.leadingAnchor.constraint(equalTo: mainCategoryView.leadingAnchor, constant: 5).isActive = true
-        categoryView!.trailingAnchor.constraint(equalTo: mainCategoryView.trailingAnchor, constant: -5).isActive = true
+        categoryView!.leadingAnchor.constraint(equalTo: mainCategoryView.leadingAnchor, constant: 0).isActive = true
+        categoryView!.trailingAnchor.constraint(equalTo: mainCategoryView.trailingAnchor, constant: 0).isActive = true
         categoryView!.topAnchor.constraint(equalTo: mainCategoryView.topAnchor, constant: 5).isActive = true
         
         let widthCate = self.view.frame.width*0.9
@@ -428,10 +443,10 @@ extension ShoppingBaseViewController {
         mainCategoryView.addSubview(subCategoryCollectionView!)
         
         
-        subCategoryCollectionView!.leadingAnchor.constraint(equalTo: mainCategoryView.leadingAnchor, constant: 5).isActive = true
-        subCategoryCollectionView!.trailingAnchor.constraint(equalTo: mainCategoryView.trailingAnchor, constant: -5).isActive = true
+        subCategoryCollectionView!.leadingAnchor.constraint(equalTo: mainCategoryView.leadingAnchor, constant: 0).isActive = true
+        subCategoryCollectionView!.trailingAnchor.constraint(equalTo: mainCategoryView.trailingAnchor, constant: 0).isActive = true
         
-        subCategoryCollectionView!.topAnchor.constraint(equalTo: categoryView!.bottomAnchor, constant: 10).isActive = true
+        subCategoryCollectionView!.topAnchor.constraint(equalTo: categoryView!.bottomAnchor, constant: 15).isActive = true
        
         subCategoryCollectionView!.bottomAnchor.constraint(equalTo: mainCategoryView.bottomAnchor, constant: 0).isActive = true
        
@@ -512,6 +527,16 @@ extension ShoppingBaseViewController {
         
         return view
     }
+    
+    private func addColormViewSubCate(_ mView:UIView, gradient1:UIColor = UIColor.white, gradient2:UIColor = UIColor.white){
+        if let count = mView.layer.sublayers?.count {
+            if count > 1 {
+                mView.layer.sublayers?.removeFirst()
+            }
+        }
+        mView.applyGradientHorizon(colours: [gradient1, gradient2])
+        
+    }
 }
 extension ShoppingBaseViewController {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -534,14 +559,27 @@ extension ShoppingBaseViewController {
                 itemCell.nameLabel.text = name
                 itemCell.nameLabel.textColor = UIColor.black
                 
+                let color = self.getItemSelectedByCate(self.selectCateItem)[0]["color"] as? UIColor ?? UIColor.white
+                itemCell.mView.borderColorProperties(borderWidth: 1, color: color.cgColor)
+                
                 if let select = self.selectSubcate {
                     if select == indexPath.row {
                         //selected
+                        let color1 = self.colorCateLists[selectCateItem]["color1"]
+                        let color2 = self.colorCateLists[selectCateItem]["color2"]
+                        
+                        
+                        self.addColormViewSubCate(itemCell.mView, gradient1: color1!, gradient2: color2!)
+                        
+                        
                     }else{
                         //unselected
+                        self.addColormViewSubCate(itemCell.mView)
                     }
                 }else{
                     //unselected
+                   
+                    self.addColormViewSubCate(itemCell.mView)
                 }
                 
             }
@@ -556,11 +594,10 @@ extension ShoppingBaseViewController {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("didSelectItemAt ID Cate: \(self.dataItemSubCates![indexPath.row])")
-        
-        
+       
         self.selectSubcate = indexPath.row
-        self.subCategoryCollectionView?.reloadData()
+        let index = NSIndexSet(index: 0)
+        self.subCategoryCollectionView?.reloadSections(index as IndexSet)
        
     }
     
@@ -570,7 +607,7 @@ extension ShoppingBaseViewController {
             let name = array[indexPath.row]["name"] as? String ?? ""
             
             var width = widthForView(text: name, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 15)!)
-            width += 20.0
+            width += 30.0
             return CGSize(width: width, height: collectionView.frame.height)
         }
     

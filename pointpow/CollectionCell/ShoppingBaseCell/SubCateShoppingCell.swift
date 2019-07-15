@@ -10,10 +10,22 @@ import UIKit
 
 class SubCateShoppingCell: UICollectionViewCell {
 
+    @IBOutlet weak var mView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        
     }
-
+    override var bounds : CGRect {
+        didSet {
+            self.layoutIfNeeded()
+        }
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        //self.mView.borderColorProperties(borderWidth: 1, color: Constant.Colors.CATE2.cgColor)
+        
+    }
 }

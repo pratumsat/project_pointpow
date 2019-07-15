@@ -18,26 +18,25 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderSectionCell" id="qCK-i4-zDS" customClass="HeaderSectionCell" customModule="pointpow" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="58"/>
+            <rect key="frame" x="0.0" y="0.0" width="493" height="58"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recommend" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Fwc-w0-mI2">
-                    <rect key="frame" x="16" y="16" width="288" height="26"/>
-                    <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO ITEM" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Fwc-w0-mI2">
+                    <rect key="frame" x="220.5" y="17.5" width="52" height="23.5"/>
+                    <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <constraints>
-                <constraint firstItem="Fwc-w0-mI2" firstAttribute="leading" secondItem="qCK-i4-zDS" secondAttribute="leading" constant="16" id="B4T-we-1By"/>
                 <constraint firstItem="Fwc-w0-mI2" firstAttribute="centerY" secondItem="qCK-i4-zDS" secondAttribute="centerY" id="UJI-bP-gPk"/>
-                <constraint firstAttribute="trailing" secondItem="Fwc-w0-mI2" secondAttribute="trailing" constant="16" id="fnS-21-sQm"/>
+                <constraint firstItem="Fwc-w0-mI2" firstAttribute="centerX" secondItem="qCK-i4-zDS" secondAttribute="centerX" id="buN-Ey-X3d"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="0dC-k2-sqL"/>
             <connections>
                 <outlet property="headerNameLabel" destination="Fwc-w0-mI2" id="qfb-gI-N0Q"/>
             </connections>
-            <point key="canvasLocation" x="33.600000000000001" y="28.785607196401802"/>
+            <point key="canvasLocation" x="172" y="28.785607196401802"/>
         </collectionReusableView>
     </objects>
 </document>

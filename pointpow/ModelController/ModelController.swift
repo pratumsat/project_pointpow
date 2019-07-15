@@ -1676,7 +1676,10 @@ class ModelController {
                         if let result = data["result"] as? [String:AnyObject] {
                             let pointBalance = result["member_point"]?["total"] as? NSNumber ?? 0
                             let picture_data = result["picture_data"] as? String ?? ""
+                            let picture_background = result["picture_background"] as? String ?? ""
                             DataController.sharedInstance.setProfilPath(picture_data)
+                            DataController.sharedInstance.setBgProfilPath(picture_background)
+                            
                             DataController.sharedInstance.setCurrentPointBalance(pointBalance)
                             succeeded?(result as AnyObject)
                         }

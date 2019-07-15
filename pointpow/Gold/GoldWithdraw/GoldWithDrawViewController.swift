@@ -456,7 +456,8 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
                         
                     }else{
                          if goldbalance < 0 {
-                                self.showMessagePrompt(NSLocalizedString("string-dailog-saving-gold-pointspend-not-enogh", comment: ""))
+                            
+                            self.showMessagePrompt(NSLocalizedString("string-dailog-saving-gold-pointspend-not-enogh", comment: ""))
                           
                          }else{
                             

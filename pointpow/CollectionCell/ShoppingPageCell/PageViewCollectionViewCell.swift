@@ -35,30 +35,9 @@ class PageViewCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var cate1ImageView: UIImageView!
     @IBOutlet weak var caet1View: UIView!
     
-    var cate1Items = [["color" : Constant.Colors.CATE1,
-                     "image": UIImage(named: "ic-shopping-cate-r-1-active")!],
-                      ["color" : UIColor.lightGray,
-                       "image": UIImage(named: "ic-shopping-cate-r-1")!]]
-    var cate2Items = [["color" : Constant.Colors.CATE2,
-                       "image": UIImage(named: "ic-shopping-cate-r-2-active")!],
-                      ["color" : UIColor.lightGray,
-                       "image": UIImage(named: "ic-shopping-cate-r-2")!]]
-    var cate3Items = [["color" : Constant.Colors.CATE3,
-                       "image": UIImage(named: "ic-shopping-cate-r-3-active")!],
-                      ["color" : UIColor.lightGray,
-                       "image": UIImage(named: "ic-shopping-cate-r-3")!]]
-    var cate4Items = [["color" : Constant.Colors.CATE4,
-                       "image": UIImage(named: "ic-shopping-cate-r-4-active")!],
-                      ["color" : UIColor.lightGray,
-                       "image": UIImage(named: "ic-shopping-cate-r-4")!]]
-    var cate5Items = [["color" : Constant.Colors.CATE5,
-                       "image": UIImage(named: "ic-shopping-cate-r-5-active")!],
-                      ["color" : UIColor.lightGray,
-                       "image": UIImage(named: "ic-shopping-cate-r-5")!]]
-    var cate6Items = [["color" : Constant.Colors.CATE6,
-                       "image": UIImage(named: "ic-shopping-cate-r-6-active")!],
-                      ["color" : UIColor.lightGray,
-                       "image": UIImage(named: "ic-shopping-cate-r-6")!]]
+    var cate1Items = [["color" : Constant.Colors.CATE1],
+                      ["color" : UIColor.darkGray]]
+  
     
     
     var selectedCallback:((_ cateNumber:Int)->Void)?
@@ -118,7 +97,7 @@ class PageViewCollectionViewCell: UICollectionViewCell {
             selectUnderLine?.centerYAnchor.constraint(equalTo: underlineView.centerYAnchor, constant: 0).isActive = true
             selectUnderLine?.heightAnchor.constraint(equalToConstant: 2).isActive = true
 
-            selectUnderLine?.backgroundColor = cate1Items[0]["color"] as? UIColor ?? nil
+            selectUnderLine?.backgroundColor = cate1Items[0]["color"]
             selectUnderLine?.leadingAnchor.constraint(equalTo: caet1View.leadingAnchor, constant: 0).isActive = true
             selectUnderLine?.trailingAnchor.constraint(equalTo: caet1View.trailingAnchor, constant: 0).isActive = true
 
@@ -128,43 +107,44 @@ class PageViewCollectionViewCell: UICollectionViewCell {
         switch position {
         case 0:
             widthForView = caet1View.frame.origin.x
-            selectUnderLine?.backgroundColor = cate1Items[0]["color"] as? UIColor ?? nil
+            //selectUnderLine?.backgroundColor = cate1Items[0]["color"] as? UIColor ?? nil
            
             break
         case 1:
             widthForView = cate2View.frame.origin.x
-            selectUnderLine?.backgroundColor = cate2Items[0]["color"] as? UIColor ?? nil
+            //selectUnderLine?.backgroundColor = cate2Items[0]["color"] as? UIColor ?? nil
             
             
             break
         case 2:
             widthForView = cate3View.frame.origin.x
-            selectUnderLine?.backgroundColor = cate3Items[0]["color"] as? UIColor ?? nil
+            //selectUnderLine?.backgroundColor = cate3Items[0]["color"] as? UIColor ?? nil
             
             
             break
         case 3:
             widthForView = cate4View.frame.origin.x
-            selectUnderLine?.backgroundColor = cate4Items[0]["color"] as? UIColor ?? nil
+            //selectUnderLine?.backgroundColor = cate4Items[0]["color"] as? UIColor ?? nil
           
             
             break
         case 4:
             widthForView = cate5View.frame.origin.x
-            selectUnderLine?.backgroundColor = cate5Items[0]["color"] as? UIColor ?? nil
+            //selectUnderLine?.backgroundColor = cate5Items[0]["color"] as? UIColor ?? nil
            
             
             break
         case 5:
             widthForView = cate6View.frame.origin.x
-            selectUnderLine?.backgroundColor = cate6Items[0]["color"] as? UIColor ?? nil
+            //selectUnderLine?.backgroundColor = cate6Items[0]["color"] as? UIColor ?? nil
            
             
             break
         default:
             break
         }
- 
+        selectUnderLine?.backgroundColor =  cate1Items[0]["color"]
+        
         UIView.animate(withDuration: 0.2,  delay: 0, options:.beginFromCurrentState,animations: {
             //start animation
             if let frame = self.selectUnderLine?.frame {
@@ -203,133 +183,136 @@ class PageViewCollectionViewCell: UICollectionViewCell {
     @objc func cate6Tapped(){
         self.selectedCategory(5)
     }
+    
     func selectedCategory(_ position:Int){
         selectedCallback?(position)
         updateUnderLineView2(position)
+       
         
         switch position {
         case 0:
             
-            self.cate1ImageView.image = cate1Items[0]["image"] as? UIImage ?? nil
-            self.cate1Label.textColor = cate1Items[0]["color"] as? UIColor ?? nil
             
-            self.cate2ImageView.image = cate2Items[1]["image"] as? UIImage ?? nil
-            self.caet2Label.textColor = cate2Items[1]["color"] as? UIColor ?? nil
+            self.cate1Label.textColor = cate1Items[0]["color"]
             
-            self.cate3ImageView.image = cate3Items[1]["image"] as? UIImage ?? nil
-            self.caet3Label.textColor = cate3Items[1]["color"] as? UIColor ?? nil
             
-            self.cate4ImageView.image = cate4Items[1]["image"] as? UIImage ?? nil
-            self.caet4Label.textColor = cate4Items[1]["color"] as? UIColor ?? nil
+            self.caet2Label.textColor = cate1Items[1]["color"]
             
-            self.cate5ImageView.image = cate5Items[1]["image"] as? UIImage ?? nil
-            self.caet5Label.textColor = cate5Items[1]["color"] as? UIColor ?? nil
             
-            self.cate6ImageView.image = cate6Items[1]["image"] as? UIImage ?? nil
-            self.caet6Label.textColor = cate6Items[1]["color"] as? UIColor ?? nil
+            self.caet3Label.textColor = cate1Items[1]["color"]
+            
+            
+            self.caet4Label.textColor = cate1Items[1]["color"]
+            
+            
+            self.caet5Label.textColor = cate1Items[1]["color"]
+            
+            
+            self.caet6Label.textColor = cate1Items[1]["color"]
             
             
             break
         case 1:
             
-            self.cate1ImageView.image = cate1Items[1]["image"] as? UIImage ?? nil
-            self.cate1Label.textColor = cate1Items[1]["color"] as? UIColor ?? nil
             
-            self.cate2ImageView.image = cate2Items[0]["image"] as? UIImage ?? nil
-            self.caet2Label.textColor = cate2Items[0]["color"] as? UIColor ?? nil
+            self.cate1Label.textColor = cate1Items[1]["color"]
             
-            self.cate3ImageView.image = cate3Items[1]["image"] as? UIImage ?? nil
-            self.caet3Label.textColor = cate3Items[1]["color"] as? UIColor ?? nil
+           
+            self.caet2Label.textColor = cate1Items[0]["color"]
             
-            self.cate4ImageView.image = cate4Items[1]["image"] as? UIImage ?? nil
-            self.caet4Label.textColor = cate4Items[1]["color"] as? UIColor ?? nil
             
-            self.cate5ImageView.image = cate5Items[1]["image"] as? UIImage ?? nil
-            self.caet5Label.textColor = cate5Items[1]["color"] as? UIColor ?? nil
+            self.caet3Label.textColor = cate1Items[1]["color"]
             
-            self.cate6ImageView.image = cate6Items[1]["image"] as? UIImage ?? nil
-            self.caet6Label.textColor = cate6Items[1]["color"] as? UIColor ?? nil
+            
+            self.caet4Label.textColor = cate1Items[1]["color"]
+            
+            
+            self.caet5Label.textColor = cate1Items[1]["color"]
+            
+            
+            self.caet6Label.textColor = cate1Items[1]["color"]
             break
         case 2:
             
-            self.cate1ImageView.image = cate1Items[1]["image"] as? UIImage ?? nil
-            self.cate1Label.textColor = cate1Items[1]["color"] as? UIColor ?? nil
             
-            self.cate2ImageView.image = cate2Items[1]["image"] as? UIImage ?? nil
-            self.caet2Label.textColor = cate2Items[1]["color"] as? UIColor ?? nil
+            self.cate1Label.textColor = cate1Items[1]["color"]
             
-            self.cate3ImageView.image = cate3Items[0]["image"] as? UIImage ?? nil
-            self.caet3Label.textColor = cate3Items[0]["color"] as? UIColor ?? nil
             
-            self.cate4ImageView.image = cate4Items[1]["image"] as? UIImage ?? nil
-            self.caet4Label.textColor = cate4Items[1]["color"] as? UIColor ?? nil
+            self.caet2Label.textColor = cate1Items[1]["color"]
             
-            self.cate5ImageView.image = cate5Items[1]["image"] as? UIImage ?? nil
-            self.caet5Label.textColor = cate5Items[1]["color"] as? UIColor ?? nil
             
-            self.cate6ImageView.image = cate6Items[1]["image"] as? UIImage ?? nil
-            self.caet6Label.textColor = cate6Items[1]["color"] as? UIColor ?? nil
+            self.caet3Label.textColor = cate1Items[0]["color"]
+            
+            
+            self.caet4Label.textColor = cate1Items[1]["color"]
+            
+            
+            self.caet5Label.textColor = cate1Items[1]["color"]
+            
+            
+            self.caet6Label.textColor = cate1Items[1]["color"]
             break
         case 3:
             
-            self.cate1ImageView.image = cate1Items[1]["image"] as? UIImage ?? nil
-            self.cate1Label.textColor = cate1Items[1]["color"] as? UIColor ?? nil
             
-            self.cate2ImageView.image = cate2Items[1]["image"] as? UIImage ?? nil
-            self.caet2Label.textColor = cate2Items[1]["color"] as? UIColor ?? nil
             
-            self.cate3ImageView.image = cate3Items[1]["image"] as? UIImage ?? nil
-            self.caet3Label.textColor = cate3Items[1]["color"] as? UIColor ?? nil
+            self.cate1Label.textColor = cate1Items[1]["color"]
             
-            self.cate4ImageView.image = cate4Items[0]["image"] as? UIImage ?? nil
-            self.caet4Label.textColor = cate4Items[0]["color"] as? UIColor ?? nil
             
-            self.cate5ImageView.image = cate5Items[1]["image"] as? UIImage ?? nil
-            self.caet5Label.textColor = cate5Items[1]["color"] as? UIColor ?? nil
+            self.caet2Label.textColor = cate1Items[1]["color"]
             
-            self.cate6ImageView.image = cate6Items[1]["image"] as? UIImage ?? nil
-            self.caet6Label.textColor = cate6Items[1]["color"] as? UIColor ?? nil
+            
+            self.caet3Label.textColor = cate1Items[1]["color"]
+            
+            
+            self.caet4Label.textColor = cate1Items[0]["color"]
+            
+            
+            self.caet5Label.textColor = cate1Items[1]["color"]
+            
+            
+            self.caet6Label.textColor = cate1Items[1]["color"]
             break
         case 4:
+         
             
-            self.cate1ImageView.image = cate1Items[1]["image"] as? UIImage ?? nil
-            self.cate1Label.textColor = cate1Items[1]["color"] as? UIColor ?? nil
+            self.cate1Label.textColor = cate1Items[1]["color"]
             
-            self.cate2ImageView.image = cate2Items[1]["image"] as? UIImage ?? nil
-            self.caet2Label.textColor = cate2Items[1]["color"] as? UIColor ?? nil
             
-            self.cate3ImageView.image = cate3Items[1]["image"] as? UIImage ?? nil
-            self.caet3Label.textColor = cate3Items[1]["color"] as? UIColor ?? nil
+            self.caet2Label.textColor = cate1Items[1]["color"]
             
-            self.cate4ImageView.image = cate4Items[1]["image"] as? UIImage ?? nil
-            self.caet4Label.textColor = cate4Items[1]["color"] as? UIColor ?? nil
             
-            self.cate5ImageView.image = cate5Items[0]["image"] as? UIImage ?? nil
-            self.caet5Label.textColor = cate5Items[0]["color"] as? UIColor ?? nil
+            self.caet3Label.textColor = cate1Items[1]["color"]
             
-            self.cate6ImageView.image = cate6Items[1]["image"] as? UIImage ?? nil
-            self.caet6Label.textColor = cate6Items[1]["color"] as? UIColor ?? nil
+            
+            self.caet4Label.textColor = cate1Items[1]["color"]
+            
+            
+            self.caet5Label.textColor = cate1Items[0]["color"]
+            
+            
+            self.caet6Label.textColor = cate1Items[1]["color"]
             
             break
         case 5:
         
-            self.cate1ImageView.image = cate1Items[1]["image"] as? UIImage ?? nil
-            self.cate1Label.textColor = cate1Items[1]["color"] as? UIColor ?? nil
             
-            self.cate2ImageView.image = cate2Items[1]["image"] as? UIImage ?? nil
-            self.caet2Label.textColor = cate2Items[1]["color"] as? UIColor ?? nil
+            self.cate1Label.textColor = cate1Items[1]["color"]
             
-            self.cate3ImageView.image = cate3Items[1]["image"] as? UIImage ?? nil
-            self.caet3Label.textColor = cate3Items[1]["color"] as? UIColor ?? nil
             
-            self.cate4ImageView.image = cate4Items[1]["image"] as? UIImage ?? nil
-            self.caet4Label.textColor = cate4Items[1]["color"] as? UIColor ?? nil
+            self.caet2Label.textColor = cate1Items[1]["color"]
             
-            self.cate5ImageView.image = cate5Items[1]["image"] as? UIImage ?? nil
-            self.caet5Label.textColor = cate5Items[1]["color"] as? UIColor ?? nil
             
-            self.cate6ImageView.image = cate6Items[0]["image"] as? UIImage ?? nil
-            self.caet6Label.textColor = cate6Items[0]["color"] as? UIColor ?? nil
+            self.caet3Label.textColor = cate1Items[1]["color"]
+            
+            
+            self.caet4Label.textColor = cate1Items[1]["color"]
+            
+            
+            self.caet5Label.textColor = cate1Items[1]["color"]
+            
+            
+            self.caet6Label.textColor = cate1Items[0]["color"]
             break
         default:
             break

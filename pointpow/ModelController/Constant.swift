@@ -306,13 +306,28 @@ extension UIView {
     func applyGradient(colours: [UIColor]) -> Void {
         self.applyGradient(colours, locations: nil)
     }
-    
+    func applyGradientHorizon(colours: [UIColor]) -> Void {
+        self.applyGradient2(colours, locations: nil)
+    }
+    func applyGradient2(_ colours: [UIColor], locations: [NSNumber]?) -> Void {
+        let gradient: CAGradientLayer = CAGradientLayer()
+        
+        gradient.startPoint = CGPoint(x:0.0,y:0.5)
+        gradient.endPoint = CGPoint(x:1.0, y:0.5)
+        gradient.frame = UIScreen.main.bounds
+        gradient.colors = colours.map { $0.cgColor }
+        gradient.locations = locations
+        self.layer.insertSublayer(gradient, at: 0)
+        
+    }
     func applyGradient(_ colours: [UIColor], locations: [NSNumber]?) -> Void {
         let gradient: CAGradientLayer = CAGradientLayer()
+        
         gradient.frame = self.bounds
         gradient.colors = colours.map { $0.cgColor }
         gradient.locations = locations
         self.layer.insertSublayer(gradient, at: 0)
+        
     }
     func clearConstraints() {
         for subview in self.subviews {
@@ -370,6 +385,14 @@ extension UIView {
         self.layer.borderColor = UIColor.white.cgColor
         self.layer.masksToBounds = true
     }
+    
+    func borderColorProperties(borderWidth:CGFloat = 1.0, radius:CGFloat? = nil, color: CGColor){
+        self.layer.cornerRadius = radius ?? self.frame.size.height/2
+        self.layer.borderWidth = borderWidth
+        self.layer.borderColor = color
+        self.layer.masksToBounds = true
+    }
+    
     func borderProperties(borderWidth:CGFloat = 1.0){
         self.layer.cornerRadius = self.frame.size.height/2
         self.layer.borderWidth = borderWidth
@@ -961,6 +984,21 @@ struct Constant {
         static let CATE6 = UIColor(rgb: 0xEB5584)
         static let HOT_REDEMP_GRADIENT_1 = UIColor(rgb: 0xFF942A) //top ff942e
         static let HOT_REDEMP_GRADIENT_2 = UIColor(rgb: 0xFFD262) //bottom ffd262
+        //top ff942e bottom ffd262
+        
+        //cate gradient
+        static let ALL_GRADIENT_1 = UIColor(rgb: 0xFF2157)
+        static let ALL_GRADIENT_2 = UIColor(rgb: 0xFF2222)
+        static let FASHION_GRADIENT_1 = UIColor(rgb: 0xC780EF)
+        static let FASHION_GRADIENT_2 = UIColor(rgb: 0x375FEC)
+        static let GADGET_GRADIENT_1 = UIColor(rgb: 0xFF4A71)
+        static let GADGET_GRADIENT_2 = UIColor(rgb: 0xF45759)
+        static let LIFESTYLE_GRADIENT_1 = UIColor(rgb: 0xDD78FE)
+        static let LIFESTYLE_GRADIENT_2 = UIColor(rgb: 0xF45759)
+        static let TRAVEL_GRADIENT_1 = UIColor(rgb: 0xFC6503)
+        static let TRAVEL_GRADIENT_2 = UIColor(rgb: 0xFF9B6B)
+        static let COUPON_GRADIENT_1 = UIColor(rgb: 0xFF7BAC)
+        static let COUPON_GRADIENT_2 = UIColor(rgb: 0xFF0054)
     }
     struct Fonts {
         struct Size {

@@ -93,7 +93,7 @@ class ShoppingMenuTableViewController: BaseViewController, UITableViewDelegate, 
     }
     
     func setUp(){
-        
+        self.menuTableView.contentInset = UIEdgeInsets(top: 0, left: -15, bottom: 0, right: 0);
         if let url = URL(string: DataController.sharedInstance.getBgProfilPath()) {
             self.bgProfileImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
             

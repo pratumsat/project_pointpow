@@ -127,24 +127,24 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="วิธีการรับทองคำ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VMG-ic-aRX">
-                                <rect key="frame" x="10" y="314.5" width="222" height="23.5"/>
+                                <rect key="frame" x="10" y="314.5" width="205.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="18"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="รับที่บริษัท Point Power" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="utJ-Fp-FMm">
-                                <rect key="frame" x="242" y="314.5" width="130" height="23.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="รับที่ บมจ. พ้อยท์ พาวเวอร์" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="utJ-Fp-FMm">
+                                <rect key="frame" x="220.5" y="314.5" width="151.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="วิธีการชำระเงิน" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fEZ-Ti-4RQ">
-                                <rect key="frame" x="10" y="355" width="76" height="23.5"/>
+                                <rect key="frame" x="10" y="355" width="194.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="18"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="ชำระที่บริษัท Point Power" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8jG-HX-3AH">
-                                <rect key="frame" x="231" y="355" width="141" height="23.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="ชำระที่ บมจ. พ้อยท์ พาวเวอร์" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8jG-HX-3AH">
+                                <rect key="frame" x="209.5" y="355" width="162.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -334,6 +334,7 @@
                             <constraint firstItem="vPX-Yi-WtH" firstAttribute="leading" secondItem="rG8-aA-jDp" secondAttribute="leading" id="TTf-PJ-qYW"/>
                             <constraint firstAttribute="trailing" secondItem="bD2-1t-KHY" secondAttribute="trailing" constant="10" id="V1h-8X-WAN"/>
                             <constraint firstItem="ooL-BL-WgZ" firstAttribute="top" secondItem="AVh-tt-UXZ" secondAttribute="bottom" constant="10" id="V6f-gh-kor"/>
+                            <constraint firstItem="8jG-HX-3AH" firstAttribute="leading" secondItem="fEZ-Ti-4RQ" secondAttribute="trailing" constant="5" id="VEF-td-bdI"/>
                             <constraint firstItem="Fbp-JG-a0F" firstAttribute="width" secondItem="2jZ-VD-BJq" secondAttribute="width" multiplier="0.4" id="WNH-Gy-JMS"/>
                             <constraint firstItem="bD2-1t-KHY" firstAttribute="leading" secondItem="CVQ-0h-tU5" secondAttribute="leading" constant="10" id="Xlw-05-l2d"/>
                             <constraint firstItem="S0m-X5-Jde" firstAttribute="centerX" secondItem="bLu-wA-qqw" secondAttribute="centerX" id="Zrs-Mp-ShF"/>
@@ -365,7 +366,7 @@
                             <constraint firstItem="DgP-EX-acV" firstAttribute="leading" secondItem="dM2-Wc-N08" secondAttribute="trailing" constant="10" id="sqj-F3-Hzq"/>
                             <constraint firstItem="bLu-wA-qqw" firstAttribute="centerX" secondItem="2jZ-VD-BJq" secondAttribute="centerX" id="t22-EC-iBE"/>
                             <constraint firstItem="Fbp-JG-a0F" firstAttribute="centerX" secondItem="2jZ-VD-BJq" secondAttribute="centerX" id="td4-8E-6Mf"/>
-                            <constraint firstItem="utJ-Fp-FMm" firstAttribute="leading" secondItem="VMG-ic-aRX" secondAttribute="trailing" constant="10" id="uff-fs-8aa"/>
+                            <constraint firstItem="utJ-Fp-FMm" firstAttribute="leading" secondItem="VMG-ic-aRX" secondAttribute="trailing" constant="5" id="uff-fs-8aa"/>
                             <constraint firstItem="dM2-Wc-N08" firstAttribute="top" secondItem="pUm-LN-kbW" secondAttribute="bottom" constant="8" id="ugd-jt-sP4"/>
                             <constraint firstItem="Fbp-JG-a0F" firstAttribute="top" secondItem="RTD-p5-h1I" secondAttribute="bottom" constant="20" id="up3-on-M9M"/>
                             <constraint firstItem="gOX-uv-b8f" firstAttribute="centerX" secondItem="Fbp-JG-a0F" secondAttribute="centerX" id="vI1-6n-biJ"/>

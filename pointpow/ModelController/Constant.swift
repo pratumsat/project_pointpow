@@ -895,6 +895,11 @@ struct Constant {
         static let product_ByCate = "\(HOST)privilege/products/{{cate}}?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
         static let subCateByCate = "\(HOST)privilege/products/sub-category/{{cate}}?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
         
+        static let productRelatedByID = "\(HOST)privilege/products/related/{{productId}}?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
+        
+        static let productDetailByID = "\(HOST)privilege/products/detail/{{productId}}?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
+        static let productImageByID = "\(HOST)privilege/products/image/{{productId}}?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
+
     }
     
     struct TopViewController{
@@ -958,8 +963,8 @@ struct Constant {
                 static let RECT_PLACEHOLDER = "place-bg-rect"
                 static let BACKGROUND_PROFILE_PLACEHOLDER = "place-bg-profile"
                 static let BANNER_PROMO_DETAIL_PLACEHOLDER = "place-bg-banner-promo-detail"
-                static let DEFAULT_AVATAR_PLACEHOLDER = "ic-default-avatar"
-                static let DEFAULT_COVER_PLACEHOLDER = "ic-default-cover"
+                
+                
         }
     }
     struct Colors {

@@ -102,10 +102,10 @@ class RecommendCell: UICollectionViewCell , UICollectionViewDelegate , UICollect
                 productCell.desLabel.text = title
                 
                 if let url = URL(string: getFullPathImageView(brand)) {
-                    productCell.brandImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_HOME_PLACEHOLDER))
+                    productCell.brandImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
                 }
                 if let url = URL(string: getFullPathImageView(item)) {
-                    productCell.productImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_HOME_PLACEHOLDER))
+                    productCell.productImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
                 }
             }
             
@@ -121,7 +121,8 @@ class RecommendCell: UICollectionViewCell , UICollectionViewDelegate , UICollect
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //recomendItems
-        self.itemClickCallback?("product" as AnyObject)
+        let selected = self.recomendItems?[indexPath.row]
+        self.itemClickCallback?(selected as AnyObject)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

@@ -471,7 +471,8 @@ extension ProductShoppingViewController {
             if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendCell", for: indexPath) as? RecommendCell {
                 itemCell.recomendItems = self.cateItems
                 itemCell.itemClickCallback = { (product) in
-                    //self.showProductDetail(true, product_id: "")
+                    let id = product["id"] as? NSNumber ?? 0
+                    self.showProductDetail(true, product_id: id.intValue)
                 }
                 
                 
@@ -548,10 +549,10 @@ extension ProductShoppingViewController {
                     productCell.desLabel.text = title
                     
                     if let url = URL(string: getFullPathImageView(brand)) {
-                        productCell.brandImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_HOME_PLACEHOLDER))
+                        productCell.brandImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
                     }
                     if let url = URL(string: getFullPathImageView(item)) {
-                        productCell.productImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_HOME_PLACEHOLDER))
+                        productCell.productImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
                     }
                 }
             }
@@ -580,7 +581,11 @@ extension ProductShoppingViewController {
             return
         }
         
-        print("production select \(indexPath.row)")
+        if let product = self.productItems?[indexPath.row] {
+            let id = product["id"] as? NSNumber ?? 0
+            self.showProductDetail(true, product_id: id.intValue)
+        }
+        
         
     }
     

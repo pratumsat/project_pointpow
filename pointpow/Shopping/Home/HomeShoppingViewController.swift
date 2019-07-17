@@ -351,7 +351,8 @@ extension HomeShoppingViewController {
             if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendCell", for: indexPath) as? RecommendCell {
                 itemCell.recomendItems = self.specialDeal
                 itemCell.itemClickCallback = { (product) in
-                    //self.showProductDetail(true, product_id: "")
+                    let id = product["id"] as? NSNumber ?? 0
+                    self.showProductDetail(true, product_id: id.intValue)
                 }
                 
                 cell = itemCell
@@ -361,7 +362,8 @@ extension HomeShoppingViewController {
             if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Recommend2Cell", for: indexPath) as? Recommend2Cell {
                 itemCell.recomendItems = self.hotRedemtion
                 itemCell.itemClickCallback = { (product) in
-                    //self.showProductDetail(true, product_id: "")
+                    let id = product["id"] as? NSNumber ?? 0
+                    self.showProductDetail(true, product_id: id.intValue)
                 }
                 cell = itemCell
             }
@@ -369,7 +371,6 @@ extension HomeShoppingViewController {
         case 3:
             if let pageCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PageViewCollectionViewCell", for: indexPath) as? PageViewCollectionViewCell {
 
-              
                 pageCell.selectedCallback  = { (cateId) in
                     self.cateId = cateId
                 }
@@ -431,10 +432,10 @@ extension HomeShoppingViewController {
                     productCell.desLabel.text = title
                     
                     if let url = URL(string: getFullPathImageView(brand)) {
-                        productCell.brandImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_HOME_PLACEHOLDER))
+                        productCell.brandImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
                     }
                     if let url = URL(string: getFullPathImageView(item)) {
-                        productCell.productImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_HOME_PLACEHOLDER))
+                        productCell.productImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
                     }
                 }
             }
@@ -462,10 +463,10 @@ extension HomeShoppingViewController {
         if collectionView != productCollectionView {
             super.collectionView(collectionView, didSelectItemAt: indexPath)
         }
-        
-        print("production select \(indexPath.row)")
-        
-        
+        if let product = self.cateItems?[indexPath.row] {
+            let id = product["id"] as? NSNumber ?? 0
+            self.showProductDetail(true, product_id: id.intValue)
+        }
         
     }
     

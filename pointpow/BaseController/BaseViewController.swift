@@ -555,10 +555,11 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     }
     
     
-    func showProductDetail(_ animated:Bool, product_id:String){
+    func showProductDetail(_ animated:Bool, product_id:Int){
         
         if let vc:ProductDetailViewController  = self.storyboard?.instantiateViewController(withIdentifier: "ProductDetailViewController") as? ProductDetailViewController {
             
+            vc.product_id = product_id
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }

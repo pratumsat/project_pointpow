@@ -30,7 +30,7 @@ class PopUpViewController: BaseViewController {
             }else{
                 self.imageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
             }
-            //self.imageView.image = UIImage(named:"ic-bg-popup")
+            
             
         }
     }

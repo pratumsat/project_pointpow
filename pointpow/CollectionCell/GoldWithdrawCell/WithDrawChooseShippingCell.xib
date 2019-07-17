@@ -25,12 +25,12 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="วิธีการรับทองคำ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k2b-i5-rF4">
-                        <rect key="frame" x="38.5" y="20" width="80" height="21"/>
+                        <rect key="frame" x="42.5" y="20" width="80" height="21"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gif-Mc-DMY">
-                        <rect key="frame" x="128.5" y="12.5" width="170.5" height="36"/>
+                        <rect key="frame" x="127.5" y="12.5" width="179.5" height="36"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-choose-2" translatesAutoresizingMaskIntoConstraints="NO" id="W60-ev-aLq">
                                 <rect key="frame" x="0.0" y="8" width="20" height="20"/>
@@ -39,13 +39,13 @@
                                     <constraint firstAttribute="width" secondItem="W60-ev-aLq" secondAttribute="height" multiplier="1:1" id="et2-cM-87Z"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="รับที่บริษัท Point Power" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ejI-eX-fAG">
-                                <rect key="frame" x="25" y="7.5" width="115.5" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="รับที่ บมจ. พ้อยท์ พาวเวอร์" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ejI-eX-fAG">
+                                <rect key="frame" x="25" y="7.5" width="134.5" height="21"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-info" translatesAutoresizingMaskIntoConstraints="NO" id="Ts9-Gr-Jnc">
-                                <rect key="frame" x="155.5" y="10.5" width="15" height="15"/>
+                                <rect key="frame" x="164.5" y="10.5" width="15" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Ts9-Gr-Jnc" secondAttribute="height" multiplier="1:1" id="DcG-JA-Bw8"/>
                                     <constraint firstAttribute="height" constant="15" id="XrE-PF-JVJ"/>
@@ -58,14 +58,14 @@
                             <constraint firstItem="ejI-eX-fAG" firstAttribute="leading" secondItem="W60-ev-aLq" secondAttribute="trailing" constant="5" id="4KA-oR-SuF"/>
                             <constraint firstItem="W60-ev-aLq" firstAttribute="centerY" secondItem="ejI-eX-fAG" secondAttribute="centerY" id="70H-JK-33B"/>
                             <constraint firstAttribute="trailing" secondItem="Ts9-Gr-Jnc" secondAttribute="trailing" id="S0s-pC-pju"/>
-                            <constraint firstItem="Ts9-Gr-Jnc" firstAttribute="leading" secondItem="ejI-eX-fAG" secondAttribute="trailing" constant="15" id="XeE-Ag-Vq9"/>
+                            <constraint firstItem="Ts9-Gr-Jnc" firstAttribute="leading" secondItem="ejI-eX-fAG" secondAttribute="trailing" constant="5" id="XeE-Ag-Vq9"/>
                             <constraint firstItem="Ts9-Gr-Jnc" firstAttribute="centerY" secondItem="ejI-eX-fAG" secondAttribute="centerY" id="ay5-mw-xaL"/>
                             <constraint firstItem="W60-ev-aLq" firstAttribute="leading" secondItem="Gif-Mc-DMY" secondAttribute="leading" id="cNJ-mW-grh"/>
                             <constraint firstItem="ejI-eX-fAG" firstAttribute="centerY" secondItem="Gif-Mc-DMY" secondAttribute="centerY" id="elJ-FX-b87"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2jx-KB-dgz">
-                        <rect key="frame" x="128.5" y="48.5" width="179.5" height="36"/>
+                        <rect key="frame" x="127.5" y="48.5" width="169.5" height="36"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-choose-1" translatesAutoresizingMaskIntoConstraints="NO" id="6Y4-2E-ZcH">
                                 <rect key="frame" x="0.0" y="8" width="20" height="20"/>
@@ -80,7 +80,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-info" translatesAutoresizingMaskIntoConstraints="NO" id="0w0-Z9-Afc">
-                                <rect key="frame" x="164.5" y="10.5" width="15" height="15"/>
+                                <rect key="frame" x="154.5" y="10.5" width="15" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="0w0-Z9-Afc" secondAttribute="height" multiplier="1:1" id="G6e-MD-YdL"/>
                                     <constraint firstAttribute="height" constant="15" id="zao-GV-zaH"/>
@@ -95,7 +95,7 @@
                             <constraint firstItem="6Y4-2E-ZcH" firstAttribute="leading" secondItem="2jx-KB-dgz" secondAttribute="leading" id="Y4R-rz-2Ok"/>
                             <constraint firstItem="6Y4-2E-ZcH" firstAttribute="centerY" secondItem="xYq-MG-G9R" secondAttribute="centerY" id="YDw-hO-kng"/>
                             <constraint firstAttribute="height" constant="36" id="hSq-P8-2uI"/>
-                            <constraint firstItem="0w0-Z9-Afc" firstAttribute="leading" secondItem="xYq-MG-G9R" secondAttribute="trailing" constant="15" id="jFy-Ms-fq3"/>
+                            <constraint firstItem="0w0-Z9-Afc" firstAttribute="leading" secondItem="xYq-MG-G9R" secondAttribute="trailing" constant="5" id="jFy-Ms-fq3"/>
                             <constraint firstItem="0w0-Z9-Afc" firstAttribute="centerY" secondItem="xYq-MG-G9R" secondAttribute="centerY" id="p9C-Rd-scc"/>
                         </constraints>
                     </view>
@@ -103,9 +103,9 @@
             </view>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="Gif-Mc-DMY" firstAttribute="centerX" secondItem="bBJ-3l-eH5" secondAttribute="centerX" multiplier="1.25" id="3lb-3h-qcc"/>
+                <constraint firstItem="Gif-Mc-DMY" firstAttribute="centerX" secondItem="bBJ-3l-eH5" secondAttribute="centerX" multiplier="1.27" id="3lb-3h-qcc"/>
                 <constraint firstItem="k2b-i5-rF4" firstAttribute="top" secondItem="bBJ-3l-eH5" secondAttribute="top" constant="20" id="9iq-YH-rhi"/>
-                <constraint firstItem="Gif-Mc-DMY" firstAttribute="leading" secondItem="k2b-i5-rF4" secondAttribute="trailing" constant="10" id="GVM-k0-7T5"/>
+                <constraint firstItem="Gif-Mc-DMY" firstAttribute="leading" secondItem="k2b-i5-rF4" secondAttribute="trailing" constant="5" id="GVM-k0-7T5"/>
                 <constraint firstItem="2jx-KB-dgz" firstAttribute="leading" secondItem="Gif-Mc-DMY" secondAttribute="leading" id="rbe-LL-3ch"/>
                 <constraint firstItem="2jx-KB-dgz" firstAttribute="top" secondItem="Gif-Mc-DMY" secondAttribute="bottom" id="xtb-sb-Azr"/>
                 <constraint firstItem="Gif-Mc-DMY" firstAttribute="centerY" secondItem="k2b-i5-rF4" secondAttribute="centerY" id="yuz-ZO-RlE"/>

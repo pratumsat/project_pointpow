@@ -112,24 +112,24 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="วิธีการรับทองคำ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9mP-W6-tKE">
-                                <rect key="frame" x="10" y="314.5" width="222" height="23.5"/>
+                                <rect key="frame" x="10" y="314.5" width="205.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="18"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="รับที่บริษัท Point Power" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="SPX-kz-mRn">
-                                <rect key="frame" x="242" y="314.5" width="130" height="23.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="รับที่ บมจ. พ้อยท์ พาวเวอร์" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="SPX-kz-mRn">
+                                <rect key="frame" x="220.5" y="314.5" width="151.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="วิธีการชำระเงิน" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="DYR-Sk-W1p">
-                                <rect key="frame" x="10" y="355" width="211" height="23.5"/>
+                                <rect key="frame" x="10" y="355" width="194.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="18"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="ชำระที่บริษัท Point Power" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="J4Z-Ke-98z">
-                                <rect key="frame" x="231" y="355" width="141" height="23.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="ชำระที่ บมจ. พ้อยท์ พาวเวอร์" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="J4Z-Ke-98z">
+                                <rect key="frame" x="209.5" y="355" width="162.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -239,7 +239,7 @@
                             <constraint firstItem="1qP-N5-aUb" firstAttribute="leading" secondItem="AJH-6c-wxD" secondAttribute="leading" id="Mpu-32-SEi"/>
                             <constraint firstItem="AJH-6c-wxD" firstAttribute="top" secondItem="DYR-Sk-W1p" secondAttribute="bottom" constant="8" id="N2F-Wu-nSy"/>
                             <constraint firstItem="9mP-W6-tKE" firstAttribute="top" secondItem="bHB-6J-M0X" secondAttribute="bottom" constant="8" id="Ndl-8o-Aci"/>
-                            <constraint firstItem="J4Z-Ke-98z" firstAttribute="leading" secondItem="DYR-Sk-W1p" secondAttribute="trailing" constant="10" id="Plb-HL-lma"/>
+                            <constraint firstItem="J4Z-Ke-98z" firstAttribute="leading" secondItem="DYR-Sk-W1p" secondAttribute="trailing" constant="5" id="Plb-HL-lma"/>
                             <constraint firstItem="GRJ-2H-Tdc" firstAttribute="top" secondItem="Bpb-el-64R" secondAttribute="bottom" id="QP9-LO-AlO"/>
                             <constraint firstItem="gAi-HA-5BV" firstAttribute="trailing" secondItem="6eb-Ta-5uY" secondAttribute="trailing" id="Qyx-zZ-uhh"/>
                             <constraint firstItem="6eb-Ta-5uY" firstAttribute="centerY" secondItem="9Je-I2-s2b" secondAttribute="centerY" id="RKd-1T-oby"/>
@@ -293,7 +293,7 @@
                             <constraint firstItem="6eb-Ta-5uY" firstAttribute="trailing" secondItem="ubS-PO-gab" secondAttribute="trailing" id="vFU-O6-Sfg"/>
                             <constraint firstItem="cCb-gm-kcp" firstAttribute="leading" secondItem="8eG-oV-5BV" secondAttribute="leading" constant="10" id="vYb-4U-zJV"/>
                             <constraint firstItem="7No-u1-Qdd" firstAttribute="leading" secondItem="loY-fh-atC" secondAttribute="leading" id="vdT-FE-lSj"/>
-                            <constraint firstItem="SPX-kz-mRn" firstAttribute="leading" secondItem="9mP-W6-tKE" secondAttribute="trailing" constant="10" id="z9O-Un-djj"/>
+                            <constraint firstItem="SPX-kz-mRn" firstAttribute="leading" secondItem="9mP-W6-tKE" secondAttribute="trailing" constant="5" id="z9O-Un-djj"/>
                         </constraints>
                     </view>
                 </subviews>

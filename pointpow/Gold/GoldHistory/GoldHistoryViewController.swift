@@ -382,7 +382,7 @@ class GoldHistoryViewController: BaseViewController ,UICollectionViewDataSource 
                     
                     transCell.amountLabel.text = numberFormatter.string(from: gold_withdraw)
                     transCell.titleLabel.text = NSLocalizedString("string-title-history-withdraw", comment: "")
-                    //transCell.statusImageView.image = UIImage(named: "ic-withdraw")
+                   
                     transCell.statusImageView.image = UIImage(named: "ic-service-type-shopping")
                     
                     

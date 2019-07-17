@@ -402,7 +402,7 @@ extension ShoppingBaseViewController {
         var index = 0
         for itemCate in cateLists {
             let name = itemCate["name"] as? String ?? ""
-            let image = itemCate["image"] as? UIImage ?? UIImage(named: Constant.DefaultConstansts.DefaultImaege.DEFAULT_AVATAR_PLACEHOLDER)!
+            let image = itemCate["image"] as? UIImage ?? UIImage(named: Constant.DefaultConstansts.DefaultImaege.BACKGROUND_PROFILE_PLACEHOLDER)!
             
             if index == 0 {
                 cateViews!.append(addCate(name, icon: image, leftView:nil, tag: index))
@@ -568,17 +568,18 @@ extension ShoppingBaseViewController {
                         let color1 = self.colorCateLists[selectCateItem]["color1"]
                         let color2 = self.colorCateLists[selectCateItem]["color2"]
                         
-                        
+                        itemCell.nameLabel.textColor = UIColor.white
                         self.addColormViewSubCate(itemCell.mView, gradient1: color1!, gradient2: color2!)
                         
                         
                     }else{
                         //unselected
+                        itemCell.nameLabel.textColor = UIColor.black
                         self.addColormViewSubCate(itemCell.mView)
                     }
                 }else{
                     //unselected
-                   
+                   itemCell.nameLabel.textColor = UIColor.black
                     self.addColormViewSubCate(itemCell.mView)
                 }
                 

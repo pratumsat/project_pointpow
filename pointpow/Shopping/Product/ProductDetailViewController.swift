@@ -11,6 +11,11 @@ import WebKit
 
 class ProductDetailViewController: BaseViewController  , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIWebViewDelegate {
 
+    @IBOutlet weak var moreView: UIView!
+    @IBOutlet weak var shareView: UIView!
+    @IBOutlet weak var moreDetailImageView: UIImageView!
+    @IBOutlet weak var moreDetailLabel: UIButton!
+    @IBOutlet weak var viewMoreDetailView: UIView!
     @IBOutlet weak var pageLabel: UILabel!
     @IBOutlet weak var pageView: UIView!
     @IBOutlet weak var disCountLabel: UILabel!
@@ -31,6 +36,14 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
     @IBOutlet weak var imageCollectionView: UICollectionView!
     
     
+    var expend = true
+    let active = UIImage(named: "ic-shopping-more")
+    let inactive = UIImage(named: "ic-shopping-less")
+    
+    let active_text = NSLocalizedString("string-item-shopping-more-detail", comment: "")
+    let inactive_text = NSLocalizedString("string-item-shopping-less-detail", comment: "")
+    
+    
     var timer:Timer? = nil
     var x = 1
     var count = 0
@@ -39,7 +52,8 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
     var productImage:[[String:AnyObject]]?
     var product_id:Int?
     
-    
+    var heightContentWebView = CGFloat(110.0)
+    var defaultHeightContentWebView = CGFloat(110.0)
     
     var itemBanner:[[String:AnyObject]]?
     
@@ -100,9 +114,8 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
             self.updateProductImage()
         }
     }
+    
     func updateProductImage(){
-        
-        
         if let mResult = self.productImage {
             self.itemBanner = []
             for item in mResult {
@@ -263,9 +276,9 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
         self.registerNib(self.productRelatedCollectionView, "ShoppingProductCell")
         
         
-        
         self.detailWebview.delegate = self
-        
+        self.detailWebview.scrollView.isScrollEnabled = false
+        self.detailWebview.scrollView.bounces = false
         
         self.amountTextField.borderRedColorProperties(borderWidth: 1)
         
@@ -283,6 +296,16 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
         self.amountTextField.autocorrectionType = .no
         self.amountTextField.text = "1"
         
+        
+        let moreTap = UITapGestureRecognizer(target: self, action: #selector(expendnableView))
+        self.moreView.isUserInteractionEnabled = true
+        self.moreView.addGestureRecognizer(moreTap)
+        
+        self.moreDetailLabel.isUserInteractionEnabled = false
+        
+        self.shareView.alpha = 0.8
+        self.pageView.alpha = 0.8
+        
     }
     
     
@@ -299,7 +322,6 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
             
             if let mResult = result as? [[String:AnyObject]] {
                 self.productDetail = mResult
-                
             }
             avaliable?()
             
@@ -393,21 +415,57 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
         
     }
     
+    
     func webViewDidFinishLoad(_ webView: UIWebView) {
         self.detailWebview.frame.size = webView.scrollView.contentSize
-        let height = webView.scrollView.contentSize.height
-        print("html height =  \(height)")
-        self.heightConstraintWebview.constant = height
-        self.view.layoutIfNeeded()
+        self.heightContentWebView =  webView.scrollView.contentSize.height
+        print("html height =  \(heightContentWebView)")
+        
+        if heightContentWebView > 110 {
+            showMoreView()
+        }else{
+            hideMoreView()
+        }
     }
+    
+    
+    @objc func expendnableView(){
+        
+        self.heightConstraintWebview.constant = expend ? heightContentWebView : defaultHeightContentWebView
+        self.moreDetailImageView.image = expend ? inactive : active
+        self.moreDetailLabel.setTitle(expend ? inactive_text : active_text, for: .normal)
+        
+        self.view.setNeedsUpdateConstraints()
+        
+        UIView.animate(withDuration: 0.2,  delay: 0, options:.beginFromCurrentState,animations: {
+            self.view.layoutIfNeeded()
+        }) { (completed) in
+            self.expend = self.expend ? false : true
+        }
+        
+       // self.heightConstraintWebview.constant = heightContentWebView
+        //self.view.layoutIfNeeded()
+    }
+    private func showMoreView(){
+        self.moreView.isHidden = false
+    }
+    private func hideMoreView(){
+        self.moreView.isHidden = true
+    }
+    
     
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
        
+        self.shareView.ovalColorClearProperties()
         self.lessImageView.ovalColorClearProperties()
         self.moreImageView.ovalColorClearProperties()
         self.pageView.borderClearProperties()
+        
+        self.viewMoreDetailView.borderRedColorProperties()
+        
+     
     }
     
    
@@ -528,7 +586,13 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
                     let title = item["title"] as? String ?? ""
                     let brand = item["brand"] as? [String:AnyObject] ?? [:]
                     let special_deal = item["special_deal"] as? [[String:AnyObject]] ?? [[:]]
+                    let variant_status = item["variant_status"] as? String ?? ""
                     
+                    if variant_status.lowercased() == "complete" {
+                        productCell.soldOut = true
+                    }else{
+                        productCell.soldOut = false
+                    }
                     
                     if special_deal.count == 0{
                         //check discount price
@@ -609,7 +673,11 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
            
             if let product = self.productItems?[indexPath.row] {
                 let id = product["id"] as? NSNumber ?? 0
-                self.showProductDetail(true, product_id: id.intValue)
+                let variant_status = product["variant_status"] as? String ?? ""
+                
+                if variant_status.lowercased() != "complete" {
+                    self.showProductDetail(true, product_id: id.intValue)
+                }
             }
         }
     }

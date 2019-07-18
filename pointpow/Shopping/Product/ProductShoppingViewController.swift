@@ -40,7 +40,12 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
     
     var cateName = NSLocalizedString("string-item-shopping-cate-all", comment: "") {
         didSet{
-            self.tabBarController?.title = cateName
+            guard let tab = self.tabBarController else {
+                self.title = cateName
+                return
+            }
+            tab.title = cateName
+            
         }
     }
     var initHeightViewCate = CGFloat(140.0)
@@ -58,6 +63,8 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
             }
         }
     }
+    
+    var loadDataByCateID = 0 
     
     var isLoadmore = false
     var skipItem = 0
@@ -138,20 +145,57 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
         
         
         self.setUp()
-        self.callAPI(){
+        
+        if self.loadDataByCateID > 0 {
             self.searchView?.removeFromSuperview()
             self.mainCateView?.removeFromSuperview()
             
             self.searchView = self.addSearchView()
             self.mainCateView =  self.addCategoryView(self.searchView!, allProduct: true)
             
-            self.productCollectionView.reloadData()
+            self.topConstraintCollectionView.constant = self.initHeightViewCate + self.sizeOfViewCate
+            
+            self.heightMainCategoryView?.constant = 95.0 + self.sizeOfViewCate
+            self.mainCategoryView?.layoutIfNeeded()
+            self.subCategoryCollectionView?.isHidden = false
+            
+           
+            self.getSubCateByCate(self.loadDataByCateID) {
+                self.addSubCate()
+            }
+            
+            self.selectCateItem = self.loadDataByCateID
+            self.selectedCategory(self.loadDataByCateID)
+            
+            self.cateId = self.loadDataByCateID
+            self.subCateId = self.loadDataByCateID
+            
+            
+             self.itemSection = ["recommend","filter","product"]
+            
+        }else{
+          
+            self.callAPI(){
+                self.searchView?.removeFromSuperview()
+                self.mainCateView?.removeFromSuperview()
+                
+                self.searchView = self.addSearchView()
+                self.mainCateView =  self.addCategoryView(self.searchView!, allProduct: true)
+                
+                self.productCollectionView.reloadData()
+            }
         }
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.title = cateName
+        guard  let tab = self.tabBarController else {
+            self.title = self.cateLists[self.loadDataByCateID]["name"] as? String ?? ""
+            return
+        }
+        tab.title = cateName
     }
     
     override func categoryTapped(sender: UITapGestureRecognizer) {
@@ -438,8 +482,12 @@ extension ProductShoppingViewController {
         
         switch self.itemSection[section] {
         case "recommend":
+            guard let count = self.cateItems?.count, count > 0 else {
+                return 0
+            }
             return 1
-
+            
+        
         case "filter":
             return 1
             
@@ -472,7 +520,12 @@ extension ProductShoppingViewController {
                 itemCell.recomendItems = self.cateItems
                 itemCell.itemClickCallback = { (product) in
                     let id = product["id"] as? NSNumber ?? 0
-                    self.showProductDetail(true, product_id: id.intValue)
+                    let variant_status = product["variant_status"] as? String ?? ""
+                    
+                    if variant_status.lowercased() != "complete" {
+                        self.showProductDetail(true, product_id: id.intValue)
+                    }
+                    
                 }
                 
                 
@@ -503,7 +556,13 @@ extension ProductShoppingViewController {
                     let title = item["title"] as? String ?? ""
                     let brand = item["brand"] as? [String:AnyObject] ?? [:]
                     let special_deal = item["special_deal"] as? [[String:AnyObject]] ?? [[:]]
+                    let variant_status = item["variant_status"] as? String ?? ""
                     
+                    if variant_status.lowercased() == "complete" {
+                        productCell.soldOut = true
+                    }else{
+                        productCell.soldOut = false
+                    }
                     
                     if special_deal.count == 0{
                         //check discount price
@@ -581,10 +640,21 @@ extension ProductShoppingViewController {
             return
         }
         
-        if let product = self.productItems?[indexPath.row] {
-            let id = product["id"] as? NSNumber ?? 0
-            self.showProductDetail(true, product_id: id.intValue)
+        guard let count = self.productItems?.count  else {
+            return
         }
+        if  count > 0 {
+            if let product = self.productItems?[indexPath.row] {
+                let id = product["id"] as? NSNumber ?? 0
+                let variant_status = product["variant_status"] as? String ?? ""
+                
+                if variant_status.lowercased() != "complete" {
+                    self.showProductDetail(true, product_id: id.intValue)
+                }
+            }
+        }
+        
+       
         
         
     }
@@ -601,7 +671,7 @@ extension ProductShoppingViewController {
         case "recommend":
             let height = (width/2 - 15) + 110
             return CGSize(width: width, height: height)
-            
+        
         case "filter":
             let height = CGFloat(50.0)
             return CGSize(width: width, height: height)
@@ -687,7 +757,11 @@ extension ProductShoppingViewController {
 
         switch self.itemSection[section] {
         case "recommend":
-             return CGSize(width: width, height: height)
+            guard let count = self.cateItems?.count, count > 0 else {
+                return CGSize.zero
+            }
+            return CGSize(width: width, height: height)
+            
             
         case "filter":
             return CGSize.zero

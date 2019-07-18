@@ -56,6 +56,13 @@ class RecommendCell: UICollectionViewCell , UICollectionViewDelegate , UICollect
                 let title = item["title"] as? String ?? ""
                 let brand = item["brand"] as? [String:AnyObject] ?? [:]
                 let special_deal = item["special_deal"] as? [[String:AnyObject]] ?? [[:]]
+                let variant_status = item["variant_status"] as? String ?? ""
+                
+                if variant_status.lowercased() == "complete" {
+                    productCell.soldOut = true
+                }else{
+                    productCell.soldOut = false
+                }
                 
               
                 if special_deal.count == 0{

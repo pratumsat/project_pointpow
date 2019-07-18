@@ -109,6 +109,10 @@ class ModelController {
                                 errorObject["message"] = messageError as AnyObject
                                 errorObject["field"] = field as AnyObject
                                 error?(errorObject as AnyObject)
+                            }else{
+                                if let result = data["result"] as? [[String:AnyObject]] {
+                                    succeeded?(result as AnyObject)
+                                }
                             }
                         }
                         
@@ -198,6 +202,10 @@ class ModelController {
                                 errorObject["message"] = messageError as AnyObject
                                 errorObject["field"] = field as AnyObject
                                 error?(errorObject as AnyObject)
+                            }else{
+                                if let result = data["result"] as? [[String:AnyObject]] {
+                                    succeeded?(result as AnyObject)
+                                }
                             }
                         }
                     }
@@ -279,6 +287,10 @@ class ModelController {
                                 errorObject["message"] = messageError as AnyObject
                                 errorObject["field"] = field as AnyObject
                                 error?(errorObject as AnyObject)
+                            }else{
+                                if let result = data["result"] as? [[String:AnyObject]] {
+                                    succeeded?(result as AnyObject)
+                                }
                             }
                         }
                     }
@@ -360,6 +372,10 @@ class ModelController {
                                 errorObject["message"] = messageError as AnyObject
                                 errorObject["field"] = field as AnyObject
                                 error?(errorObject as AnyObject)
+                            }else{
+                                if let result = data["result"] as? [[String:AnyObject]] {
+                                    succeeded?(result as AnyObject)
+                                }
                             }
                         }
 
@@ -445,6 +461,10 @@ class ModelController {
                                 errorObject["message"] = messageError as AnyObject
                                 errorObject["field"] = field as AnyObject
                                 error?(errorObject as AnyObject)
+                            }else{
+                                if let result = data["result"] as? [[String:AnyObject]] {
+                                    succeeded?(result as AnyObject)
+                                }
                             }
                         }
                     }
@@ -529,6 +549,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                         
@@ -615,6 +639,10 @@ class ModelController {
                                 errorObject["message"] = messageError as AnyObject
                                 errorObject["field"] = field as AnyObject
                                 error?(errorObject as AnyObject)
+                            }else{
+                                if let result = data["result"] as? [[String:AnyObject]] {
+                                    succeeded?(result as AnyObject)
+                                }
                             }
                         }
                         
@@ -701,6 +729,10 @@ class ModelController {
                                 errorObject["message"] = messageError as AnyObject
                                 errorObject["field"] = field as AnyObject
                                 error?(errorObject as AnyObject)
+                            }else{
+                                if let result = data["result"] as? [[String:AnyObject]] {
+                                    succeeded?(result as AnyObject)
+                                }
                             }
                         }
                     }
@@ -782,6 +814,10 @@ class ModelController {
                                 errorObject["message"] = messageError as AnyObject
                                 errorObject["field"] = field as AnyObject
                                 error?(errorObject as AnyObject)
+                            }else{
+                                if let result = data["result"] as? [[String:AnyObject]] {
+                                    succeeded?(result as AnyObject)
+                                }
                             }
                         }
                     }
@@ -866,6 +902,10 @@ class ModelController {
                                 errorObject["message"] = messageError as AnyObject
                                 errorObject["field"] = field as AnyObject
                                 error?(errorObject as AnyObject)
+                            }else{
+                                if let result = data["result"] as? [[String:AnyObject]] {
+                                    succeeded?(result as AnyObject)
+                                }
                             }
                         }
                     }
@@ -948,6 +988,10 @@ class ModelController {
                                 errorObject["message"] = messageError as AnyObject
                                 errorObject["field"] = field as AnyObject
                                 error?(errorObject as AnyObject)
+                            }else{
+                                if let result = data["result"] as? [[String:AnyObject]] {
+                                    succeeded?(result as AnyObject)
+                                }
                             }
                         }
                     }
@@ -1029,6 +1073,10 @@ class ModelController {
                                 errorObject["message"] = messageError as AnyObject
                                 errorObject["field"] = field as AnyObject
                                 error?(errorObject as AnyObject)
+                            }else{
+                                if let result = data["result"] as? [[String:AnyObject]] {
+                                    succeeded?(result as AnyObject)
+                                }
                             }
                         }
                     }
@@ -1106,6 +1154,10 @@ class ModelController {
                                 errorObject["message"] = messageError as AnyObject
                                 errorObject["field"] = field as AnyObject
                                 error?(errorObject as AnyObject)
+                            }else{
+                                if let result = data["result"] as? [[String:AnyObject]] {
+                                    succeeded?(result as AnyObject)
+                                }
                             }
                         }
                     }
@@ -1191,6 +1243,10 @@ class ModelController {
                                 errorObject["message"] = messageError as AnyObject
                                 errorObject["field"] = field as AnyObject
                                 error?(errorObject as AnyObject)
+                            }else{
+                                if let result = data["result"] as? [[String:AnyObject]] {
+                                    succeeded?(result as AnyObject)
+                                }
                             }
                         }
                     }
@@ -1275,6 +1331,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -1359,6 +1419,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -1447,6 +1511,10 @@ class ModelController {
                                                 errorObject["field"] = field as AnyObject
                                                 errorObject["pin_status"] = pin_status as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -1537,6 +1605,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -1627,6 +1699,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -1726,6 +1802,10 @@ class ModelController {
                                 errorObject["message"] = messageError as AnyObject
                                 errorObject["field"] = field as AnyObject
                                 error?(errorObject as AnyObject)
+                            }else{
+                                if let result = data["result"] as? [[String:AnyObject]] {
+                                    succeeded?(result as AnyObject)
+                                }
                             }
                         }
                     }
@@ -1816,6 +1896,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -1910,6 +1994,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -2001,6 +2089,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -2092,6 +2184,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -2183,6 +2279,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -2273,6 +2373,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -2363,6 +2467,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -2450,6 +2558,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -2536,6 +2648,10 @@ class ModelController {
                                     errorObject["message"] = messageError as AnyObject
                                     errorObject["field"] = field as AnyObject
                                     error?(errorObject as AnyObject)
+                                }else{
+                                    if let result = data["result"] as? [[String:AnyObject]] {
+                                        succeeded?(result as AnyObject)
+                                    }
                                 }
                             }
                         }
@@ -2622,6 +2738,10 @@ class ModelController {
                                     errorObject["message"] = messageError as AnyObject
                                     errorObject["field"] = field as AnyObject
                                     error?(errorObject as AnyObject)
+                                }else{
+                                    if let result = data["result"] as? [[String:AnyObject]] {
+                                        succeeded?(result as AnyObject)
+                                    }
                                 }
                             }
                         }
@@ -2708,6 +2828,10 @@ class ModelController {
                                     errorObject["message"] = messageError as AnyObject
                                     errorObject["field"] = field as AnyObject
                                     error?(errorObject as AnyObject)
+                                }else{
+                                    if let result = data["result"] as? [[String:AnyObject]] {
+                                        succeeded?(result as AnyObject)
+                                    }
                                 }
                             }
                         }
@@ -2803,6 +2927,10 @@ class ModelController {
                                     errorObject["message"] = messageError as AnyObject
                                     errorObject["field"] = field as AnyObject
                                     error?(errorObject as AnyObject)
+                                }else{
+                                    if let result = data["result"] as? [[String:AnyObject]] {
+                                        succeeded?(result as AnyObject)
+                                    }
                                 }
                             }
                         }
@@ -2891,6 +3019,10 @@ class ModelController {
                                     errorObject["message"] = messageError as AnyObject
                                     errorObject["field"] = field as AnyObject
                                     error?(errorObject as AnyObject)
+                                }else{
+                                    if let result = data["result"] as? [[String:AnyObject]] {
+                                        succeeded?(result as AnyObject)
+                                    }
                                 }
                             }
                         }
@@ -2986,6 +3118,10 @@ class ModelController {
                                     errorObject["message"] = messageError as AnyObject
                                     errorObject["field"] = field as AnyObject
                                     error?(errorObject as AnyObject)
+                                }else{
+                                    if let result = data["result"] as? [[String:AnyObject]] {
+                                        succeeded?(result as AnyObject)
+                                    }
                                 }
                             }
                         }
@@ -3075,6 +3211,10 @@ class ModelController {
                                     errorObject["message"] = messageError as AnyObject
                                     errorObject["field"] = field as AnyObject
                                     error?(errorObject as AnyObject)
+                                }else{
+                                    if let result = data["result"] as? [[String:AnyObject]] {
+                                        succeeded?(result as AnyObject)
+                                    }
                                 }
                             }
                         }
@@ -3162,6 +3302,10 @@ class ModelController {
                                     errorObject["message"] = messageError as AnyObject
                                     errorObject["field"] = field as AnyObject
                                     error?(errorObject as AnyObject)
+                                }else{
+                                    if let result = data["result"] as? [[String:AnyObject]] {
+                                        succeeded?(result as AnyObject)
+                                    }
                                 }
                             }
                         }
@@ -3250,6 +3394,10 @@ class ModelController {
                                     errorObject["message"] = messageError as AnyObject
                                     errorObject["field"] = field as AnyObject
                                     error?(errorObject as AnyObject)
+                                }else{
+                                    if let result = data["result"] as? [[String:AnyObject]] {
+                                        succeeded?(result as AnyObject)
+                                    }
                                 }
                             }
                         }
@@ -3338,6 +3486,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -3429,6 +3581,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -3519,6 +3675,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -3610,6 +3770,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -3701,6 +3865,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -3791,6 +3959,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -3881,6 +4053,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -3971,6 +4147,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -4060,6 +4240,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -4147,6 +4331,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -4236,6 +4424,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -4324,6 +4516,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -4412,6 +4608,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -4500,6 +4700,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -4587,6 +4791,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -4673,6 +4881,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -4761,6 +4973,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -4849,6 +5065,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -4937,6 +5157,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -5025,6 +5249,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -5112,6 +5340,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -5199,6 +5431,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -5285,6 +5521,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -5374,6 +5614,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -5465,6 +5709,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -5557,6 +5805,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }
@@ -5675,6 +5927,10 @@ class ModelController {
                                             errorObject["message"] = messageError as AnyObject
                                             errorObject["field"] = field as AnyObject
                                             error?(errorObject as AnyObject)
+                                        }else{
+                                            if let result = data["result"] as? [[String:AnyObject]] {
+                                                succeeded?(result as AnyObject)
+                                            }
                                         }
                                     }
                                 }
@@ -5795,6 +6051,10 @@ class ModelController {
                                             errorObject["message"] = messageError as AnyObject
                                             errorObject["field"] = field as AnyObject
                                             error?(errorObject as AnyObject)
+                                        }else{
+                                            if let result = data["result"] as? [[String:AnyObject]] {
+                                                succeeded?(result as AnyObject)
+                                            }
                                         }
                                     }
                                 }
@@ -5943,6 +6203,10 @@ class ModelController {
                                             errorObject["message"] = messageError as AnyObject
                                             errorObject["field"] = field as AnyObject
                                             error?(errorObject as AnyObject)
+                                        }else{
+                                            if let result = data["result"] as? [[String:AnyObject]] {
+                                                succeeded?(result as AnyObject)
+                                            }
                                         }
                                     }
                                 }
@@ -6072,6 +6336,10 @@ class ModelController {
                                             errorObject["message"] = messageError as AnyObject
                                             errorObject["field"] = field as AnyObject
                                             error?(errorObject as AnyObject)
+                                        }else{
+                                            if let result = data["result"] as? [[String:AnyObject]] {
+                                                succeeded?(result as AnyObject)
+                                            }
                                         }
                                     }
                                 }
@@ -6170,6 +6438,10 @@ class ModelController {
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
                                                 error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
                                             }
                                         }
                                     }

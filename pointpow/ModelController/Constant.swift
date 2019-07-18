@@ -435,6 +435,12 @@ extension UIView {
         self.layer.borderWidth = borderWidth
         self.clipsToBounds = true;
     }
+    func ovalColorRedProperties(borderWidth:CGFloat = 1.0){
+        self.layer.cornerRadius = self.frame.size.width/2
+        self.layer.borderColor =  Constant.Colors.PRIMARY_COLOR.cgColor
+        self.layer.borderWidth = borderWidth
+        self.clipsToBounds = true;
+    }
     
 }
 

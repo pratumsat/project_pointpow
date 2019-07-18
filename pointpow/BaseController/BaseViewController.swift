@@ -553,7 +553,14 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
-    
+    func showProductByCate(_ animated:Bool, cateId:Int){
+        
+        if let vc:ProductShoppingViewController  = self.storyboard?.instantiateViewController(withIdentifier: "ProductShoppingViewController") as? ProductShoppingViewController {
+            
+            vc.loadDataByCateID = cateId
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
     
     func showProductDetail(_ animated:Bool, product_id:Int){
         

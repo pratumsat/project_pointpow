@@ -64,6 +64,34 @@
                             <constraint firstAttribute="height" constant="1" id="fVM-IJ-s4q"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bFi-Av-tM8">
+                        <rect key="frame" x="0.0" y="0.0" width="243" height="367"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GeL-Az-kmr">
+                                <rect key="frame" x="116.5" y="5" width="121.5" height="121.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sold Out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z4W-9T-bJO">
+                                        <rect key="frame" x="34" y="49" width="53.5" height="23.5"/>
+                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
+                                        <color key="textColor" red="0.78823529410000004" green="0.1647058824" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="GeL-Az-kmr" secondAttribute="height" multiplier="1:1" id="0G3-z4-Jf2"/>
+                                    <constraint firstItem="Z4W-9T-bJO" firstAttribute="centerY" secondItem="GeL-Az-kmr" secondAttribute="centerY" id="8jc-vP-gQZ"/>
+                                    <constraint firstItem="Z4W-9T-bJO" firstAttribute="centerX" secondItem="GeL-Az-kmr" secondAttribute="centerX" id="mC8-hh-JNh"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="GeL-Az-kmr" firstAttribute="width" secondItem="bFi-Av-tM8" secondAttribute="width" multiplier="0.5" id="H48-eu-Ozb"/>
+                            <constraint firstAttribute="trailing" secondItem="GeL-Az-kmr" secondAttribute="trailing" constant="5" id="SJS-Iw-mzg"/>
+                            <constraint firstItem="GeL-Az-kmr" firstAttribute="top" secondItem="bFi-Av-tM8" secondAttribute="top" constant="5" id="n43-07-EIf"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -74,10 +102,13 @@
                 <constraint firstItem="ADu-9n-S6a" firstAttribute="top" secondItem="nWJ-dS-Wxu" secondAttribute="top" id="O6u-TD-ZsE"/>
                 <constraint firstItem="s2J-S8-ygj" firstAttribute="top" secondItem="uyH-fl-jU1" secondAttribute="bottom" constant="-4" id="OJf-vL-L3d"/>
                 <constraint firstItem="pLs-I4-FMJ" firstAttribute="leading" secondItem="s2J-S8-ygj" secondAttribute="trailing" constant="5" id="OhF-EH-QFl"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="bFi-Av-tM8" secondAttribute="bottom" id="P5X-d4-Nw0"/>
                 <constraint firstAttribute="trailing" secondItem="yml-3f-keh" secondAttribute="trailing" constant="5" id="TI4-fk-Lx6"/>
+                <constraint firstItem="bFi-Av-tM8" firstAttribute="top" secondItem="ZTg-uK-7eu" secondAttribute="top" id="Zji-Nk-1dr"/>
                 <constraint firstItem="nWJ-dS-Wxu" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="aNl-Vv-biI"/>
                 <constraint firstAttribute="trailing" secondItem="mV5-G4-bqI" secondAttribute="trailing" id="aXJ-FY-TmR"/>
                 <constraint firstAttribute="trailing" secondItem="nWJ-dS-Wxu" secondAttribute="trailing" id="ad5-f1-RnE"/>
+                <constraint firstItem="bFi-Av-tM8" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="arU-aj-U97"/>
                 <constraint firstItem="uyH-fl-jU1" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="bBv-gC-gRu"/>
                 <constraint firstItem="nWJ-dS-Wxu" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="eSQ-VT-SEq"/>
                 <constraint firstItem="yml-3f-keh" firstAttribute="top" secondItem="mV5-G4-bqI" secondAttribute="bottom" constant="3" id="jCx-C7-Pch"/>
@@ -88,6 +119,7 @@
                 <constraint firstItem="ADu-9n-S6a" firstAttribute="width" secondItem="ADu-9n-S6a" secondAttribute="height" multiplier="1:1" id="tzY-hD-EyB"/>
                 <constraint firstItem="ADu-9n-S6a" firstAttribute="leading" secondItem="nWJ-dS-Wxu" secondAttribute="leading" id="uuY-vZ-SZ5"/>
                 <constraint firstItem="ADu-9n-S6a" firstAttribute="width" secondItem="nWJ-dS-Wxu" secondAttribute="width" multiplier="0.3" id="wRR-Wm-RrJ"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="bFi-Av-tM8" secondAttribute="trailing" id="xtz-3X-lA7"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="302" height="378"/>
@@ -96,7 +128,9 @@
                 <outlet property="brandImageView" destination="ADu-9n-S6a" id="yC6-9g-69h"/>
                 <outlet property="desLabel" destination="yml-3f-keh" id="AnU-v9-9fw"/>
                 <outlet property="discountLabel" destination="uyH-fl-jU1" id="kPk-GS-Wit"/>
+                <outlet property="mSoldOutView" destination="bFi-Av-tM8" id="Xrl-bb-JQu"/>
                 <outlet property="productImageView" destination="nWJ-dS-Wxu" id="bsi-g9-lHH"/>
+                <outlet property="soldOutView" destination="GeL-Az-kmr" id="Owk-hK-UlO"/>
             </connections>
             <point key="canvasLocation" x="-26.399999999999999" y="195.6521739130435"/>
         </collectionViewCell>

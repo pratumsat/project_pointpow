@@ -118,7 +118,6 @@ class HomeShoppingViewController: ShoppingBaseViewController {
             
             if let mResult = result as? [[String:AnyObject]] {
                 self.cateItems = mResult
-                
             }
             avaliable?()
             
@@ -240,8 +239,9 @@ class HomeShoppingViewController: ShoppingBaseViewController {
     
     
     override func categoryTapped(sender: UITapGestureRecognizer) {
-        //let tag = sender.view?.tag
+        let tag = sender.view?.tag ?? 0
         //print(tag)
+        self.showProductByCate(true, cateId: tag)
     }
     func setUp(){
         //start top
@@ -261,6 +261,7 @@ class HomeShoppingViewController: ShoppingBaseViewController {
         self.addRefreshViewController(self.productCollectionView)
         
         
+        self.registerNib(self.productCollectionView, "NotFoundItemCell")
         self.registerNib(self.productCollectionView, "PageViewFooterCollectionViewCell")
         self.registerNib(self.productCollectionView, "Recommend2Cell")
         self.registerNib(self.productCollectionView, "PageViewCollectionViewCell")
@@ -317,7 +318,11 @@ extension HomeShoppingViewController {
             return 1
             
         case 4:
-            return self.cateItems?.count ?? 0
+            guard let count = self.cateItems?.count, count > 0 else {
+                return 1
+            }
+            return count
+           
             
         case 5:
             return 1
@@ -352,7 +357,11 @@ extension HomeShoppingViewController {
                 itemCell.recomendItems = self.specialDeal
                 itemCell.itemClickCallback = { (product) in
                     let id = product["id"] as? NSNumber ?? 0
-                    self.showProductDetail(true, product_id: id.intValue)
+                    let variant_status = product["variant_status"] as? String ?? ""
+                    
+                    if variant_status.lowercased() != "complete" {
+                        self.showProductDetail(true, product_id: id.intValue)
+                    }
                 }
                 
                 cell = itemCell
@@ -363,7 +372,11 @@ extension HomeShoppingViewController {
                 itemCell.recomendItems = self.hotRedemtion
                 itemCell.itemClickCallback = { (product) in
                     let id = product["id"] as? NSNumber ?? 0
-                    self.showProductDetail(true, product_id: id.intValue)
+                    let variant_status = product["variant_status"] as? String ?? ""
+                    
+                    if variant_status.lowercased() != "complete" {
+                        self.showProductDetail(true, product_id: id.intValue)
+                    }
                 }
                 cell = itemCell
             }
@@ -378,67 +391,86 @@ extension HomeShoppingViewController {
             }
             break
         case 4:
-            if let productCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingProductCell", for: indexPath) as? ShoppingProductCell {
-                cell = productCell
-                
-                
-                if let item = self.cateItems?[indexPath.row] {
-                    let title = item["title"] as? String ?? ""
-                    let brand = item["brand"] as? [String:AnyObject] ?? [:]
-                    let special_deal = item["special_deal"] as? [[String:AnyObject]] ?? [[:]]
+            let count = self.cateItems?.count ?? 0
+            
+            if  count <= 0 {
+                if let noItemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "NotFoundItemCell", for:
+                    indexPath) as? NotFoundItemCell {
+                    cell = noItemCell
+                    noItemCell.nameLabel.text = NSLocalizedString("string-string-not-found-product", comment: "")
+                }
+            }else{
+                if let productCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingProductCell", for: indexPath) as? ShoppingProductCell {
+                    cell = productCell
                     
                     
-                    if special_deal.count == 0{
-                        //check discount price
-                        let regular_price = item["regular_price"] as? NSNumber ?? 0
-                        let discount_price = item["discount_price"]  as? NSNumber ?? 0
+                    if let item = self.cateItems?[indexPath.row] {
+                        let title = item["title"] as? String ?? ""
+                        let brand = item["brand"] as? [String:AnyObject] ?? [:]
+                        let special_deal = item["special_deal"] as? [[String:AnyObject]] ?? [[:]]
+                        let variant_status = item["variant_status"] as? String ?? ""
                         
+                        if variant_status.lowercased() == "complete" {
+                            productCell.soldOut = true
+                        }else{
+                            productCell.soldOut = false
+                        }
                         
-                        if discount_price.intValue > 0 {
+                        if special_deal.count == 0{
+                            //check discount price
+                            let regular_price = item["regular_price"] as? NSNumber ?? 0
+                            let discount_price = item["discount_price"]  as? NSNumber ?? 0
+                            
+                            
+                            if discount_price.intValue > 0 {
+                                let numberFormatter = NumberFormatter()
+                                numberFormatter.numberStyle = .decimal
+                                
+                                let text = numberFormatter.string(from: regular_price) ?? "0"
+                                let trail = NSLocalizedString("string-symbol-point-baht", comment: "")
+                                
+                                productCell.discountLabel.isHidden = false
+                                productCell.discountLabel?.stuckCharacters( "\(text) \(trail)")
+                                productCell.amountLabel.text = numberFormatter.string(from: discount_price)
+                            }else{
+                                let numberFormatter = NumberFormatter()
+                                numberFormatter.numberStyle = .decimal
+                                
+                                productCell.discountLabel.isHidden = true
+                                productCell.amountLabel.text = numberFormatter.string(from: regular_price)
+                            }
+                            
+                            
+                        }else{
+                            //show special deal
+                            let deal_price = special_deal.first?["deal_price"] as? NSNumber ?? 0
+                            let price = special_deal.first?["price"]  as? NSNumber ?? 0
+                            
                             let numberFormatter = NumberFormatter()
                             numberFormatter.numberStyle = .decimal
                             
-                            let text = numberFormatter.string(from: regular_price) ?? "0"
+                            let text = numberFormatter.string(from: price) ?? "0"
                             let trail = NSLocalizedString("string-symbol-point-baht", comment: "")
                             
                             productCell.discountLabel.isHidden = false
                             productCell.discountLabel?.stuckCharacters( "\(text) \(trail)")
-                            productCell.amountLabel.text = numberFormatter.string(from: discount_price)
-                        }else{
-                            let numberFormatter = NumberFormatter()
-                            numberFormatter.numberStyle = .decimal
-                            
-                            productCell.discountLabel.isHidden = true
-                            productCell.amountLabel.text = numberFormatter.string(from: regular_price)
+                            productCell.amountLabel.text = numberFormatter.string(from: deal_price)
                         }
                         
+                        productCell.desLabel.text = title
                         
-                    }else{
-                        //show special deal
-                        let deal_price = special_deal.first?["deal_price"] as? NSNumber ?? 0
-                        let price = special_deal.first?["price"]  as? NSNumber ?? 0
-                        
-                        let numberFormatter = NumberFormatter()
-                        numberFormatter.numberStyle = .decimal
-                        
-                        let text = numberFormatter.string(from: price) ?? "0"
-                        let trail = NSLocalizedString("string-symbol-point-baht", comment: "")
-                        
-                        productCell.discountLabel.isHidden = false
-                        productCell.discountLabel?.stuckCharacters( "\(text) \(trail)")
-                        productCell.amountLabel.text = numberFormatter.string(from: deal_price)
-                    }
-                    
-                    productCell.desLabel.text = title
-                    
-                    if let url = URL(string: getFullPathImageView(brand)) {
-                        productCell.brandImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
-                    }
-                    if let url = URL(string: getFullPathImageView(item)) {
-                        productCell.productImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
+                        if let url = URL(string: getFullPathImageView(brand)) {
+                            productCell.brandImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
+                        }
+                        if let url = URL(string: getFullPathImageView(item)) {
+                            productCell.productImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
+                        }
                     }
                 }
             }
+            
+            
+            
             break
         case 5:
             if let moreCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PageViewFooterCollectionViewCell", for: indexPath) as? PageViewFooterCollectionViewCell {
@@ -463,9 +495,18 @@ extension HomeShoppingViewController {
         if collectionView != productCollectionView {
             super.collectionView(collectionView, didSelectItemAt: indexPath)
         }
+        
+        
+        guard let count = self.cateItems?.count, count > 0 else {
+            return
+        }
         if let product = self.cateItems?[indexPath.row] {
             let id = product["id"] as? NSNumber ?? 0
-            self.showProductDetail(true, product_id: id.intValue)
+            let variant_status = product["variant_status"] as? String ?? ""
+            
+            if variant_status.lowercased() != "complete" {
+                self.showProductDetail(true, product_id: id.intValue)
+            }
         }
         
     }
@@ -493,8 +534,15 @@ extension HomeShoppingViewController {
             let height = CGFloat(50) //90.0 + self.sizeOfViewCateInit
             return CGSize(width: width, height: height)
         case 4:
+            
+            guard let count = self.cateItems?.count, count > 0 else {
+                let height = CGFloat(50.0)
+                return CGSize(width: width, height: height)
+            }
             let height = (width/2 - 15) + 110
             return CGSize(width: width/2 - 15, height: height)
+            
+            
         case 5:
             let width = collectionView.frame.width - 40
             let height = CGFloat(40)

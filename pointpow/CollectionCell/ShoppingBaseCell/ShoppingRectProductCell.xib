@@ -70,12 +70,44 @@
                             <constraint firstAttribute="width" secondItem="0Ih-TQ-vLE" secondAttribute="height" multiplier="1:1" id="5fH-QT-lcn"/>
                         </constraints>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BUH-oS-PQj">
+                        <rect key="frame" x="0.0" y="0.0" width="328" height="172"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fow-Px-4nt">
+                                <rect key="frame" x="104" y="26" width="120" height="120"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sold Out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHx-IG-Rnq">
+                                        <rect key="frame" x="21.5" y="43" width="77" height="34"/>
+                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="26"/>
+                                        <color key="textColor" red="0.78823529410000004" green="0.1647058824" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="jHx-IG-Rnq" firstAttribute="centerX" secondItem="Fow-Px-4nt" secondAttribute="centerX" id="Bql-sw-3QQ"/>
+                                    <constraint firstAttribute="width" secondItem="Fow-Px-4nt" secondAttribute="height" multiplier="1:1" id="VH0-nS-7J0"/>
+                                    <constraint firstItem="jHx-IG-Rnq" firstAttribute="centerY" secondItem="Fow-Px-4nt" secondAttribute="centerY" id="tzy-ye-MEX"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Fow-Px-4nt" firstAttribute="height" secondItem="BUH-oS-PQj" secondAttribute="height" multiplier="0.7" id="99c-8d-0tO"/>
+                            <constraint firstItem="Fow-Px-4nt" firstAttribute="centerY" secondItem="BUH-oS-PQj" secondAttribute="centerY" id="XsJ-GC-aTS"/>
+                            <constraint firstItem="Fow-Px-4nt" firstAttribute="centerX" secondItem="BUH-oS-PQj" secondAttribute="centerX" id="peU-NG-2sA"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="c8m-fq-wkq"/>
+                    </view>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="BUH-oS-PQj" firstAttribute="leading" secondItem="lad-Ma-Ohn" secondAttribute="leading" id="3m9-qE-UiQ"/>
                 <constraint firstAttribute="bottom" secondItem="I83-LM-Wch" secondAttribute="bottom" constant="10" id="CcQ-wv-fPp"/>
                 <constraint firstItem="SSt-dY-Epv" firstAttribute="top" secondItem="abn-zc-ojO" secondAttribute="bottom" id="D1e-XY-Vq3"/>
+                <constraint firstItem="BUH-oS-PQj" firstAttribute="top" secondItem="lad-Ma-Ohn" secondAttribute="top" id="Dzt-3y-OGa"/>
+                <constraint firstAttribute="bottom" secondItem="BUH-oS-PQj" secondAttribute="bottom" id="GYd-6d-qGx"/>
                 <constraint firstItem="1hB-Bi-162" firstAttribute="leading" secondItem="lad-Ma-Ohn" secondAttribute="leading" id="Jwa-bf-Th5"/>
                 <constraint firstItem="I83-LM-Wch" firstAttribute="top" secondItem="SSt-dY-Epv" secondAttribute="bottom" constant="-5" id="OMG-KH-m4h"/>
                 <constraint firstItem="abn-zc-ojO" firstAttribute="trailing" secondItem="l7a-Zz-UyS" secondAttribute="leading" id="OwQ-I8-6zx"/>
@@ -86,6 +118,7 @@
                 <constraint firstItem="l7a-Zz-UyS" firstAttribute="height" secondItem="lad-Ma-Ohn" secondAttribute="height" multiplier="1.2" id="ai9-7U-z3N"/>
                 <constraint firstItem="I83-LM-Wch" firstAttribute="leading" secondItem="lad-Ma-Ohn" secondAttribute="leading" constant="5" id="bwa-5c-mua"/>
                 <constraint firstItem="Cii-mj-rl1" firstAttribute="leading" secondItem="I83-LM-Wch" secondAttribute="trailing" constant="5" id="h2t-af-amS"/>
+                <constraint firstAttribute="trailing" secondItem="BUH-oS-PQj" secondAttribute="trailing" id="h8a-P8-9O2"/>
                 <constraint firstItem="l7a-Zz-UyS" firstAttribute="top" secondItem="lad-Ma-Ohn" secondAttribute="top" constant="10" id="jML-1M-zmL"/>
                 <constraint firstItem="0Ih-TQ-vLE" firstAttribute="bottom" secondItem="I83-LM-Wch" secondAttribute="bottom" id="kZz-iX-ods"/>
                 <constraint firstItem="Cii-mj-rl1" firstAttribute="centerY" secondItem="I83-LM-Wch" secondAttribute="centerY" constant="1" id="lWo-ri-hmt"/>
@@ -100,7 +133,9 @@
                 <outlet property="brandImageView" destination="1hB-Bi-162" id="OIG-s3-0OT"/>
                 <outlet property="desLabel" destination="abn-zc-ojO" id="wNy-IW-4ap"/>
                 <outlet property="discountLabel" destination="SSt-dY-Epv" id="mD0-ck-J8u"/>
+                <outlet property="mSoldOutView" destination="BUH-oS-PQj" id="7B2-tD-WLe"/>
                 <outlet property="productImageView" destination="0Ih-TQ-vLE" id="ydG-y4-ZGm"/>
+                <outlet property="soldOutView" destination="Fow-Px-4nt" id="6kA-k2-e6B"/>
             </connections>
             <point key="canvasLocation" x="-91.200000000000003" y="4.497751124437781"/>
         </collectionViewCell>

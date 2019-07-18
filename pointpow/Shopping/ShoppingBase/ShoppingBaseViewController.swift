@@ -227,7 +227,7 @@ class ShoppingBaseViewController: BaseViewController ,UICollectionViewDelegate ,
  
     }
     
-    private  func getSubCateByCate(_ cateId:Int ,_ avaliable:(()->Void)?  = nil){
+    func getSubCateByCate(_ cateId:Int ,_ avaliable:(()->Void)?  = nil){
         var isLoading:Bool = true
         if self.dataItemSubCates != nil {
             isLoading = true
@@ -472,7 +472,7 @@ extension ShoppingBaseViewController {
         return mainCategoryView
     }
 
-    private func addSubCate(){
+    func addSubCate(){
         //add show
         self.selectSubcate = nil
         self.subCategoryCollectionView?.reloadData()

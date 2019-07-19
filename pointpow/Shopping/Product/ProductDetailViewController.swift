@@ -8,9 +8,13 @@
 
 import UIKit
 import WebKit
+import  Alamofire
 
 class ProductDetailViewController: BaseViewController  , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIWebViewDelegate {
-
+    
+    @IBOutlet weak var addToCartView: UIView!
+    @IBOutlet weak var addToPayView: UIView!
+    
     @IBOutlet weak var moreView: UIView!
     @IBOutlet weak var shareView: UIView!
     @IBOutlet weak var moreDetailImageView: UIImageView!
@@ -306,8 +310,80 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
         self.shareView.alpha = 0.8
         self.pageView.alpha = 0.8
         
+        
+        
+        let share = UITapGestureRecognizer(target: self, action: #selector(shareTapped))
+        self.shareView.isUserInteractionEnabled = true
+        self.shareView.addGestureRecognizer(share)
+        
+        let addCart = UITapGestureRecognizer(target: self, action: #selector(addToCartTapped))
+        self.addToCartView.isUserInteractionEnabled = true
+        self.addToCartView.addGestureRecognizer(addCart)
+        
+        let addPay = UITapGestureRecognizer(target: self, action: #selector(addToPayTapped))
+        self.addToPayView.isUserInteractionEnabled = true
+        self.addToPayView.addGestureRecognizer(addPay)
     }
     
+    @objc func addToCartTapped(){
+        self.addTocart(){ (cart) in
+            //add success
+            print(cart)
+            self.showMessagePrompt2("Add to cart success")
+        }
+    }
+    
+    @objc func addToPayTapped(){
+        self.addTocart(){ (cart) in
+            //add success
+            print(cart)
+        }
+    }
+    
+    
+    private func addTocart(_ addsuccess:((_ cart:[String:AnyObject])->Void)? = nil){
+        if let item = self.productDetail?.first {
+            let product_id = item["id"] as? NSNumber ?? 0
+            let amount = self.amountTextField.text!
+            
+            let parameter:Parameters = ["app_id" : Constant.PointPowAPI.APP_ID,
+                                        "secret" : Constant.PointPowAPI.SECRET_SHOPPING,
+                                        "session_id" : DataController.sharedInstance.getToken(),
+                                        "product_id" : product_id,
+                                        "amount" : amount,
+                                        "member_id" : DataController.sharedInstance.getMemberId()]
+            
+            modelCtrl.addToCart(params: parameter , true , succeeded: { (result) in
+                if let mResult = result as? [String:AnyObject] {
+                    let cart = mResult["cart"] as? [String:AnyObject] ?? [:]
+
+                    print("addToCart success" )
+                    addsuccess?(cart)
+                }
+                
+            }, error: { (error) in
+                if let mError = error as? [String:AnyObject]{
+                    let message = mError["message"] as? String ?? ""
+                    print(message)
+                    self.showMessagePrompt(message)
+                }
+                
+                print(error)
+            }) { (messageError) in
+                print("messageError")
+                self.handlerMessageError(messageError)
+                
+            }
+        }
+    }
+    
+    @objc func shareTapped(){
+        let url = URL(string: "http://103.27.201.106/dev-pointpow/privilege/product/lifestyle/paper-craft-3d-p1")
+        let shareItems = [ url ]
+        let activityViewController = UIActivityViewController(activityItems: shareItems as [Any], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        self.present(activityViewController, animated: true, completion: nil)
+    }
     
     private  func getProductDetail(_ avaliable:(()->Void)?  = nil){
         

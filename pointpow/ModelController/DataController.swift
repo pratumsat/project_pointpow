@@ -100,6 +100,13 @@ class DataController {
         UserDefaults.standard.synchronize()
     }
     
+    func setMemberId(_ id:Int){
+        data["member_id"] = id as AnyObject
+    }
+    func getMemberId() -> Int {
+        return data["member_id"] as? Int ?? 0
+    }
+    
     func setToken(_ token:String){
         UserDefaults.standard.set(token, forKey: Constant.CacheNotification.USER_TOKEN_CACHE)
         UserDefaults.standard.synchronize()

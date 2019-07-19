@@ -18,45 +18,56 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CartAddressShippingCell" id="tZ7-tU-IWy" customClass="CartAddressShippingCell" customModule="pointpow" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="330" height="140"/>
+            <rect key="frame" x="0.0" y="0.0" width="389" height="183"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="330" height="140"/>
+                <rect key="frame" x="0.0" y="0.0" width="389" height="183"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-fav-edit" translatesAutoresizingMaskIntoConstraints="NO" id="5E3-Bx-faC">
-                        <rect key="frame" x="295" y="12" width="25" height="25"/>
+                        <rect key="frame" x="359" y="12" width="20" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="25" id="aVz-Sh-UcI"/>
+                            <constraint firstAttribute="width" constant="20" id="aVz-Sh-UcI"/>
                             <constraint firstAttribute="width" secondItem="5E3-Bx-faC" secondAttribute="height" multiplier="1:1" id="lzJ-gD-Fm7"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ที่อยู่ในการจัดส่ง" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbo-Pt-GyS">
-                        <rect key="frame" x="10" y="10" width="275" height="29"/>
-                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="22"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="thanawat prathumst 08312132388 ซอย 01 กาญจนาภิเษก 53 ตำบล บางพลีใหญ่ อำเภอบางพลี สมุทรปราการ 10540" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="box-Rv-DTX">
-                        <rect key="frame" x="10" y="49" width="310" height="70.5"/>
+                        <rect key="frame" x="10" y="10" width="339" height="23.5"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3eS-Ao-Wsh">
+                        <rect key="frame" x="10" y="43.5" width="369" height="129.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="thanawat prathumst 08312132388 ซอย 01 กาญจนาภิเษก 53 ตำบล บางพลีใหญ่ อำเภอบางพลี สมุทรปราการ 10540" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="box-Rv-DTX">
+                                <rect key="frame" x="10" y="10" width="349" height="47"/>
+                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="box-Rv-DTX" firstAttribute="leading" secondItem="3eS-Ao-Wsh" secondAttribute="leading" constant="10" id="2vc-rj-LNQ"/>
+                            <constraint firstAttribute="trailing" secondItem="box-Rv-DTX" secondAttribute="trailing" constant="10" id="Mlo-41-uDv"/>
+                            <constraint firstItem="box-Rv-DTX" firstAttribute="top" secondItem="3eS-Ao-Wsh" secondAttribute="top" constant="10" id="fsR-sH-LjL"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="3eS-Ao-Wsh" secondAttribute="bottom" constant="10" id="25x-Eh-yij"/>
+                <constraint firstItem="3eS-Ao-Wsh" firstAttribute="trailing" secondItem="5E3-Bx-faC" secondAttribute="trailing" id="DEV-5U-Lsa"/>
                 <constraint firstAttribute="trailing" secondItem="5E3-Bx-faC" secondAttribute="trailing" constant="10" id="E2E-QN-DmI"/>
                 <constraint firstItem="5E3-Bx-faC" firstAttribute="centerY" secondItem="nbo-Pt-GyS" secondAttribute="centerY" id="I9z-5z-X6D"/>
+                <constraint firstItem="3eS-Ao-Wsh" firstAttribute="top" secondItem="nbo-Pt-GyS" secondAttribute="bottom" constant="10" id="Ki0-iF-eAk"/>
+                <constraint firstItem="3eS-Ao-Wsh" firstAttribute="leading" secondItem="nbo-Pt-GyS" secondAttribute="leading" id="Qos-tH-bnk"/>
                 <constraint firstItem="nbo-Pt-GyS" firstAttribute="top" secondItem="tZ7-tU-IWy" secondAttribute="top" constant="10" id="YN4-L4-xzx"/>
                 <constraint firstItem="nbo-Pt-GyS" firstAttribute="leading" secondItem="tZ7-tU-IWy" secondAttribute="leading" constant="10" id="bQJ-Bn-mUI"/>
-                <constraint firstItem="box-Rv-DTX" firstAttribute="leading" secondItem="nbo-Pt-GyS" secondAttribute="leading" id="h95-Mh-LIm"/>
-                <constraint firstItem="box-Rv-DTX" firstAttribute="top" secondItem="nbo-Pt-GyS" secondAttribute="bottom" constant="10" id="hAz-Gs-nZt"/>
-                <constraint firstItem="box-Rv-DTX" firstAttribute="trailing" secondItem="5E3-Bx-faC" secondAttribute="trailing" id="y5W-Gb-ggR"/>
                 <constraint firstItem="5E3-Bx-faC" firstAttribute="leading" secondItem="nbo-Pt-GyS" secondAttribute="trailing" constant="10" id="zub-rU-ojL"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="YB5-tl-l9h"/>
-            <size key="customSize" width="330" height="133"/>
-            <point key="canvasLocation" x="60.799999999999997" y="4.0479760119940034"/>
+            <size key="customSize" width="389" height="176"/>
+            <point key="canvasLocation" x="13.6" y="22.938530734632685"/>
         </collectionViewCell>
     </objects>
     <resources>

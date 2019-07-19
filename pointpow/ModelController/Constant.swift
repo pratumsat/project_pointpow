@@ -888,7 +888,8 @@ struct Constant {
         static let districts = "\(HOST)\(POINTPOW_VERSION1)districts"
         static let subdistricts = "\(HOST)\(POINTPOW_VERSION1)subdistricts"
        
-        static let  SECRET_SHOPPING = "LA9EtBoX2w2Z1pB"
+        
+        static let SECRET_SHOPPING = "LA9EtBoX2w2Z1pB"
         static let APP_ID = "15"
         static let shoppingBanner = "\(HOST)privilege/banners?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
         static let specailDeal = "\(HOST)privilege/special-deals?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
@@ -905,6 +906,9 @@ struct Constant {
         
         static let productDetailByID = "\(HOST)privilege/products/detail/{{productId}}?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
         static let productImageByID = "\(HOST)privilege/products/image/{{productId}}?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
+
+        static let addCarts = "\(HOST)privilege/carts/add"
+        static let getCarts = "\(HOST)privilege/carts?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
 
     }
     
@@ -952,6 +956,7 @@ struct Constant {
         case left, right, top, bottom
     }
     struct DefaultConstansts {
+        static let UPDATE_BADGE = "UPDATE_BADGE"
         static let TRANSECTION_SUCCESS = "TRANSECTION_SUCCESS"
         static let TRANSECTION_FAIL = "TRANSECTION_FAIL"
         static let TRANSECTION_CANCEL = "TRANSECTION_CANCEL"
@@ -1040,6 +1045,7 @@ struct Constant {
             static let CATE_SHOPPING = CGFloat(15.0)
             static let CONTENT_HTML = CGFloat(18.0)
             static let SEARCH_SHOPPING = CGFloat(20.0)
+            static let CART_BADGE = CGFloat(18.0)
         }
        
         //Noto Sans Thai

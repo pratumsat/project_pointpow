@@ -9,10 +9,13 @@
 import UIKit
 
 class ItenCartProductSelectAllCell: UICollectionViewCell {
-
+    @IBOutlet weak var checkBox: CheckBox!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        
+        
     }
 
 }

@@ -238,6 +238,10 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         }
         let full_address = memberAddress.first?["full_address"] as? String ?? ""
         let mobile = memberAddress.first?["mobile"] as? String ?? ""
+        
+        if full_address.isEmpty {
+            return ""
+        }
         return "\(full_address)\n\(mobile)"
     }
     
@@ -531,7 +535,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             if let addressCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CartAddressShippingCell", for: indexPath) as? CartAddressShippingCell {
                 cell = addressCell
                 
-                if !self.fullAddressShopping.isEmpty {
+                if !self.fullAddressShopping.trimmingCharacters(in: .whitespaces).isEmpty {
                     addressCell.addressLabel.text = self.fullAddressShopping
                     
                     addressCell.addView.isHidden = true
@@ -556,7 +560,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             if let taxInvoiceCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CartAdressTaxInvoiceCell", for: indexPath) as? CartAdressTaxInvoiceCell {
                 cell = taxInvoiceCell
                 
-                 if !self.fullAddressTaxInvoice.isEmpty {
+                 if !self.fullAddressTaxInvoice.trimmingCharacters(in: .whitespaces).isEmpty {
                     taxInvoiceCell.addressLabel.text = self.fullAddressTaxInvoice
                     
                     taxInvoiceCell.addView.isHidden = true
@@ -701,7 +705,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             
             let width = collectionView.frame.width
             var heightAddress = CGFloat(0)
-            if !self.fullAddressShopping.isEmpty {
+            if !self.fullAddressShopping.trimmingCharacters(in: .whitespaces).isEmpty {
                 heightAddress += heightForView(text: self.fullAddressShopping, font: UIFont(name:   Constant.Fonts.THAI_SANS_BOLD, size: 18)!, width: width - 50)
                 heightAddress += CGFloat(100)
             }else{
@@ -715,7 +719,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
            
             let width = collectionView.frame.width
             var heightAddress = CGFloat(0)
-            if !self.fullAddressTaxInvoice.isEmpty {
+            if !self.fullAddressTaxInvoice.trimmingCharacters(in: .whitespaces).isEmpty {
                 heightAddress += heightForView(text: self.fullAddressTaxInvoice, font: UIFont(name:   Constant.Fonts.THAI_SANS_BOLD, size: 18)!, width: width - 50)
                 heightAddress += CGFloat(100)
             }else{

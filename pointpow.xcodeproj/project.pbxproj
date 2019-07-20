@@ -158,6 +158,9 @@
 		C12732482253905100A9EE74 /* HeadWinnerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12732462253905100A9EE74 /* HeadWinnerCollectionViewCell.xib */; };
 		C127324B2254584400A9EE74 /* WinnerHistoryLinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12732492254584400A9EE74 /* WinnerHistoryLinkCell.swift */; };
 		C127324C2254584400A9EE74 /* WinnerHistoryLinkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C127324A2254584400A9EE74 /* WinnerHistoryLinkCell.xib */; };
+		C12A88C922E3291800D40155 /* ShoppingAddTaxInvoiceAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12A88C822E3291800D40155 /* ShoppingAddTaxInvoiceAddressViewController.swift */; };
+		C12A88CC22E32BA500D40155 /* TaxInvoiceSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12A88CA22E32BA500D40155 /* TaxInvoiceSelectCell.swift */; };
+		C12A88CD22E32BA500D40155 /* TaxInvoiceSelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12A88CB22E32BA500D40155 /* TaxInvoiceSelectCell.xib */; };
 		C12CCC612281590C00F26DCC /* PersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12CCC602281590C00F26DCC /* PersonalDataViewController.swift */; };
 		C12CCC652282B43A00F26DCC /* PromoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12CCC632282B43A00F26DCC /* PromoCell.swift */; };
 		C12CCC662282B43A00F26DCC /* PromoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12CCC642282B43A00F26DCC /* PromoCell.xib */; };
@@ -511,6 +514,9 @@
 		C12732462253905100A9EE74 /* HeadWinnerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeadWinnerCollectionViewCell.xib; sourceTree = "<group>"; };
 		C12732492254584400A9EE74 /* WinnerHistoryLinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnerHistoryLinkCell.swift; sourceTree = "<group>"; };
 		C127324A2254584400A9EE74 /* WinnerHistoryLinkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WinnerHistoryLinkCell.xib; sourceTree = "<group>"; };
+		C12A88C822E3291800D40155 /* ShoppingAddTaxInvoiceAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingAddTaxInvoiceAddressViewController.swift; sourceTree = "<group>"; };
+		C12A88CA22E32BA500D40155 /* TaxInvoiceSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxInvoiceSelectCell.swift; sourceTree = "<group>"; };
+		C12A88CB22E32BA500D40155 /* TaxInvoiceSelectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaxInvoiceSelectCell.xib; sourceTree = "<group>"; };
 		C12CCC602281590C00F26DCC /* PersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDataViewController.swift; sourceTree = "<group>"; };
 		C12CCC632282B43A00F26DCC /* PromoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoCell.swift; sourceTree = "<group>"; };
 		C12CCC642282B43A00F26DCC /* PromoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromoCell.xib; sourceTree = "<group>"; };
@@ -1145,6 +1151,7 @@
 				C1214E1422D2143E00DA5C42 /* ShoppingTaxInvoiceAddressViewController.swift */,
 				C1214E1622D2178100DA5C42 /* ShoppingAddShippingAddressViewController.swift */,
 				C1214E1822D218F000DA5C42 /* ShoppingEditShippingAddressViewController.swift */,
+				C12A88C822E3291800D40155 /* ShoppingAddTaxInvoiceAddressViewController.swift */,
 			);
 			path = Address;
 			sourceTree = "<group>";
@@ -1357,6 +1364,8 @@
 				C19BEF1022CD9A4500855FBF /* CartAdressTaxInvoiceCell.xib */,
 				C19BEF1322CDA07800855FBF /* CartNextButtonCell.swift */,
 				C19BEF1422CDA07800855FBF /* CartNextButtonCell.xib */,
+				C12A88CA22E32BA500D40155 /* TaxInvoiceSelectCell.swift */,
+				C12A88CB22E32BA500D40155 /* TaxInvoiceSelectCell.xib */,
 			);
 			path = CartCell;
 			sourceTree = "<group>";
@@ -1731,6 +1740,7 @@
 				C11DD3542268536A0085EFBE /* Main.storyboard in Resources */,
 				C1F760FE22169B6D000A2CA9 /* ConfirmButtonCell.xib in Resources */,
 				C1B32E3F22521881006AD7F2 /* PrivilegeCell.xib in Resources */,
+				C12A88CD22E32BA500D40155 /* TaxInvoiceSelectCell.xib in Resources */,
 				C12CCC662282B43A00F26DCC /* PromoCell.xib in Resources */,
 				C1817D9E219C07DF009507DB /* ItemBankCell.xib in Resources */,
 				C1247C582219B2E7005D6F7A /* NextButtonCell.xib in Resources */,
@@ -1958,6 +1968,7 @@
 				C181F063220C00B8003F7C70 /* SaveButtonProfileCell.swift in Sources */,
 				C1F0C07E22C4942500A49BAA /* SpecialHeaderCell.swift in Sources */,
 				C1817D8E219BD32B009507DB /* FriendTransferViewController.swift in Sources */,
+				C12A88CC22E32BA500D40155 /* TaxInvoiceSelectCell.swift in Sources */,
 				C1B32E462252674D006AD7F2 /* CountDownCell.swift in Sources */,
 				C1F760F92216998C000A2CA9 /* SavingSummaryCell.swift in Sources */,
 				C1F760F5221692FD000A2CA9 /* SavingConfirmCell.swift in Sources */,
@@ -2157,6 +2168,7 @@
 				C142741D21A68154003CC246 /* ResetPasswordViewController.swift in Sources */,
 				C10D94B42209717E0083FA47 /* NavGoldPage.swift in Sources */,
 				C1DA27C3224200C2000C0715 /* WithDrawResultThaiPostCell.swift in Sources */,
+				C12A88C922E3291800D40155 /* ShoppingAddTaxInvoiceAddressViewController.swift in Sources */,
 				C11BFCB3221C0CB700F066DE /* PopupShippingAddressViewController.swift in Sources */,
 				C1249EBD22378DBB00F56FA0 /* PopupEditAddressViewController.swift in Sources */,
 				C1DA27C722421C3B000C0715 /* WithDrawResultThaiPostSuccessCell.swift in Sources */,

@@ -191,8 +191,17 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
                 self.mobile = mobile
                 
                 let member_addresses = data["member_addresses"] as? [[String:AnyObject]] ?? [[:]]
+                self.myAddress = []
+                if member_addresses.count > 0 {
+                    for address in member_addresses {
+                        let type = address["type"] as? String ?? ""
+                        if type.lowercased() == "gold" {
+                            self.myAddress?.append(address)
+                        }
+                    }
+                }
+               
                 
-                self.myAddress = member_addresses
             }
            
             avaliable?()

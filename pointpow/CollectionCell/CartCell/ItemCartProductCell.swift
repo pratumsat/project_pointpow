@@ -13,7 +13,7 @@ class ItemCartProductCell: UICollectionViewCell ,UITextFieldDelegate{
     @IBOutlet weak var brandImageView: UIImageView!
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var productNameLabel: UILabel!
-    @IBOutlet weak var checkBox: CheckBox!
+    @IBOutlet weak var checkBox: CheckBoxRed!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var moreImageView: UIImageView!
@@ -25,6 +25,9 @@ class ItemCartProductCell: UICollectionViewCell ,UITextFieldDelegate{
     var amount:Int = 1 {
         didSet{
             self.amountTextField.text = "\(Int(amount))"
+            if amount > 1 {
+                enableImageView(lessImageView)
+            }
         }
     }
     

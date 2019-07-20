@@ -317,15 +317,17 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }
     }
     
-    func showShoppingAddAddressPage(_ animated:Bool){
-        if let vc:ShoppingAddShippingAddressViewController = self.storyboard?.instantiateViewController(withIdentifier: "ShoppingAddShippingAddressViewController") as? ShoppingAddShippingAddressViewController {
+    
+    
+    func showShoppingEditAddressPage(_ animated:Bool){
+        if let vc:ShoppingEditShippingAddressViewController = self.storyboard?.instantiateViewController(withIdentifier: "ShoppingEditShippingAddressViewController") as? ShoppingEditShippingAddressViewController {
             
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
     
-    func showShoppingEditAddressPage(_ animated:Bool){
-        if let vc:ShoppingEditShippingAddressViewController = self.storyboard?.instantiateViewController(withIdentifier: "ShoppingEditShippingAddressViewController") as? ShoppingEditShippingAddressViewController {
+    func showShoppingAddAddressPage(_ animated:Bool){
+        if let vc:ShoppingAddShippingAddressViewController = self.storyboard?.instantiateViewController(withIdentifier: "ShoppingAddShippingAddressViewController") as? ShoppingAddShippingAddressViewController {
             
             self.navigationController?.pushViewController(vc, animated: animated)
         }

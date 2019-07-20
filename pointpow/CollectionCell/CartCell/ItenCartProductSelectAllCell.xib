@@ -18,48 +18,58 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItenCartProductSelectAllCell" id="gTV-IL-0wX" customClass="ItenCartProductSelectAllCell" customModule="pointpow" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="247" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="382" height="77"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="247" height="50"/>
+                <rect key="frame" x="0.0" y="0.0" width="382" height="77"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s6t-yo-pLr" customClass="CheckBox" customModule="pointpow" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="7.5" width="35" height="35"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s6t-yo-pLr" customClass="CheckBoxRed" customModule="pointpow" customModuleProvider="target">
+                        <rect key="frame" x="10" y="28.5" width="20" height="20"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="s6t-yo-pLr" secondAttribute="height" multiplier="1:1" id="Z84-m6-dlX"/>
-                            <constraint firstAttribute="width" constant="35" id="dMT-oW-bb0"/>
+                            <constraint firstAttribute="width" constant="20" id="dMT-oW-bb0"/>
                         </constraints>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-fav-delete" translatesAutoresizingMaskIntoConstraints="NO" id="ffh-mp-1Lv">
-                        <rect key="frame" x="212" y="12.5" width="25" height="25"/>
+                        <rect key="frame" x="352" y="28.5" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="ffh-mp-1Lv" secondAttribute="height" multiplier="1:1" id="GSH-rL-ver"/>
-                            <constraint firstAttribute="width" constant="25" id="qaD-jo-Yrm"/>
+                            <constraint firstAttribute="width" constant="20" id="qaD-jo-Yrm"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ทั้งหมด" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5CT-qM-r42">
-                        <rect key="frame" x="35" y="13.5" width="39.5" height="23.5"/>
+                        <rect key="frame" x="35" y="27" width="39.5" height="23.5"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vkQ-6l-gek">
+                        <rect key="frame" x="10" y="76" width="362" height="1"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="EcW-o5-Bx7"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="s6t-yo-pLr" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="5xw-O7-P54"/>
+                <constraint firstItem="s6t-yo-pLr" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="5xw-O7-P54"/>
                 <constraint firstItem="ffh-mp-1Lv" firstAttribute="centerY" secondItem="s6t-yo-pLr" secondAttribute="centerY" id="99C-bG-4jn"/>
+                <constraint firstAttribute="trailing" secondItem="vkQ-6l-gek" secondAttribute="trailing" constant="10" id="Lqx-HX-C9e"/>
                 <constraint firstItem="s6t-yo-pLr" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="RrD-D3-TeW"/>
-                <constraint firstItem="5CT-qM-r42" firstAttribute="leading" secondItem="s6t-yo-pLr" secondAttribute="trailing" id="bAZ-f1-F8D"/>
+                <constraint firstItem="5CT-qM-r42" firstAttribute="leading" secondItem="s6t-yo-pLr" secondAttribute="trailing" constant="5" id="bAZ-f1-F8D"/>
                 <constraint firstItem="5CT-qM-r42" firstAttribute="centerY" secondItem="s6t-yo-pLr" secondAttribute="centerY" id="iK5-Dg-pjz"/>
+                <constraint firstAttribute="bottom" secondItem="vkQ-6l-gek" secondAttribute="bottom" id="qIe-Wg-P7Y"/>
+                <constraint firstItem="vkQ-6l-gek" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="qiQ-AW-QFY"/>
                 <constraint firstAttribute="trailing" secondItem="ffh-mp-1Lv" secondAttribute="trailing" constant="10" id="zV9-Mr-S5M"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="247" height="50"/>
+            <size key="customSize" width="382" height="77"/>
             <connections>
-                <outlet property="checkBox" destination="s6t-yo-pLr" id="CZk-ef-Hbq"/>
+                <outlet property="checkBox" destination="s6t-yo-pLr" id="cEN-55-1aY"/>
             </connections>
-            <point key="canvasLocation" x="-5.5999999999999996" y="-33.283358320839582"/>
+            <point key="canvasLocation" x="-113.59999999999999" y="-21.139430284857571"/>
         </collectionViewCell>
     </objects>
     <resources>

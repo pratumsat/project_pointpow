@@ -438,7 +438,7 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
         errorNamelLabel?.removeFromSuperview()
         errorMobileLabel?.removeFromSuperview()
         errorAddressLabel?.removeFromSuperview()
-         errorProvinceLabel?.removeFromSuperview()
+        errorProvinceLabel?.removeFromSuperview()
         errorDistrictLabel?.removeFromSuperview()
         errorSubDistrictLabel?.removeFromSuperview()
         errorPostCodeLabel?.removeFromSuperview()
@@ -507,10 +507,8 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
         guard validateMobile(mobile) else { return }
        
        
-        
-        
         let params:Parameters = [
-            "title" : "address1",
+            "title" : "gold",
             "name" : name,
             "address" : address,
             "province_id" : self.provinceId,

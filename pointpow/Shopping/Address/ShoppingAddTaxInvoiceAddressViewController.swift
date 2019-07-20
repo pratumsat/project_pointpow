@@ -1,15 +1,15 @@
 //
-//  ShoppingAddShippingAddressViewController.swift
+//  ShoppingAddTaxInvoiceAddressViewController.swift
 //  pointpow
 //
-//  Created by thanawat on 7/7/2562 BE.
+//  Created by thanawat on 20/7/2562 BE.
 //  Copyright © 2562 abcpoint. All rights reserved.
 //
 
 import UIKit
 import Alamofire
 
-class ShoppingAddShippingAddressViewController:BaseViewController ,UIPickerViewDelegate , UIPickerViewDataSource {
+class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerViewDelegate , UIPickerViewDataSource {
     
     @IBOutlet weak var postCodeTextField: UITextField!
     @IBOutlet weak var districtTextField: UITextField!
@@ -105,26 +105,26 @@ class ShoppingAddShippingAddressViewController:BaseViewController ,UIPickerViewD
         
         self.setUp()
         
-//        getUserInfo(){
-//            if let data  = self.userData as? [String:AnyObject] {
-//
-//                let first_name = data["goldsaving_member"]?["firstname"] as? String ?? ""
-//                let last_name = data["goldsaving_member"]?["lastname"]as? String ?? ""
-//                let mobile = data["goldsaving_member"]?["mobile"]as? String ?? ""
-//
-//                self.nameTextField.text = "\(first_name) \(last_name)"
-//
-//                //let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
-//                //self.numberPhoneTextField.text =  newMText.chunkFormatted()
-//                self.numberPhoneTextField.text = mobile
-//
-//                self.nameTextField.isEnabled = false
-//                self.numberPhoneTextField.isEnabled = false
-//                self.nameTextField.textColor = UIColor.lightGray
-//                self.numberPhoneTextField.textColor = UIColor.lightGray
-//
-//            }
-//        }
+        //        getUserInfo(){
+        //            if let data  = self.userData as? [String:AnyObject] {
+        //
+        //                let first_name = data["goldsaving_member"]?["firstname"] as? String ?? ""
+        //                let last_name = data["goldsaving_member"]?["lastname"]as? String ?? ""
+        //                let mobile = data["goldsaving_member"]?["mobile"]as? String ?? ""
+        //
+        //                self.nameTextField.text = "\(first_name) \(last_name)"
+        //
+        //                //let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
+        //                //self.numberPhoneTextField.text =  newMText.chunkFormatted()
+        //                self.numberPhoneTextField.text = mobile
+        //
+        //                self.nameTextField.isEnabled = false
+        //                self.numberPhoneTextField.isEnabled = false
+        //                self.nameTextField.textColor = UIColor.lightGray
+        //                self.numberPhoneTextField.textColor = UIColor.lightGray
+        //
+        //            }
+        //        }
         
         self.getProvinces(){
             self.provincePickerView = UIPickerView()
@@ -508,37 +508,25 @@ class ShoppingAddShippingAddressViewController:BaseViewController ,UIPickerViewD
         guard validateMobile(mobile) else { return }
         
         
-        /*
-         "member_id"        => $request->user()->id,
-         "title"            => $request->title,
-         "name"             => $request->name,
-         "address"          => $request->address,
-         "province_id"      => $request->province_id,
-         "district_id"      => $request->district_id,
-         "subdistrict_id"   => $request->subdistrict_id,
-         "postcode"         => $request->postcode,
-         "tax_invoice"      => $request->tax_invoice,
-         "company"          => $request->company,
-         "mobile"           => $request->mobile,
-         "type"             => $type,
-         "invoice_shipping" => $request->invoice_shipping,
-         */
         let params:Parameters = [
-            "title" : "shopping",
+            "title" : "invoice",
             "name" : name,
             "address" : address,
             "province_id" : self.provinceId,
             "district_id" : self.districtId,
             "subdistrict_id" : self.subDistrictId,
             "postcode" : postcode,
+            "tax_invoice": "",
+            "company" : "",
             "mobile": "",
-            "type" : "shopping"
+            "type" : "invoice",
+            "invoice_shipping" : ""
         ]
         print(params)
         
         self.modelCtrl.createMemberAddress(params: params, true, succeeded: { (result) in
             print(result)
-           
+            
         }, error: { (error) in
             if let mError = error as? [String:AnyObject]{
                 let message = mError["message"] as? String ?? ""
@@ -628,7 +616,7 @@ class ShoppingAddShippingAddressViewController:BaseViewController ,UIPickerViewD
     }
     
     
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.addCloseBlackView()
@@ -686,5 +674,4 @@ class ShoppingAddShippingAddressViewController:BaseViewController ,UIPickerViewD
         
         return true
     }
-
 }

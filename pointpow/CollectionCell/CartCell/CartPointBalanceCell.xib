@@ -18,37 +18,54 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CartPointBalanceCell" id="gTV-IL-0wX" customClass="CartPointBalanceCell" customModule="pointpow" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="362" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="512" height="68"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="362" height="50"/>
+                <rect key="frame" x="0.0" y="0.0" width="512" height="68"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Point Balance :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IkE-gJ-JMC">
-                        <rect key="frame" x="10" y="13.5" width="87.5" height="23.5"/>
+                        <rect key="frame" x="10" y="22.5" width="87.5" height="23.5"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="0.00 Point Pow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZC-Kh-Bhb">
-                        <rect key="frame" x="107.5" y="13.5" width="244.5" height="23.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sZC-Kh-Bhb">
+                        <rect key="frame" x="107.5" y="19.5" width="23" height="29"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="22"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="248" verticalHuggingPriority="251" text="Point Pow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="241-Vd-TTw">
+                        <rect key="frame" x="135.5" y="22.5" width="366.5" height="23.5"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TKv-oK-2N2">
+                        <rect key="frame" x="0.0" y="67" width="512" height="1"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="0K3-gt-22P"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="241-Vd-TTw" secondAttribute="trailing" constant="10" id="CGX-Nv-XmR"/>
                 <constraint firstItem="sZC-Kh-Bhb" firstAttribute="centerY" secondItem="IkE-gJ-JMC" secondAttribute="centerY" id="EXY-xg-mdN"/>
                 <constraint firstItem="IkE-gJ-JMC" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Eeo-Ez-OX5"/>
                 <constraint firstItem="IkE-gJ-JMC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="HK8-7e-Kgc"/>
+                <constraint firstItem="241-Vd-TTw" firstAttribute="centerY" secondItem="sZC-Kh-Bhb" secondAttribute="centerY" id="JQK-QJ-Skd"/>
+                <constraint firstAttribute="trailing" secondItem="TKv-oK-2N2" secondAttribute="trailing" id="MmU-he-M8h"/>
+                <constraint firstItem="241-Vd-TTw" firstAttribute="leading" secondItem="sZC-Kh-Bhb" secondAttribute="trailing" constant="5" id="Oln-hc-o6Y"/>
                 <constraint firstItem="sZC-Kh-Bhb" firstAttribute="leading" secondItem="IkE-gJ-JMC" secondAttribute="trailing" constant="10" id="fAJ-J5-NNU"/>
-                <constraint firstAttribute="trailing" secondItem="sZC-Kh-Bhb" secondAttribute="trailing" constant="10" id="nNX-JU-qlu"/>
+                <constraint firstItem="TKv-oK-2N2" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="gbB-PF-Ldo"/>
+                <constraint firstAttribute="bottom" secondItem="TKv-oK-2N2" secondAttribute="bottom" id="m7P-HG-08d"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="362" height="50"/>
+            <size key="customSize" width="512" height="68"/>
             <connections>
                 <outlet property="pointBalanceLabel" destination="sZC-Kh-Bhb" id="ZO3-OY-cJi"/>
             </connections>
-            <point key="canvasLocation" x="30.399999999999999" y="138.53073463268368"/>
+            <point key="canvasLocation" x="-89.599999999999994" y="146.62668665667167"/>
         </collectionViewCell>
     </objects>
 </document>

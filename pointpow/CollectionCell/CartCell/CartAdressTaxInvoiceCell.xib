@@ -18,59 +18,105 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CartAdressTaxInvoiceCell" id="smB-gC-I0X" customClass="CartAdressTaxInvoiceCell" customModule="pointpow" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="388" height="192"/>
+            <rect key="frame" x="0.0" y="0.0" width="324" height="175"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="388" height="192"/>
+                <rect key="frame" x="0.0" y="0.0" width="324" height="175"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-fav-edit" translatesAutoresizingMaskIntoConstraints="NO" id="Ni0-hK-ggz">
-                        <rect key="frame" x="358" y="12" width="20" height="20"/>
+                        <rect key="frame" x="294" y="12" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="Ni0-hK-ggz" secondAttribute="height" multiplier="1:1" id="UfV-GD-vBC"/>
                             <constraint firstAttribute="width" constant="20" id="ayA-72-j6E"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ที่อยู่ในการออกใบกำกับภาษี" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZeN-X4-X9Z">
-                        <rect key="frame" x="10" y="10" width="338" height="23.5"/>
+                        <rect key="frame" x="30" y="10" width="254" height="23.5"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MlK-Zr-jVV">
-                        <rect key="frame" x="10" y="43.5" width="368" height="138.5"/>
+                        <rect key="frame" x="10" y="43.5" width="304" height="121.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="thanawat prathumst 08312132388 ซอย 01 กาญจนาภิเษก 53 ตำบล บางพลีใหญ่ อำเภอบางพลี สมุทรปราการ 10540" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lvw-Ui-xqE">
-                                <rect key="frame" x="10" y="10" width="348" height="47"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lvw-Ui-xqE">
+                                <rect key="frame" x="15" y="10" width="274" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZfS-xL-M4S">
+                                <rect key="frame" x="119.5" y="24" width="65.5" height="74"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-add-address" translatesAutoresizingMaskIntoConstraints="NO" id="jBv-b1-6js">
+                                        <rect key="frame" x="7.5" y="0.0" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="jBv-b1-6js" secondAttribute="height" multiplier="1:1" id="0bE-T3-coG"/>
+                                            <constraint firstAttribute="width" constant="50" id="1oP-W3-gfn"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="เพิ่มที่อยู่" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ehh-ma-bmx">
+                                        <rect key="frame" x="10" y="50" width="45.5" height="24"/>
+                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Ehh-ma-bmx" secondAttribute="bottom" id="HmS-7z-V7X"/>
+                                    <constraint firstItem="Ehh-ma-bmx" firstAttribute="centerX" secondItem="jBv-b1-6js" secondAttribute="centerX" id="U9a-kU-miZ"/>
+                                    <constraint firstItem="Ehh-ma-bmx" firstAttribute="leading" secondItem="ZfS-xL-M4S" secondAttribute="leading" constant="10" id="b82-2D-5ex"/>
+                                    <constraint firstItem="jBv-b1-6js" firstAttribute="centerX" secondItem="ZfS-xL-M4S" secondAttribute="centerX" id="bB0-J3-PtK"/>
+                                    <constraint firstItem="Ehh-ma-bmx" firstAttribute="top" secondItem="jBv-b1-6js" secondAttribute="bottom" id="gLX-zi-azn"/>
+                                    <constraint firstItem="jBv-b1-6js" firstAttribute="top" secondItem="ZfS-xL-M4S" secondAttribute="top" id="l5V-pg-qQF"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ehh-ma-bmx" secondAttribute="trailing" constant="10" id="lG1-8l-ws8"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="ZfS-xL-M4S" firstAttribute="centerX" secondItem="MlK-Zr-jVV" secondAttribute="centerX" id="25J-i5-Uch"/>
+                            <constraint firstItem="ZfS-xL-M4S" firstAttribute="centerY" secondItem="MlK-Zr-jVV" secondAttribute="centerY" id="4kX-OX-nVH"/>
                             <constraint firstItem="Lvw-Ui-xqE" firstAttribute="top" secondItem="MlK-Zr-jVV" secondAttribute="top" constant="10" id="JY5-EB-PMN"/>
-                            <constraint firstAttribute="trailing" secondItem="Lvw-Ui-xqE" secondAttribute="trailing" constant="10" id="lcT-WH-FYV"/>
-                            <constraint firstItem="Lvw-Ui-xqE" firstAttribute="leading" secondItem="MlK-Zr-jVV" secondAttribute="leading" constant="10" id="tsK-Wu-egH"/>
+                            <constraint firstAttribute="trailing" secondItem="Lvw-Ui-xqE" secondAttribute="trailing" constant="15" id="lcT-WH-FYV"/>
+                            <constraint firstItem="Lvw-Ui-xqE" firstAttribute="leading" secondItem="MlK-Zr-jVV" secondAttribute="leading" constant="15" id="tsK-Wu-egH"/>
                         </constraints>
                     </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-cart-shopping-tax" translatesAutoresizingMaskIntoConstraints="NO" id="ob1-9e-yAj">
+                        <rect key="frame" x="5" y="10" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="PIl-a7-raX"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="MlK-Zr-jVV" firstAttribute="trailing" secondItem="Ni0-hK-ggz" secondAttribute="trailing" id="7Nl-0t-3Of"/>
                 <constraint firstItem="MlK-Zr-jVV" firstAttribute="top" secondItem="ZeN-X4-X9Z" secondAttribute="bottom" constant="10" id="8QL-ne-KMD"/>
                 <constraint firstItem="Ni0-hK-ggz" firstAttribute="centerY" secondItem="ZeN-X4-X9Z" secondAttribute="centerY" id="8Zb-IK-1Lh"/>
                 <constraint firstItem="Ni0-hK-ggz" firstAttribute="leading" secondItem="ZeN-X4-X9Z" secondAttribute="trailing" constant="10" id="9EY-1h-fuN"/>
+                <constraint firstItem="ob1-9e-yAj" firstAttribute="width" secondItem="ob1-9e-yAj" secondAttribute="height" multiplier="1:1" id="9d4-S3-48X"/>
                 <constraint firstItem="ZeN-X4-X9Z" firstAttribute="top" secondItem="smB-gC-I0X" secondAttribute="top" constant="10" id="Cis-1T-PSj"/>
-                <constraint firstItem="ZeN-X4-X9Z" firstAttribute="leading" secondItem="smB-gC-I0X" secondAttribute="leading" constant="10" id="RIt-kd-V3i"/>
+                <constraint firstItem="MlK-Zr-jVV" firstAttribute="leading" secondItem="smB-gC-I0X" secondAttribute="leading" constant="10" id="Cjy-Jb-qM5"/>
+                <constraint firstItem="ob1-9e-yAj" firstAttribute="leading" secondItem="smB-gC-I0X" secondAttribute="leading" constant="5" id="J2n-em-1jv"/>
+                <constraint firstAttribute="trailing" secondItem="MlK-Zr-jVV" secondAttribute="trailing" constant="10" id="NNn-Vi-NKo"/>
                 <constraint firstAttribute="trailing" secondItem="Ni0-hK-ggz" secondAttribute="trailing" constant="10" id="cyy-HJ-eZZ"/>
+                <constraint firstItem="ZeN-X4-X9Z" firstAttribute="leading" secondItem="ob1-9e-yAj" secondAttribute="trailing" constant="5" id="k3I-Kv-lf0"/>
+                <constraint firstItem="ob1-9e-yAj" firstAttribute="top" secondItem="smB-gC-I0X" secondAttribute="top" constant="10" id="laB-t8-U4G"/>
                 <constraint firstAttribute="bottom" secondItem="MlK-Zr-jVV" secondAttribute="bottom" constant="10" id="vNe-m8-4eX"/>
-                <constraint firstItem="MlK-Zr-jVV" firstAttribute="leading" secondItem="ZeN-X4-X9Z" secondAttribute="leading" id="vfF-yX-a7Q"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="1Vt-Oz-JOy"/>
-            <size key="customSize" width="388" height="185"/>
-            <point key="canvasLocation" x="40" y="35.082458770614693"/>
+            <size key="customSize" width="324" height="168"/>
+            <connections>
+                <outlet property="addView" destination="ZfS-xL-M4S" id="wtR-KQ-Se7"/>
+                <outlet property="addressLabel" destination="Lvw-Ui-xqE" id="Per-bx-pnH"/>
+                <outlet property="addressView" destination="MlK-Zr-jVV" id="46W-Tv-Nap"/>
+            </connections>
+            <point key="canvasLocation" x="-11.199999999999999" y="27.436281859070466"/>
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="ic-add-address" width="60" height="59"/>
+        <image name="ic-cart-shopping-tax" width="60" height="60"/>
         <image name="ic-fav-edit" width="100" height="99"/>
     </resources>
 </document>

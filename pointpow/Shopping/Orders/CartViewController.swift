@@ -13,21 +13,89 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
     @IBOutlet weak var cartCollectionView: UICollectionView!
     var userData:AnyObject?
     var cartItems:AnyObject?
-    var checkAll = true {
+    var checkAll = true
+    
+    var fullAddressShopping = ""
+    var fullAddressTaxInvoice = ""
+    var isTaxInvoice = false {
         didSet{
+            if isTaxInvoice {
+                self.itemSection = ["pointbalance",
+                                    "selectall",
+                                    "product",
+                                    "summary",
+                                    "howtopay",
+                                    "shipping_address",
+                                    "taxinvoice",
+                                    "shopping_taxinvoice",
+                                    "nextbutton"]
+            }else{
+                self.itemSection = ["pointbalance",
+                                    "selectall",
+                                    "product",
+                                    "summary",
+                                    "howtopay",
+                                    "shipping_address",
+                                    "taxinvoice",
+                                    "nextbutton"]
+            }
             
-            if let index = itemSection.firstIndex(of: "product"){
-                let indexSet = IndexSet(integer: index)
-
-                UIView.performWithoutAnimation {
-                    self.cartCollectionView.reloadSections(indexSet)
-                }
+            self.cartCollectionView.reloadData()
+        }
+    }
+    
+    func reloadSelectAllSection(){
+        if let index = itemSection.firstIndex(of: "selectall"){
+            let indexSet = IndexSet(integer: index)
+            
+            UIView.performWithoutAnimation {
+                self.cartCollectionView.reloadSections(indexSet)
+            }
+        }
+    }
+    func reloadProductSection(){
+        if let index = itemSection.firstIndex(of: "product"){
+            let indexSet = IndexSet(integer: index)
+            
+            UIView.performWithoutAnimation {
+                self.cartCollectionView.reloadSections(indexSet)
             }
         }
     }
     
+    func getItemPositionByItemId(_ id:Int) -> Int{
+        var i = 0
+        if let Tuple = self.tupleProduct {
+            for item in Tuple {
+                if item.id == id {
+                    return i
+                }
+                i += 1
+            }
+        }
+        return 0
+    }
    
-    var totalPrice:Double = 0.0 {
+    
+    func updateTotalAmountPrice() {
+        var total = 0.0
+        var amount = 0
+        var i = 0
+        if let Tuple = self.tupleProduct {
+            for item in Tuple {
+                if item.select {
+                    let sum = Double(item.amount) * item.price
+                    total += sum
+                    
+                    amount += item.amount
+                }
+                i += 1
+            }
+        }
+        self.totalOrder = (amount: amount, totalPrice: total)
+    }
+    
+    var totalOrder:(amount:Int, totalPrice:Double)? {
         didSet{
             if let index = itemSection.firstIndex(of: "summary"){
                 let indexSet = IndexSet(integer: index)
@@ -35,16 +103,26 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                 UIView.performWithoutAnimation {
                     self.cartCollectionView.reloadSections(indexSet)
                 }
-               
-               
-                
             }
+            if let index = itemSection.firstIndex(of: "howtopay"){
+                let indexSet = IndexSet(integer: index)
+                
+                UIView.performWithoutAnimation {
+                    self.cartCollectionView.reloadSections(indexSet)
+                }
+            }
+            
+            let mtitle = NSLocalizedString("string-title-cart-product", comment: "")
+            self.title = "\(mtitle) (\(totalOrder?.amount ?? 0))"
         }
+        
     }
     
-    var tupleProduct:[(title:String, id:Int, amount:Int, price:Double, select:Bool, brand:String, cover:String)]? {
+    
+    
+    var tupleProduct:[(title:String, id:Int, amount:Int, price:Double, select:Bool, brand:String, cover:String)]?{
         didSet{
-                print(tupleProduct)
+            print(tupleProduct as Any)
         }
     }
     
@@ -98,8 +176,10 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                                     "summary",
                                     "howtopay",
                                     "shipping_address",
-                                    "shopping_taxinvoice",
+                                    "taxinvoice",
                                     "nextbutton"]
+                
+                
                 
             }else{
                 self.itemSection = ["no_item"]
@@ -107,7 +187,9 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         }else{
             self.itemSection = ["no_item"]
         }
+        
         self.cartCollectionView.reloadData()
+        self.updateTotalAmountPrice()
     }
     
 //    override func reloadData() {
@@ -120,8 +202,12 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         self.cartCollectionView.delegate = self
         self.cartCollectionView.dataSource = self
         
+        self.cartCollectionView.showsVerticalScrollIndicator = false
 //        self.addRefreshViewController(self.cartCollectionView)
         
+        
+        
+        self.registerNib(self.cartCollectionView, "TaxInvoiceSelectCell")
         self.registerNib(self.cartCollectionView, "NotFoundItemCell")
         self.registerNib(self.cartCollectionView, "CartPointBalanceCell")
         self.registerNib(self.cartCollectionView, "ItenCartProductSelectAllCell")
@@ -131,11 +217,28 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         self.registerNib(self.cartCollectionView, "CartAddressShippingCell")
         self.registerNib(self.cartCollectionView, "CartAdressTaxInvoiceCell")
         self.registerNib(self.cartCollectionView, "CartNextButtonCell")
+        self.registerHeaderNib(self.cartCollectionView, "HeaderSectionCell")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+    }
+    
+    
+    func getSelectAddress(_ memberAddress:[[String:AnyObject]]) -> String {
+        for address in memberAddress {
+            let full_address = address["full_address"] as? String ?? ""
+            let mobile = address["mobile"] as? String ?? ""
+            let latest_shipping = address["latest_shipping"] as? NSNumber ?? 0
+            
+            if latest_shipping.boolValue {
+                return "\(full_address)\n\(mobile)"
+            }
+        }
+        let full_address = memberAddress.first?["full_address"] as? String ?? ""
+        let mobile = memberAddress.first?["mobile"] as? String ?? ""
+        return "\(full_address)\n\(mobile)"
     }
     
     func getUserInfo(_ avaliable:(()->Void)?  = nil){
@@ -150,6 +253,31 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
            
             if let userData = self.userData as? [String:AnyObject] {
                 let pointBalance = userData["member_point"]?["total"] as? NSNumber ?? 0
+                
+                let member_addresses = userData["member_addresses"] as? [[String:AnyObject]] ?? [[:]]
+                
+                
+                if member_addresses.count > 0 {
+                    
+                    var invoiceAddress:[[String:AnyObject]] = []
+                    var shoppingAddress:[[String:AnyObject]] = []
+                    
+                    for address in member_addresses {
+                        let type = address["type"] as? String ?? ""
+                    
+                        if type.lowercased() == "shopping" {
+                            shoppingAddress.append(address)
+                        }
+                        if type.lowercased() == "invoice" {
+                            invoiceAddress.append(address)
+                        }
+                    }
+                    self.fullAddressShopping = self.getSelectAddress(shoppingAddress)
+                    self.fullAddressTaxInvoice = self.getSelectAddress(invoiceAddress)
+                    
+                }
+                
+                
                 
                 let numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal
@@ -218,7 +346,9 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                     let urlCover = getFullPathImageView(item)
                     
                     self.tupleProduct?.append((title: title, id: id.intValue , amount: amount.intValue, price: price, select: true, brand: urlbrand, cover: urlCover))
+                
                 }
+                
                 
             }
             
@@ -265,6 +395,8 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             return 1
         case "shipping_address":
             return 1
+        case "taxinvoice":
+            return 1
         case "shopping_taxinvoice":
             return 1
         case "nextbutton":
@@ -286,9 +418,9 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             if let pointCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CartPointBalanceCell", for: indexPath) as? CartPointBalanceCell {
                 cell = pointCell
                 
-                let unit = NSLocalizedString("string-unit-pointpow", comment: "")
+                
                 if let current = self.currentPointBalance {
-                    pointCell.pointBalanceLabel.text = "\(current)\(unit)"
+                    pointCell.pointBalanceLabel.text = "\(current)"
                 }
                 
             }
@@ -305,8 +437,10 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                             i += 1
                         }
                     }
-                    
+                    self.updateTotalAmountPrice()
                     self.checkAll = isCheck
+                    self.reloadProductSection()
+                    
                 }
                
             }
@@ -330,40 +464,27 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                     productCell.priceOfProduct = itemTuple.price
                     productCell.priceLabel.text = numberFormatter.string(from: NSNumber(value: itemTuple.price))
                     productCell.amount = itemTuple.amount
-                    
+                    productCell.checkBox.isChecked = itemTuple.select
                  
                    
                      productCell.callBackTotalPrice  = { (amount, totalPrice) in
+                        self.tupleProduct?[self.getItemPositionByItemId(itemTuple.id)].amount = amount
                         
-                        var i = 0
-                        if let Tuple = self.tupleProduct {
-                            for item in Tuple {
-                                if item.id == itemTuple.id {
-                                    self.tupleProduct![indexPath.row].amount = amount
-                                }
-                                i += 1
-                            }
-                        }
+                       
+                        self.updateTotalAmountPrice()
                     }
                     
                     productCell.checkBox.toggle  = { (isCheck) in
-//                        var i = 0
-//                        if let Tuple = self.tupleProduct {
-//                            for item in Tuple {
-//                                if item.id == id.intValue {
-//                                    self.tupleProduct![i].select = isCheck
-//                                }
-//                                i += 1
-//                            }
-//                            //self.reloadProductCell()
-//                        }
+                       self.tupleProduct?[self.getItemPositionByItemId(itemTuple.id)].select = isCheck
+                        if !isCheck {
+                            self.checkAll = false
+                            self.reloadSelectAllSection()
+                        }
+                        
+                        self.updateTotalAmountPrice()
                     }
-                   
-                    
                     
                 }
-                
-                
             }
         case "summary":
             if let sumCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CartSummaryCell", for: indexPath) as? CartSummaryCell {
@@ -371,25 +492,84 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                 
                 let numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal
-                sumCell.totalLabel.text = numberFormatter.string(from: NSNumber(value: self.totalPrice))
+                numberFormatter.minimumFractionDigits = 2
+                
+                sumCell.totalLabel.text = numberFormatter.string(from: NSNumber(value: self.totalOrder?.totalPrice ?? 0))
+                
+                let txtAmount = NSLocalizedString("string-item-shopping-cart-txt-total-amount", comment: "")
+                
+                sumCell.totalAmountLabel.text = txtAmount.replace(target: "{{amount}}", withString: "\(self.totalOrder?.amount ?? 0)")
             }
         case "howtopay":
             if let howtoCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CartHowtoSummary", for: indexPath) as? CartHowtoSummary {
                 cell = howtoCell
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                numberFormatter.minimumFractionDigits = 2
                 
-               
+                let pointbalance = DataController.sharedInstance.getCurrentPointBalance()
+                let total = self.totalOrder?.totalPrice ?? 0
+                if pointbalance.doubleValue < total {
+                    let sum  = total - pointbalance.doubleValue
+                    howtoCell.howtoPayLabel.text = NSLocalizedString("string-item-shopping-cart-howto-pay-pc", comment: "")
+                    howtoCell.cdLabel.text = numberFormatter.string(from: NSNumber(value: sum))
+                    howtoCell.pointLabel.text = numberFormatter.string(from: pointbalance)
+                    
+                    howtoCell.showCreditCardLabel()
+                }else{
+                    
+                    howtoCell.howtoPayLabel.text = NSLocalizedString("string-item-shopping-cart-howto-pay-pp", comment: "")
+                    howtoCell.cdLabel.text = ""
+                    howtoCell.pointLabel.text = numberFormatter.string(from: NSNumber(value: total))
+                    
+                    howtoCell.hideCreditCardLabel()
+                }
+                
+                
             }
         case "shipping_address":
             if let addressCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CartAddressShippingCell", for: indexPath) as? CartAddressShippingCell {
                 cell = addressCell
                 
+                if !self.fullAddressShopping.isEmpty {
+                    addressCell.addressLabel.text = self.fullAddressShopping
+                    
+                    addressCell.addView.isHidden = true
+                    addressCell.addressLabel.isHidden = false
+                }else{
+                 
+                    addressCell.addView.isHidden = false
+                    addressCell.addressLabel.isHidden = true
+                }
+               
                 
+            }
+        case "taxinvoice":
+            if let invoiceCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TaxInvoiceSelectCell", for: indexPath) as? TaxInvoiceSelectCell {
+                cell = invoiceCell
+                invoiceCell.checkBox.isChecked = self.isTaxInvoice
+                invoiceCell.checkBox.toggle = { (isCheck) in
+                    self.isTaxInvoice = isCheck
+                }
             }
         case "shopping_taxinvoice":
             if let taxInvoiceCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CartAdressTaxInvoiceCell", for: indexPath) as? CartAdressTaxInvoiceCell {
                 cell = taxInvoiceCell
                 
+                 if !self.fullAddressTaxInvoice.isEmpty {
+                    taxInvoiceCell.addressLabel.text = self.fullAddressTaxInvoice
+                    
+                    taxInvoiceCell.addView.isHidden = true
+                    taxInvoiceCell.addressLabel.isHidden = false
+                 }else{
+                    taxInvoiceCell.addView.isHidden = false
+                    taxInvoiceCell.addressLabel.isHidden = true
+                }
+               
+                
+                
             }
+            
         case "nextbutton":
             if let nextCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CartNextButtonCell", for: indexPath) as? CartNextButtonCell {
                 cell = nextCell
@@ -432,6 +612,55 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         return UIEdgeInsets.zero
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderSectionCell", for: indexPath) as! HeaderSectionCell
+        header.headerNameLabel.text = ""
+        header.backgroundColor = UIColor.groupTableViewBackground
+        return header
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+        switch self.itemSection[section] {
+        case "pointbalance":
+            return CGSize.zero
+            
+        case "selectall":
+            return CGSize.zero
+            
+        case "product":
+            return CGSize.zero
+            
+        case "summary":
+            let height = CGFloat(10.0)
+            return CGSize(width: collectionView.frame.width, height: height)
+            
+        case "howtopay":
+            
+            return CGSize.zero
+            
+        case "shipping_address":
+            return CGSize.zero
+            
+        case "taxinvoice":
+            return CGSize.zero
+            
+        case "shopping_taxinvoice":
+            return CGSize.zero
+            
+        case "nextbutton":
+            return CGSize.zero
+            
+        case "no_item":
+            return CGSize.zero
+        default:
+            return CGSize.zero
+        }
+        
+        
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         switch self.itemSection[indexPath.section] {
@@ -452,16 +681,50 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             return CGSize(width: collectionView.frame.width, height: height)
             
         case "howtopay":
-            let height = CGFloat(130.0)
+            let pointbalance = DataController.sharedInstance.getCurrentPointBalance()
+            let total = self.totalOrder?.totalPrice ?? 0
+            if pointbalance.doubleValue < total {
+                let height = CGFloat(160.0)
+                return CGSize(width: collectionView.frame.width, height: height)
+            }else{
+                let height = CGFloat(120.0)
+                return CGSize(width: collectionView.frame.width, height: height)
+            }
+            
+        case "taxinvoice":
+            let height = CGFloat(40.0)
             return CGSize(width: collectionView.frame.width, height: height)
+            
             
         case "shipping_address":
-            let height = CGFloat(140.0)
-            return CGSize(width: collectionView.frame.width, height: height)
+            
+            
+            let width = collectionView.frame.width
+            var heightAddress = CGFloat(0)
+            if !self.fullAddressShopping.isEmpty {
+                heightAddress += heightForView(text: self.fullAddressShopping, font: UIFont(name:   Constant.Fonts.THAI_SANS_BOLD, size: 18)!, width: width - 50)
+                heightAddress += CGFloat(100)
+            }else{
+                heightAddress = CGFloat(160)
+            }
+            
+            
+            return CGSize(width: width, height: heightAddress)
             
         case "shopping_taxinvoice":
-            let height = CGFloat(140.0)
-            return CGSize(width: collectionView.frame.width, height: height)
+           
+            let width = collectionView.frame.width
+            var heightAddress = CGFloat(0)
+            if !self.fullAddressTaxInvoice.isEmpty {
+                heightAddress += heightForView(text: self.fullAddressTaxInvoice, font: UIFont(name:   Constant.Fonts.THAI_SANS_BOLD, size: 18)!, width: width - 50)
+                heightAddress += CGFloat(100)
+            }else{
+                heightAddress = CGFloat(160)
+            }
+            
+            
+            return CGSize(width: width, height: heightAddress)
+            
             
         case "nextbutton":
             let width = collectionView.frame.width - 40

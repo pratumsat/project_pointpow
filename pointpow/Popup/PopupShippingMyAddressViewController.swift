@@ -66,7 +66,17 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
                 self.mobile = mobile
                 
                 let member_addresses = data["member_addresses"] as? [[String:AnyObject]] ?? [[:]]
-                self.modelAddreses = member_addresses
+               
+                self.modelAddreses = []
+                if member_addresses.count > 0 {
+                    for address in member_addresses {
+                        let type = address["type"] as? String ?? ""
+                        if type.lowercased() == "gold" {
+                            self.modelAddreses?.append(address)
+                        }
+                    }
+                }
+                
                 
                 self.selectedAddress = nil
                 self.countAddress = self.modelAddreses?.count ?? 0
@@ -304,6 +314,8 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
                 let subdistrictName = data["subdistrict"]?["name_in_thai"] as? String ?? ""
                 let provinceName = data["province"]?["name_in_thai"] as? String ?? ""
                 let zip_code = data["subdistrict"]?["zip_code"] as? NSNumber ?? 0
+                
+               
                 
                 var rawAddress = "\(self.name)"
                 rawAddress += " \(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"

@@ -103,37 +103,34 @@ class ShoppingEditShippingAddressViewController: ShoppingAddShippingAddressViewC
         
         
         let params:Parameters = [
-            "title" : "1",
+            "title" : "shopping",
             "name" : name,
             "address" : address,
             "province_id" : self.provinceId,
             "district_id" : self.districtId,
             "subdistrict_id" : self.subDistrictId,
-            "postcode" : postcode
+            "postcode" : postcode,
+            "mobile": "",
+            "type" : "shopping"
         ]
         print(params)
         
         
-//        self.modelCtrl.editMemberAddress(params: params, id: self.id, true, succeeded: { (result) in
-//            print(result)
-//            self.dismiss(animated: true) {
-//                self.windowSubview?.removeFromSuperview()
-//                self.windowSubview = nil
-//                //self.nextStep?([(address:"test addeess")] as AnyObject)
-//                self.nextStep?("showViewAddress" as AnyObject)
-//            }
-//        }, error: { (error) in
-//            if let mError = error as? [String:AnyObject]{
-//                let message = mError["message"] as? String ?? ""
-//                print(message)
-//                self.showMessagePrompt(message)
-//            }
-//            print(error)
-//        }) { (messageError) in
-//            print("messageError")
-//            self.handlerMessageError(messageError)
-//
-//        }
+        self.modelCtrl.editMemberAddress(params: params, id: self.id, true, succeeded: { (result) in
+            print(result)
+          
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                self.showMessagePrompt(message)
+            }
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+
+        }
         
         
         

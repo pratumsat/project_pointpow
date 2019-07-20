@@ -106,9 +106,9 @@ class PopupEditAddressViewController: PopupShippingAddressViewController {
         
         
         
-        
+       
         let params:Parameters = [
-            "title" : "1",
+            "title" : "gold",
             "name" : name,
             "address" : address,
             "province_id" : self.provinceId,

@@ -41,3 +41,40 @@ class CheckBox: UIButton {
     }
 }
 
+
+
+class CheckBoxRed: UIButton {
+    // Images
+    let checkedImage = UIImage(named: "ic_check_box_red")! as UIImage
+    let uncheckedImage = UIImage(named: "ic_check_box_outline_blank_red")! as UIImage
+    
+    var toggle:((_ check:Bool)->Void)?
+    // Bool property
+    var isChecked: Bool = false {
+        didSet{
+            if isChecked == true {
+                let original = checkedImage.withRenderingMode(.alwaysOriginal)
+                self.setImage(original, for: UIControl.State.normal)
+            } else {
+                let original = uncheckedImage.withRenderingMode(.alwaysOriginal)
+                self.setImage(original, for: UIControl.State.normal)
+            }
+            
+        }
+    }
+    
+    override func awakeFromNib() {
+        self.addTarget(self, action:#selector(buttonClicked(sender:)), for: UIControl.Event.touchUpInside)
+        self.isChecked = false
+    }
+    
+    @objc func buttonClicked(sender: UIButton) {
+        if sender == self {
+            
+            isChecked = !isChecked
+            
+            self.toggle?(isChecked)
+        }
+    }
+}
+

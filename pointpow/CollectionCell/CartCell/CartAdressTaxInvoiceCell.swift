@@ -10,9 +10,26 @@ import UIKit
 
 class CartAdressTaxInvoiceCell: UICollectionViewCell {
 
+    @IBOutlet weak var addView: UIView!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var addressView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        self.shadowCellProperties()
+        self.addressView.shadowCellProperties()
+        
+        
+    }
+
+    override var bounds : CGRect {
+        didSet {
+            self.layoutIfNeeded()
+        }
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+         self.addressView.borderClearProperties(borderWidth: 1, radius: 10)
     }
 
 }

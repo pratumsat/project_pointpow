@@ -161,6 +161,7 @@
 		C12A88C922E3291800D40155 /* ShoppingAddTaxInvoiceAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12A88C822E3291800D40155 /* ShoppingAddTaxInvoiceAddressViewController.swift */; };
 		C12A88CC22E32BA500D40155 /* TaxInvoiceSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12A88CA22E32BA500D40155 /* TaxInvoiceSelectCell.swift */; };
 		C12A88CD22E32BA500D40155 /* TaxInvoiceSelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12A88CB22E32BA500D40155 /* TaxInvoiceSelectCell.xib */; };
+		C12A88D022E4803000D40155 /* PopupAddToCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12A88CF22E4803000D40155 /* PopupAddToCartViewController.swift */; };
 		C12CCC612281590C00F26DCC /* PersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12CCC602281590C00F26DCC /* PersonalDataViewController.swift */; };
 		C12CCC652282B43A00F26DCC /* PromoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12CCC632282B43A00F26DCC /* PromoCell.swift */; };
 		C12CCC662282B43A00F26DCC /* PromoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12CCC642282B43A00F26DCC /* PromoCell.xib */; };
@@ -517,6 +518,7 @@
 		C12A88C822E3291800D40155 /* ShoppingAddTaxInvoiceAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingAddTaxInvoiceAddressViewController.swift; sourceTree = "<group>"; };
 		C12A88CA22E32BA500D40155 /* TaxInvoiceSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxInvoiceSelectCell.swift; sourceTree = "<group>"; };
 		C12A88CB22E32BA500D40155 /* TaxInvoiceSelectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaxInvoiceSelectCell.xib; sourceTree = "<group>"; };
+		C12A88CF22E4803000D40155 /* PopupAddToCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupAddToCartViewController.swift; sourceTree = "<group>"; };
 		C12CCC602281590C00F26DCC /* PersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDataViewController.swift; sourceTree = "<group>"; };
 		C12CCC632282B43A00F26DCC /* PromoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoCell.swift; sourceTree = "<group>"; };
 		C12CCC642282B43A00F26DCC /* PromoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromoCell.xib; sourceTree = "<group>"; };
@@ -1198,6 +1200,14 @@
 			path = MapOffice;
 			sourceTree = "<group>";
 		};
+		C12A88CE22E4801900D40155 /* shopping */ = {
+			isa = PBXGroup;
+			children = (
+				C12A88CF22E4803000D40155 /* PopupAddToCartViewController.swift */,
+			);
+			path = shopping;
+			sourceTree = "<group>";
+		};
 		C12CCC622282B42000F26DCC /* PromotionCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1468,6 +1478,7 @@
 		C1AD50AD2187FE7F00F74415 /* Popup */ = {
 			isa = PBXGroup;
 			children = (
+				C12A88CE22E4801900D40155 /* shopping */,
 				C1249EB32224E2CD00F56FA0 /* PopUpMapOfficeViewController.swift */,
 				C1892E17221EB9DC00F5412F /* PopupGoldHistoryFilterViewController.swift */,
 				C107CF35222263AD00C50B8C /* PopupShippingMyAddressViewController.swift */,
@@ -2174,6 +2185,7 @@
 				C1DA27C722421C3B000C0715 /* WithDrawResultThaiPostSuccessCell.swift in Sources */,
 				C13D4FF022A6214800516CE8 /* ItemAccountCell.swift in Sources */,
 				C13D998A21997AD6001A4794 /* HeadCell.swift in Sources */,
+				C12A88D022E4803000D40155 /* PopupAddToCartViewController.swift in Sources */,
 				C121FB62228AC67500043387 /* TermPointSavingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

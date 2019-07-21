@@ -2020,8 +2020,49 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }
     }
     
-    
-    
+    func showCartViewController(_ animated:Bool){
+        if let vc:CartViewController = self.storyboard?.instantiateViewController(withIdentifier: "CartViewController") as? CartViewController {
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    func showPoPupAddToCart(_ animated:Bool,
+                            cartTuple:(amount:Int,
+                                        product: [String:AnyObject],
+                                        brand: [String:AnyObject],
+                                        product_images: [String:AnyObject])? ,
+                            dismissCallback:(()->Void)? = nil){
+        
+        let presenter: Presentr = {
+            
+            let w = self.view.frame.width
+            let width = ModalSize.custom(size: Float(w))
+            let height = ModalSize.custom(size: Float(w / 300 * 260))
+            
+            let center = ModalCenterPosition.bottomCenter
+            let customType = PresentationType.custom(width: width, height: height, center: center)
+            
+            let customPresenter = Presentr(presentationType: customType)
+            customPresenter.roundCorners = true
+            customPresenter.cornerRadius = 10
+            customPresenter.dismissOnSwipe = true
+            customPresenter.dismissOnTap = true
+            
+            return customPresenter
+        }()
+        
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "PopupAddToCartViewController") as? PopupAddToCartViewController{
+            vc.dismissView = {
+                dismissCallback?()
+            }
+            vc.cartTuple = cartTuple
+            
+            self.viewPopup = vc.view
+            
+            self.customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)
+            
+        }
+        
+    }
     
     func handlerMessageError(_ messageError:String ,  title:String =  "Error"){
         if messageError == "-1009"{

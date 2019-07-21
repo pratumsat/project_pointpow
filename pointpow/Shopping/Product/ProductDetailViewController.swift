@@ -326,22 +326,39 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
     }
     
     @objc func addToCartTapped(){
-        self.addTocart(){ (cart) in
+        self.addTocart(){ (amount, product) in
             //add success
-            print(cart)
-            self.showMessagePrompt2("Add to cart success")
+    
+            if let item = self.productDetail?.first {
+                let brand = item["brand"] as? [String:AnyObject] ?? [:]
+                
+                let product_image = self.productImage?.first ?? [:]
+                
+                let cartTuple:(amount:Int,
+                    product: [String:AnyObject],
+                    brand: [String:AnyObject],
+                    product_images: [String:AnyObject]) =  (amount:amount,
+                                                            product: product,
+                                                            brand: brand,
+                                                            product_images: product_image)
+                
+                self.showPoPupAddToCart(true, cartTuple: cartTuple, dismissCallback: {
+                    self.showCartViewController(true)
+                })
+            }
+           
+            
         }
     }
     
     @objc func addToPayTapped(){
-        self.addTocart(){ (cart) in
-            //add success
-            print(cart)
+        self.addTocart(){ (amount, product) in
+            self.showCartViewController(true)
         }
     }
     
     
-    private func addTocart(_ addsuccess:((_ cart:[String:AnyObject])->Void)? = nil){
+    private func addTocart(_ addsuccess:((_ amount:Int, _ product:[String:AnyObject])->Void)? = nil){
         if let item = self.productDetail?.first {
             let product_id = item["id"] as? NSNumber ?? 0
             let amount = self.amountTextField.text!
@@ -355,10 +372,11 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
             
             modelCtrl.addToCart(params: parameter , true , succeeded: { (result) in
                 if let mResult = result as? [String:AnyObject] {
-                    let cart = mResult["cart"] as? [String:AnyObject] ?? [:]
+                    let product = mResult["product"] as? [String:AnyObject] ?? [:]
 
                     print("addToCart success" )
-                    addsuccess?(cart)
+                    addsuccess?(Int(amount) ?? 0, product)
+                    
                 }
                 
             }, error: { (error) in

@@ -8,8 +8,8 @@ target 'pointpow' do
   # Pods for pointpow
     pod 'Alamofire', '~> 4.7'
     pod 'SDWebImage/WebP'
-    pod 'Presentr'
-    pod 'Firebase/Core'
+    pod 'Presentr', '1.3.2'
+    pod 'Firebase/Core', '5.5.0'
     pod 'Firebase/Messaging'
     pod 'ZBarSDK', '~>1.3.1'
     

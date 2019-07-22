@@ -89,9 +89,9 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
-  - Firebase/Core
+  - Firebase/Core (= 5.5.0)
   - Firebase/Messaging
-  - Presentr
+  - Presentr (= 1.3.2)
   - SDWebImage/WebP
   - SWRevealViewController (from `https://github.com/John-Lluch/SWRevealViewController.git`, tag `v2.4.0`)
   - ZBarSDK (~> 1.3.1)
@@ -140,6 +140,6 @@ SPEC CHECKSUMS:
   SWRevealViewController: b653f339865208c97be99a24876545f5be0cc4bb
   ZBarSDK: 4c1b5daeb7d6cc67dc9355e690af0230a661f6ec
 
-PODFILE CHECKSUM: 0a6ca93e275fe2d3bfda53529faf56c769d53777
+PODFILE CHECKSUM: f0804242b25537036e03876495e30c0d521a203d
 
 COCOAPODS: 1.5.3

@@ -31,6 +31,7 @@ class PaymentViewController: BaseViewController , UIWebViewDelegate{
 //        let backImage = UIImage(named: "ic-back-white")
 //        let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(backViewTapped))
 //        self.navigationItem.leftBarButtonItem = backButton
+//        self.navigationItem.leftBarButtonItem?.imageInsets = UIEdgeInsets(top: 2, left: -10, bottom: -2, right: 10)
         
         self.webView.delegate = self
         self.webView.scalesPageToFit = true

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class CartViewController: BaseViewController  , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIWebViewDelegate {
 
@@ -17,6 +18,8 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
     
     var fullAddressShopping = ""
     var fullAddressTaxInvoice = ""
+    var cart_id:Int = 0
+    
     var isTaxInvoice = false {
         didSet{
             if isTaxInvoice {
@@ -123,6 +126,20 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
     var tupleProduct:[(title:String, id:Int, amount:Int, price:Double, select:Bool, brand:String, cover:String)]?{
         didSet{
             print(tupleProduct as Any)
+            if tupleProduct != nil {
+                if tupleProduct!.count > 0 {
+                    self.itemSection = ["pointbalance",
+                                        "selectall",
+                                        "product",
+                                        "summary",
+                                        "howtopay",
+                                        "shipping_address",
+                                        "taxinvoice",
+                                        "nextbutton"]
+                }else{
+                    self.itemSection = ["no_item"]
+                }
+            }
         }
     }
     
@@ -134,6 +151,11 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         super.viewDidLoad()
         self.setUp()
         self.title = NSLocalizedString("string-title-cart-product", comment: "")
+        
+        let backImage = UIImage(named: "ic-back-white")
+        let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(backViewTapped))
+        self.navigationItem.leftBarButtonItem = backButton
+        self.navigationItem.leftBarButtonItem?.imageInsets = UIEdgeInsets(top: 2, left: -10, bottom: -2, right: 10)
         
         
         let numberFormatter = NumberFormatter()
@@ -190,6 +212,124 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         
         self.cartCollectionView.reloadData()
         self.updateTotalAmountPrice()
+    }
+    
+   
+    @objc func backViewTapped(){
+        guard let tuple = self.tupleProduct ,tuple.count > 0 else {
+            self.navigationController?.popViewController(animated: true)
+            return
+        }
+ 
+        let count = tuple.count
+        
+        var success = 0
+        for item in tuple {
+            let id = item.id
+            let amount = item.amount
+            
+            self.updateItemCart(id, amount: amount) {
+                success += 1
+                if success == count {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+        }
+        
+     
+        
+    }
+    
+    func deleteProductByID(_ id:Int){
+        print("id = \(id)")
+        let positdion = self.getItemPositionByItemId(id)
+        print("positdion = \(positdion)")
+        
+        self.tupleProduct?.remove(at: positdion)
+    }
+    
+    func confirmDeleteItemInCart(_ productIds:[Int]){
+        
+        if productIds.count > 0 {
+            let dTitle = NSLocalizedString("string-item-shopping-cart-delete-title", comment: "")
+            //let message = NSLocalizedString("string-item-shopping-cart-delete-message", comment: "")
+            let alert = UIAlertController(title: dTitle,
+                                          message: "", preferredStyle: .alert)
+            
+            let okButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-ok", comment: ""), style: .default, handler: {
+                (alert) in
+                
+             
+                self.delItemCart(productIds){
+                    for id in productIds {
+                        self.deleteProductByID(id)
+                    }
+                    self.cartCollectionView.reloadData()
+                    self.updateTotalAmountPrice()
+                }
+                
+            })
+            let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: nil)
+            
+            alert.addAction(cancelButton)
+            alert.addAction(okButton)
+            
+            self.present(alert, animated: true, completion: nil)
+            
+        }else{
+            self.showMessagePrompt2(NSLocalizedString("string-item-shopping-cart-delete-empty", comment: ""))
+        }
+        
+       
+        
+    }
+
+    func delItemCart(_ productIds:[Int], success:(()->Void)? = nil){
+        let parameter:Parameters = ["app_id" : Constant.PointPowAPI.APP_ID,
+                                    "secret" : Constant.PointPowAPI.SECRET_SHOPPING,
+                                    "cart_id" : self.cart_id,
+                                    "product_id" : productIds]
+        
+      
+        modelCtrl.delCart(params: parameter , true , succeeded: { (result) in
+            //del success
+            success?()
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                self.showMessagePrompt(message)
+            }
+            
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            
+        }
+    }
+    func updateItemCart(_ product_id:Int, amount:Int, success:(()->Void)?){
+        let parameter:Parameters = ["app_id" : Constant.PointPowAPI.APP_ID,
+                                    "secret" : Constant.PointPowAPI.SECRET_SHOPPING,
+                                    "cart_id" : self.cart_id,
+                                    "product_id" : product_id,
+                                    "amount" : amount]
+        
+        modelCtrl.updateCart(params: parameter , true , succeeded: { (result) in
+            success?()
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                self.showMessagePrompt(message)
+            }
+            
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            
+        }
     }
     
 //    override func reloadData() {
@@ -319,6 +459,9 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                 
                 self.tupleProduct = []
                 let cart_item = itemCart.first?["cart_item"] as? [[String:AnyObject]] ?? []
+                let id  = itemCart.first?["id"] as? NSNumber ?? 0
+                
+                self.cart_id = id.intValue
                 
                 for cart in cart_item {
                     let amount = cart["amount"] as? NSNumber ?? 0
@@ -388,11 +531,11 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         case "selectall":
             return 1
         case "product":
-            if let itemCart = self.cartItems as? [[String:AnyObject]] {
-                let cart_item = itemCart.first?["cart_item"] as? [[String:AnyObject]] ?? []
-                return cart_item.count
-            }
-            return 0
+//            if let itemCart = self.cartItems as? [[String:AnyObject]] {
+//                let cart_item = itemCart.first?["cart_item"] as? [[String:AnyObject]] ?? []
+//                return cart_item.count
+//            }
+            return self.tupleProduct?.count ?? 0
         case "summary":
             return 1
         case "howtopay":
@@ -446,6 +589,18 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                     self.reloadProductSection()
                     
                 }
+                selectCell.deleteCallback = {
+                    var productIds:[Int] = []
+                    if let Tuple = self.tupleProduct {
+                        for item in Tuple {
+                            if item.select {
+                                productIds.append(item.id)
+                            }
+                        }
+                        self.confirmDeleteItemInCart(productIds)
+                    }
+                }
+                
                
             }
         case "product":

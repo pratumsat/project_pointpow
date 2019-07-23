@@ -602,6 +602,12 @@ extension HomeShoppingViewController {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
        
+        if section == 1 {
+            return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        }
+        if section == 2 {
+            return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        }
         if section == 3 {
             return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
         }
@@ -611,7 +617,9 @@ extension HomeShoppingViewController {
         if section == 5 {
             return UIEdgeInsets(top: 30, left: 10, bottom: 60, right: 10)
         }
+        
        
+        
         
         return UIEdgeInsets.zero
     }

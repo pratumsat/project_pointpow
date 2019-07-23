@@ -23,13 +23,14 @@ class PPWebViewController: BaseViewController , UIWebViewDelegate{
         let backImage = UIImage(named: "ic-back-white")
         let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(backViewTapped))
         self.navigationItem.leftBarButtonItem = backButton
+        self.navigationItem.leftBarButtonItem?.imageInsets = UIEdgeInsets(top: 2, left: -10, bottom: -2, right: 10)
         
         self.mWeb.delegate = self
         self.mWeb.scalesPageToFit = false
         self.mWeb.contentMode = .scaleAspectFit
         
         if let url = self.mUrl {
-            if let myURL = URL(string: url.replace(target: "https", withString: "http")) {
+            if let myURL = URL(string: url) {
                 let myURLRequest:URLRequest = URLRequest(url: myURL)
                 self.mWeb.loadRequest(myURLRequest)
             }

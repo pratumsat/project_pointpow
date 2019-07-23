@@ -175,7 +175,7 @@ class RegisterMobileViewController: RegisterViewController {
                 let request_id  = mResult["request_id"] as? String ?? ""
                 DataController.sharedInstance.setRequestId(request_id)
                 
-                self.showVerify(mobile, ref_id,  true)
+                self.showVerify(mobile, ref_id, register: true, true)
             }
         }, error: { (error) in
             if let mError = error as? [String:AnyObject]{

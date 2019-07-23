@@ -238,7 +238,7 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
         self.clearImageView3?.addGestureRecognizer(tap3)
         self.clearImageView3?.isHidden = true
         
-        self.setPicker()
+        
     }
     func getUserInfo(_ avaliable:(()->Void)?  = nil){
         
@@ -331,12 +331,6 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
             
         }
     }
-    
-    
-    func setPicker(){
-        
-    }
-    
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -505,46 +499,49 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
         
         
         guard validateMobile(mobile) else { return }
-       
-       
-        let params:Parameters = [
-            "title" : "gold",
-            "name" : name,
-            "address" : address,
-            "province_id" : self.provinceId,
-            "district_id" : self.districtId,
-            "subdistrict_id" : self.subDistrictId,
-            "postcode" : postcode
-        ]
-        print(params)
-
-        self.modelCtrl.createMemberAddress(params: params, true, succeeded: { (result) in
-            print(result)
-            self.dismiss(animated: true) {
-                self.windowSubview?.removeFromSuperview()
-                self.windowSubview = nil
-                
-                if self.fromPopup {
-                    self.nextStep?("showViewAddress" as AnyObject)
-                }else{
-                    self.nextStep?(result as AnyObject)
+        self.confirmAddAddress {
+            
+            let params:Parameters = [
+                "title" : "gold",
+                "name" : name,
+                "address" : address,
+                "province_id" : self.provinceId,
+                "district_id" : self.districtId,
+                "subdistrict_id" : self.subDistrictId,
+                "postcode" : postcode
+            ]
+            print(params)
+            
+            self.modelCtrl.createMemberAddress(params: params, true, succeeded: { (result) in
+                print(result)
+                self.dismiss(animated: true) {
+                    self.windowSubview?.removeFromSuperview()
+                    self.windowSubview = nil
+                    
+                    if self.fromPopup {
+                        self.nextStep?("showViewAddress" as AnyObject)
+                    }else{
+                        self.nextStep?(result as AnyObject)
+                    }
+                    
+                    
                 }
-                
+            }, error: { (error) in
+                if let mError = error as? [String:AnyObject]{
+                    let message = mError["message"] as? String ?? ""
+                    print(message)
+                    self.showMessagePrompt(message)
+                }
+                print(error)
+            }) { (messageError) in
+                print("messageError")
+                self.handlerMessageError(messageError)
                 
             }
-        }, error: { (error) in
-            if let mError = error as? [String:AnyObject]{
-                let message = mError["message"] as? String ?? ""
-                print(message)
-                self.showMessagePrompt(message)
-            }
-            print(error)
-        }) { (messageError) in
-            print("messageError")
-            self.handlerMessageError(messageError)
-
+            
         }
-        
+       
+       
 
         
     }
@@ -649,6 +646,30 @@ class PopupShippingAddressViewController: BaseViewController ,UIPickerViewDelega
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         self.nextButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
+        
+    }
+    
+    func confirmAddAddress(_ confirm:(()->Void)? = nil) {
+        let dTitle = NSLocalizedString("string-item-shopping-confirm-add-address", comment: "")
+        //let message = NSLocalizedString("string-item-shopping-cart-delete-message", comment: "")
+        let alert = UIAlertController(title: dTitle,
+                                      message: "", preferredStyle: .alert)
+        
+        let okButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-ok", comment: ""), style: .default, handler: {
+            (alert) in
+            
+            confirm?()
+            
+        })
+        let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: { (alert) in
+            
+            
+        })
+        
+        alert.addAction(cancelButton)
+        alert.addAction(okButton)
+        
+        self.present(alert, animated: true, completion: nil)
         
     }
     

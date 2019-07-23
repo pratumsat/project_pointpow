@@ -53,9 +53,9 @@ class WithDrawSummaryThaiPostViewController: BaseViewController, UICollectionVie
             let provinceName = data["province"]?["name_in_thai"] as? String ?? ""
             let zip_code = data["subdistrict"]?["zip_code"] as? NSNumber ?? 0
             
-            var rawAddress = "\(self.name!)"
-            rawAddress += " \(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
-            rawAddress += "\n\(self.mobile!)"
+            var rawAddress = "\(self.name!) \(self.mobile!)"
+            rawAddress += "\n\(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
+            
             
             self.shippingAddress = rawAddress
         }

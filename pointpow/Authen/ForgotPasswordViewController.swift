@@ -94,7 +94,7 @@ class ForgotPasswordViewController: BaseViewController {
             return
         }
         
-        
+        /*
         if isValidNumber(username){
             print("number")
             
@@ -107,7 +107,7 @@ class ForgotPasswordViewController: BaseViewController {
                 if let mResult = result as? [String:AnyObject] {
                     let ref_id = mResult["ref_id"] as? String ?? ""
                     
-                    self.showVerify(username, ref_id, forgotPassword: true, true)
+                    //self.showVerify(username, ref_id, forgotPassword: true, true)
                 }
                 
             }, error: { (error) in
@@ -164,6 +164,8 @@ class ForgotPasswordViewController: BaseViewController {
             
             
         }
+    
+             */
        
     }
     

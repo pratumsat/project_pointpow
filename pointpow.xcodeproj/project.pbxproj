@@ -114,7 +114,6 @@
 		C1214E1322CF422B00DA5C42 /* ShoppingAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1214E1222CF422B00DA5C42 /* ShoppingAddressViewController.swift */; };
 		C1214E1522D2143E00DA5C42 /* ShoppingTaxInvoiceAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1214E1422D2143E00DA5C42 /* ShoppingTaxInvoiceAddressViewController.swift */; };
 		C1214E1722D2178100DA5C42 /* ShoppingAddShippingAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1214E1622D2178100DA5C42 /* ShoppingAddShippingAddressViewController.swift */; };
-		C1214E1922D218F000DA5C42 /* ShoppingEditShippingAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1214E1822D218F000DA5C42 /* ShoppingEditShippingAddressViewController.swift */; };
 		C121B32D224C802D00D69B56 /* PopUpInfoLaserIdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C121B32C224C802D00D69B56 /* PopUpInfoLaserIdViewController.swift */; };
 		C121FB4B22853B2100043387 /* VerifyMobileNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C121FB4A22853B2100043387 /* VerifyMobileNumberViewController.swift */; };
 		C121FB4D22854E5100043387 /* PointLimitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C121FB4C22854E5100043387 /* PointLimitViewController.swift */; };
@@ -470,7 +469,6 @@
 		C1214E1222CF422B00DA5C42 /* ShoppingAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingAddressViewController.swift; sourceTree = "<group>"; };
 		C1214E1422D2143E00DA5C42 /* ShoppingTaxInvoiceAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTaxInvoiceAddressViewController.swift; sourceTree = "<group>"; };
 		C1214E1622D2178100DA5C42 /* ShoppingAddShippingAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingAddShippingAddressViewController.swift; sourceTree = "<group>"; };
-		C1214E1822D218F000DA5C42 /* ShoppingEditShippingAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingEditShippingAddressViewController.swift; sourceTree = "<group>"; };
 		C121B32C224C802D00D69B56 /* PopUpInfoLaserIdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpInfoLaserIdViewController.swift; sourceTree = "<group>"; };
 		C121FB4A22853B2100043387 /* VerifyMobileNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyMobileNumberViewController.swift; sourceTree = "<group>"; };
 		C121FB4C22854E5100043387 /* PointLimitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointLimitViewController.swift; sourceTree = "<group>"; };
@@ -1150,9 +1148,8 @@
 			isa = PBXGroup;
 			children = (
 				C1214E1222CF422B00DA5C42 /* ShoppingAddressViewController.swift */,
-				C1214E1422D2143E00DA5C42 /* ShoppingTaxInvoiceAddressViewController.swift */,
 				C1214E1622D2178100DA5C42 /* ShoppingAddShippingAddressViewController.swift */,
-				C1214E1822D218F000DA5C42 /* ShoppingEditShippingAddressViewController.swift */,
+				C1214E1422D2143E00DA5C42 /* ShoppingTaxInvoiceAddressViewController.swift */,
 				C12A88C822E3291800D40155 /* ShoppingAddTaxInvoiceAddressViewController.swift */,
 			);
 			path = Address;
@@ -1206,6 +1203,16 @@
 				C12A88CF22E4803000D40155 /* PopupAddToCartViewController.swift */,
 			);
 			path = shopping;
+			sourceTree = "<group>";
+		};
+		C12A88D122E6FB4600D40155 /* gold */ = {
+			isa = PBXGroup;
+			children = (
+				C107CF35222263AD00C50B8C /* PopupShippingMyAddressViewController.swift */,
+				C11BFCB2221C0CB700F066DE /* PopupShippingAddressViewController.swift */,
+				C1249EBC22378DBB00F56FA0 /* PopupEditAddressViewController.swift */,
+			);
+			path = gold;
 			sourceTree = "<group>";
 		};
 		C12CCC622282B42000F26DCC /* PromotionCell */ = {
@@ -1478,18 +1485,16 @@
 		C1AD50AD2187FE7F00F74415 /* Popup */ = {
 			isa = PBXGroup;
 			children = (
+				C12A88D122E6FB4600D40155 /* gold */,
 				C12A88CE22E4801900D40155 /* shopping */,
 				C1249EB32224E2CD00F56FA0 /* PopUpMapOfficeViewController.swift */,
 				C1892E17221EB9DC00F5412F /* PopupGoldHistoryFilterViewController.swift */,
-				C107CF35222263AD00C50B8C /* PopupShippingMyAddressViewController.swift */,
 				C11BDFBE21A2C17600443D2D /* PopUpTransferSuccessViewController.swift */,
 				C10CA1A32191755C00316DF3 /* PersonalPopupViewController.swift */,
 				C1AD50AE2187FE9000F74415 /* PopUpViewController.swift */,
 				C169FFCA21C7939E00F9D354 /* FavorPopupViewController.swift */,
 				C197FED921DC5616002F24E8 /* PopUpRegisterSuccessViewController.swift */,
 				C197FEDD21DC8E98002F24E8 /* ResetNav.swift */,
-				C11BFCB2221C0CB700F066DE /* PopupShippingAddressViewController.swift */,
-				C1249EBC22378DBB00F56FA0 /* PopupEditAddressViewController.swift */,
 				C1247C532219B126005D6F7A /* PopupGoldPremiumViewController.swift */,
 				C1249EBE2238B25D00F56FA0 /* PopUpInfoThaiPostViewController.swift */,
 				C121B32C224C802D00D69B56 /* PopUpInfoLaserIdViewController.swift */,
@@ -1969,7 +1974,6 @@
 				C19BEEF522CCA25D00855FBF /* CartViewController.swift in Sources */,
 				C10CA19A21914AF900316DF3 /* TransactionViewController.swift in Sources */,
 				C190F40322CB159D000EF24D /* RegisterMobileViewController.swift in Sources */,
-				C1214E1922D218F000DA5C42 /* ShoppingEditShippingAddressViewController.swift in Sources */,
 				C11A93B3218BF6D200627B44 /* IntroViewController.swift in Sources */,
 				C10CA19421914A3B00316DF3 /* HomeViewController.swift in Sources */,
 				C103113F2212CBAC004396E0 /* GoldPenddingVerifyNav.swift in Sources */,

@@ -319,12 +319,7 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     
     
     
-    func showShoppingEditAddressPage(_ animated:Bool){
-        if let vc:ShoppingEditShippingAddressViewController = self.storyboard?.instantiateViewController(withIdentifier: "ShoppingEditShippingAddressViewController") as? ShoppingEditShippingAddressViewController {
-            
-            self.navigationController?.pushViewController(vc, animated: animated)
-        }
-    }
+  
     
     func showShoppingAddAddressPage(_ animated:Bool){
         if let vc:ShoppingAddShippingAddressViewController = self.storyboard?.instantiateViewController(withIdentifier: "ShoppingAddShippingAddressViewController") as? ShoppingAddShippingAddressViewController {
@@ -423,11 +418,11 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
-    func showVerify(_ mobilePhone:String, _ ref_id:String, forgotPassword:Bool = false, _ animated:Bool){
+    func showVerify(_ mobilePhone:String, _ ref_id:String, register:Bool = false, _ animated:Bool){
         if let vc:VerifyViewController = self.storyboard?.instantiateViewController(withIdentifier: "VerifyViewController") as? VerifyViewController {
             vc.mobilePhone = mobilePhone
             vc.ref_id = ref_id
-            vc.forgotPassword = forgotPassword
+            vc.register = register
             
             self.navigationController?.pushViewController(vc, animated: animated)
         }

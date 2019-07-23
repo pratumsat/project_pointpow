@@ -105,27 +105,6 @@ class ShoppingAddShippingAddressViewController:BaseViewController ,UIPickerViewD
         
         self.setUp()
         
-//        getUserInfo(){
-//            if let data  = self.userData as? [String:AnyObject] {
-//
-//                let first_name = data["goldsaving_member"]?["firstname"] as? String ?? ""
-//                let last_name = data["goldsaving_member"]?["lastname"]as? String ?? ""
-//                let mobile = data["goldsaving_member"]?["mobile"]as? String ?? ""
-//
-//                self.nameTextField.text = "\(first_name) \(last_name)"
-//
-//                //let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
-//                //self.numberPhoneTextField.text =  newMText.chunkFormatted()
-//                self.numberPhoneTextField.text = mobile
-//
-//                self.nameTextField.isEnabled = false
-//                self.numberPhoneTextField.isEnabled = false
-//                self.nameTextField.textColor = UIColor.lightGray
-//                self.numberPhoneTextField.textColor = UIColor.lightGray
-//
-//            }
-//        }
-        
         self.getProvinces(){
             self.provincePickerView = UIPickerView()
             self.provincePickerView!.delegate = self
@@ -239,7 +218,7 @@ class ShoppingAddShippingAddressViewController:BaseViewController ,UIPickerViewD
         self.clearImageView3?.addGestureRecognizer(tap3)
         self.clearImageView3?.isHidden = true
         
-        self.setPicker()
+        
     }
     func getUserInfo(_ avaliable:(()->Void)?  = nil){
         
@@ -331,11 +310,6 @@ class ShoppingAddShippingAddressViewController:BaseViewController ,UIPickerViewD
             self.handlerMessageError(messageError)
             
         }
-    }
-    
-    
-    func setPicker(){
-        
     }
     
     
@@ -507,51 +481,40 @@ class ShoppingAddShippingAddressViewController:BaseViewController ,UIPickerViewD
         
         guard validateMobile(mobile) else { return }
         
-        
-        /*
-         "member_id"        => $request->user()->id,
-         "title"            => $request->title,
-         "name"             => $request->name,
-         "address"          => $request->address,
-         "province_id"      => $request->province_id,
-         "district_id"      => $request->district_id,
-         "subdistrict_id"   => $request->subdistrict_id,
-         "postcode"         => $request->postcode,
-         "tax_invoice"      => $request->tax_invoice,
-         "company"          => $request->company,
-         "mobile"           => $request->mobile,
-         "type"             => $type,
-         "invoice_shipping" => $request->invoice_shipping,
-         */
-        let params:Parameters = [
-            "title" : "shopping",
-            "name" : name,
-            "address" : address,
-            "province_id" : self.provinceId,
-            "district_id" : self.districtId,
-            "subdistrict_id" : self.subDistrictId,
-            "postcode" : postcode,
-            "mobile": "",
-            "type" : "shopping"
-        ]
-        print(params)
-        
-        self.modelCtrl.createMemberAddress(params: params, true, succeeded: { (result) in
-            print(result)
-           
-        }, error: { (error) in
-            if let mError = error as? [String:AnyObject]{
-                let message = mError["message"] as? String ?? ""
-                print(message)
-                self.showMessagePrompt(message)
+        self.confirmAddAddress {
+            
+            let params:Parameters = [
+                "title" : "shopping",
+                "name" : name,
+                "address" : address,
+                "province_id" : self.provinceId,
+                "district_id" : self.districtId,
+                "subdistrict_id" : self.subDistrictId,
+                "postcode" : postcode,
+                "mobile": mobile,
+                "type" : "shopping"
+            ]
+            print(params)
+            
+            self.modelCtrl.createMemberAddress(params: params, true, succeeded: { (result) in
+                print(result)
+                self.navigationController?.popViewController(animated: true)
+                
+            }, error: { (error) in
+                if let mError = error as? [String:AnyObject]{
+                    let message = mError["message"] as? String ?? ""
+                    print(message)
+                    self.showMessagePrompt(message)
+                }
+                print(error)
+            }) { (messageError) in
+                print("messageError")
+                self.handlerMessageError(messageError)
+                
             }
-            print(error)
-        }) { (messageError) in
-            print("messageError")
-            self.handlerMessageError(messageError)
             
         }
-        
+       
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
@@ -631,12 +594,35 @@ class ShoppingAddShippingAddressViewController:BaseViewController ,UIPickerViewD
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.addCloseBlackView()
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         self.nextButton.applyGradient(colours: [Constant.Colors.GRADIENT_1, Constant.Colors.GRADIENT_2])
+        
+    }
+    
+    func confirmAddAddress(_ confirm:(()->Void)? = nil) {
+        let dTitle = NSLocalizedString("string-item-shopping-confirm-add-address", comment: "")
+        //let message = NSLocalizedString("string-item-shopping-cart-delete-message", comment: "")
+        let alert = UIAlertController(title: dTitle,
+                                      message: "", preferredStyle: .alert)
+        
+        let okButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-ok", comment: ""), style: .default, handler: {
+            (alert) in
+            
+            confirm?()
+            
+        })
+        let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: { (alert) in
+            
+            
+        })
+        
+        alert.addAction(cancelButton)
+        alert.addAction(okButton)
+        
+        self.present(alert, animated: true, completion: nil)
         
     }
     

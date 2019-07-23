@@ -33,15 +33,7 @@ class VerifyViewController: BaseViewController {
     }
    
     var mobilePhone:String?
-    var forgotPassword:Bool = false {
-        didSet{
-            if forgotPassword {
-                countDown = 300
-            }else{
-                countDown = 60
-            }
-        }
-    }
+    var register:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,11 +111,12 @@ class VerifyViewController: BaseViewController {
     func updateButton(){
         self.sendButton.borderLightGrayColorProperties(borderWidth: 1)
      
-        if forgotPassword {
-            self.sendButton.setTitle("\(prodTimeString(time: TimeInterval(countDown)) )", for: .normal)
-        }else{
-            self.sendButton.setTitle("\(countDown)", for: .normal)
-        }
+//        if forgotPassword {
+//            self.sendButton.setTitle("\(prodTimeString(time: TimeInterval(countDown)) )", for: .normal)
+//        }else{
+//            self.sendButton.setTitle("\(countDown)", for: .normal)
+//        }
+        self.sendButton.setTitle("\(countDown)", for: .normal)
         self.sendButton.setTitleColor(UIColor.lightGray, for: .normal)
         
     }
@@ -155,11 +148,7 @@ class VerifyViewController: BaseViewController {
     }
     func removeCountDownLable() {
         //finish
-        if forgotPassword {
-            countDown = 300
-        }else{
-            countDown = 60
-        }
+        countDown = 60
         
         timer?.invalidate()
         timer = nil
@@ -254,18 +243,19 @@ class VerifyViewController: BaseViewController {
                 print(mResult)
                 
                 let access_token  = mResult["access_token"] as? String ?? ""
-                let reset_token  = mResult["reset_token"] as? String ?? ""
+                //let reset_token  = mResult["reset_token"] as? String ?? ""
                 let member = mResult["member"] as? [String:AnyObject] ?? [:]
                 let is_profile = member["is_profile"] as? NSNumber ?? 0
                 let is_pin = member["is_pin"] as? NSNumber ?? 0
                 
-                if self.forgotPassword {
-                    DataController.sharedInstance.setResetPasswordToken(reset_token)
-                    self.showResetPasswordView(true, forgotPassword: true)
-                }else{
-                    /* Mobile Only*/
-                    DataController.sharedInstance.setToken(access_token)
-                    
+                /* Forgotpassword
+                 DataController.sharedInstance.setResetPasswordToken(reset_token)
+                 self.showResetPasswordView(true, forgotPassword: true)
+                 */
+                
+                DataController.sharedInstance.setToken(access_token)
+                
+                if self.register {
                     if !is_profile.boolValue && !is_pin.boolValue {
                         self.showPersonalData(true){
                             self.dismiss(animated: false, completion: {
@@ -282,7 +272,11 @@ class VerifyViewController: BaseViewController {
                             })
                         }
                     }
-                    
+                }else{
+                    /* Mobile Only*/
+                    self.dismiss(animated: false, completion: {
+                        (self.navigationController as? IntroNav)?.callbackFinish?()
+                    })
                 }
                 
             }

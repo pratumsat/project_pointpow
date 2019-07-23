@@ -22,29 +22,33 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
     
     var isTaxInvoice = false {
         didSet{
-            if isTaxInvoice {
-                self.itemSection = ["pointbalance",
-                                    "selectall",
-                                    "product",
-                                    "summary",
-                                    "howtopay",
-                                    "shipping_address",
-                                    "taxinvoice",
-                                    "shopping_taxinvoice",
-                                    "nextbutton"]
-            }else{
-                self.itemSection = ["pointbalance",
-                                    "selectall",
-                                    "product",
-                                    "summary",
-                                    "howtopay",
-                                    "shipping_address",
-                                    "taxinvoice",
-                                    "nextbutton"]
-            }
-            
+            self.setItemSection()
             self.cartCollectionView.reloadData()
         }
+    }
+    
+    func setItemSection(){
+        if isTaxInvoice {
+            self.itemSection = ["pointbalance",
+                                "selectall",
+                                "product",
+                                "summary",
+                                "howtopay",
+                                "shipping_address",
+                                "taxinvoice",
+                                "shopping_taxinvoice",
+                                "nextbutton"]
+        }else{
+            self.itemSection = ["pointbalance",
+                                "selectall",
+                                "product",
+                                "summary",
+                                "howtopay",
+                                "shipping_address",
+                                "taxinvoice",
+                                "nextbutton"]
+        }
+    
     }
     
     func reloadSelectAllSection(){
@@ -100,6 +104,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
     
     var totalOrder:(amount:Int, totalPrice:Double)? {
         didSet{
+            print(itemSection.count)
             if let index = itemSection.firstIndex(of: "summary"){
                 let indexSet = IndexSet(integer: index)
                 
@@ -128,14 +133,8 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             print(tupleProduct as Any)
             if tupleProduct != nil {
                 if tupleProduct!.count > 0 {
-                    self.itemSection = ["pointbalance",
-                                        "selectall",
-                                        "product",
-                                        "summary",
-                                        "howtopay",
-                                        "shipping_address",
-                                        "taxinvoice",
-                                        "nextbutton"]
+                   
+                    self.setItemSection()
                 }else{
                     self.itemSection = ["no_item"]
                 }
@@ -163,11 +162,17 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         numberFormatter.minimumFractionDigits = 2
         self.currentPointBalance = numberFormatter.string(from: DataController.sharedInstance.getCurrentPointBalance() )
         
+      
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.callAPI() {
             self.updateView()
         }
-        
     }
+    
     private func callAPI(_ loadSuccess:(()->Void)? = nil){
         var success = 0
         getUserInfo(){
@@ -191,17 +196,10 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
     func updateView(){
         if let itemCart = self.cartItems as? [[String:AnyObject]] {
             let cart_item = itemCart.first?["cart_item"] as? [[String:AnyObject]] ?? []
+            
+            
             if cart_item.count > 0 {
-                self.itemSection = ["pointbalance",
-                                    "selectall",
-                                    "product",
-                                    "summary",
-                                    "howtopay",
-                                    "shipping_address",
-                                    "taxinvoice",
-                                    "nextbutton"]
-                
-                
+                self.setItemSection()
                 
             }else{
                 self.itemSection = ["no_item"]
@@ -213,15 +211,37 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         self.cartCollectionView.reloadData()
         self.updateTotalAmountPrice()
     }
-    
    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        print("viewWillDisappear viewWillDisappear")
+//    }
+    func updateCart(_ updateSuccess:(()->Void)? = nil){
+        guard let tuple = self.tupleProduct ,tuple.count > 0 else {  return }
+        let count = tuple.count
+        var success = 0
+        for item in tuple {
+            let id = item.id
+            let amount = item.amount
+            
+            self.updateItemCart(id, amount: amount) {
+                success += 1
+                if success == count {
+                    updateSuccess?()
+                }
+            }
+        }
+    }
     @objc func backViewTapped(){
         guard let tuple = self.tupleProduct ,tuple.count > 0 else {
             self.navigationController?.popViewController(animated: true)
             return
         }
- 
-        let count = tuple.count
+        self.updateCart {
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        /*let count = tuple.count
         
         var success = 0
         for item in tuple {
@@ -234,10 +254,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                     self.navigationController?.popViewController(animated: true)
                 }
             }
-        }
-        
-     
-        
+        }*/
     }
     
     func deleteProductByID(_ id:Int){
@@ -367,23 +384,84 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
     
     
     func getSelectAddress(_ memberAddress:[[String:AnyObject]]) -> String {
-        for address in memberAddress {
-            let full_address = address["full_address"] as? String ?? ""
-            let mobile = address["mobile"] as? String ?? ""
-            let latest_shipping = address["latest_shipping"] as? NSNumber ?? 0
+        for data in memberAddress {
+            let address = data["address"] as? String ?? ""
+            let districtName = data["district"]?["name_in_thai"] as? String ?? ""
+            let subdistrictName = data["subdistrict"]?["name_in_thai"] as? String ?? ""
+            let provinceName = data["province"]?["name_in_thai"] as? String ?? ""
+            let zip_code = data["subdistrict"]?["zip_code"] as? NSNumber ?? 0
+            let name = data["name"] as? String ?? ""
+            let mobile = data["mobile"] as? String ?? ""
+            let latest_shipping = data["latest_shipping"] as? NSNumber ?? 0
+            
+            var rawAddress = "\(name) \(mobile)"
+            rawAddress += "\n\(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
             
             if latest_shipping.boolValue {
-                return "\(full_address)\n\(mobile)"
+                return rawAddress
             }
         }
-        let full_address = memberAddress.first?["full_address"] as? String ?? ""
-        let mobile = memberAddress.first?["mobile"] as? String ?? ""
         
-        if full_address.isEmpty {
+        guard  let data = memberAddress.first else {
             return ""
         }
-        return "\(full_address)\n\(mobile)"
+        
+        let address = data["address"] as? String ?? ""
+        let districtName = data["district"]?["name_in_thai"] as? String ?? ""
+        let subdistrictName = data["subdistrict"]?["name_in_thai"] as? String ?? ""
+        let provinceName = data["province"]?["name_in_thai"] as? String ?? ""
+        let zip_code = data["subdistrict"]?["zip_code"] as? NSNumber ?? 0
+        let name = data["name"] as? String ?? ""
+        let mobile = data["mobile"] as? String ?? ""
+        
+        var rawAddress = "\(name) \(mobile)"
+        rawAddress += "\n\(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
+        
+        
+        return rawAddress
     }
+    
+    func getSelectAddressTaxInVoice(_ memberAddress:[[String:AnyObject]]) -> String {
+        for data in memberAddress {
+            let address = data["address"] as? String ?? ""
+            let districtName = data["district"]?["name_in_thai"] as? String ?? ""
+            let subdistrictName = data["subdistrict"]?["name_in_thai"] as? String ?? ""
+            let provinceName = data["province"]?["name_in_thai"] as? String ?? ""
+            let zip_code = data["subdistrict"]?["zip_code"] as? NSNumber ?? 0
+            let latest_shipping = data["latest_shipping"] as? NSNumber ?? 0
+            let tax_invoice = data["tax_invoice"] as? String ?? ""
+            let name = data["name"] as? String ?? ""
+            let mobile = data["mobile"] as? String ?? ""
+            
+            let newText = String((tax_invoice).filter({ $0 != "-" }).prefix(13))
+            let tax_invoice_renew = newText.chunkFormattedPersonalID()
+            var rawAddress = "\(name) \(tax_invoice_renew)"
+            rawAddress += "\n\(mobile) \(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
+            
+            if latest_shipping.boolValue {
+                return rawAddress
+            }
+        }
+        guard  let data = memberAddress.first else {
+            return ""
+        }
+        
+        let address = data["address"] as? String ?? ""
+        let districtName = data["district"]?["name_in_thai"] as? String ?? ""
+        let subdistrictName = data["subdistrict"]?["name_in_thai"] as? String ?? ""
+        let provinceName = data["province"]?["name_in_thai"] as? String ?? ""
+        let zip_code = data["subdistrict"]?["zip_code"] as? NSNumber ?? 0
+        let tax_invoice = data["tax_invoice"] as? String ?? ""
+        let name = data["name"] as? String ?? ""
+        let mobile = data["mobile"] as? String ?? ""
+       
+        
+        var rawAddress = "\(name) \(tax_invoice)"
+        rawAddress += "\n\(mobile) \(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
+        
+        return rawAddress
+    }
+   
     
     func getUserInfo(_ avaliable:(()->Void)?  = nil){
         var isLoading:Bool = true
@@ -417,7 +495,8 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                         }
                     }
                     self.fullAddressShopping = self.getSelectAddress(shoppingAddress)
-                    self.fullAddressTaxInvoice = self.getSelectAddress(invoiceAddress)
+                    
+                    self.fullAddressTaxInvoice = self.getSelectAddressTaxInVoice(invoiceAddress)
                     
                 }
                 
@@ -531,10 +610,6 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         case "selectall":
             return 1
         case "product":
-//            if let itemCart = self.cartItems as? [[String:AnyObject]] {
-//                let cart_item = itemCart.first?["cart_item"] as? [[String:AnyObject]] ?? []
-//                return cart_item.count
-//            }
             return self.tupleProduct?.count ?? 0
         case "summary":
             return 1
@@ -752,13 +827,37 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        if indexPath.section == 5 {
-//            self.showShoppingAddressPage(true)
-//        }
-//        if indexPath.section == 6 {
-//            self.showTaxInvoiceAddressPage(true)
-//
-//        }
+
+        switch self.itemSection[indexPath.section] {
+        case "shipping_address":
+            self.updateCart {
+                if !self.fullAddressShopping.trimmingCharacters(in: .whitespaces).isEmpty {
+                    //isAddress
+                    self.showShoppingAddressPage(true)
+                }else{
+                    //no address
+                    self.showShoppingAddAddressPage(true)
+                }
+            }
+           
+            break
+            
+        case "shopping_taxinvoice":
+            self.updateCart {
+                if !self.fullAddressTaxInvoice.trimmingCharacters(in: .whitespaces).isEmpty {
+                    //isAddress
+                    self.showTaxInvoiceAddressPage(true)
+                }else{
+                    //no address
+                }
+            }
+            
+            break
+            
+        default:
+            break
+        }
+        
     }
     
     

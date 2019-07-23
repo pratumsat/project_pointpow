@@ -29,6 +29,7 @@ class ShoppingTaxInvoiceAddressViewController: ShoppingAddressViewController {
         self.registerNib(self.addressCollectionView, "AddressViewCell")
         
     }
+    
     override func getUserInfo(_ avaliable:(()->Void)?  = nil){
         
         var isLoading:Bool = true
@@ -43,28 +44,33 @@ class ShoppingTaxInvoiceAddressViewController: ShoppingAddressViewController {
             self.userData = result
             
             if let data  = self.userData as? [String:AnyObject] {
-                let first_name = data["goldsaving_member"]?["firstname"] as? String ?? ""
-                let last_name = data["goldsaving_member"]?["lastname"]as? String ?? ""
-                let mobile = data["goldsaving_member"]?["mobile"]as? String ?? ""
-                
-                //self.name = "\(first_name) \(last_name)"
-                //self.mobile = mobile
-                
                 let member_addresses = data["member_addresses"] as? [[String:AnyObject]] ?? [[:]]
                 
                 self.modelAddreses = []
+                self.selectedAddress = nil
                 if member_addresses.count > 0 {
                     for address in member_addresses {
                         let type = address["type"] as? String ?? ""
+                        let latest_shipping = address["latest_shipping"] as? NSNumber ?? 0
+                        
                         if type.lowercased() == "invoice" {
+                            if latest_shipping.boolValue {
+                                self.selectedAddress = address as AnyObject
+                            }
                             self.modelAddreses?.append(address)
                         }
                     }
                 }
+                self.modelAddreses = self.modelAddreses?.sorted(by: { (a1, a2) -> Bool in
+                    let v1 = a1["latest_shipping"] as? NSNumber ?? 0
+                    let v2 = a2["latest_shipping"] as? NSNumber ?? 0
+                    return v1.boolValue
+                })
+                
+                //self.modelAddreses?.reverse()
+                self.selectItem = nil
                 
                 
-                // self.selectedAddress = nil
-                //self.countAddress = self.modelAddreses?.count ?? 0
             }
             avaliable?()
             
@@ -94,29 +100,53 @@ class ShoppingTaxInvoiceAddressViewController: ShoppingAddressViewController {
         if indexPath.section == 0 {
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "AddressViewCell", for: indexPath) as? AddressViewCell {
                 
-                let newText = String(("1489900090467").filter({ $0 != "-" }).prefix(13))
-                var rawAddress = "\(newText)\n"
-                rawAddress += "thanwat pratumsat 0836732572 45/33 หมู่บ้านสวนหลวง เฉลิมพระเกียรติ9 ดอกไม้ ประเวศ กรุงเทพมหานคร 10250"
-                item.addressLabel.text = rawAddress
+                if let data = modelAddreses?[indexPath.row] {
+                    // let id = data["id"] as? NSNumber ?? 0
+                    let address = data["address"] as? String ?? ""
+                    let districtName = data["district"]?["name_in_thai"] as? String ?? ""
+                    let subdistrictName = data["subdistrict"]?["name_in_thai"] as? String ?? ""
+                    let provinceName = data["province"]?["name_in_thai"] as? String ?? ""
+                    let zip_code = data["subdistrict"]?["zip_code"] as? NSNumber ?? 0
+                    let latest_shipping = data["latest_shipping"] as? NSNumber ?? 0
+                    let tax_invoice = data["tax_invoice"] as? String ?? ""
+                    let name = data["name"] as? String ?? ""
+                    let mobile = data["mobile"] as? String ?? ""
+                    
+                    var rawAddress = "\(name) \(tax_invoice)"
+                    rawAddress += "\n\(mobile) \(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
+                    
+                    item.addressLabel.text = rawAddress
+                    
+                    
+                    if let select = selectItem {
+                        if indexPath.row == select {
+                            item.selectedAddress = true
+                        }else{
+                            item.selectedAddress = false
+                        }
+                        
+                    }else{
+                        if latest_shipping.boolValue  {
+                            item.selectedAddress = true
+                        }else{
+                            item.selectedAddress = false
+                        }
+                    }
+                }
                 
                 item.editCallback = {
                     print("edit address")
                 }
                 item.deleteCallback = {
-                    let alert = UIAlertController(title: NSLocalizedString("string-dailog-title-delete-address", comment: ""),
-                                                  message: "", preferredStyle: .alert)
-                    
-                    let okButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-ok", comment: ""), style: .default, handler: {
-                        (alert) in
-                        
-                    })
-                    let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: nil)
-                    
-                    
-                    alert.addAction(cancelButton)
-                    alert.addAction(okButton)
-                    
-                    self.present(alert, animated: true, completion: nil)
+                    if let data = self.modelAddreses?[indexPath.row] {
+                        let latest_shipping = data["latest_shipping"] as? NSNumber ?? 0
+                        let id = data["id"] as? NSNumber ?? 0
+                        if latest_shipping.boolValue  {
+                            self.showMessagePrompt2(NSLocalizedString("string-item-shopping-cart-delete-address", comment: ""))
+                        }else{
+                            self.deleteAddress(id.intValue)
+                        }
+                    }
                 }
                 
                 
@@ -136,15 +166,25 @@ class ShoppingTaxInvoiceAddressViewController: ShoppingAddressViewController {
         if indexPath.section == 0 {
             
             let width = collectionView.frame.width
-            
-            let newText = String(("1489900090467").filter({ $0 != "-" }).prefix(13))
-            var rawAddress = "\(newText)\n"
-            rawAddress += "thanwat pratumsat 0836732572 45/33 หมู่บ้านสวนหลวง เฉลิมพระเกียรติ9 ดอกไม้ ประเวศ กรุงเทพมหานคร 10250"
-            
-            
-            let height = heightForView(text: rawAddress, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 16)!, width: width) +  60
-            
-            return CGSize(width: width, height: height)
+            if let data = modelAddreses?[indexPath.row] {
+                let address = data["address"] as? String ?? ""
+                let districtName = data["district"]?["name_in_thai"] as? String ?? ""
+                let subdistrictName = data["subdistrict"]?["name_in_thai"] as? String ?? ""
+                let provinceName = data["province"]?["name_in_thai"] as? String ?? ""
+                let zip_code = data["subdistrict"]?["zip_code"] as? NSNumber ?? 0
+                let tax_invoice = data["name"] as? String ?? ""
+                let name = data["name"] as? String ?? ""
+                let mobile = data["mobile"] as? String ?? ""
+                
+                var rawAddress = "\(name) \(tax_invoice)"
+                rawAddress += "\n\(mobile) \(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
+                
+                
+                let height = heightForView(text: rawAddress, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 16)!, width: width) +  60
+                
+                return CGSize(width: width, height: height)
+                
+            }
             
         }
         

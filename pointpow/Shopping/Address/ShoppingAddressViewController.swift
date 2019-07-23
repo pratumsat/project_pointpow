@@ -25,10 +25,19 @@ class ShoppingAddressViewController: BaseViewController , UICollectionViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       
         self.setUp()
+        
     }
+    
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.getUserInfo(){
+            self.addressCollectionView.reloadData()
+        }
+    }
+    
     func getUserInfo(_ avaliable:(()->Void)?  = nil){
         
         var isLoading:Bool = true
@@ -43,28 +52,33 @@ class ShoppingAddressViewController: BaseViewController , UICollectionViewDelega
             self.userData = result
             
             if let data  = self.userData as? [String:AnyObject] {
-                let first_name = data["goldsaving_member"]?["firstname"] as? String ?? ""
-                let last_name = data["goldsaving_member"]?["lastname"]as? String ?? ""
-                let mobile = data["goldsaving_member"]?["mobile"]as? String ?? ""
-                
-                //self.name = "\(first_name) \(last_name)"
-                //self.mobile = mobile
-                
                 let member_addresses = data["member_addresses"] as? [[String:AnyObject]] ?? [[:]]
                 
                 self.modelAddreses = []
+                self.selectedAddress = nil
                 if member_addresses.count > 0 {
                     for address in member_addresses {
                         let type = address["type"] as? String ?? ""
+                        let latest_shipping = address["latest_shipping"] as? NSNumber ?? 0
+                        
                         if type.lowercased() == "shopping" {
+                            if latest_shipping.boolValue {
+                                self.selectedAddress = address as AnyObject
+                            }
                             self.modelAddreses?.append(address)
                         }
                     }
                 }
+                self.modelAddreses = self.modelAddreses?.sorted(by: { (a1, a2) -> Bool in
+                    let v1 = a1["latest_shipping"] as? NSNumber ?? 0
+                    let v2 = a2["latest_shipping"] as? NSNumber ?? 0
+                    return v1.boolValue
+                })
+
+                //self.modelAddreses?.reverse()
+                self.selectItem = nil
                 
                 
-               // self.selectedAddress = nil
-                //self.countAddress = self.modelAddreses?.count ?? 0
             }
             avaliable?()
             
@@ -107,8 +121,49 @@ class ShoppingAddressViewController: BaseViewController , UICollectionViewDelega
         
     }
     
+    
+    func deleteAddress(_ id:Int){
+        let alert = UIAlertController(title: NSLocalizedString("string-dailog-title-delete-address", comment: ""),
+                                      message: "", preferredStyle: .alert)
+        
+        let okButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-ok", comment: ""), style: .default, handler: {
+            (alert) in
+            
+            self.modelCtrl.deleteMemberAddress(id: id, true, succeeded: { (result) in
+                
+                self.getUserInfo(){
+                    self.addressCollectionView.reloadData()
+                }
+                
+            }, error: { (error) in
+                if let mError = error as? [String:AnyObject]{
+                    let message = mError["message"] as? String ?? ""
+                    print(message)
+                    self.showMessagePrompt(message)
+                }
+                
+                print(error)
+            }) { (messageError) in
+                print("messageError")
+                self.handlerMessageError(messageError)
+                
+            }
+            
+        })
+        let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: nil)
+        
+        
+        alert.addAction(cancelButton)
+        alert.addAction(okButton)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     override func reloadData() {
-        self.refreshControl?.endRefreshing()
+        self.getUserInfo(){
+            self.addressCollectionView.reloadData()
+            self.refreshControl?.endRefreshing()
+        }
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -116,7 +171,7 @@ class ShoppingAddressViewController: BaseViewController , UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return self.modelAddreses?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -126,86 +181,57 @@ class ShoppingAddressViewController: BaseViewController , UICollectionViewDelega
         if indexPath.section == 0 {
             if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "AddressViewCell", for: indexPath) as? AddressViewCell {
                 
-//                if let data = modelAddreses?[indexPath.row] {
-//                    // let id = data["id"] as? NSNumber ?? 0
-//                    let address = data["address"] as? String ?? ""
-//                    let districtName = data["district"]?["name_in_thai"] as? String ?? ""
-//                    let subdistrictName = data["subdistrict"]?["name_in_thai"] as? String ?? ""
-//                    let provinceName = data["province"]?["name_in_thai"] as? String ?? ""
-//                    let zip_code = data["subdistrict"]?["zip_code"] as? NSNumber ?? 0
-//                    let latest_shipping = data["latest_shipping"] as? NSNumber ?? 0
-//
-//                    rawAddress += " \(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
-//                    rawAddress += " \(self.mobile)"
-//
-//                    item.addressLabel.text = rawAddress
-//
-//
-//                    if let select = selectItem {
-//                        if indexPath.row == select {
-//                            item.selectedAddress = true
-//                        }else{
-//                            item.selectedAddress = false
-//                        }
-//
-//                    }else{
-//                        if latest_shipping.boolValue  {
-//                            item.selectedAddress = true
-//                            self.selectedAddress = data as AnyObject
-//                        }else{
-//                            item.selectedAddress = false
-//                        }
-//                    }
-//                }
-                var rawAddress = "thanwat pratumsat 0836732572 45/33 หมู่บ้านสวนหลวง เฉลิมพระเกียรติ9 ดอกไม้ ประเวศ กรุงเทพมหานคร 10250"
-                item.addressLabel.text = rawAddress
+                if let data = modelAddreses?[indexPath.row] {
+                    // let id = data["id"] as? NSNumber ?? 0
+                    let address = data["address"] as? String ?? ""
+                    let districtName = data["district"]?["name_in_thai"] as? String ?? ""
+                    let subdistrictName = data["subdistrict"]?["name_in_thai"] as? String ?? ""
+                    let provinceName = data["province"]?["name_in_thai"] as? String ?? ""
+                    let zip_code = data["subdistrict"]?["zip_code"] as? NSNumber ?? 0
+                    let latest_shipping = data["latest_shipping"] as? NSNumber ?? 0
+                    let name = data["name"] as? String ?? ""
+                    let mobile = data["mobile"] as? String ?? ""
+
+                    var rawAddress = "\(name) \(mobile)"
+                    rawAddress += "\n\(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
+
+                    item.addressLabel.text = rawAddress
+
+
+                    if let select = selectItem {
+                        if indexPath.row == select {
+                            item.selectedAddress = true
+                        }else{
+                            item.selectedAddress = false
+                        }
+
+                    }else{
+                        if latest_shipping.boolValue  {
+                            item.selectedAddress = true
+                        }else{
+                            item.selectedAddress = false
+                        }
+                    }
+                }
+               
+                
                 
                 item.editCallback = {
                     print("edit address")
                     
-                    self.showShoppingEditAddressPage(true)
+                   
                 }
                 item.deleteCallback = {
-                    let alert = UIAlertController(title: NSLocalizedString("string-dailog-title-delete-address", comment: ""),
-                                                  message: "", preferredStyle: .alert)
-                    
-                    let okButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-ok", comment: ""), style: .default, handler: {
-                        (alert) in
-                        
-//                        if let data = self.modelAddreses?[indexPath.row] {
-//                            let id = data["id"] as? NSNumber ?? 0
-//
-//                            self.modelCtrl.deleteMemberAddress(id: id.intValue, true, succeeded: { (result) in
-//
-//                                self.getUserInfo(){
-//                                    self.addressCollectionView.reloadData()
-//                                }
-//
-//                            }, error: { (error) in
-//                                if let mError = error as? [String:AnyObject]{
-//                                    let message = mError["message"] as? String ?? ""
-//                                    print(message)
-//                                    self.showMessagePrompt(message)
-//                                }
-//
-//                                print(error)
-//                            }) { (messageError) in
-//                                print("messageError")
-//                                self.handlerMessageError(messageError)
-//
-//                            }
-//                        }
-                        
-                        
-                        
-                    })
-                    let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: nil)
-                    
-                    
-                    alert.addAction(cancelButton)
-                    alert.addAction(okButton)
-                    
-                    self.present(alert, animated: true, completion: nil)
+                    if let data = self.modelAddreses?[indexPath.row] {
+                        let latest_shipping = data["latest_shipping"] as? NSNumber ?? 0
+                        let id = data["id"] as? NSNumber ?? 0
+                        if latest_shipping.boolValue  {
+                            self.showMessagePrompt2(NSLocalizedString("string-item-shopping-cart-delete-address", comment: ""))
+                        }else{
+                            self.deleteAddress(id.intValue)
+                        }
+                        self.deleteAddress(id.intValue)
+                    }
                 }
                 
                 
@@ -246,19 +272,25 @@ class ShoppingAddressViewController: BaseViewController , UICollectionViewDelega
         if indexPath.section == 0 {
             
             let width = collectionView.frame.width
-//            if let data = modelAddreses?[indexPath.row] {
-//                let address = data["address"] as? String ?? ""
-//                let districtName = data["district"]?["name_in_thai"] as? String ?? ""
-//                let subdistrictName = data["subdistrict"]?["name_in_thai"] as? String ?? ""
-//                let provinceName = data["province"]?["name_in_thai"] as? String ?? ""
-//                let zip_code = data["subdistrict"]?["zip_code"] as? NSNumber ?? 0
-//
-//
-//            }
-            var rawAddress = "thanwat pratumsat 0836732572 45/33 หมู่บ้านสวนหลวง เฉลิมพระเกียรติ9 ดอกไม้ ประเวศ กรุงเทพมหานคร 10250"
-            let height = heightForView(text: rawAddress, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 16)!, width: width) +  60
+            if let data = modelAddreses?[indexPath.row] {
+                let address = data["address"] as? String ?? ""
+                let districtName = data["district"]?["name_in_thai"] as? String ?? ""
+                let subdistrictName = data["subdistrict"]?["name_in_thai"] as? String ?? ""
+                let provinceName = data["province"]?["name_in_thai"] as? String ?? ""
+                let zip_code = data["subdistrict"]?["zip_code"] as? NSNumber ?? 0
+                let name = data["name"] as? String ?? ""
+                let mobile = data["mobile"] as? String ?? ""
+                
+                var rawAddress = "\(name) \(mobile)"
+                rawAddress += "\n\(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
+
+                
+                let height = heightForView(text: rawAddress, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 16)!, width: width) +  60
+                
+                return CGSize(width: width, height: height)
+
+            }
             
-            return CGSize(width: width, height: height)
             
         }
         

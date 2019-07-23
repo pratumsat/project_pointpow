@@ -160,18 +160,18 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
             self.subCategoryCollectionView?.isHidden = false
             
            
-            self.getSubCateByCate(self.loadDataByCateID) {
-                self.addSubCate()
-            }
-            
-            self.selectCateItem = self.loadDataByCateID
-            self.selectedCategory(self.loadDataByCateID)
-            
-            self.cateId = self.loadDataByCateID
-            self.subCateId = self.loadDataByCateID
-            
-            
-             self.itemSection = ["recommend","filter","product"]
+//            self.getSubCateByCate(self.loadDataByCateID) {
+//                self.addSubCate()
+//            }
+//
+//            self.selectCateItem = self.loadDataByCateID
+//            self.selectedCategory(self.loadDataByCateID)
+//
+//            self.cateId = self.loadDataByCateID
+//            self.subCateId = self.loadDataByCateID
+//
+//
+//            self.itemSection = ["recommend","filter","product"]
             
         }else{
           
@@ -188,7 +188,7 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
         
         
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         guard  let tab = self.tabBarController else {
@@ -214,7 +214,22 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-       
+        if self.loadDataByCateID > 0 {
+            
+            
+            self.getSubCateByCate(self.loadDataByCateID) {
+                self.addSubCate()
+            }
+            
+            self.selectCateItem = self.loadDataByCateID
+            self.selectedCategory(self.loadDataByCateID)
+            
+            self.cateId = self.loadDataByCateID
+            self.subCateId = self.loadDataByCateID
+            
+            
+            self.itemSection = ["recommend","filter","product"]
+        }
     }
     
     private func getItemToCart(_ getSuccess:((_ itemCart:[[String:AnyObject]])->Void)? = nil){

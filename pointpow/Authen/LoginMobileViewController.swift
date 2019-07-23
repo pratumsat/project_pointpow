@@ -128,13 +128,11 @@ class LoginMobileViewController: LoginViewController {
         modelCtrl.loginWithEmailORMobile(params: params, succeeded: { (result) in
             if let mResult = result as? [String:AnyObject]{
                 print(mResult)
-                let status = mResult["status"] as? String ?? ""
+                //let status = mResult["status"] as? String ?? ""
                 let ref_id = mResult["ref_id"] as? String ?? ""
-                let is_pin = mResult["is_pin"] as? NSNumber ?? 0
+                //let is_pin = mResult["is_pin"] as? NSNumber ?? 0
                 let request_id  = mResult["request_id"] as? String ?? ""
                 
-                
-               
                 
                 DataController.sharedInstance.setRequestId(request_id)
                 self.showVerify(mobile, ref_id,  true)

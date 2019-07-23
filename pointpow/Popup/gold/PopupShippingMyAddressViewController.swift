@@ -43,6 +43,7 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
         }
         
     }
+ 
     
     func getUserInfo(_ avaliable:(()->Void)?  = nil){
         
@@ -68,17 +69,27 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
                 let member_addresses = data["member_addresses"] as? [[String:AnyObject]] ?? [[:]]
                
                 self.modelAddreses = []
+                self.selectedAddress = nil
+                
                 if member_addresses.count > 0 {
                     for address in member_addresses {
                         let type = address["type"] as? String ?? ""
+                        let latest_shipping = address["latest_shipping"] as? NSNumber ?? 0
+                        
                         if type.lowercased() == "gold" {
+                            if latest_shipping.boolValue {
+                                self.selectedAddress = address as AnyObject
+                            }
                             self.modelAddreses?.append(address)
                         }
                     }
                 }
+                self.modelAddreses = self.modelAddreses?.sorted(by: { (a1, a2) -> Bool in
+                    let v1 = a1["latest_shipping"] as? NSNumber ?? 0
+                    let v2 = a2["latest_shipping"] as? NSNumber ?? 0
+                    return v1.boolValue
+                })
                 
-                
-                self.selectedAddress = nil
                 self.countAddress = self.modelAddreses?.count ?? 0
             }
             avaliable?()
@@ -163,7 +174,43 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
         
     }
     
-
+    func deleteAddress(_ id:Int){
+        let alert = UIAlertController(title: NSLocalizedString("string-dailog-title-delete-address", comment: ""),
+                                      message: "", preferredStyle: .alert)
+        
+        let okButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-ok", comment: ""), style: .default, handler: {
+            (alert) in
+            
+            self.modelCtrl.deleteMemberAddress(id: id, true, succeeded: { (result) in
+                
+                self.getUserInfo(){
+                    self.addressCollectionView.reloadData()
+                }
+                
+            }, error: { (error) in
+                if let mError = error as? [String:AnyObject]{
+                    let message = mError["message"] as? String ?? ""
+                    print(message)
+                    self.showMessagePrompt(message)
+                }
+                
+                print(error)
+            }) { (messageError) in
+                print("messageError")
+                self.handlerMessageError(messageError)
+                
+            }
+            
+        })
+        let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: nil)
+        
+        
+        alert.addAction(cancelButton)
+        alert.addAction(okButton)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -191,9 +238,8 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
                     let zip_code = data["subdistrict"]?["zip_code"] as? NSNumber ?? 0
                     let latest_shipping = data["latest_shipping"] as? NSNumber ?? 0
                     
-                    var rawAddress = "\(self.name)"
-                    rawAddress += " \(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
-                    rawAddress += " \(self.mobile)"
+                    var rawAddress = "\(self.name) \(self.mobile)"
+                    rawAddress += "\n\(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
 
                     item.addressLabel.text = rawAddress
                     
@@ -209,7 +255,6 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
                     }else{
                         if latest_shipping.boolValue  {
                             item.selectedAddress = true
-                            self.selectedAddress = data as AnyObject
                         }else{
                             item.selectedAddress = false
                         }
@@ -228,46 +273,16 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
                     }
                 }
                 item.deleteCallback = {
-                    let alert = UIAlertController(title: NSLocalizedString("string-dailog-title-delete-address", comment: ""),
-                                                  message: "", preferredStyle: .alert)
-                    
-                    let okButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-ok", comment: ""), style: .default, handler: {
-                        (alert) in
-                        
-                        if let data = self.modelAddreses?[indexPath.row] {
-                            let id = data["id"] as? NSNumber ?? 0
-                            
-                            self.modelCtrl.deleteMemberAddress(id: id.intValue, true, succeeded: { (result) in
-                                
-                                self.getUserInfo(){
-                                    self.addressCollectionView.reloadData()
-                                }
-                                                                
-                            }, error: { (error) in
-                                if let mError = error as? [String:AnyObject]{
-                                    let message = mError["message"] as? String ?? ""
-                                    print(message)
-                                    self.showMessagePrompt(message)
-                                }
-                                
-                                print(error)
-                            }) { (messageError) in
-                                print("messageError")
-                                self.handlerMessageError(messageError)
-                                
-                            }
-                        }
+                    if let data = self.modelAddreses?[indexPath.row] {
+                        let latest_shipping = data["latest_shipping"] as? NSNumber ?? 0
+                        let id = data["id"] as? NSNumber ?? 0
+                        if latest_shipping.boolValue  {
 
-                        
-                        
-                    })
-                    let cancelButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-cancel", comment: ""), style: .default, handler: nil)
-                    
-                    
-                    alert.addAction(cancelButton)
-                    alert.addAction(okButton)
-                    
-                    self.present(alert, animated: true, completion: nil)
+                            self.showMessagePrompt2(NSLocalizedString("string-item-shopping-cart-delete-address", comment: ""))
+                        }else{
+                            self.deleteAddress(id.intValue)
+                        }
+                    }
                 }
                 
                 
@@ -317,9 +332,9 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
                 
                
                 
-                var rawAddress = "\(self.name)"
-                rawAddress += " \(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
-                rawAddress += " \(self.mobile)"
+                var rawAddress = "\(self.name) \(self.mobile)"
+                rawAddress += "\n\(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
+                
                 
                 let height = heightForView(text: rawAddress, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 16)!, width: width) +  60
                 

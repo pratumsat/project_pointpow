@@ -173,11 +173,11 @@ class ShoppingBaseViewController: BaseViewController ,UICollectionViewDelegate ,
                     x = CGFloat(widthForView)
                     print(x)
                     self.selectUnderLine?.frame.origin.x = x
-                    
                 }
             }
         }) { (completed) in
             //completed
+           
         }
     
      

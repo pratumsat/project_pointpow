@@ -41,7 +41,7 @@
                         <rect key="frame" x="10" y="43.5" width="307" height="119.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="box-Rv-DTX">
-                                <rect key="frame" x="15" y="10" width="277" height="23.5"/>
+                                <rect key="frame" x="20" y="15" width="267" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -75,9 +75,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="box-Rv-DTX" firstAttribute="leading" secondItem="3eS-Ao-Wsh" secondAttribute="leading" constant="15" id="2vc-rj-LNQ"/>
-                            <constraint firstAttribute="trailing" secondItem="box-Rv-DTX" secondAttribute="trailing" constant="15" id="Mlo-41-uDv"/>
-                            <constraint firstItem="box-Rv-DTX" firstAttribute="top" secondItem="3eS-Ao-Wsh" secondAttribute="top" constant="10" id="fsR-sH-LjL"/>
+                            <constraint firstItem="box-Rv-DTX" firstAttribute="leading" secondItem="3eS-Ao-Wsh" secondAttribute="leading" constant="20" id="2vc-rj-LNQ"/>
+                            <constraint firstAttribute="trailing" secondItem="box-Rv-DTX" secondAttribute="trailing" constant="20" id="Mlo-41-uDv"/>
+                            <constraint firstItem="box-Rv-DTX" firstAttribute="top" secondItem="3eS-Ao-Wsh" secondAttribute="top" constant="15" id="fsR-sH-LjL"/>
                             <constraint firstItem="OK9-AB-87x" firstAttribute="centerY" secondItem="3eS-Ao-Wsh" secondAttribute="centerY" id="gln-C9-HFk"/>
                             <constraint firstItem="OK9-AB-87x" firstAttribute="centerX" secondItem="3eS-Ao-Wsh" secondAttribute="centerX" id="oh1-4r-iDv"/>
                         </constraints>

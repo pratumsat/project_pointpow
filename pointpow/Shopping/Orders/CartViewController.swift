@@ -942,10 +942,10 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             let pointbalance = DataController.sharedInstance.getCurrentPointBalance()
             let total = self.totalOrder?.totalPrice ?? 0
             if pointbalance.doubleValue < total {
-                let height = CGFloat(160.0)
+                let height = CGFloat(190.0)
                 return CGSize(width: collectionView.frame.width, height: height)
             }else{
-                let height = CGFloat(120.0)
+                let height = CGFloat(140.0)
                 return CGSize(width: collectionView.frame.width, height: height)
             }
             
@@ -960,7 +960,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             let width = collectionView.frame.width
             var heightAddress = CGFloat(0)
             if !self.fullAddressShopping.trimmingCharacters(in: .whitespaces).isEmpty {
-                heightAddress += heightForView(text: self.fullAddressShopping, font: UIFont(name:   Constant.Fonts.THAI_SANS_BOLD, size: 18)!, width: width - 50)
+                heightAddress += heightForView(text: self.fullAddressShopping, font: UIFont(name:   Constant.Fonts.THAI_SANS_BOLD, size: 18)!, width: width - 60)
                 heightAddress += CGFloat(100)
             }else{
                 heightAddress = CGFloat(160)
@@ -974,7 +974,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             let width = collectionView.frame.width
             var heightAddress = CGFloat(0)
             if !self.fullAddressTaxInvoice.trimmingCharacters(in: .whitespaces).isEmpty {
-                heightAddress += heightForView(text: self.fullAddressTaxInvoice, font: UIFont(name:   Constant.Fonts.THAI_SANS_BOLD, size: 18)!, width: width - 50)
+                heightAddress += heightForView(text: self.fullAddressTaxInvoice, font: UIFont(name:   Constant.Fonts.THAI_SANS_BOLD, size: 18)!, width: width - 60)
                 heightAddress += CGFloat(100)
             }else{
                 heightAddress = CGFloat(160)

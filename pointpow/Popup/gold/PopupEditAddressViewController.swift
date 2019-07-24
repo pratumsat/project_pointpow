@@ -90,7 +90,7 @@ class PopupEditAddressViewController: PopupShippingAddressViewController {
             errorEmpty += 1
         }
         if name.isEmpty {
-            emptyMessage = NSLocalizedString("string-error-empty-firstname", comment: "")
+            emptyMessage = NSLocalizedString("string-error-empty-firstname-and-lastname", comment: "")
             self.errorNamelLabel =  self.nameTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
             errorEmpty += 1
         }

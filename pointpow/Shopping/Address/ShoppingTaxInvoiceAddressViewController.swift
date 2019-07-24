@@ -120,16 +120,16 @@ class ShoppingTaxInvoiceAddressViewController: ShoppingAddressViewController {
                     
                     if let select = selectItem {
                         if indexPath.row == select {
-                            item.selectedAddress = true
+                            item.selectedAddressByShopping = true
                         }else{
-                            item.selectedAddress = false
+                            item.selectedAddressByShopping = false
                         }
                         
                     }else{
                         if latest_shipping.boolValue  {
-                            item.selectedAddress = true
+                            item.selectedAddressByShopping = true
                         }else{
-                            item.selectedAddress = false
+                            item.selectedAddressByShopping = false
                         }
                     }
                 }

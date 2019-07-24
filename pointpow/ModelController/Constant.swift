@@ -900,7 +900,7 @@ struct Constant {
         
         static let product_all = "\(HOST)privilege/products?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
         static let product_ByCate = "\(HOST)privilege/products/{{cate}}?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
-        static let subCateByCate = "\(HOST)privilege/products/sub-category/{{cate}}?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
+        static let subCateByCate = "\(HOST)privilege/sub-category/{{cate}}?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
         
         static let productRelatedByID = "\(HOST)privilege/products/related/{{productId}}?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
         

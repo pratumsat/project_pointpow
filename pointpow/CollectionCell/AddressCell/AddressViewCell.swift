@@ -28,6 +28,18 @@ class AddressViewCell: UICollectionViewCell {
             
         }
     }
+    var selectedAddressByShopping:Bool = false {
+        didSet{
+            if selectedAddressByShopping {
+                self.selectImageView.image = UIImage(named: "ic-choose-2")
+                
+            }else{
+                self.selectImageView.image = UIImage(named: "ic-choose-1")
+
+            }
+            
+        }
+    }
     
     
     var editCallback:(()->Void)?

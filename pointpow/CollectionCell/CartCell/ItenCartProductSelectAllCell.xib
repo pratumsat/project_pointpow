@@ -33,7 +33,7 @@
                         </constraints>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-fav-delete" translatesAutoresizingMaskIntoConstraints="NO" id="ffh-mp-1Lv">
-                        <rect key="frame" x="347" y="26" width="25" height="25"/>
+                        <rect key="frame" x="342" y="26" width="25" height="25"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="ffh-mp-1Lv" secondAttribute="height" multiplier="1:1" id="GSH-rL-ver"/>
                             <constraint firstAttribute="width" constant="25" id="qaD-jo-Yrm"/>
@@ -62,7 +62,7 @@
                 <constraint firstItem="5CT-qM-r42" firstAttribute="centerY" secondItem="s6t-yo-pLr" secondAttribute="centerY" id="iK5-Dg-pjz"/>
                 <constraint firstAttribute="bottom" secondItem="vkQ-6l-gek" secondAttribute="bottom" id="qIe-Wg-P7Y"/>
                 <constraint firstItem="vkQ-6l-gek" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="qiQ-AW-QFY"/>
-                <constraint firstAttribute="trailing" secondItem="ffh-mp-1Lv" secondAttribute="trailing" constant="10" id="zV9-Mr-S5M"/>
+                <constraint firstAttribute="trailing" secondItem="ffh-mp-1Lv" secondAttribute="trailing" constant="15" id="zV9-Mr-S5M"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="382" height="77"/>

@@ -298,7 +298,7 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
         let more = UITapGestureRecognizer(target: self, action: #selector(morePointTapped))
         self.moreImageView.isUserInteractionEnabled = true
         self.moreImageView.addGestureRecognizer(more)
-        
+        self.enableImageView(moreImageView)
         
         self.amountTextField.delegate = self
         self.amountTextField.autocorrectionType = .no

@@ -11,6 +11,9 @@ import Alamofire
 
 class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerViewDelegate , UIPickerViewDataSource {
     
+    @IBOutlet weak var personalTextField: UITextField!
+    @IBOutlet weak var shippingProductImageView: UIImageView!
+    @IBOutlet weak var shippingTaxImageView: UIImageView!
     @IBOutlet weak var postCodeTextField: UITextField!
     @IBOutlet weak var districtTextField: UITextField!
     @IBOutlet weak var subDistrictTextField: UITextField!
@@ -24,6 +27,7 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
     var clearImageView:UIImageView?
     var clearImageView2:UIImageView?
     var clearImageView3:UIImageView?
+    var clearImageView4:UIImageView?
     
     var errorNamelLabel:UILabel?
     var errorAddressLabel:UILabel?
@@ -32,6 +36,7 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
     var errorSubDistrictLabel:UILabel?
     var errorProvinceLabel:UILabel?
     var errorPostCodeLabel:UILabel?
+    var errorPersonalIDLabel:UILabel?
     
     var provincePickerView:UIPickerView?
     var districtPickerView:UIPickerView?
@@ -96,35 +101,25 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
         }
     }
     
+    var invoice_shipping = "no" {
+        didSet{
+            if invoice_shipping.lowercased() == "yes" {
+                self.shippingProductImageView.image = UIImage(named: "ic-choose-1")
+                self.shippingTaxImageView.image = UIImage(named: "ic-choose-2")
+            }else{
+                self.shippingProductImageView.image = UIImage(named: "ic-choose-2")
+                self.shippingTaxImageView.image = UIImage(named: "ic-choose-1")
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = NSLocalizedString("string-title-address", comment: "")
+        self.title = NSLocalizedString("string-title-invoice-address", comment: "")
         
         self.language = L102Language.currentAppleLanguage()
         
         self.setUp()
-        
-        //        getUserInfo(){
-        //            if let data  = self.userData as? [String:AnyObject] {
-        //
-        //                let first_name = data["goldsaving_member"]?["firstname"] as? String ?? ""
-        //                let last_name = data["goldsaving_member"]?["lastname"]as? String ?? ""
-        //                let mobile = data["goldsaving_member"]?["mobile"]as? String ?? ""
-        //
-        //                self.nameTextField.text = "\(first_name) \(last_name)"
-        //
-        //                //let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
-        //                //self.numberPhoneTextField.text =  newMText.chunkFormatted()
-        //                self.numberPhoneTextField.text = mobile
-        //
-        //                self.nameTextField.isEnabled = false
-        //                self.numberPhoneTextField.isEnabled = false
-        //                self.nameTextField.textColor = UIColor.lightGray
-        //                self.numberPhoneTextField.textColor = UIColor.lightGray
-        //
-        //            }
-        //        }
         
         self.getProvinces(){
             self.provincePickerView = UIPickerView()
@@ -150,7 +145,18 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
             let idSubdistrict = data["subdistrict"]?["id"] as? NSNumber ?? 0
             let idProvince = data["province"]?["id"] as? NSNumber ?? 0
             
+            let name = data["name"] as? String ?? ""
+            let mobile = data["mobile"]as? String ?? ""
+            let tax_invoice = data["tax_invoice"]as? String ?? ""
+            let invoice_shipping = data["invoice_shipping"]as? String ?? ""
             
+            let newText = String((tax_invoice).filter({ $0 != "-" }).prefix(13))
+
+            self.invoice_shipping = invoice_shipping
+            
+            self.personalTextField.text = newText.chunkFormattedPersonalID()
+            self.nameTextField.text = name
+            self.numberPhoneTextField.text = mobile
             self.addressTextField.text = address
             self.districtTextField.text = districtName
             self.subDistrictTextField.text = subdistrictName
@@ -188,7 +194,23 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
                 
             }
             
-            
+        }else{
+            getUserInfo(){
+                if let data  = self.userData as? [String:AnyObject] {
+                    
+                    let first_name = data["first_name"] as? String ?? ""
+                    let last_name = data["last_name"]as? String ?? ""
+                    let mobile = data["mobile"]as? String ?? ""
+                    let pid = data["pid"]as? String ?? ""
+                    
+                    let newText = String((pid).filter({ $0 != "-" }).prefix(13))
+                    
+                    self.personalTextField.text = newText.chunkFormattedPersonalID()
+                    self.nameTextField.text = "\(first_name) \(last_name)"
+                    self.numberPhoneTextField.text = mobile
+                    
+                }
+            }
         }
     }
     
@@ -198,7 +220,8 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
         self.nextButton.borderClearProperties(borderWidth: 1)
         
         
-        
+        self.personalTextField.delegate = self
+        self.personalTextField.autocorrectionType = .no
         
         self.nameTextField.delegate = self
         self.numberPhoneTextField.delegate = self
@@ -239,8 +262,33 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
         self.clearImageView3?.addGestureRecognizer(tap3)
         self.clearImageView3?.isHidden = true
         
+        self.clearImageView4 = self.personalTextField.addRightButton(UIImage(named: "ic-x")!)
+        let tap4 = UITapGestureRecognizer(target: self, action: #selector(clearPersonalTapped))
+        self.clearImageView4?.isUserInteractionEnabled = true
+        self.clearImageView4?.addGestureRecognizer(tap4)
+        self.clearImageView4?.isHidden = true
+        
+        
+        let shippingProduct = UITapGestureRecognizer(target: self, action: #selector(productTapped))
+        self.shippingProductImageView?.isUserInteractionEnabled = true
+        self.shippingProductImageView?.addGestureRecognizer(shippingProduct)
+        
+        let shippingInvoice = UITapGestureRecognizer(target: self, action: #selector(invoiceTapped))
+        self.shippingTaxImageView?.isUserInteractionEnabled = true
+        self.shippingTaxImageView?.addGestureRecognizer(shippingInvoice)
+        
         
     }
+    
+    
+    @objc func invoiceTapped(){
+        self.invoice_shipping = "yes"
+    }
+    @objc func productTapped(){
+        self.invoice_shipping = "no"
+    }
+    
+    
     func getUserInfo(_ avaliable:(()->Void)?  = nil){
         
         var isLoading:Bool = true
@@ -427,6 +475,17 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
         }
         return province
     }
+    func PopToCartViewController(){
+        if let vcs = self.navigationController?.viewControllers {
+            var i = 0
+            for item in vcs {
+                if item is CartViewController {
+                    self.navigationController?.popToViewController((self.navigationController?.viewControllers[i])!, animated: true)
+                }
+                i += 1
+            }
+        }
+    }
     
     @IBAction func saveTapped(_ sender: Any) {
         
@@ -448,6 +507,7 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
         let subDistrict = self.subDistrictTextField.text!
         let province = self.provinceTextField.text!
         let postcode = self.postCodeTextField.text!
+        let personalID = self.personalTextField.text!
         
         var errorEmpty = 0
         var emptyMessage = ""
@@ -486,6 +546,13 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
             self.errorMobileLabel =  self.numberPhoneTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
             errorEmpty += 1
         }
+        
+        if personalID.trimmingCharacters(in: .whitespaces).isEmpty {
+            emptyMessage = NSLocalizedString("string-error-empty-personal-id", comment: "")
+            self.errorPersonalIDLabel =  self.personalTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 15 )
+            errorEmpty += 1
+            
+        }
         if name.isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-firstname-and-lastname", comment: "")
             self.errorNamelLabel =  self.nameTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0 )
@@ -500,6 +567,7 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
         
         
         guard validateMobile(mobile) else { return }
+        guard validateIDcard(personalID) else { return }
         self.confirmAddAddress {
             
             let params:Parameters = [
@@ -510,30 +578,54 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
                 "district_id" : self.districtId,
                 "subdistrict_id" : self.subDistrictId,
                 "postcode" : postcode,
-                "tax_invoice": "",
+                "tax_invoice": personalID.replace(target: "-", withString: ""),
                 "company" : "",
                 "mobile": mobile,
                 "type" : "invoice",
-                "invoice_shipping" : ""
+                "invoice_shipping" : self.invoice_shipping
             ]
             print(params)
             
-            self.modelCtrl.createMemberAddress(params: params, true, succeeded: { (result) in
-                self.navigationController?.popViewController(animated: true)
-                
-            }, error: { (error) in
-                if let mError = error as? [String:AnyObject]{
-                    let message = mError["message"] as? String ?? ""
-                    print(message)
-                    self.showMessagePrompt(message)
-                }
-                print(error)
-            }) { (messageError) in
-                print("messageError")
-                self.handlerMessageError(messageError)
-                
-            }
             
+            if self.modelAddress != nil {
+                self.modelCtrl.editMemberAddress(params: params, id: self.id, true, succeeded: { (result) in
+                    print(result)
+                   
+                    self.PopToCartViewController()
+                
+                    
+                }, error: { (error) in
+                    if let mError = error as? [String:AnyObject]{
+                        let message = mError["message"] as? String ?? ""
+                        print(message)
+                        self.showMessagePrompt(message)
+                    }
+                    print(error)
+                }) { (messageError) in
+                    print("messageError")
+                    self.handlerMessageError(messageError)
+                    
+                }
+            }else{
+                self.modelCtrl.createMemberAddress(params: params, true, succeeded: { (result) in
+                    print(result)
+                    
+                    self.PopToCartViewController()
+                    
+                }, error: { (error) in
+                    if let mError = error as? [String:AnyObject]{
+                        let message = mError["message"] as? String ?? ""
+                        print(message)
+                        self.showMessagePrompt(message)
+                    }
+                    print(error)
+                }) { (messageError) in
+                    print("messageError")
+                    self.handlerMessageError(messageError)
+                    
+                }
+            }
+
             
         }
         
@@ -554,6 +646,36 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
             }else{
                 self.clearImageView?.isHidden = false
             }
+        }
+        if textField  == self.personalTextField {
+            let startingLength = textField.text?.count ?? 0
+            let lengthToAdd = string.count
+            let lengthToReplace = range.length
+            
+            let newLength = startingLength + lengthToAdd - lengthToReplace
+            //return newLength <= 20
+            
+            if newLength == 0 {
+                self.clearImageView3?.isHidden = true
+            }else{
+                self.clearImageView3?.isHidden = false
+            }
+            
+            
+            
+            let text = textField.text ?? ""
+            
+            if string.count == 0 {
+                textField.text = String(text.dropLast()).chunkFormattedPersonalID()
+            }  else {
+                let newText = String((text + string).filter({ $0 != "-" }).prefix(13))
+                textField.text = newText.chunkFormattedPersonalID()
+            }
+            
+            
+            
+            return false
+            
         }
         if textField  == self.numberPhoneTextField {
             let startingLength = textField.text?.count ?? 0
@@ -612,12 +734,18 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
             self.clearImageView3?.isHidden = true
         })
     }
+    @objc func clearPersonalTapped(){
+        self.clearImageView4?.animationTapped({
+            self.personalTextField.text = ""
+            self.clearImageView4?.isHidden = true
+        })
+    }
     
     
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.addCloseBlackView()
+        
     }
     
     override func viewWillLayoutSubviews() {
@@ -678,7 +806,27 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
         }
         return true
     }
-    
+    func validateIDcard(_ id:String)-> Bool{
+        var errorMobile = 0
+        var errorMessage = ""
+        let nID = id.replace(target: "-", withString: "")
+        if !isValidIDCard(nID) {
+            errorMessage = NSLocalizedString("string-error-invalid-personal-id", comment: "")
+            errorMobile += 1
+        }
+        if nID.count < 13 {
+            errorMessage = NSLocalizedString("string-error-invalid-personal-id1", comment: "")
+            errorMobile += 1
+        }
+        
+        if errorMobile > 0 {
+            
+            self.showMessagePrompt(errorMessage)
+            self.errorPersonalIDLabel =  self.personalTextField.addBottomLabelErrorMessage(errorMessage , marginLeft: 15)
+            return false
+        }
+        return true
+    }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         

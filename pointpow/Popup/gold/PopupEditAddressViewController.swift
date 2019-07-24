@@ -103,42 +103,44 @@ class PopupEditAddressViewController: PopupShippingAddressViewController {
         
         
         guard validateMobile(mobile) else { return }
-        
+        self.confirmAddAddress {
+            let params:Parameters = [
+                "title" : "gold",
+                "name" : name,
+                "address" : address,
+                "province_id" : self.provinceId,
+                "district_id" : self.districtId,
+                "subdistrict_id" : self.subDistrictId,
+                "postcode" : postcode
+            ]
+            print(params)
+            
+            
+            self.modelCtrl.editMemberAddress(params: params, id: self.id, true, succeeded: { (result) in
+                print(result)
+                self.dismiss(animated: true) {
+                    self.windowSubview?.removeFromSuperview()
+                    self.windowSubview = nil
+                    //self.nextStep?([(address:"test addeess")] as AnyObject)
+                    self.nextStep?("showViewAddress" as AnyObject)
+                }
+            }, error: { (error) in
+                if let mError = error as? [String:AnyObject]{
+                    let message = mError["message"] as? String ?? ""
+                    print(message)
+                    self.showMessagePrompt(message)
+                }
+                print(error)
+            }) { (messageError) in
+                print("messageError")
+                self.handlerMessageError(messageError)
+                
+            }
+            
+        }
         
         
        
-        let params:Parameters = [
-            "title" : "gold",
-            "name" : name,
-            "address" : address,
-            "province_id" : self.provinceId,
-            "district_id" : self.districtId,
-            "subdistrict_id" : self.subDistrictId,
-            "postcode" : postcode
-        ]
-        print(params)
-        
-        
-        self.modelCtrl.editMemberAddress(params: params, id: self.id, true, succeeded: { (result) in
-            print(result)
-            self.dismiss(animated: true) {
-                self.windowSubview?.removeFromSuperview()
-                self.windowSubview = nil
-                //self.nextStep?([(address:"test addeess")] as AnyObject)
-                self.nextStep?("showViewAddress" as AnyObject)
-            }
-        }, error: { (error) in
-            if let mError = error as? [String:AnyObject]{
-                let message = mError["message"] as? String ?? ""
-                print(message)
-                self.showMessagePrompt(message)
-            }
-            print(error)
-        }) { (messageError) in
-            print("messageError")
-            self.handlerMessageError(messageError)
-
-        }
         
        
         

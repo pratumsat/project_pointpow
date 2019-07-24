@@ -16,8 +16,8 @@ class CartAdressTaxInvoiceCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.shadowCellProperties()
-        self.addressView.shadowCellProperties()
+        //self.shadowCellProperties()
+        //self.addressView.shadowCellProperties()
         
         
     }
@@ -29,7 +29,8 @@ class CartAdressTaxInvoiceCell: UICollectionViewCell {
     }
     override func layoutSubviews() {
         super.layoutSubviews()
-         self.addressView.borderClearProperties(borderWidth: 1, radius: 10)
+        self.addressView.borderClearProperties(borderWidth: 1, radius: 10)
+        self.addressView.shadowCellProperties()
     }
 
 }

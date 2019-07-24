@@ -34,10 +34,11 @@
                         <rect key="frame" x="319" y="0.0" width="50" height="60"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-fav-delete" translatesAutoresizingMaskIntoConstraints="NO" id="Yvs-ib-WJZ">
-                                <rect key="frame" x="13" y="18" width="24" height="24"/>
+                                <rect key="frame" x="12.5" y="17.5" width="25" height="25"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Yvs-ib-WJZ" secondAttribute="height" multiplier="1:1" id="4h4-Hs-dh3"/>
+                                    <constraint firstAttribute="width" constant="25" id="SQs-dH-1BH"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -46,16 +47,16 @@
                             <constraint firstAttribute="width" constant="50" id="3c8-eo-xmJ"/>
                             <constraint firstItem="Yvs-ib-WJZ" firstAttribute="centerX" secondItem="z4L-k1-Iky" secondAttribute="centerX" id="Ps6-Ri-hbi"/>
                             <constraint firstItem="Yvs-ib-WJZ" firstAttribute="centerY" secondItem="z4L-k1-Iky" secondAttribute="centerY" id="j43-MW-eRY"/>
-                            <constraint firstItem="Yvs-ib-WJZ" firstAttribute="height" secondItem="z4L-k1-Iky" secondAttribute="height" multiplier="0.4" id="r2z-n1-BvO"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fza-tu-hzz">
                         <rect key="frame" x="264" y="0.0" width="50" height="60"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-fav-edit" translatesAutoresizingMaskIntoConstraints="NO" id="TLd-7Q-bq3">
-                                <rect key="frame" x="26" y="18" width="24" height="24"/>
+                                <rect key="frame" x="25" y="17.5" width="25" height="25"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="NHD-Dr-Mhy"/>
                                     <constraint firstAttribute="width" secondItem="TLd-7Q-bq3" secondAttribute="height" multiplier="1:1" id="pDZ-Bs-Jqf"/>
                                 </constraints>
                             </imageView>
@@ -65,7 +66,6 @@
                             <constraint firstAttribute="width" constant="50" id="5lu-53-SuD"/>
                             <constraint firstAttribute="trailing" secondItem="TLd-7Q-bq3" secondAttribute="trailing" id="8L2-il-efF"/>
                             <constraint firstItem="TLd-7Q-bq3" firstAttribute="centerY" secondItem="fza-tu-hzz" secondAttribute="centerY" id="AVf-5Y-vJH"/>
-                            <constraint firstItem="TLd-7Q-bq3" firstAttribute="height" secondItem="fza-tu-hzz" secondAttribute="height" multiplier="0.4" id="Wgy-oW-gh2"/>
                             <constraint firstItem="TLd-7Q-bq3" firstAttribute="centerY" secondItem="fza-tu-hzz" secondAttribute="centerY" id="pvc-f9-xEW"/>
                         </constraints>
                     </view>

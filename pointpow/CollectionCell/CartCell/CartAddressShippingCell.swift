@@ -17,8 +17,8 @@ class CartAddressShippingCell: UICollectionViewCell {
         super.awakeFromNib()
         
       
-        self.shadowCellProperties()
-        self.addressView.shadowCellProperties()
+        //self.shadowCellProperties()
+        //self.addressView.shadowCellProperties()
     }
     override var bounds : CGRect {
         didSet {
@@ -28,6 +28,7 @@ class CartAddressShippingCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.addressView.borderClearProperties(borderWidth: 1, radius: 10)
+        self.addressView.shadowCellProperties()
     }
 
 }

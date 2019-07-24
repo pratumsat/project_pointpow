@@ -63,7 +63,6 @@ class ShoppingTaxInvoiceAddressViewController: ShoppingAddressViewController {
                 }
                 self.modelAddreses = self.modelAddreses?.sorted(by: { (a1, a2) -> Bool in
                     let v1 = a1["latest_shipping"] as? NSNumber ?? 0
-                    let v2 = a2["latest_shipping"] as? NSNumber ?? 0
                     return v1.boolValue
                 })
                 
@@ -91,6 +90,7 @@ class ShoppingTaxInvoiceAddressViewController: ShoppingAddressViewController {
     
     @objc func addAddressTaxInvoiceTapped(){
         print("addAddressTaxInvoiceTapped")
+        self.showTaxInvoiceAddAddressPage(true)
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -112,7 +112,10 @@ class ShoppingTaxInvoiceAddressViewController: ShoppingAddressViewController {
                     let name = data["name"] as? String ?? ""
                     let mobile = data["mobile"] as? String ?? ""
                     
-                    var rawAddress = "\(name) \(tax_invoice)"
+                    let newText = String((tax_invoice).filter({ $0 != "-" }).prefix(13))
+                    
+                    
+                    var rawAddress = "\(name) \(newText.chunkFormattedPersonalID())"
                     rawAddress += "\n\(mobile) \(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
                     
                     item.addressLabel.text = rawAddress
@@ -135,7 +138,7 @@ class ShoppingTaxInvoiceAddressViewController: ShoppingAddressViewController {
                 }
                 
                 item.editCallback = {
-                    print("edit address")
+                    self.showTaxInvoiceEditAddressPage(true, self.modelAddreses?[indexPath.row] as AnyObject)
                 }
                 item.deleteCallback = {
                     if let data = self.modelAddreses?[indexPath.row] {

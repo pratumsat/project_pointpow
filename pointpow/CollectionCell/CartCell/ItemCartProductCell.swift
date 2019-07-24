@@ -26,8 +26,15 @@ class ItemCartProductCell: UICollectionViewCell ,UITextFieldDelegate{
     var amount:Int = 1 {
         didSet{
             self.amountTextField.text = "\(Int(amount))"
+            
             if amount > 1 {
                 enableImageView(lessImageView)
+            }
+            
+            if amount >= maxAmount {
+                disableImageView(moreImageView)
+            }else{
+                enableImageView(moreImageView)
             }
         }
     }
@@ -163,7 +170,7 @@ class ItemCartProductCell: UICollectionViewCell ,UITextFieldDelegate{
                     
                     if iPoint > self.maxAmount {
                         if let price  = self.priceOfProduct {
-                            self.callBackTotalPrice?(Int(amount), Double(amount * price))
+                            self.callBackTotalPrice?(maxAmount, Double(maxAmount) * price)
                         }
                         textField.text = numberFormatter.string(from: NSNumber(value: self.maxAmount))
                         disableImageView(self.moreImageView)

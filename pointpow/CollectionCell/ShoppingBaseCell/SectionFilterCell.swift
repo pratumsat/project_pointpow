@@ -19,6 +19,7 @@ class SectionFilterCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        filterTextField.setLeftPaddingPoints(CGFloat(5.0))
     }
     @objc func filterTapped(){
         print("filterTextField")
@@ -32,6 +33,6 @@ class SectionFilterCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        filterTextField.borderRedColorProperties(borderWidth: 1, radius: 5)
+        filterTextField.borderRedColorProperties(borderWidth: 1)
     }
 }

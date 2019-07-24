@@ -310,6 +310,21 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }
     }
     
+    func showShoppingAddAddressPage(_ animated:Bool){
+        if let vc:ShoppingAddShippingAddressViewController = self.storyboard?.instantiateViewController(withIdentifier: "ShoppingAddShippingAddressViewController") as? ShoppingAddShippingAddressViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    func showShoppingEditAddressPage(_ animated:Bool, _ modelAddress:AnyObject){
+        if let vc:ShoppingAddShippingAddressViewController = self.storyboard?.instantiateViewController(withIdentifier: "ShoppingAddShippingAddressViewController") as? ShoppingAddShippingAddressViewController {
+            vc.modelAddress = modelAddress
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    
+    
+    
     func showTaxInvoiceAddressPage(_ animated:Bool){
         if let vc:ShoppingTaxInvoiceAddressViewController = self.storyboard?.instantiateViewController(withIdentifier: "ShoppingTaxInvoiceAddressViewController") as? ShoppingTaxInvoiceAddressViewController {
             
@@ -317,17 +332,21 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }
     }
     
-    
-    
-  
-    
-    func showShoppingAddAddressPage(_ animated:Bool){
-        if let vc:ShoppingAddShippingAddressViewController = self.storyboard?.instantiateViewController(withIdentifier: "ShoppingAddShippingAddressViewController") as? ShoppingAddShippingAddressViewController {
+    func showTaxInvoiceAddAddressPage(_ animated:Bool){
+        if let vc:ShoppingAddTaxInvoiceAddressViewController = self.storyboard?.instantiateViewController(withIdentifier: "ShoppingAddTaxInvoiceAddressViewController") as? ShoppingAddTaxInvoiceAddressViewController {
             
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
+    func showTaxInvoiceEditAddressPage(_ animated:Bool, _ modelAddress:AnyObject){
+        if let vc:ShoppingAddTaxInvoiceAddressViewController = self.storyboard?.instantiateViewController(withIdentifier: "ShoppingAddTaxInvoiceAddressViewController") as? ShoppingAddTaxInvoiceAddressViewController {
+            vc.modelAddress = modelAddress
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
     
+    
+  
     func showGoldPage(_ animated:Bool){
         
         if let vc:GoldNavViewController = self.storyboard?.instantiateViewController(withIdentifier: "GoldNavViewController") as? GoldNavViewController {

@@ -105,19 +105,6 @@ class ShoppingAddShippingAddressViewController:BaseViewController ,UIPickerViewD
         
         self.setUp()
         
-        getUserInfo(){
-            if let data  = self.userData as? [String:AnyObject] {
-                
-                let first_name = data["first_name"] as? String ?? ""
-                let last_name = data["last_name"]as? String ?? ""
-                let mobile = data["mobile"]as? String ?? ""
-                
-                self.nameTextField.text = "\(first_name) \(last_name)"
-                self.numberPhoneTextField.text = mobile
-                
-            }
-        }
-        
         self.getProvinces(){
             self.provincePickerView = UIPickerView()
             self.provincePickerView!.delegate = self
@@ -143,6 +130,11 @@ class ShoppingAddShippingAddressViewController:BaseViewController ,UIPickerViewD
             let idProvince = data["province"]?["id"] as? NSNumber ?? 0
             
             
+            let name = data["name"] as? String ?? ""
+            let mobile = data["mobile"]as? String ?? ""
+            
+            self.nameTextField.text = name
+            self.numberPhoneTextField.text = mobile
             self.addressTextField.text = address
             self.districtTextField.text = districtName
             self.subDistrictTextField.text = subdistrictName
@@ -177,10 +169,23 @@ class ShoppingAddShippingAddressViewController:BaseViewController ,UIPickerViewD
                 self.subDistrictTextField.tintColor = UIColor.clear
                 self.subDistrictTextField.isUserInteractionEnabled = true
                 self.subDistrictTextField.inputView = self.subDistrictPickerView
-                
             }
             
             
+            
+        }else{
+            getUserInfo(){
+                if let data  = self.userData as? [String:AnyObject] {
+                    
+                    let first_name = data["first_name"] as? String ?? ""
+                    let last_name = data["last_name"]as? String ?? ""
+                    let mobile = data["mobile"]as? String ?? ""
+                    
+                    self.nameTextField.text = "\(first_name) \(last_name)"
+                    self.numberPhoneTextField.text = mobile
+                    
+                }
+            }
         }
     }
     
@@ -421,6 +426,19 @@ class ShoppingAddShippingAddressViewController:BaseViewController ,UIPickerViewD
         return province
     }
     
+    
+    func PopToCartViewController(){
+        if let vcs = self.navigationController?.viewControllers {
+            var i = 0
+            for item in vcs {
+                if item is CartViewController {
+                    self.navigationController?.popToViewController((self.navigationController?.viewControllers[i])!, animated: true)
+                }
+                i += 1
+            }
+        }
+    }
+    
     @IBAction func saveTapped(_ sender: Any) {
         
         errorNamelLabel?.removeFromSuperview()
@@ -509,22 +527,47 @@ class ShoppingAddShippingAddressViewController:BaseViewController ,UIPickerViewD
             ]
             print(params)
             
-            self.modelCtrl.createMemberAddress(params: params, true, succeeded: { (result) in
-                print(result)
-                self.navigationController?.popViewController(animated: true)
-                
-            }, error: { (error) in
-                if let mError = error as? [String:AnyObject]{
-                    let message = mError["message"] as? String ?? ""
-                    print(message)
-                    self.showMessagePrompt(message)
+            if self.modelAddress != nil {
+                self.modelCtrl.editMemberAddress(params: params, id: self.id, true, succeeded: { (result) in
+                    print(result)
+                    
+                    self.PopToCartViewController()
+                    
+                    
+                    
+                }, error: { (error) in
+                    if let mError = error as? [String:AnyObject]{
+                        let message = mError["message"] as? String ?? ""
+                        print(message)
+                        self.showMessagePrompt(message)
+                    }
+                    print(error)
+                }) { (messageError) in
+                    print("messageError")
+                    self.handlerMessageError(messageError)
+                    
                 }
-                print(error)
-            }) { (messageError) in
-                print("messageError")
-                self.handlerMessageError(messageError)
-                
+            }else{
+                self.modelCtrl.createMemberAddress(params: params, true, succeeded: { (result) in
+                    print(result)
+                    //self.navigationController?.popViewController(animated: true)
+                    
+                    self.PopToCartViewController()
+                    
+                }, error: { (error) in
+                    if let mError = error as? [String:AnyObject]{
+                        let message = mError["message"] as? String ?? ""
+                        print(message)
+                        self.showMessagePrompt(message)
+                    }
+                    print(error)
+                }) { (messageError) in
+                    print("messageError")
+                    self.handlerMessageError(messageError)
+                    
+                }
             }
+           
             
         }
        

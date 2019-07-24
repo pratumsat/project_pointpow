@@ -683,14 +683,15 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                     if let url = URL(string: itemTuple.cover) {
                         productCell.productImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
                     }
-                    
+                    productCell.maxAmount = itemTuple.stock
                     productCell.priceOfProduct = itemTuple.price
                     productCell.priceLabel.text = numberFormatter.string(from: NSNumber(value: itemTuple.price))
                     productCell.amount = itemTuple.amount
                     productCell.checkBox.isChecked = itemTuple.select
-                    productCell.maxAmount = itemTuple.stock
+                    
                    
                      productCell.callBackTotalPrice  = { (amount, totalPrice) in
+                        print("amount= \(amount)")
                         self.tupleProduct?[self.getItemPositionByItemId(itemTuple.id)].amount = amount
                         
                        
@@ -838,6 +839,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                     self.showTaxInvoiceAddressPage(true)
                 }else{
                     //no address
+                    self.showTaxInvoiceAddAddressPage(true)
                 }
             }
             

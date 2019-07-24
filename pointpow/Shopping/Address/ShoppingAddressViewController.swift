@@ -28,6 +28,7 @@ class ShoppingAddressViewController: BaseViewController , UICollectionViewDelega
         super.viewDidLoad()
         self.setUp()
         
+        
     }
     
     
@@ -71,7 +72,6 @@ class ShoppingAddressViewController: BaseViewController , UICollectionViewDelega
                 }
                 self.modelAddreses = self.modelAddreses?.sorted(by: { (a1, a2) -> Bool in
                     let v1 = a1["latest_shipping"] as? NSNumber ?? 0
-                    let v2 = a2["latest_shipping"] as? NSNumber ?? 0
                     return v1.boolValue
                 })
 
@@ -121,24 +121,36 @@ class ShoppingAddressViewController: BaseViewController , UICollectionViewDelega
         
     }
     
+    var isCall = false
+    
     func updateLatestShippingAddress(_ id:Int, m_type: String){
+        
+        if isCall {
+            return
+        }
+        isCall = true
+    
         let params:Parameters = ["id":id,
                                  "type":m_type]
         
         self.modelCtrl.updateMemberLatestAddress(params: params, true, succeeded: { (result) in
             //update success
+            self.isCall = false
+            self.addressCollectionView.reloadData()
+            
         }, error: { (error) in
             if let mError = error as? [String:AnyObject]{
                 let message = mError["message"] as? String ?? ""
                 print(message)
                 self.showMessagePrompt(message)
             }
-            
+            self.isCall = false
             print(error)
+       
         }) { (messageError) in
             print("messageError")
             self.handlerMessageError(messageError)
-            
+            self.isCall = false
         }
     }
     
@@ -238,19 +250,30 @@ class ShoppingAddressViewController: BaseViewController , UICollectionViewDelega
                 
                 item.editCallback = {
                     print("edit address")
-                    
-                   
+                    self.showShoppingEditAddressPage(true, self.modelAddreses?[indexPath.row] as AnyObject)
                 }
+                
                 item.deleteCallback = {
                     if let data = self.modelAddreses?[indexPath.row] {
                         let latest_shipping = data["latest_shipping"] as? NSNumber ?? 0
                         let id = data["id"] as? NSNumber ?? 0
-                        if latest_shipping.boolValue  {
-                            self.showMessagePrompt2(NSLocalizedString("string-item-shopping-cart-delete-address", comment: ""))
+                       
+                        if let select = self.selectItem {
+                            if indexPath.row == select {
+                                self.showMessagePrompt2(NSLocalizedString("string-item-shopping-cart-delete-address", comment: ""))
+                            }else{
+                                self.deleteAddress(id.intValue)
+                            }
+                            
                         }else{
-                            self.deleteAddress(id.intValue)
+                            if latest_shipping.boolValue  {
+                                self.showMessagePrompt2(NSLocalizedString("string-item-shopping-cart-delete-address", comment: ""))
+                            }else{
+                                self.deleteAddress(id.intValue)
+                            }
                         }
-                        self.deleteAddress(id.intValue)
+                      
+                        
                     }
                 }
                 
@@ -269,6 +292,15 @@ class ShoppingAddressViewController: BaseViewController , UICollectionViewDelega
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        let select = self.modelAddreses?[indexPath.row] as AnyObject
+        let idSelect = select["id"] as? NSNumber ?? 0
+        
+        let defaultSelect = selectedAddress?["id"] as? NSNumber ?? 0
+        if defaultSelect.intValue == idSelect.intValue {
+            return
+        }
+        
+        
         self.selectItem = indexPath.row
         self.selectedAddress = self.modelAddreses?[indexPath.row] as AnyObject
         
@@ -279,7 +311,7 @@ class ShoppingAddressViewController: BaseViewController , UICollectionViewDelega
         }
         
         
-        self.addressCollectionView.reloadData()
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {

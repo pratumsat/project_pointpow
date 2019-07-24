@@ -128,7 +128,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
     
     
     
-    var tupleProduct:[(title:String, id:Int, amount:Int, price:Double, select:Bool, brand:String, cover:String)]?{
+    var tupleProduct:[(title:String, id:Int, amount:Int, price:Double, select:Bool, brand:String, cover:String, stock:Int)]?{
         didSet{
             print(tupleProduct as Any)
             if tupleProduct != nil {
@@ -212,10 +212,6 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         self.updateTotalAmountPrice()
     }
    
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        print("viewWillDisappear viewWillDisappear")
-//    }
     func updateCart(_ updateSuccess:(()->Void)? = nil){
         guard let tuple = self.tupleProduct ,tuple.count > 0 else {  return }
         let count = tuple.count
@@ -240,21 +236,6 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         self.updateCart {
             self.navigationController?.popViewController(animated: true)
         }
-        
-        /*let count = tuple.count
-        
-        var success = 0
-        for item in tuple {
-            let id = item.id
-            let amount = item.amount
-            
-            self.updateItemCart(id, amount: amount) {
-                success += 1
-                if success == count {
-                    self.navigationController?.popViewController(animated: true)
-                }
-            }
-        }*/
     }
     
     func deleteProductByID(_ id:Int){
@@ -550,6 +531,8 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                     let id = item["id"] as? NSNumber ?? 0
                     let special_deal = item["special_deal"] as? [[String:AnyObject]] ?? [[:]]
                     let brand = item["brand"] as? [String:AnyObject] ?? [:]
+                    let variation = cart["variation"] as? [String:AnyObject] ?? [:]
+                    let stock = variation["stock"] as? NSNumber ?? 0
                     
                     var price = 0.0
                     if special_deal.count == 0{
@@ -571,7 +554,13 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                     let urlbrand = getFullPathImageView(brand)
                     let urlCover = getFullPathImageView(item)
                     
-                    self.tupleProduct?.append((title: title, id: id.intValue , amount: amount.intValue, price: price, select: true, brand: urlbrand, cover: urlCover))
+                    self.tupleProduct?.append((title: title,
+                                               id: id.intValue ,
+                                               amount: amount.intValue,
+                                               price: price, select: true,
+                                               brand: urlbrand,
+                                               cover: urlCover,
+                                               stock: stock.intValue))
                 
                 }
                 
@@ -699,7 +688,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                     productCell.priceLabel.text = numberFormatter.string(from: NSNumber(value: itemTuple.price))
                     productCell.amount = itemTuple.amount
                     productCell.checkBox.isChecked = itemTuple.select
-                 
+                    productCell.maxAmount = itemTuple.stock
                    
                      productCell.callBackTotalPrice  = { (amount, totalPrice) in
                         self.tupleProduct?[self.getItemPositionByItemId(itemTuple.id)].amount = amount

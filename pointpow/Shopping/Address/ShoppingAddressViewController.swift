@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ShoppingAddressViewController: BaseViewController , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 
@@ -28,7 +29,6 @@ class ShoppingAddressViewController: BaseViewController , UICollectionViewDelega
         self.setUp()
         
     }
-    
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -121,6 +121,26 @@ class ShoppingAddressViewController: BaseViewController , UICollectionViewDelega
         
     }
     
+    func updateLatestShippingAddress(_ id:Int, m_type: String){
+        let params:Parameters = ["id":id,
+                                 "type":m_type]
+        
+        self.modelCtrl.updateMemberLatestAddress(params: params, true, succeeded: { (result) in
+            //update success
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                self.showMessagePrompt(message)
+            }
+            
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            
+        }
+    }
     
     func deleteAddress(_ id:Int){
         let alert = UIAlertController(title: NSLocalizedString("string-dailog-title-delete-address", comment: ""),
@@ -251,6 +271,13 @@ class ShoppingAddressViewController: BaseViewController , UICollectionViewDelega
         
         self.selectItem = indexPath.row
         self.selectedAddress = self.modelAddreses?[indexPath.row] as AnyObject
+        
+        if let data = self.modelAddreses?[indexPath.row]{
+            let id = data["id"] as? NSNumber ?? 0
+            let type = data["type"] as? String ?? ""
+            self.updateLatestShippingAddress(id.intValue, m_type: type)
+        }
+        
         
         self.addressCollectionView.reloadData()
     }

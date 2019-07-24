@@ -39,7 +39,7 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
     @IBOutlet weak var shareImageView: UIImageView!
     @IBOutlet weak var imageCollectionView: UICollectionView!
     
-    
+    var maxAmount = 1
     var expend = true
     let active = UIImage(named: "ic-shopping-more")
     let inactive = UIImage(named: "ic-shopping-less")
@@ -138,13 +138,17 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
     
     
     
+    
     func updateViewProductDetail(){
         if let item = self.productDetail?.first {
             let title = item["title"] as? String ?? ""
             let description = item["description"] as? String ?? ""
             let brand = item["brand"] as? [String:AnyObject] ?? [:]
             let special_deal = item["special_deal"] as? [[String:AnyObject]] ?? [[:]]
+            let variation = item["variation"] as? [String:AnyObject] ?? [:]
+            let stock = variation["stock"] as? NSNumber ?? 0
             
+            self.maxAmount = stock.intValue
             
             if special_deal.count == 0{
                 //check discount price
@@ -586,6 +590,10 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
             enableImageView(self.lessImageView)
         }
         
+        if Int(amount) < maxAmount {
+            enableImageView(self.moreImageView)
+        }
+        
         
     }
     @objc func morePointTapped() {
@@ -595,8 +603,8 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
         if let iPoint = Int(updatedText.replace(target: ",", withString: "")){
             amount = Double(iPoint)
         }
-        
         amount += 1
+        
         
         
         let numberFormatter = NumberFormatter()
@@ -605,8 +613,10 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
         
         self.amountTextField.text = numberFormatter.string(from: NSNumber(value: amount))
         
+        if Int(amount) >= maxAmount {
+            disableImageView(self.moreImageView)
+        }
         enableImageView(self.lessImageView)
-        
         
     }
     
@@ -640,12 +650,19 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
                     enableImageView(self.lessImageView)
                 }
                 
-                
                 if let iPoint = Int(updatedText.replace(target: ",", withString: "")){
                     let numberFormatter = NumberFormatter()
                     numberFormatter.numberStyle = .none
                     
-                    textField.text = numberFormatter.string(from: NSNumber(value: iPoint))
+                    if iPoint > self.maxAmount {
+                        textField.text = numberFormatter.string(from: NSNumber(value: self.maxAmount))
+                        disableImageView(self.moreImageView)
+                        return false
+                    }else{
+                        textField.text = numberFormatter.string(from: NSNumber(value: iPoint))
+                        enableImageView(self.moreImageView)
+                    }
+                    
                     return false
                 }
             }else{

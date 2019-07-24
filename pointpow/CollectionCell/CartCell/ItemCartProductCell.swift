@@ -22,6 +22,7 @@ class ItemCartProductCell: UICollectionViewCell ,UITextFieldDelegate{
     var callBackTotalPrice:((_ amount:Int, _ totalPrice:Double)->Void)?
     var priceOfProduct:Double?
     
+    var maxAmount = 1
     var amount:Int = 1 {
         didSet{
             self.amountTextField.text = "\(Int(amount))"
@@ -91,7 +92,9 @@ class ItemCartProductCell: UICollectionViewCell ,UITextFieldDelegate{
         }else{
             enableImageView(self.lessImageView)
         }
-        
+        if Int(amount) < maxAmount {
+            enableImageView(self.moreImageView)
+        }
         
     }
     @objc func morePointTapped() {
@@ -112,6 +115,10 @@ class ItemCartProductCell: UICollectionViewCell ,UITextFieldDelegate{
         self.amountTextField.text = numberFormatter.string(from: NSNumber(value: amount))
         if let price  = self.priceOfProduct {
             self.callBackTotalPrice?(Int(amount), Double(amount * price))
+        }
+        
+        if Int(amount) >= maxAmount {
+            disableImageView(self.moreImageView)
         }
         enableImageView(self.lessImageView)
         
@@ -152,10 +159,26 @@ class ItemCartProductCell: UICollectionViewCell ,UITextFieldDelegate{
                     let numberFormatter = NumberFormatter()
                     numberFormatter.numberStyle = .none
                     
-                    textField.text = numberFormatter.string(from: NSNumber(value: iPoint))
-                    if let price  = self.priceOfProduct {
-                        self.callBackTotalPrice?(Int(amount), Double(amount * price))
+                   
+                    
+                    if iPoint > self.maxAmount {
+                        if let price  = self.priceOfProduct {
+                            self.callBackTotalPrice?(Int(amount), Double(amount * price))
+                        }
+                        textField.text = numberFormatter.string(from: NSNumber(value: self.maxAmount))
+                        disableImageView(self.moreImageView)
+                       
+                        return false
+                   
+                    }else{
+                        if let price  = self.priceOfProduct {
+                            self.callBackTotalPrice?(Int(amount), Double(amount * price))
+                        }
+                        textField.text = numberFormatter.string(from: NSNumber(value: iPoint))
+                        enableImageView(self.moreImageView)
                     }
+
+                    
                     return false
                 }
             }else{

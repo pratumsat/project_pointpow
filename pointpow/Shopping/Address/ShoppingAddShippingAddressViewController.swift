@@ -105,6 +105,19 @@ class ShoppingAddShippingAddressViewController:BaseViewController ,UIPickerViewD
         
         self.setUp()
         
+        getUserInfo(){
+            if let data  = self.userData as? [String:AnyObject] {
+                
+                let first_name = data["first_name"] as? String ?? ""
+                let last_name = data["last_name"]as? String ?? ""
+                let mobile = data["mobile"]as? String ?? ""
+                
+                self.nameTextField.text = "\(first_name) \(last_name)"
+                self.numberPhoneTextField.text = mobile
+                
+            }
+        }
+        
         self.getProvinces(){
             self.provincePickerView = UIPickerView()
             self.provincePickerView!.delegate = self

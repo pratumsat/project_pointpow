@@ -616,6 +616,13 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }
     }
     
+    func showShoppingHistory(_ animated:Bool){
+        if let vc:ShoppingHistoryViewController = self.storyboard?.instantiateViewController(withIdentifier: "ShoppingHistoryViewController") as? ShoppingHistoryViewController{
+        
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
     func showTransectionFilter(_ animated:Bool , filterCallback:((_ filter:String)->Void)? = nil ){
         if let vc:TransactionFilterViewController = self.storyboard?.instantiateViewController(withIdentifier: "TransactionFilterViewController") as? TransactionFilterViewController{
             vc.filterCallback  =  {(filter) in

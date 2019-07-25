@@ -107,9 +107,19 @@ extension AccountShoppingViewController {
         if collectionView != profileCollectionView {
             super.collectionView(collectionView, didSelectItemAt: indexPath)
         }
-        
-        print("production select \(indexPath.row)")
-        
+        switch indexPath.row  {
+        case 0:
+            break
+        case 1:
+            break
+        case 2:
+            self.showShoppingHistory(true)
+            break
+        case 3:
+            break
+        default:
+            break
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

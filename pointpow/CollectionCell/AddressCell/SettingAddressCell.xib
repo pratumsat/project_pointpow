@@ -25,11 +25,11 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sw8-tX-Ues">
-                        <rect key="frame" x="0.0" y="0.0" width="182.5" height="74.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="182.5" height="78.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ที่อยู่ในการจัดส่ง" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8gI-KV-hYu">
-                                <rect key="frame" x="0.0" y="50" width="182.5" height="19.5"/>
-                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ที่อยู่ในการจัดส่ง" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8gI-KV-hYu">
+                                <rect key="frame" x="5" y="50" width="172.5" height="23.5"/>
+                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                 <color key="textColor" red="0.78823529410000004" green="0.1647058824" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -42,20 +42,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="8gI-KV-hYu" firstAttribute="leading" secondItem="Sw8-tX-Ues" secondAttribute="leading" id="2fD-Qq-R1m"/>
+                            <constraint firstItem="8gI-KV-hYu" firstAttribute="leading" secondItem="Sw8-tX-Ues" secondAttribute="leading" constant="5" id="2fD-Qq-R1m"/>
                             <constraint firstItem="aJm-HC-VYI" firstAttribute="top" secondItem="Sw8-tX-Ues" secondAttribute="top" constant="10" id="5lv-Oq-OUU"/>
                             <constraint firstItem="8gI-KV-hYu" firstAttribute="top" secondItem="aJm-HC-VYI" secondAttribute="bottom" constant="10" id="7Yk-cg-w5t"/>
-                            <constraint firstAttribute="trailing" secondItem="8gI-KV-hYu" secondAttribute="trailing" id="9qr-VX-n38"/>
+                            <constraint firstAttribute="trailing" secondItem="8gI-KV-hYu" secondAttribute="trailing" constant="5" id="9qr-VX-n38"/>
                             <constraint firstAttribute="bottom" secondItem="8gI-KV-hYu" secondAttribute="bottom" constant="5" id="EdU-Bq-9Ba"/>
                             <constraint firstItem="aJm-HC-VYI" firstAttribute="centerX" secondItem="Sw8-tX-Ues" secondAttribute="centerX" id="GjM-3W-S70"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tAe-GT-3lT">
-                        <rect key="frame" x="182.5" y="0.0" width="182.5" height="74.5"/>
+                        <rect key="frame" x="182.5" y="0.0" width="182.5" height="78.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ข้อมูลในการออกใบกำกับภาษี" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fet-v6-a0W">
-                                <rect key="frame" x="0.0" y="50" width="182.5" height="19.5"/>
-                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ข้อมูลในการออกใบกำกับภาษี" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Fet-v6-a0W">
+                                <rect key="frame" x="5" y="50" width="172.5" height="23.5"/>
+                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-address-setting-cate2" translatesAutoresizingMaskIntoConstraints="NO" id="hNv-vL-NXQ">
@@ -71,13 +71,13 @@
                             <constraint firstItem="Fet-v6-a0W" firstAttribute="top" secondItem="hNv-vL-NXQ" secondAttribute="bottom" constant="10" id="My5-Xr-9vq"/>
                             <constraint firstItem="hNv-vL-NXQ" firstAttribute="centerX" secondItem="tAe-GT-3lT" secondAttribute="centerX" id="QyX-am-8VZ"/>
                             <constraint firstItem="hNv-vL-NXQ" firstAttribute="width" secondItem="hNv-vL-NXQ" secondAttribute="height" multiplier="1:1" id="SBN-L4-pvo"/>
-                            <constraint firstItem="Fet-v6-a0W" firstAttribute="leading" secondItem="tAe-GT-3lT" secondAttribute="leading" id="XQq-di-sLD"/>
+                            <constraint firstItem="Fet-v6-a0W" firstAttribute="leading" secondItem="tAe-GT-3lT" secondAttribute="leading" constant="5" id="XQq-di-sLD"/>
                             <constraint firstItem="hNv-vL-NXQ" firstAttribute="top" secondItem="tAe-GT-3lT" secondAttribute="top" constant="10" id="eBS-vN-kZO"/>
-                            <constraint firstAttribute="trailing" secondItem="Fet-v6-a0W" secondAttribute="trailing" id="qt4-aZ-yOg"/>
+                            <constraint firstAttribute="trailing" secondItem="Fet-v6-a0W" secondAttribute="trailing" constant="5" id="qt4-aZ-yOg"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ss0-aE-k7z">
-                        <rect key="frame" x="0.0" y="84.5" width="365" height="1"/>
+                        <rect key="frame" x="0.0" y="88.5" width="365" height="1"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="UpX-xw-2Ar"/>
@@ -87,7 +87,7 @@
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="ss0-aE-k7z" firstAttribute="top" secondItem="Sw8-tX-Ues" secondAttribute="bottom" constant="10" id="BX0-Xr-1mD"/>
+                <constraint firstItem="ss0-aE-k7z" firstAttribute="top" secondItem="tAe-GT-3lT" secondAttribute="bottom" constant="10" id="BX0-Xr-1mD"/>
                 <constraint firstItem="ss0-aE-k7z" firstAttribute="leading" secondItem="ppD-dy-Sbc" secondAttribute="leading" id="ERy-gt-CMa"/>
                 <constraint firstItem="tAe-GT-3lT" firstAttribute="leading" secondItem="Sw8-tX-Ues" secondAttribute="trailing" id="OPt-D4-U84"/>
                 <constraint firstItem="aJm-HC-VYI" firstAttribute="height" secondItem="ppD-dy-Sbc" secondAttribute="height" multiplier="0.3" id="Pnt-iH-6IH"/>
@@ -100,7 +100,7 @@
                 <constraint firstItem="Sw8-tX-Ues" firstAttribute="width" secondItem="ppD-dy-Sbc" secondAttribute="width" multiplier="0.5" id="zc6-eg-x2E"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="gmp-pu-nh3"/>
-            <size key="customSize" width="365" height="150"/>
+            <size key="customSize" width="365" height="172"/>
             <connections>
                 <outlet property="caet1View" destination="Sw8-tX-Ues" id="sdG-sV-r46"/>
                 <outlet property="caet2Label" destination="Fet-v6-a0W" id="jTD-8g-o17"/>
@@ -110,7 +110,7 @@
                 <outlet property="cate2View" destination="tAe-GT-3lT" id="e2H-eG-B0c"/>
                 <outlet property="underlineView" destination="ss0-aE-k7z" id="7pd-nt-UB8"/>
             </connections>
-            <point key="canvasLocation" x="-5.5999999999999996" y="35.082458770614693"/>
+            <point key="canvasLocation" x="-5.5999999999999996" y="44.977511244377816"/>
         </collectionViewCell>
     </objects>
     <resources>

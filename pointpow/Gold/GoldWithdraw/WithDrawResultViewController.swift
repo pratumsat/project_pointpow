@@ -671,8 +671,9 @@ extension WithDrawResultViewController {
                 let total_shipping_price = data["withdraw_transaction"]?["total_shipping_price"] as? NSNumber ?? 0
                 let _ = data["withdraw_transaction"]?["tracking_number"] as? [[String:AnyObject]] ?? [[:]]
                 
+                let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
                 
-                item.addressLabel.text = "\(full_address)\n\(mobile)"
+                item.addressLabel.text = "\(full_address)\n\(newMText.chunkFormatted())"
                 item.arrayBox = shipping_and_insurance
                 item.amountBoxLabel.text = "(\(shipping_and_insurance.count)\(NSLocalizedString("string-thaipost-delivery-box", comment: "")))"
                 item.serviceLabel.text = "\(total_shipping_price)"
@@ -844,7 +845,9 @@ extension WithDrawResultViewController {
                 
                 item.parcelNumberLabel?.text = self.tackingNumberString(tacking: tracking_number)
                 
-                item.addressLabel.text = "\(full_address)\n\(mobile)"
+                let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
+                
+                item.addressLabel.text = "\(full_address)\n\(newMText.chunkFormatted())"
                 item.arrayBox = shipping_and_insurance
                 item.amountBoxLabel.text = "(\(shipping_and_insurance.count)\(NSLocalizedString("string-thaipost-delivery-box", comment: "")))"
                 item.serviceLabel.text = "\(total_shipping_price)"
@@ -933,8 +936,8 @@ extension WithDrawResultViewController {
                 let mobile = address["mobile"] as? String ?? ""
                 let total_shipping_price = data["withdraw_transaction"]?["total_shipping_price"] as? NSNumber ?? 0
                 
-                
-                item.addressLabel.text = "\(full_address)\n\(mobile)"
+                let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
+                item.addressLabel.text = "\(full_address)\n\(newMText.chunkFormatted())"
                 item.arrayBox = shipping_and_insurance
                 item.amountBoxLabel.text = "(\(shipping_and_insurance.count)\(NSLocalizedString("string-thaipost-delivery-box", comment: "")))"
                 item.serviceLabel.text = "\(total_shipping_price)"

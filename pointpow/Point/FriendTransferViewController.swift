@@ -318,9 +318,9 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
                         friendCell.coverImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
                     }
                     
-                    
+                    let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
                     //Display name / First name / Point Pow ID / Mobile Number
-                    var showName = mobile
+                    var showName = newMText.chunkFormatted()
 //                    if !showName.isEmpty {
 //                        showName = showName.substring(start: 0, end: 7)
 //                        showName += "xxx"
@@ -375,9 +375,9 @@ class FriendTransferViewController: BaseViewController, UICollectionViewDelegate
                         friendCell.coverImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
                     }
                     
-    
+                    let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
                     //Display name / First name / Point Pow ID / Mobile Number
-                    var showName = mobile
+                    var showName = newMText.chunkFormatted()
                     //if !showName.isEmpty {
                         //showName = showName.substring(start: 0, end: 7)
                         //showName += "xxx"

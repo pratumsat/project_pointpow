@@ -375,7 +375,8 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             let mobile = data["mobile"] as? String ?? ""
             let latest_shipping = data["latest_shipping"] as? NSNumber ?? 0
             
-            var rawAddress = "\(name) \(mobile)"
+            let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
+            var rawAddress = "\(name) \(newMText.chunkFormatted())"
             rawAddress += "\n\(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
             
             if latest_shipping.boolValue {
@@ -395,7 +396,8 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         let name = data["name"] as? String ?? ""
         let mobile = data["mobile"] as? String ?? ""
         
-        var rawAddress = "\(name) \(mobile)"
+        let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
+        var rawAddress = "\(name) \(newMText.chunkFormatted())"
         rawAddress += "\n\(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
         
         
@@ -415,9 +417,9 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             let mobile = data["mobile"] as? String ?? ""
             
             let newText = String((tax_invoice).filter({ $0 != "-" }).prefix(13))
-            let tax_invoice_renew = newText.chunkFormattedPersonalID()
-            var rawAddress = "\(name) \(tax_invoice_renew)"
-            rawAddress += "\n\(mobile) \(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
+            let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
+            var rawAddress = "\(name) \(newText.chunkFormattedPersonalID())"
+            rawAddress += "\n\(newMText.chunkFormatted()) \(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
             
             if latest_shipping.boolValue {
                 return rawAddress
@@ -436,9 +438,10 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         let name = data["name"] as? String ?? ""
         let mobile = data["mobile"] as? String ?? ""
        
-        
-        var rawAddress = "\(name) \(tax_invoice)"
-        rawAddress += "\n\(mobile) \(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
+        let newText = String((tax_invoice).filter({ $0 != "-" }).prefix(13))
+        let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
+        var rawAddress = "\(name) \(newText.chunkFormattedPersonalID())"
+        rawAddress += "\n\(newMText.chunkFormatted()) \(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
         
         return rawAddress
     }

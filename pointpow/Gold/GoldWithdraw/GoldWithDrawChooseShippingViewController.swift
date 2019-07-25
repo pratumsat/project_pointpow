@@ -99,7 +99,8 @@ class GoldWithDrawChooseShippingViewController: BaseViewController  , UICollecti
             let provinceName = data["province"]?["name_in_thai"] as? String ?? ""
             let zip_code = data["subdistrict"]?["zip_code"] as? NSNumber ?? 0
             
-            var rawAddress = "\(self.name) \(self.mobile)"
+            let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
+            var rawAddress = "\(self.name) \(newMText.chunkFormatted())"
             rawAddress += "\n\(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
             
             self.shippingAddress = rawAddress

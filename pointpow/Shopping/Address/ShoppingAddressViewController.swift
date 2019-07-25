@@ -224,7 +224,8 @@ class ShoppingAddressViewController: BaseViewController , UICollectionViewDelega
                     let name = data["name"] as? String ?? ""
                     let mobile = data["mobile"] as? String ?? ""
 
-                    var rawAddress = "\(name) \(mobile)"
+                    let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
+                    var rawAddress = "\(name) \(newMText.chunkFormatted())"
                     rawAddress += "\n\(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
 
                     item.addressLabel.text = rawAddress
@@ -340,7 +341,9 @@ class ShoppingAddressViewController: BaseViewController , UICollectionViewDelega
                 let name = data["name"] as? String ?? ""
                 let mobile = data["mobile"] as? String ?? ""
                 
-                var rawAddress = "\(name) \(mobile)"
+                let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
+                
+                var rawAddress = "\(name) \(newMText.chunkFormatted())"
                 rawAddress += "\n\(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
 
                 

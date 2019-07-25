@@ -93,8 +93,8 @@ class PointFriendTransferReviewViewController: BaseViewController {
                 if !pointpow_id.isEmpty {
                     self.ppIdLabel.text = pointpow_id
                 }else{
-                    
-                    self.ppIdLabel.text = mobile
+                    let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
+                    self.ppIdLabel.text = newMText.chunkFormatted()
                 }
             }
             self.refreshControl?.endRefreshing()
@@ -206,7 +206,8 @@ class PointFriendTransferReviewViewController: BaseViewController {
             if !pointpow_id.isEmpty {
                 self.ppIdFriendLabel.text = pointpow_id
             }else{
-                self.ppIdFriendLabel.text = mobile
+                let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
+                self.ppIdFriendLabel.text = newMText.chunkFormatted()
             }
 
         }

@@ -580,7 +580,7 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
                 "postcode" : postcode,
                 "tax_invoice": personalID.replace(target: "-", withString: ""),
                 "company" : "",
-                "mobile": mobile,
+                "mobile": mobile.replace(target: "-", withString: "-"),
                 "type" : "invoice",
                 "invoice_shipping" : self.invoice_shipping
             ]

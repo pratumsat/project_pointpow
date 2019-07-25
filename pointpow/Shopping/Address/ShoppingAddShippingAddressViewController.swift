@@ -522,7 +522,7 @@ class ShoppingAddShippingAddressViewController:BaseViewController ,UIPickerViewD
                 "district_id" : self.districtId,
                 "subdistrict_id" : self.subDistrictId,
                 "postcode" : postcode,
-                "mobile": mobile,
+                "mobile": mobile.replace(target: "-", withString: ""),
                 "type" : "shopping"
             ]
             print(params)

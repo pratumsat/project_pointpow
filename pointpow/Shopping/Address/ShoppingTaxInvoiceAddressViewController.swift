@@ -113,10 +113,10 @@ class ShoppingTaxInvoiceAddressViewController: ShoppingAddressViewController {
                     let mobile = data["mobile"] as? String ?? ""
                     
                     let newText = String((tax_invoice).filter({ $0 != "-" }).prefix(13))
-                    
+                    let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
                     
                     var rawAddress = "\(name) \(newText.chunkFormattedPersonalID())"
-                    rawAddress += "\n\(mobile) \(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
+                    rawAddress += "\n\(newMText.chunkFormatted()) \(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
                     
                     item.addressLabel.text = rawAddress
                     
@@ -179,8 +179,11 @@ class ShoppingTaxInvoiceAddressViewController: ShoppingAddressViewController {
                 let name = data["name"] as? String ?? ""
                 let mobile = data["mobile"] as? String ?? ""
                 
-                var rawAddress = "\(name) \(tax_invoice)"
-                rawAddress += "\n\(mobile) \(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
+                let newText = String((tax_invoice).filter({ $0 != "-" }).prefix(13))
+                let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
+                
+                var rawAddress = "\(name) \(newText.chunkFormattedPersonalID())"
+                rawAddress += "\n\(newMText.chunkFormatted()) \(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
                 
                 
                 let height = heightForView(text: rawAddress, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 16)!, width: width) +  60

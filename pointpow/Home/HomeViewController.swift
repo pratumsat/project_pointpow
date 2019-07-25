@@ -325,9 +325,11 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
                 self.pointBalanceLabel.text = numberFormatter.string(from: pointBalance )
                 
                 //Display name / First name / Point Pow ID / Mobile Number
+               
                 var showName = ""
                 if !mobile.trimmingCharacters(in: .whitespaces).isEmpty {
-                    mobile = mobile.substring(start: 0, end: 7)
+                    let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
+                    mobile = newMText.chunkFormatted().substring(start: 0, end: 7)
                     mobile += "xxx"
                     showName = mobile
                 }

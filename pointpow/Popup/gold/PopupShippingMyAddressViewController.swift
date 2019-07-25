@@ -238,7 +238,10 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
                     let zip_code = data["subdistrict"]?["zip_code"] as? NSNumber ?? 0
                     let latest_shipping = data["latest_shipping"] as? NSNumber ?? 0
                     
-                    var rawAddress = "\(self.name) \(self.mobile)"
+                    
+                    let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
+                    
+                    var rawAddress = "\(self.name) \(newMText.chunkFormatted())"
                     rawAddress += "\n\(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
 
                     item.addressLabel.text = rawAddress
@@ -331,8 +334,8 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
                 let zip_code = data["subdistrict"]?["zip_code"] as? NSNumber ?? 0
                 
                
-                
-                var rawAddress = "\(self.name) \(self.mobile)"
+                let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
+                var rawAddress = "\(self.name) \(newMText.chunkFormatted())"
                 rawAddress += "\n\(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
                 
                 

@@ -167,6 +167,12 @@
 		C12CCC682282C7BF00F26DCC /* PromotionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12CCC672282C7BF00F26DCC /* PromotionDetailViewController.swift */; };
 		C12F744922E972E5000E49F8 /* ShoppingHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12F744822E972E5000E49F8 /* ShoppingHistoryViewController.swift */; };
 		C12F744B22E973FA000E49F8 /* ShoppingHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12F744A22E973FA000E49F8 /* ShoppingHistory.swift */; };
+		C12F744D22E984D7000E49F8 /* ConfirmOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12F744C22E984D7000E49F8 /* ConfirmOrderViewController.swift */; };
+		C12F745122E9899B000E49F8 /* ConfirmOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12F744F22E9899B000E49F8 /* ConfirmOrderCell.swift */; };
+		C12F745222E9899B000E49F8 /* ConfirmOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12F745022E9899B000E49F8 /* ConfirmOrderCell.xib */; };
+		C12F745422E9AA5C000E49F8 /* SettingAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12F745322E9AA5C000E49F8 /* SettingAddressViewController.swift */; };
+		C12F745722E9AD69000E49F8 /* SettingAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12F745522E9AD69000E49F8 /* SettingAddressCell.swift */; };
+		C12F745822E9AD69000E49F8 /* SettingAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12F745622E9AD69000E49F8 /* SettingAddressCell.xib */; };
 		C12FD30E228D168100FB81B6 /* NotificationGoldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12FD30C228D168100FB81B6 /* NotificationGoldCell.swift */; };
 		C12FD30F228D168100FB81B6 /* NotificationGoldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12FD30D228D168100FB81B6 /* NotificationGoldCell.xib */; };
 		C12FD312228EA48700FB81B6 /* ItemFriendSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12FD310228EA48700FB81B6 /* ItemFriendSearchCell.swift */; };
@@ -525,6 +531,12 @@
 		C12CCC672282C7BF00F26DCC /* PromotionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionDetailViewController.swift; sourceTree = "<group>"; };
 		C12F744822E972E5000E49F8 /* ShoppingHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingHistoryViewController.swift; sourceTree = "<group>"; };
 		C12F744A22E973FA000E49F8 /* ShoppingHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingHistory.swift; sourceTree = "<group>"; };
+		C12F744C22E984D7000E49F8 /* ConfirmOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmOrderViewController.swift; sourceTree = "<group>"; };
+		C12F744F22E9899B000E49F8 /* ConfirmOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmOrderCell.swift; sourceTree = "<group>"; };
+		C12F745022E9899B000E49F8 /* ConfirmOrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmOrderCell.xib; sourceTree = "<group>"; };
+		C12F745322E9AA5C000E49F8 /* SettingAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAddressViewController.swift; sourceTree = "<group>"; };
+		C12F745522E9AD69000E49F8 /* SettingAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAddressCell.swift; sourceTree = "<group>"; };
+		C12F745622E9AD69000E49F8 /* SettingAddressCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingAddressCell.xib; sourceTree = "<group>"; };
 		C12FD30C228D168100FB81B6 /* NotificationGoldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationGoldCell.swift; sourceTree = "<group>"; };
 		C12FD30D228D168100FB81B6 /* NotificationGoldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationGoldCell.xib; sourceTree = "<group>"; };
 		C12FD310228EA48700FB81B6 /* ItemFriendSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFriendSearchCell.swift; sourceTree = "<group>"; };
@@ -843,6 +855,8 @@
 			children = (
 				C107CF38222269E000C50B8C /* AddressViewCell.swift */,
 				C107CF39222269E000C50B8C /* AddressViewCell.xib */,
+				C12F745522E9AD69000E49F8 /* SettingAddressCell.swift */,
+				C12F745622E9AD69000E49F8 /* SettingAddressCell.xib */,
 			);
 			path = AddressCell;
 			sourceTree = "<group>";
@@ -1005,6 +1019,7 @@
 		C11A93B4218C00A000627B44 /* CollectionCell */ = {
 			isa = PBXGroup;
 			children = (
+				C12F744E22E98986000E49F8 /* Order */,
 				C19BEEF622CCA5C700855FBF /* CartCell */,
 				C1F0C08022C4A7D800A49BAA /* ShoppingPageCell */,
 				C11AFC9122C23DD400573C27 /* ShoppingBaseCell */,
@@ -1156,6 +1171,7 @@
 				C1214E1622D2178100DA5C42 /* ShoppingAddShippingAddressViewController.swift */,
 				C1214E1422D2143E00DA5C42 /* ShoppingTaxInvoiceAddressViewController.swift */,
 				C12A88C822E3291800D40155 /* ShoppingAddTaxInvoiceAddressViewController.swift */,
+				C12F745322E9AA5C000E49F8 /* SettingAddressViewController.swift */,
 			);
 			path = Address;
 			sourceTree = "<group>";
@@ -1235,6 +1251,15 @@
 				C12F744822E972E5000E49F8 /* ShoppingHistoryViewController.swift */,
 			);
 			path = History;
+			sourceTree = "<group>";
+		};
+		C12F744E22E98986000E49F8 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				C12F744F22E9899B000E49F8 /* ConfirmOrderCell.swift */,
+				C12F745022E9899B000E49F8 /* ConfirmOrderCell.xib */,
+			);
+			path = Order;
 			sourceTree = "<group>";
 		};
 		C13D4FE5229E463900516CE8 /* JSInterface */ = {
@@ -1372,6 +1397,7 @@
 			isa = PBXGroup;
 			children = (
 				C19BEEF422CCA25D00855FBF /* CartViewController.swift */,
+				C12F744C22E984D7000E49F8 /* ConfirmOrderViewController.swift */,
 			);
 			path = Orders;
 			sourceTree = "<group>";
@@ -1798,6 +1824,7 @@
 				C1DEBE982188337500CBB95F /* ThaiSansNeue-Bold.ttf in Resources */,
 				C11A93B8218C00C800627B44 /* IntroCell1.xib in Resources */,
 				C10CA1BF219429D500316DF3 /* ImageCell.xib in Resources */,
+				C12F745822E9AD69000E49F8 /* SettingAddressCell.xib in Resources */,
 				C11BDFBD21A2BB3C00443D2D /* ItemConfirmSummaryCell.xib in Resources */,
 				C19BEF0222CCB2A500855FBF /* ItemCartProductCell.xib in Resources */,
 				C1F0C08422C4A81900A49BAA /* PageViewCollectionViewCell.xib in Resources */,
@@ -1834,6 +1861,7 @@
 				C197FF3B22083AE9002F24E8 /* SavingCell.xib in Resources */,
 				C197FF432209401D002F24E8 /* LogoGoldCell.xib in Resources */,
 				C1F761062216C261000A2CA9 /* SavingResultCell.xib in Resources */,
+				C12F745222E9899B000E49F8 /* ConfirmOrderCell.xib in Resources */,
 				C120312E22DC1C9A0013C1A1 /* ProfileShoppingTableViewCell.xib in Resources */,
 				C107CF2E221FD52800C50B8C /* WithDrawResultPointPowSuccessCell.xib in Resources */,
 				C19BEF0622CCCCED00855FBF /* CartSummaryCell.xib in Resources */,
@@ -2016,6 +2044,7 @@
 				C1AD50B22187FEE300F74415 /* ModelController.swift in Sources */,
 				C10D94B82209719F0083FA47 /* NavProfile.swift in Sources */,
 				C197FEDA21DC5616002F24E8 /* PopUpRegisterSuccessViewController.swift in Sources */,
+				C12F745122E9899B000E49F8 /* ConfirmOrderCell.swift in Sources */,
 				C13D4FE4229E45F300516CE8 /* UIWebViewExt.swift in Sources */,
 				C121B32D224C802D00D69B56 /* PopUpInfoLaserIdViewController.swift in Sources */,
 				C127323F225380D500A9EE74 /* PickerLuckyDrawCell.swift in Sources */,
@@ -2042,11 +2071,13 @@
 				C197FF2622081C72002F24E8 /* GoldPageViewController.swift in Sources */,
 				C1892E0D221E900900F5412F /* TransactionGoldCell.swift in Sources */,
 				C12F744922E972E5000E49F8 /* ShoppingHistoryViewController.swift in Sources */,
+				C12F744D22E984D7000E49F8 /* ConfirmOrderViewController.swift in Sources */,
 				C139488B2297D881003E0527 /* MyQRCodeViewController.swift in Sources */,
 				C127323C2253671C00A9EE74 /* WinnerLuckyDrawViewController.swift in Sources */,
 				C121FB4B22853B2100043387 /* VerifyMobileNumberViewController.swift in Sources */,
 				C1249EB42224E2CD00F56FA0 /* PopUpMapOfficeViewController.swift in Sources */,
 				C11AFC8E22C1DFAA00573C27 /* ShoppingBaseViewController.swift in Sources */,
+				C12F745722E9AD69000E49F8 /* SettingAddressCell.swift in Sources */,
 				C121FB54228A652F00043387 /* NotificationTableViewController.swift in Sources */,
 				C1817D99219C041F009507DB /* PointTransferViewController.swift in Sources */,
 				C11BFCA4221BC5D900F066DE /* GoldWithDrawChooseShippingViewController.swift in Sources */,
@@ -2176,6 +2207,7 @@
 				C197FF3222083A6F002F24E8 /* GoldPriceCell.swift in Sources */,
 				C121FB5E228AC37D00043387 /* PrivacyPolicyPointPowViewController.swift in Sources */,
 				C120D7CE21955BB500F9EEBB /* ProfileCell.swift in Sources */,
+				C12F745422E9AA5C000E49F8 /* SettingAddressViewController.swift in Sources */,
 				C107CF30222157E900C50B8C /* WithDrawSummaryOfficeViewController.swift in Sources */,
 				C1F0C08A22C9D8FE00A49BAA /* ProductDetailViewController.swift in Sources */,
 				C10CA1AC219298C500316DF3 /* EmptyViewController.swift in Sources */,

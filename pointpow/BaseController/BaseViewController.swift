@@ -303,6 +303,13 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }
     }
     
+    func showSettingShoppingAddressPage(_ animated:Bool){
+        if let vc:SettingAddressViewController = self.storyboard?.instantiateViewController(withIdentifier: "SettingAddressViewController") as? SettingAddressViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    
     func showShoppingAddressPage(_ animated:Bool){
         if let vc:ShoppingAddressViewController = self.storyboard?.instantiateViewController(withIdentifier: "ShoppingAddressViewController") as? ShoppingAddressViewController {
             
@@ -2038,6 +2045,21 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             
             customPresentViewController(presenter, viewController: vc, animated: animated, completion: nil)
             
+        }
+    }
+    
+    func showConfirmOrderViewController(_ animated:Bool,
+                                        cart_id:String,
+                                        invoice_id:String,
+                                        shipping_id:String,
+                                        tupleProduct:AnyObject?){
+        
+        if let vc:ConfirmOrderViewController = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmOrderViewController") as? ConfirmOrderViewController {
+            vc.tupleProduct = tupleProduct
+            vc.cart_id = cart_id
+            vc.invoice_id = invoice_id
+            vc.shipping_id = shipping_id
+            self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
     

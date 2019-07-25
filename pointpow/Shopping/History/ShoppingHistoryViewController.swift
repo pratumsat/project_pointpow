@@ -19,12 +19,23 @@ class ShoppingHistoryViewController: ShoppingBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = NSLocalizedString("string-title-transection", comment: "")
+        
+        let filterIcon = UIBarButtonItem(image: UIImage(named: "ic-filter"), style: .plain, target: self, action: #selector(filterTapped))
+        navigationItem.rightBarButtonItem = filterIcon
+        
         self.setUp()
     }
+    
+    @objc func filterTapped(){
+        
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.getDataHistory(clearData: false)
     }
+    
+    
     
     func setUp(){
         self.backgroundImage?.image = nil

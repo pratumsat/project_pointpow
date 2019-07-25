@@ -111,6 +111,7 @@ extension AccountShoppingViewController {
         case 0:
             break
         case 1:
+            self.showSettingShoppingAddressPage(true)
             break
         case 2:
             self.showShoppingHistory(true)

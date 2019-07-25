@@ -16,8 +16,8 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
     var cartItems:AnyObject?
     var checkAll = true
     
-    var fullAddressShopping = ""
-    var fullAddressTaxInvoice = ""
+    var fullAddressShopping:(id:String, rawAddress:String) = (id:"", rawAddress:"")
+    var fullAddressTaxInvoice:(id:String, rawAddress:String) = (id:"", rawAddress:"")
     var cart_id:Int = 0
     
     var isTaxInvoice = false {
@@ -364,8 +364,9 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
     }
     
     
-    func getSelectAddress(_ memberAddress:[[String:AnyObject]]) -> String {
+    func getSelectAddress(_ memberAddress:[[String:AnyObject]]) -> (id:String, rawAddress:String) {
         for data in memberAddress {
+            let id = data["id"] as? NSNumber ?? 0
             let address = data["address"] as? String ?? ""
             let districtName = data["district"]?["name_in_thai"] as? String ?? ""
             let subdistrictName = data["subdistrict"]?["name_in_thai"] as? String ?? ""
@@ -380,14 +381,14 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             rawAddress += "\n\(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
             
             if latest_shipping.boolValue {
-                return rawAddress
+                return (id: "\(id.intValue)", rawAddress: rawAddress)
             }
         }
         
         guard  let data = memberAddress.first else {
-            return ""
+            return (id: "", rawAddress: "")
         }
-        
+        let id = data["id"] as? NSNumber ?? 0
         let address = data["address"] as? String ?? ""
         let districtName = data["district"]?["name_in_thai"] as? String ?? ""
         let subdistrictName = data["subdistrict"]?["name_in_thai"] as? String ?? ""
@@ -401,11 +402,12 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         rawAddress += "\n\(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
         
         
-        return rawAddress
+        return (id: "\(id.intValue)", rawAddress: rawAddress)
     }
     
-    func getSelectAddressTaxInVoice(_ memberAddress:[[String:AnyObject]]) -> String {
+    func getSelectAddressTaxInVoice(_ memberAddress:[[String:AnyObject]]) -> (id:String, rawAddress:String) {
         for data in memberAddress {
+            let id = data["id"] as? NSNumber ?? 0
             let address = data["address"] as? String ?? ""
             let districtName = data["district"]?["name_in_thai"] as? String ?? ""
             let subdistrictName = data["subdistrict"]?["name_in_thai"] as? String ?? ""
@@ -422,13 +424,14 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             rawAddress += "\n\(newMText.chunkFormatted()) \(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
             
             if latest_shipping.boolValue {
-                return rawAddress
+                return (id: "\(id.intValue)", rawAddress: rawAddress)
             }
         }
         guard  let data = memberAddress.first else {
-            return ""
+            return (id: "", rawAddress: "")
         }
         
+        let id = data["id"] as? NSNumber ?? 0
         let address = data["address"] as? String ?? ""
         let districtName = data["district"]?["name_in_thai"] as? String ?? ""
         let subdistrictName = data["subdistrict"]?["name_in_thai"] as? String ?? ""
@@ -443,7 +446,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         var rawAddress = "\(name) \(newText.chunkFormattedPersonalID())"
         rawAddress += "\n\(newMText.chunkFormatted()) \(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
         
-        return rawAddress
+        return (id: "\(id.intValue)", rawAddress: rawAddress)
     }
    
     
@@ -479,6 +482,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                         }
                     }
                     self.fullAddressShopping = self.getSelectAddress(shoppingAddress)
+                    
                     
                     self.fullAddressTaxInvoice = self.getSelectAddressTaxInVoice(invoiceAddress)
                     
@@ -758,8 +762,8 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             if let addressCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CartAddressShippingCell", for: indexPath) as? CartAddressShippingCell {
                 cell = addressCell
                 
-                if !self.fullAddressShopping.trimmingCharacters(in: .whitespaces).isEmpty {
-                    addressCell.addressLabel.text = self.fullAddressShopping
+                if !self.fullAddressShopping.rawAddress.trimmingCharacters(in: .whitespaces).isEmpty {
+                    addressCell.addressLabel.text = self.fullAddressShopping.rawAddress
                     
                     addressCell.addView.isHidden = true
                     addressCell.addressLabel.isHidden = false
@@ -783,8 +787,8 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             if let taxInvoiceCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CartAdressTaxInvoiceCell", for: indexPath) as? CartAdressTaxInvoiceCell {
                 cell = taxInvoiceCell
                 
-                 if !self.fullAddressTaxInvoice.trimmingCharacters(in: .whitespaces).isEmpty {
-                    taxInvoiceCell.addressLabel.text = self.fullAddressTaxInvoice
+                 if !self.fullAddressTaxInvoice.rawAddress.trimmingCharacters(in: .whitespaces).isEmpty {
+                    taxInvoiceCell.addressLabel.text = self.fullAddressTaxInvoice.rawAddress
                     
                     taxInvoiceCell.addView.isHidden = true
                     taxInvoiceCell.addressLabel.isHidden = false
@@ -800,6 +804,18 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         case "nextbutton":
             if let nextCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CartNextButtonCell", for: indexPath) as? CartNextButtonCell {
                 cell = nextCell
+                nextCell.nextCallback = {
+                    
+                    self.updateCart {
+                        
+                        self.showConfirmOrderViewController(true ,
+                                                            cart_id: "\(self.cart_id)",
+                                                            invoice_id: self.fullAddressTaxInvoice.id,
+                                                            shipping_id: self.fullAddressShopping.id,
+                                                            tupleProduct: self.tupleProduct as AnyObject)
+                    }
+                    
+                }
                 
             }
         case "no_item":
@@ -824,7 +840,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         switch self.itemSection[indexPath.section] {
         case "shipping_address":
             self.updateCart {
-                if !self.fullAddressShopping.trimmingCharacters(in: .whitespaces).isEmpty {
+                if !self.fullAddressShopping.rawAddress.trimmingCharacters(in: .whitespaces).isEmpty {
                     //isAddress
                     self.showShoppingAddressPage(true)
                 }else{
@@ -837,7 +853,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             
         case "shopping_taxinvoice":
             self.updateCart {
-                if !self.fullAddressTaxInvoice.trimmingCharacters(in: .whitespaces).isEmpty {
+                if !self.fullAddressTaxInvoice.rawAddress.trimmingCharacters(in: .whitespaces).isEmpty {
                     //isAddress
                     self.showTaxInvoiceAddressPage(true)
                 }else{
@@ -953,8 +969,8 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             
             let width = collectionView.frame.width
             var heightAddress = CGFloat(0)
-            if !self.fullAddressShopping.trimmingCharacters(in: .whitespaces).isEmpty {
-                heightAddress += heightForView(text: self.fullAddressShopping, font: UIFont(name:   Constant.Fonts.THAI_SANS_BOLD, size: 18)!, width: width - 60)
+            if !self.fullAddressShopping.rawAddress.trimmingCharacters(in: .whitespaces).isEmpty {
+                heightAddress += heightForView(text: self.fullAddressShopping.rawAddress, font: UIFont(name:   Constant.Fonts.THAI_SANS_BOLD, size: 18)!, width: width - 60)
                 heightAddress += CGFloat(100)
             }else{
                 heightAddress = CGFloat(160)
@@ -967,8 +983,8 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
            
             let width = collectionView.frame.width
             var heightAddress = CGFloat(0)
-            if !self.fullAddressTaxInvoice.trimmingCharacters(in: .whitespaces).isEmpty {
-                heightAddress += heightForView(text: self.fullAddressTaxInvoice, font: UIFont(name:   Constant.Fonts.THAI_SANS_BOLD, size: 18)!, width: width - 60)
+            if !self.fullAddressTaxInvoice.rawAddress.trimmingCharacters(in: .whitespaces).isEmpty {
+                heightAddress += heightForView(text: self.fullAddressTaxInvoice.rawAddress, font: UIFont(name:   Constant.Fonts.THAI_SANS_BOLD, size: 18)!, width: width - 60)
                 heightAddress += CGFloat(100)
             }else{
                 heightAddress = CGFloat(160)

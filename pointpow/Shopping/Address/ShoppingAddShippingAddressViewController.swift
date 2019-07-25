@@ -433,10 +433,13 @@ class ShoppingAddShippingAddressViewController:BaseViewController ,UIPickerViewD
             for item in vcs {
                 if item is CartViewController {
                     self.navigationController?.popToViewController((self.navigationController?.viewControllers[i])!, animated: true)
+                    
+                    return
                 }
                 i += 1
             }
         }
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func saveTapped(_ sender: Any) {

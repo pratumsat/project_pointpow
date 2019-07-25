@@ -485,6 +485,7 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
                 i += 1
             }
         }
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func saveTapped(_ sender: Any) {

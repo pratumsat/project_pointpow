@@ -48,6 +48,12 @@ class ConfirmOrderViewController: BaseViewController , UICollectionViewDelegate 
     }
     
     func setUp(){
+        self.handlerEnterSuccess = { (pin) in
+            //checkout
+            
+        }
+
+        
         self.confirmCollectionView.delegate = self
         self.confirmCollectionView.dataSource = self
         
@@ -120,6 +126,7 @@ class ConfirmOrderViewController: BaseViewController , UICollectionViewDelegate 
                 nextCell.nextButton.setTitle(NSLocalizedString("string-item-shopping-button-confirm-order", comment: ""), for: .normal)
                 nextCell.nextCallback = {
                     //next
+                    self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
                 }
             }
         }

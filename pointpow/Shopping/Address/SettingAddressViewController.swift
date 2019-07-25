@@ -42,6 +42,24 @@ class SettingAddressViewController: BaseViewController , UICollectionViewDelegat
         }
     }
     
+
+    func addViewNotfoundData(_ title:String){
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        var centerpoint = view.center
+        centerpoint.y -= self.view.frame.height*0.2
+        
+        let sorry = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 30))
+        sorry.center = centerpoint
+        sorry.textAlignment = .center
+        sorry.font = UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.CONTENT )
+        sorry.text = title
+        sorry.textColor = UIColor.lightGray
+        view.addSubview(sorry)
+        
+        self.addressCollectionView.reloadData()
+        self.addressCollectionView.backgroundView = view
+    }
+    
     func getUserInfo(_ avaliable:(()->Void)?  = nil){
         
         var isLoading:Bool = true
@@ -77,8 +95,19 @@ class SettingAddressViewController: BaseViewController , UICollectionViewDelegat
                     return v1.boolValue
                 })
                 
-                //self.modelAddreses?.reverse()
                 self.selectItem = nil
+                
+                if self.modelAddreses!.count <= 0 {
+                    if self.selectType == "shopping" {
+                        self.addViewNotfoundData(NSLocalizedString("string-not-found-item-address", comment: ""))
+                    }else{
+                        self.addViewNotfoundData(NSLocalizedString("string-not-found-item-tax-invoice", comment: ""))
+                    }
+                    
+                }else{
+                    self.addressCollectionView.backgroundView = nil
+                    self.addressCollectionView.reloadData()
+                }
                 
                 
             }

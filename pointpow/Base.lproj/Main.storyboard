@@ -10123,6 +10123,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="โปรโมชั่น" image="ic-shopping-tab-promotion" selectedImage="ic-shopping-tab-promotion-active" id="Zl3-Lr-4jU"/>
                     <navigationItem key="navigationItem" id="hZB-2R-bYG"/>
+                    <connections>
+                        <outlet property="promotionCollectionView" destination="iFl-UC-M2J" id="yAU-Dl-axe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="557-Vs-ZxQ" sceneMemberID="firstResponder"/>
             </objects>

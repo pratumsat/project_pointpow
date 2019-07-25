@@ -40,22 +40,21 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ดูเพิ่มเติม" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7c-ds-Vq4">
-                        <rect key="frame" x="379.5" y="272.5" width="49.5" height="23.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ดูเพิ่มเติม &gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7c-ds-Vq4">
+                        <rect key="frame" x="376.5" y="288.5" width="62.5" height="23.5"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="textColor" red="0.78823529410000004" green="0.1647058824" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-arrow-right" translatesAutoresizingMaskIntoConstraints="NO" id="00s-NP-tA0">
-                        <rect key="frame" x="429" y="279.5" width="10" height="10"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="10" id="G8x-UB-Vrv"/>
-                            <constraint firstAttribute="width" secondItem="00s-NP-tA0" secondAttribute="height" multiplier="1:1" id="NOJ-Ol-WTb"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ลดราคาสินค้า 20%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zuc-9d-O9o">
                         <rect key="frame" x="10" y="195.5" width="429" height="26"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23-01-2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cJ-fH-hWG">
+                        <rect key="frame" x="10" y="290" width="51.5" height="21"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="16"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -64,29 +63,27 @@
             <constraints>
                 <constraint firstItem="l4B-yI-NkW" firstAttribute="leading" secondItem="oNC-a7-aiK" secondAttribute="leading" id="2Fz-dt-A9o"/>
                 <constraint firstAttribute="trailing" secondItem="zuc-9d-O9o" secondAttribute="trailing" constant="10" id="8Qg-rs-Tju"/>
-                <constraint firstItem="00s-NP-tA0" firstAttribute="leading" secondItem="I7c-ds-Vq4" secondAttribute="trailing" id="AT1-bQ-NWg"/>
                 <constraint firstItem="oNC-a7-aiK" firstAttribute="leading" secondItem="zuc-9d-O9o" secondAttribute="leading" id="Iy1-oy-FDY"/>
-                <constraint firstItem="00s-NP-tA0" firstAttribute="centerY" secondItem="I7c-ds-Vq4" secondAttribute="centerY" id="amW-LH-Jdz"/>
+                <constraint firstItem="6cJ-fH-hWG" firstAttribute="centerY" secondItem="I7c-ds-Vq4" secondAttribute="centerY" id="Pe9-VU-suc"/>
+                <constraint firstItem="I7c-ds-Vq4" firstAttribute="trailing" secondItem="oNC-a7-aiK" secondAttribute="trailing" id="U0u-Kb-6Ob"/>
                 <constraint firstItem="l4B-yI-NkW" firstAttribute="trailing" secondItem="oNC-a7-aiK" secondAttribute="trailing" id="bFN-eL-zuf"/>
                 <constraint firstItem="zuc-9d-O9o" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="e6T-B0-u5c"/>
-                <constraint firstItem="I7c-ds-Vq4" firstAttribute="top" secondItem="l4B-yI-NkW" secondAttribute="bottom" constant="4" id="eDG-Of-t7n"/>
                 <constraint firstItem="zuc-9d-O9o" firstAttribute="top" secondItem="oNC-a7-aiK" secondAttribute="bottom" constant="5" id="fdu-hg-eYY"/>
                 <constraint firstItem="oNC-a7-aiK" firstAttribute="trailing" secondItem="zuc-9d-O9o" secondAttribute="trailing" id="flQ-Fr-taD"/>
-                <constraint firstItem="00s-NP-tA0" firstAttribute="trailing" secondItem="oNC-a7-aiK" secondAttribute="trailing" id="kdB-CS-vvE"/>
+                <constraint firstItem="6cJ-fH-hWG" firstAttribute="leading" secondItem="oNC-a7-aiK" secondAttribute="leading" id="hng-zy-21A"/>
                 <constraint firstItem="l4B-yI-NkW" firstAttribute="top" secondItem="zuc-9d-O9o" secondAttribute="bottom" id="qN7-g6-uMk"/>
+                <constraint firstAttribute="bottom" secondItem="I7c-ds-Vq4" secondAttribute="bottom" constant="10" id="sHK-6T-HYt"/>
                 <constraint firstItem="oNC-a7-aiK" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="xgl-7T-5XT"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="449" height="322"/>
             <connections>
                 <outlet property="bannerImageView" destination="oNC-a7-aiK" id="etg-9H-NBs"/>
+                <outlet property="dateLabel" destination="6cJ-fH-hWG" id="2lK-Jm-5rm"/>
                 <outlet property="detailLabel" destination="l4B-yI-NkW" id="sXj-Xf-1FN"/>
                 <outlet property="titleLabel" destination="zuc-9d-O9o" id="aru-fr-drH"/>
             </connections>
             <point key="canvasLocation" x="90.400000000000006" y="136.73163418290855"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="ic-arrow-right" width="9.6000003814697266" height="22.559999465942383"/>
-    </resources>
 </document>

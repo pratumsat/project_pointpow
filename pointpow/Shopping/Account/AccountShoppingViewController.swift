@@ -30,6 +30,7 @@ class AccountShoppingViewController: ShoppingBaseViewController {
         self.profileCollectionView.showsVerticalScrollIndicator = false
         self.addRefreshViewController(self.profileCollectionView)
         self.registerNib(self.profileCollectionView, "ItemProfileCell")
+        self.registerHeaderNib(self.profileCollectionView, "HeaderSectionCell")
     }
     override func reloadData() {
         self.refreshControl?.endRefreshing()

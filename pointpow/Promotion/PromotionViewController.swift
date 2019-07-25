@@ -127,7 +127,9 @@ class PromotionViewController: BaseViewController , UICollectionViewDelegate , U
                 let title = itemData["title"] as? String ?? ""
                 let path_mobile_thumbnail = itemData["path_mobile_thumbnail"] as? String ?? ""
                 let shot_description = itemData["shot_description"] as? String ?? ""
+                let created_at = itemData["created_at"] as? String ?? ""
                 
+                itemCell.dateLabel.text = convertDateOfDay(created_at)
                 itemCell.titleLabel.text = title
                 itemCell.detailLabel.text = shot_description
                 

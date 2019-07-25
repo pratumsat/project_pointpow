@@ -1264,8 +1264,7 @@ func base64Convert(base64String: String?) -> UIImage?{
 func convertDateOfDay(_ dateString:String) -> String {
     //2017-03-29 20:15:25.000+00:00
     let dateFormatter = DateFormatter()
-    dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSz"
+    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
     if let d1 = dateFormatter.date(from: dateString){
         
         let calendar = NSCalendar.current

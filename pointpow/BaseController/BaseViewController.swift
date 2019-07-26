@@ -656,9 +656,9 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }
     }
     
-    func showPersonalView(_ animated:Bool){
+    func showPersonalView(_ animated:Bool , disableField:Bool = false){
         if let vc:PersonalViewController = self.storyboard?.instantiateViewController(withIdentifier: "PersonalViewController") as? PersonalViewController {
-            
+            vc.disableField = disableField
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }

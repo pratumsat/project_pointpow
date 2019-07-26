@@ -912,7 +912,7 @@ struct Constant {
         static let updateCarts = "\(HOST)privilege/carts/update"
         static let addCarts = "\(HOST)privilege/carts/add"
         static let getCarts = "\(HOST)privilege/carts?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
-
+        static let addOrders = "\(HOST)privilege/orders/add"
     }
     
     struct TopViewController{

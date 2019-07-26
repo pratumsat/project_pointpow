@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ConfirmOrderViewController: BaseViewController , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIWebViewDelegate {
 
@@ -37,7 +38,7 @@ class ConfirmOrderViewController: BaseViewController , UICollectionViewDelegate 
             self.totalOrder = (amount: amount, totalPrice: total)
         }
     }
-    
+    var pay_by = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +51,38 @@ class ConfirmOrderViewController: BaseViewController , UICollectionViewDelegate 
     func setUp(){
         self.handlerEnterSuccess = { (pin) in
             //checkout
+            var product:[String:String] = [:]
+            if let tuple = self.tupleProduct as? [(title:String, id:Int, amount:Int, price:Double, select:Bool, brand:String, cover:String, stock:Int)] {
+                
+                for item in tuple {
+                    if item.select {
+                        product["\(item.id)"] = "\(item.amount)"
+                    }
+                }
+            }
             
+            let parameter:Parameters = ["pay_by": self.pay_by,
+                                        "invoice_id": self.invoice_id ?? "",
+                                        "shipping_id": self.shipping_id ?? "",
+                                        "total_point": self.totalOrder?.totalPrice ?? "",
+                                        "product": product
+            ]
+            print(parameter)
+            self.modelCtrl.addOrder(params: parameter , true , succeeded: { (result) in
+                    //add order success
+            }, error: { (error) in
+                if let mError = error as? [String:AnyObject]{
+                    let message = mError["message"] as? String ?? ""
+                    print(message)
+                    self.showMessagePrompt(message)
+                }
+                
+                print(error)
+            }) { (messageError) in
+                print("messageError")
+                self.handlerMessageError(messageError)
+                
+            }
         }
 
         
@@ -63,9 +95,18 @@ class ConfirmOrderViewController: BaseViewController , UICollectionViewDelegate 
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         numberFormatter.minimumFractionDigits = 2
-        self.currentPointBalance = numberFormatter.string(from: DataController.sharedInstance.getCurrentPointBalance() )
         
         
+        
+        let pointbalance = DataController.sharedInstance.getCurrentPointBalance()
+        let total = self.totalOrder?.totalPrice ?? 0
+        
+        if pointbalance.doubleValue < total {
+            pay_by = 3
+        }else{
+            pay_by = 1
+        }
+        self.currentPointBalance = numberFormatter.string(from:  pointbalance)
         
         self.registerNib(self.confirmCollectionView, "ConfirmOrderCell")
         self.registerNib(self.confirmCollectionView, "CartNextButtonCell")

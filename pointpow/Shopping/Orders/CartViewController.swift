@@ -561,10 +561,12 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                     let urlbrand = getFullPathImageView(brand)
                     let urlCover = getFullPathImageView(item)
                     
+                    
                     self.tupleProduct?.append((title: title,
                                                id: id.intValue ,
                                                amount: amount.intValue,
-                                               price: price, select: true,
+                                               price: price,
+                                               select: true,
                                                brand: urlbrand,
                                                cover: urlCover,
                                                stock: stock.intValue))
@@ -806,11 +808,22 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                 cell = nextCell
                 nextCell.nextCallback = {
                     
+                    
+                    let checkselectItem = self.totalOrder?.amount ?? 0
+                    if checkselectItem <= 0 {
+                        self.showMessagePrompt2(NSLocalizedString("string-item-cart-product-not-select", comment: ""))
+                        return
+                    }
+                    if self.fullAddressShopping.rawAddress.trimmingCharacters(in: .whitespaces).isEmpty {
+                        self.showMessagePrompt2(NSLocalizedString("string-item-cart-address-not-select", comment: ""))
+                        return
+                    }
+                    
+                    
                     self.updateCart {
-                        
                         self.showConfirmOrderViewController(true ,
                                                             cart_id: "\(self.cart_id)",
-                                                            invoice_id: self.fullAddressTaxInvoice.id,
+                            invoice_id: self.isTaxInvoice ? self.fullAddressTaxInvoice.id : "",
                                                             shipping_id: self.fullAddressShopping.id,
                                                             tupleProduct: self.tupleProduct as AnyObject)
                     }
@@ -911,7 +924,6 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         case "shipping_address":
             let height = CGFloat(10.0)
             return CGSize(width: collectionView.frame.width, height: height)
-            //return CGSize.zero
             
         case "taxinvoice":
             return CGSize.zero

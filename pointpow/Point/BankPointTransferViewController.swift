@@ -63,8 +63,32 @@ class BankPointTransferViewController: BaseViewController  {
     func setUp(){
         self.handlerEnterSuccess = { (pin) in
             
-            self.showResultTransferView(true) {
-                self.navigationController?.popToRootViewController(animated: false)
+            let parameters  = self.itemData?["parameters"] as? [String:AnyObject] ?? [:]
+            let endPoint = parameters["endpoint"] as? String ?? ""
+            print("ok")
+            
+            self.showPaymentWebView(true, "Transfer Point", url: endPoint) { (any) in
+                print("return result \n \(any)")
+                if let userInfo = any as? [String:AnyObject]{
+                    let status = userInfo["status"] as? String ?? ""
+                    let transection_ref_id = userInfo["transection_ref_id"] as? String ?? ""
+                    
+                    switch status {
+                    case "success", "fail" :
+                        
+                        self.showRefillPointTransferView(true, transection_ref_id , finish:  {
+                            self.navigationController?.popToRootViewController(animated: false)
+                        })
+                        
+                        break
+                    case "cancel":
+                        break
+                    default:
+                        break
+                        
+                    }
+                    
+                }
             }
         }
         
@@ -306,41 +330,15 @@ class BankPointTransferViewController: BaseViewController  {
             return
         }
         
+        
         if amount%exchangeRate == 0{
             
-            let parameters  = self.itemData?["parameters"] as? [String:AnyObject] ?? [:]
-            let endPoint = parameters["endpoint"] as? String ?? ""
-            print("ok")
-            self.showPaymentWebView(true, "Transfer Point", url: endPoint) { (any) in
-                print("return result \n \(any)")
-                if let userInfo = any as? [String:AnyObject]{
-                    let status = userInfo["status"] as? String ?? ""
-                    let transection_ref_id = userInfo["transection_ref_id"] as? String ?? ""
-                    
-                    switch status {
-                    case "success", "fail" :
-                        
-                        self.showRefillPointTransferView(true, transection_ref_id , finish:  {
-                            self.navigationController?.popToRootViewController(animated: false)
-                        })
-                        
-                        break
-                    case "cancel":
-                        break
-                    default:
-                        break
-                        
-                    }
-                    
-                }
-            }
-            
-            
-            
+            self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
+          
         }else{
             let message = NSLocalizedString("string-error-amount-fill", comment: "")
             self.showMessagePrompt2("\(message) \(self.exchangeRate)")
         }
-        //self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
+        
     }
 }

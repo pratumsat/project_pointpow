@@ -109,7 +109,7 @@ extension AccountShoppingViewController {
         }
         switch indexPath.row  {
         case 0:
-            self.showPersonalView(true)
+            self.showPersonalView(true, disableField: true)
             break
         case 1:
             self.showSettingShoppingAddressPage(true)

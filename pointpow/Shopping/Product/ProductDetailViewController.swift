@@ -124,7 +124,7 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
             self.itemBanner = []
             for item in mResult {
                 let type = item["type"] as? String ?? ""
-                if type.lowercased() == "big_thumb" {
+                if type.lowercased() == "thumb" {
                     self.itemBanner?.append(["path_mobile" : getFullPathImageView(item) as AnyObject])
                 }
             }

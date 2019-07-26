@@ -46,6 +46,8 @@ class PersonalViewController: BaseViewController  {
     var userData:AnyObject?
     var currentBirthdate = ""
     
+    var disableField:Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = NSLocalizedString("string-title-profile-edit", comment: "")
@@ -175,6 +177,27 @@ class PersonalViewController: BaseViewController  {
             }
             
             
+            
+        }
+        if disableField {
+            self.firstNameTextField.isUserInteractionEnabled = false
+            self.lastNameTextField.isUserInteractionEnabled = false
+            self.emailTextField.isUserInteractionEnabled = false
+            self.parsonalTextField.isUserInteractionEnabled = false
+            self.birthdateTextField.isUserInteractionEnabled = false
+            
+            
+            self.firstNameTextField.isEnabled = false
+            self.lastNameTextField.isEnabled = false
+            self.emailTextField.isEnabled = false
+            self.parsonalTextField.isEnabled = false
+            self.birthdateTextField.isEnabled = false
+            
+            self.firstNameTextField.textColor = UIColor.lightGray
+            self.lastNameTextField.textColor = UIColor.lightGray
+            self.emailTextField.textColor = UIColor.lightGray
+            self.parsonalTextField.textColor = UIColor.lightGray
+            self.birthdateTextField.textColor = UIColor.lightGray
             
         }
     }

@@ -68,7 +68,12 @@ class ConfirmOrderViewController: BaseViewController , UICollectionViewDelegate 
                                         "product": product
             ]
             print(parameter)
-            self.modelCtrl.addOrder(params: parameter , true , succeeded: { (result) in
+            let transection_ref_id = ""
+            self.showOrderResultView(true, transection_ref_id , finish:  {
+                self.navigationController?.popToRootViewController(animated: false)
+            })
+            
+       /*     self.modelCtrl.addOrder(params: parameter , true , succeeded: { (result) in
                     //add order success
             }, error: { (error) in
                 if let mError = error as? [String:AnyObject]{
@@ -83,6 +88,7 @@ class ConfirmOrderViewController: BaseViewController , UICollectionViewDelegate 
                 self.handlerMessageError(messageError)
                 
             }
+             */
         }
 
         
@@ -208,10 +214,10 @@ class ConfirmOrderViewController: BaseViewController , UICollectionViewDelegate 
             let pointbalance = DataController.sharedInstance.getCurrentPointBalance()
             let total = self.totalOrder?.totalPrice ?? 0
             if pointbalance.doubleValue < total {
-                let height = CGFloat(390.0)
+                let height = CGFloat(350.0)
                 return CGSize(width: collectionView.frame.width - 40, height: height)
             }else{
-                let height = CGFloat(340.0)
+                let height = CGFloat(300.0)
                 return CGSize(width: collectionView.frame.width - 40, height: height)
             }
         }else{

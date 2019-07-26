@@ -772,17 +772,28 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
+   
     
-    func showResultTransferView(_ animated:Bool, finish:(()->Void)? = nil){
-        if let vc:ResultTransferNav  = self.storyboard?.instantiateViewController(withIdentifier: "ResultTransferNav") as? ResultTransferNav {
-            vc.callbackFinish = {
-                finish?()
+    func showOrderResultView( _ animated:Bool, _ transaction_id:String, finish:(()->Void)? = nil){
+        
+        if finish != nil {
+            if let vc:OrderResultNav  = self.storyboard?.instantiateViewController(withIdentifier: "OrderResultNav") as? OrderResultNav {
+                vc.callbackFinish = {
+                    finish?()
+                }
+                
+                vc.transactionId = transaction_id
+                self.present(vc, animated: animated, completion: nil)
             }
-            //vc.transactionId = transaction_id
-            self.present(vc, animated: animated, completion: nil)
+        }else{
+            if let vc:OrderResultViewController  = self.storyboard?.instantiateViewController(withIdentifier: "OrderResultViewController") as? OrderResultViewController {
+                
+                vc.transactionId = transaction_id
+                vc.hideFinishButton = true
+                self.navigationController?.pushViewController(vc, animated: animated)
+            }
         }
     }
-    
     
     func showRefillPointTransferView( _ animated:Bool, _ transaction_id:String, finish:(()->Void)? = nil){
         
@@ -803,10 +814,8 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
                 self.navigationController?.pushViewController(vc, animated: animated)
             }
         }
-        
-        
-        
     }
+    
     func showPointFriendSummaryTransferView( _ animated:Bool, _ transaction_id:String, titlePage:String , finish:(()->Void)? = nil){
         
         if finish != nil {

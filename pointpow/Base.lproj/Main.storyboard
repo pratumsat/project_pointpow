@@ -11867,6 +11867,75 @@
             </objects>
             <point key="canvasLocation" x="-10203" y="419"/>
         </scene>
+        <!--Order Result View Controller-->
+        <scene sceneID="Xr6-SA-Vcw">
+            <objects>
+                <viewController storyboardIdentifier="OrderResultViewController" id="h3q-ND-u9T" customClass="OrderResultViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lQ2-Ra-snZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fh3-b2-aby">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="buB-vw-GgK">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="WOY-tS-LLF">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fh3-b2-aby" firstAttribute="trailing" secondItem="ix4-JM-tXU" secondAttribute="trailing" id="Nd3-fL-VdB"/>
+                            <constraint firstItem="fh3-b2-aby" firstAttribute="bottom" secondItem="lQ2-Ra-snZ" secondAttribute="bottom" id="QwG-rS-QCc"/>
+                            <constraint firstItem="fh3-b2-aby" firstAttribute="leading" secondItem="ix4-JM-tXU" secondAttribute="leading" id="TzO-RT-nx4"/>
+                            <constraint firstItem="fh3-b2-aby" firstAttribute="top" secondItem="ix4-JM-tXU" secondAttribute="top" id="Zlj-aX-HeI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ix4-JM-tXU"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="HSb-FZ-yGr"/>
+                    <connections>
+                        <outlet property="resultCollectionView" destination="fh3-b2-aby" id="Tc1-Dm-som"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jOv-cU-5aN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3716" y="344"/>
+        </scene>
+        <!--Order Result Nav-->
+        <scene sceneID="f53-jJ-pny">
+            <objects>
+                <navigationController storyboardIdentifier="OrderResultNav" id="Nj7-jc-Kf4" customClass="OrderResultNav" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BLC-DL-ACX">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.78823529410000004" green="0.1647058824" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="23"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="h3q-ND-u9T" kind="relationship" relationship="rootViewController" id="aQC-iy-fnt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qkZ-C4-vTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4600" y="344"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bg-cart-red" width="201" height="131"/>

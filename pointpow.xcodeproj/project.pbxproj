@@ -206,6 +206,8 @@
 		C14776A32276B2CF003E8951 /* SecuritySettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14776A22276B2CF003E8951 /* SecuritySettingViewController.swift */; };
 		C15DB51D22EABEF200B9E3CC /* OrderResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15DB51C22EABEF200B9E3CC /* OrderResultViewController.swift */; };
 		C15DB51F22EABF3400B9E3CC /* OrderResultNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15DB51E22EABF3400B9E3CC /* OrderResultNav.swift */; };
+		C15DB52222EAD52000B9E3CC /* OrderResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15DB52022EAD52000B9E3CC /* OrderResultCell.swift */; };
+		C15DB52322EAD52000B9E3CC /* OrderResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C15DB52122EAD52000B9E3CC /* OrderResultCell.xib */; };
 		C15F16FD2293CEE6005E8E71 /* TransactionFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15F16FC2293CEE6005E8E71 /* TransactionFilterViewController.swift */; };
 		C15F16FF2293D23E005E8E71 /* PointHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15F16FE2293D23E005E8E71 /* PointHistory.swift */; };
 		C15F17032293D455005E8E71 /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15F17012293D455005E8E71 /* HistoryCell.swift */; };
@@ -578,6 +580,8 @@
 		C14776A22276B2CF003E8951 /* SecuritySettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecuritySettingViewController.swift; sourceTree = "<group>"; };
 		C15DB51C22EABEF200B9E3CC /* OrderResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderResultViewController.swift; sourceTree = "<group>"; };
 		C15DB51E22EABF3400B9E3CC /* OrderResultNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderResultNav.swift; sourceTree = "<group>"; };
+		C15DB52022EAD52000B9E3CC /* OrderResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderResultCell.swift; sourceTree = "<group>"; };
+		C15DB52122EAD52000B9E3CC /* OrderResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderResultCell.xib; sourceTree = "<group>"; };
 		C15F16FC2293CEE6005E8E71 /* TransactionFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionFilterViewController.swift; sourceTree = "<group>"; };
 		C15F16FE2293D23E005E8E71 /* PointHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointHistory.swift; sourceTree = "<group>"; };
 		C15F17012293D455005E8E71 /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
@@ -1262,6 +1266,8 @@
 			children = (
 				C12F744F22E9899B000E49F8 /* ConfirmOrderCell.swift */,
 				C12F745022E9899B000E49F8 /* ConfirmOrderCell.xib */,
+				C15DB52022EAD52000B9E3CC /* OrderResultCell.swift */,
+				C15DB52122EAD52000B9E3CC /* OrderResultCell.xib */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -1869,6 +1875,7 @@
 				C1F761062216C261000A2CA9 /* SavingResultCell.xib in Resources */,
 				C12F745222E9899B000E49F8 /* ConfirmOrderCell.xib in Resources */,
 				C120312E22DC1C9A0013C1A1 /* ProfileShoppingTableViewCell.xib in Resources */,
+				C15DB52322EAD52000B9E3CC /* OrderResultCell.xib in Resources */,
 				C107CF2E221FD52800C50B8C /* WithDrawResultPointPowSuccessCell.xib in Resources */,
 				C19BEF0622CCCCED00855FBF /* CartSummaryCell.xib in Resources */,
 				C1DEBE992188337500CBB95F /* ThaiSansNeue-Regular.ttf in Resources */,
@@ -2115,6 +2122,7 @@
 				C106BEA6220AC01400E2331E /* ConfirmSavingViewController.swift in Sources */,
 				C19BEEF922CCA5E500855FBF /* CartPointBalanceCell.swift in Sources */,
 				C1B32E4922526855006AD7F2 /* CountDownTimer.swift in Sources */,
+				C15DB52222EAD52000B9E3CC /* OrderResultCell.swift in Sources */,
 				C115FA4A219EC511008E7844 /* ResultTransferViewController.swift in Sources */,
 				C15F16FF2293D23E005E8E71 /* PointHistory.swift in Sources */,
 				C18A1CE222112D2A002CAF4C /* RegisterGoldstep2ViewController.swift in Sources */,

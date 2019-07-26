@@ -37,27 +37,27 @@ class ShoppingBaseViewController: BaseViewController ,UICollectionViewDelegate ,
 
     var cate1Items = [["color" : Constant.Colors.CATE1,
                        "image": UIImage(named: "ic-shopping-cate-r-1-active")!],
-                      ["color" : UIColor.darkGray,
+                      ["color" : UIColor.black,
                        "image": UIImage(named: "ic-shopping-cate-r-1")!]]
     var cate2Items = [["color" : Constant.Colors.CATE2,
                        "image": UIImage(named: "ic-shopping-cate-r-2-active")!],
-                      ["color" : UIColor.darkGray,
+                      ["color" : UIColor.black,
                        "image": UIImage(named: "ic-shopping-cate-r-2")!]]
     var cate3Items = [["color" : Constant.Colors.CATE3,
                        "image": UIImage(named: "ic-shopping-cate-r-3-active")!],
-                      ["color" : UIColor.darkGray,
+                      ["color" : UIColor.black,
                        "image": UIImage(named: "ic-shopping-cate-r-3")!]]
     var cate4Items = [["color" : Constant.Colors.CATE4,
                        "image": UIImage(named: "ic-shopping-cate-r-4-active")!],
-                      ["color" : UIColor.darkGray,
+                      ["color" : UIColor.black,
                        "image": UIImage(named: "ic-shopping-cate-r-4")!]]
     var cate5Items = [["color" : Constant.Colors.CATE5,
                        "image": UIImage(named: "ic-shopping-cate-r-5-active")!],
-                      ["color" : UIColor.darkGray,
+                      ["color" : UIColor.black,
                        "image": UIImage(named: "ic-shopping-cate-r-5")!]]
     var cate6Items = [["color" : Constant.Colors.CATE6,
                        "image": UIImage(named: "ic-shopping-cate-r-6-active")!],
-                      ["color" : UIColor.darkGray,
+                      ["color" : UIColor.black,
                        "image": UIImage(named: "ic-shopping-cate-r-6")!]]
     
     var colorCateLists = [["color1" : Constant.Colors.ALL_GRADIENT_1,
@@ -495,7 +495,7 @@ extension ShoppingBaseViewController {
         title.text = name
         title.textAlignment = .center
         title.font = UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.CATE_SHOPPING)
-        title.textColor = UIColor.darkGray
+        title.textColor = UIColor.black
         title.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(title)
         
@@ -557,7 +557,7 @@ extension ShoppingBaseViewController {
                 let name = array[indexPath.row]["name"] as? String ?? ""
                 
                 itemCell.nameLabel.text = name
-                itemCell.nameLabel.textColor = UIColor.black
+                itemCell.nameLabel.textColor = UIColor.darkGray
                 
                 let color = self.getItemSelectedByCate(self.selectCateItem)[0]["color"] as? UIColor ?? UIColor.white
                 itemCell.mView.borderColorProperties(borderWidth: 1, color: color.cgColor)
@@ -574,12 +574,12 @@ extension ShoppingBaseViewController {
                         
                     }else{
                         //unselected
-                        itemCell.nameLabel.textColor = UIColor.black
+                        itemCell.nameLabel.textColor = UIColor.darkGray
                         self.addColormViewSubCate(itemCell.mView)
                     }
                 }else{
                     //unselected
-                   itemCell.nameLabel.textColor = UIColor.black
+                   itemCell.nameLabel.textColor = UIColor.darkGray
                     self.addColormViewSubCate(itemCell.mView)
                 }
                 

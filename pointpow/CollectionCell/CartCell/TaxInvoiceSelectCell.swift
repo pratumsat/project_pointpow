@@ -10,11 +10,19 @@ import UIKit
 
 class TaxInvoiceSelectCell: UICollectionViewCell {
 
+    @IBOutlet weak var checkSpaceView: UIView!
     @IBOutlet weak var checkBox: CheckBoxRed!
+     var checkCallback:(()->Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        let check = UITapGestureRecognizer(target: self, action: #selector(checkTapped))
+        self.checkSpaceView.isUserInteractionEnabled = true
+        self.checkSpaceView.addGestureRecognizer(check)
     }
-
+    @objc func checkTapped(){
+        checkBox.isChecked = !checkBox.isChecked
+        self.checkCallback?()
+    }
 }

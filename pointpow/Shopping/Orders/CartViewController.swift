@@ -648,6 +648,21 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             if let selectCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItenCartProductSelectAllCell", for: indexPath) as? ItenCartProductSelectAllCell {
                 cell = selectCell
                 selectCell.checkBox.isChecked = self.checkAll
+                
+                selectCell.checkCallback = {
+                    var i = 0
+                    if let Tuple = self.tupleProduct {
+                        for _ in Tuple {
+                            self.tupleProduct![i].select = !self.checkAll
+                            i += 1
+                        }
+                    }
+                    self.updateTotalAmountPrice()
+                    self.checkAll = !self.checkAll
+                    self.reloadProductSection()
+                    
+                }
+                
                 selectCell.checkBox.toggle  = { (isCheck) in
                     
                     var i = 0
@@ -673,9 +688,8 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                         self.confirmDeleteItemInCart(productIds)
                     }
                 }
-                
-               
             }
+            
         case "product":
             if let productCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCartProductCell", for: indexPath) as? ItemCartProductCell {
                 cell = productCell
@@ -783,6 +797,9 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                 invoiceCell.checkBox.isChecked = self.isTaxInvoice
                 invoiceCell.checkBox.toggle = { (isCheck) in
                     self.isTaxInvoice = isCheck
+                }
+                invoiceCell.checkCallback = {
+                    self.isTaxInvoice = !self.isTaxInvoice
                 }
             }
         case "shopping_taxinvoice":

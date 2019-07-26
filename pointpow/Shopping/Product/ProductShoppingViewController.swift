@@ -627,6 +627,7 @@ extension ProductShoppingViewController {
                         let discount_price = item["discount_price"]  as? NSNumber ?? 0
                         
                         
+                        
                         if discount_price.intValue > 0 {
                             let numberFormatter = NumberFormatter()
                             numberFormatter.numberStyle = .decimal

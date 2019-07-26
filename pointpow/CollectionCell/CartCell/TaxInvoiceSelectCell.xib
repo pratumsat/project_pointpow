@@ -33,23 +33,31 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ต้องการขอใบกำกับภาษี" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILh-S3-7vE">
-                        <rect key="frame" x="40" y="27" width="332" height="23.5"/>
+                        <rect key="frame" x="40" y="27" width="126.5" height="23.5"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cLb-mk-5TR">
+                        <rect key="frame" x="0.0" y="0.0" width="176.5" height="77"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="Arw-J2-JOQ" firstAttribute="centerY" secondItem="uJo-4U-Pbw" secondAttribute="centerY" id="2sa-QK-R3i"/>
+                <constraint firstItem="cLb-mk-5TR" firstAttribute="top" secondItem="uJo-4U-Pbw" secondAttribute="top" id="4hC-8y-x8P"/>
                 <constraint firstItem="ILh-S3-7vE" firstAttribute="leading" secondItem="Arw-J2-JOQ" secondAttribute="trailing" constant="5" id="Fcd-Qy-TuJ"/>
+                <constraint firstItem="cLb-mk-5TR" firstAttribute="leading" secondItem="uJo-4U-Pbw" secondAttribute="leading" id="MhA-BE-BZb"/>
                 <constraint firstItem="Arw-J2-JOQ" firstAttribute="leading" secondItem="uJo-4U-Pbw" secondAttribute="leading" constant="10" id="NAT-Bh-bbd"/>
                 <constraint firstItem="ILh-S3-7vE" firstAttribute="centerY" secondItem="Arw-J2-JOQ" secondAttribute="centerY" id="ZMq-yu-vUj"/>
-                <constraint firstAttribute="trailing" secondItem="ILh-S3-7vE" secondAttribute="trailing" constant="10" id="eNM-EZ-gJc"/>
+                <constraint firstItem="cLb-mk-5TR" firstAttribute="trailing" secondItem="ILh-S3-7vE" secondAttribute="trailing" constant="10" id="bJw-pS-5pS"/>
+                <constraint firstAttribute="bottom" secondItem="cLb-mk-5TR" secondAttribute="bottom" id="mx6-mr-lDU"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Sxy-ot-Ssv"/>
             <size key="customSize" width="382" height="77"/>
             <connections>
                 <outlet property="checkBox" destination="Arw-J2-JOQ" id="tYg-Lp-OTq"/>
+                <outlet property="checkSpaceView" destination="cLb-mk-5TR" id="J3t-Dj-cQT"/>
             </connections>
             <point key="canvasLocation" x="-113.59999999999999" y="-21.139430284857571"/>
         </collectionViewCell>

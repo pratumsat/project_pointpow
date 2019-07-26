@@ -180,7 +180,12 @@ extension ShoppingHistoryViewController {
             super.collectionView(collectionView, didSelectItemAt: indexPath)
         }
         
-        print("history select \(indexPath.row)")
+        if let item = self.shoppingHistory?[indexPath.section].items?[indexPath.row] {
+            let transaction_no  = item["transaction_no"] as? String ?? ""
+            self.showOrderResultView(true, transaction_no)
+        }
+        
+        
         
     }
     

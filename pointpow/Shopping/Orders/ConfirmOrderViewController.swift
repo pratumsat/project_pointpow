@@ -52,11 +52,13 @@ class ConfirmOrderViewController: BaseViewController , UICollectionViewDelegate 
         self.handlerEnterSuccess = { (pin) in
             //checkout
             var product:[String:String] = [:]
+            var price:[String:String] = [:]
             if let tuple = self.tupleProduct as? [(title:String, id:Int, amount:Int, price:Double, select:Bool, brand:String, cover:String, stock:Int)] {
                 
                 for item in tuple {
                     if item.select {
                         product["\(item.id)"] = "\(item.amount)"
+                        price["\(item.id)"] = "\(item.price)"
                     }
                 }
             }
@@ -65,8 +67,8 @@ class ConfirmOrderViewController: BaseViewController , UICollectionViewDelegate 
                                         "invoice_id": self.invoice_id ?? "",
                                         "shipping_id": self.shipping_id ?? "",
                                         "total_point": self.totalOrder?.totalPrice ?? "",
-                                        "product": product
-            ]
+                                        "product": product,
+                                        "price": price ]
             print(parameter)
             let transection_ref_id = ""
             self.showOrderResultView(true, transection_ref_id , finish:  {
@@ -81,7 +83,6 @@ class ConfirmOrderViewController: BaseViewController , UICollectionViewDelegate 
                     print(message)
                     self.showMessagePrompt(message)
                 }
-                
                 print(error)
             }) { (messageError) in
                 print("messageError")
@@ -152,14 +153,14 @@ class ConfirmOrderViewController: BaseViewController , UICollectionViewDelegate 
                 let total = self.totalOrder?.totalPrice ?? 0
                 if pointbalance.doubleValue < total {
                     let sum  = total - pointbalance.doubleValue
-                    confirmCell.howtoPayLabel.text = NSLocalizedString("string-item-shopping-cart-howto-pay-pc", comment: "")
+                    
                     confirmCell.cdLabel.text = numberFormatter.string(from: NSNumber(value: sum))
                     confirmCell.pointLabel.text = numberFormatter.string(from: pointbalance)
                     
                     confirmCell.showCreditCardLabel()
                 }else{
                     
-                    confirmCell.howtoPayLabel.text = NSLocalizedString("string-item-shopping-cart-howto-pay-pp", comment: "")
+                    
                     confirmCell.cdLabel.text = ""
                     confirmCell.pointLabel.text = numberFormatter.string(from: NSNumber(value: total))
                     
@@ -214,10 +215,10 @@ class ConfirmOrderViewController: BaseViewController , UICollectionViewDelegate 
             let pointbalance = DataController.sharedInstance.getCurrentPointBalance()
             let total = self.totalOrder?.totalPrice ?? 0
             if pointbalance.doubleValue < total {
-                let height = CGFloat(350.0)
+                let height = CGFloat(320.0)
                 return CGSize(width: collectionView.frame.width - 40, height: height)
             }else{
-                let height = CGFloat(300.0)
+                let height = CGFloat(270.0)
                 return CGSize(width: collectionView.frame.width - 40, height: height)
             }
         }else{

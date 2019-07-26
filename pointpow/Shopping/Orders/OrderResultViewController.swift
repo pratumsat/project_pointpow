@@ -95,6 +95,8 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
     }
     var transferResult:AnyObject?
     
+    var margintop = CGFloat(58)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -126,23 +128,36 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
     }
     
     func getDetail(){
-//        self.modelCtrl.detailTransactionHistory(transactionNumber: self.transactionId ?? "" ,true , succeeded: { (result) in
-//            self.transferResult = result
-//            self.resultCollectionView.reloadData()
-//
-//        }, error: { (error) in
-//            if let mError = error as? [String:AnyObject]{
-//                let message = mError["message"] as? String ?? ""
-//                print(message)
-//                self.showMessagePrompt(message)
-//            }
-//
-//            print(error)
-//        }) { (messageError) in
-//            print("messageError")
-//            self.handlerMessageError(messageError)
-//
-//        }
+        
+        self.modelCtrl.detailShoppingHistory(transactionNumber: self.transactionId ?? "" ,true , succeeded: { (result) in
+            
+            self.transferResult = result
+            
+            if let data = self.transferResult {
+                let pay_by = data["pay_by"] as? NSNumber ?? 0
+                if pay_by == 1 {
+                    self.margintop = CGFloat(8)
+                }else{
+                    self.margintop = CGFloat(58)
+                }
+            }
+            
+            
+            self.resultCollectionView.reloadData()
+
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                self.showMessagePrompt(message)
+            }
+
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+
+        }
     }
     
     @objc func dismissTapped(){
@@ -157,7 +172,7 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
         self.resultCollectionView.delegate = self
         self.resultCollectionView.showsVerticalScrollIndicator = false
         
-        self.registerNib(self.resultCollectionView, "ItemListResultCell")
+        self.registerNib(self.resultCollectionView, "OrderResultCell")
         self.registerHeaderNib(self.resultCollectionView, "HeadCell")
     }
     
@@ -174,59 +189,85 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell:UICollectionViewCell?
         
-        if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemListResultCell", for: indexPath) as? ItemListResultCell {
+        if let orderCell = collectionView.dequeueReusableCell(withReuseIdentifier: "OrderResultCell", for: indexPath) as? OrderResultCell {
             
             if hideFinishButton {
-                itemCell.bgsuccessImageView.image = nil
+                orderCell.bgsuccessImageView.image = nil
             }
             
-            cell = itemCell
+            cell = orderCell
             
             if let data = transferResult {
+                
                 let created_at = data["created_at"] as? String ?? ""
+                let transaction_no = data["transaction_no"] as? String ?? ""
+                let payment_status = data["payment_status"] as? String ?? ""
+                let total_point = data["total_point"] as? String ?? "0.0"
+                let pay_by = data["pay_by"] as? NSNumber ?? 0
+                let shipping_address = data["shipping_address"] as? String ?? ""
+                let pointpow_amount = data["pointpow_amount"] as? String ?? ""
+                let credit_amount = data["credit_amount"] as? String ?? ""
                 
-                let transaction_ref_id = data["transaction_ref_id"] as? String ?? ""
-                let statusTransaction = data["status"] as? String ?? ""
-                
-                let point_refill = data["point_refill"] as? [String:AnyObject] ?? [:]
-                let value_in = point_refill["value_in"] as? NSNumber ?? 0
-                let value_out = point_refill["value_out"] as? NSNumber ?? 0
-                let provider = point_refill["provider"] as? [String:AnyObject] ?? [:]
-                let point_name = provider["point_name"] as? String ?? ""
+                let itemProducts = data["item"] as? [[String:AnyObject]] ?? []
                 
                 let numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal
                 numberFormatter.minimumFractionDigits = 2
                 
+                if let totalTypeNumber = Double(total_point)  {
+                    orderCell.totalLabel.text = numberFormatter.string(from: NSNumber(value: totalTypeNumber))
+                }else{
+                    orderCell.totalLabel.text = total_point
+                }
                 
-                itemCell.fromLabel.text = point_name
-                itemCell.from_pointLabel.text = "\(numberFormatter.string(from: value_in ) ?? "") Point"
+                /* Point + Credit Waitting Data */
+                if let pointpow = Double(pointpow_amount)  {
+                    orderCell.pointLabel.text = numberFormatter.string(from: NSNumber(value: pointpow))
+                }else{
+                    orderCell.pointLabel.text = pointpow_amount
+                }
                 
-                itemCell.transection_ref_Label.text = transaction_ref_id
-                itemCell.dateLabel.text = created_at
+                if let credit = Double(credit_amount)  {
+                    orderCell.pointLabel.text = numberFormatter.string(from: NSNumber(value: credit))
+                }else{
+                    orderCell.pointLabel.text = credit_amount
+                }
                 
+                var sumAmount = 0
+                for item in itemProducts {
+                    let amount = item["amount"] as? NSNumber ?? 0
+                    sumAmount += amount.intValue
+                }
+                let txtAmount = NSLocalizedString("string-item-shopping-cart-txt-total-amount", comment: "")
+                orderCell.totalAmountLabel.text = txtAmount.replace(target: "{{amount}}", withString: "\(sumAmount)")
+                orderCell.transection_ref_Label.text = transaction_no
+                orderCell.dateLabel.text = created_at
+                orderCell.addressLabel.text = shipping_address
+                orderCell.marginTopAddress.constant = margintop
                 
+                if pay_by == 1 {
+                    orderCell.hideCreditCardLabel()
+                }else{
+                    orderCell.showCreditCardLabel()
+                }
                 
-                
-                itemCell.pointLabel.text = "\(numberFormatter.string(from: value_out ) ?? "") Point Pow"
-                
-                switch statusTransaction.lowercased() {
+                switch payment_status.lowercased() {
                 case "success":
-                    itemCell.statusImageView.image = UIImage(named: "ic-status-success2")
-                    itemCell.statusLabel.textColor = Constant.Colors.GREEN
-                    itemCell.statusLabel.text = NSLocalizedString("string-dailog-point-transaction-status-success", comment: "")
+                    orderCell.statusImageView.image = UIImage(named: "ic-status-success2")
+                    orderCell.statusLabel.textColor = Constant.Colors.GREEN
+                    orderCell.statusLabel.text = NSLocalizedString("string-dailog-point-transaction-status-success", comment: "")
                     
                     break
                 case "pending":
-                    itemCell.statusImageView.image = UIImage(named: "ic-status-waitting")
-                    itemCell.statusLabel.textColor = Constant.Colors.ORANGE
-                    itemCell.statusLabel.text = NSLocalizedString("string-dailog-point-transaction-status-waitting", comment: "")
+                    orderCell.statusImageView.image = UIImage(named: "ic-status-waitting")
+                    orderCell.statusLabel.textColor = Constant.Colors.ORANGE
+                    orderCell.statusLabel.text = NSLocalizedString("string-dailog-point-transaction-status-waitting", comment: "")
                     
                     break
                 case "fail":
-                    itemCell.statusImageView.image = UIImage(named: "ic-status-cancel")
-                    itemCell.statusLabel.textColor = Constant.Colors.PRIMARY_COLOR
-                    itemCell.statusLabel.text = NSLocalizedString("string-dailog-point-transaction-status-fail", comment: "")
+                    orderCell.statusImageView.image = UIImage(named: "ic-status-cancel")
+                    orderCell.statusLabel.textColor = Constant.Colors.PRIMARY_COLOR
+                    orderCell.statusLabel.text = NSLocalizedString("string-dailog-point-transaction-status-fail", comment: "")
                     
                     break
                 default:
@@ -234,7 +275,7 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
                 }
                 
                 if !hideFinishButton {
-                    self.slipView = itemCell.mView.copyView()
+                    self.slipView = orderCell.mView.copyView()
                     let allSubView = slipView!.allSubViewsOf(type: UIView.self)
                     
                     for itemView  in  allSubView {
@@ -267,7 +308,6 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         
         return CGSize(width: collectionView.frame.width, height: 30)
-        
     }
     
     
@@ -283,7 +323,15 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
         
         
         let width = collectionView.frame.width - 40
-        let height = CGFloat(400)
+        var height = CGFloat(400)
+        height += self.margintop
+       
+        if let data = transferResult {
+            let shipping_address = data["shipping_address"] as? String ?? ""
+            let heightAddress = heightForView(text: shipping_address, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 18)!, width: width - 20)
+            height += heightAddress
+        }
+        
         return CGSize(width: width, height: height)
         
     }

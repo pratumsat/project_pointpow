@@ -28,7 +28,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="312" height="121"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K7X-Vy-PeZ">
-                                <rect key="frame" x="10" y="120" width="292" height="1"/>
+                                <rect key="frame" x="0.0" y="120" width="312" height="1"/>
                                 <color key="backgroundColor" white="0.84999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="v8R-Mp-qZq"/>
@@ -70,10 +70,10 @@
                             <constraint firstItem="J6r-2w-afb" firstAttribute="centerY" secondItem="cOL-c8-vWR" secondAttribute="centerY" id="VPR-aw-2VO"/>
                             <constraint firstItem="KRv-kM-qra" firstAttribute="width" secondItem="KRv-kM-qra" secondAttribute="height" multiplier="1:1" id="WAs-Dm-W7F"/>
                             <constraint firstAttribute="bottom" secondItem="K7X-Vy-PeZ" secondAttribute="bottom" id="ZfD-HT-Zx7"/>
-                            <constraint firstItem="K7X-Vy-PeZ" firstAttribute="leading" secondItem="Tas-mJ-eTm" secondAttribute="leading" constant="10" id="eQc-Y2-SJG"/>
+                            <constraint firstItem="K7X-Vy-PeZ" firstAttribute="leading" secondItem="Tas-mJ-eTm" secondAttribute="leading" id="eQc-Y2-SJG"/>
                             <constraint firstItem="1Wv-oV-LCa" firstAttribute="leading" secondItem="KRv-kM-qra" secondAttribute="trailing" constant="10" id="nY6-sM-dE7"/>
                             <constraint firstItem="J6r-2w-afb" firstAttribute="leading" secondItem="cOL-c8-vWR" secondAttribute="trailing" constant="10" id="uPq-E2-K5x"/>
-                            <constraint firstAttribute="trailing" secondItem="K7X-Vy-PeZ" secondAttribute="trailing" constant="10" id="vVi-cu-GBf"/>
+                            <constraint firstAttribute="trailing" secondItem="K7X-Vy-PeZ" secondAttribute="trailing" id="vVi-cu-GBf"/>
                             <constraint firstItem="cOL-c8-vWR" firstAttribute="leading" secondItem="1Wv-oV-LCa" secondAttribute="trailing" constant="10" id="va8-rb-r2T"/>
                             <constraint firstAttribute="trailing" secondItem="J6r-2w-afb" secondAttribute="trailing" constant="15" id="xrB-9C-O0s"/>
                             <constraint firstItem="1Wv-oV-LCa" firstAttribute="top" secondItem="KRv-kM-qra" secondAttribute="top" id="zTz-4H-3q9"/>

@@ -909,7 +909,9 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             return CGSize.zero
             
         case "shipping_address":
-            return CGSize.zero
+            let height = CGFloat(10.0)
+            return CGSize(width: collectionView.frame.width, height: height)
+            //return CGSize.zero
             
         case "taxinvoice":
             return CGSize.zero

@@ -91,29 +91,33 @@ class TransactionFilterViewController: BaseViewController {
     }
     
     
-    
+    @objc func serviceShoppingTapped(){
+        self.service = "PointSpend"
+        let title = NSLocalizedString("string-title-transection-history-service-shopping", comment: "")
+        let params:Parameters = ["service" : "PointSpend",
+                                 "type" : "Shopping"]
+        self.showTransectionFilterResultPage(true, title, params: params)
+    }
     @objc func servicePointSavingTapped(){
         self.service = "PointSpend"
         let title = NSLocalizedString("string-title-transection-history-service-pointsaving", comment: "")
-        let params:Parameters = ["service" : "PointSpend" ]
+        let params:Parameters = ["service" : "PointSpend",
+                                 "type" : "Saving"]
         self.showTransectionFilterResultPage(true, title, params: params)
     }
     @objc func servicePointTransferTapped(){
         self.service = "PointTransfer"
         let title = NSLocalizedString("string-title-transection-history-service-point-transfer", comment: "")
-        let params:Parameters = ["service" : "PointTransfer" ]
+        let params:Parameters = ["service" : "PointTransfer",
+                                 "type" : "Member"]
         self.showTransectionFilterResultPage(true, title, params: params)
     }
     @objc func serviceExchangeTapped(){
         self.service = "PointRefill"
         let title = NSLocalizedString("string-title-transection-history-service-exchange", comment: "")
-        let params:Parameters = ["service" : "PointRefill" ]
+        let params:Parameters = ["service" : "PointRefill",
+                                 "type" : "Refill"]
         self.showTransectionFilterResultPage(true, title, params: params)
     }
-    @objc func serviceShoppingTapped(){
-        self.service = "Shopping"
-        let title = NSLocalizedString("string-title-transection-history-service-shopping", comment: "")
-        let params:Parameters = ["service" : "Shopping" ]
-        self.showTransectionFilterResultPage(true, title, params: params)
-    }
+  
 }

@@ -176,8 +176,8 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
                     //Display name / First name / Point Pow ID / Mobile Number
                     var showName = ""
                     if !mobile.trimmingCharacters(in: .whitespaces).isEmpty {
-                        mobile = mobile.substring(start: 0, end: 7)
-                        mobile += "xxx"
+                        mobile = mobile.substring(start: 0, end: 6)
+                        mobile += "xxxx"
                         showName = mobile
                     }
                     if !first_name.trimmingCharacters(in: .whitespaces).isEmpty {

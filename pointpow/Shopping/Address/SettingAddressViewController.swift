@@ -441,7 +441,6 @@ class SettingAddressViewController: BaseViewController , UICollectionViewDelegat
         
         return CGSize(width: collectionView.frame.width, height: CGFloat(100))
         
-        
     }
 
 }

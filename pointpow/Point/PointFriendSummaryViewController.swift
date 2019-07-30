@@ -231,8 +231,8 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
     func mobileDisplay(_ model:[String:AnyObject]) ->String {
         var mobile = model["mobile"] as? String ?? ""
    
-        mobile = mobile.substring(start: 0, end: 7)
-        mobile += "xxx"
+        mobile = mobile.substring(start: 0, end: 6)
+        mobile += "xxxx"
         let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
         return newMText.chunkFormatted()
         

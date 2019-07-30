@@ -279,7 +279,6 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
         self.shippingTaxView?.isUserInteractionEnabled = true
         self.shippingTaxView?.addGestureRecognizer(shippingInvoice)
         
-        
     }
     
     
@@ -595,7 +594,6 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
                     print(result)
                    
                     self.PopToCartViewController()
-                
                     
                 }, error: { (error) in
                     if let mError = error as? [String:AnyObject]{

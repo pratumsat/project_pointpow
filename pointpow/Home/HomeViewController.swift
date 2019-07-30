@@ -329,8 +329,8 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
                 var showName = ""
                 if !mobile.trimmingCharacters(in: .whitespaces).isEmpty {
                     let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
-                    mobile = newMText.chunkFormatted().substring(start: 0, end: 7)
-                    mobile += "xxx"
+                    mobile = newMText.chunkFormatted().substring(start: 0, end: 6)
+                    mobile += "xxxx"
                     showName = mobile
                 }
                 if !pointpowId.trimmingCharacters(in: .whitespaces).isEmpty {

@@ -18,7 +18,9 @@ class ItemCartProductCell: UICollectionViewCell ,UITextFieldDelegate{
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var moreImageView: UIImageView!
     @IBOutlet weak var lessImageView: UIImageView!
+    @IBOutlet weak var checkSpaceView: UIView!
     
+    var checkCallback:((_ isCheck:Bool)->Void)?
     var callBackTotalPrice:((_ amount:Int, _ totalPrice:Double)->Void)?
     var priceOfProduct:Double?
     
@@ -38,6 +40,7 @@ class ItemCartProductCell: UICollectionViewCell ,UITextFieldDelegate{
             }
         }
     }
+    var isCheck = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -56,7 +59,20 @@ class ItemCartProductCell: UICollectionViewCell ,UITextFieldDelegate{
         self.amountTextField.autocorrectionType = .no
         self.amountTextField.text = "1"
         
+        let check = UITapGestureRecognizer(target: self, action: #selector(checkTapped))
+        self.checkSpaceView.isUserInteractionEnabled = true
+        self.checkSpaceView.addGestureRecognizer(check)
+        
     }
+    @objc func checkTapped(){
+        //checkBox.isChecked = !checkBox.isChecked
+        
+        self.checkCallback?(!isCheck)
+        checkBox.isChecked = !isCheck
+        self.isCheck = !isCheck
+        
+    }
+    
     override var bounds : CGRect {
         didSet {
             self.layoutIfNeeded()
@@ -85,7 +101,7 @@ class ItemCartProductCell: UICollectionViewCell ,UITextFieldDelegate{
         self.amountTextField.text = numberFormatter.string(from: NSNumber(value: amount))
         if let price  = self.priceOfProduct {
             if amount < 1 {
-                self.callBackTotalPrice?(Int(0), price)
+                //self.callBackTotalPrice?(Int(0), price)
             }else{
                 self.callBackTotalPrice?(Int(amount), Double(amount * price))
             }

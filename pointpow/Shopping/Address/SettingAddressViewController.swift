@@ -429,7 +429,8 @@ class SettingAddressViewController: BaseViewController , UICollectionViewDelegat
                 }
                 
                 
-                let height = heightForView(text: rawAddress, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 16)!, width: width) +  60
+                var height = CGFloat(50)
+                height += heightForView(text: rawAddress, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 16)!, width: width - 80)
                 
                 return CGSize(width: width, height: height)
                 

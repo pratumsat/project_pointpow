@@ -11601,6 +11601,20 @@
                                             <constraint firstAttribute="height" constant="25" id="Wfe-Qw-edL"/>
                                         </constraints>
                                     </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kw6-jM-uy5">
+                                        <rect key="frame" x="0.0" y="781.66666666666663" width="180.33333333333334" height="30"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="4lU-uq-NX5"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Qi-HX-h1J">
+                                        <rect key="frame" x="0.0" y="821.66666666666663" width="196.66666666666666" height="30"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="7YR-Ek-669"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="zxU-Pf-Ccs" firstAttribute="leading" secondItem="82x-gQ-Yjm" secondAttribute="leading" id="01A-bw-tSs"/>
@@ -11608,6 +11622,7 @@
                                     <constraint firstItem="BpD-Ye-bq9" firstAttribute="width" secondItem="BpD-Ye-bq9" secondAttribute="height" multiplier="1:1" id="364-XU-RFk"/>
                                     <constraint firstItem="rYc-Za-qKh" firstAttribute="width" secondItem="rYc-Za-qKh" secondAttribute="height" multiplier="1:1" id="3SK-UH-wtk"/>
                                     <constraint firstItem="HD2-0u-QPe" firstAttribute="leading" secondItem="GN1-0I-O0O" secondAttribute="leading" id="4GF-N7-QJX"/>
+                                    <constraint firstItem="Kw6-jM-uy5" firstAttribute="centerY" secondItem="as9-iX-Bi6" secondAttribute="centerY" id="4LZ-0F-Kj5"/>
                                     <constraint firstItem="zxU-Pf-Ccs" firstAttribute="bottom" secondItem="82x-gQ-Yjm" secondAttribute="bottom" id="4aV-PW-2Nw"/>
                                     <constraint firstItem="GN1-0I-O0O" firstAttribute="height" secondItem="82x-gQ-Yjm" secondAttribute="height" id="5F4-qa-RGb"/>
                                     <constraint firstItem="hDE-bW-2QG" firstAttribute="leading" secondItem="EZi-N2-Gvc" secondAttribute="leading" id="5eu-ze-oHa"/>
@@ -11626,6 +11641,7 @@
                                     <constraint firstItem="EZi-N2-Gvc" firstAttribute="leading" secondItem="is5-LH-0bL" secondAttribute="leading" id="DlA-gg-74i"/>
                                     <constraint firstAttribute="trailing" secondItem="82x-gQ-Yjm" secondAttribute="trailing" constant="20" id="EeX-bn-qOJ"/>
                                     <constraint firstItem="rYc-Za-qKh" firstAttribute="top" secondItem="BpD-Ye-bq9" secondAttribute="bottom" constant="15" id="Fia-6I-Xlz"/>
+                                    <constraint firstItem="Kw6-jM-uy5" firstAttribute="leading" secondItem="4T2-9Q-DQu" secondAttribute="leading" id="HKw-AX-ID2"/>
                                     <constraint firstItem="82x-gQ-Yjm" firstAttribute="centerX" secondItem="4T2-9Q-DQu" secondAttribute="centerX" id="HXS-5B-VBP"/>
                                     <constraint firstItem="dgd-Lh-nQ6" firstAttribute="leading" secondItem="is5-LH-0bL" secondAttribute="leading" id="I4k-Sb-wL5"/>
                                     <constraint firstItem="oy2-yE-CnT" firstAttribute="height" secondItem="82x-gQ-Yjm" secondAttribute="height" id="Io3-EX-ULJ"/>
@@ -11671,11 +11687,13 @@
                                     <constraint firstItem="PeQ-c4-G74" firstAttribute="trailing" secondItem="mSF-qd-6zF" secondAttribute="trailing" id="jr7-9K-uBc"/>
                                     <constraint firstItem="JIk-oa-Mz1" firstAttribute="bottom" secondItem="GN1-0I-O0O" secondAttribute="bottom" id="lRl-Ad-NQ6"/>
                                     <constraint firstItem="8A7-pJ-QzL" firstAttribute="trailing" secondItem="82x-gQ-Yjm" secondAttribute="trailing" id="lbI-Cr-7Vc"/>
+                                    <constraint firstItem="3Qi-HX-h1J" firstAttribute="leading" secondItem="4T2-9Q-DQu" secondAttribute="leading" id="lf2-Dh-hfF"/>
                                     <constraint firstItem="is5-LH-0bL" firstAttribute="top" secondItem="GN1-0I-O0O" secondAttribute="bottom" constant="50" id="lfp-mF-Xf0"/>
                                     <constraint firstItem="rYc-Za-qKh" firstAttribute="leading" secondItem="BpD-Ye-bq9" secondAttribute="leading" id="lji-N0-qzA"/>
                                     <constraint firstItem="EZi-N2-Gvc" firstAttribute="top" secondItem="is5-LH-0bL" secondAttribute="bottom" constant="50" id="m5N-Ew-uSa"/>
                                     <constraint firstItem="BpD-Ye-bq9" firstAttribute="leading" secondItem="POU-g7-Vgb" secondAttribute="leading" constant="10" id="mPf-8A-z75"/>
                                     <constraint firstItem="JIk-oa-Mz1" firstAttribute="leading" secondItem="GN1-0I-O0O" secondAttribute="leading" id="oP6-Ck-uUZ"/>
+                                    <constraint firstItem="Kw6-jM-uy5" firstAttribute="trailing" secondItem="as9-iX-Bi6" secondAttribute="trailing" constant="10" id="om1-gA-Zho"/>
                                     <constraint firstItem="82x-gQ-Yjm" firstAttribute="top" secondItem="dpR-RU-gew" secondAttribute="bottom" constant="-5" id="pUD-Es-C3P"/>
                                     <constraint firstItem="T7p-FV-BOf" firstAttribute="trailing" secondItem="is5-LH-0bL" secondAttribute="trailing" id="pbL-NN-X2w"/>
                                     <constraint firstItem="UFn-5H-OiV" firstAttribute="leading" secondItem="mSF-qd-6zF" secondAttribute="leading" id="pcl-MT-AvR"/>
@@ -11692,6 +11710,8 @@
                                     <constraint firstItem="Zk5-Ci-7TD" firstAttribute="leading" secondItem="rYc-Za-qKh" secondAttribute="trailing" constant="10" id="tRC-qn-XXK"/>
                                     <constraint firstItem="mSF-qd-6zF" firstAttribute="top" secondItem="oy2-yE-CnT" secondAttribute="bottom" constant="50" id="uIi-oB-QmA"/>
                                     <constraint firstItem="BpD-Ye-bq9" firstAttribute="top" secondItem="POU-g7-Vgb" secondAttribute="bottom" constant="10" id="uMA-rY-6T2"/>
+                                    <constraint firstItem="3Qi-HX-h1J" firstAttribute="trailing" secondItem="Zk5-Ci-7TD" secondAttribute="trailing" constant="10" id="vAJ-dW-cfz"/>
+                                    <constraint firstItem="3Qi-HX-h1J" firstAttribute="centerY" secondItem="Zk5-Ci-7TD" secondAttribute="centerY" id="vlK-uy-3EQ"/>
                                     <constraint firstItem="9e2-5R-ET8" firstAttribute="centerY" secondItem="EZi-N2-Gvc" secondAttribute="centerY" id="vqx-6m-7oE"/>
                                     <constraint firstItem="2ae-KN-Nrg" firstAttribute="bottom" secondItem="cW1-co-BHC" secondAttribute="bottom" id="xSU-p5-GYF"/>
                                     <constraint firstItem="82x-gQ-Yjm" firstAttribute="leading" secondItem="4T2-9Q-DQu" secondAttribute="leading" constant="20" id="ybF-Wm-e8I"/>
@@ -11721,13 +11741,15 @@
                         <outlet property="postCodeTextField" destination="OUL-9y-Cha" id="RmM-2y-Wit"/>
                         <outlet property="provinceTextField" destination="GN1-0I-O0O" id="mZZ-b3-zhi"/>
                         <outlet property="shippingProductImageView" destination="rYc-Za-qKh" id="bIx-vP-hhd"/>
+                        <outlet property="shippingProductView" destination="3Qi-HX-h1J" id="E0F-Ce-pKv"/>
                         <outlet property="shippingTaxImageView" destination="BpD-Ye-bq9" id="rGI-lG-R2z"/>
+                        <outlet property="shippingTaxView" destination="Kw6-jM-uy5" id="NRv-8a-CMr"/>
                         <outlet property="subDistrictTextField" destination="EZi-N2-Gvc" id="vFV-73-2vV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KvZ-3r-e4E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-9504" y="552"/>
+            <point key="canvasLocation" x="-9504.3478260869579" y="551.11607142857144"/>
         </scene>
         <!--Shopping History View Controller-->
         <scene sceneID="68V-7j-x2X">

@@ -51,45 +51,63 @@ class ConfirmOrderViewController: BaseViewController , UICollectionViewDelegate 
     func setUp(){
         self.handlerEnterSuccess = { (pin) in
             //checkout
-            var product:[String:String] = [:]
-            var price:[String:String] = [:]
-            if let tuple = self.tupleProduct as? [(title:String, id:Int, amount:Int, price:Double, select:Bool, brand:String, cover:String, stock:Int)] {
-                
-                for item in tuple {
-                    if item.select {
-                        product["\(item.id)"] = "\(item.amount)"
-                        price["\(item.id)"] = "\(item.price)"
+            var v:UIView = self.view
+            if let nav = self.navigationController{
+                if let rootNav = nav.navigationController{
+                    v = rootNav.view
+                }else{
+                    v = nav.view
+                }
+            }
+            self.loadingView?.mRootView = v
+            
+            if self.pay_by == 1 {
+                var product:[String:String] = [:]
+                var price:[String:String] = [:]
+                if let tuple = self.tupleProduct as? [(title:String, id:Int, amount:Int, price:Double, select:Bool, brand:String, cover:String, stock:Int)] {
+                    
+                    for item in tuple {
+                        if item.select {
+                            product["\(item.id)"] = "\(item.amount)"
+                            price["\(item.id)"] = "\(item.price)"
+                        }
                     }
                 }
-            }
-            
-            let parameter:Parameters = ["pay_by": self.pay_by,
-                                        "invoice_id": self.invoice_id ?? "",
-                                        "shipping_id": self.shipping_id ?? "",
-                                        "total_point": self.totalOrder?.totalPrice ?? "",
-                                        "product": product,
-                                        "price": price ]
-            print(parameter)
-            let transection_ref_id = ""
-            self.showOrderResultView(true, transection_ref_id , finish:  {
-                self.navigationController?.popToRootViewController(animated: false)
-            })
-            
-       /*     self.modelCtrl.addOrder(params: parameter , true , succeeded: { (result) in
-                    //add order success
-            }, error: { (error) in
-                if let mError = error as? [String:AnyObject]{
-                    let message = mError["message"] as? String ?? ""
-                    print(message)
-                    self.showMessagePrompt(message)
-                }
-                print(error)
-            }) { (messageError) in
-                print("messageError")
-                self.handlerMessageError(messageError)
                 
+                let parameter:Parameters = ["pay_by": self.pay_by,
+                                            "invoice_id": self.invoice_id ?? "",
+                                            "shipping_id": self.shipping_id ?? "",
+                                            "total_point": self.totalOrder?.totalPrice ?? "",
+                                            "product": product,
+                                            "price": price ]
+                print(parameter)
+                
+                
+                self.modelCtrl.addOrder(params: parameter , true , succeeded: { (result) in
+                    if let mResult = result as? [String:AnyObject] {
+                        let transection_no = mResult["transaction_no"] as? String ?? ""
+                        self.showOrderResultView(true, transection_no , finish:  {
+                            self.navigationController?.popToRootViewController(animated: false)
+                        })
+                        
+                    }
+                    
+                    
+                }, error: { (error) in
+                    if let mError = error as? [String:AnyObject]{
+                        let message = mError["message"] as? String ?? ""
+                        print(message)
+                        self.showMessagePrompt(message)
+                    }
+                    print(error)
+                }) { (messageError) in
+                    print("messageError")
+                    self.handlerMessageError(messageError)
+                    
+                }
             }
-             */
+            
+            
         }
 
         

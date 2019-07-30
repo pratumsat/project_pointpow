@@ -265,7 +265,7 @@ class VerifyViewController: BaseViewController {
                     }else{
                         if !is_pin.boolValue {
                             self.showSettingPassCodeModalView(NSLocalizedString("title-set-passcode", comment: ""), lockscreen: true)
-                            return
+
                         }else{
                             self.dismiss(animated: false, completion: {
                                 (self.navigationController as? IntroNav)?.callbackFinish?()
@@ -273,10 +273,16 @@ class VerifyViewController: BaseViewController {
                         }
                     }
                 }else{
-                    /* Mobile Only*/
-                    self.dismiss(animated: false, completion: {
-                        (self.navigationController as? IntroNav)?.callbackFinish?()
-                    })
+                    if !is_pin.boolValue {
+                        self.showSettingPassCodeModalView(NSLocalizedString("title-set-passcode", comment: ""), lockscreen: true)
+
+                    }else{
+                        self.dismiss(animated: false, completion: {
+                            (self.navigationController as? IntroNav)?.callbackFinish?()
+                        })
+                    }
+                    
+                    
                 }
                 
             }

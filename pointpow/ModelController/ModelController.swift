@@ -1949,8 +1949,10 @@ class ModelController {
                                     if success.intValue == 1 {
                                         if let result = data["result"] as? [String:AnyObject] {
                                             let save_slip = (result["save_slip"] as? NSNumber)?.boolValue ?? false
-                                            let limit_pay = result["limit_pay"] as? NSNumber ?? 0
+                                            let limit_pay_left = result["limit_pay_left"] as? NSNumber ?? 0
+                                            
                                             DataController.sharedInstance.setSaveSlip(save_slip)
+                                            DataController.sharedInstance.setLimitPerDay(limit_pay_left)
                                             
                                            
                                             succeeded?(result as AnyObject)

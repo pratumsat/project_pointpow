@@ -20,6 +20,8 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
     var fullAddressTaxInvoice:(id:String, rawAddress:String) = (id:"", rawAddress:"")
     var cart_id:Int = 0
     
+    
+    
     var isTaxInvoice = false {
         didSet{
             self.setItemSection()
@@ -177,20 +179,45 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         var success = 0
         getUserInfo(){
             success += 1
-            if success == 2 {
+            if success == 3 {
                 loadSuccess?()
                 self.refreshControl?.endRefreshing()
             }
         }
         getItemToCart(){
             success += 1
-            if success == 2 {
+            if success == 3 {
+                loadSuccess?()
+                self.refreshControl?.endRefreshing()
+            }
+        }
+        getMemberSetting(){
+            success += 1
+            if success == 3 {
                 loadSuccess?()
                 self.refreshControl?.endRefreshing()
             }
         }
         
         
+    }
+    func getMemberSetting(_ avaliable:(()->Void)?  = nil){
+        modelCtrl.getMemberSetting(params: nil, true, succeeded: { (result) in
+        //success
+            avaliable?()
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                self.showMessagePrompt(message)
+            }
+            self.refreshControl?.endRefreshing()
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            self.refreshControl?.endRefreshing()
+        }
     }
     
     func updateView(){
@@ -663,20 +690,6 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                     
                 }
                 
-                selectCell.checkBox.toggle  = { (isCheck) in
-                    
-                    var i = 0
-                    if let Tuple = self.tupleProduct {
-                        for _ in Tuple {
-                            self.tupleProduct![i].select = isCheck
-                            i += 1
-                        }
-                    }
-                    self.updateTotalAmountPrice()
-                    self.checkAll = isCheck
-                    self.reloadProductSection()
-                    
-                }
                 selectCell.deleteCallback = {
                     var productIds:[Int] = []
                     if let Tuple = self.tupleProduct {
@@ -711,7 +724,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                     productCell.priceLabel.text = numberFormatter.string(from: NSNumber(value: itemTuple.price))
                     productCell.amount = itemTuple.amount
                     productCell.checkBox.isChecked = itemTuple.select
-                    
+                    productCell.isCheck = itemTuple.select
                    
                      productCell.callBackTotalPrice  = { (amount, totalPrice) in
                         print("amount= \(amount)")
@@ -721,16 +734,15 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                         self.updateTotalAmountPrice()
                     }
                     
-                    productCell.checkBox.toggle  = { (isCheck) in
-                       self.tupleProduct?[self.getItemPositionByItemId(itemTuple.id)].select = isCheck
+                    productCell.checkCallback = { (isCheck) in
+                        self.tupleProduct?[self.getItemPositionByItemId(itemTuple.id)].select = isCheck
                         if !isCheck {
                             self.checkAll = false
                             self.reloadSelectAllSection()
                         }
-                        
+
                         self.updateTotalAmountPrice()
                     }
-                    
                 }
             }
         case "summary":
@@ -795,9 +807,8 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             if let invoiceCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TaxInvoiceSelectCell", for: indexPath) as? TaxInvoiceSelectCell {
                 cell = invoiceCell
                 invoiceCell.checkBox.isChecked = self.isTaxInvoice
-                invoiceCell.checkBox.toggle = { (isCheck) in
-                    self.isTaxInvoice = isCheck
-                }
+
+                
                 invoiceCell.checkCallback = {
                     self.isTaxInvoice = !self.isTaxInvoice
                 }
@@ -835,7 +846,33 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                         self.showMessagePrompt2(NSLocalizedString("string-item-cart-address-not-select", comment: ""))
                         return
                     }
+                    let pointBalance = DataController.sharedInstance.getCurrentPointBalance()
+                   
+                    if pointBalance.doubleValue <= 0 {
+                        self.showMessagePrompt(NSLocalizedString("string-dailog-saving-point-not-enough", comment: ""))
+                        return
+                    }
                     
+                    
+                    let total = self.totalOrder?.totalPrice ?? 0
+                    let pointLimitOrder = DataController.sharedInstance.getLimitPerDay()
+                    var pointpow_spend = total
+                    var credit_spend = total
+                   
+                    if pointBalance.doubleValue < total {
+                        credit_spend = total - pointBalance.doubleValue
+                        pointpow_spend  = pointBalance.doubleValue
+                    }else{
+                        pointpow_spend  = total
+                    }
+                    print("pointLimitOrder \(pointLimitOrder)")
+                    print("pointpow_spend \(pointpow_spend)")
+                    print("credit_spend \(credit_spend)")
+                    
+                    if pointLimitOrder.doubleValue  < pointpow_spend {
+                        self.showMessagePrompt(NSLocalizedString("string-dailog-point-over-limit-order", comment: ""))
+                        return
+                    }
                     
                     self.updateCart {
                         self.showConfirmOrderViewController(true ,

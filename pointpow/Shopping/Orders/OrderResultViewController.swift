@@ -112,7 +112,7 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
         
         if !hideFinishButton {
             
-            self.title = NSLocalizedString("string-title-point-transfer", comment: "")
+            self.title = NSLocalizedString("string-title-shopping-result-success", comment: "")
             let finishButton = UIBarButtonItem(title: NSLocalizedString("string-title-finish-transfer", comment: ""), style: .plain, target: self, action: #selector(dismissTapped))
             finishButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white,
                                                  NSAttributedString.Key.font :  UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.ITEM_TITLE )!]
@@ -123,7 +123,7 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
             self.transactionId = (self.navigationController as? OrderResultNav)?.transactionId
         }
         
-        self.title = NSLocalizedString("string-title-point-transfer", comment: "")
+        self.title = NSLocalizedString("string-title-shopping-result-1", comment: "")
         self.setUp()
     }
     
@@ -202,11 +202,21 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
                 let created_at = data["created_at"] as? String ?? ""
                 let transaction_no = data["transaction_no"] as? String ?? ""
                 let payment_status = data["payment_status"] as? String ?? ""
-                let total_point = data["total_point"] as? String ?? "0.0"
+                let total_point = data["total_point"] as?  NSNumber ?? 0
                 let pay_by = data["pay_by"] as? NSNumber ?? 0
-                let shipping_address = data["shipping_address"] as? String ?? ""
-                let pointpow_amount = data["pointpow_amount"] as? String ?? ""
-                let credit_amount = data["credit_amount"] as? String ?? ""
+                let pointpow_amount = data["pointpow_amount"] as? NSNumber ?? 0
+                let credit_amount = data["credit_amount"] as? NSNumber ?? 0
+                
+                let shipping_address = data["shipping_address"] as? [String:AnyObject] ?? [:]
+                let address = shipping_address["address"] as? String ?? ""
+                let email = shipping_address["email"] as? String ?? ""
+                let mobile = shipping_address["mobile"] as? String ?? ""
+                let name = shipping_address["name"] as? String ?? ""
+               
+                let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
+                var fulladdress = "\(name) \(newMText.chunkFormatted())"
+                fulladdress += "\n\(address)"
+              
                 
                 let itemProducts = data["item"] as? [[String:AnyObject]] ?? []
                 
@@ -214,24 +224,11 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
                 numberFormatter.numberStyle = .decimal
                 numberFormatter.minimumFractionDigits = 2
                 
-                if let totalTypeNumber = Double(total_point)  {
-                    orderCell.totalLabel.text = numberFormatter.string(from: NSNumber(value: totalTypeNumber))
-                }else{
-                    orderCell.totalLabel.text = total_point
-                }
+                orderCell.totalLabel.text = numberFormatter.string(from: total_point)
                 
-                /* Point + Credit Waitting Data */
-                if let pointpow = Double(pointpow_amount)  {
-                    orderCell.pointLabel.text = numberFormatter.string(from: NSNumber(value: pointpow))
-                }else{
-                    orderCell.pointLabel.text = pointpow_amount
-                }
+                orderCell.pointLabel.text = numberFormatter.string(from: pointpow_amount)
                 
-                if let credit = Double(credit_amount)  {
-                    orderCell.pointLabel.text = numberFormatter.string(from: NSNumber(value: credit))
-                }else{
-                    orderCell.pointLabel.text = credit_amount
-                }
+                orderCell.cdLabel.text = numberFormatter.string(from: credit_amount)
                 
                 var sumAmount = 0
                 for item in itemProducts {
@@ -242,7 +239,7 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
                 orderCell.totalAmountLabel.text = txtAmount.replace(target: "{{amount}}", withString: "\(sumAmount)")
                 orderCell.transection_ref_Label.text = transaction_no
                 orderCell.dateLabel.text = created_at
-                orderCell.addressLabel.text = shipping_address
+                orderCell.addressLabel.text = fulladdress
                 orderCell.marginTopAddress.constant = margintop
                 
                 if pay_by == 1 {
@@ -251,23 +248,24 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
                     orderCell.showCreditCardLabel()
                 }
                 
+                
                 switch payment_status.lowercased() {
                 case "success":
                     orderCell.statusImageView.image = UIImage(named: "ic-status-success2")
                     orderCell.statusLabel.textColor = Constant.Colors.GREEN
-                    orderCell.statusLabel.text = NSLocalizedString("string-dailog-point-transaction-status-success", comment: "")
+                    orderCell.statusLabel.text = NSLocalizedString("string-item-transaction-status-success", comment: "")
                     
                     break
                 case "pending":
                     orderCell.statusImageView.image = UIImage(named: "ic-status-waitting")
                     orderCell.statusLabel.textColor = Constant.Colors.ORANGE
-                    orderCell.statusLabel.text = NSLocalizedString("string-dailog-point-transaction-status-waitting", comment: "")
+                    orderCell.statusLabel.text = NSLocalizedString("string-item-transaction-status-waitting", comment: "")
                     
                     break
                 case "fail":
                     orderCell.statusImageView.image = UIImage(named: "ic-status-cancel")
                     orderCell.statusLabel.textColor = Constant.Colors.PRIMARY_COLOR
-                    orderCell.statusLabel.text = NSLocalizedString("string-dailog-point-transaction-status-fail", comment: "")
+                    orderCell.statusLabel.text = NSLocalizedString("string-item-transaction-status-fail", comment: "")
                     
                     break
                 default:
@@ -323,12 +321,22 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
         
         
         let width = collectionView.frame.width - 40
-        var height = CGFloat(400)
+        var height = CGFloat(410)
         height += self.margintop
        
         if let data = transferResult {
-            let shipping_address = data["shipping_address"] as? String ?? ""
-            let heightAddress = heightForView(text: shipping_address, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 18)!, width: width - 20)
+           
+            let shipping_address = data["shipping_address"] as? [String:AnyObject] ?? [:]
+            let address = shipping_address["address"] as? String ?? ""
+            let email = shipping_address["email"] as? String ?? ""
+            let mobile = shipping_address["mobile"] as? String ?? ""
+            let name = shipping_address["name"] as? String ?? ""
+            
+            let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
+            var fulladdress = "\(name) \(newMText.chunkFormatted())"
+            fulladdress += "\n\(address)"
+            
+            let heightAddress = heightForView(text: fulladdress, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 18)!, width: width - 20)
             height += heightAddress
         }
         

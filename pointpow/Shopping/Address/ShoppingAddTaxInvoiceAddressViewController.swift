@@ -23,6 +23,8 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
     
+    @IBOutlet weak var shippingProductView: UIView!
+    @IBOutlet weak var shippingTaxView: UIView!
     
     var clearImageView:UIImageView?
     var clearImageView2:UIImageView?
@@ -270,12 +272,12 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
         
         
         let shippingProduct = UITapGestureRecognizer(target: self, action: #selector(productTapped))
-        self.shippingProductImageView?.isUserInteractionEnabled = true
-        self.shippingProductImageView?.addGestureRecognizer(shippingProduct)
+        self.shippingProductView?.isUserInteractionEnabled = true
+        self.shippingProductView?.addGestureRecognizer(shippingProduct)
         
         let shippingInvoice = UITapGestureRecognizer(target: self, action: #selector(invoiceTapped))
-        self.shippingTaxImageView?.isUserInteractionEnabled = true
-        self.shippingTaxImageView?.addGestureRecognizer(shippingInvoice)
+        self.shippingTaxView?.isUserInteractionEnabled = true
+        self.shippingTaxView?.addGestureRecognizer(shippingInvoice)
         
         
     }

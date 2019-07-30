@@ -131,6 +131,13 @@ class DataController {
         return data["current_point_balance"] as? NSNumber ?? 0
     }
     
+    func setLimitPerDay(_ value:NSNumber){
+        data["limit-pay-left"] = value
+    }
+    func getLimitPerDay()-> NSNumber{
+        return data["limit-pay-left"] as? NSNumber ?? 0
+    }
+    
     func setFaceID(_ faceID:Bool){
         UserDefaults.standard.set(faceID, forKey: Constant.CacheNotification.USER_FACE_ID_CACHE)
         UserDefaults.standard.synchronize()

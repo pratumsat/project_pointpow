@@ -18,14 +18,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItenCartProductSelectAllCell" id="gTV-IL-0wX" customClass="ItenCartProductSelectAllCell" customModule="pointpow" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="382" height="77"/>
+            <rect key="frame" x="0.0" y="0.0" width="270" height="77"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="382" height="77"/>
+                <rect key="frame" x="0.0" y="0.0" width="270" height="77"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s6t-yo-pLr" customClass="CheckBoxRed" customModule="pointpow" customModuleProvider="target">
-                        <rect key="frame" x="10" y="26" width="25" height="25"/>
+                        <rect key="frame" x="5" y="26" width="25" height="25"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="s6t-yo-pLr" secondAttribute="height" multiplier="1:1" id="Z84-m6-dlX"/>
@@ -33,32 +33,39 @@
                         </constraints>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-fav-delete" translatesAutoresizingMaskIntoConstraints="NO" id="ffh-mp-1Lv">
-                        <rect key="frame" x="342" y="26" width="25" height="25"/>
+                        <rect key="frame" x="235" y="28.5" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="ffh-mp-1Lv" secondAttribute="height" multiplier="1:1" id="GSH-rL-ver"/>
-                            <constraint firstAttribute="width" constant="25" id="qaD-jo-Yrm"/>
+                            <constraint firstAttribute="width" constant="20" id="qaD-jo-Yrm"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ทั้งหมด" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5CT-qM-r42">
-                        <rect key="frame" x="40" y="27" width="39.5" height="23.5"/>
+                        <rect key="frame" x="35" y="27" width="39.5" height="23.5"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vkQ-6l-gek">
-                        <rect key="frame" x="10" y="76" width="362" height="1"/>
+                        <rect key="frame" x="10" y="76" width="250" height="1"/>
                         <color key="backgroundColor" white="0.84999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="EcW-o5-Bx7"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7n-1Z-eTH">
-                        <rect key="frame" x="0.0" y="0.0" width="99.5" height="77"/>
+                        <rect key="frame" x="0.0" y="0.0" width="94.5" height="77"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mcf-67-8jC">
+                        <rect key="frame" x="220" y="0.0" width="50" height="77"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="8VT-NI-pQI"/>
+                        </constraints>
                     </view>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="s6t-yo-pLr" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="5xw-O7-P54"/>
+                <constraint firstItem="s6t-yo-pLr" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="5xw-O7-P54"/>
                 <constraint firstItem="ffh-mp-1Lv" firstAttribute="centerY" secondItem="s6t-yo-pLr" secondAttribute="centerY" id="99C-bG-4jn"/>
                 <constraint firstAttribute="trailing" secondItem="vkQ-6l-gek" secondAttribute="trailing" constant="10" id="Lqx-HX-C9e"/>
                 <constraint firstItem="h7n-1Z-eTH" firstAttribute="trailing" secondItem="5CT-qM-r42" secondAttribute="trailing" constant="20" id="Ooe-lH-hjN"/>
@@ -68,19 +75,23 @@
                 <constraint firstItem="h7n-1Z-eTH" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="hDY-4A-kGz"/>
                 <constraint firstAttribute="bottom" secondItem="h7n-1Z-eTH" secondAttribute="bottom" id="hP4-X1-Zhe"/>
                 <constraint firstItem="5CT-qM-r42" firstAttribute="centerY" secondItem="s6t-yo-pLr" secondAttribute="centerY" id="iK5-Dg-pjz"/>
+                <constraint firstItem="mcf-67-8jC" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="jXF-i2-KZf"/>
                 <constraint firstAttribute="bottom" secondItem="vkQ-6l-gek" secondAttribute="bottom" id="qIe-Wg-P7Y"/>
                 <constraint firstItem="vkQ-6l-gek" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="qiQ-AW-QFY"/>
+                <constraint firstAttribute="bottom" secondItem="mcf-67-8jC" secondAttribute="bottom" id="v35-Lp-ZXm"/>
                 <constraint firstAttribute="trailing" secondItem="ffh-mp-1Lv" secondAttribute="trailing" constant="15" id="zV9-Mr-S5M"/>
+                <constraint firstAttribute="trailing" secondItem="mcf-67-8jC" secondAttribute="trailing" id="zVv-Ng-Tyh"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="382" height="77"/>
+            <size key="customSize" width="270" height="77"/>
             <connections>
                 <outlet property="allLabel" destination="5CT-qM-r42" id="btz-Qu-pAN"/>
                 <outlet property="checkBox" destination="s6t-yo-pLr" id="cEN-55-1aY"/>
                 <outlet property="checkSpaceView" destination="h7n-1Z-eTH" id="UaG-eS-Zuw"/>
                 <outlet property="deleteImageView" destination="ffh-mp-1Lv" id="PQm-vO-Hkz"/>
+                <outlet property="deleteView" destination="mcf-67-8jC" id="drE-QW-AgU"/>
             </connections>
-            <point key="canvasLocation" x="-113.59999999999999" y="-21.139430284857571"/>
+            <point key="canvasLocation" x="-203.19999999999999" y="-21.139430284857571"/>
         </collectionViewCell>
     </objects>
     <resources>

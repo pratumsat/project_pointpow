@@ -14,6 +14,7 @@ class ItenCartProductSelectAllCell: UICollectionViewCell {
     @IBOutlet weak var checkBox: CheckBoxRed!
     
     @IBOutlet weak var deleteImageView: UIImageView!
+    @IBOutlet weak var deleteView: UIView!
     
     @IBOutlet weak var allLabel: UILabel!
     var deleteCallback:(()->Void)?
@@ -23,8 +24,8 @@ class ItenCartProductSelectAllCell: UICollectionViewCell {
         super.awakeFromNib()
         
         let delete = UITapGestureRecognizer(target: self, action: #selector(deleteTapped))
-        self.deleteImageView.isUserInteractionEnabled = true
-        self.deleteImageView.addGestureRecognizer(delete)
+        self.deleteView.isUserInteractionEnabled = true
+        self.deleteView.addGestureRecognizer(delete)
         
         let check = UITapGestureRecognizer(target: self, action: #selector(checkTapped))
         self.checkSpaceView.isUserInteractionEnabled = true

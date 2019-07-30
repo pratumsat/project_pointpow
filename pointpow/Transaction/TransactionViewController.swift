@@ -390,7 +390,8 @@ class TransactionViewController: BaseViewController  ,UICollectionViewDataSource
                     self.showGoldSavingResult(true, transactionId: transaction_ref_id)
                 }
                 if pointable_type_service.lowercased() == "shopping"{
-                    
+                   // let transaction_no  = item["transaction_no"] as? String ?? ""
+                    self.showOrderResultView(true, transaction_ref_id)
                 }
                 
             }

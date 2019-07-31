@@ -515,7 +515,7 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
     
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
-        self.detailWebview.frame.size = webView.scrollView.contentSize
+       
         self.heightContentWebView =  webView.scrollView.contentSize.height
         print("html height =  \(heightContentWebView)")
         

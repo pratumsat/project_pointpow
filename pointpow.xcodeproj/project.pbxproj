@@ -207,6 +207,7 @@
 		C1493CEE22F151A5001335D6 /* SearchProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1493CED22F151A5001335D6 /* SearchProductViewController.swift */; };
 		C1493CF222F18150001335D6 /* ImageProductNotFoundCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1493CF022F18150001335D6 /* ImageProductNotFoundCell.swift */; };
 		C1493CF322F18150001335D6 /* ImageProductNotFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1493CF122F18150001335D6 /* ImageProductNotFoundCell.xib */; };
+		C1493CF522F18ABA001335D6 /* ShippingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1493CF422F18ABA001335D6 /* ShippingViewController.swift */; };
 		C15DB51D22EABEF200B9E3CC /* OrderResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15DB51C22EABEF200B9E3CC /* OrderResultViewController.swift */; };
 		C15DB51F22EABF3400B9E3CC /* OrderResultNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15DB51E22EABF3400B9E3CC /* OrderResultNav.swift */; };
 		C15DB52222EAD52000B9E3CC /* OrderResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15DB52022EAD52000B9E3CC /* OrderResultCell.swift */; };
@@ -584,6 +585,7 @@
 		C1493CED22F151A5001335D6 /* SearchProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProductViewController.swift; sourceTree = "<group>"; };
 		C1493CF022F18150001335D6 /* ImageProductNotFoundCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProductNotFoundCell.swift; sourceTree = "<group>"; };
 		C1493CF122F18150001335D6 /* ImageProductNotFoundCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageProductNotFoundCell.xib; sourceTree = "<group>"; };
+		C1493CF422F18ABA001335D6 /* ShippingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingViewController.swift; sourceTree = "<group>"; };
 		C15DB51C22EABEF200B9E3CC /* OrderResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderResultViewController.swift; sourceTree = "<group>"; };
 		C15DB51E22EABF3400B9E3CC /* OrderResultNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderResultNav.swift; sourceTree = "<group>"; };
 		C15DB52022EAD52000B9E3CC /* OrderResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderResultCell.swift; sourceTree = "<group>"; };
@@ -1132,6 +1134,7 @@
 			isa = PBXGroup;
 			children = (
 				C11AFC8B22C1DF9200573C27 /* AccountShoppingViewController.swift */,
+				C1493CF422F18ABA001335D6 /* ShippingViewController.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -2083,6 +2086,7 @@
 				C127323F225380D500A9EE74 /* PickerLuckyDrawCell.swift in Sources */,
 				C142741721A539F5003CC246 /* PointFriendTransferReviewViewController.swift in Sources */,
 				C10CA19721914AD500316DF3 /* PromotionViewController.swift in Sources */,
+				C1493CF522F18ABA001335D6 /* ShippingViewController.swift in Sources */,
 				C1F0C06C22C3126900A49BAA /* HeaderSectionCell.swift in Sources */,
 				C1892E05221CFD3300F5412F /* WithDrawResultViewController.swift in Sources */,
 				C197FF3A22083AE9002F24E8 /* SavingCell.swift in Sources */,

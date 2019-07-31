@@ -118,6 +118,7 @@ extension AccountShoppingViewController {
             self.showShoppingHistory(true)
             break
         case 3:
+            self.showShippingList(true)
             break
         default:
             break

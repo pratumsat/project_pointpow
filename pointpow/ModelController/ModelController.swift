@@ -2204,6 +2204,100 @@ class ModelController {
         }
     }
 
+    func getShippingList(params:Parameters? ,
+                            parameter:String? = nil,
+                            _ isLoading:Bool = true,
+                            succeeded:( (_ result:AnyObject) ->Void)? = nil,
+                            error:((_ errorObject:AnyObject)->Void)?,
+                            failure:( (_ statusCode:String) ->Void)? = nil ){
+        
+        if isLoading {
+            self.loadingStart?()
+        }
+        
+        let token = DataController.sharedInstance.getToken()
+        let header: HTTPHeaders = ["Authorization":"Bearer \(token)"]
+        
+        
+        Alamofire.request(Constant.PointPowAPI.shipping_list , method: .get ,
+                          parameters : params,
+                          headers: header ).validate().responseJSON { response in
+                            
+                            
+                            if isLoading {
+                                self.loadingFinish?()
+                            }
+                            
+                            
+                            switch response.result {
+                            case .success(let json):
+                                print("Transaection History \n\(json)")
+                                
+                                if let data = json as? [String:AnyObject] {
+                                    
+                                    let success = data["success"] as? NSNumber  ??  0
+                                    
+                                    if success.intValue == 1 {
+                                        
+                                        if let result = data["result"] as? [[String:AnyObject]] {
+                                            succeeded?(result as AnyObject)
+                                        }
+                                        
+                                    }else{
+                                        let messageError = data["message"] as? String  ??  ""
+                                        let field = data["field"] as? String  ??  ""
+                                        var errorObject:[String:AnyObject] = [:]
+                                        errorObject["message"] = messageError as AnyObject
+                                        errorObject["field"] = field as AnyObject
+                                        error?(errorObject as AnyObject)
+                                    }
+                                }
+                                break
+                                
+                            case .failure(let mError):
+                                let code = (mError as NSError).code
+                                if code == -1009 || code == -1001 || code == -1004 || code == -1005 {
+                                    failure?("-1009")
+                                    return
+                                }
+                                
+                                if  response.response?.statusCode == 401 {
+                                    failure?("401")
+                                    return
+                                    
+                                }
+                                if  response.response?.statusCode == 500 {
+                                    failure?("500")
+                                    return
+                                    
+                                }
+                                if let data = response.data {
+                                    if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
+                                        if let data = json as? [String:AnyObject] {
+                                            
+                                            let success = data["success"] as? NSNumber  ??  0
+                                            
+                                            if success.intValue == 0 {
+                                                let messageError = data["message"] as? String  ??  ""
+                                                let field = data["field"] as? String  ??  ""
+                                                var errorObject:[String:AnyObject] = [:]
+                                                errorObject["message"] = messageError as AnyObject
+                                                errorObject["field"] = field as AnyObject
+                                                error?(errorObject as AnyObject)
+                                            }else{
+                                                if let result = data["result"] as? [[String:AnyObject]] {
+                                                    succeeded?(result as AnyObject)
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                
+                                break
+                                
+                            }
+        }
+    }
     func getShoppingHistory(params:Parameters? ,
                          parameter:String? = nil,
                          _ isLoading:Bool = true,
@@ -3142,12 +3236,12 @@ class ModelController {
             self.loadingStart?()
         }
         
-        var path = Constant.PointPowAPI.getCarts
-        path += "&session_id=\(DataController.sharedInstance.getToken())"
-        path += "&member_id=\(DataController.sharedInstance.getMemberId())&status=new"
-        
-        Alamofire.request(path , method: .get ,
-                          parameters : params).validate().responseJSON { response in
+
+        let parameter:Parameters = ["session_id" : DataController.sharedInstance.getToken(),
+                                    "member_id" : DataController.sharedInstance.getMemberId(),
+                                    "status" : "new"]
+        Alamofire.request(Constant.PointPowAPI.getCarts , method: .get ,
+                          parameters : parameter).validate().responseJSON { response in
                             
                             
                             if isLoading {
@@ -3513,9 +3607,9 @@ class ModelController {
         }else{
             url = Constant.PointPowAPI.recommend_byCate.replace(target: "{{cate}}", withString: "\(cateId)")
         }
-        
-        Alamofire.request("\(url)&limit=\(limit)" , method: .get ,
-                          parameters : nil
+        let parameter:Parameters = ["limit" : limit ]
+        Alamofire.request("\(url)" , method: .get ,
+                          parameters : parameter
             ).validate().responseJSON { response in
                 
                 
@@ -3800,9 +3894,10 @@ class ModelController {
         }else{
             url = Constant.PointPowAPI.product_ByCate.replace(target: "{{cate}}", withString: "\(cateId)")
         }
-        
-        Alamofire.request("\(url)&skip=\(skip)&type=\(type)" , method: .get ,
-                          parameters : nil
+        let parameter:Parameters = ["skip" : skip,
+                                    "type" : type]
+        Alamofire.request("\(url)" , method: .get ,
+                          parameters : parameter
             ).validate().responseJSON { response in
                 
                 

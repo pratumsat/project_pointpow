@@ -420,19 +420,26 @@ class SettingAddressViewController: BaseViewController , UICollectionViewDelegat
                     let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
                     rawAddress = "\(name) \(newMText.chunkFormatted())"
                     rawAddress += "\n\(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
+                    
+                    var height = CGFloat(50)
+                    height += heightForView(text: rawAddress, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 16)!, width: width - 80)
+                    
+                    return CGSize(width: width, height: height)
                 }else{
                     let newText = String((tax_invoice).filter({ $0 != "-" }).prefix(13))
                     let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
                     
                     rawAddress = "\(name) \(newText.chunkFormattedPersonalID())"
                     rawAddress += "\n\(newMText.chunkFormatted()) \(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
+                    
+                    var height = CGFloat(60)
+                    height += heightForView(text: rawAddress, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 16)!, width: width - 80)
+                    
+                    return CGSize(width: width, height: height)
                 }
                 
                 
-                var height = CGFloat(50)
-                height += heightForView(text: rawAddress, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 16)!, width: width - 80)
                 
-                return CGSize(width: width, height: height)
                 
             }
             

@@ -54,6 +54,7 @@ class HomeShoppingViewController: ShoppingBaseViewController {
         
         self.searchCallback = { (keyword) in
             print("ketyword: \(keyword)")
+            self.showSearchProductByKeyword(true, keyword : keyword)
         }
         
         self.setUp()
@@ -314,17 +315,18 @@ class HomeShoppingViewController: ShoppingBaseViewController {
         self.registerHeaderNib(self.productCollectionView, "HeaderSectionCell")
         self.registerHeaderNib(self.productCollectionView, "SpecialHeaderCell")
         self.registerHeaderNib(self.productCollectionView, "ShoppingHeaderCell")
+     
+        self.searchView?.removeFromSuperview()
+        self.mainCateView?.removeFromSuperview()
+        
+        self.searchView = self.addSearchView()
+        self.mainCateView =  self.addCategoryView(self.searchView!)
         
     }
     
     override func reloadData() {
         //get data by refresh
         self.callAPI(true){
-            self.searchView?.removeFromSuperview()
-            self.mainCateView?.removeFromSuperview()
-            
-            self.searchView = self.addSearchView()
-            self.mainCateView =  self.addCategoryView(self.searchView!)
             
             self.countSection = 6
             self.productCollectionView.reloadData()

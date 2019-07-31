@@ -10,7 +10,13 @@ import UIKit
 
 class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDelegate , UIPickerViewDataSource, UIGestureRecognizerDelegate{
   
-
+    var notFoundHeader:String {
+        return "NotFoundItemCell"
+    }
+    var sizeNotFoundHeader : CGFloat {
+        return CGFloat(50.0)
+    }
+    
     @IBOutlet weak var productCollectionView: UICollectionView!
     
     @IBOutlet weak var topConstraintCollectionView: NSLayoutConstraint!
@@ -115,82 +121,15 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        cateLists = [["name": NSLocalizedString("string-item-shopping-cate-1", comment: ""),
-                      "image" : UIImage(named: "ic-shopping-cate-r-1")!],
-                     ["name": NSLocalizedString("string-item-shopping-cate-2", comment: ""),
-                      "image" : UIImage(named: "ic-shopping-cate-r-2")!],
-                     ["name": NSLocalizedString("string-item-shopping-cate-3", comment: ""),
-                      "image" : UIImage(named: "ic-shopping-cate-r-3")!],
-                     ["name": NSLocalizedString("string-item-shopping-cate-4", comment: ""),
-                      "image" : UIImage(named: "ic-shopping-cate-r-4")!],
-                     ["name": NSLocalizedString("string-item-shopping-cate-5", comment: ""),
-                      "image" : UIImage(named: "ic-shopping-cate-r-5")!],
-                     ["name": NSLocalizedString("string-item-shopping-cate-6", comment: ""),
-                      "image" : UIImage(named: "ic-shopping-cate-r-6")!]]
-        
        
-        
-        self.searchCallback = { (keyword) in
-            print("ketyword: \(keyword)")
-        }
-        
-        self.collapseCallback = { (collpse) in
-            if collpse {
-                self.topConstraintCollectionView.constant = self.initHeightViewCate + self.sizeOfViewCateInit
-            }else{
-                self.topConstraintCollectionView.constant = self.initHeightViewCate + self.sizeOfViewCate
-            }
-        }
         
         
         self.setUp()
         
-        if self.loadDataByCateID > 0 {
-            self.searchView?.removeFromSuperview()
-            self.mainCateView?.removeFromSuperview()
-            
-            self.searchView = self.addSearchView()
-            self.mainCateView =  self.addCategoryView(self.searchView!, allProduct: true)
-            
-            self.topConstraintCollectionView.constant = self.initHeightViewCate + self.sizeOfViewCate
-            
-            self.heightMainCategoryView?.constant = 95.0 + self.sizeOfViewCate
-            self.mainCategoryView?.layoutIfNeeded()
-            self.subCategoryCollectionView?.isHidden = false
-            
-           
-//            self.getSubCateByCate(self.loadDataByCateID) {
-//                self.addSubCate()
-//            }
-//
-//            self.selectCateItem = self.loadDataByCateID
-//            self.selectedCategory(self.loadDataByCateID)
-//
-//            self.cateId = self.loadDataByCateID
-//            self.subCateId = self.loadDataByCateID
-//
-//
-//            self.itemSection = ["recommend","filter","product"]
-            
-        }else{
-          
-            self.callAPI(){
-                self.searchView?.removeFromSuperview()
-                self.mainCateView?.removeFromSuperview()
-                
-                self.searchView = self.addSearchView()
-                self.mainCateView =  self.addCategoryView(self.searchView!, allProduct: true)
-                
-                self.productCollectionView.reloadData()
-            }
-        }
-        
-        
+      
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    func updateDataWillUpdate(){
         guard  let tab = self.tabBarController else {
             self.title = self.cateLists[self.loadDataByCateID]["name"] as? String ?? ""
             return
@@ -209,6 +148,12 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constant.DefaultConstansts.UPDATE_BADGE), object: nil, userInfo: userInfo)
             
         }
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.updateDataWillUpdate()
+       
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -273,6 +218,35 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
     }
     
     func setUp(){
+        
+        cateLists = [["name": NSLocalizedString("string-item-shopping-cate-1", comment: ""),
+                      "image" : UIImage(named: "ic-shopping-cate-r-1")!],
+                     ["name": NSLocalizedString("string-item-shopping-cate-2", comment: ""),
+                      "image" : UIImage(named: "ic-shopping-cate-r-2")!],
+                     ["name": NSLocalizedString("string-item-shopping-cate-3", comment: ""),
+                      "image" : UIImage(named: "ic-shopping-cate-r-3")!],
+                     ["name": NSLocalizedString("string-item-shopping-cate-4", comment: ""),
+                      "image" : UIImage(named: "ic-shopping-cate-r-4")!],
+                     ["name": NSLocalizedString("string-item-shopping-cate-5", comment: ""),
+                      "image" : UIImage(named: "ic-shopping-cate-r-5")!],
+                     ["name": NSLocalizedString("string-item-shopping-cate-6", comment: ""),
+                      "image" : UIImage(named: "ic-shopping-cate-r-6")!]]
+        
+        
+        
+        self.searchCallback = { (keyword) in
+            print("ketyword: \(keyword)")
+            self.showSearchProductByKeyword(true, keyword : keyword)
+        }
+        
+        self.collapseCallback = { (collpse) in
+            if collpse {
+                self.topConstraintCollectionView.constant = self.initHeightViewCate + self.sizeOfViewCateInit
+            }else{
+                self.topConstraintCollectionView.constant = self.initHeightViewCate + self.sizeOfViewCate
+            }
+        }
+        
         //start top
         self.topConstraintCollectionView.constant = self.initHeightViewCate + self.sizeOfViewCateInit
         
@@ -295,6 +269,34 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
         self.registerHeaderNib(self.productCollectionView, "HeaderSectionCell")
         self.registerHeaderNib(self.productCollectionView, "ShoppingHeaderCell")
         self.registerHeaderNib(self.productCollectionView, "NotFoundItemCell")
+        self.registerHeaderNib(self.productCollectionView, "ImageProductNotFoundCell")
+        
+        if self.loadDataByCateID > 0 {
+            self.searchView?.removeFromSuperview()
+            self.mainCateView?.removeFromSuperview()
+            
+            self.searchView = self.addSearchView()
+            self.mainCateView =  self.addCategoryView(self.searchView!, allProduct: true)
+            
+            self.topConstraintCollectionView.constant = self.initHeightViewCate + self.sizeOfViewCate
+            
+            self.heightMainCategoryView?.constant = 95.0 + self.sizeOfViewCate
+            self.mainCategoryView?.layoutIfNeeded()
+            self.subCategoryCollectionView?.isHidden = false
+            
+        }else{
+            
+            self.callAPI(){
+                self.searchView?.removeFromSuperview()
+                self.mainCateView?.removeFromSuperview()
+                
+                self.searchView = self.addSearchView()
+                self.mainCateView =  self.addCategoryView(self.searchView!, allProduct: true)
+                
+                self.productCollectionView.reloadData()
+            }
+        }
+        
         
     }
     
@@ -306,7 +308,7 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
         }
     }
     
-    private func callAPI(_ reload:Bool = false, _ loadSuccess:(()->Void)?  = nil){
+     func callAPI(_ reload:Bool = false, _ loadSuccess:(()->Void)?  = nil){
         var success = 0
 
         getRecommendByCate(reloadData: reload) {
@@ -366,7 +368,7 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
         
     }
     
-    private  func getProductByCate(loadmore:Bool = false, _ avaliable:(()->Void)?  = nil){
+    func getProductByCate(loadmore:Bool = false, _ avaliable:(()->Void)?  = nil){
         
         var isLoading:Bool = true
         if self.productItems != nil {
@@ -437,6 +439,9 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
                     if let count =  self.productItems?.count {
                         if count > 0 {
                             if count == self.skipItem {
+                                if let index = self.itemSection.firstIndex(of: "no_more_item") {
+                                    self.itemSection.remove(at: index)
+                                }
                                 self.itemSection.append("no_more_item")
                             }
                         }
@@ -731,6 +736,9 @@ extension ProductShoppingViewController {
             return CGSize(width: width, height: height)
         
         case "filter":
+            guard let count = self.productItems?.count, count > 0 else {
+                return CGSize.zero
+            }
             let height = CGFloat(50.0)
             return CGSize(width: width, height: height)
             
@@ -759,6 +767,13 @@ extension ProductShoppingViewController {
         return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
     }
     
+    func showProductNotFoundCell(_ collectionView: UICollectionView, kind:String,  indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "NotFoundItemCell", for: indexPath) as! NotFoundItemCell
+        header.nameLabel.text = NSLocalizedString("string-string-not-found-product", comment: "")
+        return header
+    }
+    
+    
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
@@ -780,9 +795,16 @@ extension ProductShoppingViewController {
             
         case "product":
             guard let count = self.productItems?.count, count > 0 else {
-                let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "NotFoundItemCell", for: indexPath) as! NotFoundItemCell
-                header.nameLabel.text = NSLocalizedString("string-string-not-found-product", comment: "")
-                return header
+                if self.notFoundHeader == "NotFoundItemCell" {
+                    let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "NotFoundItemCell", for: indexPath) as! NotFoundItemCell
+                    header.nameLabel.text = NSLocalizedString("string-string-not-found-product", comment: "")
+                    return header
+                }else{
+                    let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ImageProductNotFoundCell", for: indexPath) as! ImageProductNotFoundCell
+                    header.nameLabel.text = NSLocalizedString("string-string-sesarch-not-found-product", comment: "")
+                    return header
+                }
+                
             }
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderSectionCell", for: indexPath) as! HeaderSectionCell
             header.headerNameLabel.text = ""
@@ -826,7 +848,7 @@ extension ProductShoppingViewController {
             
         case "product":
             guard let count = self.productItems?.count, count > 0 else {
-                return CGSize(width: width, height: CGFloat(50.0))
+                return CGSize(width: width, height: self.sizeNotFoundHeader)
             }
             
             return CGSize.zero

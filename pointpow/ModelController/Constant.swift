@@ -677,7 +677,11 @@ extension URL {
 }
 
 extension String {
-   
+    func utf8EncodedString() -> String {
+        let messageData = self.data(using: .nonLossyASCII)
+        let text = String(data: messageData!, encoding: .utf8)
+        return text!
+    }
     func isCompose(of thaiWord:String) -> Bool {
         return self.range(of: thaiWord, options: .literal) != nil ? true : false
     }
@@ -899,6 +903,7 @@ struct Constant {
         static let recommend_byCate = "\(HOST)privilege/recommended/{{cate}}?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
         static let recommend_all = "\(HOST)privilege/recommended?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
         
+        static let search_product = "\(HOST)privilege/search-product?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
         static let product_all = "\(HOST)privilege/products?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
         static let product_ByCate = "\(HOST)privilege/products/{{cate}}?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
         static let subCateByCate = "\(HOST)privilege/sub-category/{{cate}}?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"

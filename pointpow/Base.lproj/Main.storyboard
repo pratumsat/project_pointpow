@@ -11958,6 +11958,55 @@
             </objects>
             <point key="canvasLocation" x="-4600" y="344"/>
         </scene>
+        <!--สินค้า-->
+        <scene sceneID="MgD-oS-N7m">
+            <objects>
+                <viewController storyboardIdentifier="SearchProductViewController" id="lSy-kz-TyC" customClass="SearchProductViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0cv-lc-Sdz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eDr-51-dZn">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Uzd-mD-QWq">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="Hf9-zx-eFN">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mN4-Wb-R2M" firstAttribute="bottom" secondItem="eDr-51-dZn" secondAttribute="bottom" id="FTM-Qq-MIx"/>
+                            <constraint firstItem="eDr-51-dZn" firstAttribute="top" secondItem="mN4-Wb-R2M" secondAttribute="top" id="L7p-V8-eKB"/>
+                            <constraint firstItem="mN4-Wb-R2M" firstAttribute="trailing" secondItem="eDr-51-dZn" secondAttribute="trailing" id="W9r-lh-QNR"/>
+                            <constraint firstItem="eDr-51-dZn" firstAttribute="leading" secondItem="mN4-Wb-R2M" secondAttribute="leading" id="qZN-lo-JCa"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mN4-Wb-R2M"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="สินค้า" image="ic-shopping-tab-prod" selectedImage="ic-shopping-tab-prod-active" id="lFo-Y6-Yhf"/>
+                    <navigationItem key="navigationItem" id="gjM-21-jNu"/>
+                    <connections>
+                        <outlet property="productCollectionView" destination="eDr-51-dZn" id="wS5-99-oa4"/>
+                        <outlet property="topConstraintCollectionView" destination="L7p-V8-eKB" id="Zgh-3h-UXS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ar1-lc-oDa" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5443" y="-1805"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bg-cart-red" width="201" height="131"/>

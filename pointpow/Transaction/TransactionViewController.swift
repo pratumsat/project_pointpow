@@ -198,59 +198,13 @@ class TransactionViewController: BaseViewController  ,UICollectionViewDataSource
             
             
             if let items = self.pointHistory?[indexPath.section].items?[indexPath.row] {
-                var status = items["status"] as? String ?? ""
-                var pointable_type = items["pointable_type"] as? String ?? ""
-                var date = items["created_at"] as? String ?? ""
-                var mType = items["type"] as? String ?? ""
-                var point = items["point"] as? NSNumber ?? 0
-                var pointable_type_service = items["pointable_type_service"] as? String ?? ""
-                /*
-                date = "17-05-2562 16:01"
-                
-                if indexPath.row == 0 {
-                    pointable_type = "pointsaving"
-                    mType = "out"
-                    status = "success"
-                    point = NSNumber(value: 800)
-                    
-                }else if indexPath.row == 1 {
-                    pointable_type = "shopping"
-                    mType = "out"
-                    status = "success"
-                    point = NSNumber(value: 1800)
-                    
-                }else if indexPath.row == 2 {
-                    pointable_type = "exchange"
-                    mType = "in"
-                    status = "success"
-                    point = NSNumber(value: 3500)
-                    
-                }else if indexPath.row == 3 {
-                    pointable_type = "pointtransfer"
-                    mType = "out"
-                    status = "success"
-                    point = NSNumber(value: 20)
-                    
-                }else if indexPath.row == 4 {
-                    pointable_type = "exchange"
-                    mType = "in"
-                    status = "success"
-                    point = NSNumber(value: 1500)
-                    
-                }else if indexPath.row == 5 {
-                    pointable_type = "pointtransfer"
-                    mType = "in"
-                    status = "success"
-                    point = NSNumber(value: 200)
-                    
-                }else if indexPath.row == 6 {
-                    pointable_type = "pointtransfer"
-                    mType = "out"
-                    status = "success"
-                    point = NSNumber(value: 20)
-                    
-                }
-                */
+                let status = items["status"] as? String ?? ""
+                let pointable_type = items["pointable_type"] as? String ?? ""
+                let date = items["created_at"] as? String ?? ""
+                let mType = items["type"] as? String ?? ""
+                let point = items["point"] as? NSNumber ?? 0
+                let pointable_type_service = items["pointable_type_service"] as? String ?? ""
+               
                 
 
                 transCell.dateLabel.text = date

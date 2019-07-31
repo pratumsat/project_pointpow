@@ -585,6 +585,17 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }
     }
     
+    func showSearchProductByKeyword(_ animated:Bool, keyword:String){
+        
+        if let vc:SearchProductViewController  = self.storyboard?.instantiateViewController(withIdentifier: "SearchProductViewController") as? SearchProductViewController {
+            
+            vc.keyword = keyword
+            vc.loadDataByCateID = 0
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    
+    
     func showProductDetail(_ animated:Bool, product_id:Int){
         
         if let vc:ProductDetailViewController  = self.storyboard?.instantiateViewController(withIdentifier: "ProductDetailViewController") as? ProductDetailViewController {

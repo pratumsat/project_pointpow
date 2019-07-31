@@ -35,7 +35,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Wv-oV-LCa">
-                                <rect key="frame" x="50" y="10" width="187" height="83.5"/>
+                                <rect key="frame" x="50" y="10" width="192" height="83.5"/>
                                 <string key="text">ที่อยู่ในการจัดส่งไปรษณีย์ ที่อยู่ในการจัดส่งไปรษณีย์ ที่อยู่ในการจัดส่งไปรษณีย์ ที่อยู่ในการจัดส่งไปรษณีย์ที่อยู่ในการจัดส่งไปรษณีย์</string>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
                                 <nil key="highlightedColor"/>
@@ -85,7 +85,7 @@
                             <constraint firstItem="2Ez-YH-NR9" firstAttribute="leading" secondItem="0h4-kP-62l" secondAttribute="trailing" id="KLU-kR-dcd"/>
                             <constraint firstItem="KRv-kM-qra" firstAttribute="leading" secondItem="Tas-mJ-eTm" secondAttribute="leading" constant="20" id="KQe-Zd-uVJ"/>
                             <constraint firstItem="0h4-kP-62l" firstAttribute="top" secondItem="Tas-mJ-eTm" secondAttribute="top" id="L5n-Ep-UDO"/>
-                            <constraint firstItem="0h4-kP-62l" firstAttribute="leading" secondItem="1Wv-oV-LCa" secondAttribute="trailing" constant="10" id="NXf-4F-Znc"/>
+                            <constraint firstItem="0h4-kP-62l" firstAttribute="leading" secondItem="1Wv-oV-LCa" secondAttribute="trailing" constant="5" id="NXf-4F-Znc"/>
                             <constraint firstItem="J6r-2w-afb" firstAttribute="centerY" secondItem="cOL-c8-vWR" secondAttribute="centerY" id="VPR-aw-2VO"/>
                             <constraint firstItem="KRv-kM-qra" firstAttribute="width" secondItem="KRv-kM-qra" secondAttribute="height" multiplier="1:1" id="WAs-Dm-W7F"/>
                             <constraint firstAttribute="trailing" secondItem="2Ez-YH-NR9" secondAttribute="trailing" constant="5" id="Wtf-XE-SQg"/>

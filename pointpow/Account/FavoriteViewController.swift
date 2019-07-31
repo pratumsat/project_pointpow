@@ -235,10 +235,8 @@ class FavoriteViewController: BaseViewController, UICollectionViewDelegate , UIC
                         self.showBankTransferView(true, itemData: provider, pointAmount: pointAmount.stringValue)
                        
                     }
-                    
                 }
             
-                
                 self.refreshControl?.endRefreshing()
             }, error: { (error) in
                 if let mError = error as? [String:AnyObject]{

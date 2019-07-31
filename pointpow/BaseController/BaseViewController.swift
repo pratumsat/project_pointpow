@@ -766,9 +766,10 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     }
     
     
-    func showBankTransferView(_ animated:Bool, itemData:[String:AnyObject]){
+    func showBankTransferView(_ animated:Bool, itemData:[String:AnyObject], pointAmount:String? = nil){
         if let vc:BankPointTransferViewController  = self.storyboard?.instantiateViewController(withIdentifier: "BankPointTransferViewController") as? BankPointTransferViewController {
             vc.itemData = itemData
+            vc.pointAmount = pointAmount
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }

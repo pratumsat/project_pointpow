@@ -32,6 +32,7 @@ class BankPointTransferViewController: BaseViewController  {
 
     var userData:AnyObject?
     var itemData:[String:AnyObject]?
+    var pointAmount:String?
     
     var exchangeRate = 0
     var minPointTransfer = 0.0
@@ -108,7 +109,7 @@ class BankPointTransferViewController: BaseViewController  {
         let less = UITapGestureRecognizer(target: self, action: #selector(lessPointTapped))
         self.lessImageView.isUserInteractionEnabled = true
         self.lessImageView.addGestureRecognizer(less)
-        self.lessImageView.isUserInteractionEnabled = false
+        
         
         let more = UITapGestureRecognizer(target: self, action: #selector(morePointTapped))
         self.moreImageView.isUserInteractionEnabled = true
@@ -124,7 +125,6 @@ class BankPointTransferViewController: BaseViewController  {
             let name = data["name"] as? String ?? ""
             let point_name = data["point_name"] as? String ?? ""
             let exchange_rate = data["exchange_rate"] as? [[String:AnyObject]] ?? [[:]]
-            
             
             
             
@@ -153,7 +153,16 @@ class BankPointTransferViewController: BaseViewController  {
                 numberFormatter.numberStyle = .decimal
                 numberFormatter.minimumFractionDigits = 0
                 
-                self.amountTextField.text = numberFormatter.string(from: NSNumber(value: minimum.intValue))
+                
+                
+                if let amount = self.pointAmount {
+                    self.amountTextField.text = amount
+                    self.enableImageView(self.lessImageView)
+                }else{
+                    //default
+                    self.amountTextField.text = numberFormatter.string(from: NSNumber(value: minimum.intValue))
+                    self.disableImageView(lessImageView)
+                }
                 
                 let toPointPow = minimum.doubleValue*rate.doubleValue
                 self.exchangeRate2Label.text = numberFormatter.string(from: NSNumber(value: toPointPow))

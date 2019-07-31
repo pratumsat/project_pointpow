@@ -231,7 +231,9 @@ class FavoriteViewController: BaseViewController, UICollectionViewDelegate , UIC
                                                          note: note ,
                                                          pointAmount: pointAmount.stringValue)
                     }else{
-                        //pointrefill
+                        let provider = mResult["provider"] as? [String:AnyObject] ?? [:]
+                        self.showBankTransferView(true, itemData: provider, pointAmount: pointAmount.stringValue)
+                       
                     }
                     
                 }

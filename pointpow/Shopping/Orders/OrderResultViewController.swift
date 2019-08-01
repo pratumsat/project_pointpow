@@ -172,14 +172,31 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
         self.resultCollectionView.delegate = self
         self.resultCollectionView.showsVerticalScrollIndicator = false
         
+        self.registerNib(self.resultCollectionView, "OrderResult2Cell")
         self.registerNib(self.resultCollectionView, "OrderResultCell")
         self.registerHeaderNib(self.resultCollectionView, "HeadCell")
+        
+        
+        
+        //                    if !hideFinishButton {
+        //                        self.slipView = orderCell.mView.copyView()
+        //                        let allSubView = slipView!.allSubViewsOf(type: UIView.self)
+        //
+        //                        for itemView  in  allSubView {
+        //                            if let itemTag = itemView.viewWithTag(1) {
+        //                                itemTag.isHidden = true
+        //                            }
+        //                        }
+        //                        if !self.addSlipSuccess {
+        //                            self.addSlipImageView()
+        //                        }
+        //                    }
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         guard (self.transferResult != nil) else { return 0 }
         
-        return 1
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -189,104 +206,119 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell:UICollectionViewCell?
         
-        if let orderCell = collectionView.dequeueReusableCell(withReuseIdentifier: "OrderResultCell", for: indexPath) as? OrderResultCell {
+        switch indexPath.section {
+        case 0:
+            if let orderCell = collectionView.dequeueReusableCell(withReuseIdentifier: "OrderResultCell", for: indexPath) as? OrderResultCell {
+                
+                DispatchQueue.main.async {
+                    orderCell.mView.roundCorners(corners: [.topLeft, .topRight], radius: 10.0)
+                    orderCell.mView.layer.masksToBounds = true
+                }
+                
+                if hideFinishButton {
+                    orderCell.bgsuccessImageView.image = nil
+                }
+                
+                cell = orderCell
+                
+                if let data = transferResult {
+                    let created_at = data["created_at"] as? String ?? ""
+                    let transaction_no = data["transaction_no"] as? String ?? ""
+                    let payment_status = data["payment_status"] as? String ?? ""
+                   
+                    
+                    orderCell.transection_ref_Label.text = transaction_no
+                    orderCell.dateLabel.text = created_at
+                    
+                    
+                    switch payment_status.lowercased() {
+                    case "success":
+                        orderCell.statusImageView.image = UIImage(named: "ic-status-success2")
+                        orderCell.statusLabel.textColor = Constant.Colors.GREEN
+                        orderCell.statusLabel.text = NSLocalizedString("string-item-transaction-status-success", comment: "")
+                        
+                        break
+                    case "waiting":
+                        orderCell.statusImageView.image = UIImage(named: "ic-status-waitting")
+                        orderCell.statusLabel.textColor = Constant.Colors.ORANGE
+                        orderCell.statusLabel.text = NSLocalizedString("string-item-transaction-status-waitting", comment: "")
+                        
+                        break
+                    case "fail":
+                        orderCell.statusImageView.image = UIImage(named: "ic-status-cancel")
+                        orderCell.statusLabel.textColor = Constant.Colors.PRIMARY_COLOR
+                        orderCell.statusLabel.text = NSLocalizedString("string-item-transaction-status-fail", comment: "")
+                        
+                        break
+                    default:
+                        break
+                    }
+                }
+            }
+        case 1:
+            if let orderCell = collectionView.dequeueReusableCell(withReuseIdentifier: "OrderResult2Cell", for: indexPath) as? OrderResult2Cell {
+                cell = orderCell
+                DispatchQueue.main.async {
+                    orderCell.mView.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 10.0)
+                    orderCell.mView.layer.masksToBounds = true
+                }
+                
+                if hideFinishButton {
+                    orderCell.bgsuccessImageView.image = nil
+                }
             
-            if hideFinishButton {
-                orderCell.bgsuccessImageView.image = nil
+                if let data = transferResult {
+                    let total_point = data["total_point"] as?  NSNumber ?? 0
+                    let pay_by = data["pay_by"] as? NSNumber ?? 0
+                    let pointpow_amount = data["pointpow_amount"] as? NSNumber ?? 0
+                    let credit_amount = data["credit_amount"] as? NSNumber ?? 0
+                    
+                    let shipping_address = data["shipping_address"] as? [String:AnyObject] ?? [:]
+                    let address = shipping_address["address"] as? String ?? ""
+                    let mobile = shipping_address["mobile"] as? String ?? ""
+                    let name = shipping_address["name"] as? String ?? ""
+                    
+                    let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
+                    var fulladdress = "\(name) \(newMText.chunkFormatted())"
+                    fulladdress += "\n\(address)"
+                    
+                    let itemProducts = data["item"] as? [[String:AnyObject]] ?? []
+                    
+                    let numberFormatter = NumberFormatter()
+                    numberFormatter.numberStyle = .decimal
+                    numberFormatter.minimumFractionDigits = 2
+                    
+                    orderCell.totalLabel.text = numberFormatter.string(from: total_point)
+                    
+                    orderCell.pointLabel.text = numberFormatter.string(from: pointpow_amount)
+                    
+                    orderCell.cdLabel.text = numberFormatter.string(from: credit_amount)
+                    
+                    var sumAmount = 0
+                    for item in itemProducts {
+                        let amount = item["amount"] as? NSNumber ?? 0
+                        sumAmount += amount.intValue
+                    }
+                    let txtAmount = NSLocalizedString("string-item-shopping-cart-txt-total-amount", comment: "")
+                    orderCell.totalAmountLabel.text = txtAmount.replace(target: "{{amount}}", withString: "\(sumAmount)")
+                    orderCell.addressLabel.text = fulladdress
+                    orderCell.marginTopAddress.constant = margintop
+                    
+                    if pay_by == 1 {
+                        orderCell.hideCreditCardLabel()
+                    }else{
+                        orderCell.showCreditCardLabel()
+                    }
+                 
+                }
             }
             
-            cell = orderCell
-            
-            if let data = transferResult {
-                
-                let created_at = data["created_at"] as? String ?? ""
-                let transaction_no = data["transaction_no"] as? String ?? ""
-                let payment_status = data["payment_status"] as? String ?? ""
-                let total_point = data["total_point"] as?  NSNumber ?? 0
-                let pay_by = data["pay_by"] as? NSNumber ?? 0
-                let pointpow_amount = data["pointpow_amount"] as? NSNumber ?? 0
-                let credit_amount = data["credit_amount"] as? NSNumber ?? 0
-                
-                let shipping_address = data["shipping_address"] as? [String:AnyObject] ?? [:]
-                let address = shipping_address["address"] as? String ?? ""
-                let email = shipping_address["email"] as? String ?? ""
-                let mobile = shipping_address["mobile"] as? String ?? ""
-                let name = shipping_address["name"] as? String ?? ""
-               
-                let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
-                var fulladdress = "\(name) \(newMText.chunkFormatted())"
-                fulladdress += "\n\(address)"
-              
-                
-                let itemProducts = data["item"] as? [[String:AnyObject]] ?? []
-                
-                let numberFormatter = NumberFormatter()
-                numberFormatter.numberStyle = .decimal
-                numberFormatter.minimumFractionDigits = 2
-                
-                orderCell.totalLabel.text = numberFormatter.string(from: total_point)
-                
-                orderCell.pointLabel.text = numberFormatter.string(from: pointpow_amount)
-                
-                orderCell.cdLabel.text = numberFormatter.string(from: credit_amount)
-                
-                var sumAmount = 0
-                for item in itemProducts {
-                    let amount = item["amount"] as? NSNumber ?? 0
-                    sumAmount += amount.intValue
-                }
-                let txtAmount = NSLocalizedString("string-item-shopping-cart-txt-total-amount", comment: "")
-                orderCell.totalAmountLabel.text = txtAmount.replace(target: "{{amount}}", withString: "\(sumAmount)")
-                orderCell.transection_ref_Label.text = transaction_no
-                orderCell.dateLabel.text = created_at
-                orderCell.addressLabel.text = fulladdress
-                orderCell.marginTopAddress.constant = margintop
-                
-                if pay_by == 1 {
-                    orderCell.hideCreditCardLabel()
-                }else{
-                    orderCell.showCreditCardLabel()
-                }
-                
-                
-                switch payment_status.lowercased() {
-                case "success":
-                    orderCell.statusImageView.image = UIImage(named: "ic-status-success2")
-                    orderCell.statusLabel.textColor = Constant.Colors.GREEN
-                    orderCell.statusLabel.text = NSLocalizedString("string-item-transaction-status-success", comment: "")
-                    
-                    break
-                case "pending":
-                    orderCell.statusImageView.image = UIImage(named: "ic-status-waitting")
-                    orderCell.statusLabel.textColor = Constant.Colors.ORANGE
-                    orderCell.statusLabel.text = NSLocalizedString("string-item-transaction-status-waitting", comment: "")
-                    
-                    break
-                case "fail":
-                    orderCell.statusImageView.image = UIImage(named: "ic-status-cancel")
-                    orderCell.statusLabel.textColor = Constant.Colors.PRIMARY_COLOR
-                    orderCell.statusLabel.text = NSLocalizedString("string-item-transaction-status-fail", comment: "")
-                    
-                    break
-                default:
-                    break
-                }
-                
-                if !hideFinishButton {
-                    self.slipView = orderCell.mView.copyView()
-                    let allSubView = slipView!.allSubViewsOf(type: UIView.self)
-                    
-                    for itemView  in  allSubView {
-                        if let itemTag = itemView.viewWithTag(1) {
-                            itemTag.isHidden = true
-                        }
-                    }
-                    if !self.addSlipSuccess {
-                        self.addSlipImageView()
-                    }
-                }
+        default:
+            if cell == nil {
+                cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as UICollectionViewCell
             }
         }
+        
         
         if cell == nil {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as UICollectionViewCell
@@ -299,15 +331,20 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         
-       
-        return CGSize(width: collectionView.frame.width, height: 30)
+        if section == 0 {
+            return CGSize(width: collectionView.frame.width, height: 30)
+        }
+        return CGSize.zero
+        
     }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         
-        return CGSize(width: collectionView.frame.width, height: 30)
+        if section == 1 {
+            return CGSize(width: collectionView.frame.width, height: 30)
+        }
+        return CGSize.zero
+        
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
@@ -321,26 +358,33 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
         
         
         let width = collectionView.frame.width - 40
-        var height = CGFloat(410)
-        height += self.margintop
        
-        if let data = transferResult {
-           
-            let shipping_address = data["shipping_address"] as? [String:AnyObject] ?? [:]
-            let address = shipping_address["address"] as? String ?? ""
-            let email = shipping_address["email"] as? String ?? ""
-            let mobile = shipping_address["mobile"] as? String ?? ""
-            let name = shipping_address["name"] as? String ?? ""
+       
+        switch indexPath.section {
+        case 0:
+           return CGSize(width: width, height: CGFloat(160))
+        case 1:
+            var height = CGFloat(210)
+            height += self.margintop
+            if let data = transferResult {
+                let shipping_address = data["shipping_address"] as? [String:AnyObject] ?? [:]
+                let address = shipping_address["address"] as? String ?? ""
+                let mobile = shipping_address["mobile"] as? String ?? ""
+                let name = shipping_address["name"] as? String ?? ""
+                
+                let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
+                var fulladdress = "\(name) \(newMText.chunkFormatted())"
+                fulladdress += "\n\(address)"
+                
+                let heightAddress = heightForView(text: fulladdress, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 18)!, width: width - 20)
+                height += heightAddress
+            }
             
-            let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
-            var fulladdress = "\(name) \(newMText.chunkFormatted())"
-            fulladdress += "\n\(address)"
-            
-            let heightAddress = heightForView(text: fulladdress, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 18)!, width: width - 20)
-            height += heightAddress
+            return CGSize(width: width, height: height)
+        default:
+            return CGSize.zero
         }
-        
-        return CGSize(width: width, height: height)
+       
         
     }
 

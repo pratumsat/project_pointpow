@@ -218,7 +218,7 @@ class TransactionViewController: BaseViewController  ,UICollectionViewDataSource
                 if status.lowercased() == "success" {
                     transCell.statusLabel.text = NSLocalizedString("string-status-transection-history-success", comment: "")
                 
-                }else if status.lowercased() == "pending" {
+                }else if status.lowercased() == "waiting" {
                     transCell.statusLabel.text = NSLocalizedString("string-status-transection-history-pending", comment: "")
                 
                 }else{

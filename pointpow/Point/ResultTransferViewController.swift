@@ -225,16 +225,17 @@ class ResultTransferViewController: BaseViewController  , UICollectionViewDelega
                         itemCell.statusLabel.text = NSLocalizedString("string-dailog-point-transaction-status-success", comment: "")
                         
                         break
-                    case "pending":
+                    case "pending", "waiting":
                         itemCell.statusImageView.image = UIImage(named: "ic-status-waitting")
                         itemCell.statusLabel.textColor = Constant.Colors.ORANGE
                         itemCell.statusLabel.text = NSLocalizedString("string-dailog-point-transaction-status-waitting", comment: "")
                         
                         break
-                    case "fail":
+                    case "fail" , "cancel":
                         itemCell.statusImageView.image = UIImage(named: "ic-status-cancel")
                         itemCell.statusLabel.textColor = Constant.Colors.PRIMARY_COLOR
                         itemCell.statusLabel.text = NSLocalizedString("string-dailog-point-transaction-status-fail", comment: "")
+                        
                         
                         break
                     default:
@@ -262,6 +263,8 @@ class ResultTransferViewController: BaseViewController  , UICollectionViewDelega
             }
         }else if indexPath.section == 1 {
             if let favCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemFavorCell", for: indexPath) as? ItemFavorCell {
+                
+                
                 
                 favCell.favorCallback = {
                     

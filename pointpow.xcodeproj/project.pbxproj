@@ -183,6 +183,11 @@
 		C139488922968D60003E0527 /* TransectionFilterResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C139488822968D60003E0527 /* TransectionFilterResultViewController.swift */; };
 		C139488B2297D881003E0527 /* MyQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C139488A2297D881003E0527 /* MyQRCodeViewController.swift */; };
 		C139488D2297F674003E0527 /* PopupChosenQRcodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C139488C2297F674003E0527 /* PopupChosenQRcodeViewController.swift */; };
+		C13AD40422F2CCA60070F5E8 /* ShoppingHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13AD40222F2CCA60070F5E8 /* ShoppingHistoryCell.swift */; };
+		C13AD40522F2CCA60070F5E8 /* ShoppingHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13AD40322F2CCA60070F5E8 /* ShoppingHistoryCell.xib */; };
+		C13AD40722F2E9B90070F5E8 /* FilterShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13AD40622F2E9B90070F5E8 /* FilterShoppingViewController.swift */; };
+		C13AD40A22F2FCD30070F5E8 /* OrderResult2Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13AD40822F2FCD30070F5E8 /* OrderResult2Cell.swift */; };
+		C13AD40B22F2FCD30070F5E8 /* OrderResult2Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13AD40922F2FCD30070F5E8 /* OrderResult2Cell.xib */; };
 		C13D4FE4229E45F300516CE8 /* UIWebViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D4FE3229E45F300516CE8 /* UIWebViewExt.swift */; };
 		C13D4FE7229E464500516CE8 /* JSInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D4FE6229E464500516CE8 /* JSInterface.swift */; };
 		C13D4FE9229E474E00516CE8 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D4FE8229E474E00516CE8 /* PaymentViewController.swift */; };
@@ -555,6 +560,11 @@
 		C139488822968D60003E0527 /* TransectionFilterResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransectionFilterResultViewController.swift; sourceTree = "<group>"; };
 		C139488A2297D881003E0527 /* MyQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQRCodeViewController.swift; sourceTree = "<group>"; };
 		C139488C2297F674003E0527 /* PopupChosenQRcodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupChosenQRcodeViewController.swift; sourceTree = "<group>"; };
+		C13AD40222F2CCA60070F5E8 /* ShoppingHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingHistoryCell.swift; sourceTree = "<group>"; };
+		C13AD40322F2CCA60070F5E8 /* ShoppingHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingHistoryCell.xib; sourceTree = "<group>"; };
+		C13AD40622F2E9B90070F5E8 /* FilterShoppingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterShoppingViewController.swift; sourceTree = "<group>"; };
+		C13AD40822F2FCD30070F5E8 /* OrderResult2Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderResult2Cell.swift; sourceTree = "<group>"; };
+		C13AD40922F2FCD30070F5E8 /* OrderResult2Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderResult2Cell.xib; sourceTree = "<group>"; };
 		C13D4FE3229E45F300516CE8 /* UIWebViewExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIWebViewExt.swift; sourceTree = "<group>"; };
 		C13D4FE6229E464500516CE8 /* JSInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSInterface.swift; sourceTree = "<group>"; };
 		C13D4FE8229E474E00516CE8 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
@@ -1035,6 +1045,7 @@
 		C11A93B4218C00A000627B44 /* CollectionCell */ = {
 			isa = PBXGroup;
 			children = (
+				C13AD40122F2CC830070F5E8 /* ShoppingHistoryCell */,
 				C1493CEF22F1811D001335D6 /* ProductNotFoundCell */,
 				C12F744E22E98986000E49F8 /* Order */,
 				C19BEEF622CCA5C700855FBF /* CartCell */,
@@ -1268,6 +1279,7 @@
 			isa = PBXGroup;
 			children = (
 				C12F744822E972E5000E49F8 /* ShoppingHistoryViewController.swift */,
+				C13AD40622F2E9B90070F5E8 /* FilterShoppingViewController.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -1279,8 +1291,19 @@
 				C12F745022E9899B000E49F8 /* ConfirmOrderCell.xib */,
 				C15DB52022EAD52000B9E3CC /* OrderResultCell.swift */,
 				C15DB52122EAD52000B9E3CC /* OrderResultCell.xib */,
+				C13AD40822F2FCD30070F5E8 /* OrderResult2Cell.swift */,
+				C13AD40922F2FCD30070F5E8 /* OrderResult2Cell.xib */,
 			);
 			path = Order;
+			sourceTree = "<group>";
+		};
+		C13AD40122F2CC830070F5E8 /* ShoppingHistoryCell */ = {
+			isa = PBXGroup;
+			children = (
+				C13AD40222F2CCA60070F5E8 /* ShoppingHistoryCell.swift */,
+				C13AD40322F2CCA60070F5E8 /* ShoppingHistoryCell.xib */,
+			);
+			path = ShoppingHistoryCell;
 			sourceTree = "<group>";
 		};
 		C13D4FE5229E463900516CE8 /* JSInterface */ = {
@@ -1831,9 +1854,11 @@
 				C12A88CD22E32BA500D40155 /* TaxInvoiceSelectCell.xib in Resources */,
 				C12CCC662282B43A00F26DCC /* PromoCell.xib in Resources */,
 				C1817D9E219C07DF009507DB /* ItemBankCell.xib in Resources */,
+				C13AD40B22F2FCD30070F5E8 /* OrderResult2Cell.xib in Resources */,
 				C1247C582219B2E7005D6F7A /* NextButtonCell.xib in Resources */,
 				C1DEBE8C2188115D00CBB95F /* GoogleService-Info.plist in Resources */,
 				C1249EBB2224F04D00F56FA0 /* map.jpg in Resources */,
+				C13AD40522F2CCA60070F5E8 /* ShoppingHistoryCell.xib in Resources */,
 				C181F064220C00B8003F7C70 /* SaveButtonProfileCell.xib in Resources */,
 				C12732482253905100A9EE74 /* HeadWinnerCollectionViewCell.xib in Resources */,
 				C1817D97219BFCDE009507DB /* FriendCollectionCell.xib in Resources */,
@@ -2096,12 +2121,14 @@
 				C1817DAA219E7F18009507DB /* BankPointTransferViewController.swift in Sources */,
 				C19BEF0D22CD945700855FBF /* CartAddressShippingCell.swift in Sources */,
 				C10CA1A221914F2E00316DF3 /* MainTabbarViewController.swift in Sources */,
+				C13AD40A22F2FCD30070F5E8 /* OrderResult2Cell.swift in Sources */,
 				C11BFCAF221BF70300F066DE /* WithDrawShippingThaiPostCell.swift in Sources */,
 				C11AFC7C22C1DE4C00573C27 /* ShoppingNavViewController.swift in Sources */,
 				C181F06A220D8566003F7C70 /* ProfileTableViewCell.swift in Sources */,
 				C11E61A422D5E6AA00753E52 /* NotFoundItemCell.swift in Sources */,
 				C15F16FD2293CEE6005E8E71 /* TransactionFilterViewController.swift in Sources */,
 				C1F761022216BB95000A2CA9 /* SavingResultViewController.swift in Sources */,
+				C13AD40422F2CCA60070F5E8 /* ShoppingHistoryCell.swift in Sources */,
 				C197FF3E22093D9B002F24E8 /* RegisterGoldCell.swift in Sources */,
 				C1F0C08722C4B00300A49BAA /* PageViewFooterCollectionViewCell.swift in Sources */,
 				C10CA1A42191755C00316DF3 /* PersonalPopupViewController.swift in Sources */,
@@ -2119,6 +2146,7 @@
 				C1817D99219C041F009507DB /* PointTransferViewController.swift in Sources */,
 				C11BFCA4221BC5D900F066DE /* GoldWithDrawChooseShippingViewController.swift in Sources */,
 				C197FF2A22082503002F24E8 /* GoldProfileViewController.swift in Sources */,
+				C13AD40722F2E9B90070F5E8 /* FilterShoppingViewController.swift in Sources */,
 				C197FEDE21DC8E98002F24E8 /* ResetNav.swift in Sources */,
 				C1B32E372251EAE9006AD7F2 /* LuckyDrawViewController.swift in Sources */,
 				C121FB64228ACC5500043387 /* AboutPointPowViewController.swift in Sources */,

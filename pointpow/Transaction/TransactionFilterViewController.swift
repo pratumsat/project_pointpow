@@ -78,9 +78,9 @@ class TransactionFilterViewController: BaseViewController {
         self.showTransectionFilterResultPage(true, title, params: params)
     }
     @objc func statusPendingTapped(){
-        self.status = "pending"
+        self.status = "waiting"
         let title = NSLocalizedString("string-status-transection-history-pending", comment: "")
-        let params:Parameters = ["status" : "pending" ]
+        let params:Parameters = ["status" : "waiting" ]
         self.showTransectionFilterResultPage(true, title, params: params)
     }
     @objc func statusFailTapped(){

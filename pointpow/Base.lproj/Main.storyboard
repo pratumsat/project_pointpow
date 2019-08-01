@@ -9010,7 +9010,6 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="Vxm-n6-uNF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
-                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="สถานะ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i2r-7C-6Vo">
@@ -9020,7 +9019,6 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="yz6-Wd-qDE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
-                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -12034,6 +12032,198 @@
             </objects>
             <point key="canvasLocation" x="-4600" y="-1805"/>
         </scene>
+        <!--Filter Shopping View Controller-->
+        <scene sceneID="uCx-Em-7dT">
+            <objects>
+                <viewController storyboardIdentifier="FilterShoppingViewController" id="muo-Ko-4Df" customClass="FilterShoppingViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FZk-GA-yKZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BTF-I2-6dd">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rn0-dX-xey">
+                                        <rect key="frame" x="10" y="30" width="394" height="154.33333333333334"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-address-setting-cate1" translatesAutoresizingMaskIntoConstraints="NO" id="qeu-b4-Vai">
+                                                <rect key="frame" x="173.33333333333334" y="30.000000000000004" width="47.333333333333343" height="47.333333333333343"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="qeu-b4-Vai" secondAttribute="height" multiplier="1:1" id="UWy-3Q-qxJ"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-address-shopping-cate3" translatesAutoresizingMaskIntoConstraints="NO" id="Dq9-Hj-Ce3">
+                                                <rect key="frame" x="39.333333333333329" y="30.000000000000004" width="47.333333333333329" height="47.333333333333343"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="Dq9-Hj-Ce3" secondAttribute="height" multiplier="1:1" id="B6A-YW-LFA"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-shopping-filter-success" translatesAutoresizingMaskIntoConstraints="NO" id="5EW-BP-c5H">
+                                                <rect key="frame" x="307.33333333333331" y="28.000000000000004" width="47.333333333333314" height="47.333333333333343"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="5EW-BP-c5H" secondAttribute="height" multiplier="1:1" id="gjQ-72-RcB"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="อยู้ในระหว่าง" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giE-9f-0CY">
+                                                <rect key="frame" x="165.66666666666666" y="77.333333333333343" width="62.666666666666657" height="21"/>
+                                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
+                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="จัดส่งสินค้า" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J08-cM-Vqn">
+                                                <rect key="frame" x="303.66666666666669" y="77.333333333333343" width="54.666666666666686" height="21"/>
+                                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
+                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="เตรียมการจัดส่ง" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wie-8V-eI5">
+                                                <rect key="frame" x="24.333333333333336" y="77.333333333333343" width="77.333333333333314" height="21"/>
+                                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
+                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="สินค้า" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Gb-hC-vwp">
+                                                <rect key="frame" x="49.333333333333336" y="93.333333333333343" width="27.333333333333336" height="21"/>
+                                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
+                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="การจัดส่งสินค้า" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCB-kW-2PB">
+                                                <rect key="frame" x="160" y="93.333333333333343" width="74" height="21"/>
+                                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
+                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="เรียบร้อย" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yDi-uZ-c8d">
+                                                <rect key="frame" x="309.33333333333331" y="93.333333333333343" width="43.333333333333314" height="21"/>
+                                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
+                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="5EW-BP-c5H" firstAttribute="centerY" secondItem="qeu-b4-Vai" secondAttribute="centerY" constant="-2" id="0dF-2i-yOq"/>
+                                            <constraint firstItem="aCB-kW-2PB" firstAttribute="top" secondItem="giE-9f-0CY" secondAttribute="bottom" constant="-5" id="1MD-Am-e6f"/>
+                                            <constraint firstItem="Dq9-Hj-Ce3" firstAttribute="centerY" secondItem="qeu-b4-Vai" secondAttribute="centerY" id="BPL-gs-dfX"/>
+                                            <constraint firstItem="Dq9-Hj-Ce3" firstAttribute="centerX" secondItem="rn0-dX-xey" secondAttribute="centerX" multiplier="0.32" id="CAs-vu-yMI"/>
+                                            <constraint firstAttribute="bottom" secondItem="aCB-kW-2PB" secondAttribute="bottom" constant="40" id="CHD-3w-wUn"/>
+                                            <constraint firstItem="giE-9f-0CY" firstAttribute="top" secondItem="qeu-b4-Vai" secondAttribute="bottom" id="FJQ-su-5Ov"/>
+                                            <constraint firstItem="3Gb-hC-vwp" firstAttribute="top" secondItem="Wie-8V-eI5" secondAttribute="bottom" constant="-5" id="KXc-FE-wS3"/>
+                                            <constraint firstItem="qeu-b4-Vai" firstAttribute="width" secondItem="rn0-dX-xey" secondAttribute="width" multiplier="0.12" id="MDG-VX-mhE"/>
+                                            <constraint firstItem="3Gb-hC-vwp" firstAttribute="centerX" secondItem="Wie-8V-eI5" secondAttribute="centerX" id="OpE-xb-jMM"/>
+                                            <constraint firstItem="aCB-kW-2PB" firstAttribute="centerX" secondItem="giE-9f-0CY" secondAttribute="centerX" id="PeR-pZ-ECG"/>
+                                            <constraint firstItem="giE-9f-0CY" firstAttribute="centerX" secondItem="qeu-b4-Vai" secondAttribute="centerX" id="RuC-d5-9iD"/>
+                                            <constraint firstItem="J08-cM-Vqn" firstAttribute="centerX" secondItem="5EW-BP-c5H" secondAttribute="centerX" id="TD4-zZ-P7P"/>
+                                            <constraint firstItem="Wie-8V-eI5" firstAttribute="top" secondItem="giE-9f-0CY" secondAttribute="top" id="Vfk-Qd-eiK"/>
+                                            <constraint firstItem="J08-cM-Vqn" firstAttribute="top" secondItem="giE-9f-0CY" secondAttribute="top" id="Xiy-ES-Ekj"/>
+                                            <constraint firstItem="yDi-uZ-c8d" firstAttribute="centerX" secondItem="J08-cM-Vqn" secondAttribute="centerX" id="Ydz-lP-79g"/>
+                                            <constraint firstItem="qeu-b4-Vai" firstAttribute="centerX" secondItem="rn0-dX-xey" secondAttribute="centerX" id="Zo2-be-ud2"/>
+                                            <constraint firstItem="yDi-uZ-c8d" firstAttribute="top" secondItem="J08-cM-Vqn" secondAttribute="bottom" constant="-5" id="aEp-gn-2fF"/>
+                                            <constraint firstItem="5EW-BP-c5H" firstAttribute="centerX" secondItem="rn0-dX-xey" secondAttribute="centerX" multiplier="1.68" id="fbX-Ff-8Tm"/>
+                                            <constraint firstItem="Dq9-Hj-Ce3" firstAttribute="width" secondItem="qeu-b4-Vai" secondAttribute="width" id="fxv-OD-NpI"/>
+                                            <constraint firstItem="Wie-8V-eI5" firstAttribute="centerX" secondItem="Dq9-Hj-Ce3" secondAttribute="centerX" id="pyO-HL-O3P"/>
+                                            <constraint firstItem="qeu-b4-Vai" firstAttribute="top" secondItem="rn0-dX-xey" secondAttribute="top" constant="30" id="rkh-7M-SVg"/>
+                                            <constraint firstItem="5EW-BP-c5H" firstAttribute="width" secondItem="qeu-b4-Vai" secondAttribute="width" id="zq7-9Q-v0D"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kjo-or-I6Z">
+                                        <rect key="frame" x="10" y="224.33333333333331" width="394" height="143.33333333333331"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-cart-shopping-pay" translatesAutoresizingMaskIntoConstraints="NO" id="4Sk-uI-bIy">
+                                                <rect key="frame" x="173.33333333333334" y="30.000000000000004" width="47.333333333333343" height="47.333333333333343"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="4Sk-uI-bIy" secondAttribute="height" multiplier="1:1" id="Wja-fP-s9c"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-cart-shopping-pay" translatesAutoresizingMaskIntoConstraints="NO" id="gic-Eq-5w2">
+                                                <rect key="frame" x="39.333333333333329" y="30.000000000000004" width="47.333333333333329" height="47.333333333333343"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="gic-Eq-5w2" secondAttribute="height" multiplier="1:1" id="bso-7u-VcM"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4u-bx-1yh">
+                                                <rect key="frame" x="167.33333333333334" y="82.333333333333371" width="59.333333333333343" height="21"/>
+                                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
+                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Point Pow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atu-T4-ND0">
+                                                <rect key="frame" x="37" y="82.333333333333371" width="52.333333333333343" height="21"/>
+                                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
+                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="4Sk-uI-bIy" firstAttribute="centerX" secondItem="Kjo-or-I6Z" secondAttribute="centerX" id="BW1-y5-RaV"/>
+                                            <constraint firstItem="atu-T4-ND0" firstAttribute="centerX" secondItem="gic-Eq-5w2" secondAttribute="centerX" id="E1r-Ci-wd1"/>
+                                            <constraint firstItem="gic-Eq-5w2" firstAttribute="centerX" secondItem="Kjo-or-I6Z" secondAttribute="centerX" multiplier="0.32" id="GmY-bU-R0l"/>
+                                            <constraint firstItem="4Sk-uI-bIy" firstAttribute="top" secondItem="Kjo-or-I6Z" secondAttribute="top" constant="30" id="IiX-bf-duc"/>
+                                            <constraint firstItem="z4u-bx-1yh" firstAttribute="centerX" secondItem="4Sk-uI-bIy" secondAttribute="centerX" id="JWu-I5-UHd"/>
+                                            <constraint firstItem="z4u-bx-1yh" firstAttribute="top" secondItem="4Sk-uI-bIy" secondAttribute="bottom" constant="5" id="YF7-jE-s4e"/>
+                                            <constraint firstAttribute="bottom" secondItem="z4u-bx-1yh" secondAttribute="bottom" constant="40" id="YGp-gg-DfK"/>
+                                            <constraint firstItem="4Sk-uI-bIy" firstAttribute="width" secondItem="Kjo-or-I6Z" secondAttribute="width" multiplier="0.12" id="fgz-3F-Txq"/>
+                                            <constraint firstItem="gic-Eq-5w2" firstAttribute="centerY" secondItem="4Sk-uI-bIy" secondAttribute="centerY" id="rs7-OP-MB2"/>
+                                            <constraint firstItem="atu-T4-ND0" firstAttribute="top" secondItem="z4u-bx-1yh" secondAttribute="top" id="s21-9m-7HV"/>
+                                            <constraint firstItem="gic-Eq-5w2" firstAttribute="width" secondItem="4Sk-uI-bIy" secondAttribute="width" id="zSk-gr-QKn"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="rn0-dX-xey" firstAttribute="top" secondItem="BTF-I2-6dd" secondAttribute="top" constant="30" id="gI4-V0-ekK"/>
+                                    <constraint firstItem="rn0-dX-xey" firstAttribute="leading" secondItem="BTF-I2-6dd" secondAttribute="leading" constant="10" id="gjV-XA-Aoc"/>
+                                    <constraint firstAttribute="bottom" secondItem="Kjo-or-I6Z" secondAttribute="bottom" constant="60" id="hBT-sA-wdx"/>
+                                    <constraint firstItem="Kjo-or-I6Z" firstAttribute="top" secondItem="rn0-dX-xey" secondAttribute="bottom" constant="40" id="hsd-3i-PUf"/>
+                                    <constraint firstAttribute="trailing" secondItem="Kjo-or-I6Z" secondAttribute="trailing" constant="10" id="oTI-U2-gX2"/>
+                                    <constraint firstItem="Kjo-or-I6Z" firstAttribute="leading" secondItem="BTF-I2-6dd" secondAttribute="leading" constant="10" id="qEj-Bm-Ev0"/>
+                                    <constraint firstAttribute="trailing" secondItem="rn0-dX-xey" secondAttribute="trailing" constant="10" id="saV-3W-5xr"/>
+                                    <constraint firstItem="rn0-dX-xey" firstAttribute="centerX" secondItem="BTF-I2-6dd" secondAttribute="centerX" id="uGA-lG-2RR"/>
+                                </constraints>
+                            </scrollView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="วิธีการชำระเงิน" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOx-b5-N0g">
+                                <rect key="frame" x="25" y="255.33333333333337" width="100" height="26"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="Llz-xn-2gW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="สถานะ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rkw-mo-Saw">
+                                <rect key="frame" x="25" y="61" width="60" height="26"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="KSd-ow-N5z"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="20"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Rkw-mo-Saw" firstAttribute="leading" secondItem="rn0-dX-xey" secondAttribute="leading" constant="15" id="4AB-Ui-yyB"/>
+                            <constraint firstItem="jOx-b5-N0g" firstAttribute="leading" secondItem="Kjo-or-I6Z" secondAttribute="leading" constant="15" id="9yB-TX-TTE"/>
+                            <constraint firstItem="9Ni-ZX-MZJ" firstAttribute="bottom" secondItem="BTF-I2-6dd" secondAttribute="bottom" id="Brp-rU-yMg"/>
+                            <constraint firstItem="BTF-I2-6dd" firstAttribute="top" secondItem="9Ni-ZX-MZJ" secondAttribute="top" id="GWt-F1-NGg"/>
+                            <constraint firstItem="BTF-I2-6dd" firstAttribute="trailing" secondItem="9Ni-ZX-MZJ" secondAttribute="trailing" id="KY7-JR-3Oz"/>
+                            <constraint firstItem="BTF-I2-6dd" firstAttribute="leading" secondItem="9Ni-ZX-MZJ" secondAttribute="leading" id="Mjp-yk-Nrz"/>
+                            <constraint firstItem="Rkw-mo-Saw" firstAttribute="centerY" secondItem="rn0-dX-xey" secondAttribute="top" id="ovT-fL-7Fi"/>
+                            <constraint firstItem="jOx-b5-N0g" firstAttribute="centerY" secondItem="Kjo-or-I6Z" secondAttribute="top" id="qXj-Im-1bg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9Ni-ZX-MZJ"/>
+                    </view>
+                    <connections>
+                        <outlet property="serviceContainView" destination="Kjo-or-I6Z" id="O4c-ND-PIw"/>
+                        <outlet property="statusContainView" destination="rn0-dX-xey" id="JmW-5j-71T"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d3J-29-yeZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2852.1739130434785" y="-338.16964285714283"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bg-cart-red" width="201" height="131"/>
@@ -12043,6 +12233,8 @@
         <image name="bg-office-map" width="1138" height="800"/>
         <image name="bg-red-cover" width="1240" height="552"/>
         <image name="ic-add-address" width="90" height="89"/>
+        <image name="ic-address-setting-cate1" width="90" height="90"/>
+        <image name="ic-address-shopping-cate3" width="90" height="90"/>
         <image name="ic-arrow-transfer" width="300" height="83"/>
         <image name="ic-back-white" width="54" height="69"/>
         <image name="ic-birthday" width="28.799999237060547" height="28.799999237060547"/>
@@ -12052,6 +12244,7 @@
         <image name="ic-cart-cart" width="90" height="90"/>
         <image name="ic-cart-redeem" width="90" height="90"/>
         <image name="ic-cart-share" width="90" height="90"/>
+        <image name="ic-cart-shopping-pay" width="90" height="90"/>
         <image name="ic-choose-1" width="90" height="89"/>
         <image name="ic-choose-2" width="90" height="89"/>
         <image name="ic-dropdown-2" width="14.399999618530273" height="14.880000114440918"/>
@@ -12086,6 +12279,7 @@
         <image name="ic-popup-qrcode" width="180" height="179"/>
         <image name="ic-scan-white" width="180" height="180"/>
         <image name="ic-search" width="120" height="119"/>
+        <image name="ic-shopping-filter-success" width="90" height="90"/>
         <image name="ic-shopping-more" width="45" height="26"/>
         <image name="ic-shopping-tab-account" width="75" height="74"/>
         <image name="ic-shopping-tab-account-active" width="75" height="74"/>

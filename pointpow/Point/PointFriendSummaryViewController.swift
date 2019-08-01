@@ -320,7 +320,7 @@ class PointFriendSummaryViewController: BaseViewController  , UICollectionViewDe
                         statusCell.statusLabel.text = NSLocalizedString("string-dailog-point-transaction-status-success", comment: "")
                         
                         break
-                    case "pending":
+                    case "pending" , "waiting":
                         statusCell.statusImageView.image = UIImage(named: "ic-status-waitting")
                         statusCell.statusLabel.textColor = Constant.Colors.ORANGE
                         statusCell.statusLabel.text = NSLocalizedString("string-dailog-point-transaction-status-success", comment: "")

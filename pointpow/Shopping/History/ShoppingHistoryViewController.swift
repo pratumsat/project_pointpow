@@ -27,7 +27,7 @@ class ShoppingHistoryViewController: ShoppingBaseViewController {
     }
     
     @objc func filterTapped(){
-        
+        self.showHistoryShoppingFilter(true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -49,7 +49,7 @@ class ShoppingHistoryViewController: ShoppingBaseViewController {
         
         self.addRefreshViewController(self.historyCollectionView)
         
-        self.registerNib(self.historyCollectionView, "TransactionGoldCell")
+        self.registerNib(self.historyCollectionView, "ShoppingHistoryCell")
         self.registerHeaderNib(self.historyCollectionView, "HeaderCollectionReusableView")
     }
     
@@ -163,8 +163,75 @@ extension ShoppingHistoryViewController {
         }
         var cell:UICollectionViewCell?
         
-        if let transCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TransactionGoldCell", for: indexPath) as? TransactionGoldCell {
+        if let transCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingHistoryCell", for: indexPath) as? ShoppingHistoryCell {
             cell = transCell
+            
+            if let item = self.shoppingHistory?[indexPath.section].items?[indexPath.row] {
+                let payment_status  = item["payment_status"] as? String ?? ""
+                let order_status = item["order_status"] as? String ?? ""
+                let shipping_status = item["shipping_status"] as? String ?? ""
+                let total_point = item["total_point"] as? NSNumber ?? 0
+                let transaction_no = item["transaction_no"] as? String ?? ""
+                let created_at = item["created_at"] as? String ?? ""
+                
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                numberFormatter.minimumFractionDigits = 2
+                
+                transCell.titleLabel.text = transaction_no
+                transCell.statusImageView.image = UIImage(named: "ic-service-type-shopping")
+                transCell.amountLabel.text = numberFormatter.string(from: total_point)
+                transCell.dateLabel.text = created_at
+                
+                if order_status.lowercased() != "complete" {
+                    transCell.shippingLabel.textColor = Constant.Colors.ORANGE
+                }else{
+                    transCell.shippingLabel.textColor = Constant.Colors.GREEN
+                }
+                
+                switch shipping_status.lowercased() {
+                case "complete":
+                    transCell.shippingLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-success", comment: "")
+                    break
+                case "waiting":
+                    transCell.shippingLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-waiting", comment: "")
+                    break
+                case "shipping":
+                    transCell.shippingLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-shipping", comment: "")
+                    break
+                    
+                default:
+                    break
+                }
+                
+                
+                switch payment_status.lowercased() {
+                case "success":
+                    transCell.statusLabel.text = NSLocalizedString("string-status-transection-history-success", comment: "")
+                    break
+                case "waiting":
+                    transCell.statusLabel.text = NSLocalizedString("string-status-transection-history-pending", comment: "")
+                    break
+                case "fail":
+                    transCell.statusLabel.text = NSLocalizedString("string-status-transection-history-cancel", comment: "")
+                    break
+                default:
+                    break
+                }
+            }
+            
+            
+            let heightOfView = transCell.bounds.height
+            transCell.heightConstraint.constant = heightOfView
+            transCell.heightLogoConstraint.constant = heightOfView * 0.3
+            
+            if let size = self.shoppingHistory?[indexPath.section].items?.count  {
+                if (indexPath.row + 1) == size {
+                    transCell.heightConstraint.constant = heightOfView * 0.5
+                }else{
+                    transCell.heightConstraint.constant = heightOfView
+                }
+            }
         }
         
         
@@ -196,7 +263,7 @@ extension ShoppingHistoryViewController {
         
         
         let width = collectionView.frame.width
-        return CGSize(width: width  , height: 80)
+        return CGSize(width: width  , height: 90)
         
     }
     

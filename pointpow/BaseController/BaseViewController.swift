@@ -656,6 +656,13 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
+    func showHistoryShoppingFilter(_ animated:Bool){
+        if let vc:FilterShoppingViewController = self.storyboard?.instantiateViewController(withIdentifier: "FilterShoppingViewController") as? FilterShoppingViewController{
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
     func showTransectionFilterResultPage(_ animated:Bool, _ titlePage:String, params:Parameters?){
         
         if let vc:TransectionFilterResultViewController = self.storyboard?.instantiateViewController(withIdentifier: "TransectionFilterResultViewController") as? TransectionFilterResultViewController{

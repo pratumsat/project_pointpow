@@ -29,7 +29,8 @@ class BankPointTransferViewController: BaseViewController  {
     @IBOutlet weak var exchangeRate2Label: UILabel!
     @IBOutlet weak var exchange2View: UIView!
     
-
+    @IBOutlet weak var exchangeInPointPowLabel: UILabel!
+    
     var userData:AnyObject?
     var itemData:[String:AnyObject]?
     var pointAmount:String?
@@ -138,15 +139,15 @@ class BankPointTransferViewController: BaseViewController  {
                 self.exchangeRate = minimum.intValue
                 self.minPointTransfer = minimum.doubleValue
                 
-                
-                let txtExchange = "\(point_in) \(point_name) = \(point_out) Point Pow"
                 self.providerPointNameLabel.text = point_name
                 self.providerPointNameLabel.setLineSpacing(lineSpacing: 0, lineHeightMultiple: 0.9)
-                self.providerPointNameLabel.textAlignment = .center
-                // for thai sans
                 
+                let unit = NSLocalizedString("string-point-transfer-unit-point", comment: "")
+                let inExchange = "\(point_in) \(unit)"
+                let outExchange = "\(point_out) Point Pow"
                 
-                self.exchangeRateLabel.text = txtExchange
+                self.exchangeRateLabel.text = inExchange
+                self.exchangeInPointPowLabel.text = outExchange
                 
                 
                 let numberFormatter = NumberFormatter()

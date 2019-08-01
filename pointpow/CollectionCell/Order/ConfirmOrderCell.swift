@@ -20,7 +20,9 @@ class ConfirmOrderCell: UICollectionViewCell {
     @IBOutlet weak var cdLabel: UILabel!
     @IBOutlet weak var pointLabel: UILabel!
    
+   @IBOutlet weak var totalAmountPriceLabel: UILabel!
     
+    @IBOutlet weak var shippingPriceLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         

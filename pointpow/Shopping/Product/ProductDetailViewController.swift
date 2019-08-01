@@ -336,7 +336,16 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
             if let item = self.productDetail?.first {
                 let brand = item["brand"] as? [String:AnyObject] ?? [:]
                 
-                let product_image = self.productImage?.first ?? [:]
+                var product_image = self.productImage?.first ?? [:]
+                if let mResult = self.productImage {
+                    for item in mResult {
+                        let type = item["type"] as? String ?? ""
+                        if type.lowercased() == "thumb" {
+                            product_image = item
+                            break
+                        }
+                    }
+                }
                 
                 let cartTuple:(amount:Int,
                     product: [String:AnyObject],

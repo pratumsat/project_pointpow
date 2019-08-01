@@ -600,7 +600,6 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                 
                 }
                 
-                
             }
             
             avaliable?()
@@ -751,9 +750,13 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                 
                 let numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal
-                numberFormatter.minimumFractionDigits = 2
+                //numberFormatter.minimumFractionDigits = 2
+                
+                sumCell.totalAmountPriceLabel.text  = numberFormatter.string(from: NSNumber(value: self.totalOrder?.totalPrice ?? 0))
                 
                 sumCell.totalLabel.text = numberFormatter.string(from: NSNumber(value: self.totalOrder?.totalPrice ?? 0))
+                
+                sumCell.shippingPriceLabel.text = numberFormatter.string(from: NSNumber(value: 0))
                 
                 let txtAmount = NSLocalizedString("string-item-shopping-cart-txt-total-amount", comment: "")
                 
@@ -764,7 +767,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                 cell = howtoCell
                 let numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal
-                numberFormatter.minimumFractionDigits = 2
+                //numberFormatter.minimumFractionDigits = 2
                 
                 let pointbalance = DataController.sharedInstance.getCurrentPointBalance()
                 let total = self.totalOrder?.totalPrice ?? 0
@@ -1013,7 +1016,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             return CGSize(width: collectionView.frame.width, height: height)
             
         case "summary":
-            let height = CGFloat(130.0)
+            let height = CGFloat(150.0)
             return CGSize(width: collectionView.frame.width, height: height)
             
         case "howtopay":

@@ -63,13 +63,13 @@ class ConfirmOrderViewController: BaseViewController , UICollectionViewDelegate 
             
             if self.pay_by == 1 {
                 var product:[String:String] = [:]
-                var price:[String:String] = [:]
+                //var price:[String:String] = [:]
                 if let tuple = self.tupleProduct as? [(title:String, id:Int, amount:Int, price:Double, select:Bool, brand:String, cover:String, stock:Int)] {
                     
                     for item in tuple {
                         if item.select {
                             product["\(item.id)"] = "\(item.amount)"
-                            price["\(item.id)"] = "\(item.price)"
+                            //price["\(item.id)"] = "\(item.price)"
                         }
                     }
                 }
@@ -78,8 +78,7 @@ class ConfirmOrderViewController: BaseViewController , UICollectionViewDelegate 
                                             "invoice_id": self.invoice_id ?? "",
                                             "shipping_id": self.shipping_id ?? "",
                                             "total_point": self.totalOrder?.totalPrice ?? "",
-                                            "product": product,
-                                            "price": price ]
+                                            "product": product ]
                 print(parameter)
                 
                 
@@ -156,12 +155,16 @@ class ConfirmOrderViewController: BaseViewController , UICollectionViewDelegate 
                 
                 let numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal
-                numberFormatter.minimumFractionDigits = 2
+                //numberFormatter.minimumFractionDigits = 2
                 
                 if let current = self.currentPointBalance {
                     confirmCell.pointBalanceLabel.text = "\(current)"
                 }
                 confirmCell.totalLabel.text = numberFormatter.string(from: NSNumber(value: self.totalOrder?.totalPrice ?? 0))
+                
+                confirmCell.totalAmountPriceLabel.text = numberFormatter.string(from: NSNumber(value: self.totalOrder?.totalPrice ?? 0))
+                
+                confirmCell.shippingPriceLabel.text = numberFormatter.string(from: NSNumber(value:  0))
                 
                 let txtAmount = NSLocalizedString("string-item-shopping-cart-txt-total-amount", comment: "")
                 
@@ -233,10 +236,10 @@ class ConfirmOrderViewController: BaseViewController , UICollectionViewDelegate 
             let pointbalance = DataController.sharedInstance.getCurrentPointBalance()
             let total = self.totalOrder?.totalPrice ?? 0
             if pointbalance.doubleValue < total {
-                let height = CGFloat(320.0)
+                let height = CGFloat(350.0)
                 return CGSize(width: collectionView.frame.width - 40, height: height)
             }else{
-                let height = CGFloat(270.0)
+                let height = CGFloat(300.0)
                 return CGSize(width: collectionView.frame.width - 40, height: height)
             }
         }else{

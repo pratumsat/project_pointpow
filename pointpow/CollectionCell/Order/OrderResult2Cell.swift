@@ -9,7 +9,9 @@
 import UIKit
 
 class OrderResult2Cell: UICollectionViewCell {
-
+    @IBOutlet weak var amountPriceLabel: UILabel!
+    @IBOutlet weak var shippingPriceLabel: UILabel!
+    
     @IBOutlet weak var addressLabel: UILabel!
     
     @IBOutlet weak var marginTopAddress: NSLayoutConstraint!

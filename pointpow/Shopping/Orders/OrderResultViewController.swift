@@ -174,6 +174,7 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
         
         self.registerNib(self.resultCollectionView, "OrderResult2Cell")
         self.registerNib(self.resultCollectionView, "OrderResultCell")
+        self.registerNib(self.resultCollectionView, "OrderItemCell")
         self.registerHeaderNib(self.resultCollectionView, "HeadCell")
         
         
@@ -196,10 +197,14 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         guard (self.transferResult != nil) else { return 0 }
         
-        return 2
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if section == 1 {
+            let countItem = self.transferResult?["item"] as? [[String:AnyObject]] ?? []
+            return countItem.count
+        }
         return 1
     }
     
@@ -256,6 +261,53 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
                 }
             }
         case 1:
+            if let orderCell = collectionView.dequeueReusableCell(withReuseIdentifier: "OrderItemCell", for: indexPath) as? OrderItemCell {
+                
+                /*DispatchQueue.main.async {
+                    orderCell.mView.roundCorners(corners: [.topLeft, .topRight], radius: 10.0)
+                    orderCell.mView.layer.masksToBounds = true
+                }*/
+                if hideFinishButton {
+                    orderCell.bgsuccessImageView.image = nil
+                }
+                
+                if let items = self.transferResult?["item"] as? [[String:AnyObject]]  {
+                   
+                    let amount = items[indexPath.row]["amount"] as? NSNumber ?? 0
+                    let point = items[indexPath.row]["point"] as? String ?? "0"
+                    
+                    let product_detail = items[indexPath.row]["product_detail"] as? [String:AnyObject] ?? [:]
+                    let brand_name = product_detail["brand_name"] as? String ?? ""
+                    let brand_image = product_detail["brand_image"] as? String ?? ""
+                    let full_path_image = product_detail["full_path_image"] as? String ?? ""
+                    let product_name = product_detail["product_name"] as? String ?? ""
+                   
+                    let numberFormatter = NumberFormatter()
+                    numberFormatter.numberStyle = .decimal
+                    
+                    orderCell.nameBrandLabel.text = brand_name
+                    orderCell.productNameLabel.text = product_name
+                    orderCell.amountLabel.text = numberFormatter.string(from: amount)
+                    
+                    if let castDouble = Double(point) {
+                        orderCell.priceLabel.text = numberFormatter.string(from: NSNumber(value: castDouble ))
+                    }else{
+                        orderCell.priceLabel.text = point
+                    }
+                   
+                    
+                    if let url = URL(string: brand_image) {
+                        orderCell.brandImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
+                    }
+                    if let url = URL(string: full_path_image) {
+                        orderCell.productImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
+                    }
+                }
+                
+                cell = orderCell
+                
+            }
+        case 2:
             if let orderCell = collectionView.dequeueReusableCell(withReuseIdentifier: "OrderResult2Cell", for: indexPath) as? OrderResult2Cell {
                 cell = orderCell
                 DispatchQueue.main.async {
@@ -286,7 +338,11 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
                     
                     let numberFormatter = NumberFormatter()
                     numberFormatter.numberStyle = .decimal
-                    numberFormatter.minimumFractionDigits = 2
+                    
+                    
+                    orderCell.shippingPriceLabel.text = numberFormatter.string(from: NSNumber(value:0))
+                    
+                    orderCell.amountPriceLabel.text = numberFormatter.string(from: total_point)
                     
                     orderCell.totalLabel.text = numberFormatter.string(from: total_point)
                     
@@ -339,7 +395,7 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         
-        if section == 1 {
+        if section == 2 {
             return CGSize(width: collectionView.frame.width, height: 30)
         }
         return CGSize.zero
@@ -362,9 +418,11 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
        
         switch indexPath.section {
         case 0:
-           return CGSize(width: width, height: CGFloat(160))
+           return CGSize(width: width, height: CGFloat(180))
         case 1:
-            var height = CGFloat(210)
+            return CGSize(width: width, height: CGFloat(150))
+        case 2:
+            var height = CGFloat(230)
             height += self.margintop
             if let data = transferResult {
                 let shipping_address = data["shipping_address"] as? [String:AnyObject] ?? [:]

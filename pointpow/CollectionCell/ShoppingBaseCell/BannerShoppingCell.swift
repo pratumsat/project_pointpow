@@ -23,8 +23,8 @@ class BannerShoppingCell: PromotionCampainCell {
             cell = imageCell
             
             if let itemData = self.itemBanner?[indexPath.row] {
-                let attachment = itemData["attachment"] as? [String:AnyObject] ?? [:]
-                let full_location = attachment["full_location"] as? String ?? ""
+                let path_mobile = itemData["path_mobile"] as? [String:AnyObject] ?? [:]
+                let full_location = path_mobile["full_location"] as? String ?? ""
                 
               
                 if let url = URL(string: full_location) {

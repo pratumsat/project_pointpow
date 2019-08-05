@@ -190,6 +190,9 @@ extension ShoppingHistoryViewController {
                 }
                 
                 switch shipping_status.lowercased() {
+                case "cancel":
+                    transCell.shippingLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-cancel", comment: "")
+                    break
                 case "complete":
                     transCell.shippingLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-success", comment: "")
                     break

@@ -10,6 +10,8 @@ import UIKit
 
 class OrderItemCell: UICollectionViewCell {
 
+    @IBOutlet weak var productShippingStatusLabel: UILabel!
+    @IBOutlet weak var followProductView: UIView!
     @IBOutlet weak var nameBrandLabel: UILabel!
     @IBOutlet weak var shippingPriceLabel: UILabel!
     @IBOutlet weak var brandImageView: UIImageView!
@@ -24,4 +26,14 @@ class OrderItemCell: UICollectionViewCell {
         // Initialization code
     }
 
+    override var bounds : CGRect {
+        didSet {
+            self.layoutIfNeeded()
+        }
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.followProductView.borderRedColorProperties(borderWidth: 1.0)
+        
+    }
 }

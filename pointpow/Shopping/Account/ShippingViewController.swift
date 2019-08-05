@@ -35,8 +35,8 @@ class ShippingViewController: BaseViewController , UICollectionViewDelegate , UI
         
         
         self.registerHeaderNib(self.shippingCollectionView, "HeaderSectionCell")
-        self.registerNib(self.shippingCollectionView, "ItemProfileCell")
-        self.registerNib(self.shippingCollectionView, "ItemBankCell")
+        
+        self.registerNib(self.shippingCollectionView, "ItemLogisticsCell")
         
         self.getShippingList() {
             self.shippingCollectionView.reloadData()
@@ -85,40 +85,25 @@ extension ShippingViewController {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
        
         var cell:UICollectionViewCell?
-        
-     /*   if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemProfileCell", for: indexPath) as? ItemProfileCell{
-            
-            if let data = self.shippingItem?[indexPath.row] {
-                let name = data["name"] as? String ?? ""
-                itemCell.nameLabel.text = name
-            }
-            
-            
-            let lineBottom = UIView(frame: CGRect(x: 0, y: itemCell.frame.height - 1 , width: collectionView.frame.width, height: 1 ))
-            lineBottom.backgroundColor = Constant.Colors.LINE_PROFILE
-            itemCell.addSubview(lineBottom)
-            
-            cell = itemCell
-            
-        }*/
-        if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemBankCell", for: indexPath) as? ItemBankCell {
+     
+        if let item = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemLogisticsCell", for: indexPath) as? ItemLogisticsCell {
             cell = item
             
             if let data = self.shippingItem?[indexPath.row] {
                 let name = data["name"] as? String ?? ""
                 let logo = data["logo"] as? String ?? ""
-                item.providerLabel.text = name
+                item.nameLabel.text = name
   
                 if let url = URL(string: logo) {
-                    item.coverImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
+                    item.logoImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
                 }else{
-                    item.coverImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
+                    item.logoImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
                 }
             }
             
             
-            item.providerLabel.setLineSpacing(lineSpacing: 0, lineHeightMultiple: 0.9)   // for thai sans
-            item.providerLabel.textAlignment = .center
+            //item.providerLabel.setLineSpacing(lineSpacing: 0, lineHeightMultiple: 0.9)   // for thai sans
+            //item.providerLabel.textAlignment = .center
         }
         if cell == nil {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as UICollectionViewCell
@@ -142,14 +127,10 @@ extension ShippingViewController {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
        
-        let width = collectionView.frame.width / 3
-        let height = width
-        return CGSize(width: width, height: height)
-        /*
         let width = collectionView.frame.width
-        let height = CGFloat(50.0)
+        let height = CGFloat(70.0)
         return CGSize(width: width, height: height)
-         */
+      
         
     }
     

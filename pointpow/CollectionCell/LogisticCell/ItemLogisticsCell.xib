@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="ThaiSansNeue-Regular.ttf">
+            <string>ThaiSansNeue-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ItemLogisticsCell" customModule="pointpow" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="378" height="52"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="378" height="52"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JNm-8T-qLe">
+                        <rect key="frame" x="20" y="6.5" width="39" height="39"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="JNm-8T-qLe" secondAttribute="height" multiplier="1:1" id="JSa-At-7cT"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AMC-G0-L6V">
+                        <rect key="frame" x="74" y="14.5" width="294" height="23.5"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="18"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Rf-Yo-vcR">
+                        <rect key="frame" x="0.0" y="51" width="378" height="1"/>
+                        <color key="backgroundColor" white="0.84956478310000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="9hr-7e-i8w"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="JNm-8T-qLe" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="F6L-1J-B8S"/>
+                <constraint firstItem="JNm-8T-qLe" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.75" id="HOL-FH-Jbu"/>
+                <constraint firstItem="AMC-G0-L6V" firstAttribute="leading" secondItem="JNm-8T-qLe" secondAttribute="trailing" constant="15" id="Ouu-C4-Ohi"/>
+                <constraint firstAttribute="bottom" secondItem="0Rf-Yo-vcR" secondAttribute="bottom" id="arG-Og-CQo"/>
+                <constraint firstItem="0Rf-Yo-vcR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="cAY-O6-wqf"/>
+                <constraint firstAttribute="trailing" secondItem="AMC-G0-L6V" secondAttribute="trailing" constant="10" id="eFa-kW-nq8"/>
+                <constraint firstAttribute="trailing" secondItem="0Rf-Yo-vcR" secondAttribute="trailing" id="eZu-bK-hao"/>
+                <constraint firstItem="JNm-8T-qLe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="lFi-cf-7Fo"/>
+                <constraint firstItem="AMC-G0-L6V" firstAttribute="centerY" secondItem="JNm-8T-qLe" secondAttribute="centerY" id="usb-Tt-sbV"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="378" height="52"/>
+            <connections>
+                <outlet property="logoImageView" destination="JNm-8T-qLe" id="YNh-NI-235"/>
+                <outlet property="nameLabel" destination="AMC-G0-L6V" id="QgV-dN-LVT"/>
+            </connections>
+            <point key="canvasLocation" x="-124.8" y="40.479760119940032"/>
+        </collectionViewCell>
+    </objects>
+</document>

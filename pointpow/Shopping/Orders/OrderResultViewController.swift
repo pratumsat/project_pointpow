@@ -269,10 +269,15 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
                 }*/
                 if hideFinishButton {
                     orderCell.bgsuccessImageView.image = nil
+                    orderCell.followProductView.isHidden = false
+                    orderCell.productShippingStatusLabel.isHidden = false
+                }else{
+                    orderCell.followProductView.isHidden = true
+                    orderCell.productShippingStatusLabel.isHidden = true
                 }
                 
                 if let items = self.transferResult?["item"] as? [[String:AnyObject]]  {
-                   
+                    let shipping_status = items[indexPath.row]["shipping_status"] as? String ?? ""
                     let amount = items[indexPath.row]["amount"] as? NSNumber ?? 0
                     let point = items[indexPath.row]["point"] as? String ?? "0"
                     
@@ -301,6 +306,24 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
                     }
                     if let url = URL(string: full_path_image) {
                         orderCell.productImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
+                    }
+                    
+                    switch shipping_status.lowercased() {
+                    case "cancel":
+                        orderCell.productShippingStatusLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-cancel", comment: "")
+                        break
+                    case "complete":
+                        orderCell.productShippingStatusLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-success", comment: "")
+                        break
+                    case "waiting":
+                        orderCell.productShippingStatusLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-waiting", comment: "")
+                        break
+                    case "shipping":
+                        orderCell.productShippingStatusLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-shipping", comment: "")
+                        break
+                        
+                    default:
+                        break
                     }
                 }
                 

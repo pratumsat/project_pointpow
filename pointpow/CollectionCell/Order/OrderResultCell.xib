@@ -46,24 +46,24 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="เลขที่การทำรายการ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jZR-Vb-U7e">
-                                <rect key="frame" x="20" y="101" width="193.5" height="23.5"/>
+                                <rect key="frame" x="10" y="101" width="213.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="18"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="123456789000125" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="NCE-UM-aoN">
-                                <rect key="frame" x="223.5" y="101" width="100.5" height="23.5"/>
+                                <rect key="frame" x="233.5" y="101" width="100.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="เวลาที่ทำรายการ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CjP-VW-kxg">
-                                <rect key="frame" x="20" y="124.5" width="191.5" height="23.5"/>
+                                <rect key="frame" x="10" y="124.5" width="211.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="18"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="31-2-2018 : 20:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bYy-xZ-IKi">
-                                <rect key="frame" x="221.5" y="124.5" width="102.5" height="23.5"/>
+                                <rect key="frame" x="231.5" y="124.5" width="102.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -75,7 +75,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="สรุปรายการสั่งซื้อ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="niN-1f-gAy">
-                                <rect key="frame" x="20" y="165" width="96" height="24"/>
+                                <rect key="frame" x="10" y="165" width="96" height="24"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -83,10 +83,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Ype-5R-vZN" firstAttribute="centerX" secondItem="PSt-Na-WjR" secondAttribute="centerX" id="0gZ-aA-Orp"/>
-                            <constraint firstItem="jZR-Vb-U7e" firstAttribute="leading" secondItem="2g7-BJ-FWE" secondAttribute="leading" constant="20" id="2E5-wP-3oB"/>
+                            <constraint firstItem="jZR-Vb-U7e" firstAttribute="leading" secondItem="2g7-BJ-FWE" secondAttribute="leading" constant="10" id="2E5-wP-3oB"/>
                             <constraint firstItem="PSt-Na-WjR" firstAttribute="width" secondItem="2g7-BJ-FWE" secondAttribute="width" multiplier="0.16" id="4dX-Sa-nnl"/>
                             <constraint firstAttribute="trailing" secondItem="6Pg-KC-b0X" secondAttribute="trailing" constant="10" id="5OE-tK-56R"/>
-                            <constraint firstAttribute="trailing" secondItem="NCE-UM-aoN" secondAttribute="trailing" constant="20" id="5qN-AR-l8c"/>
+                            <constraint firstAttribute="trailing" secondItem="NCE-UM-aoN" secondAttribute="trailing" constant="10" id="5qN-AR-l8c"/>
                             <constraint firstItem="6Pg-KC-b0X" firstAttribute="leading" secondItem="2g7-BJ-FWE" secondAttribute="leading" constant="10" id="7vr-NS-5OQ"/>
                             <constraint firstItem="6Pg-KC-b0X" firstAttribute="top" secondItem="CjP-VW-kxg" secondAttribute="bottom" constant="8" id="ABu-Gv-Cqk"/>
                             <constraint firstItem="bYy-xZ-IKi" firstAttribute="leading" secondItem="CjP-VW-kxg" secondAttribute="trailing" constant="10" id="BPa-HO-qnL"/>

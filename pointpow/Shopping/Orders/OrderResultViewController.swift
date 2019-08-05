@@ -270,14 +270,7 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
                     orderCell.mView.roundCorners(corners: [.topLeft, .topRight], radius: 10.0)
                     orderCell.mView.layer.masksToBounds = true
                 }*/
-                if hideFinishButton {
-                    orderCell.bgsuccessImageView.image = nil
-                    orderCell.followProductView.isHidden = false
-                    orderCell.productShippingStatusLabel.isHidden = false
-                }else{
-                    orderCell.followProductView.isHidden = true
-                    orderCell.productShippingStatusLabel.isHidden = true
-                }
+                
                 
                 if let items = self.transferResult?["item"] as? [[String:AnyObject]]  {
                     let shipping_status = items[indexPath.row]["shipping_status"] as? String ?? ""
@@ -315,36 +308,45 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
                         self.showOrderShippingResultView(true , items: items ,shipping_status: shipping_status)
                     }
                  
-                    switch shipping_status.lowercased() {
-                    case "cancel":
+                    if hideFinishButton {
+                        orderCell.bgsuccessImageView.image = nil
+                        orderCell.productShippingStatusLabel.isHidden = false
+                        
+                        switch shipping_status.lowercased() {
+                        case "cancel":
+                            orderCell.isUserInteractionEnabled = false
+                            orderCell.productShippingStatusLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-cancel", comment: "")
+                            orderCell.productShippingStatusLabel.textColor = Constant.Colors.PRIMARY_COLOR
+                            orderCell.followProductView.isHidden = true
+                            
+                            break
+                        case "complete":
+                            orderCell.isUserInteractionEnabled = true
+                            orderCell.productShippingStatusLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-success", comment: "")
+                            orderCell.productShippingStatusLabel.textColor = Constant.Colors.GREEN
+                            orderCell.followProductView.isHidden = false
+                            break
+                        case "waiting":
+                            orderCell.isUserInteractionEnabled = true
+                            orderCell.productShippingStatusLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-waiting", comment: "")
+                            orderCell.productShippingStatusLabel.textColor = Constant.Colors.ORANGE
+                            orderCell.followProductView.isHidden = false
+                            break
+                        case "shipping":
+                            orderCell.isUserInteractionEnabled = true
+                            orderCell.productShippingStatusLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-shipping", comment: "")
+                            orderCell.productShippingStatusLabel.textColor = Constant.Colors.ORANGE
+                            orderCell.followProductView.isHidden = false
+                            break
+                            
+                        default:
+                            break
+                        }
+
+                    }else{
                         orderCell.isUserInteractionEnabled = false
-                        orderCell.productShippingStatusLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-cancel", comment: "")
-                        orderCell.productShippingStatusLabel.textColor = Constant.Colors.PRIMARY_COLOR
                         orderCell.followProductView.isHidden = true
-                        
-                        break
-                    case "complete":
-                        orderCell.isUserInteractionEnabled = true
-                        orderCell.productShippingStatusLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-success", comment: "")
-                        orderCell.productShippingStatusLabel.textColor = Constant.Colors.GREEN
-                        orderCell.followProductView.isHidden = false
-                        break
-                    case "waiting":
-                        orderCell.isUserInteractionEnabled = true
-                        orderCell.productShippingStatusLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-waiting", comment: "")
-                        orderCell.productShippingStatusLabel.textColor = Constant.Colors.ORANGE
-                        orderCell.followProductView.isHidden = false
-                        break
-                    case "shipping":
-                        orderCell.isUserInteractionEnabled = true
-                        orderCell.productShippingStatusLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-shipping", comment: "")
-                        orderCell.productShippingStatusLabel.textColor = Constant.Colors.ORANGE
-                        orderCell.followProductView.isHidden = false
-                        break
-                        
-                        
-                    default:
-                        break
+                        orderCell.productShippingStatusLabel.isHidden = true
                     }
                 }
                 
@@ -428,11 +430,7 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
         return cell!
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.section == 1 {
-            //self.showOrderShippingResultView(true , items: self.transferResult?["item"] as? [[String:AnyObject]] ?? nil)
-        }
-    }
+   
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         

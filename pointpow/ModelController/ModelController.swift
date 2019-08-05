@@ -3416,12 +3416,15 @@ class ModelController {
             self.loadingStart?()
         }
         
-
+        let token = DataController.sharedInstance.getToken()
+        let header: HTTPHeaders = ["Authorization":"Bearer \(token)"]
         let parameter:Parameters = ["session_id" : DataController.sharedInstance.getToken(),
                                     "member_id" : DataController.sharedInstance.getMemberId(),
                                     "status" : "new"]
+        
         Alamofire.request(Constant.PointPowAPI.getCarts , method: .get ,
-                          parameters : parameter).validate().responseJSON { response in
+                          parameters : parameter,
+                          headers: header).validate().responseJSON { response in
                             
                             
                             if isLoading {
@@ -3508,9 +3511,12 @@ class ModelController {
         if isLoading {
             self.loadingStart?()
         }
+        let token = DataController.sharedInstance.getToken()
+        let header: HTTPHeaders = ["Authorization":"Bearer \(token)"]
         
         Alamofire.request(Constant.PointPowAPI.shoppingBanner , method: .get ,
-                          parameters : params
+                          parameters : params,
+                          headers: header
             ).validate().responseJSON { response in
                 
                 
@@ -3599,8 +3605,12 @@ class ModelController {
             self.loadingStart?()
         }
         
+        let token = DataController.sharedInstance.getToken()
+        let header: HTTPHeaders = ["Authorization":"Bearer \(token)"]
+        
         Alamofire.request(Constant.PointPowAPI.specailDeal , method: .get ,
-                          parameters : params
+                          parameters : params,
+                          headers: header
             ).validate().responseJSON { response in
                 
                 
@@ -3688,9 +3698,12 @@ class ModelController {
         if isLoading {
             self.loadingStart?()
         }
+        let token = DataController.sharedInstance.getToken()
+        let header: HTTPHeaders = ["Authorization":"Bearer \(token)"]
         
         Alamofire.request(Constant.PointPowAPI.hotRedemption , method: .get ,
-                          parameters : params
+                          parameters : params,
+                          headers: header
             ).validate().responseJSON { response in
                 
                 
@@ -3787,9 +3800,14 @@ class ModelController {
         }else{
             url = Constant.PointPowAPI.recommend_byCate.replace(target: "{{cate}}", withString: "\(cateId)")
         }
+        
+        let token = DataController.sharedInstance.getToken()
+        let header: HTTPHeaders = ["Authorization":"Bearer \(token)"]
+        
         let parameter:Parameters = ["limit" : limit ]
         Alamofire.request("\(url)" , method: .get ,
-                          parameters : parameter
+                          parameters : parameter,
+                          headers: header
             ).validate().responseJSON { response in
                 
                 
@@ -3879,9 +3897,13 @@ class ModelController {
             self.loadingStart?()
         }
         
+        let token = DataController.sharedInstance.getToken()
+        let header: HTTPHeaders = ["Authorization":"Bearer \(token)"]
+        
         let url = Constant.PointPowAPI.subCateByCate.replace(target: "{{cate}}", withString: "\(cateId)")
         Alamofire.request("\(url)" , method: .get ,
-                          parameters : nil
+                          parameters : nil,
+                          headers: header
             ).validate().responseJSON { response in
                 
                 
@@ -3977,8 +3999,12 @@ class ModelController {
                                     "skip" : skip,
                                     "type" : type]
         
+        let token = DataController.sharedInstance.getToken()
+        let header: HTTPHeaders = ["Authorization":"Bearer \(token)"]
+        
         Alamofire.request("\(url)" , method: .get ,
-                          parameters : parameter
+                          parameters : parameter,
+                          headers: header
             ).validate().responseJSON { response in
                 
                 
@@ -4076,8 +4102,12 @@ class ModelController {
         }
         let parameter:Parameters = ["skip" : skip,
                                     "type" : type]
+        let token = DataController.sharedInstance.getToken()
+        let header: HTTPHeaders = ["Authorization":"Bearer \(token)"]
+        
         Alamofire.request("\(url)" , method: .get ,
-                          parameters : parameter
+                          parameters : parameter,
+                          headers: header
             ).validate().responseJSON { response in
                 
                 
@@ -4169,8 +4199,12 @@ class ModelController {
         
         let url = Constant.PointPowAPI.productImageByID.replace(target: "{{productId}}", withString: "\(productId)")
         
+        let token = DataController.sharedInstance.getToken()
+        let header: HTTPHeaders = ["Authorization":"Bearer \(token)"]
+        
         Alamofire.request(url , method: .get ,
-                          parameters : nil
+                          parameters : nil,
+                          headers: header
             ).validate().responseJSON { response in
                 
                 
@@ -4260,8 +4294,12 @@ class ModelController {
         
         let url = Constant.PointPowAPI.productDetailByID.replace(target: "{{productId}}", withString: "\(productId)")
         
+        let token = DataController.sharedInstance.getToken()
+        let header: HTTPHeaders = ["Authorization":"Bearer \(token)"]
+        
         Alamofire.request(url , method: .get ,
-                          parameters : nil
+                          parameters : nil,
+                          headers: header
             ).validate().responseJSON { response in
                 
                 
@@ -4352,8 +4390,12 @@ class ModelController {
         
         let url = Constant.PointPowAPI.productRelatedByID.replace(target: "{{productId}}", withString: "\(productId)")
         
+        let token = DataController.sharedInstance.getToken()
+        let header: HTTPHeaders = ["Authorization":"Bearer \(token)"]
+        
         Alamofire.request(url , method: .get ,
-                          parameters : nil
+                          parameters : nil,
+                          headers: header
             ).validate().responseJSON { response in
                 
                 

@@ -121,9 +121,12 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
             
             self.navigationItem.rightBarButtonItem = finishButton
             self.transactionId = (self.navigationController as? OrderResultNav)?.transactionId
+       
+        }else{
+            self.title = NSLocalizedString("string-title-shopping-result-1", comment: "")
         }
         
-        self.title = NSLocalizedString("string-title-shopping-result-1", comment: "")
+      
         self.setUp()
     }
     
@@ -239,19 +242,19 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
                     switch payment_status.lowercased() {
                     case "success":
                         orderCell.statusImageView.image = UIImage(named: "ic-status-success2")
-                        orderCell.statusLabel.textColor = Constant.Colors.GREEN
+                        //orderCell.statusLabel.textColor = Constant.Colors.GREEN
                         orderCell.statusLabel.text = NSLocalizedString("string-item-transaction-status-success", comment: "")
                         
                         break
                     case "waiting":
                         orderCell.statusImageView.image = UIImage(named: "ic-status-waitting")
-                        orderCell.statusLabel.textColor = Constant.Colors.ORANGE
+                        //orderCell.statusLabel.textColor = Constant.Colors.ORANGE
                         orderCell.statusLabel.text = NSLocalizedString("string-item-transaction-status-waitting", comment: "")
                         
                         break
                     case "fail":
                         orderCell.statusImageView.image = UIImage(named: "ic-status-cancel")
-                        orderCell.statusLabel.textColor = Constant.Colors.PRIMARY_COLOR
+                        //orderCell.statusLabel.textColor = Constant.Colors.PRIMARY_COLOR
                         orderCell.statusLabel.text = NSLocalizedString("string-item-transaction-status-fail", comment: "")
                         
                         break
@@ -308,19 +311,37 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
                         orderCell.productImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
                     }
                     
+                    orderCell.trackingCallback = {
+                        self.showOrderShippingResultView(true , items: items ,shipping_status: shipping_status)
+                    }
+                 
                     switch shipping_status.lowercased() {
                     case "cancel":
+                        orderCell.isUserInteractionEnabled = false
                         orderCell.productShippingStatusLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-cancel", comment: "")
+                        orderCell.productShippingStatusLabel.textColor = Constant.Colors.PRIMARY_COLOR
+                        orderCell.followProductView.isHidden = true
+                        
                         break
                     case "complete":
+                        orderCell.isUserInteractionEnabled = true
                         orderCell.productShippingStatusLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-success", comment: "")
+                        orderCell.productShippingStatusLabel.textColor = Constant.Colors.GREEN
+                        orderCell.followProductView.isHidden = false
                         break
                     case "waiting":
+                        orderCell.isUserInteractionEnabled = true
                         orderCell.productShippingStatusLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-waiting", comment: "")
+                        orderCell.productShippingStatusLabel.textColor = Constant.Colors.ORANGE
+                        orderCell.followProductView.isHidden = false
                         break
                     case "shipping":
+                        orderCell.isUserInteractionEnabled = true
                         orderCell.productShippingStatusLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-shipping", comment: "")
+                        orderCell.productShippingStatusLabel.textColor = Constant.Colors.ORANGE
+                        orderCell.followProductView.isHidden = false
                         break
+                        
                         
                     default:
                         break
@@ -407,6 +428,11 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
         return cell!
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            //self.showOrderShippingResultView(true , items: self.transferResult?["item"] as? [[String:AnyObject]] ?? nil)
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         
@@ -443,7 +469,7 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
         case 0:
            return CGSize(width: width, height: CGFloat(180))
         case 1:
-            return CGSize(width: width, height: CGFloat(150))
+            return CGSize(width: width, height: CGFloat(160))
         case 2:
             var height = CGFloat(230)
             height += self.margintop

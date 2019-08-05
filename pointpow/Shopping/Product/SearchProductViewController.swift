@@ -10,6 +10,7 @@ import UIKit
 
 class SearchProductViewController: ProductShoppingViewController {    
     
+    
     override var notFoundHeader:String {
         return "ImageProductNotFoundCell"
     }

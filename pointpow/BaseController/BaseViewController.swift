@@ -531,6 +531,13 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
+    func showShoppingPromotionDetail(_ id:String, _ animated:Bool){
+        if let vc:PromotionShoppingDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "PromotionShoppingDetailViewController") as? PromotionShoppingDetailViewController {
+            
+            vc.id = id
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
     func showRegisterGoldSaving(_ animated:Bool, userData:AnyObject?){
         if let vc:RegisterGoldViewController = self.storyboard?.instantiateViewController(withIdentifier: "RegisterGoldViewController") as? RegisterGoldViewController {
             
@@ -666,6 +673,17 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     func showTransectionFilterResultPage(_ animated:Bool, _ titlePage:String, params:Parameters?){
         
         if let vc:TransectionFilterResultViewController = self.storyboard?.instantiateViewController(withIdentifier: "TransectionFilterResultViewController") as? TransectionFilterResultViewController{
+            
+            vc.mTitle = titlePage
+            vc.params = params
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func showShoppingFilterResultPage(_ animated:Bool, _ titlePage:String, params:Parameters?){
+        
+        if let vc:ResultFilterShoppingViewController = self.storyboard?.instantiateViewController(withIdentifier: "ResultFilterShoppingViewController") as? ResultFilterShoppingViewController{
             
             vc.mTitle = titlePage
             vc.params = params
@@ -817,6 +835,15 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
                 vc.hideFinishButton = true
                 self.navigationController?.pushViewController(vc, animated: animated)
             }
+        }
+    }
+    
+    func showOrderShippingResultView( _ animated:Bool , items:[[String:AnyObject]]?, shipping_status:String){
+        if let vc:ProductShippingViewController  = self.storyboard?.instantiateViewController(withIdentifier: "ProductShippingViewController") as? ProductShippingViewController {
+            vc.selectType = shipping_status
+            vc.items = items
+           
+            self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
     

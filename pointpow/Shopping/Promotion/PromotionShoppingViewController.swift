@@ -57,7 +57,7 @@ class PromotionShoppingViewController: ShoppingBaseViewController {
             isLoading = true
         }
         
-        modelCtrl.promotionList(params: nil , isLoading , succeeded: { (result) in
+        modelCtrl.shoppingPromotionList(params: nil , isLoading , succeeded: { (result) in
             if let mResult = result as? [[String:AnyObject]] {
                 
                 
@@ -138,15 +138,15 @@ class PromotionShoppingViewController: ShoppingBaseViewController {
             
             if let itemData = self.promotionList?[indexPath.section] {
                 let title = itemData["title"] as? String ?? ""
-                let path_mobile_thumbnail = itemData["path_mobile_thumbnail"] as? String ?? ""
-                let shot_description = itemData["shot_description"] as? String ?? ""
+                let image_list_mobile = itemData["image_list_mobile"] as? String ?? ""
+                let excerpt = itemData["excerpt"] as? String ?? ""
                 let created_at = itemData["created_at"] as? String ?? ""
                 
                 itemCell.dateLabel.text = convertDateOfDay(created_at)
                 itemCell.titleLabel.text = title
-                itemCell.detailLabel.text = shot_description
+                itemCell.detailLabel.text = excerpt
                 
-                if let url = URL(string: path_mobile_thumbnail) {
+                if let url = URL(string: image_list_mobile) {
                     itemCell.bannerImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_PROMO_PLACEHOLDER))
                 }else{
                     itemCell.bannerImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.BANNER_PROMO_PLACEHOLDER)
@@ -171,7 +171,7 @@ class PromotionShoppingViewController: ShoppingBaseViewController {
         
         if let itemData = self.promotionList?[indexPath.section] {
             let id = itemData["id"] as? NSNumber ?? 0
-            self.showPromotionDetail(id.stringValue, true)
+            self.showShoppingPromotionDetail(id.stringValue, true)
         }
         
         

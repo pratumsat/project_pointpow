@@ -21,9 +21,20 @@ class OrderItemCell: UICollectionViewCell {
     @IBOutlet weak var bgsuccessImageView: UIImageView!
     
     @IBOutlet weak var amountLabel: UILabel!
+    
+    
+    var trackingCallback:(()->Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        let tracking = UITapGestureRecognizer(target: self, action: #selector(trackTapped))
+        self.isUserInteractionEnabled = true
+        self.addGestureRecognizer(tracking)
+        
+    }
+    @objc func trackTapped(){
+        self.trackingCallback?()
     }
 
     override var bounds : CGRect {

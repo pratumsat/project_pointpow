@@ -31,6 +31,7 @@ class ShoppingBaseViewController: BaseViewController ,UICollectionViewDelegate ,
     }
     
     
+    
     var selectCateItem:Int = 0
     var selectSubcate:Int?
     

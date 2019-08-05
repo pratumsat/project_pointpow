@@ -5,6 +5,7 @@
   Created by thanawat on 6/6/2562 BE.
   Copyright © 2562 abcpoint. All rights reserved.
 */
+"string-title-shopping-shipping" = "สถานะการจัดส่ง";
 "string-title-shopping-search-result" = "Search result";
 "string-title-filter-shopping-transection" = "คัดกรองรายการ";
 
@@ -500,7 +501,7 @@
 "string-string-not-found-product" = "ไม่พบสินค้า";
 "string-string-sesarch-not-found-product" = "ไม่พบสินค้าที่คุณค้นหา";
 "string-string-not-found-product-incart" = "ไม่พบสินค้าอยู่ในตะกร้า";
-
+"string-string-sesarch-not-found-product-shipping" = "ยังไม่มีข้อมูล";
 
 
 "string-item-shopping-menu-1" = "หน้าแรก";
@@ -546,4 +547,11 @@
 "string-dailog-shopping-shipping-status-waiting" = "เตรียมการจัดส่งสินค้า";
 "string-dailog-shopping-shipping-status-shipping" = "อยู่ในระหว่างการจัดส่งสินค้า";
 "string-dailog-shopping-shipping-status-success" = "จัดส่งสินค้าเรียบร้อย";
-"string-dailog-shopping-shipping-status-cancel" = "ยกเลิกจัดส่งสินค้า";
+"string-dailog-shopping-shipping-status-cancel" = "ยกเลิกรายการ";
+
+"string-dailog-shopping-payment-type-pointpow" = "Point Pow";
+"string-dailog-shopping-payment-type-pointpow-and-credit" = "Point Pow + Credit Card";
+
+"string-dailog-shopping-shipping-status-waiting-amount" = "สินค้า ({amount})";
+"string-dailog-shopping-shipping-status-shipping-amount" = "การจัดส่งสินค้า ({amount})";
+"string-dailog-shopping-shipping-status-complete-amount" = "เรียบร้อย ({amount})";

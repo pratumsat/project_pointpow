@@ -379,6 +379,7 @@ extension HomeShoppingViewController {
         return 0
     }
     
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView != productCollectionView {
             return super.collectionView(collectionView, cellForItemAt: indexPath)

@@ -18,11 +18,6 @@ class ShoppingHistoryViewController: ShoppingBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = NSLocalizedString("string-title-transection", comment: "")
-        
-        let filterIcon = UIBarButtonItem(image: UIImage(named: "ic-filter"), style: .plain, target: self, action: #selector(filterTapped))
-        navigationItem.rightBarButtonItem = filterIcon
-        
         self.setUp()
     }
     
@@ -38,6 +33,12 @@ class ShoppingHistoryViewController: ShoppingBaseViewController {
     
     
     func setUp(){
+        self.title = NSLocalizedString("string-title-transection", comment: "")
+        
+        let filterIcon = UIBarButtonItem(image: UIImage(named: "ic-filter"), style: .plain, target: self, action: #selector(filterTapped))
+        navigationItem.rightBarButtonItem = filterIcon
+        
+        
         self.backgroundImage?.image = nil
         
         
@@ -61,10 +62,10 @@ class ShoppingHistoryViewController: ShoppingBaseViewController {
             isLoading = true
         }
         
-        let params:Parameters = ["status" : "all",
-                                 "service" : "all"]
+       // let params:Parameters = ["status" : "all",
+       //                          "service" : "all"]
         
-        modelCtrl.getShoppingHistory(params: params , isLoading , succeeded: { (result) in
+        modelCtrl.getShoppingHistory(params: nil , isLoading , succeeded: { (result) in
             
             self.shoppingHistory =  self.getStatementList(result as! [[String : AnyObject]])
 
@@ -183,27 +184,36 @@ extension ShoppingHistoryViewController {
                 transCell.amountLabel.text = numberFormatter.string(from: total_point)
                 transCell.dateLabel.text = created_at
                 
-                if order_status.lowercased() != "complete" {
-                    transCell.shippingLabel.textColor = Constant.Colors.ORANGE
-                }else{
-                    transCell.shippingLabel.textColor = Constant.Colors.GREEN
-                }
+//                if order_status.lowercased() != "complete" {
+//                    transCell.shippingLabel.textColor = Constant.Colors.ORANGE
+//                }else{
+//                    transCell.shippingLabel.textColor = Constant.Colors.GREEN
+//                }
                 
                 switch shipping_status.lowercased() {
                 case "cancel":
                     transCell.shippingLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-cancel", comment: "")
+                    transCell.shippingLabel.textColor = Constant.Colors.PRIMARY_COLOR
+                    transCell.followProductView.isHidden = true
                     break
                 case "complete":
                     transCell.shippingLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-success", comment: "")
+                    transCell.shippingLabel.textColor = Constant.Colors.GREEN
+                    transCell.followProductView.isHidden = false
                     break
                 case "waiting":
                     transCell.shippingLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-waiting", comment: "")
+                    transCell.shippingLabel.textColor = Constant.Colors.ORANGE
+                    transCell.followProductView.isHidden = false
                     break
                 case "shipping":
                     transCell.shippingLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-shipping", comment: "")
+                    transCell.shippingLabel.textColor = Constant.Colors.ORANGE
+                    transCell.followProductView.isHidden = false
                     break
                     
                 default:
+                    transCell.followProductView.isHidden = true
                     break
                 }
                 

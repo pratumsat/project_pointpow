@@ -913,6 +913,10 @@ struct Constant {
         static let productDetailByID = "\(HOST)privilege/products/detail/{{productId}}?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
         static let productImageByID = "\(HOST)privilege/products/image/{{productId}}?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
 
+        static let shopping_promostions = "\(HOST)privilege/promotions?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
+        static let shopping_promostionsById = "\(HOST)privilege/promotions/{{id}}?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
+
+        
         static let deleteCarts = "\(HOST)privilege/carts/del"
         static let updateCarts = "\(HOST)privilege/carts/update"
         static let addCarts = "\(HOST)privilege/carts/add"

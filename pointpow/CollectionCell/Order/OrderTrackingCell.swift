@@ -10,6 +10,7 @@ import UIKit
 
 class OrderTrackingCell: UICollectionViewCell {
 
+    @IBOutlet weak var trackingView: UIView!
     @IBOutlet weak var betweenStep2View: UIView!
     @IBOutlet weak var dashLabel: UILabel!
     
@@ -46,6 +47,7 @@ class OrderTrackingCell: UICollectionViewCell {
     func selectPosition(_ position:Int) {
         switch position {
         case 0:
+            self.trackingView.isUserInteractionEnabled = false
             self.logoProviderImageView.isHidden = true
             self.providerNameLabel.isHidden = true
             self.dashLabel.isHidden = false
@@ -58,6 +60,7 @@ class OrderTrackingCell: UICollectionViewCell {
             self.betweenStep3View.backgroundColor = UIColor.lightGray
             break
         case 1:
+            self.trackingView.isUserInteractionEnabled = true
             self.logoProviderImageView.isHidden = false
             self.providerNameLabel.isHidden = false
             self.dashLabel.isHidden = true
@@ -69,6 +72,7 @@ class OrderTrackingCell: UICollectionViewCell {
             self.betweenStep3View.backgroundColor = UIColor.lightGray
             break
         case 2:
+            self.trackingView.isUserInteractionEnabled = true
             self.logoProviderImageView.isHidden = false
             self.providerNameLabel.isHidden = false
             self.dashLabel.isHidden = true
@@ -84,11 +88,19 @@ class OrderTrackingCell: UICollectionViewCell {
         }
     }
     
+    var tackingCallback: (()->Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        
+        let tacking  = UITapGestureRecognizer(target: self, action: #selector(tackingTapped))
+        self.trackingView.isUserInteractionEnabled = true
+        self.trackingView.addGestureRecognizer(tacking)
     }
 
+    @objc func tackingTapped(){
+        self.tackingCallback?()
+    }
     override var bounds : CGRect {
         didSet {
             self.layoutIfNeeded()

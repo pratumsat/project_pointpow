@@ -148,10 +148,20 @@ class ProductShippingViewController: BaseViewController  , UICollectionViewDeleg
                     let brand_image = product_detail["brand_image"] as? String ?? ""
                     let full_path_image = product_detail["full_path_image"] as? String ?? ""
                     
-                    
+                    trackingCell.tackingCallback = {
+                        let tracking_url = ""
+                        if let url = URL(string: tracking_url) {
+                            if #available(iOS 10.0, *) {
+                                UIApplication.shared.open(url)
+                            } else {
+                                UIApplication.shared.openURL(url)
+                            }
+                        }
+                       
+                    }
+                    trackingCell.providerNameLabel.underlineCharacters("kerry express")
                     trackingCell.trackingNumberLabel.text = tracking_code
                     trackingCell.productNameLabel.text = product_name
-                    
                     trackingCell.selectType = shipping_status.lowercased()
                     
                     

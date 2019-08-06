@@ -118,11 +118,57 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
         }
     }
     
+    
+    override func hideView() {
+        if self.start_animation {
+            return
+        }
+        UIView.animate(withDuration: 0.5,  delay: 0, options:.beginFromCurrentState,animations: {
+            //start animation
+            self.start_animation = true
+            
+            self.mainCateView?.isHidden = true
+           
+            if self.collpse {
+                self.topConstraintCollectionView.constant = 40 + self.sizeOfViewCateInit
+            }else{
+                self.topConstraintCollectionView.constant = 40 + self.sizeOfViewCate
+            }
+            self.view.layoutIfNeeded()
+        }) { (completed) in
+            //completed
+            self.start_animation = false
+        }
+    }
+    
+    override func showView() {
+        if self.start_animation {
+            return
+        }
+        UIView.animate(withDuration: 0.5,  delay: 0, options:.beginFromCurrentState,animations: {
+            //start animation
+            self.start_animation = true
+
+            self.mainCateView?.isHidden = false
+
+            if self.collpse {
+                self.topConstraintCollectionView.constant = self.initHeightViewCate + self.sizeOfViewCateInit
+            }else{
+                self.topConstraintCollectionView.constant = self.initHeightViewCate + self.sizeOfViewCate
+            }
+            
+            self.view.layoutIfNeeded()
+        }) { (completed) in
+            //completed
+            self.start_animation = false
+
+        }
+    }
+    var start_animation = false
+    var collpse = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       
-        
         
         self.setUp()
         
@@ -207,6 +253,7 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
         self.subCateId = tag
         
         
+        
         if tag == 0 {
             self.itemSection = ["filter","product"]
             self.cateName = NSLocalizedString("string-item-shopping-cate-all", comment: "")
@@ -215,6 +262,7 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
             self.cateName = self.cateLists[tag]["name"] as? String ?? ""
         }
         
+         self.productCollectionView?.contentOffset.y = 0
     }
     
     func setUp(){
@@ -240,6 +288,8 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
         }
         
         self.collapseCallback = { (collpse) in
+            self.collpse = collpse
+            
             if collpse {
                 self.topConstraintCollectionView.constant = self.initHeightViewCate + self.sizeOfViewCateInit
             }else{
@@ -278,14 +328,12 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
             self.searchView = self.addSearchView()
             self.mainCateView =  self.addCategoryView(self.searchView!, allProduct: true)
             
-            self.topConstraintCollectionView.constant = self.initHeightViewCate + self.sizeOfViewCate
             
             self.heightMainCategoryView?.constant = 95.0 + self.sizeOfViewCate
             self.mainCategoryView?.layoutIfNeeded()
             self.subCategoryCollectionView?.isHidden = false
             
         }else{
-            
             self.callAPI(){
                 self.searchView?.removeFromSuperview()
                 self.mainCateView?.removeFromSuperview()
@@ -416,7 +464,8 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
         
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+   override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        super.scrollViewDidScroll(scrollView)
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
         

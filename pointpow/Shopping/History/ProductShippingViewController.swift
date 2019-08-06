@@ -114,8 +114,8 @@ class ProductShippingViewController: BaseViewController  , UICollectionViewDeleg
                 cell = selectCell
 
                 let amountWaiting = NSLocalizedString("string-dailog-shopping-shipping-status-waiting-amount", comment: "")
-                let amountShipping = NSLocalizedString("string-dailog-shopping-shipping-status-waiting-amount", comment: "")
-                let amountComplete = NSLocalizedString("string-dailog-shopping-shipping-status-waiting-amount", comment: "")
+                let amountShipping = NSLocalizedString("string-dailog-shopping-shipping-status-shipping-amount", comment: "")
+                let amountComplete = NSLocalizedString("string-dailog-shopping-shipping-status-complete-amount", comment: "")
                 
                 selectCell.amountCate1Label.text = amountWaiting.replace(target: "{amount}", withString: "\(self.aWaiting)")
                 selectCell.amountCate2Label.text = amountShipping.replace(target: "{amount}", withString: "\(self.aShipping)")
@@ -256,7 +256,7 @@ class ProductShippingViewController: BaseViewController  , UICollectionViewDeleg
         }
         
         
-        return CGSize(width: collectionView.frame.width, height: CGFloat(115))
+        return CGSize(width: collectionView.frame.width, height: CGFloat(100))
         
     }
 }

@@ -35,6 +35,42 @@ class HomeShoppingViewController: ShoppingBaseViewController {
         }
     }
     
+    override func hideView() {
+        if self.start_animation {
+            return
+        }
+        UIView.animate(withDuration: 0.5,  delay: 0, options:.beginFromCurrentState,animations: {
+            //start animation
+            self.start_animation = true
+            
+            self.mainCateView?.isHidden = true
+            self.topConstraintCollectionView.constant = 40
+            self.view.layoutIfNeeded()
+        }) { (completed) in
+            //completed
+            self.start_animation = false
+        }
+    }
+    
+    override func showView() {
+        if self.start_animation {
+            return
+        }
+        UIView.animate(withDuration: 0.5,  delay: 0, options:.beginFromCurrentState,animations: {
+            //start animation
+            self.start_animation = true
+            
+            self.mainCateView?.isHidden = false
+            self.topConstraintCollectionView.constant = 130.0 + self.sizeOfViewCateInit
+            self.view.layoutIfNeeded()
+        }) { (completed) in
+            //completed
+            self.start_animation = false
+            
+        }
+    }
+    var start_animation = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         cateLists = [["name": NSLocalizedString("string-item-shopping-cate-1", comment: ""),
@@ -522,6 +558,11 @@ extension HomeShoppingViewController {
             if let moreCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PageViewFooterCollectionViewCell", for: indexPath) as? PageViewFooterCollectionViewCell {
                 
                 cell = moreCell
+                
+                
+                moreCell.moreCallback = {
+                    self.showProductByCate(true, cateId: self.cateId)
+                }
             }
             break
         default:
@@ -590,7 +631,7 @@ extension HomeShoppingViewController {
             
             
         case 5:
-            let width = collectionView.frame.width - 40
+            let width = collectionView.frame.width / 2
             let height = CGFloat(40)
             return CGSize(width: width, height: height)
         default:

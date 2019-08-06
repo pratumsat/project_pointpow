@@ -11,6 +11,9 @@ import UIKit
 class PageViewFooterCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var moreButton: UIButton!
     
+    
+    
+    var moreCallback:(()->Void)?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,5 +30,6 @@ class PageViewFooterCollectionViewCell: UICollectionViewCell {
         
     }
     @IBAction func moreTapped(_ sender: Any) {
+        moreCallback?()
     }
 }

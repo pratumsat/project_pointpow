@@ -313,7 +313,29 @@ class ShoppingBaseViewController: BaseViewController ,UICollectionViewDelegate ,
         }
         return true
     }
+    func hideView(){
+        //for override
+    }
+    func showView(){
+        //for override
+    }
+    var lastContentOffset = CGFloat(0)
+}
+extension ShoppingBaseViewController {
+   
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let translation = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
+        
+        print("offsetY \(translation.y)")
+        if translation.y > 0 {
+            // swipes from top to bottom of screen -> down
+            showView()
+        } else {
+            // swipes from bottom to top of screen -> up
+            hideView()
+        }
+    }
 }
 
 extension ShoppingBaseViewController {

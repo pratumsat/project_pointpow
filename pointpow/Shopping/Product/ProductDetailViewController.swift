@@ -409,11 +409,17 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
     }
     
     @objc func shareTapped(){
-        let url = URL(string: "http://103.27.201.106/dev-pointpow/privilege/product/lifestyle/paper-craft-3d-p1")
-        let shareItems = [ url ]
-        let activityViewController = UIActivityViewController(activityItems: shareItems as [Any], applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = self.view
-        self.present(activityViewController, animated: true, completion: nil)
+        if let item = self.productDetail?.first {
+            let url = item["url"] as? String ?? ""
+            if let url = URL(string: url) {
+                let shareItems = [ url ]
+                let activityViewController = UIActivityViewController(activityItems: shareItems as [Any], applicationActivities: nil)
+                activityViewController.popoverPresentationController?.sourceView = self.view
+                self.present(activityViewController, animated: true, completion: nil)
+            }
+           
+        }
+        
     }
     
     private  func getProductDetail(_ avaliable:(()->Void)?  = nil){

@@ -62,7 +62,7 @@
                             <constraint firstAttribute="width" constant="30" id="ihP-fP-s93"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="ชื่อสินค้า" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKe-KU-0em">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="ชื่อสินค้า" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKe-KU-0em">
                         <rect key="frame" x="100" y="10" width="177" height="21"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
                         <nil key="highlightedColor"/>
@@ -192,7 +192,6 @@
                 <constraint firstItem="wuk-P8-G0K" firstAttribute="leading" secondItem="zKX-MP-Myp" secondAttribute="leading" id="tfv-Zh-yH3"/>
                 <constraint firstAttribute="trailing" secondItem="SZp-pN-L8u" secondAttribute="trailing" constant="10" id="tzU-d3-Yh1"/>
                 <constraint firstItem="zKX-MP-Myp" firstAttribute="leading" secondItem="R4I-w7-8JA" secondAttribute="leading" constant="10" id="vEn-Rx-ryE"/>
-                <constraint firstItem="wuk-P8-G0K" firstAttribute="top" relation="greaterThanOrEqual" secondItem="zKX-MP-Myp" secondAttribute="bottom" constant="5" id="vid-hx-tLU"/>
                 <constraint firstItem="J8r-16-vLT" firstAttribute="centerY" secondItem="Ifj-HN-UpU" secondAttribute="centerY" id="vt0-qK-Qvy"/>
                 <constraint firstItem="WKe-KU-0em" firstAttribute="leading" secondItem="zKX-MP-Myp" secondAttribute="trailing" constant="10" id="w1d-ED-XHC"/>
                 <constraint firstItem="sa8-hC-zPs" firstAttribute="leading" secondItem="zKX-MP-Myp" secondAttribute="leading" id="yCk-gq-3Ig"/>

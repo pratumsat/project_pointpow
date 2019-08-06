@@ -388,10 +388,17 @@ class SettingAddressViewController: BaseViewController , UICollectionViewDelegat
         
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        if section == 1 {
+            return UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
+        }
+        return UIEdgeInsets.zero
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         
         return CGSize.zero
-        //return CGSize(width: collectionView.frame.width, height: 20)
         
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {

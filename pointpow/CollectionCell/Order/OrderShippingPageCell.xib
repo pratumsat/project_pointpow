@@ -25,22 +25,22 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tIA-l6-FUt">
-                        <rect key="frame" x="0.0" y="0.0" width="182.5" height="127"/>
+                        <rect key="frame" x="0.0" y="0.0" width="182.5" height="116"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="เตรียมการจัดส่ง" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="r1k-fh-d59">
-                                <rect key="frame" x="5" y="80" width="172.5" height="23.5"/>
+                                <rect key="frame" x="5" y="69" width="172.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                 <color key="textColor" red="0.78823529410000004" green="0.1647058824" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-address-shopping-cate3-active" translatesAutoresizingMaskIntoConstraints="NO" id="RBb-8e-xCZ">
-                                <rect key="frame" x="59" y="10" width="64.5" height="65"/>
+                                <rect key="frame" x="64" y="10" width="54" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="RBb-8e-xCZ" secondAttribute="height" multiplier="1:1" id="vKO-LB-5DX"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="สินค้า (1)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Wai-k0-UNm">
-                                <rect key="frame" x="5" y="98.5" width="172.5" height="23.5"/>
+                                <rect key="frame" x="5" y="87.5" width="172.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                 <color key="textColor" red="0.78823529410000004" green="0.1647058824" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -60,21 +60,21 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HmQ-zs-OxQ">
-                        <rect key="frame" x="182.5" y="0.0" width="182.5" height="127"/>
+                        <rect key="frame" x="182.5" y="0.0" width="182.5" height="116"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="อยู่ในระหว่าง" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aUJ-k7-1QB">
-                                <rect key="frame" x="5" y="80" width="172.5" height="23.5"/>
+                                <rect key="frame" x="5" y="69" width="172.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-address-setting-cate1" translatesAutoresizingMaskIntoConstraints="NO" id="AHv-3S-0kg">
-                                <rect key="frame" x="59" y="10" width="64.5" height="65"/>
+                                <rect key="frame" x="64" y="10" width="54" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="AHv-3S-0kg" secondAttribute="height" multiplier="1:1" id="rPZ-xt-K8O"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="การจัดส่งสินค้า (0)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ySw-Ft-YS6">
-                                <rect key="frame" x="5" y="98.5" width="172.5" height="23.5"/>
+                                <rect key="frame" x="5" y="87.5" width="172.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -88,27 +88,26 @@
                             <constraint firstAttribute="trailing" secondItem="aUJ-k7-1QB" secondAttribute="trailing" constant="5" id="SEi-ND-bCR"/>
                             <constraint firstAttribute="trailing" secondItem="ySw-Ft-YS6" secondAttribute="trailing" constant="5" id="V8o-67-Job"/>
                             <constraint firstItem="aUJ-k7-1QB" firstAttribute="top" secondItem="AHv-3S-0kg" secondAttribute="bottom" constant="5" id="bQt-uc-fuw"/>
-                            <constraint firstItem="AHv-3S-0kg" firstAttribute="width" secondItem="AHv-3S-0kg" secondAttribute="height" multiplier="1:1" id="kzk-T7-dxR"/>
                             <constraint firstItem="AHv-3S-0kg" firstAttribute="centerX" secondItem="HmQ-zs-OxQ" secondAttribute="centerX" id="oOU-n5-fcL"/>
                             <constraint firstItem="aUJ-k7-1QB" firstAttribute="leading" secondItem="HmQ-zs-OxQ" secondAttribute="leading" constant="5" id="pPO-fs-E6N"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BoF-4S-ZBV">
-                        <rect key="frame" x="365" y="0.0" width="182.5" height="127"/>
+                        <rect key="frame" x="365" y="0.0" width="182.5" height="116"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="จัดส่งสินค้า" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dhf-o5-bLc">
-                                <rect key="frame" x="5" y="80" width="172.5" height="23.5"/>
+                                <rect key="frame" x="5" y="69" width="172.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-shopping-filter-success" translatesAutoresizingMaskIntoConstraints="NO" id="f2k-hI-j1j">
-                                <rect key="frame" x="59" y="10" width="64.5" height="65"/>
+                                <rect key="frame" x="64" y="10" width="54" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="f2k-hI-j1j" secondAttribute="height" multiplier="1:1" id="Ncu-TG-kOG"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="เรียบร้อย (1)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="har-CD-Yax">
-                                <rect key="frame" x="5" y="98.5" width="172.5" height="23.5"/>
+                                <rect key="frame" x="5" y="87.5" width="172.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -128,7 +127,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5sI-UZ-6r2">
-                        <rect key="frame" x="0.0" y="137" width="548" height="1"/>
+                        <rect key="frame" x="0.0" y="126" width="548" height="1"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="yFj-7c-Q2d"/>
@@ -152,7 +151,7 @@
                 <constraint firstItem="5sI-UZ-6r2" firstAttribute="leading" secondItem="M8c-ca-FcD" secondAttribute="leading" id="lfo-OB-ek3"/>
                 <constraint firstItem="tIA-l6-FUt" firstAttribute="top" secondItem="M8c-ca-FcD" secondAttribute="top" id="p1v-Lt-qsJ"/>
                 <constraint firstItem="BoF-4S-ZBV" firstAttribute="leading" secondItem="HmQ-zs-OxQ" secondAttribute="trailing" id="szE-mV-328"/>
-                <constraint firstItem="RBb-8e-xCZ" firstAttribute="height" secondItem="M8c-ca-FcD" secondAttribute="height" multiplier="0.3" id="yF8-gO-J0d"/>
+                <constraint firstItem="RBb-8e-xCZ" firstAttribute="height" secondItem="M8c-ca-FcD" secondAttribute="height" multiplier="0.25" id="yF8-gO-J0d"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fLs-06-KN4"/>
             <size key="customSize" width="548" height="288"/>

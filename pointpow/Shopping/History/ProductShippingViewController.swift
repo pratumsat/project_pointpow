@@ -91,6 +91,7 @@ class ProductShippingViewController: BaseViewController  , UICollectionViewDeleg
         self.registerHeaderNib(self.productShippingCollectionView, "HeaderSectionCell")
         self.registerHeaderNib(self.productShippingCollectionView, "ImageProductNotFoundCell")
         self.registerNib(self.productShippingCollectionView, "OrderShippingPageCell")
+        self.registerNib(self.productShippingCollectionView, "OrderTrackingCell")
     }
 
     
@@ -99,6 +100,9 @@ class ProductShippingViewController: BaseViewController  , UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if section == 1 {
+            return productItems?.count ?? 0
+        }
         return 1
     }
     
@@ -131,10 +135,36 @@ class ProductShippingViewController: BaseViewController  , UICollectionViewDeleg
                         
                     }
                 }
-                
-                
             }
-            
+        }else if indexPath.section == 1 {
+            if let trackingCell = collectionView.dequeueReusableCell(withReuseIdentifier: "OrderTrackingCell", for: indexPath) as? OrderTrackingCell {
+                cell = trackingCell
+                
+                if let item = self.productItems?[indexPath.row] {
+                    let tracking_code = item["tracking_code"] as? String ?? ""
+                    let shipping_status = item["shipping_status"] as? String ?? ""
+                    let product_detail = item["product_detail"] as? [String:AnyObject] ?? [:]
+                    let product_name = product_detail["product_name"] as? String ?? ""
+                    let brand_image = product_detail["brand_image"] as? String ?? ""
+                    let full_path_image = product_detail["full_path_image"] as? String ?? ""
+                    
+                    
+                    trackingCell.trackingNumberLabel.text = tracking_code
+                    trackingCell.productNameLabel.text = product_name
+                    
+                    trackingCell.selectType = shipping_status.lowercased()
+                    
+                    
+                    if let url = URL(string: brand_image) {
+                        trackingCell.brandImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
+                    }
+                    if let url = URL(string: full_path_image) {
+                        trackingCell.productImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
+                    }
+                    
+                    
+                }
+            }
         }
         
         if cell == nil {
@@ -176,19 +206,41 @@ class ProductShippingViewController: BaseViewController  , UICollectionViewDeleg
 
         
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return CGSize.zero
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        
+        if section == 1 {
+            return UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
+        }
+        return UIEdgeInsets.zero
     }
+    
+   
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if indexPath.section == 1 {
-            return CGSize.zero
+            let width = collectionView.frame.width
+            var height = CGFloat(165)
+            
+            if let item = self.productItems?[indexPath.row] {
+                let product_detail = item["product_detail"] as? [String:AnyObject] ?? [:]
+                let product_name = product_detail["product_name"] as? String ?? ""
+                height += heightForView(text: product_name, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 16)!, width: width - 110)
+                
+                return CGSize(width: width, height: height)
+                
+            }else{
+                return CGSize.zero
+            }
+            
+            
         }
         
         
-        return CGSize(width: collectionView.frame.width, height: CGFloat(120))
+        return CGSize(width: collectionView.frame.width, height: CGFloat(115))
         
     }
 }

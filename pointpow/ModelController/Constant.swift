@@ -923,7 +923,7 @@ struct Constant {
         static let getCarts = "\(HOST)privilege/carts?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
         static let addOrders = "\(HOST)privilege/orders/add"
         static let ordersHistory = "\(HOST)privilege/orders/history"
-        static let shipping_list = "\(HOST)\(POINTPOW_VERSION1)shipping-by"
+        static let shipping_list = "\(HOST)\(POINTPOW_VERSION1)shipping-providers"
     }
     
     struct TopViewController{

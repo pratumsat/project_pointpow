@@ -347,6 +347,7 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
                         orderCell.isUserInteractionEnabled = false
                         orderCell.followProductView.isHidden = true
                         orderCell.productShippingStatusLabel.isHidden = true
+                        orderCell.productShippingStatusLabel.text = ""
                     }
                 }
                 
@@ -467,9 +468,20 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
         case 0:
            return CGSize(width: width, height: CGFloat(180))
         case 1:
-            return CGSize(width: width, height: CGFloat(160))
+            var height = CGFloat(145)
+            if hideFinishButton {
+                height = CGFloat(145)
+            }else{
+               height = CGFloat(115)
+            }
+            if let items = self.transferResult?["item"] as? [[String:AnyObject]]  {
+                let product_detail = items[indexPath.row]["product_detail"] as? [String:AnyObject] ?? [:]
+                let product_name = product_detail["product_name"] as? String ?? ""
+                height += heightForView(text: product_name, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 16)!, width: width - 110)
+            }
+            return CGSize(width: width, height: height)
         case 2:
-            var height = CGFloat(230)
+            var height = CGFloat(210)
             height += self.margintop
             if let data = transferResult {
                 let shipping_address = data["shipping_address"] as? [String:AnyObject] ?? [:]
@@ -481,7 +493,7 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
                 var fulladdress = "\(name) \(newMText.chunkFormatted())"
                 fulladdress += "\n\(address)"
                 
-                let heightAddress = heightForView(text: fulladdress, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 18)!, width: width - 20)
+                let heightAddress = heightForView(text: fulladdress, font: UIFont(name: Constant.Fonts.THAI_SANS_REGULAR, size: 18)!, width: width - 20)
                 height += heightAddress
             }
             

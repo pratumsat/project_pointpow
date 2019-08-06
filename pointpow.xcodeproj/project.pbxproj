@@ -163,6 +163,8 @@
 		C12A88CC22E32BA500D40155 /* TaxInvoiceSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12A88CA22E32BA500D40155 /* TaxInvoiceSelectCell.swift */; };
 		C12A88CD22E32BA500D40155 /* TaxInvoiceSelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12A88CB22E32BA500D40155 /* TaxInvoiceSelectCell.xib */; };
 		C12A88D022E4803000D40155 /* PopupAddToCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12A88CF22E4803000D40155 /* PopupAddToCartViewController.swift */; };
+		C12AC2D022F928830007F256 /* OrderTrackingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12AC2CE22F928830007F256 /* OrderTrackingCell.swift */; };
+		C12AC2D122F928830007F256 /* OrderTrackingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12AC2CF22F928830007F256 /* OrderTrackingCell.xib */; };
 		C12CCC612281590C00F26DCC /* PersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12CCC602281590C00F26DCC /* PersonalDataViewController.swift */; };
 		C12CCC652282B43A00F26DCC /* PromoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12CCC632282B43A00F26DCC /* PromoCell.swift */; };
 		C12CCC662282B43A00F26DCC /* PromoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12CCC642282B43A00F26DCC /* PromoCell.xib */; };
@@ -549,6 +551,8 @@
 		C12A88CA22E32BA500D40155 /* TaxInvoiceSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxInvoiceSelectCell.swift; sourceTree = "<group>"; };
 		C12A88CB22E32BA500D40155 /* TaxInvoiceSelectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaxInvoiceSelectCell.xib; sourceTree = "<group>"; };
 		C12A88CF22E4803000D40155 /* PopupAddToCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupAddToCartViewController.swift; sourceTree = "<group>"; };
+		C12AC2CE22F928830007F256 /* OrderTrackingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTrackingCell.swift; sourceTree = "<group>"; };
+		C12AC2CF22F928830007F256 /* OrderTrackingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderTrackingCell.xib; sourceTree = "<group>"; };
 		C12CCC602281590C00F26DCC /* PersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDataViewController.swift; sourceTree = "<group>"; };
 		C12CCC632282B43A00F26DCC /* PromoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoCell.swift; sourceTree = "<group>"; };
 		C12CCC642282B43A00F26DCC /* PromoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromoCell.xib; sourceTree = "<group>"; };
@@ -1319,6 +1323,8 @@
 				C1119A0E22F3F0F8001EE270 /* OrderItemCell.xib */,
 				C17E166122F81BE40090518D /* OrderShippingPageCell.swift */,
 				C17E166222F81BE40090518D /* OrderShippingPageCell.xib */,
+				C12AC2CE22F928830007F256 /* OrderTrackingCell.swift */,
+				C12AC2CF22F928830007F256 /* OrderTrackingCell.xib */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -1972,6 +1978,7 @@
 				C127323A225314DB00A9EE74 /* LuckyDrawPrivacyCell.xib in Resources */,
 				C1F0C06D22C3126900A49BAA /* HeaderSectionCell.xib in Resources */,
 				C1F7610B2216E357000A2CA9 /* WithDrawMyGoldCell.xib in Resources */,
+				C12AC2D122F928830007F256 /* OrderTrackingCell.xib in Resources */,
 				C107CF2A221FC92200C50B8C /* WidthDrawResultPointPow2Cell.xib in Resources */,
 				C13D998B21997AD6001A4794 /* HeadCell.xib in Resources */,
 				C1DA27C4224200C2000C0715 /* WithDrawResultThaiPostCell.xib in Resources */,
@@ -2198,6 +2205,7 @@
 				C1F0C07A22C4711600A49BAA /* BannerShoppingCell.swift in Sources */,
 				C142741A21A553EE003CC246 /* ItemFavorCell.swift in Sources */,
 				C1DEBE9521882F6F00CBB95F /* BaseNavigationViewController.swift in Sources */,
+				C12AC2D022F928830007F256 /* OrderTrackingCell.swift in Sources */,
 				C1AD507A2187F45600F74415 /* AppDelegate.swift in Sources */,
 				C11AFC8622C1DF5E00573C27 /* HomeShoppingViewController.swift in Sources */,
 				C10CA1A8219185AB00316DF3 /* PAPasscodeViewController.m in Sources */,

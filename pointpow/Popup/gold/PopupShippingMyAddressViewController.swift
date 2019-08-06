@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 
 class PopupShippingMyAddressViewController: BaseViewController  , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
@@ -211,6 +212,39 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
         self.present(alert, animated: true, completion: nil)
     }
     
+    var isCall = false
+    
+    func updateLatestShippingAddress(_ id:Int, m_type: String){
+        
+        if isCall {
+            return
+        }
+        isCall = true
+        
+        let params:Parameters = ["id":id,
+                                 "type":m_type]
+        
+        self.modelCtrl.updateMemberLatestAddress(params: params, true, succeeded: { (result) in
+            //update success
+            self.isCall = false
+            self.addressCollectionView.reloadData()
+            
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                self.showMessagePrompt(message)
+            }
+            self.isCall = false
+            print(error)
+            
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            self.isCall = false
+        }
+    }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -303,8 +337,25 @@ class PopupShippingMyAddressViewController: BaseViewController  , UICollectionVi
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     
+        let select = self.modelAddreses?[indexPath.row] as AnyObject
+        let idSelect = select["id"] as? NSNumber ?? 0
+        
+        let defaultSelect = selectedAddress?["id"] as? NSNumber ?? 0
+        if defaultSelect.intValue == idSelect.intValue {
+            return
+        }
+        
+        
         self.selectItem = indexPath.row
         self.selectedAddress = self.modelAddreses?[indexPath.row] as AnyObject
+        
+        if let data = self.modelAddreses?[indexPath.row]{
+            let id = data["id"] as? NSNumber ?? 0
+            let type = data["type"] as? String ?? ""
+            self.updateLatestShippingAddress(id.intValue, m_type: type)
+        }
+        
+        
         
         self.addressCollectionView.reloadData()
     }

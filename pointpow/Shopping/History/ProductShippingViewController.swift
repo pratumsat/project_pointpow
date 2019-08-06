@@ -147,9 +147,12 @@ class ProductShippingViewController: BaseViewController  , UICollectionViewDeleg
                     let product_name = product_detail["product_name"] as? String ?? ""
                     let brand_image = product_detail["brand_image"] as? String ?? ""
                     let full_path_image = product_detail["full_path_image"] as? String ?? ""
+                    let shipping_provider = item["shipping_provider"] as? [String:AnyObject] ?? [:]
+                    let logo = shipping_provider["logo"] as? String ?? ""
+                    let name = shipping_provider["name"] as? String ?? ""
+                    let tracking_url = shipping_provider["tracking_url"] as? String ?? ""
                     
                     trackingCell.tackingCallback = {
-                        let tracking_url = ""
                         if let url = URL(string: tracking_url) {
                             if #available(iOS 10.0, *) {
                                 UIApplication.shared.open(url)
@@ -159,12 +162,15 @@ class ProductShippingViewController: BaseViewController  , UICollectionViewDeleg
                         }
                        
                     }
-                    trackingCell.providerNameLabel.underlineCharacters("kerry express")
+                    trackingCell.providerNameLabel.underlineCharacters(name)
                     trackingCell.trackingNumberLabel.text = tracking_code
                     trackingCell.productNameLabel.text = product_name
                     trackingCell.selectType = shipping_status.lowercased()
                     
-                    
+                   
+                    if let url = URL(string: logo) {
+                        trackingCell.logoProviderImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
+                    }
                     if let url = URL(string: brand_image) {
                         trackingCell.brandImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
                     }

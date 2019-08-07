@@ -238,11 +238,12 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
     
     func callAPI(_ loadSuccess:(()->Void)?  = nil){
         var success = 0
-        
+        self.loadingView?.showLoading()
         self.getProductDetail(){
             success += 1
             if success == 3 {
                 loadSuccess?()
+                self.loadingView?.hideLoading()
                 self.refreshControl?.endRefreshing()
             }
             
@@ -252,6 +253,7 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
             success += 1
             if success == 3 {
                 loadSuccess?()
+                self.loadingView?.hideLoading()
                 self.refreshControl?.endRefreshing()
             }
             
@@ -261,6 +263,7 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
             success += 1
             if success == 3 {
                 loadSuccess?()
+                self.loadingView?.hideLoading()
                 self.refreshControl?.endRefreshing()
             }
             
@@ -431,7 +434,7 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
             isLoading = true
         }
         
-        modelCtrl.getProductDetailById(productId: self.product_id!, isLoading , succeeded: { (result) in
+        modelCtrl.getProductDetailById(productId: self.product_id!, false , succeeded: { (result) in
             
             if let mResult = result as? [[String:AnyObject]] {
                 self.productDetail = mResult
@@ -465,7 +468,7 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
             isLoading = true
         }
         
-        modelCtrl.getProductImageById(productId: self.product_id!, isLoading , succeeded: { (result) in
+        modelCtrl.getProductImageById(productId: self.product_id!, false , succeeded: { (result) in
             
             if let mResult = result as? [[String:AnyObject]] {
                 self.productImage = mResult
@@ -499,7 +502,7 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
             isLoading = true
         }
         
-        modelCtrl.getProductRelatedByID(productId: self.product_id!, isLoading , succeeded: { (result) in
+        modelCtrl.getProductRelatedByID(productId: self.product_id!, false , succeeded: { (result) in
             
             if let mResult = result as? [[String:AnyObject]] {
                  self.productItems = mResult

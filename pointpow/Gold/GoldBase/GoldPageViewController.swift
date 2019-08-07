@@ -132,26 +132,57 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
     
     func getDataMember(_ loadSuccess:(()->Void)?  = nil){
         var success = 0
+        self.loadingView?.showLoading()
         getGoldPrice() {
             success += 1
-            if success == 3 {
+            if success == 4 {
                 loadSuccess?()
+                self.loadingView?.hideLoading()
                 self.refreshControl?.endRefreshing()
             }
         }
         getUserInfo() {
             success += 1
-            if success == 3 {
+            if success == 4 {
                 loadSuccess?()
+                self.loadingView?.hideLoading()
                 self.refreshControl?.endRefreshing()
             }
         }
         getBanner() {
             success += 1
-            if success == 3 {
+            if success == 4 {
                 loadSuccess?()
+                self.loadingView?.hideLoading()
                 self.refreshControl?.endRefreshing()
             }
+        }
+        getMemberSetting(){
+            success += 1
+            if success == 4 {
+                loadSuccess?()
+                self.loadingView?.hideLoading()
+                self.refreshControl?.endRefreshing()
+            }
+        }
+
+    }
+    func getMemberSetting(_ avaliable:(()->Void)?  = nil){
+        modelCtrl.getMemberSetting(params: nil, false, succeeded: { (result) in
+            //success
+            avaliable?()
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                self.showMessagePrompt(message)
+            }
+            self.refreshControl?.endRefreshing()
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            self.refreshControl?.endRefreshing()
         }
     }
     
@@ -163,7 +194,7 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
 //            isLoading = true
 //        }
         
-        modelCtrl.getBanner(params: nil , isLoading , succeeded: { (result) in
+        modelCtrl.getBanner(params: nil , false , succeeded: { (result) in
             
             if let mResult = result as? [[String:AnyObject]] {
                 self.banner = mResult
@@ -199,7 +230,7 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
 //            isLoading = true
 //        }
         
-        modelCtrl.getGoldPrice(params: nil , isLoading , succeeded: { (result) in
+        modelCtrl.getGoldPrice(params: nil , false , succeeded: { (result) in
             self.goldPrice = result
             avaliable?()
             
@@ -229,7 +260,7 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
 //        }
         
         
-        modelCtrl.getUserData(params: nil , isLoading , succeeded: { (result) in
+        modelCtrl.getUserData(params: nil , false , succeeded: { (result) in
             self.userData = result
             avaliable?()
             
@@ -516,13 +547,16 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
                                 return
                             }
                             
-                            
+                            let pointLimitOrder = DataController.sharedInstance.getLimitPerDay()
                             modelSaving.goldReceive = 0
                             modelSaving.pointSpend = pointSpend.doubleValue
                             modelSaving.currentGoldprice  = currentGoldprice.doubleValue
                             
                             if (pointSpend.doubleValue) > (pointBalance.doubleValue) {
                                 self.showMessagePrompt(NSLocalizedString("string-dailog-saving-point-not-enough", comment: ""))
+                                
+                            }else if (pointLimitOrder.doubleValue)  < (pointSpend.doubleValue) {
+                                self.showMessagePrompt(NSLocalizedString("string-dailog-point-over-limit-order", comment: ""))
                             }else{
                                 self.confirmGoldSavingPage(true, modelSaving: modelSaving)
                             }

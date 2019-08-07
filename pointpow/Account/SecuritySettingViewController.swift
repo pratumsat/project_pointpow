@@ -194,7 +194,7 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return 6
+            return 5
         }
         return 1
     }
@@ -264,14 +264,7 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
                         itemCell.arrowImageView.isHidden = false
                         itemCell.marginRight.constant = 20.0
                         
-                    }else if indexPath.row == 5{
-                        itemCell.nameLabel.text = NSLocalizedString("string-item-profile-change-pwd", comment: "")
-                        itemCell.trailLabel.text = dash
-                        itemCell.arrowImageView.isHidden = false
-                        itemCell.marginRight.constant = 20.0
-                        
                     }
-                    
                     
                     let lineBottom = UIView(frame: CGRect(x: 0, y: itemCell.frame.height - 1 , width: collectionView.frame.width, height: 1 ))
                     lineBottom.backgroundColor = Constant.Colors.LINE_PROFILE
@@ -395,10 +388,8 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
                 self.item = .CHANGE_MOBILE
                 self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
             }
-            if indexPath.row == 5 {
-                self.item = .CHANGE_PWD
-                self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
-            }
+           
+            
         }
         
     }

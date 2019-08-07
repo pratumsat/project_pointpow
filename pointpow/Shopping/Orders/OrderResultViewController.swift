@@ -275,7 +275,7 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
                 if let items = self.transferResult?["item"] as? [[String:AnyObject]]  {
                     let shipping_status = items[indexPath.row]["shipping_status"] as? String ?? ""
                     let amount = items[indexPath.row]["amount"] as? NSNumber ?? 0
-                    let point = items[indexPath.row]["point"] as? String ?? "0"
+                    let point = items[indexPath.row]["point"] as? NSNumber ?? 0
                     
                     let product_detail = items[indexPath.row]["product_detail"] as? [String:AnyObject] ?? [:]
                     let brand_name = product_detail["brand_name"] as? String ?? ""
@@ -289,12 +289,7 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
                     orderCell.nameBrandLabel.text = brand_name
                     orderCell.productNameLabel.text = product_name
                     orderCell.amountLabel.text = numberFormatter.string(from: amount)
-                    
-                    if let castDouble = Double(point) {
-                        orderCell.priceLabel.text = numberFormatter.string(from: NSNumber(value: castDouble ))
-                    }else{
-                        orderCell.priceLabel.text = point
-                    }
+                    orderCell.priceLabel.text = numberFormatter.string(from: point)
                    
                     
                     if let url = URL(string: brand_image) {

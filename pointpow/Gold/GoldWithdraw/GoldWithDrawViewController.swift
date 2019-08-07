@@ -108,15 +108,18 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
     
     func getDataMember(_ loadSuccess:(()->Void)?  = nil){
         var success = 0
+        self.loadingView?.showLoading()
         getGoldPrice() {
             success += 1
             if success == 2 {
+                self.loadingView?.hideLoading()
                 loadSuccess?()
             }
         }
         getUserInfo() {
             success += 1
             if success == 2 {
+                self.loadingView?.hideLoading()
                 loadSuccess?()
             }
         }
@@ -132,7 +135,7 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
 //            isLoading = true
 //        }
         
-        modelCtrl.getGoldPrice(params: nil , isLoading , succeeded: { (result) in
+        modelCtrl.getGoldPrice(params: nil , false , succeeded: { (result) in
             self.goldPrice = result
             avaliable?()
             
@@ -161,7 +164,7 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
 //        }
         
         
-        modelCtrl.getUserData(params: nil , isLoading , succeeded: { (result) in
+        modelCtrl.getUserData(params: nil , false , succeeded: { (result) in
             self.userData = result
             avaliable?()
             

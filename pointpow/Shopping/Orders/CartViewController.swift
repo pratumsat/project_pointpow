@@ -177,10 +177,12 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
     
     private func callAPI(_ loadSuccess:(()->Void)? = nil){
         var success = 0
+        self.loadingView?.showLoading()
         getUserInfo(){
             success += 1
             if success == 3 {
                 loadSuccess?()
+                self.loadingView?.hideLoading()
                 self.refreshControl?.endRefreshing()
             }
         }
@@ -188,6 +190,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             success += 1
             if success == 3 {
                 loadSuccess?()
+                self.loadingView?.hideLoading()
                 self.refreshControl?.endRefreshing()
             }
         }
@@ -195,6 +198,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             success += 1
             if success == 3 {
                 loadSuccess?()
+                self.loadingView?.hideLoading()
                 self.refreshControl?.endRefreshing()
             }
         }
@@ -202,7 +206,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         
     }
     func getMemberSetting(_ avaliable:(()->Void)?  = nil){
-        modelCtrl.getMemberSetting(params: nil, true, succeeded: { (result) in
+        modelCtrl.getMemberSetting(params: nil, false, succeeded: { (result) in
         //success
             avaliable?()
         }, error: { (error) in
@@ -484,7 +488,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         }else{
             isLoading = true
         }
-        modelCtrl.getUserData(params: nil , isLoading , succeeded: { (result) in
+        modelCtrl.getUserData(params: nil , false , succeeded: { (result) in
             self.userData = result
            
             if let userData = self.userData as? [String:AnyObject] {
@@ -546,7 +550,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         }else{
             isLoading = true
         }
-        modelCtrl.getCart(params: nil , isLoading , succeeded: { (result) in
+        modelCtrl.getCart(params: nil , false , succeeded: { (result) in
             self.cartItems = result
             
             if let itemCart = self.cartItems as? [[String:AnyObject]] {

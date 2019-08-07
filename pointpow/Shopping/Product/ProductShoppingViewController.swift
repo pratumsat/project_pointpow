@@ -359,10 +359,12 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
      func callAPI(_ reload:Bool = false, _ loadSuccess:(()->Void)?  = nil){
         var success = 0
 
+        self.loadingView?.showLoading()
         getRecommendByCate(reloadData: reload) {
             success += 1
             if success == 2 {
                 loadSuccess?()
+                self.loadingView?.hideLoading()
                 self.refreshControl?.endRefreshing()
             }
         }
@@ -370,6 +372,7 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
             success += 1
             if success == 2 {
                 loadSuccess?()
+                self.loadingView?.hideLoading()
                 self.refreshControl?.endRefreshing()
             }
         }
@@ -391,7 +394,7 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
             avaliable?()
             return
         }
-        modelCtrl.getReccommendByCateShopping(cateId: self.cateId, limit: 4,  isLoading , succeeded: { (result) in
+        modelCtrl.getReccommendByCateShopping(cateId: self.cateId, limit: 4,  false , succeeded: { (result) in
             
             if let mResult = result as? [[String:AnyObject]] {
                 self.cateItems = mResult
@@ -430,7 +433,7 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
         }
        
         
-        modelCtrl.getProductByCate(cateId: self.subCateId, skip: self.skipItem, type: self.sortBySelected, isLoading , succeeded: { (result) in
+        modelCtrl.getProductByCate(cateId: self.subCateId, skip: self.skipItem, type: self.sortBySelected, false , succeeded: { (result) in
             
             if let mResult = result as? [[String:AnyObject]] {
                

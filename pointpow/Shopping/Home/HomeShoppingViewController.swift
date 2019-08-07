@@ -108,10 +108,12 @@ class HomeShoppingViewController: ShoppingBaseViewController {
     
     func callAPI(_ reload:Bool = false, _ loadSuccess:(()->Void)?  = nil){
         var success = 0
+        self.loadingView?.showLoading()
         getBanner() {
             success += 1
             if success == 4 {
                 loadSuccess?()
+                self.loadingView?.hideLoading()
                 self.refreshControl?.endRefreshing()
             }
         }
@@ -119,6 +121,7 @@ class HomeShoppingViewController: ShoppingBaseViewController {
             success += 1
             if success == 4 {
                 loadSuccess?()
+                self.loadingView?.hideLoading()
                 self.refreshControl?.endRefreshing()
             }
         }
@@ -126,6 +129,7 @@ class HomeShoppingViewController: ShoppingBaseViewController {
             success += 1
             if success == 4 {
                 loadSuccess?()
+                self.loadingView?.hideLoading()
                 self.refreshControl?.endRefreshing()
             }
         }
@@ -133,6 +137,7 @@ class HomeShoppingViewController: ShoppingBaseViewController {
             success += 1
             if success == 4 {
                 loadSuccess?()
+                self.loadingView?.hideLoading()
                 self.refreshControl?.endRefreshing()
             }
         }
@@ -151,7 +156,7 @@ class HomeShoppingViewController: ShoppingBaseViewController {
         }
         
         
-        modelCtrl.getReccommendByCateShopping(cateId: self.cateId, limit: 4,  isLoading , succeeded: { (result) in
+        modelCtrl.getReccommendByCateShopping(cateId: self.cateId, limit: 4,  false , succeeded: { (result) in
             
             if let mResult = result as? [[String:AnyObject]] {
                 self.cateItems = mResult
@@ -183,7 +188,7 @@ class HomeShoppingViewController: ShoppingBaseViewController {
             isLoading = true
         }
         
-        modelCtrl.getBannerShopping(params: nil , isLoading , succeeded: { (result) in
+        modelCtrl.getBannerShopping(params: nil , false , succeeded: { (result) in
             
             if let mResult = result as? [[String:AnyObject]] {
                 self.banner = mResult
@@ -214,7 +219,7 @@ class HomeShoppingViewController: ShoppingBaseViewController {
             isLoading = true
         }
         
-        modelCtrl.getSpecailDealShopping(params: nil , isLoading , succeeded: { (result) in
+        modelCtrl.getSpecailDealShopping(params: nil , false , succeeded: { (result) in
             
             if let mResult = result as? [[String:AnyObject]] {
                 self.specialDeal = mResult
@@ -245,7 +250,7 @@ class HomeShoppingViewController: ShoppingBaseViewController {
             isLoading = true
         }
         
-        modelCtrl.getHotRedemptionShopping(params: nil , isLoading , succeeded: { (result) in
+        modelCtrl.getHotRedemptionShopping(params: nil , false , succeeded: { (result) in
             
             if let mResult = result as? [[String:AnyObject]] {
                 self.hotRedemtion = mResult

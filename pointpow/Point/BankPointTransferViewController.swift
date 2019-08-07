@@ -123,7 +123,7 @@ class BankPointTransferViewController: BaseViewController  {
         
         if let data = self.itemData {
             let provider_image = data["provider_image_url"] as? String ?? ""
-            let name = data["name"] as? String ?? ""
+            //let name = data["name"] as? String ?? ""
             let point_name = data["point_name"] as? String ?? ""
             let exchange_rate = data["exchange_rate"] as? [[String:AnyObject]] ?? [[:]]
             
@@ -169,7 +169,7 @@ class BankPointTransferViewController: BaseViewController  {
                 self.exchangeRate2Label.text = numberFormatter.string(from: NSNumber(value: toPointPow))
             }
             
-           self.providerNamgeLabel.text = name
+           self.providerNamgeLabel.text = point_name
             
             if let url = URL(string: provider_image) {
                 self.providerImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))

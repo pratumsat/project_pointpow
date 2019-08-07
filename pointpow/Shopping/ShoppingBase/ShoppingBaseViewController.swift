@@ -401,9 +401,10 @@ extension ShoppingBaseViewController {
     func addCategoryView(_ searchView:UIView, allProduct:Bool = false) -> UIView{
         categoryView = UIView()
         categoryView!.translatesAutoresizingMaskIntoConstraints = false
+        //categoryView?.backgroundColor = UIColor.white
         
         let mainCategoryView = UIView()
-        //mainCategoryView.backgroundColor = UIColor.cyan
+        mainCategoryView.backgroundColor = UIColor.white
         mainCategoryView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(mainCategoryView)
         

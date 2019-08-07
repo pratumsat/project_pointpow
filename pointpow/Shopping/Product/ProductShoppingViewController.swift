@@ -10,6 +10,9 @@ import UIKit
 
 class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDelegate , UIPickerViewDataSource, UIGestureRecognizerDelegate{
   
+    var searchProduct:Bool {
+        return false
+    }
     var notFoundHeader:String {
         return "NotFoundItemCell"
     }
@@ -129,10 +132,12 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
             
             self.mainCateView?.isHidden = true
            
+            
+            
             if self.collpse {
-                self.topConstraintCollectionView.constant = 40 + self.sizeOfViewCateInit
+                self.topConstraintCollectionView.constant = (self.searchProduct) ? 40 : 40 + self.sizeOfViewCateInit
             }else{
-                self.topConstraintCollectionView.constant = 40 + self.sizeOfViewCate
+                self.topConstraintCollectionView.constant = (self.searchProduct) ? 40 : 40 + self.sizeOfViewCate
             }
             self.view.layoutIfNeeded()
         }) { (completed) in
@@ -152,9 +157,9 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
             self.mainCateView?.isHidden = false
 
             if self.collpse {
-                self.topConstraintCollectionView.constant = self.initHeightViewCate + self.sizeOfViewCateInit
+                self.topConstraintCollectionView.constant = (self.searchProduct) ? 40 : self.initHeightViewCate + self.sizeOfViewCateInit
             }else{
-                self.topConstraintCollectionView.constant = self.initHeightViewCate + self.sizeOfViewCate
+                self.topConstraintCollectionView.constant = (self.searchProduct) ? 40 : self.initHeightViewCate + self.sizeOfViewCate
             }
             
             self.view.layoutIfNeeded()

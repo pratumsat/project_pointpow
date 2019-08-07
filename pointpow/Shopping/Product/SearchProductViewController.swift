@@ -17,6 +17,9 @@ class SearchProductViewController: ProductShoppingViewController {
     override var sizeNotFoundHeader : CGFloat {
        return self.productCollectionView?.frame.width ?? CGFloat(300.0)
     }
+    override var searchProduct: Bool {
+        return true
+    }
     
     var keyword:String? {
         didSet{

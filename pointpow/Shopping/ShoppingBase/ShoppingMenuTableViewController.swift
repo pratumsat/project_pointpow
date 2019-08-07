@@ -109,7 +109,7 @@ class ShoppingMenuTableViewController: BaseViewController, UITableViewDelegate, 
         self.menuTableView.dataSource = self
         self.menuTableView.delegate = self
         
-        
+        self.menuTableView.separatorStyle = .none
         self.menuTableView.separatorInset = .zero
         self.menuTableView.tableFooterView = UIView()
         self.registerTableViewNib(self.menuTableView, "NameTableViewCell")

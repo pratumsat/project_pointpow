@@ -216,11 +216,13 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                 self.showMessagePrompt(message)
             }
             self.refreshControl?.endRefreshing()
+            avaliable?()
             print(error)
         }) { (messageError) in
             print("messageError")
             self.handlerMessageError(messageError)
             self.refreshControl?.endRefreshing()
+            avaliable?()
         }
     }
     
@@ -536,11 +538,13 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                 self.showMessagePrompt(message)
             }
             self.refreshControl?.endRefreshing()
+            avaliable?()
             print(error)
         }) { (messageError) in
             print("messageError")
             self.handlerMessageError(messageError)
             self.refreshControl?.endRefreshing()
+            avaliable?()
         }
     }
     private func getItemToCart(_ avaliable:(()->Void)?  = nil){
@@ -615,11 +619,13 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                 self.showMessagePrompt(message)
             }
             self.refreshControl?.endRefreshing()
+            avaliable?()
             print(error)
         }) { (messageError) in
             print("messageError")
             self.handlerMessageError(messageError)
             self.refreshControl?.endRefreshing()
+            avaliable?()
         }
         
     }

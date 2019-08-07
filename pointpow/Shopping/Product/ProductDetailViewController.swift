@@ -450,11 +450,13 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
             }
             
             self.refreshControl?.endRefreshing()
+            avaliable?()
             print(error)
         }) { (messageError) in
             print("messageError")
             self.handlerMessageError(messageError)
             self.refreshControl?.endRefreshing()
+            avaliable?()
         }
     }
     
@@ -485,11 +487,13 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
             }
             
             self.refreshControl?.endRefreshing()
+            avaliable?()
             print(error)
         }) { (messageError) in
             print("messageError")
             self.handlerMessageError(messageError)
             self.refreshControl?.endRefreshing()
+            avaliable?()
         }
     }
     
@@ -520,6 +524,7 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
             self.relatedTitleLabel.isHidden = true
             self.heightProductRelatedConstraint.constant = 0
             self.refreshControl?.endRefreshing()
+            avaliable?()
             print(error)
         }) { (messageError) in
             print("messageError")
@@ -527,6 +532,7 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
             self.heightProductRelatedConstraint.constant = 0
             self.handlerMessageError(messageError)
             self.refreshControl?.endRefreshing()
+            avaliable?()
         }
         
     }

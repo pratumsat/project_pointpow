@@ -9,7 +9,7 @@
 #import "ConstantObjectiveC.h"
 
 @implementation ConstantObjectiveC
-+(NSInteger)getDigitForThaiLanguage: (NSString*)str{
++ (NSInteger)getDigitForThaiLanguage: (NSString*)str{
     return [str length];
 }
 @end

@@ -178,11 +178,13 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
                 self.showMessagePrompt(message)
             }
             self.refreshControl?.endRefreshing()
+            avaliable?()
             print(error)
         }) { (messageError) in
             print("messageError")
             self.handlerMessageError(messageError)
             self.refreshControl?.endRefreshing()
+            avaliable?()
         }
     }
     
@@ -215,11 +217,13 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
                 self.showMessagePrompt(message)
             }
             self.refreshControl?.endRefreshing()
+            avaliable?()
             print(error)
         }) { (messageError) in
             print("messageError")
             self.handlerMessageError(messageError)
             self.refreshControl?.endRefreshing()
+            avaliable?()
         }
     }
     func getGoldPrice(_ avaliable:(()->Void)?  = nil){
@@ -242,11 +246,13 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
                 self.showMessagePrompt(message)
             }
             self.refreshControl?.endRefreshing()
+            avaliable?()
             print(error)
         }) { (messageError) in
             print("messageError")
             self.handlerMessageError(messageError)
             self.refreshControl?.endRefreshing()
+            avaliable?()
         }
     }
     
@@ -272,11 +278,13 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
                 self.showMessagePrompt(message)
             }
             self.refreshControl?.endRefreshing()
+            avaliable?()
             print(error)
         }) { (messageError) in
             print("messageError")
             self.handlerMessageError(messageError)
             self.refreshControl?.endRefreshing()
+            avaliable?()
         }
     }
     

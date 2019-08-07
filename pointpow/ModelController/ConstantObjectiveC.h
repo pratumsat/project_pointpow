@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ConstantObjectiveC : NSObject
-+(NSInteger)getDigitForThaiLanguage:(NSString*)str;
++ (NSInteger)getDigitForThaiLanguage:(NSString*)str;
 @end

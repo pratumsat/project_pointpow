@@ -328,10 +328,10 @@ extension ShoppingBaseViewController {
         let translation = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
         
         print("offsetY \(translation.y)")
-        if translation.y > 0 {
+        if translation.y > 10 {
             // swipes from top to bottom of screen -> down
             showView()
-        } else {
+        } else if translation.y < -10 {
             // swipes from bottom to top of screen -> up
             hideView()
         }

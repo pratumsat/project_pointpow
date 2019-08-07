@@ -148,10 +148,12 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
             }
             self.refreshControl?.endRefreshing()
             print(error)
+            avaliable?()
         }) { (messageError) in
             print("messageError")
             self.handlerMessageError(messageError)
             self.refreshControl?.endRefreshing()
+            avaliable?()
         }
     }
     func getUserInfo(_ avaliable:(()->Void)?  = nil){
@@ -176,11 +178,13 @@ class GoldWithDrawViewController: BaseViewController , UICollectionViewDelegate 
                 self.showMessagePrompt(message)
             }
             self.refreshControl?.endRefreshing()
+            avaliable?()
             print(error)
         }) { (messageError) in
             print("messageError")
             self.handlerMessageError(messageError)
             self.refreshControl?.endRefreshing()
+            avaliable?()
         }
     }
     

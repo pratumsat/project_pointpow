@@ -172,10 +172,12 @@ class HomeShoppingViewController: ShoppingBaseViewController {
             }
             self.refreshControl?.endRefreshing()
             print(error)
+            avaliable?()
         }) { (messageError) in
             print("messageError")
             self.handlerMessageError(messageError)
             self.refreshControl?.endRefreshing()
+            avaliable?()
         }
     
     }
@@ -205,10 +207,12 @@ class HomeShoppingViewController: ShoppingBaseViewController {
             }
             self.refreshControl?.endRefreshing()
             print(error)
+            avaliable?()
         }) { (messageError) in
             print("messageError")
             self.handlerMessageError(messageError)
             self.refreshControl?.endRefreshing()
+            avaliable?()
         }
     }
     private  func getSpecial(_ avaliable:(()->Void)?  = nil){
@@ -232,14 +236,16 @@ class HomeShoppingViewController: ShoppingBaseViewController {
             if let mError = error as? [String:AnyObject]{
                 let message = mError["message"] as? String ?? ""
                 print(message)
-                self.showMessagePrompt(message)
+                //self.showMessagePrompt(message)
             }
             self.refreshControl?.endRefreshing()
+            avaliable?()
             print(error)
         }) { (messageError) in
             print("messageError")
-            self.handlerMessageError(messageError)
+            //self.handlerMessageError(messageError)
             self.refreshControl?.endRefreshing()
+            avaliable?()
         }
     }
     private  func getHotRedemption(_ avaliable:(()->Void)?  = nil){
@@ -266,11 +272,13 @@ class HomeShoppingViewController: ShoppingBaseViewController {
                 self.showMessagePrompt(message)
             }
             self.refreshControl?.endRefreshing()
+            avaliable?()
             print(error)
         }) { (messageError) in
             print("messageError")
             self.handlerMessageError(messageError)
             self.refreshControl?.endRefreshing()
+            avaliable?()
         }
     }
     
@@ -370,6 +378,7 @@ class HomeShoppingViewController: ShoppingBaseViewController {
         self.callAPI(true){
             
             self.countSection = 6
+            
             self.productCollectionView.reloadData()
         }
     }
@@ -395,6 +404,9 @@ extension HomeShoppingViewController {
             return 1
             
         case 1:
+            guard let count = self.specialDeal?.count, count > 0 else {
+                return 0
+            }
             return 1
         
         case 2:
@@ -617,6 +629,9 @@ extension HomeShoppingViewController {
             return CGSize(width: width, height: height)
             
         case 1:
+            guard let count = self.specialDeal?.count, count > 0 else {
+                return CGSize.zero
+            }
             let height = (width/2 - 15) + 110
             return CGSize(width: width, height: height)
         case 2:
@@ -650,8 +665,16 @@ extension HomeShoppingViewController {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
-       
+        if section == 0 {
+            guard let count = self.specialDeal?.count, count > 0 else {
+                return UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
+            }
+            return UIEdgeInsets.zero
+        }
         if section == 1 {
+            guard let count = self.specialDeal?.count, count > 0 else {
+                return UIEdgeInsets.zero
+            }
             return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         }
         if section == 2 {
@@ -745,6 +768,9 @@ extension HomeShoppingViewController {
         case 0,4,5:
             return CGSize.zero
         case 1:
+            guard let count = self.specialDeal?.count, count > 0 else {
+                return CGSize.zero
+            }
             return CGSize(width: collectionView.frame.width, height: 50.0)
             
         case 2,3:

@@ -150,10 +150,12 @@ class SavingViewController: BaseViewController, UICollectionViewDelegate , UICol
             }
             self.refreshControl?.endRefreshing()
             print(error)
+            avaliable?()
         }) { (messageError) in
             print("messageError")
             self.handlerMessageError(messageError)
             self.refreshControl?.endRefreshing()
+            avaliable?()
         }
     }
     
@@ -177,11 +179,13 @@ class SavingViewController: BaseViewController, UICollectionViewDelegate , UICol
                 self.showMessagePrompt(message)
             }
             self.refreshControl?.endRefreshing()
+            avaliable?()
             print(error)
         }) { (messageError) in
             print("messageError")
             self.handlerMessageError(messageError)
             self.refreshControl?.endRefreshing()
+            avaliable?()
         }
     }
     
@@ -207,11 +211,13 @@ class SavingViewController: BaseViewController, UICollectionViewDelegate , UICol
                 self.showMessagePrompt(message)
             }
             self.refreshControl?.endRefreshing()
+            avaliable?()
             print(error)
         }) { (messageError) in
             print("messageError")
             self.handlerMessageError(messageError)
             self.refreshControl?.endRefreshing()
+            avaliable?()
         }
     }
     

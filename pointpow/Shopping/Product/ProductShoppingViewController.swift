@@ -57,7 +57,7 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
             
         }
     }
-    var initHeightViewCate = CGFloat(140.0)
+    //var initHeightViewCate = CGFloat(130.0)
     
     var searchView:UIView?
     var mainCateView:UIView?
@@ -139,7 +139,7 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
             }else{
                 self.topConstraintCollectionView.constant = (self.searchProduct) ? 40 : 40 + self.sizeOfViewCate
             }
-            self.view.layoutIfNeeded()
+            //self.view.layoutIfNeeded()
         }) { (completed) in
             //completed
             self.start_animation = false
@@ -157,12 +157,12 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
             self.mainCateView?.isHidden = false
 
             if self.collpse {
-                self.topConstraintCollectionView.constant = (self.searchProduct) ? 40 : self.initHeightViewCate + self.sizeOfViewCateInit
+                self.topConstraintCollectionView.constant = (self.searchProduct) ? 40 : 130 + self.sizeOfViewCateInit
             }else{
-                self.topConstraintCollectionView.constant = (self.searchProduct) ? 40 : self.initHeightViewCate + self.sizeOfViewCate
+                self.topConstraintCollectionView.constant = (self.searchProduct) ? 40 : 140 + self.sizeOfViewCate
             }
             
-            self.view.layoutIfNeeded()
+            //self.view.layoutIfNeeded()
         }) { (completed) in
             //completed
             self.start_animation = false
@@ -296,14 +296,14 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
             self.collpse = collpse
             
             if collpse {
-                self.topConstraintCollectionView.constant = self.initHeightViewCate + self.sizeOfViewCateInit
+                self.topConstraintCollectionView.constant = 130 + self.sizeOfViewCateInit
             }else{
-                self.topConstraintCollectionView.constant = self.initHeightViewCate + self.sizeOfViewCate
+                self.topConstraintCollectionView.constant = 140 + self.sizeOfViewCate
             }
         }
         
         //start top
-        self.topConstraintCollectionView.constant = self.initHeightViewCate + self.sizeOfViewCateInit
+        self.topConstraintCollectionView.constant = 130 + self.sizeOfViewCateInit
         
         if let layout = self.productCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.minimumInteritemSpacing = 0
@@ -334,6 +334,8 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
             self.mainCateView =  self.addCategoryView(self.searchView!, allProduct: true)
             
             
+            self.topConstraintCollectionView.constant = 140 + self.sizeOfViewCate
+            self.collpse = false
             self.heightMainCategoryView?.constant = 95.0 + self.sizeOfViewCate
             self.mainCategoryView?.layoutIfNeeded()
             self.subCategoryCollectionView?.isHidden = false
@@ -905,7 +907,10 @@ extension ProductShoppingViewController {
             
             
         case "filter":
-            return CGSize.zero
+            guard let _ = itemSection.firstIndex(of: "recommend") else {
+                return (self.searchProduct) ?  CGSize(width: width, height: CGFloat(15.0)) : CGSize.zero
+            }
+            return  CGSize(width: width, height: CGFloat(10.0))
             
         case "product":
             guard let count = self.productItems?.count, count > 0 else {

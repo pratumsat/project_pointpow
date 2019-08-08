@@ -404,7 +404,7 @@ extension ShoppingBaseViewController {
         //categoryView?.backgroundColor = UIColor.white
         
         let mainCategoryView = UIView()
-        mainCategoryView.backgroundColor = UIColor.white
+        //mainCategoryView.backgroundColor = UIColor.white
         mainCategoryView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(mainCategoryView)
         

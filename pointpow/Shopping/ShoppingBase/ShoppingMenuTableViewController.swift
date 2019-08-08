@@ -211,6 +211,24 @@ class ShoppingMenuTableViewController: BaseViewController, UITableViewDelegate, 
                     item.nameLabel.text = NSLocalizedString("string-item-shopping-menu-6", comment: "")
                     item.menuImageView.image = UIImage(named: "ic-shopping-menu-6")
                 }
+                
+                switch indexPath.row {
+                case 0,1,2,3,4:
+                    let lineBottom = UIView(frame: CGRect(x: 20, y: item.frame.height - 1 ,
+                                                          width: tableView.frame.width - 80, height: 1 ))
+                    lineBottom.backgroundColor = UIColor.lightGray
+                    item.addSubview(lineBottom)
+                    break
+                case 5:
+                    let lineBottom = UIView(frame: CGRect(x: 0, y: item.frame.height - 1 ,
+                                                          width: tableView.frame.width, height: 1 ))
+                    lineBottom.backgroundColor = UIColor.lightGray
+                    item.addSubview(lineBottom)
+                    break
+                default:break
+                }
+                
+                
             }
         }
        

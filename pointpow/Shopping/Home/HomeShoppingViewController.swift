@@ -45,7 +45,7 @@ class HomeShoppingViewController: ShoppingBaseViewController {
             
             self.mainCateView?.isHidden = true
             self.topConstraintCollectionView.constant = 40
-            self.view.layoutIfNeeded()
+            //self.view.layoutIfNeeded()
         }) { (completed) in
             //completed
             self.start_animation = false
@@ -62,7 +62,7 @@ class HomeShoppingViewController: ShoppingBaseViewController {
             
             self.mainCateView?.isHidden = false
             self.topConstraintCollectionView.constant = 130.0 + self.sizeOfViewCateInit
-            self.view.layoutIfNeeded()
+           // self.view.layoutIfNeeded()
         }) { (completed) in
             //completed
             self.start_animation = false

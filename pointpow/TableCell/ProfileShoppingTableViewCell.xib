@@ -106,11 +106,21 @@
                             <constraint firstAttribute="trailing" secondItem="62a-AV-c9c" secondAttribute="trailing" id="ywF-q0-I2W"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jaf-Ky-n6x">
+                        <rect key="frame" x="0.0" y="251.5" width="320" height="1"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="0p2-nd-NYt"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
+                    <constraint firstItem="jaf-Ky-n6x" firstAttribute="leading" secondItem="IUd-5M-yRh" secondAttribute="leading" id="1tm-v8-gWA"/>
                     <constraint firstItem="8Pr-L4-q5O" firstAttribute="top" secondItem="gD9-ew-7w1" secondAttribute="bottom" id="3L3-en-GlO"/>
+                    <constraint firstAttribute="trailing" secondItem="jaf-Ky-n6x" secondAttribute="trailing" id="3rH-Mj-fGd"/>
                     <constraint firstItem="gD9-ew-7w1" firstAttribute="top" secondItem="7Y2-pK-ezG" secondAttribute="bottom" constant="5" id="6sr-a4-gPt"/>
+                    <constraint firstAttribute="bottom" secondItem="jaf-Ky-n6x" secondAttribute="bottom" id="9yT-Jd-6tM"/>
                     <constraint firstItem="7Y2-pK-ezG" firstAttribute="centerX" secondItem="IUd-5M-yRh" secondAttribute="centerX" multiplier="0.8" id="Jmf-Je-pch"/>
                     <constraint firstItem="cPb-kU-xlF" firstAttribute="top" secondItem="8Pr-L4-q5O" secondAttribute="bottom" id="Niu-Mh-eYm"/>
                     <constraint firstItem="8Pr-L4-q5O" firstAttribute="centerX" secondItem="7Y2-pK-ezG" secondAttribute="centerX" id="QeO-gZ-2WN"/>

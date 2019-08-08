@@ -103,7 +103,7 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
         self.menuTableView.dataSource = self
         self.menuTableView.delegate = self
         
-       
+        self.menuTableView.separatorStyle = .none
         self.menuTableView.separatorInset = .zero
         self.menuTableView.tableFooterView = UIView()
         self.registerTableViewNib(self.menuTableView, "NameTableViewCell")
@@ -208,6 +208,21 @@ class GoldMenuTableViewController: BaseViewController, UITableViewDelegate, UITa
                 if indexPath.row == 3 {
                     item.nameLabel.text = NSLocalizedString("string-dailog-gold-profile-history", comment: "")
                     item.menuImageView.image = UIImage(named: "ic-gold-menu-history")
+                }
+                switch indexPath.row {
+                case 0,1,2:
+                    let lineBottom = UIView(frame: CGRect(x: 20, y: item.frame.height - 1 ,
+                                                          width: tableView.frame.width - 80, height: 1 ))
+                    lineBottom.backgroundColor = UIColor.lightGray
+                    item.addSubview(lineBottom)
+                    break
+                case 3:
+                    let lineBottom = UIView(frame: CGRect(x: 0, y: item.frame.height - 1 ,
+                                                          width: tableView.frame.width, height: 1 ))
+                    lineBottom.backgroundColor = UIColor.lightGray
+                    item.addSubview(lineBottom)
+                    break
+                default:break
                 }
             }
         }

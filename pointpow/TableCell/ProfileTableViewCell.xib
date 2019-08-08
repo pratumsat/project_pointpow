@@ -105,17 +105,27 @@
                             <constraint firstAttribute="trailing" secondItem="NmB-4a-CTF" secondAttribute="trailing" id="wSD-0Q-nmS"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sI8-k1-ZKX">
+                        <rect key="frame" x="0.0" y="251.5" width="320" height="1"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="IJ8-TM-Qm6"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="sI8-k1-ZKX" secondAttribute="bottom" id="2CC-Wp-GEp"/>
                     <constraint firstItem="gic-26-3fP" firstAttribute="top" secondItem="ygV-qC-BA9" secondAttribute="bottom" id="41Q-qA-q9G"/>
                     <constraint firstItem="67t-o4-Ews" firstAttribute="centerX" secondItem="TT6-7w-bVu" secondAttribute="centerX" id="4hp-gQ-7wc"/>
                     <constraint firstItem="ygV-qC-BA9" firstAttribute="top" secondItem="67t-o4-Ews" secondAttribute="bottom" id="5Ix-ma-WaF"/>
                     <constraint firstItem="67t-o4-Ews" firstAttribute="top" secondItem="TT6-7w-bVu" secondAttribute="bottom" constant="5" id="AbJ-N1-h4R"/>
                     <constraint firstItem="gic-26-3fP" firstAttribute="top" secondItem="ygV-qC-BA9" secondAttribute="bottom" id="DpI-uN-ORE"/>
                     <constraint firstItem="TT6-7w-bVu" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" multiplier="0.7" id="FjI-p0-deK"/>
+                    <constraint firstAttribute="trailing" secondItem="sI8-k1-ZKX" secondAttribute="trailing" id="ORr-hb-qjg"/>
                     <constraint firstItem="ygV-qC-BA9" firstAttribute="centerX" secondItem="TT6-7w-bVu" secondAttribute="centerX" id="ZEI-S3-YWj"/>
                     <constraint firstItem="gic-26-3fP" firstAttribute="centerX" secondItem="TT6-7w-bVu" secondAttribute="centerX" id="gud-IL-lf1"/>
+                    <constraint firstItem="sI8-k1-ZKX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="kZW-wE-2fx"/>
                     <constraint firstItem="ygV-qC-BA9" firstAttribute="top" secondItem="67t-o4-Ews" secondAttribute="bottom" id="m3X-xt-UQo"/>
                     <constraint firstItem="TT6-7w-bVu" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" multiplier="0.8" id="pB7-Qo-0hE"/>
                 </constraints>

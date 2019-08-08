@@ -163,6 +163,8 @@
 		C12A88CC22E32BA500D40155 /* TaxInvoiceSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12A88CA22E32BA500D40155 /* TaxInvoiceSelectCell.swift */; };
 		C12A88CD22E32BA500D40155 /* TaxInvoiceSelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12A88CB22E32BA500D40155 /* TaxInvoiceSelectCell.xib */; };
 		C12A88D022E4803000D40155 /* PopupAddToCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12A88CF22E4803000D40155 /* PopupAddToCartViewController.swift */; };
+		C12AB7E522FBF6FF0033EDD3 /* TermShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12AB7E422FBF6FF0033EDD3 /* TermShoppingViewController.swift */; };
+		C12AB7E722FBF7190033EDD3 /* PrivacyPolicyShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12AB7E622FBF7190033EDD3 /* PrivacyPolicyShoppingViewController.swift */; };
 		C12AC2D022F928830007F256 /* OrderTrackingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12AC2CE22F928830007F256 /* OrderTrackingCell.swift */; };
 		C12AC2D122F928830007F256 /* OrderTrackingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12AC2CF22F928830007F256 /* OrderTrackingCell.xib */; };
 		C12CCC612281590C00F26DCC /* PersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12CCC602281590C00F26DCC /* PersonalDataViewController.swift */; };
@@ -551,6 +553,8 @@
 		C12A88CA22E32BA500D40155 /* TaxInvoiceSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxInvoiceSelectCell.swift; sourceTree = "<group>"; };
 		C12A88CB22E32BA500D40155 /* TaxInvoiceSelectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaxInvoiceSelectCell.xib; sourceTree = "<group>"; };
 		C12A88CF22E4803000D40155 /* PopupAddToCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupAddToCartViewController.swift; sourceTree = "<group>"; };
+		C12AB7E422FBF6FF0033EDD3 /* TermShoppingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermShoppingViewController.swift; sourceTree = "<group>"; };
+		C12AB7E622FBF7190033EDD3 /* PrivacyPolicyShoppingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyShoppingViewController.swift; sourceTree = "<group>"; };
 		C12AC2CE22F928830007F256 /* OrderTrackingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTrackingCell.swift; sourceTree = "<group>"; };
 		C12AC2CF22F928830007F256 /* OrderTrackingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderTrackingCell.xib; sourceTree = "<group>"; };
 		C12CCC602281590C00F26DCC /* PersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDataViewController.swift; sourceTree = "<group>"; };
@@ -831,7 +835,6 @@
 				C103113E2212CBAC004396E0 /* GoldPenddingVerifyNav.swift */,
 				C127323322530CA100A9EE74 /* GoldEditPenddingViewController.swift */,
 				C127323522530CF700A9EE74 /* GoldEditPenddingNav.swift */,
-				C121FB61228AC67500043387 /* TermPointSavingViewController.swift */,
 			);
 			path = GoldRegister;
 			sourceTree = "<group>";
@@ -1256,10 +1259,10 @@
 		C121FB5A228A813B00043387 /* About */ = {
 			isa = PBXGroup;
 			children = (
+				C12AB7E322FBF6C30033EDD3 /* shopping */,
+				C12AB7E222FBF6BB0033EDD3 /* pointpow */,
+				C12AB7E122FBF6B10033EDD3 /* gold */,
 				C121FB5B228A815F00043387 /* AboutViewController.swift */,
-				C121FB5D228AC37D00043387 /* PrivacyPolicyPointPowViewController.swift */,
-				C121FB5F228AC39500043387 /* TermPointPowViewController.swift */,
-				C121FB63228ACC5500043387 /* AboutPointPowViewController.swift */,
 			);
 			path = About;
 			sourceTree = "<group>";
@@ -1288,6 +1291,33 @@
 				C1249EBC22378DBB00F56FA0 /* PopupEditAddressViewController.swift */,
 			);
 			path = gold;
+			sourceTree = "<group>";
+		};
+		C12AB7E122FBF6B10033EDD3 /* gold */ = {
+			isa = PBXGroup;
+			children = (
+				C121FB61228AC67500043387 /* TermPointSavingViewController.swift */,
+			);
+			path = gold;
+			sourceTree = "<group>";
+		};
+		C12AB7E222FBF6BB0033EDD3 /* pointpow */ = {
+			isa = PBXGroup;
+			children = (
+				C121FB5D228AC37D00043387 /* PrivacyPolicyPointPowViewController.swift */,
+				C121FB5F228AC39500043387 /* TermPointPowViewController.swift */,
+				C121FB63228ACC5500043387 /* AboutPointPowViewController.swift */,
+			);
+			path = pointpow;
+			sourceTree = "<group>";
+		};
+		C12AB7E322FBF6C30033EDD3 /* shopping */ = {
+			isa = PBXGroup;
+			children = (
+				C12AB7E422FBF6FF0033EDD3 /* TermShoppingViewController.swift */,
+				C12AB7E622FBF7190033EDD3 /* PrivacyPolicyShoppingViewController.swift */,
+			);
+			path = shopping;
 			sourceTree = "<group>";
 		};
 		C12CCC622282B42000F26DCC /* PromotionCell */ = {
@@ -2148,6 +2178,7 @@
 				C11AFC7E22C1DE8A00573C27 /* ShoppingMenuTableViewController.swift in Sources */,
 				C121FB67228BE4AA00043387 /* NotificationTableViewCell.swift in Sources */,
 				C11A93BC218C20C700627B44 /* LoginViewController.swift in Sources */,
+				C12AB7E522FBF6FF0033EDD3 /* TermShoppingViewController.swift in Sources */,
 				C10D94BA220971B10083FA47 /* NavHistory.swift in Sources */,
 				C17E166622F83B310090518D /* PromotionShoppingDetailViewController.swift in Sources */,
 				C1AD50B22187FEE300F74415 /* ModelController.swift in Sources */,
@@ -2202,6 +2233,7 @@
 				C1B32E392251EB37006AD7F2 /* NavLuckyDraw.swift in Sources */,
 				C10D94AD22095EA20083FA47 /* GoldMenuTableViewController.swift in Sources */,
 				C1214E1522D2143E00DA5C42 /* ShoppingTaxInvoiceAddressViewController.swift in Sources */,
+				C12AB7E722FBF7190033EDD3 /* PrivacyPolicyShoppingViewController.swift in Sources */,
 				C1F0C07A22C4711600A49BAA /* BannerShoppingCell.swift in Sources */,
 				C142741A21A553EE003CC246 /* ItemFavorCell.swift in Sources */,
 				C1DEBE9521882F6F00CBB95F /* BaseNavigationViewController.swift in Sources */,

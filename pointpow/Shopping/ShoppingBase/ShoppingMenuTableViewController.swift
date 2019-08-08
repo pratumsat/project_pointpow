@@ -257,7 +257,50 @@ class ShoppingMenuTableViewController: BaseViewController, UITableViewDelegate, 
         
         
         //pass
-       
+        if indexPath.section == 1 {
+            switch indexPath.row {
+            case 0 :
+//                if let withdraw = self.storyboard?.instantiateViewController(withIdentifier: "ShoppingNavViewController") as? ShoppingNavViewController {
+//                    self.revealViewController()?.pushFrontViewController(withdraw, animated: true)
+//                }
+                
+                self.revealViewController()?.revealToggle(self)
+                let userInfo = ["action" : "home"]
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "shopping-action-menu"), object: nil, userInfo: userInfo as [String:AnyObject])
+
+                
+                break
+            case 1 :
+                
+                self.revealViewController()?.revealToggle(self)
+                let userInfo = ["action" : "product"]
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "shopping-action-menu"), object: nil, userInfo: userInfo as [String:AnyObject])
+                break
+            case 2 :
+                self.revealViewController()?.revealToggle(self)
+                let userInfo = ["action" : "howto"]
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "shopping-action-menu"), object: nil, userInfo: userInfo as [String:AnyObject])
+                break
+            case 3 :
+                self.revealViewController()?.revealToggle(self)
+                let userInfo = ["action" : "question"]
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "shopping-action-menu"), object: nil, userInfo: userInfo as [String:AnyObject])
+                break
+            case 4 :
+                self.revealViewController()?.revealToggle(self)
+                let userInfo = ["action" : "term"]
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "shopping-action-menu"), object: nil, userInfo: userInfo as [String:AnyObject])
+                break
+            case 5 :
+                self.revealViewController()?.revealToggle(self)
+                let userInfo = ["action" : "privacy"]
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "shopping-action-menu"), object: nil, userInfo: userInfo as [String:AnyObject])
+                break
+            default:break
+            }
+          
+        }
+        
     }
     
 

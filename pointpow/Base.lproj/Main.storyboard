@@ -12392,6 +12392,60 @@
             </objects>
             <point key="canvasLocation" x="-3739" y="-1805"/>
         </scene>
+        <!--Privacy Policy Shopping View Controller-->
+        <scene sceneID="CbB-9Z-haf">
+            <objects>
+                <viewController storyboardIdentifier="PrivacyPolicyShoppingViewController" id="8Me-YE-Tu4" customClass="PrivacyPolicyShoppingViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="agG-px-yNm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy Shopping" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YbA-jn-TEc">
+                                <rect key="frame" x="124.00000000000001" y="435" width="166.33333333333337" height="26.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YbA-jn-TEc" firstAttribute="centerX" secondItem="agG-px-yNm" secondAttribute="centerX" id="hq1-ox-PqR"/>
+                            <constraint firstItem="YbA-jn-TEc" firstAttribute="centerY" secondItem="agG-px-yNm" secondAttribute="centerY" id="v0l-Hk-MwI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="VRI-ar-7hY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TyC-n9-ond" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1251" y="5422"/>
+        </scene>
+        <!--Term Shopping View Controller-->
+        <scene sceneID="YWs-3q-WBw">
+            <objects>
+                <viewController storyboardIdentifier="TermShoppingViewController" id="7Kt-n0-8cM" customClass="TermShoppingViewController" customModule="pointpow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UN4-I8-eS9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Term&amp;Condition Shopping" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZ6-A1-wCu">
+                                <rect key="frame" x="87.000000000000014" y="435" width="240.33333333333337" height="26.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="DZ6-A1-wCu" firstAttribute="centerX" secondItem="UN4-I8-eS9" secondAttribute="centerX" id="Tzo-tH-aCq"/>
+                            <constraint firstItem="DZ6-A1-wCu" firstAttribute="centerY" secondItem="UN4-I8-eS9" secondAttribute="centerY" id="cwe-Mj-p2F"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="iW6-15-WHZ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9kG-1g-qnZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2010" y="5421"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bg-cart-red" width="201" height="131"/>

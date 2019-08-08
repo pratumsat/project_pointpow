@@ -23,6 +23,55 @@ class MainTabbarShoppingViewController: UITabBarController , UITabBarControllerD
         }
         NotificationCenter.default.addObserver(self, selector: #selector(addBadgeToCart(_:)), name: NSNotification.Name(rawValue: Constant.DefaultConstansts.UPDATE_BADGE), object: nil)
     
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(menuAction(_:)), name: NSNotification.Name(rawValue: "shopping-action-menu"), object: nil)
+    }
+    
+    func showHowTo(){
+        if let vc:PPWebViewController  = self.storyboard?.instantiateViewController(withIdentifier: "PPWebViewController") as? PPWebViewController {
+            vc.mTitle = NSLocalizedString("string-item-about-howto", comment: "")
+            vc.mUrl = ""
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func showQuestion(){
+        if let vc:PPWebViewController  = self.storyboard?.instantiateViewController(withIdentifier: "PPWebViewController") as? PPWebViewController {
+            vc.mTitle = NSLocalizedString("string-item-about-faq", comment: "")
+            vc.mUrl = ""
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func showTermAndCondition(){
+        if let vc:TermShoppingViewController  = self.storyboard?.instantiateViewController(withIdentifier: "TermShoppingViewController") as? TermShoppingViewController {
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    func showPrivacy(){
+        if let vc:PrivacyPolicyShoppingViewController  = self.storyboard?.instantiateViewController(withIdentifier: "PrivacyPolicyShoppingViewController") as? PrivacyPolicyShoppingViewController {
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    @objc func menuAction(_ notification:NSNotification) {
+        if let userInfo = notification.userInfo as? [String:AnyObject]{
+            let action = userInfo["action"] as? String ?? ""
+            if action == "home" {
+                self.selectedIndex = 0
+            }else if action == "product" {
+                self.selectedIndex = 1
+            }else if action == "howto" {
+                self.showHowTo()
+            }else if action == "question" {
+                self.showQuestion()
+            }else if action == "term" {
+                self.showTermAndCondition()
+            }else if action == "privacy" {
+                self.showPrivacy()
+            }
+            
+        }
     }
     
     @IBAction func dismissTapped(_ sender: Any) {

@@ -25,7 +25,7 @@ class HomeShoppingViewController: ShoppingBaseViewController {
     var searchView:UIView?
     var mainCateView:UIView?
     
-    
+   
     var cateId = 0 {
         didSet{
             getRecommendByCate {
@@ -282,6 +282,7 @@ class HomeShoppingViewController: ShoppingBaseViewController {
         }
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.title = NSLocalizedString("string-title-shopping-home", comment: "")
@@ -300,6 +301,8 @@ class HomeShoppingViewController: ShoppingBaseViewController {
             
             
         }
+       
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -713,23 +716,38 @@ extension HomeShoppingViewController {
             header.headerLabel.text = NSLocalizedString("string-item-shopping-cate-head-special-deal",
                                                             comment: "")
             
-            if !self.cd.running {
+            
+            DispatchQueue.main.async {
                 
-                cd.initializeTimer("2019-08-14 00:00:00")
-                cd.startTimer(pUpdateActionHandler: { (timeString) in
-                    
-                    header.hoursLabel.text = timeString.hours
-                    header.minLabel.text = timeString.minutes
-                    header.secLabel.text = timeString.seconds
-                    
-                }) {
+                if !self.cd.running {
 
-                    header.hoursLabel.text = "00"
-                    header.minLabel.text = "00"
-                    header.secLabel.text = "00"
-                    
+                    self.cd.initializeTimer("2019-08-14 00:00:00")
+                    let tuple = self.cd.timeFormatted(self.cd.totalTime)
+                    header.hoursLabel.text = tuple.hours
+                    header.minLabel.text = tuple.minutes
+                    header.secLabel.text = tuple.seconds
+
+                    self.cd.startTimer(pUpdateActionHandler: { (timeString) in
+
+                        header.hoursLabel.text = timeString.hours
+                        header.minLabel.text = timeString.minutes
+                        header.secLabel.text = timeString.seconds
+
+                    }) {
+
+                        header.hoursLabel.text = "00"
+                        header.minLabel.text = "00"
+                        header.secLabel.text = "00"
+
+                    }
+                }else{
+                    let tuple = self.cd.timeFormatted(self.cd.totalTime)
+                    header.hoursLabel.text = tuple.hours
+                    header.minLabel.text = tuple.minutes
+                    header.secLabel.text = tuple.seconds
                 }
             }
+            
             
             return header
         case 2,3:

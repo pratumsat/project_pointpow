@@ -72,6 +72,8 @@ public class DateCountDownTimer{
         return numDays
     }
     
+    var timeInterVal = 1.0
+    
     public func startTimer(pUpdateActionHandler:@escaping ((days:String, hours:String, minutes:String, seconds:String))->(),pCompletionActionHandler:@escaping ()->()) {
        
         
@@ -79,7 +81,7 @@ public class DateCountDownTimer{
         self.UpdateActionHandler = pUpdateActionHandler
         
         
-        countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+        countdownTimer = Timer.scheduledTimer(timeInterval: self.timeInterVal, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
         RunLoop.main.add(countdownTimer!, forMode: RunLoop.Mode.common)
         
         
@@ -88,13 +90,16 @@ public class DateCountDownTimer{
     }
     
     @objc func updateTime() {
-        self.UpdateActionHandler(timeFormatted(totalTime))
-        
         if totalTime > 0 {
             totalTime -= 1
         } else {
             endTimer()
         }
+        
+        self.UpdateActionHandler(timeFormatted(totalTime))
+        
+        
+        
     }
     
     func endTimer() {

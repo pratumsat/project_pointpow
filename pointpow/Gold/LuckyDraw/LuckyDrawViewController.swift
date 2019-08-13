@@ -253,11 +253,12 @@ class LuckyDrawViewController: BaseViewController, UICollectionViewDelegate , UI
                         }
                     }else{
                         print("out time")
+                        let timeString = self.cd.timeFormatted(self.cd.totalTime)
                         
-                        item.dayLabel.text = "0"
-                        item.hoursLabel.text = "0"
-                        item.minLabel.text = "0"
-                        item.secLabel.text = "0"
+                        item.dayLabel.text = timeString.days
+                        item.hoursLabel.text = timeString.hours
+                        item.minLabel.text = timeString.minutes
+                        item.secLabel.text = timeString.seconds
                     }
                    
                 }

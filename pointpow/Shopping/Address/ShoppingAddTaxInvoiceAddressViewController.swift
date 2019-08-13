@@ -51,6 +51,7 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
     var language = "th"
     
     var modelAddress:AnyObject?
+    var modelDuplicateAddress:AnyObject?
     var fromPopup = false
     
     var id:Int = 0
@@ -154,6 +155,67 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
             
             let newText = String((tax_invoice).filter({ $0 != "-" }).prefix(13))
 
+            self.invoice_shipping = invoice_shipping
+            
+            self.personalTextField.text = newText.chunkFormattedPersonalID()
+            self.nameTextField.text = name
+            self.numberPhoneTextField.text = mobile
+            self.addressTextField.text = address
+            self.districtTextField.text = districtName
+            self.subDistrictTextField.text = subdistrictName
+            self.provinceTextField.text = provinceName
+            self.postCodeTextField.text = "\(zip_code)"
+            
+            self.provinceId = idProvince.intValue
+            self.districtId = idDistrict.intValue
+            self.subDistrictId = idSubdistrict.intValue
+            
+            self.id = id.intValue
+            
+            getDistrict(idProvince.intValue) {
+                self.districtPickerView = UIPickerView()
+                self.districtPickerView!.delegate = self
+                self.districtPickerView!.dataSource = self
+                
+                self.districtTextField.isEnabled = true
+                self.districtTextField.tintColor = UIColor.clear
+                self.districtTextField.isUserInteractionEnabled = true
+                self.districtTextField.inputView = self.districtPickerView
+                
+                
+            }
+            
+            getSubDistrict(idDistrict.intValue) {
+                self.subDistrictPickerView = UIPickerView()
+                self.subDistrictPickerView!.delegate = self
+                self.subDistrictPickerView!.dataSource = self
+                
+                self.subDistrictTextField.isEnabled = true
+                self.subDistrictTextField.tintColor = UIColor.clear
+                self.subDistrictTextField.isUserInteractionEnabled = true
+                self.subDistrictTextField.inputView = self.subDistrictPickerView
+                
+            }
+            
+        }else  if let data = self.modelDuplicateAddress as? [String: AnyObject] {
+            let id = data["id"] as? NSNumber ?? 0
+            let address = data["address"] as? String ?? ""
+            let districtName = data["district"]?["name_in_thai"] as? String ?? ""
+            let subdistrictName = data["subdistrict"]?["name_in_thai"] as? String ?? ""
+            let provinceName = data["province"]?["name_in_thai"] as? String ?? ""
+            let zip_code = data["subdistrict"]?["zip_code"] as? NSNumber ?? 0
+            
+            let idDistrict = data["district"]?["id"] as? NSNumber ?? 0
+            let idSubdistrict = data["subdistrict"]?["id"] as? NSNumber ?? 0
+            let idProvince = data["province"]?["id"] as? NSNumber ?? 0
+            
+            let name = data["name"] as? String ?? ""
+            let mobile = data["mobile"]as? String ?? ""
+            let tax_invoice = data["tax_invoice"]as? String ?? ""
+            let invoice_shipping = data["invoice_shipping"]as? String ?? ""
+            
+            let newText = String((tax_invoice).filter({ $0 != "-" }).prefix(13))
+            
             self.invoice_shipping = invoice_shipping
             
             self.personalTextField.text = newText.chunkFormattedPersonalID()
@@ -482,15 +544,20 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
             for item in vcs {
                 if item is CartViewController {
                     self.navigationController?.popToViewController((self.navigationController?.viewControllers[i])!, animated: true)
+                    
+                    return
                 }
                 i += 1
             }
         }
         self.navigationController?.popViewController(animated: true)
+        
+        
     }
     
     @IBAction func saveTapped(_ sender: Any) {
         
+        errorPersonalIDLabel?.removeFromSuperview()
         errorNamelLabel?.removeFromSuperview()
         errorMobileLabel?.removeFromSuperview()
         errorAddressLabel?.removeFromSuperview()
@@ -551,7 +618,7 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
         
         if personalID.trimmingCharacters(in: .whitespaces).isEmpty {
             emptyMessage = NSLocalizedString("string-error-empty-personal-id", comment: "")
-            self.errorPersonalIDLabel =  self.personalTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 15 )
+            self.errorPersonalIDLabel =  self.personalTextField.addBottomLabelErrorMessage(emptyMessage, marginLeft: 0)
             errorEmpty += 1
             
         }

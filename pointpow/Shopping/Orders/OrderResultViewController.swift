@@ -313,20 +313,22 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
                             orderCell.productShippingStatusLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-cancel", comment: "")
                             orderCell.productShippingStatusLabel.textColor = Constant.Colors.PRIMARY_COLOR
                             orderCell.followProductView.isHidden = true
-                            
                             break
+                            
                         case "complete":
                             orderCell.isUserInteractionEnabled = true
                             orderCell.productShippingStatusLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-success", comment: "")
                             orderCell.productShippingStatusLabel.textColor = Constant.Colors.GREEN
                             orderCell.followProductView.isHidden = false
                             break
+                            
                         case "waiting":
                             orderCell.isUserInteractionEnabled = true
                             orderCell.productShippingStatusLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-waiting", comment: "")
                             orderCell.productShippingStatusLabel.textColor = Constant.Colors.ORANGE
                             orderCell.followProductView.isHidden = false
                             break
+                            
                         case "shipping":
                             orderCell.isUserInteractionEnabled = true
                             orderCell.productShippingStatusLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-shipping", comment: "")

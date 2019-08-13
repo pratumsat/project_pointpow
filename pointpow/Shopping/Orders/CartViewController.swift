@@ -19,7 +19,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
     var fullAddressShopping:(id:String, rawAddress:String) = (id:"", rawAddress:"")
     var fullAddressTaxInvoice:(id:String, rawAddress:String) = (id:"", rawAddress:"")
     var cart_id:Int = 0
-    
+    var lateShippingModel:AnyObject?
     
     
     var isTaxInvoice = false {
@@ -414,6 +414,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             rawAddress += "\n\(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
             
             if latest_shipping.boolValue {
+                self.lateShippingModel = data as AnyObject
                 return (id: "\(id.intValue)", rawAddress: rawAddress)
             }
         }
@@ -434,7 +435,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         var rawAddress = "\(name) \(newMText.chunkFormatted())"
         rawAddress += "\n\(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
         
-        
+        self.lateShippingModel = data as AnyObject
         return (id: "\(id.intValue)", rawAddress: rawAddress)
     }
     
@@ -752,6 +753,13 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
 
                         self.updateTotalAmountPrice()
                     }
+                    
+                    let maxCount = self.tupleProduct?.count ?? 0
+                    if (maxCount - 1) == indexPath.row {
+                        productCell.bottomLineView.isHidden = true
+                    }else{
+                        productCell.bottomLineView.isHidden = false
+                    }
                 }
             }
         case "summary":
@@ -859,6 +867,12 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                         self.showMessagePrompt2(NSLocalizedString("string-item-cart-address-not-select", comment: ""))
                         return
                     }
+                    if self.isTaxInvoice {
+                        if self.fullAddressTaxInvoice.rawAddress.trimmingCharacters(in: .whitespaces).isEmpty {
+                            self.showMessagePrompt2(NSLocalizedString("string-item-cart-tax-invoice-not-select", comment: ""))
+                            return
+                        }
+                    }
                     let pointBalance = DataController.sharedInstance.getCurrentPointBalance()
                    
                     if pointBalance.doubleValue <= 0 {
@@ -938,7 +952,8 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                     self.showTaxInvoiceAddressPage(true)
                 }else{
                     //no address
-                    self.showTaxInvoiceAddAddressPage(true)
+                    self.showTaxInvoiceAddDuplicateAddressPage(true, self.lateShippingModel )
+                    //self.showTaxInvoiceAddAddressPage(true)
                 }
             }
             

@@ -54,6 +54,7 @@ class PaymentViewController: BaseViewController , UIWebViewDelegate{
             if let myURL = URL(string: url) {
                 var myURLRequest:URLRequest = URLRequest(url: myURL)
                 myURLRequest.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+                print(myURLRequest)
                 self.webView.loadRequest(myURLRequest)
             }
         }

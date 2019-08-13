@@ -51,7 +51,7 @@ class HomeShoppingViewController: ShoppingBaseViewController {
             self.start_animation = false
         }
     }
-    
+
     override func showView() {
         if self.start_animation {
             return
@@ -714,7 +714,7 @@ extension HomeShoppingViewController {
             
             if !self.cd.running {
                 
-                cd.initializeTimer("2019-07-10 00:00:00")
+                cd.initializeTimer("2019-08-14 00:00:00")
                 cd.startTimer(pUpdateActionHandler: { (timeString) in
                     
                     

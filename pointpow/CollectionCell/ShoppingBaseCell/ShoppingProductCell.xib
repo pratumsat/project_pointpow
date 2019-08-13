@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -67,11 +67,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="243" height="367"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GeL-Az-kmr">
-                                <rect key="frame" x="116.5" y="5" width="121.5" height="121.5"/>
+                                <rect key="frame" x="141" y="5" width="97" height="97"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sold Out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z4W-9T-bJO">
-                                        <rect key="frame" x="34" y="49" width="53.5" height="23.5"/>
-                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
+                                        <rect key="frame" x="26" y="39" width="44.5" height="19.5"/>
+                                        <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="15"/>
                                         <color key="textColor" red="0.78823529410000004" green="0.1647058824" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -86,7 +86,7 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="GeL-Az-kmr" firstAttribute="width" secondItem="bFi-Av-tM8" secondAttribute="width" multiplier="0.5" id="H48-eu-Ozb"/>
+                            <constraint firstItem="GeL-Az-kmr" firstAttribute="width" secondItem="bFi-Av-tM8" secondAttribute="width" multiplier="0.4" id="H48-eu-Ozb"/>
                             <constraint firstAttribute="trailing" secondItem="GeL-Az-kmr" secondAttribute="trailing" constant="5" id="SJS-Iw-mzg"/>
                             <constraint firstItem="GeL-Az-kmr" firstAttribute="top" secondItem="bFi-Av-tM8" secondAttribute="top" constant="5" id="n43-07-EIf"/>
                         </constraints>

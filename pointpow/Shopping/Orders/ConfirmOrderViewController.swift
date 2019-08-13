@@ -247,6 +247,5 @@ class ConfirmOrderViewController: BaseViewController , UICollectionViewDelegate 
             return CGSize(width: collectionView.frame.width - 40, height: height)
         }
         
-        
     }
 }

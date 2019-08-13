@@ -116,6 +116,17 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
             
             //update image
             self.updateProductImage()
+            
+            if let item = self.productDetail?.first {
+                let variation = item["variation"] as? [String:AnyObject] ?? [:]
+                let stock = variation["stock"] as? NSNumber ?? 0
+                if stock.intValue <= 0 {
+                    self.showMessagePrompt2(NSLocalizedString("string-dailog-error-shopping-product-not-enough", comment: ""), okCallback: {
+                        self.navigationController?.dismiss(animated: true, completion: nil)
+                    })
+                }
+            }
+            
         }
     }
     
@@ -149,6 +160,8 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
             let stock = variation["stock"] as? NSNumber ?? 0
             
             self.maxAmount = stock.intValue
+            
+            
             
             if special_deal.count == 0{
                 //check discount price
@@ -663,7 +676,7 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
             var updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
             
             
-            if updatedText.isEmpty {
+            if updatedText.isEmpty || updatedText == "0" {
                 updatedText = "1"
             }
             if let iPoint = Int(updatedText.replace(target: ",", withString: "")){

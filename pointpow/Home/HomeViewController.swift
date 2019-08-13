@@ -393,9 +393,11 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
     @objc func tapToProfile(){
         self.tabBarController?.selectedIndex = 4
     }
+    
     @objc func tapToPointBalance(){
         self.showPointManagement(true)
     }
+    
     @objc func tapToNotification(){
         self.showNotificationData(true)
     }
@@ -411,7 +413,6 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         
 
     }
-   
    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()

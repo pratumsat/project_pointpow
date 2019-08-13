@@ -10,6 +10,7 @@ import UIKit
 
 class ItemCartProductCell: UICollectionViewCell ,UITextFieldDelegate{
 
+    @IBOutlet weak var bottomLineView: UIView!
     @IBOutlet weak var brandImageView: UIImageView!
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var productNameLabel: UILabel!
@@ -166,7 +167,7 @@ class ItemCartProductCell: UICollectionViewCell ,UITextFieldDelegate{
             var updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
             
             
-            if updatedText.isEmpty {
+            if updatedText.isEmpty || updatedText == "0" {
                 updatedText = "1"
             }
             if let iPoint = Int(updatedText.replace(target: ",", withString: "")){

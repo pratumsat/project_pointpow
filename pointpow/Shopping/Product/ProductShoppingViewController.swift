@@ -80,12 +80,20 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
     
     var subCateId = 0 {
         didSet{
+           
+            
             if let index = self.itemSection.firstIndex(of: "no_more_item") {
                 self.itemSection.remove(at: index)
             }
             
+            
+            
             self.productItems = nil
             self.skipItem = 0
+            
+            if subCateId > 5 {
+                self.itemSection = ["filter","product"]
+            }
             getProductByCate() {
                 self.productCollectionView.reloadData()
             }
@@ -256,8 +264,6 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
         let tag = sender.view?.tag ?? 0
         self.cateId = tag
         self.subCateId = tag
-        
-        
         
         if tag == 0 {
             self.itemSection = ["filter","product"]

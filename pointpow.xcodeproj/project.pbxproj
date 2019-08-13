@@ -315,6 +315,7 @@
 		C1AD50B22187FEE300F74415 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AD50B12187FEE300F74415 /* ModelController.swift */; };
 		C1AD50B52187FF4000F74415 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AD50B42187FF4000F74415 /* Loading.swift */; };
 		C1AD50B72188000B00F74415 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AD50B62188000B00F74415 /* Constant.swift */; };
+		C1B111302302A64300D02D1B /* ShoppingAddSettingTaxInvoiceAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B1112F2302A64300D02D1B /* ShoppingAddSettingTaxInvoiceAddressViewController.swift */; };
 		C1B32E372251EAE9006AD7F2 /* LuckyDrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B32E362251EAE9006AD7F2 /* LuckyDrawViewController.swift */; };
 		C1B32E392251EB37006AD7F2 /* NavLuckyDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B32E382251EB37006AD7F2 /* NavLuckyDraw.swift */; };
 		C1B32E3E22521881006AD7F2 /* PrivilegeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B32E3C22521881006AD7F2 /* PrivilegeCell.swift */; };
@@ -717,6 +718,7 @@
 		C1AD50B12187FEE300F74415 /* ModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		C1AD50B42187FF4000F74415 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		C1AD50B62188000B00F74415 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		C1B1112F2302A64300D02D1B /* ShoppingAddSettingTaxInvoiceAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingAddSettingTaxInvoiceAddressViewController.swift; sourceTree = "<group>"; };
 		C1B32E362251EAE9006AD7F2 /* LuckyDrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyDrawViewController.swift; sourceTree = "<group>"; };
 		C1B32E382251EB37006AD7F2 /* NavLuckyDraw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavLuckyDraw.swift; sourceTree = "<group>"; };
 		C1B32E3C22521881006AD7F2 /* PrivilegeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivilegeCell.swift; sourceTree = "<group>"; };
@@ -1229,6 +1231,7 @@
 				C1214E1422D2143E00DA5C42 /* ShoppingTaxInvoiceAddressViewController.swift */,
 				C12A88C822E3291800D40155 /* ShoppingAddTaxInvoiceAddressViewController.swift */,
 				C12F745322E9AA5C000E49F8 /* SettingAddressViewController.swift */,
+				C1B1112F2302A64300D02D1B /* ShoppingAddSettingTaxInvoiceAddressViewController.swift */,
 			);
 			path = Address;
 			sourceTree = "<group>";
@@ -2192,6 +2195,7 @@
 				C10CA19721914AD500316DF3 /* PromotionViewController.swift in Sources */,
 				C1493CF522F18ABA001335D6 /* ShippingViewController.swift in Sources */,
 				C1F0C06C22C3126900A49BAA /* HeaderSectionCell.swift in Sources */,
+				C1B111302302A64300D02D1B /* ShoppingAddSettingTaxInvoiceAddressViewController.swift in Sources */,
 				C1892E05221CFD3300F5412F /* WithDrawResultViewController.swift in Sources */,
 				C197FF3A22083AE9002F24E8 /* SavingCell.swift in Sources */,
 				C1817DA6219E6C73009507DB /* DisplayNameViewController.swift in Sources */,
@@ -2582,7 +2586,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W97NPGQL53;
+				DEVELOPMENT_TEAM = 5F28HD429U;
 				INFOPLIST_FILE = pointpow/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2656,7 +2660,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W97NPGQL53;
+				DEVELOPMENT_TEAM = 5F28HD429U;
 				INFOPLIST_FILE = pointpow/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (

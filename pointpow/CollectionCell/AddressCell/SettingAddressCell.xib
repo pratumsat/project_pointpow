@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -59,7 +59,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-address-setting-cate2" translatesAutoresizingMaskIntoConstraints="NO" id="hNv-vL-NXQ">
-                                <rect key="frame" x="76.5" y="10" width="30" height="30"/>
+                                <rect key="frame" x="80.5" y="14" width="22" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="hNv-vL-NXQ" secondAttribute="height" multiplier="1:1" id="Em1-cG-lDu"/>
                                 </constraints>
@@ -68,11 +68,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Fet-v6-a0W" secondAttribute="bottom" constant="5" id="MbT-lK-yzP"/>
-                            <constraint firstItem="Fet-v6-a0W" firstAttribute="top" secondItem="hNv-vL-NXQ" secondAttribute="bottom" constant="5" id="My5-Xr-9vq"/>
                             <constraint firstItem="hNv-vL-NXQ" firstAttribute="centerX" secondItem="tAe-GT-3lT" secondAttribute="centerX" id="QyX-am-8VZ"/>
                             <constraint firstItem="hNv-vL-NXQ" firstAttribute="width" secondItem="hNv-vL-NXQ" secondAttribute="height" multiplier="1:1" id="SBN-L4-pvo"/>
                             <constraint firstItem="Fet-v6-a0W" firstAttribute="leading" secondItem="tAe-GT-3lT" secondAttribute="leading" constant="5" id="XQq-di-sLD"/>
-                            <constraint firstItem="hNv-vL-NXQ" firstAttribute="top" secondItem="tAe-GT-3lT" secondAttribute="top" constant="10" id="eBS-vN-kZO"/>
                             <constraint firstAttribute="trailing" secondItem="Fet-v6-a0W" secondAttribute="trailing" constant="5" id="qt4-aZ-yOg"/>
                         </constraints>
                     </view>
@@ -88,10 +86,12 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="ss0-aE-k7z" firstAttribute="top" secondItem="tAe-GT-3lT" secondAttribute="bottom" constant="10" id="BX0-Xr-1mD"/>
+                <constraint firstItem="hNv-vL-NXQ" firstAttribute="height" secondItem="ppD-dy-Sbc" secondAttribute="height" multiplier="0.22" id="DFI-rN-bYt"/>
                 <constraint firstItem="ss0-aE-k7z" firstAttribute="leading" secondItem="ppD-dy-Sbc" secondAttribute="leading" id="ERy-gt-CMa"/>
                 <constraint firstItem="tAe-GT-3lT" firstAttribute="leading" secondItem="Sw8-tX-Ues" secondAttribute="trailing" id="OPt-D4-U84"/>
                 <constraint firstItem="aJm-HC-VYI" firstAttribute="height" secondItem="ppD-dy-Sbc" secondAttribute="height" multiplier="0.3" id="Pnt-iH-6IH"/>
-                <constraint firstItem="hNv-vL-NXQ" firstAttribute="width" secondItem="aJm-HC-VYI" secondAttribute="width" id="Sp0-CT-9Qb"/>
+                <constraint firstItem="Fet-v6-a0W" firstAttribute="centerY" secondItem="8gI-KV-hYu" secondAttribute="centerY" id="XXM-bo-lLL"/>
+                <constraint firstItem="hNv-vL-NXQ" firstAttribute="centerY" secondItem="aJm-HC-VYI" secondAttribute="centerY" id="Z62-tF-p1t"/>
                 <constraint firstAttribute="trailing" secondItem="ss0-aE-k7z" secondAttribute="trailing" id="Zeo-Gi-LCd"/>
                 <constraint firstItem="tAe-GT-3lT" firstAttribute="width" secondItem="Sw8-tX-Ues" secondAttribute="width" id="dni-U4-DDB"/>
                 <constraint firstItem="Sw8-tX-Ues" firstAttribute="leading" secondItem="ppD-dy-Sbc" secondAttribute="leading" id="gDa-EG-2hz"/>
@@ -114,7 +114,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="ic-address-setting-cate1-active" width="60" height="60"/>
-        <image name="ic-address-setting-cate2" width="60" height="60"/>
+        <image name="ic-address-setting-cate1-active" width="30" height="30"/>
+        <image name="ic-address-setting-cate2" width="30" height="30"/>
     </resources>
 </document>

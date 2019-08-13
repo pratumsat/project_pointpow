@@ -358,6 +358,19 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
         }
     }
     
+    func showTaxInvoiceSettingAddAddressPage(_ animated:Bool){
+        if let vc:ShoppingAddSettingTaxInvoiceAddressViewController = self.storyboard?.instantiateViewController(withIdentifier: "ShoppingAddSettingTaxInvoiceAddressViewController") as? ShoppingAddSettingTaxInvoiceAddressViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    func showTaxInvoiceSetttingEditAddressPage(_ animated:Bool, _ modelAddress:AnyObject?){
+        if let vc:ShoppingAddSettingTaxInvoiceAddressViewController = self.storyboard?.instantiateViewController(withIdentifier: "ShoppingAddSettingTaxInvoiceAddressViewController") as? ShoppingAddSettingTaxInvoiceAddressViewController {
+            vc.modelAddress = modelAddress
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    
     
   
     func showGoldPage(_ animated:Bool){

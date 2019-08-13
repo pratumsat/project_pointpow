@@ -53,6 +53,26 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
     
     }
     
+    func updateSelectedItem(){
+        var isFalse = 0
+        var isTrue = 0
+        if let tuple = self.tupleProduct {
+            for item in tuple {
+                if item.select {
+                    isTrue += 1
+                }else{
+                    isFalse += 1
+                }
+            }
+        }
+        if isFalse > 0 {
+            self.checkAll = false
+        }else{
+            self.checkAll = true
+        }
+        
+        self.reloadSelectAllSection()
+    }
     func reloadSelectAllSection(){
         if let index = itemSection.firstIndex(of: "selectall"){
             let indexSet = IndexSet(integer: index)
@@ -90,8 +110,10 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         var total = 0.0
         var amount = 0
         var i = 0
+        var amountItem = 0
         if let Tuple = self.tupleProduct {
             for item in Tuple {
+                amountItem += item.amount
                 if item.select {
                     let sum = Double(item.amount) * item.price
                     total += sum
@@ -102,6 +124,9 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             }
         }
         self.totalOrder = (amount: amount, totalPrice: total)
+        
+        let mtitle = NSLocalizedString("string-title-cart-product", comment: "")
+        self.title = "\(mtitle) (\(amountItem))"
     }
     
     var totalOrder:(amount:Int, totalPrice:Double)? {
@@ -122,8 +147,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                 }
             }
             
-            let mtitle = NSLocalizedString("string-title-cart-product", comment: "")
-            self.title = "\(mtitle) (\(totalOrder?.amount ?? 0))"
+            
         }
         
     }
@@ -233,7 +257,8 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             
             if cart_item.count > 0 {
                 self.setItemSection()
-                
+                let mtitle = NSLocalizedString("string-title-cart-product", comment: "")
+                self.title = "\(mtitle) (\(cart_item.count))"
             }else{
                 self.itemSection = ["no_item"]
             }
@@ -320,7 +345,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                                     "secret" : Constant.PointPowAPI.SECRET_SHOPPING,
                                     "cart_id" : self.cart_id,
                                     "product_id" : productIds]
-        
+        print(parameter)
       
         modelCtrl.delCart(params: parameter , true , succeeded: { (result) in
             //del success
@@ -746,11 +771,8 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                     
                     productCell.checkCallback = { (isCheck) in
                         self.tupleProduct?[self.getItemPositionByItemId(itemTuple.id)].select = isCheck
-                        if !isCheck {
-                            self.checkAll = false
-                            self.reloadSelectAllSection()
-                        }
 
+                        self.updateSelectedItem()
                         self.updateTotalAmountPrice()
                     }
                     

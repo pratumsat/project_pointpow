@@ -74,11 +74,15 @@ public class DateCountDownTimer{
     
     public func startTimer(pUpdateActionHandler:@escaping ((days:String, hours:String, minutes:String, seconds:String))->(),pCompletionActionHandler:@escaping ()->()) {
        
-        countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
-        RunLoop.main.add(countdownTimer!, forMode: RunLoop.Mode.common)
         
         self.CompletionActionHandler = pCompletionActionHandler
         self.UpdateActionHandler = pUpdateActionHandler
+        
+        
+        countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+        RunLoop.main.add(countdownTimer!, forMode: RunLoop.Mode.common)
+        
+        
         
         self.running = true
     }

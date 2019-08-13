@@ -185,7 +185,7 @@ class ShoppingTaxInvoiceAddressViewController: ShoppingAddressViewController {
                 var rawAddress = "\(name) \(newText.chunkFormattedPersonalID())"
                 rawAddress += "\n\(newMText.chunkFormatted()) \(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
                 
-                var height = CGFloat(60)
+                var height = CGFloat(40)
                 height += heightForView(text: rawAddress, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 16)!, width: width - 80)
                 
                 return CGSize(width: width, height: height)

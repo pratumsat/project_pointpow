@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <array key="ThaiSansNeue-Bold.ttf">
             <string>ThaiSansNeue-Bold</string>
+        </array>
+        <array key="ThaiSansNeue-Regular.ttf">
+            <string>ThaiSansNeue-Regular</string>
         </array>
     </customFonts>
     <objects>
@@ -41,21 +44,21 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="box-Rv-DTX">
                                 <rect key="frame" x="20" y="15" width="267" height="23.5"/>
-                                <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="18"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OK9-AB-87x">
-                                <rect key="frame" x="121" y="23" width="65.5" height="74"/>
+                                <rect key="frame" x="121" y="28" width="65.5" height="64"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-add-address" translatesAutoresizingMaskIntoConstraints="NO" id="hYQ-Uk-Gsf">
-                                        <rect key="frame" x="7.5" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="12.5" y="0.0" width="40" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="QtF-aL-Xz0"/>
+                                            <constraint firstAttribute="width" constant="40" id="QtF-aL-Xz0"/>
                                             <constraint firstAttribute="width" secondItem="hYQ-Uk-Gsf" secondAttribute="height" multiplier="1:1" id="wpF-qs-FcY"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="เพิ่มที่อยู่" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jph-di-gh4">
-                                        <rect key="frame" x="10" y="50" width="45.5" height="24"/>
+                                        <rect key="frame" x="10" y="40" width="45.5" height="24"/>
                                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="18"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -114,8 +117,8 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="ic-add-address" width="60" height="59"/>
-        <image name="ic-cart-shopping-shopping" width="60" height="61"/>
-        <image name="ic-fav-edit" width="100" height="99"/>
+        <image name="ic-add-address" width="30" height="29.5"/>
+        <image name="ic-cart-shopping-shopping" width="30" height="30.5"/>
+        <image name="ic-fav-edit" width="50" height="49.5"/>
     </resources>
 </document>

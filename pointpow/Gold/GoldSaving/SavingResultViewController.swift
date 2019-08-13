@@ -55,6 +55,7 @@ class SavingResultViewController: BaseViewController , UICollectionViewDelegate 
         
     }
     
+    
     func getDetail(){
         
         self.modelCtrl.detailTransactionGold(transactionNumber: self.transactionId ?? "" ,true , succeeded: { (result) in

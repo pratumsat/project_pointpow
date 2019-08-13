@@ -10,6 +10,7 @@ import UIKit
 
 
 class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     @IBOutlet weak var homeCollectionView: UICollectionView!
     @IBOutlet weak var menuBarButton: UIBarButtonItem!
     let arrayItem_registered_waiting = ["banner","goldprice", "logo"]

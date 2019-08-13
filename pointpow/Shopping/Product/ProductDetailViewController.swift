@@ -105,7 +105,7 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
         self.title =  NSLocalizedString("string-title-product-detail", comment: "")
         
         self.setUp()
-        
+      
        
         self.callAPI {
             //update detail
@@ -122,26 +122,41 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
                 let stock = variation["stock"] as? NSNumber ?? 0
                 if stock.intValue <= 0 {
                     self.showMessagePrompt2(NSLocalizedString("string-dailog-error-shopping-product-not-enough", comment: ""), okCallback: {
-                        self.navigationController?.dismiss(animated: true, completion: nil)
+                        self.navigationController?.popViewController(animated: true)
                     })
                 }
+            }else{
+                self.showMessagePrompt2(NSLocalizedString("string-string-not-found-product", comment: ""), okCallback: {
+                    self.navigationController?.popViewController(animated: true)
+                })
             }
             
         }
     }
     
+    
+    
     func updateProductImage(){
+        
         if let mResult = self.productImage {
             self.itemBanner = []
             for item in mResult {
                 let type = item["type"] as? String ?? ""
-                if type.lowercased() == "thumb" {
+                if type.lowercased() == "big_thumb" {
                     self.itemBanner?.append(["path_mobile" : getFullPathImageView(item) as AnyObject])
                 }
             }
         }
         self.count = itemBanner?.count ?? 0
-        self.pageLabel.text = "\(x)/\(count)"
+        if count <= 1 {
+            self.pageView.isHidden = true
+            self.pageLabel.isHidden = true
+        }else{
+            self.pageLabel.text = "\(x)/\(count)"
+            self.pageView.isHidden = false
+            self.pageLabel.isHidden = false
+        }
+        
         
         //self.autoSlideImage = true
         self.imageCollectionView.reloadData()
@@ -279,7 +294,6 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
                 self.loadingView?.hideLoading()
                 self.refreshControl?.endRefreshing()
             }
-            
         }
     }
     
@@ -356,7 +370,7 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
                 if let mResult = self.productImage {
                     for item in mResult {
                         let type = item["type"] as? String ?? ""
-                        if type.lowercased() == "thumb" {
+                        if type.lowercased() == "big_thumb" {
                             product_image = item
                             break
                         }
@@ -459,7 +473,7 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
             if let mError = error as? [String:AnyObject]{
                 let message = mError["message"] as? String ?? ""
                 print(message)
-                self.showMessagePrompt(message)
+        //        self.showMessagePrompt(message)
             }
             
             self.refreshControl?.endRefreshing()
@@ -467,7 +481,7 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
             print(error)
         }) { (messageError) in
             print("messageError")
-            self.handlerMessageError(messageError)
+        //    self.handlerMessageError(messageError)
             self.refreshControl?.endRefreshing()
             avaliable?()
         }
@@ -496,7 +510,7 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
             if let mError = error as? [String:AnyObject]{
                 let message = mError["message"] as? String ?? ""
                 print(message)
-                self.showMessagePrompt(message)
+           //     self.showMessagePrompt(message)
             }
             
             self.refreshControl?.endRefreshing()
@@ -504,7 +518,7 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
             print(error)
         }) { (messageError) in
             print("messageError")
-            self.handlerMessageError(messageError)
+           // self.handlerMessageError(messageError)
             self.refreshControl?.endRefreshing()
             avaliable?()
         }
@@ -532,7 +546,7 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
             if let mError = error as? [String:AnyObject]{
                 let message = mError["message"] as? String ?? ""
                 print(message)
-                self.showMessagePrompt(message)
+               // self.showMessagePrompt(message)
             }
             self.relatedTitleLabel.isHidden = true
             self.heightProductRelatedConstraint.constant = 0
@@ -543,7 +557,7 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
             print("messageError")
             self.relatedTitleLabel.isHidden = true
             self.heightProductRelatedConstraint.constant = 0
-            self.handlerMessageError(messageError)
+           // self.handlerMessageError(messageError)
             self.refreshControl?.endRefreshing()
             avaliable?()
         }

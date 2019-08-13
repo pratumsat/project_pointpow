@@ -133,7 +133,8 @@ class SettingAddressViewController: BaseViewController , UICollectionViewDelegat
         if selectType == "shopping" {
             self.showShoppingAddAddressPage(true)
         }else{
-            self.showTaxInvoiceAddAddressPage(true)
+            //self.showTaxInvoiceAddAddressPage(true)
+            self.showTaxInvoiceSettingAddAddressPage(true)
         }
         
     }
@@ -319,7 +320,8 @@ class SettingAddressViewController: BaseViewController , UICollectionViewDelegat
                     if self.selectType == "shopping" {
                         self.showShoppingEditAddressPage(true, self.modelAddreses?[indexPath.row] as AnyObject)
                     }else{
-                        self.showTaxInvoiceEditAddressPage(true, self.modelAddreses?[indexPath.row] as AnyObject)
+                        //self.showTaxInvoiceEditAddressPage(true, self.modelAddreses?[indexPath.row] as AnyObject)
+                        self.showTaxInvoiceSetttingEditAddressPage(true, self.modelAddreses?[indexPath.row] as AnyObject)
                     }
                     
                     
@@ -439,7 +441,7 @@ class SettingAddressViewController: BaseViewController , UICollectionViewDelegat
                     rawAddress = "\(name) \(newText.chunkFormattedPersonalID())"
                     rawAddress += "\n\(newMText.chunkFormatted()) \(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
                     
-                    var height = CGFloat(60)
+                    var height = CGFloat(40)
                     height += heightForView(text: rawAddress, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 16)!, width: width - 80)
                     
                     return CGSize(width: width, height: height)

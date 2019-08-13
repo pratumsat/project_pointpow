@@ -663,6 +663,7 @@ extension HomeShoppingViewController {
     }
     
     
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
         if section == 0 {
@@ -716,7 +717,6 @@ extension HomeShoppingViewController {
                 
                 cd.initializeTimer("2019-08-14 00:00:00")
                 cd.startTimer(pUpdateActionHandler: { (timeString) in
-                    
                     
                     header.hoursLabel.text = timeString.hours
                     header.minLabel.text = timeString.minutes

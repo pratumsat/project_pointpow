@@ -47,7 +47,37 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
     var provinces:[[String:AnyObject]]?
     var districts:[[String:AnyObject]]?
     var subDistricts:[[String:AnyObject]]?
-    var userData:AnyObject?
+    var userData:AnyObject? {
+        didSet{
+            if let data  = self.userData as? [String:AnyObject] {
+                let first_name = data["first_name"] as? String ?? ""
+                let last_name = data["last_name"]as? String ?? ""
+                let mobile = data["mobile"]as? String ?? ""
+                let pid = data["pid"]as? String ?? ""
+                
+                let newText = String((pid).filter({ $0 != "-" }).prefix(13))
+                self.personalTextField.text = newText.chunkFormattedPersonalID()
+                
+                
+                if let _ = self.modelAddress as? [String: AnyObject]  {
+                   // is address
+                }else{
+                    self.nameTextField.text = "\(first_name) \(last_name)"
+                    self.numberPhoneTextField.text = mobile
+                }
+                
+                if let _ = self.modelDuplicateAddress as? [String: AnyObject]  {
+                    // is duolicate address
+                }else{
+                    self.nameTextField.text = "\(first_name) \(last_name)"
+                    self.numberPhoneTextField.text = mobile
+                }
+                
+                
+                
+            }
+        }
+    }
     var language = "th"
     
     var modelAddress:AnyObject?
@@ -107,11 +137,11 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
     var invoice_shipping = "no" {
         didSet{
             if invoice_shipping.lowercased() == "yes" {
-                self.shippingProductImageView.image = UIImage(named: "ic-choose-1")
-                self.shippingTaxImageView.image = UIImage(named: "ic-choose-2")
+                self.shippingProductImageView?.image = UIImage(named: "ic-choose-1")
+                self.shippingTaxImageView?.image = UIImage(named: "ic-choose-2")
             }else{
-                self.shippingProductImageView.image = UIImage(named: "ic-choose-2")
-                self.shippingTaxImageView.image = UIImage(named: "ic-choose-1")
+                self.shippingProductImageView?.image = UIImage(named: "ic-choose-2")
+                self.shippingTaxImageView?.image = UIImage(named: "ic-choose-1")
             }
         }
     }
@@ -258,23 +288,10 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
                 
             }
             
-        }else{
-            getUserInfo(){
-                if let data  = self.userData as? [String:AnyObject] {
-                    
-                    let first_name = data["first_name"] as? String ?? ""
-                    let last_name = data["last_name"]as? String ?? ""
-                    let mobile = data["mobile"]as? String ?? ""
-                    let pid = data["pid"]as? String ?? ""
-                    
-                    let newText = String((pid).filter({ $0 != "-" }).prefix(13))
-                    
-                    self.personalTextField.text = newText.chunkFormattedPersonalID()
-                    self.nameTextField.text = "\(first_name) \(last_name)"
-                    self.numberPhoneTextField.text = mobile
-                    
-                }
-            }
+        }
+        getUserInfo(){
+            
+            //success
         }
     }
     

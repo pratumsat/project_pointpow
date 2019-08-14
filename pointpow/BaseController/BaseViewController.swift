@@ -1331,6 +1331,11 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             errorMessage = NSLocalizedString("string-error-invalid-mobile2", comment: "")
             errorMobile += 1
         }
+        if mobile == "0000000000" {
+            errorMessage = NSLocalizedString("string-error-invalid-mobile", comment: "")
+            errorMobile += 1
+        }
+        
         if errorMobile > 0 {
             return errorMessage
         }

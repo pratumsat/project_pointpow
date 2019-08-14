@@ -196,6 +196,13 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         super.viewWillAppear(animated)
         self.callAPI() {
             self.updateView()
+            
+            self.checkStock(updateSuccess: nil, updateWithChangeSuccess: {
+                self.callAPI() {
+                    self.updateView()
+                }
+            })
+            
         }
     }
     
@@ -265,25 +272,63 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         }else{
             self.itemSection = ["no_item"]
         }
-        
         self.cartCollectionView.reloadData()
         self.updateTotalAmountPrice()
+       
+        
+
+    }
+    
+    func checkStock(updateSuccess:(()->Void)? = nil, updateWithChangeSuccess:(()->Void)? = nil){
+        guard let tuple = self.tupleProduct ,tuple.count > 0 else {  return }
+        var errorMessage = ""
+        for item in tuple {
+            let stock = item.stock
+            let amount = item.amount
+            let title = item.title
+            
+            if stock <= 0 {
+                errorMessage += "\(title)\nสินค้าหมด\n"
+            }else  if stock < amount {
+                errorMessage += "\(title)\nเหลือจำนวน \(stock) รายการ\n"
+            }
+            
+        }
+        if !errorMessage.trimmingCharacters(in: .whitespaces).isEmpty {
+            errorMessage += "คุณต้องการอัพเดตตะกร้าสินค้าหรือไม่"
+            let alert = UIAlertController(title: "", message: errorMessage, preferredStyle: .alert)
+            
+            let confirm = UIAlertAction(title: NSLocalizedString("string-dailog-gold-button-confirm", comment: ""), style: .default, handler: {
+                (alert) in
+                //confirm
+                self.updateCart {
+                    updateWithChangeSuccess?()
+                }
+                
+            })
+            let cancel = UIAlertAction(title: NSLocalizedString("string-dailog-gold-button-cancel", comment: ""), style: .default, handler: nil)
+            
+            
+            alert.addAction(cancel)
+            alert.addAction(confirm)
+            
+            self.present(alert, animated: true, completion: nil)
+        }else{
+            self.updateCart {
+                updateSuccess?()
+            }
+        }
+        
     }
    
     func updateCart(_ updateSuccess:(()->Void)? = nil){
         guard let tuple = self.tupleProduct ,tuple.count > 0 else {  return }
-        let count = tuple.count
-        var success = 0
+        var product:[String:String] = [:]
         for item in tuple {
-            let id = item.id
-            let amount = item.amount
-            
-            self.updateItemCart(id, amount: amount) {
-                success += 1
-                if success == count {
-                    updateSuccess?()
-                }
-            }
+            product["\(item.id)"] = "\(item.amount)"
+        }
+        self.updateItemCart(product) {
+            updateSuccess?()
         }
     }
     @objc func backViewTapped(){
@@ -291,9 +336,14 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             self.navigationController?.popViewController(animated: true)
             return
         }
-        self.updateCart {
+        self.checkStock(updateSuccess: {
             self.navigationController?.popViewController(animated: true)
-        }
+        }, updateWithChangeSuccess: { () in
+            self.navigationController?.popViewController(animated: true)
+        })
+        
+        
+
     }
     
     func deleteProductByID(_ id:Int){
@@ -364,12 +414,11 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             
         }
     }
-    func updateItemCart(_ product_id:Int, amount:Int, success:(()->Void)?){
+    func updateItemCart(_ product:[String:String], success:(()->Void)?){
         let parameter:Parameters = ["app_id" : Constant.PointPowAPI.APP_ID,
                                     "secret" : Constant.PointPowAPI.SECRET_SHOPPING,
                                     "cart_id" : self.cart_id,
-                                    "product_id" : product_id,
-                                    "amount" : amount]
+                                    "product" : product]
         
         modelCtrl.updateCart(params: parameter , true , succeeded: { (result) in
             success?()
@@ -656,6 +705,53 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         
     }
     
+    func checkOut() -> Bool{
+        self.updateView()
+        let checkselectItem = self.totalOrder?.amount ?? 0
+        if checkselectItem <= 0 {
+            self.showMessagePrompt2(NSLocalizedString("string-item-cart-product-not-select", comment: ""))
+            return false
+        }
+        if self.fullAddressShopping.rawAddress.trimmingCharacters(in: .whitespaces).isEmpty {
+            self.showMessagePrompt2(NSLocalizedString("string-item-cart-address-not-select", comment: ""))
+            return false
+        }
+        if self.isTaxInvoice {
+            if self.fullAddressTaxInvoice.rawAddress.trimmingCharacters(in: .whitespaces).isEmpty {
+                self.showMessagePrompt2(NSLocalizedString("string-item-cart-tax-invoice-not-select", comment: ""))
+                return false
+            }
+        }
+        let pointBalance = DataController.sharedInstance.getCurrentPointBalance()
+        
+        if pointBalance.doubleValue <= 0 {
+            self.showMessagePrompt(NSLocalizedString("string-dailog-saving-point-not-enough", comment: ""))
+            return false
+        }
+        
+        
+        let total = self.totalOrder?.totalPrice ?? 0
+        let pointLimitOrder = DataController.sharedInstance.getLimitPerDay()
+        var pointpow_spend = total
+        var credit_spend = total
+        
+        if pointBalance.doubleValue < total {
+            credit_spend = total - pointBalance.doubleValue
+            pointpow_spend  = pointBalance.doubleValue
+        }else{
+            pointpow_spend  = total
+        }
+        print("pointLimitOrder \(pointLimitOrder)")
+        print("pointpow_spend \(pointpow_spend)")
+        print("credit_spend \(credit_spend)")
+        
+        if pointLimitOrder.doubleValue  < pointpow_spend {
+            self.showMessagePrompt(NSLocalizedString("string-dailog-point-over-limit-order", comment: ""))
+            return false
+        }
+        return true
+        
+    }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return self.itemSection.count
@@ -760,7 +856,8 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                     productCell.amount = itemTuple.amount
                     productCell.checkBox.isChecked = itemTuple.select
                     productCell.isCheck = itemTuple.select
-                   
+                    productCell.stock = itemTuple.stock
+                    
                      productCell.callBackTotalPrice  = { (amount, totalPrice) in
                         print("amount= \(amount)")
                         self.tupleProduct?[self.getItemPositionByItemId(itemTuple.id)].amount = amount
@@ -879,57 +976,34 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                 cell = nextCell
                 nextCell.nextCallback = {
                     
+                    if self.checkOut() {
+                        self.checkStock(updateSuccess: {
+                            self.callAPI({
+                                if self.checkOut() {
+                                    self.showConfirmOrderViewController(true ,
+                                                                        cart_id: "\(self.cart_id)",
+                                        invoice_id: self.isTaxInvoice ? self.fullAddressTaxInvoice.id : "",
+                                        shipping_id: self.fullAddressShopping.id,
+                                        tupleProduct: self.tupleProduct as AnyObject)
+                                }
+                                
+                            })
+                            
+                        }, updateWithChangeSuccess: { () in
+                            self.callAPI({
+                                if self.checkOut() {
+                                    self.showConfirmOrderViewController(true ,
+                                                                        cart_id: "\(self.cart_id)",
+                                        invoice_id: self.isTaxInvoice ? self.fullAddressTaxInvoice.id : "",
+                                        shipping_id: self.fullAddressShopping.id,
+                                        tupleProduct: self.tupleProduct as AnyObject)
+                                }
+                                
+                            })
+                        })
+                    }
                     
-                    let checkselectItem = self.totalOrder?.amount ?? 0
-                    if checkselectItem <= 0 {
-                        self.showMessagePrompt2(NSLocalizedString("string-item-cart-product-not-select", comment: ""))
-                        return
-                    }
-                    if self.fullAddressShopping.rawAddress.trimmingCharacters(in: .whitespaces).isEmpty {
-                        self.showMessagePrompt2(NSLocalizedString("string-item-cart-address-not-select", comment: ""))
-                        return
-                    }
-                    if self.isTaxInvoice {
-                        if self.fullAddressTaxInvoice.rawAddress.trimmingCharacters(in: .whitespaces).isEmpty {
-                            self.showMessagePrompt2(NSLocalizedString("string-item-cart-tax-invoice-not-select", comment: ""))
-                            return
-                        }
-                    }
-                    let pointBalance = DataController.sharedInstance.getCurrentPointBalance()
                    
-                    if pointBalance.doubleValue <= 0 {
-                        self.showMessagePrompt(NSLocalizedString("string-dailog-saving-point-not-enough", comment: ""))
-                        return
-                    }
-                    
-                    
-                    let total = self.totalOrder?.totalPrice ?? 0
-                    let pointLimitOrder = DataController.sharedInstance.getLimitPerDay()
-                    var pointpow_spend = total
-                    var credit_spend = total
-                   
-                    if pointBalance.doubleValue < total {
-                        credit_spend = total - pointBalance.doubleValue
-                        pointpow_spend  = pointBalance.doubleValue
-                    }else{
-                        pointpow_spend  = total
-                    }
-                    print("pointLimitOrder \(pointLimitOrder)")
-                    print("pointpow_spend \(pointpow_spend)")
-                    print("credit_spend \(credit_spend)")
-                    
-                    if pointLimitOrder.doubleValue  < pointpow_spend {
-                        self.showMessagePrompt(NSLocalizedString("string-dailog-point-over-limit-order", comment: ""))
-                        return
-                    }
-                    
-                    self.updateCart {
-                        self.showConfirmOrderViewController(true ,
-                                                            cart_id: "\(self.cart_id)",
-                            invoice_id: self.isTaxInvoice ? self.fullAddressTaxInvoice.id : "",
-                                                            shipping_id: self.fullAddressShopping.id,
-                                                            tupleProduct: self.tupleProduct as AnyObject)
-                    }
                     
                 }
                 
@@ -955,7 +1029,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
 
         switch self.itemSection[indexPath.section] {
         case "shipping_address":
-            self.updateCart {
+            self.checkStock(updateSuccess: {
                 if !self.fullAddressShopping.rawAddress.trimmingCharacters(in: .whitespaces).isEmpty {
                     //isAddress
                     self.showShoppingAddressPage(true)
@@ -963,12 +1037,21 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                     //no address
                     self.showShoppingAddAddressPage(true)
                 }
-            }
+            }, updateWithChangeSuccess: {() in
+                if !self.fullAddressShopping.rawAddress.trimmingCharacters(in: .whitespaces).isEmpty {
+                    //isAddress
+                    self.showShoppingAddressPage(true)
+                }else{
+                    //no address
+                    self.showShoppingAddAddressPage(true)
+                }
+            })
+            
            
             break
             
         case "shopping_taxinvoice":
-            self.updateCart {
+            self.checkStock(updateSuccess: {
                 if !self.fullAddressTaxInvoice.rawAddress.trimmingCharacters(in: .whitespaces).isEmpty {
                     //isAddress
                     self.showTaxInvoiceAddressPage(true)
@@ -977,7 +1060,17 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                     self.showTaxInvoiceAddDuplicateAddressPage(true, self.lateShippingModel )
                     //self.showTaxInvoiceAddAddressPage(true)
                 }
-            }
+            }, updateWithChangeSuccess: { () in
+                if !self.fullAddressTaxInvoice.rawAddress.trimmingCharacters(in: .whitespaces).isEmpty {
+                    //isAddress
+                    self.showTaxInvoiceAddressPage(true)
+                }else{
+                    //no address
+                    self.showTaxInvoiceAddDuplicateAddressPage(true, self.lateShippingModel )
+                    //self.showTaxInvoiceAddAddressPage(true)
+                }
+            })
+          
             
             break
             

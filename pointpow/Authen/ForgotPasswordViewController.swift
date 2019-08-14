@@ -185,6 +185,10 @@ class ForgotPasswordViewController: BaseViewController {
             errorMessage = NSLocalizedString("string-error-invalid-mobile2", comment: "")
             errorMobile += 1
         }
+        if mobile == "0000000000" {
+            errorMessage = NSLocalizedString("string-error-invalid-mobile", comment: "")
+            errorMobile += 1
+        }
         if errorMobile > 0 {
             self.showMessagePrompt(errorMessage)
             self.errorUsernamelLabel =  self.usernameTextField.addBottomLabelErrorMessage(errorMessage , marginLeft: 15)

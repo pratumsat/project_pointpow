@@ -144,10 +144,20 @@ class ShoppingTaxInvoiceAddressViewController: ShoppingAddressViewController {
                     if let data = self.modelAddreses?[indexPath.row] {
                         let latest_shipping = data["latest_shipping"] as? NSNumber ?? 0
                         let id = data["id"] as? NSNumber ?? 0
-                        if latest_shipping.boolValue  {
-                            self.showMessagePrompt2(NSLocalizedString("string-item-shopping-cart-delete-address", comment: ""))
+                        
+                        if let select = self.selectItem {
+                            if indexPath.row == select {
+                                self.showMessagePrompt2(NSLocalizedString("string-item-shopping-cart-delete-invoice", comment: ""))
+                            }else{
+                                self.deleteAddress(id.intValue)
+                            }
+                            
                         }else{
-                            self.deleteAddress(id.intValue)
+                            if latest_shipping.boolValue  {
+                                self.showMessagePrompt2(NSLocalizedString("string-item-shopping-cart-delete-invoice", comment: ""))
+                            }else{
+                                self.deleteAddress(id.intValue)
+                            }
                         }
                     }
                 }
@@ -185,8 +195,9 @@ class ShoppingTaxInvoiceAddressViewController: ShoppingAddressViewController {
                 var rawAddress = "\(name) \(newText.chunkFormattedPersonalID())"
                 rawAddress += "\n\(newMText.chunkFormatted()) \(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
                 
-                var height = CGFloat(40)
-                height += heightForView(text: rawAddress, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 16)!, width: width - 80)
+                var height = CGFloat(30)
+                height += heightForView(text: rawAddress, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 16)!, width: width - 120)
+                
                 
                 return CGSize(width: width, height: height)
                 

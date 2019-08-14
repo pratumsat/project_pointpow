@@ -26,6 +26,21 @@ class ItemCartProductCell: UICollectionViewCell ,UITextFieldDelegate{
     var priceOfProduct:Double?
     
     var maxAmount = 1
+    var stock:Int = 0 {
+        didSet{
+            if stock == 0 {
+                self.amountTextField.isEnabled = false
+                self.amountTextField.textColor = UIColor.lightGray
+                disableImageView(lessImageView)
+                disableImageView(moreImageView)
+                self.amountTextField.borderLightGrayColorProperties(borderWidth: 1)
+            }else{
+                self.amountTextField.isEnabled = true
+                self.amountTextField.textColor = UIColor.black
+                self.amountTextField.borderRedColorProperties(borderWidth: 1)
+            }
+        }
+    }
     var amount:Int = 1 {
         didSet{
             self.amountTextField.text = "\(Int(amount))"
@@ -81,7 +96,7 @@ class ItemCartProductCell: UICollectionViewCell ,UITextFieldDelegate{
     }
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.amountTextField.borderRedColorProperties(borderWidth: 1)
+        //self.amountTextField.borderRedColorProperties(borderWidth: 1)
         self.lessImageView.ovalColorClearProperties()
         self.moreImageView.ovalColorClearProperties()
     }
@@ -132,20 +147,22 @@ class ItemCartProductCell: UICollectionViewCell ,UITextFieldDelegate{
         amount += 1
         
         
+        if Int(amount) > maxAmount {
+            amount -= 1
+            disableImageView(self.moreImageView)
+        }
+        enableImageView(self.lessImageView)
+        
+        
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .none
         numberFormatter.minimumFractionDigits = 0
         
         self.amountTextField.text = numberFormatter.string(from: NSNumber(value: amount))
-        if let price  = self.priceOfProduct {
+       
+        if let price = self.priceOfProduct {
             self.callBackTotalPrice?(Int(amount), Double(amount * price))
         }
-        
-        if Int(amount) >= maxAmount {
-            disableImageView(self.moreImageView)
-        }
-        enableImageView(self.lessImageView)
-        
         
     }
     
@@ -179,6 +196,7 @@ class ItemCartProductCell: UICollectionViewCell ,UITextFieldDelegate{
                 }
                 
                 
+                
                 if let iPoint = Int(updatedText.replace(target: ",", withString: "")){
                     let numberFormatter = NumberFormatter()
                     numberFormatter.numberStyle = .none
@@ -186,12 +204,20 @@ class ItemCartProductCell: UICollectionViewCell ,UITextFieldDelegate{
                    
                     
                     if iPoint > self.maxAmount {
+                        
                         if let price  = self.priceOfProduct {
                             self.callBackTotalPrice?(maxAmount, Double(maxAmount) * price)
                         }
                         textField.text = numberFormatter.string(from: NSNumber(value: self.maxAmount))
+                        
+                        
                         disableImageView(self.moreImageView)
-                       
+                        
+                        if maxAmount == 1 {
+                            disableImageView(self.moreImageView)
+                            disableImageView(self.lessImageView)
+                        }
+                        
                         return false
                    
                     }else{
@@ -199,7 +225,13 @@ class ItemCartProductCell: UICollectionViewCell ,UITextFieldDelegate{
                             self.callBackTotalPrice?(Int(amount), Double(amount * price))
                         }
                         textField.text = numberFormatter.string(from: NSNumber(value: iPoint))
+                       
                         enableImageView(self.moreImageView)
+                        
+                        if maxAmount == 1 {
+                            disableImageView(self.moreImageView)
+                            disableImageView(self.lessImageView)
+                        }
                     }
 
                     

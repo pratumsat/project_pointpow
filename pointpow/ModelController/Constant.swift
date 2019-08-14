@@ -918,7 +918,7 @@ struct Constant {
 
         
         static let deleteCarts = "\(HOST)privilege/carts/del"
-        static let updateCarts = "\(HOST)privilege/carts/update"
+        static let updateCarts = "\(HOST)privilege/carts/update-with-stock"
         static let addCarts = "\(HOST)privilege/carts/add"
         static let getCarts = "\(HOST)privilege/carts?app_id=\(APP_ID)&secret=\(SECRET_SHOPPING)"
         static let addOrders = "\(HOST)privilege/orders/add"

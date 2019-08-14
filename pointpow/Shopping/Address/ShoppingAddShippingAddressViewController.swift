@@ -513,7 +513,7 @@ class ShoppingAddShippingAddressViewController:BaseViewController ,UIPickerViewD
             return
         }
         
-        
+       
         guard validateMobile(mobile) else { return }
         
         self.confirmAddAddress {
@@ -705,6 +705,11 @@ class ShoppingAddShippingAddressViewController:BaseViewController ,UIPickerViewD
             errorMessage = NSLocalizedString("string-error-invalid-mobile2", comment: "")
             errorMobile += 1
         }
+        if nMobile == "0000000000" {
+            errorMessage = NSLocalizedString("string-error-invalid-mobile", comment: "")
+            errorMobile += 1
+        }
+        
         if errorMobile > 0 {
             
             self.showMessagePrompt(errorMessage)

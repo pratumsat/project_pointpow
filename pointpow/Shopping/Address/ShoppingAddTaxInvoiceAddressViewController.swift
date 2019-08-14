@@ -645,7 +645,6 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
             errorEmpty += 1
         }
         
-        
         if errorEmpty > 0 {
             self.showMessagePrompt(NSLocalizedString("string-error-empty-fill", comment: ""))
             return
@@ -730,6 +729,11 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
                 self.clearImageView?.isHidden = true
             }else{
                 self.clearImageView?.isHidden = false
+            }
+            if isValidName(string) {
+                return true
+            }else{
+                return false
             }
         }
         if textField  == self.personalTextField {
@@ -881,6 +885,10 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
         }
         if nMobile.count > 10 {
             errorMessage = NSLocalizedString("string-error-invalid-mobile2", comment: "")
+            errorMobile += 1
+        }
+        if nMobile == "0000000000" {
+            errorMessage = NSLocalizedString("string-error-invalid-mobile", comment: "")
             errorMobile += 1
         }
         if errorMobile > 0 {

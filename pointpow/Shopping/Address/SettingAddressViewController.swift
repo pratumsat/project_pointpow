@@ -192,8 +192,14 @@ class SettingAddressViewController: BaseViewController , UICollectionViewDelegat
         }
     }
     
-    func deleteAddress(_ id:Int){
-        let alert = UIAlertController(title: NSLocalizedString("string-dailog-title-delete-address", comment: ""),
+    func deleteAddress(_ id:Int, type:String){
+        var message = ""
+        if type.lowercased() == "invoice" {
+            message = NSLocalizedString("string-dailog-title-delete-invoice", comment: "")
+        }else{
+            message = NSLocalizedString("string-dailog-title-delete-address", comment: "")
+        }
+        let alert = UIAlertController(title: message,
                                       message: "", preferredStyle: .alert)
         
         let okButton = UIAlertAction(title: NSLocalizedString("string-dailog-button-ok", comment: ""), style: .default, handler: {
@@ -331,19 +337,30 @@ class SettingAddressViewController: BaseViewController , UICollectionViewDelegat
                     if let data = self.modelAddreses?[indexPath.row] {
                         let latest_shipping = data["latest_shipping"] as? NSNumber ?? 0
                         let id = data["id"] as? NSNumber ?? 0
+                        let type = data["type"] as? String ?? ""
+                        
+                        var message = ""
+                        if type.lowercased() == "invoice" {
+                            message = NSLocalizedString("string-item-shopping-cart-delete-invoice", comment: "")
+                        }else{
+                            message = NSLocalizedString("string-item-shopping-cart-delete-address", comment: "")
+                        }
                         
                         if let select = self.selectItem {
+                            
+                            
+                            
                             if indexPath.row == select {
-                                self.showMessagePrompt2(NSLocalizedString("string-item-shopping-cart-delete-address", comment: ""))
+                                self.showMessagePrompt2(message)
                             }else{
-                                self.deleteAddress(id.intValue)
+                                self.deleteAddress(id.intValue , type: type)
                             }
                             
                         }else{
                             if latest_shipping.boolValue  {
-                                self.showMessagePrompt2(NSLocalizedString("string-item-shopping-cart-delete-address", comment: ""))
+                                self.showMessagePrompt2(message)
                             }else{
-                                self.deleteAddress(id.intValue)
+                                self.deleteAddress(id.intValue, type : type)
                             }
                         }
                         
@@ -430,8 +447,8 @@ class SettingAddressViewController: BaseViewController , UICollectionViewDelegat
                     rawAddress = "\(name) \(newMText.chunkFormatted())"
                     rawAddress += "\n\(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
                     
-                    var height = CGFloat(50)
-                    height += heightForView(text: rawAddress, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 16)!, width: width - 80)
+                    var height = CGFloat(30)
+                    height += heightForView(text: rawAddress, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 16)!, width: width - 120)
                     
                     return CGSize(width: width, height: height)
                 }else{
@@ -441,8 +458,8 @@ class SettingAddressViewController: BaseViewController , UICollectionViewDelegat
                     rawAddress = "\(name) \(newText.chunkFormattedPersonalID())"
                     rawAddress += "\n\(newMText.chunkFormatted()) \(address) \(subdistrictName) \(districtName) \(provinceName) \(zip_code)"
                     
-                    var height = CGFloat(40)
-                    height += heightForView(text: rawAddress, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 16)!, width: width - 80)
+                    var height = CGFloat(30)
+                    height += heightForView(text: rawAddress, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 16)!, width: width - 120)
                     
                     return CGSize(width: width, height: height)
                 }

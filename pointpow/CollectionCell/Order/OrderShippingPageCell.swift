@@ -9,8 +9,11 @@
 import UIKit
 
 class OrderShippingPageCell: UICollectionViewCell {
+    
     @IBOutlet weak var amountCate3Label: UILabel!
+    @IBOutlet weak var amountCate2Label: UILabel!
     @IBOutlet weak var amountCate1Label: UILabel!
+    
     
     @IBOutlet weak var underlineView: UIView!
     
@@ -18,6 +21,9 @@ class OrderShippingPageCell: UICollectionViewCell {
     @IBOutlet weak var cate3ImageView: UIImageView!
     @IBOutlet weak var cate3View: UIView!
     
+    @IBOutlet weak var cate2Label: UILabel!
+    @IBOutlet weak var cate2ImageView: UIImageView!
+    @IBOutlet weak var cate2View: UIView!
     
     
     @IBOutlet weak var cate1Label: UILabel!
@@ -35,11 +41,11 @@ class OrderShippingPageCell: UICollectionViewCell {
             case "waiting":
                 selectPosition(0)
                 break
-            //case "shipping":
-                //selectPosition(1)
-            //    break
-            case "complete":
+            case "shipping":
                 selectPosition(1)
+                break
+            case "complete":
+                selectPosition(2)
                 break
             default:
                 break
@@ -54,9 +60,9 @@ class OrderShippingPageCell: UICollectionViewCell {
         self.caet1View.isUserInteractionEnabled = true
         self.caet1View.addGestureRecognizer(cate1)
         
-//        let cate2 = UITapGestureRecognizer(target: self, action: #selector(cate2Tapped))
-//        self.cate2View.isUserInteractionEnabled = true
-//        self.cate2View.addGestureRecognizer(cate2)
+        let cate2 = UITapGestureRecognizer(target: self, action: #selector(cate2Tapped))
+        self.cate2View.isUserInteractionEnabled = true
+        self.cate2View.addGestureRecognizer(cate2)
         
         let cate3 = UITapGestureRecognizer(target: self, action: #selector(cate3Tapped))
         self.cate3View.isUserInteractionEnabled = true
@@ -100,12 +106,12 @@ class OrderShippingPageCell: UICollectionViewCell {
             
             break
         case 1:
-            widthForView = cate3View.frame.origin.x
+            widthForView = cate2View.frame.origin.x
             break
             
-        //case 2:
-        //    widthForView = cate3View.frame.origin.x
-        //    break
+        case 2:
+            widthForView = cate3View.frame.origin.x
+            break
         default:
             break
         }
@@ -138,45 +144,45 @@ class OrderShippingPageCell: UICollectionViewCell {
             selectedCallback?(0)
             updateUnderLineView2(0 , cateView: caet1View)
             self.cate1Label.textColor = cate1Items[0]["color"]
-   //         self.caet2Label.textColor = cate1Items[1]["color"]
+            self.cate2Label.textColor = cate1Items[1]["color"]
             self.cate3Label.textColor = cate1Items[1]["color"]
             
             self.amountCate1Label.textColor = cate1Items[0]["color"]
-  //          self.amountCate2Label.textColor = cate1Items[1]["color"]
+            self.amountCate2Label.textColor = cate1Items[1]["color"]
             self.amountCate3Label.textColor = cate1Items[1]["color"]
             
             self.cate1ImageView.image = UIImage(named: "ic-address-shopping-cate3-active")
-  ///          self.cate2ImageView.image = UIImage(named: "ic-address-setting-cate1")
+            self.cate2ImageView.image = UIImage(named: "ic-address-setting-cate1")
             self.cate3ImageView.image = UIImage(named: "ic-shopping-filter-success")
             break
-//        case 1:
-//            selectedCallback?(1)
-//            updateUnderLineView2(1, cateView: cate2View)
-//            self.cate1Label.textColor = cate1Items[1]["color"]
-//            self.caet2Label.textColor = cate1Items[0]["color"]
-//            self.cate3Label.textColor = cate1Items[1]["color"]
-//
-//            self.amountCate1Label.textColor = cate1Items[1]["color"]
-//            self.amountCate2Label.textColor = cate1Items[0]["color"]
-//            self.amountCate3Label.textColor = cate1Items[1]["color"]
-//
-//            self.cate1ImageView.image = UIImage(named: "ic-address-shopping-cate3")
-//            self.cate2ImageView.image = UIImage(named: "ic-address-setting-cate1-active")
-//            self.cate3ImageView.image = UIImage(named: "ic-shopping-filter-success")
-//            break
         case 1:
             selectedCallback?(1)
-            updateUnderLineView2(1, cateView: cate3View)
+            updateUnderLineView2(1, cateView: cate2View)
             self.cate1Label.textColor = cate1Items[1]["color"]
-//            self.caet2Label.textColor = cate1Items[1]["color"]
+            self.cate2Label.textColor = cate1Items[0]["color"]
+            self.cate3Label.textColor = cate1Items[1]["color"]
+
+            self.amountCate1Label.textColor = cate1Items[1]["color"]
+            self.amountCate2Label.textColor = cate1Items[0]["color"]
+            self.amountCate3Label.textColor = cate1Items[1]["color"]
+
+            self.cate1ImageView.image = UIImage(named: "ic-address-shopping-cate3")
+            self.cate2ImageView.image = UIImage(named: "ic-address-setting-cate1-active")
+            self.cate3ImageView.image = UIImage(named: "ic-shopping-filter-success")
+            break
+        case 2:
+            selectedCallback?(2)
+            updateUnderLineView2(2, cateView: cate3View)
+            self.cate1Label.textColor = cate1Items[1]["color"]
+            self.cate2Label.textColor = cate1Items[1]["color"]
             self.cate3Label.textColor = cate1Items[0]["color"]
             
             self.amountCate1Label.textColor = cate1Items[1]["color"]
-//            self.amountCate2Label.textColor = cate1Items[1]["color"]
+            self.amountCate2Label.textColor = cate1Items[1]["color"]
             self.amountCate3Label.textColor = cate1Items[0]["color"]
             
             self.cate1ImageView.image = UIImage(named: "ic-address-shopping-cate3")
-//            self.cate2ImageView.image = UIImage(named: "ic-address-setting-cate1")
+            self.cate2ImageView.image = UIImage(named: "ic-address-setting-cate1")
             self.cate3ImageView.image = UIImage(named: "ic-shopping-filter-success-active")
             break
         default:
@@ -189,11 +195,11 @@ class OrderShippingPageCell: UICollectionViewCell {
       
     }
     
-    //@objc func cate2Tapped(){
-       //selectPosition(1)
-    //}
+    @objc func cate2Tapped(){
+       selectPosition(1)
+    }
     
     @objc func cate3Tapped(){
-        selectPosition(1)
+        selectPosition(2)
     }
 }

@@ -365,7 +365,11 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         var errorMessage = ""
         guard let tuple = self.tupleProduct ,tuple.count > 0 else {  return }
         
+        
         if product != nil {
+            guard tuple.count == product!.count else {  return }
+            print("tuple product count  = \(tuple.count)")
+            print("product count = \(product!.count)")
             var i = 0
             for item in product! {
                 

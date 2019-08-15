@@ -114,11 +114,11 @@ class ProductShippingViewController: BaseViewController  , UICollectionViewDeleg
                 cell = selectCell
 
                 let amountWaiting = NSLocalizedString("string-dailog-shopping-shipping-status-waiting-amount", comment: "")
-                //let amountShipping = NSLocalizedString("string-dailog-shopping-shipping-status-shipping-amount", comment: "")
+                let amountShipping = NSLocalizedString("string-dailog-shopping-shipping-status-shipping-amount", comment: "")
                 let amountComplete = NSLocalizedString("string-dailog-shopping-shipping-status-complete-amount", comment: "")
                 
                 selectCell.amountCate1Label.text = amountWaiting.replace(target: "{amount}", withString: "\(self.aWaiting)")
-                //selectCell.amountCate2Label.text = amountShipping.replace(target: "{amount}", withString: "\(self.aShipping)")
+                selectCell.amountCate2Label.text = amountShipping.replace(target: "{amount}", withString: "\(self.aShipping)")
                 selectCell.amountCate3Label.text = amountComplete.replace(target: "{amount}", withString: "\(self.aComplete)")
                 
                
@@ -127,9 +127,9 @@ class ProductShippingViewController: BaseViewController  , UICollectionViewDeleg
                     switch index {
                     case 0:
                         self.selectType = "waiting"
-                    //case 1:
-                    //    self.selectType = "shipping"
                     case 1:
+                        self.selectType = "shipping"
+                    case 2:
                         self.selectType = "complete"
                     default: break
                         

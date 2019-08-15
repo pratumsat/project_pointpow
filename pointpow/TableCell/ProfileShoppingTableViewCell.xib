@@ -25,7 +25,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Y2-pK-ezG">
-                        <rect key="frame" x="73" y="33.5" width="110" height="110"/>
+                        <rect key="frame" x="89" y="33.5" width="110" height="110"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lqU-xQ-5Gb">
                                 <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
@@ -46,13 +46,13 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gD9-ew-7w1">
-                        <rect key="frame" x="125.5" y="148.5" width="5" height="21"/>
+                        <rect key="frame" x="141.5" y="148.5" width="5" height="21"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="16"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Pr-L4-q5O">
-                        <rect key="frame" x="98" y="169.5" width="60" height="26"/>
+                        <rect key="frame" x="114" y="169.5" width="60" height="26"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DG8-Bc-Fer">
                                 <rect key="frame" x="0.0" y="0.0" width="30" height="26"/>
@@ -80,7 +80,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cPb-kU-xlF">
-                        <rect key="frame" x="114" y="195.5" width="28.5" height="21"/>
+                        <rect key="frame" x="130" y="195.5" width="28.5" height="21"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfY-lo-BcM">
                                 <rect key="frame" x="0.0" y="0.0" width="18.5" height="21"/>
@@ -121,7 +121,7 @@
                     <constraint firstAttribute="trailing" secondItem="jaf-Ky-n6x" secondAttribute="trailing" id="3rH-Mj-fGd"/>
                     <constraint firstItem="gD9-ew-7w1" firstAttribute="top" secondItem="7Y2-pK-ezG" secondAttribute="bottom" constant="5" id="6sr-a4-gPt"/>
                     <constraint firstAttribute="bottom" secondItem="jaf-Ky-n6x" secondAttribute="bottom" id="9yT-Jd-6tM"/>
-                    <constraint firstItem="7Y2-pK-ezG" firstAttribute="centerX" secondItem="IUd-5M-yRh" secondAttribute="centerX" multiplier="0.8" id="Jmf-Je-pch"/>
+                    <constraint firstItem="7Y2-pK-ezG" firstAttribute="centerX" secondItem="IUd-5M-yRh" secondAttribute="centerX" multiplier="0.9" id="Jmf-Je-pch"/>
                     <constraint firstItem="cPb-kU-xlF" firstAttribute="top" secondItem="8Pr-L4-q5O" secondAttribute="bottom" id="Niu-Mh-eYm"/>
                     <constraint firstItem="8Pr-L4-q5O" firstAttribute="centerX" secondItem="7Y2-pK-ezG" secondAttribute="centerX" id="QeO-gZ-2WN"/>
                     <constraint firstItem="cPb-kU-xlF" firstAttribute="centerX" secondItem="7Y2-pK-ezG" secondAttribute="centerX" id="W2m-Ma-Ef3"/>

@@ -279,21 +279,123 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
 
     }
     
-    func checkStock(updateSuccess:(()->Void)? = nil, updateWithChangeSuccess:(()->Void)? = nil){
-        guard let tuple = self.tupleProduct ,tuple.count > 0 else {  return }
-        var errorMessage = ""
-        for item in tuple {
-            let stock = item.stock
-            let amount = item.amount
-            let title = item.title
+    func getStock(success:((_ tupleProduct: [(title:String, id:Int, amount:Int, price:Double, select:Bool, brand:String, cover:String, stock:Int)])->Void)?=nil){
+        
+        modelCtrl.getCart(params: nil , false , succeeded: { (result) in
+            self.cartItems = result
             
-            if stock <= 0 {
-                errorMessage += "\(title)\nสินค้าหมด\n"
-            }else  if stock < amount {
-                errorMessage += "\(title)\nเหลือจำนวน \(stock) รายการ\n"
+            if let itemCart = self.cartItems as? [[String:AnyObject]] {
+                
+                var tupleProduct:[(title:String, id:Int, amount:Int, price:Double, select:Bool, brand:String, cover:String, stock:Int)] = []
+                
+                let cart_item = itemCart.first?["cart_item"] as? [[String:AnyObject]] ?? []
+                for cart in cart_item {
+                    let amount = cart["amount"] as? NSNumber ?? 0
+                    
+                    let item = cart["product"] as? [String:AnyObject] ?? [:]
+                    let title = item["title"] as? String ?? ""
+                    let id = item["id"] as? NSNumber ?? 0
+                    let special_deal = item["special_deal"] as? [[String:AnyObject]] ?? [[:]]
+                    let brand = item["brand"] as? [String:AnyObject] ?? [:]
+                    let variation = cart["variation"] as? [String:AnyObject] ?? [:]
+                    let stock = variation["stock"] as? NSNumber ?? 0
+                    
+                    var price = 0.0
+                    if special_deal.count == 0{
+                        //check discount price
+                        let regular_price = item["regular_price"] as? NSNumber ?? 0
+                        let discount_price = item["discount_price"]  as? NSNumber ?? 0
+                        if discount_price.intValue > 0 {
+                            price = discount_price.doubleValue
+                        }else{
+                            price = regular_price.doubleValue
+                        }
+                    }else{
+                        //show special deal
+                        let deal_price = special_deal.first?["deal_price"] as? NSNumber ?? 0
+                        
+                        price = deal_price.doubleValue
+                    }
+                    
+                    let urlbrand = getFullPathImageView(brand)
+                    let urlCover = getFullPathImageView(item)
+                    
+                    
+                    tupleProduct.append((title: title,
+                                         id: id.intValue ,
+                                         amount: amount.intValue,
+                                         price: price,
+                                         select: true,
+                                         brand: urlbrand,
+                                         cover: urlCover,
+                                         stock: stock.intValue))
+                }
+                success?(tupleProduct)
+                
             }
             
+            
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                self.showMessagePrompt(message)
+            }
+            self.refreshControl?.endRefreshing()
+            
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            self.refreshControl?.endRefreshing()
+           
         }
+        
+    }
+    func compareStock(_ inputAmount:Int, currentStock:Int) -> Int{
+        if inputAmount > currentStock {
+            return currentStock
+        }else{
+            return inputAmount
+        }
+        
+    }
+    func checkStock(_ product: [(title:String, id:Int, amount:Int, price:Double, select:Bool, brand:String, cover:String, stock:Int)]? = nil, updateSuccess:(()->Void)? = nil, updateWithChangeSuccess:(()->Void)? = nil){
+        
+        var errorMessage = ""
+        guard let tuple = self.tupleProduct ,tuple.count > 0 else {  return }
+        
+        if product != nil {
+            var i = 0
+            for item in product! {
+                
+                let inputAmount = tuple[i].amount
+                let stock = compareStock(inputAmount, currentStock: item.stock)
+                
+                let title = item.title
+                
+                if stock <= 0 {
+                    errorMessage += "\(title)\nสินค้าหมด\n"
+                }else  if stock < inputAmount {
+                    errorMessage += "\(title)\nเหลือจำนวน \(stock) รายการ\n"
+                }
+                
+                i += 1
+            }
+        }else{
+            for item in tuple {
+                let stock = item.stock
+                let amount = item.amount
+                let title = item.title
+                
+                if stock <= 0 {
+                    errorMessage += "\(title)\nสินค้าหมด\n"
+                }else  if stock < amount {
+                    errorMessage += "\(title)\nเหลือจำนวน \(stock) รายการ\n"
+                }
+            }
+        }
+       
         if !errorMessage.trimmingCharacters(in: .whitespaces).isEmpty {
             errorMessage += "คุณต้องการอัพเดตตะกร้าสินค้าหรือไม่"
             let alert = UIAlertController(title: "", message: errorMessage, preferredStyle: .alert)
@@ -301,7 +403,8 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             let confirm = UIAlertAction(title: NSLocalizedString("string-dailog-gold-button-confirm", comment: ""), style: .default, handler: {
                 (alert) in
                 //confirm
-                self.updateCart {
+                
+                self.updateCart(ignoreDelete: 0) {
                     updateWithChangeSuccess?()
                 }
                 
@@ -314,33 +417,34 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             
             self.present(alert, animated: true, completion: nil)
         }else{
-            self.updateCart {
+            self.updateCart(ignoreDelete: 1){
                 updateSuccess?()
             }
         }
         
     }
    
-    func updateCart(_ updateSuccess:(()->Void)? = nil){
+    func updateCart(ignoreDelete:Int = 0 , _ updateSuccess:(()->Void)? = nil){
         guard let tuple = self.tupleProduct ,tuple.count > 0 else {  return }
         var product:[String:String] = [:]
         for item in tuple {
             product["\(item.id)"] = "\(item.amount)"
         }
-        self.updateItemCart(product) {
+        self.updateItemCart(ignoreDelete: ignoreDelete, product) {
             updateSuccess?()
         }
     }
+    
     @objc func backViewTapped(){
         guard let tuple = self.tupleProduct ,tuple.count > 0 else {
             self.navigationController?.popViewController(animated: true)
             return
         }
-        self.checkStock(updateSuccess: {
+        
+        self.updateCart(ignoreDelete: 1){
             self.navigationController?.popViewController(animated: true)
-        }, updateWithChangeSuccess: { () in
-            self.navigationController?.popViewController(animated: true)
-        })
+        }
+        
         
         
 
@@ -414,10 +518,11 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             
         }
     }
-    func updateItemCart(_ product:[String:String], success:(()->Void)?){
+    func updateItemCart(ignoreDelete:Int = 0, _ product:[String:String], success:(()->Void)?){
         let parameter:Parameters = ["app_id" : Constant.PointPowAPI.APP_ID,
                                     "secret" : Constant.PointPowAPI.SECRET_SHOPPING,
                                     "cart_id" : self.cart_id,
+                                    "ignore_delete" : ignoreDelete,
                                     "product" : product]
         
         modelCtrl.updateCart(params: parameter , true , succeeded: { (result) in
@@ -426,13 +531,19 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             if let mError = error as? [String:AnyObject]{
                 let message = mError["message"] as? String ?? ""
                 print(message)
-                self.showMessagePrompt(message)
+                if ignoreDelete == 0 {
+                    self.showMessagePrompt(message)
+                }
+                
             }
             
             print(error)
         }) { (messageError) in
             print("messageError")
-            self.handlerMessageError(messageError)
+            if ignoreDelete == 0 {
+                self.handlerMessageError(messageError)
+            }
+            
             
         }
     }
@@ -444,6 +555,8 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
 //    }
     
     func setUp(){
+        self.backgroundImage?.image = nil
+        
         self.cartCollectionView.delegate = self
         self.cartCollectionView.dataSource = self
         
@@ -705,8 +818,23 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         
     }
     
+    func reloadCheckOutItemData(){
+        self.callAPI({
+            self.updateView()
+            
+            if self.checkOut() {
+                
+                self.showConfirmOrderViewController(true ,
+                                                    cart_id: "\(self.cart_id)",
+                    invoice_id: self.isTaxInvoice ? self.fullAddressTaxInvoice.id : "",
+                    shipping_id: self.fullAddressShopping.id,
+                    tupleProduct: self.tupleProduct as AnyObject)
+            }
+            
+        })
+    }
     func checkOut() -> Bool{
-        self.updateView()
+        guard let tuple = self.tupleProduct ,tuple.count > 0 else {  return false }
         let checkselectItem = self.totalOrder?.amount ?? 0
         if checkselectItem <= 0 {
             self.showMessagePrompt2(NSLocalizedString("string-item-cart-product-not-select", comment: ""))
@@ -977,30 +1105,17 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                 nextCell.nextCallback = {
                     
                     if self.checkOut() {
-                        self.checkStock(updateSuccess: {
-                            self.callAPI({
-                                if self.checkOut() {
-                                    self.showConfirmOrderViewController(true ,
-                                                                        cart_id: "\(self.cart_id)",
-                                        invoice_id: self.isTaxInvoice ? self.fullAddressTaxInvoice.id : "",
-                                        shipping_id: self.fullAddressShopping.id,
-                                        tupleProduct: self.tupleProduct as AnyObject)
-                                }
+                        self.getStock() { (tupleProduct) in
+                            self.checkStock(tupleProduct, updateSuccess: {
                                 
-                            })
-                            
-                        }, updateWithChangeSuccess: { () in
-                            self.callAPI({
-                                if self.checkOut() {
-                                    self.showConfirmOrderViewController(true ,
-                                                                        cart_id: "\(self.cart_id)",
-                                        invoice_id: self.isTaxInvoice ? self.fullAddressTaxInvoice.id : "",
-                                        shipping_id: self.fullAddressShopping.id,
-                                        tupleProduct: self.tupleProduct as AnyObject)
-                                }
+                                self.reloadCheckOutItemData()
                                 
+                            }, updateWithChangeSuccess: { () in
+                                
+                                self.reloadCheckOutItemData()
                             })
-                        })
+                        }
+                        
                     }
                     
                    
@@ -1029,7 +1144,8 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
 
         switch self.itemSection[indexPath.section] {
         case "shipping_address":
-            self.checkStock(updateSuccess: {
+            
+            self.updateCart(ignoreDelete: 1){
                 if !self.fullAddressShopping.rawAddress.trimmingCharacters(in: .whitespaces).isEmpty {
                     //isAddress
                     self.showShoppingAddressPage(true)
@@ -1037,21 +1153,15 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                     //no address
                     self.showShoppingAddAddressPage(true)
                 }
-            }, updateWithChangeSuccess: {() in
-                if !self.fullAddressShopping.rawAddress.trimmingCharacters(in: .whitespaces).isEmpty {
-                    //isAddress
-                    self.showShoppingAddressPage(true)
-                }else{
-                    //no address
-                    self.showShoppingAddAddressPage(true)
-                }
-            })
+            }
+            
             
            
             break
             
         case "shopping_taxinvoice":
-            self.checkStock(updateSuccess: {
+           
+            self.updateCart(ignoreDelete: 1){
                 if !self.fullAddressTaxInvoice.rawAddress.trimmingCharacters(in: .whitespaces).isEmpty {
                     //isAddress
                     self.showTaxInvoiceAddressPage(true)
@@ -1060,16 +1170,8 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                     self.showTaxInvoiceAddDuplicateAddressPage(true, self.lateShippingModel )
                     //self.showTaxInvoiceAddAddressPage(true)
                 }
-            }, updateWithChangeSuccess: { () in
-                if !self.fullAddressTaxInvoice.rawAddress.trimmingCharacters(in: .whitespaces).isEmpty {
-                    //isAddress
-                    self.showTaxInvoiceAddressPage(true)
-                }else{
-                    //no address
-                    self.showTaxInvoiceAddDuplicateAddressPage(true, self.lateShippingModel )
-                    //self.showTaxInvoiceAddAddressPage(true)
-                }
-            })
+            }
+          
           
             
             break

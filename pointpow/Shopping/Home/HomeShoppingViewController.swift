@@ -21,6 +21,7 @@ class HomeShoppingViewController: ShoppingBaseViewController {
     var hotRedemtion:[[String:AnyObject]]?
     var specialDeal:[[String:AnyObject]]?
     var cateItems:[[String:AnyObject]]?
+    var endTimeSpecialDeal = ""
     
     var searchView:UIView?
     var mainCateView:UIView?
@@ -225,9 +226,11 @@ class HomeShoppingViewController: ShoppingBaseViewController {
         
         modelCtrl.getSpecailDealShopping(params: nil , false , succeeded: { (result) in
             
-            if let mResult = result as? [[String:AnyObject]] {
-                self.specialDeal = mResult
-                
+            if let mResult = result as? [String:AnyObject] {
+                let product = mResult["product"] as? [[String:AnyObject]] ?? []
+                let end = mResult["end"] as? String ?? ""
+                self.endTimeSpecialDeal = end
+                self.specialDeal = product
             }
             avaliable?()
             
@@ -237,7 +240,9 @@ class HomeShoppingViewController: ShoppingBaseViewController {
                 let message = mError["message"] as? String ?? ""
                 print(message)
                 //self.showMessagePrompt(message)
+                
             }
+            self.specialDeal = nil
             self.refreshControl?.endRefreshing()
             avaliable?()
             print(error)
@@ -245,6 +250,7 @@ class HomeShoppingViewController: ShoppingBaseViewController {
             print("messageError")
             //self.handlerMessageError(messageError)
             self.refreshControl?.endRefreshing()
+            self.specialDeal = nil
             avaliable?()
         }
     }
@@ -654,7 +660,7 @@ extension HomeShoppingViewController {
             
             
         case 5:
-            let width = collectionView.frame.width / 2
+            let width = collectionView.frame.width
             let height = CGFloat(40)
             return CGSize(width: width, height: height)
         default:
@@ -691,7 +697,7 @@ extension HomeShoppingViewController {
             return UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
         }
         if section == 5 {
-            return UIEdgeInsets(top: 30, left: 10, bottom: 60, right: 10)
+            return UIEdgeInsets(top: 20, left: 10, bottom: 60, right: 10)
         }
         
        
@@ -721,7 +727,7 @@ extension HomeShoppingViewController {
                 
                 if !self.cd.running {
 
-                    self.cd.initializeTimer("2019-08-14 00:00:00")
+                    self.cd.initializeTimer(self.endTimeSpecialDeal)
                     let tuple = self.cd.timeFormatted(self.cd.totalTime)
                     header.hoursLabel.text = tuple.hours
                     header.minLabel.text = tuple.minutes

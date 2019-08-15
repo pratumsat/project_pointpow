@@ -14,9 +14,11 @@ class OrderTrackingCell: UICollectionViewCell {
     @IBOutlet weak var betweenStep2View: UIView!
     @IBOutlet weak var dashLabel: UILabel!
     
-    @IBOutlet weak var betweenStep3View: UIView!
+    @IBOutlet weak var completeLabel1: UILabel!
+    @IBOutlet weak var completeLabel2: UILabel!
+    
     @IBOutlet weak var step3Label: UILabel!
-    @IBOutlet weak var step2Label: UILabel!
+   
     @IBOutlet weak var step1Label: UILabel!
     @IBOutlet weak var trackingNumberLabel: UILabel!
     @IBOutlet weak var logoProviderImageView: UIImageView!
@@ -54,10 +56,10 @@ class OrderTrackingCell: UICollectionViewCell {
             self.trackingNumberLabel.text = "-"
             self.trackingNumberLabel.textColor = UIColor.lightGray
             self.step1Label.backgroundColor = Constant.Colors.GREEN
-            self.step2Label.backgroundColor = UIColor.lightGray
             self.step3Label.backgroundColor = UIColor.lightGray
             self.betweenStep2View.backgroundColor = UIColor.lightGray
-            self.betweenStep3View.backgroundColor = UIColor.lightGray
+            self.completeLabel1.textColor = UIColor.lightGray
+            self.completeLabel2.textColor = UIColor.lightGray
             break
         case 1:
             self.trackingView.isUserInteractionEnabled = true
@@ -66,10 +68,10 @@ class OrderTrackingCell: UICollectionViewCell {
             self.dashLabel.isHidden = true
             self.trackingNumberLabel.textColor = Constant.Colors.PRIMARY_COLOR
             self.step1Label.backgroundColor = Constant.Colors.GREEN
-            self.step2Label.backgroundColor = Constant.Colors.GREEN
             self.step3Label.backgroundColor = UIColor.lightGray
             self.betweenStep2View.backgroundColor = Constant.Colors.GREEN
-            self.betweenStep3View.backgroundColor = UIColor.lightGray
+            self.completeLabel1.textColor = UIColor.lightGray
+            self.completeLabel2.textColor = UIColor.lightGray
             break
         case 2:
             self.trackingView.isUserInteractionEnabled = true
@@ -78,10 +80,10 @@ class OrderTrackingCell: UICollectionViewCell {
             self.dashLabel.isHidden = true
             self.trackingNumberLabel.textColor = Constant.Colors.PRIMARY_COLOR
             self.step1Label.backgroundColor = Constant.Colors.GREEN
-            self.step2Label.backgroundColor = Constant.Colors.GREEN
             self.step3Label.backgroundColor = Constant.Colors.GREEN
             self.betweenStep2View.backgroundColor = Constant.Colors.GREEN
-            self.betweenStep3View.backgroundColor = Constant.Colors.GREEN
+            self.completeLabel1.textColor = UIColor.black
+            self.completeLabel2.textColor = UIColor.black
             break
         default:
             break
@@ -109,7 +111,6 @@ class OrderTrackingCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.step1Label.ovalColorClearProperties()
-        self.step2Label.ovalColorClearProperties()
         self.step3Label.ovalColorClearProperties()
         
     }

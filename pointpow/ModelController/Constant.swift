@@ -1291,9 +1291,26 @@ func convertDateOfDay(_ dateString:String) -> String {
         return newStringDate
         
     }
+    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+    if let d1 = dateFormatter.date(from: dateString){
+        
+        let calendar = NSCalendar.current
+        let unitFlags: Set<Calendar.Component> = [.second, .minute, .hour, .day, .month, .year]
+        let components = calendar.dateComponents(unitFlags, from: d1)
+        
+        
+        var newStringDate = String(format: "%02d", components.day!)
+        newStringDate += "-\(String(format: "%02d", components.month!))"
+        newStringDate += "-\(String(format: "%02d", components.year!))"
+        
+        print("\(newStringDate)")
+        return newStringDate
+        
+    }
     
     return "-"
 }
+
 func convertDateRegister(_ dateString:String , format:String = "dd-MM-yyyy HH:mm") -> String {
     //2017-03-29 20:15:25.000+00:00
     let dateFormatter = DateFormatter()

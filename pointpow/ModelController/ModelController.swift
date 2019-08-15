@@ -3345,10 +3345,10 @@ class ModelController {
                                     let success = data["success"] as? NSNumber  ??  0
                                     
                                     if success.intValue == 1 {
-                                        
-                                        if let result = data["result"] as? [String:AnyObject] {
-                                            succeeded?(result as AnyObject)
-                                        }
+                                        succeeded?("" as AnyObject)
+                                        //if let result = data["result"] as? [String:AnyObject] {
+                                        //
+                                        //}
                                         
                                     }else{
                                         let messageError = data["message"] as? String  ??  ""
@@ -3631,6 +3631,8 @@ class ModelController {
                             
                             if let result = data["result"] as? [[String:AnyObject]] {
                                 succeeded?(result as AnyObject)
+                            }else if let resultObject = data["result"] as? [String:AnyObject] {
+                                succeeded?(resultObject as AnyObject)
                             }
                             
                         }else{

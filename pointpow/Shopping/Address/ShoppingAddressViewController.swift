@@ -273,8 +273,6 @@ class ShoppingAddressViewController: BaseViewController , UICollectionViewDelega
                                 self.deleteAddress(id.intValue)
                             }
                         }
-                      
-                        
                     }
                 }
                 

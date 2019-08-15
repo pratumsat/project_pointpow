@@ -12,6 +12,7 @@ import  Alamofire
 
 class ProductDetailViewController: BaseViewController  , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIWebViewDelegate {
     
+    @IBOutlet weak var heightConstraintMoreView: NSLayoutConstraint!
     @IBOutlet weak var addToCartView: UIView!
     @IBOutlet weak var addToPayView: UIView!
     
@@ -58,6 +59,7 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
     
     var heightContentWebView = CGFloat(110.0)
     var defaultHeightContentWebView = CGFloat(110.0)
+    var defaultHeightMoreContentWebView = CGFloat(54.0)
     
     var itemBanner:[[String:AnyObject]]?
     
@@ -597,9 +599,11 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
     }
     private func showMoreView(){
         self.moreView.isHidden = false
+        self.heightConstraintMoreView.constant =  defaultHeightMoreContentWebView
     }
     private func hideMoreView(){
         self.moreView.isHidden = true
+        self.heightConstraintMoreView.constant = CGFloat(0)
     }
     
     

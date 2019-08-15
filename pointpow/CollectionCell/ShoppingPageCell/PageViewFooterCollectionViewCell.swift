@@ -26,7 +26,7 @@ class PageViewFooterCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.moreButton.borderRedColorProperties()
+        self.moreButton.borderRedColorProperties(borderWidth: 1.0)
         
     }
     @IBAction func moreTapped(_ sender: Any) {

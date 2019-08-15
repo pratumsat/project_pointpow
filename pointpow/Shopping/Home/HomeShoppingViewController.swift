@@ -345,6 +345,7 @@ class HomeShoppingViewController: ShoppingBaseViewController {
     
     
     
+    
     override func categoryTapped(sender: UITapGestureRecognizer) {
         let tag = sender.view?.tag ?? 0
         //print(tag)

@@ -208,7 +208,7 @@ extension ShoppingHistoryViewController {
                     break
                 case "shipping":
                     transCell.shippingLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-shipping", comment: "")
-                    transCell.shippingLabel.textColor = Constant.Colors.ORANGE
+                    transCell.shippingLabel.textColor = Constant.Colors.GREEN
                     transCell.followProductView.isHidden = false
                     break
                     

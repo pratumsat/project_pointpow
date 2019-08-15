@@ -223,9 +223,9 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
                     orderCell.mView.layer.masksToBounds = true
                 }
                 
-                if hideFinishButton {
+                //if hideFinishButton {
                     orderCell.bgsuccessImageView.image = nil
-                }
+                //}
                 
                 cell = orderCell
                 
@@ -271,6 +271,7 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
                     orderCell.mView.layer.masksToBounds = true
                 }*/
                 
+                orderCell.bgsuccessImageView.image = nil
                 
                 if let items = self.transferResult?["item"] as? [[String:AnyObject]]  {
                     let shipping_status = items[indexPath.row]["shipping_status"] as? String ?? ""
@@ -304,8 +305,9 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
                     }
                  
                     if hideFinishButton {
-                        orderCell.bgsuccessImageView.image = nil
+                 //       orderCell.bgsuccessImageView.image = nil
                         orderCell.productShippingStatusLabel.isHidden = false
+                        
                         
                         switch shipping_status.lowercased() {
                         case "cancel":
@@ -332,7 +334,7 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
                         case "shipping":
                             orderCell.isUserInteractionEnabled = true
                             orderCell.productShippingStatusLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-shipping", comment: "")
-                            orderCell.productShippingStatusLabel.textColor = Constant.Colors.ORANGE
+                            orderCell.productShippingStatusLabel.textColor = Constant.Colors.GREEN
                             orderCell.followProductView.isHidden = false
                             break
                             
@@ -359,9 +361,9 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
                     orderCell.mView.layer.masksToBounds = true
                 }
                 
-                if hideFinishButton {
+                //if hideFinishButton {
                     orderCell.bgsuccessImageView.image = nil
-                }
+                //}
             
                 if let data = transferResult {
                     let total_point = data["total_point"] as?  NSNumber ?? 0

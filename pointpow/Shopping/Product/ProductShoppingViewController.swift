@@ -212,6 +212,7 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constant.DefaultConstansts.UPDATE_BADGE), object: nil, userInfo: userInfo)
         }
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

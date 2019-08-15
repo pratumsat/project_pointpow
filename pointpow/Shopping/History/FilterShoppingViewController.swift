@@ -62,11 +62,11 @@ class FilterShoppingViewController: BaseViewController {
         let params:Parameters = ["shipping_status" : "waiting"]
         self.showShoppingFilterResultPage(true, title, params: params)
     }
-//    @objc func shippingTapped(){
-//        let title = NSLocalizedString("string-dailog-shopping-shipping-status-shipping", comment: "")
-//        let params:Parameters = ["shipping_status" : "shipping"]
-//        self.showShoppingFilterResultPage(true, title, params: params)
-//    }
+    @objc func shippingTapped(){
+        let title = NSLocalizedString("string-dailog-shopping-shipping-status-shipping", comment: "")
+        let params:Parameters = ["shipping_status" : "shipping"]
+        self.showShoppingFilterResultPage(true, title, params: params)
+    }
     @objc func completeTapped(){
         let title = NSLocalizedString("string-dailog-shopping-shipping-status-success", comment: "")
         let params:Parameters = ["shipping_status" : "complete"]

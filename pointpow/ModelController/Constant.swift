@@ -1060,6 +1060,7 @@ struct Constant {
             static let CONTENT_HTML = CGFloat(18.0)
             static let SEARCH_SHOPPING = CGFloat(20.0)
             static let CART_BADGE = CGFloat(18.0)
+            static let CART_BADGE_TOP_NAV = CGFloat(12.0)
         }
        
         //Noto Sans Thai

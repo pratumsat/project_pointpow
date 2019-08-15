@@ -147,8 +147,8 @@ class MainTabbarShoppingViewController: UITabBarController , UITabBarControllerD
         if let userInfo = notification.userInfo as? [String:AnyObject] {
             badgeView?.removeFromSuperview()
             
-            let count = userInfo["count"] as? Int ?? 0
-            if count > 0 {
+            let count = userInfo["count"] as? String ?? "0"
+            if count != "0" {
                 badgeView = CustomBadgeView()
                 badgeView?.translatesAutoresizingMaskIntoConstraints = false
                 self.view.addSubview(badgeView!)
@@ -162,7 +162,7 @@ class MainTabbarShoppingViewController: UITabBarController , UITabBarControllerD
                 let countLabel = UILabel()
                 countLabel.textColor = Constant.Colors.PRIMARY_COLOR
                 countLabel.font = UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.CART_BADGE)
-                countLabel.text = "\(count)"
+                countLabel.text = count
                 countLabel.translatesAutoresizingMaskIntoConstraints = false
                 badgeView?.addSubview(countLabel)
                 
@@ -174,27 +174,7 @@ class MainTabbarShoppingViewController: UITabBarController , UITabBarControllerD
     }
     
     
-    class CustomBadgeView : UIView {
-        override init(frame: CGRect) {
-            super.init(frame: frame)
-            setup()
-        }
-        func setup(){
-            self.backgroundColor = UIColor.white
-            self.layer.cornerRadius = 15
-            self.layer.borderColor =  Constant.Colors.PRIMARY_COLOR.cgColor
-            self.layer.borderWidth = 1.0
-            self.clipsToBounds = true;
-            
-         
-        }
-        
-        
-        required public init?(coder aDecoder: NSCoder) {
-            super.init(coder: aDecoder)
-            setup()
-        }
-    }
+    
 
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {

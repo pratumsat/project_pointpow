@@ -59,20 +59,16 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
                 self.personalTextField.text = newText.chunkFormattedPersonalID()
                 
                 
-                if let _ = self.modelAddress as? [String: AnyObject]  {
+                if self.modelAddress != nil  {
                    // is address
+                }else if self.modelDuplicateAddress != nil {
+                    // is duplicate
                 }else{
                     self.nameTextField.text = "\(first_name) \(last_name)"
                     self.numberPhoneTextField.text = mobile
                 }
                 
-                if let _ = self.modelDuplicateAddress as? [String: AnyObject]  {
-                    // is duolicate address
-                }else{
-                    self.nameTextField.text = "\(first_name) \(last_name)"
-                    self.numberPhoneTextField.text = mobile
-                }
-                
+               
                 
                 
             }

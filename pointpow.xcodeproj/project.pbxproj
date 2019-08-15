@@ -227,6 +227,7 @@
 		C15F16FF2293D23E005E8E71 /* PointHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15F16FE2293D23E005E8E71 /* PointHistory.swift */; };
 		C15F17032293D455005E8E71 /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15F17012293D455005E8E71 /* HistoryCell.swift */; };
 		C15F17042293D455005E8E71 /* HistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C15F17022293D455005E8E71 /* HistoryCell.xib */; };
+		C163AEE3230541D300508726 /* CustomBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C163AEE2230541D300508726 /* CustomBadgeView.swift */; };
 		C169FF9C21C25C8500F9D354 /* MobileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C169FF9B21C25C8500F9D354 /* MobileViewController.swift */; };
 		C169FF9E21C25C9200F9D354 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C169FF9D21C25C9200F9D354 /* EmailViewController.swift */; };
 		C169FFC421C4D66600F9D354 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C169FFC321C4D66600F9D354 /* FavoriteViewController.swift */; };
@@ -624,6 +625,7 @@
 		C15F16FE2293D23E005E8E71 /* PointHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointHistory.swift; sourceTree = "<group>"; };
 		C15F17012293D455005E8E71 /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 		C15F17022293D455005E8E71 /* HistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryCell.xib; sourceTree = "<group>"; };
+		C163AEE2230541D300508726 /* CustomBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBadgeView.swift; sourceTree = "<group>"; };
 		C169FF9B21C25C8500F9D354 /* MobileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileViewController.swift; sourceTree = "<group>"; };
 		C169FF9D21C25C9200F9D354 /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
 		C169FFC321C4D66600F9D354 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
@@ -1638,6 +1640,7 @@
 				C1AD50A82187F7B500F74415 /* BaseViewController.swift */,
 				C1DEBE9421882F6F00CBB95F /* BaseNavigationViewController.swift */,
 				C1817DA7219E7BFE009507DB /* CheckBox.swift */,
+				C163AEE2230541D300508726 /* CustomBadgeView.swift */,
 			);
 			path = BaseController;
 			sourceTree = "<group>";
@@ -2355,6 +2358,7 @@
 				C121FB4F228A640700043387 /* NotificationStruct.swift in Sources */,
 				C106BEB2220BED4E00E2331E /* BrowseImageCell.swift in Sources */,
 				C139366C22D6F56D0006C10F /* SavingViewController.swift in Sources */,
+				C163AEE3230541D300508726 /* CustomBadgeView.swift in Sources */,
 				C11A93B7218C00C800627B44 /* IntroCell1.swift in Sources */,
 				C1247C572219B2E7005D6F7A /* NextButtonCell.swift in Sources */,
 				C10CA1AA21918E3C00316DF3 /* PasscodeSettingViewController.swift in Sources */,

@@ -100,14 +100,115 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
      
     }
     
+    var cartImageView:UIImageView?
+    var badgeView:CustomBadgeView?
     
+   
+    
+    func addMenuCart(){
+        
+        let centerY = (self.navigationController?.navigationBar.centerYAnchor)!
+        
+        self.cartImageView?.removeFromSuperview()
+        self.cartImageView = UIImageView()
+        self.cartImageView!.translatesAutoresizingMaskIntoConstraints = false
+        let window = UIApplication.shared.keyWindow!
+        window.addSubview(self.cartImageView!);
+        
+        self.cartImageView?.trailingAnchor.constraint(equalTo: window.trailingAnchor, constant: -20).isActive = true
+        self.cartImageView?.centerYAnchor.constraint(equalTo: centerY, constant: 0).isActive = true
+        self.cartImageView?.widthAnchor.constraint(equalToConstant: 24.0).isActive = true
+        self.cartImageView?.heightAnchor.constraint(equalToConstant: 24.0).isActive = true
+        
+        self.cartImageView!.image  = UIImage(named: "ic-cart-white")
+        self.cartImageView!.contentMode = .scaleAspectFit
+        
+        let cart = UITapGestureRecognizer(target: self, action: #selector(goToCartTapped))
+        self.cartImageView!.isUserInteractionEnabled = true
+        self.cartImageView!.addGestureRecognizer(cart)
+        
+        
+        self.getBadgeCount()
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.removeCartImageView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.addMenuCart()
+       
+    }
+    
+    func removeCartImageView(){
+        self.cartImageView?.removeFromSuperview()
+        self.badgeView?.removeFromSuperview()
+    }
+    
+    @objc func goToCartTapped(){
+        self.showCartViewController(true)
+    }
+    
+    func getBadgeCount(){
+        self.badgeView?.removeFromSuperview()
+        
+        self.getItemToCart() { (itemCart) in
+            var count = 0
+            let cart_item = itemCart.first?["cart_item"] as? [[String:AnyObject]] ?? []
+            for item in cart_item {
+                let amount = item["amount"] as? NSNumber ?? 0
+                count += amount.intValue
+            }
+            var mCount = "0"
+            if count >= 100 {
+                mCount = "+99"
+            }else{
+                mCount = "\(count)"
+            }
+            
+            if mCount != "0" {
+                
+                self.badgeView = CustomBadgeView(radius: 9.0)
+                self.badgeView?.translatesAutoresizingMaskIntoConstraints = false
+                //self.navigationController?.navigationBar.addSubview(self.badgeView!)
+                
+                let window = UIApplication.shared.keyWindow!
+                window.addSubview(self.badgeView!);
+                
+                
+                self.badgeView?.centerXAnchor.constraint(equalTo: self.cartImageView!.centerXAnchor, constant: 8).isActive = true
+                self.badgeView?.centerYAnchor.constraint(equalTo: self.cartImageView!.centerYAnchor, constant: -10).isActive = true
+                self.badgeView?.widthAnchor.constraint(equalToConstant: 18.0).isActive = true
+                self.badgeView?.heightAnchor.constraint(equalToConstant: 18.0).isActive = true
+                
+                let countLabel = UILabel()
+                countLabel.textColor = Constant.Colors.PRIMARY_COLOR
+                countLabel.font = UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: Constant.Fonts.Size.CART_BADGE_TOP_NAV)
+                
+                countLabel.text = mCount
+                countLabel.translatesAutoresizingMaskIntoConstraints = false
+                self.badgeView?.addSubview(countLabel)
+                
+                countLabel.centerYAnchor.constraint(equalTo: self.badgeView!.centerYAnchor, constant: 0).isActive = true
+                countLabel.centerXAnchor.constraint(equalTo: self.badgeView!.centerXAnchor, constant: 0).isActive = true
+                
+                
+                let cart = UITapGestureRecognizer(target: self, action: #selector(self.goToCartTapped))
+                self.badgeView!.isUserInteractionEnabled = true
+                self.badgeView!.addGestureRecognizer(cart)
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title =  NSLocalizedString("string-title-product-detail", comment: "")
         
         self.setUp()
-      
+        
        
         self.callAPI {
             //update detail
@@ -390,6 +491,7 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
                 self.showPoPupAddToCart(true, cartTuple: cartTuple, dismissCallback: {
                     self.showCartViewController(true)
                 })
+                self.addMenuCart()
             }
            
             
@@ -438,6 +540,29 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
                 
             }
         }
+    }
+    
+    private func getItemToCart(_ getSuccess:((_ itemCart:[[String:AnyObject]])->Void)? = nil){
+        
+        modelCtrl.getCart(params: nil , true , succeeded: { (result) in
+            if let mResult = result as? [[String:AnyObject]] {
+                getSuccess?(mResult)
+            }
+            
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                self.showMessagePrompt(message)
+            }
+            
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            
+        }
+        
     }
     
     @objc func shareTapped(){

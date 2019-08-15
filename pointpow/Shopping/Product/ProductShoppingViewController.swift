@@ -202,10 +202,14 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
                 let amount = item["amount"] as? NSNumber ?? 0
                 count += amount.intValue
             }
-            let userInfo = ["count" : count]
+            var userInfo:[String:String] = [:]
+            if count >= 100 {
+                userInfo = ["count" : "+99"]
+            }else{
+                userInfo = ["count" : "\(count)"]
+            }
             
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constant.DefaultConstansts.UPDATE_BADGE), object: nil, userInfo: userInfo)
-            
         }
     }
     override func viewWillAppear(_ animated: Bool) {

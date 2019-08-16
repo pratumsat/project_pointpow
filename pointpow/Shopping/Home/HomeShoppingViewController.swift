@@ -303,7 +303,7 @@ class HomeShoppingViewController: ShoppingBaseViewController {
             }
             var userInfo:[String:String] = [:]
             if count >= 100 {
-                userInfo = ["count" : "+99"]
+                userInfo = ["count" : "99+"]
             }else{
                 userInfo = ["count" : "\(count)"]  
             }

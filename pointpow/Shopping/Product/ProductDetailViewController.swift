@@ -164,7 +164,7 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
             }
             var mCount = "0"
             if count >= 100 {
-                mCount = "+99"
+                mCount = "99+"
             }else{
                 mCount = "\(count)"
             }

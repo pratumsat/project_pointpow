@@ -535,19 +535,20 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             if let mError = error as? [String:AnyObject]{
                 let message = mError["message"] as? String ?? ""
                 print(message)
-                if ignoreDelete == 0 {
-                    self.showMessagePrompt(message)
-                }
+//                if ignoreDelete == 0 {
+//                    
+//                }
+                self.showMessagePrompt(message)
                 
             }
             
             print(error)
         }) { (messageError) in
             print("messageError")
-            if ignoreDelete == 0 {
-                self.handlerMessageError(messageError)
-            }
-            
+//            if ignoreDelete == 0 {
+//
+//            }
+            self.handlerMessageError(messageError)
             
         }
     }

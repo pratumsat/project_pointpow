@@ -64,6 +64,7 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
     
     var cateItems:[[String:AnyObject]]?
     var productItems:[[String:AnyObject]]?
+    var total_amount:Int?
     
     var cateId = 0 {
         didSet{
@@ -455,7 +456,11 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
         
         modelCtrl.getProductByCate(cateId: self.subCateId, skip: self.skipItem, type: self.sortBySelected, false , succeeded: { (result) in
             
-            if let mResult = result as? [[String:AnyObject]] {
+            if let data = result as? [String:AnyObject]  {
+                let total_amount = data["total"] as? Int ?? 0
+                let mResult = data["result"] as? [[String:AnyObject]] ?? []
+                //if let mResult = result as? [[String:AnyObject]] {
+                self.total_amount = total_amount
                
                 if self.isLoadmore == false {
                     self.productItems = mResult
@@ -466,8 +471,13 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
                 }
                 
                 self.isLoadmore = false
-                
+                    
+                //}
             }
+            
+
+            
+
             avaliable?()
             
             
@@ -606,6 +616,7 @@ extension ProductShoppingViewController {
         if collectionView != productCollectionView {
             return super.numberOfSections(in: collectionView)
         }
+       
         return self.itemSection.count
         
     }
@@ -676,7 +687,7 @@ extension ProductShoppingViewController {
                 self.filterTextField = filterCell.filterTextField
                 
                 var countProduct = NSLocalizedString("string-item-shopping-cate-item-count", comment: "")
-                countProduct += " \(self.productItems?.count ?? 0) "
+                countProduct += " \(self.total_amount ?? 0) "
                 countProduct += NSLocalizedString("string-item-shopping-cate-item-count-list", comment: "")
                 filterCell.headerNameLabel.text = countProduct
                
@@ -868,21 +879,33 @@ extension ProductShoppingViewController {
             return header
             
         case "product":
-            guard let count = self.productItems?.count, count > 0 else {
-                if self.notFoundHeader == "NotFoundItemCell" {
-                    let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "NotFoundItemCell", for: indexPath) as! NotFoundItemCell
-                    header.nameLabel.text = NSLocalizedString("string-string-not-found-product", comment: "")
+            if let product = self.productItems {
+                if product.count > 0 {
+                    let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderSectionCell", for: indexPath) as! HeaderSectionCell
+                    header.headerNameLabel.text = ""
                     return header
                 }else{
-                    let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ImageProductNotFoundCell", for: indexPath) as! ImageProductNotFoundCell
-                    header.nameLabel.text = NSLocalizedString("string-string-sesarch-not-found-product", comment: "")
-                    return header
+                    if self.notFoundHeader == "NotFoundItemCell" {
+                        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "NotFoundItemCell", for: indexPath) as! NotFoundItemCell
+                        
+                        
+                        header.nameLabel.text = NSLocalizedString("string-string-not-found-product", comment: "")
+                        return header
+                    }else{
+                        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ImageProductNotFoundCell", for: indexPath) as! ImageProductNotFoundCell
+                        header.nameLabel.text = NSLocalizedString("string-string-sesarch-not-found-product", comment: "")
+                        return header
+                    }
                 }
-                
             }
+            
+            /*
+             
+             */
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderSectionCell", for: indexPath) as! HeaderSectionCell
             header.headerNameLabel.text = ""
             return header
+           
             
         case "no_more_item":
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderSectionCell", for: indexPath) as! HeaderSectionCell

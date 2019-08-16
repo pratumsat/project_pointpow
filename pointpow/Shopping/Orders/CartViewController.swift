@@ -289,6 +289,8 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                 var tupleProduct:[(title:String, id:Int, amount:Int, price:Double, select:Bool, brand:String, cover:String, stock:Int)] = []
                 
                 let cart_item = itemCart.first?["cart_item"] as? [[String:AnyObject]] ?? []
+                
+                var i = 0
                 for cart in cart_item {
                     let amount = cart["amount"] as? NSNumber ?? 0
                     
@@ -325,10 +327,11 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                                          id: id.intValue ,
                                          amount: amount.intValue,
                                          price: price,
-                                         select: true,
+                                         select: self.tupleProduct?[i].select ?? true,
                                          brand: urlbrand,
                                          cover: urlCover,
                                          stock: stock.intValue))
+                    i += 1
                 }
                 success?(tupleProduct)
                 
@@ -536,7 +539,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                 let message = mError["message"] as? String ?? ""
                 print(message)
 //                if ignoreDelete == 0 {
-//                    
+//
 //                }
                 self.showMessagePrompt(message)
                 
@@ -752,11 +755,14 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             
             if let itemCart = self.cartItems as? [[String:AnyObject]] {
                 
-                self.tupleProduct = []
+                var tupleProduct:[(title:String, id:Int, amount:Int, price:Double, select:Bool, brand:String, cover:String, stock:Int)] = []
+                
                 let cart_item = itemCart.first?["cart_item"] as? [[String:AnyObject]] ?? []
                 let id  = itemCart.first?["id"] as? NSNumber ?? 0
                 
                 self.cart_id = id.intValue
+                
+                var i = 0
                 
                 for cart in cart_item {
                     let amount = cart["amount"] as? NSNumber ?? 0
@@ -790,16 +796,17 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                     let urlCover = getFullPathImageView(item)
                     
                     
-                    self.tupleProduct?.append((title: title,
+                    tupleProduct.append((title: title,
                                                id: id.intValue ,
                                                amount: amount.intValue,
                                                price: price,
-                                               select: true,
+                                               select: self.tupleProduct?[i].select ?? true,
                                                brand: urlbrand,
                                                cover: urlCover,
                                                stock: stock.intValue))
-                
+                    i += 1
                 }
+                self.tupleProduct = tupleProduct
                 
             }
             

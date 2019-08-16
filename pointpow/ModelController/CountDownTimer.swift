@@ -56,6 +56,10 @@ public class DateCountDownTimer{
             let seconds = component.second!
             totalTime = hours * 60 * 60 + minutes * 60 + seconds
             totalTime = days * 60 * 60 * 24 + totalTime
+            
+            if totalTime < 0 {
+                totalTime = 0
+            }
         }
         
         

@@ -394,6 +394,7 @@ class HomeShoppingViewController: ShoppingBaseViewController {
             
             self.countSection = 6
             
+            self.cd.endTimer()
             self.productCollectionView.reloadData()
         }
     }
@@ -740,17 +741,13 @@ extension HomeShoppingViewController {
                     header.secLabel.text = tuple.seconds
 
                     self.cd.startTimer(pUpdateActionHandler: { (timeString) in
-
                         header.hoursLabel.text = timeString.hours
                         header.minLabel.text = timeString.minutes
                         header.secLabel.text = timeString.seconds
-
                     }) {
-
                         header.hoursLabel.text = "00"
                         header.minLabel.text = "00"
                         header.secLabel.text = "00"
-
                     }
                 }else{
                     let tuple = self.cd.timeFormatted(self.cd.totalTime)

@@ -4128,9 +4128,13 @@ class ModelController {
                         
                         if success.intValue == 1 {
                             
-                            if let result = data["result"] as? [[String:AnyObject]] {
-                                succeeded?(result as AnyObject)
-                            }
+//                            let total_amount = data["total_amount"] as? Int ?? 0
+//                            let result = data["result"] as? [[String:AnyObject]] ?? []
+                            //if let result = data["result"] as? [[String:AnyObject]] {
+                                //succeeded?(result as AnyObject)
+                            //}
+                            
+                            succeeded?(data as AnyObject)
                             
                         }else{
                             let messageError = data["message"] as? String  ??  ""

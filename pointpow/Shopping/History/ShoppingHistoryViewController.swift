@@ -190,7 +190,7 @@ extension ShoppingHistoryViewController {
 //                    transCell.shippingLabel.textColor = Constant.Colors.GREEN
 //                }
                 
-                switch shipping_status.lowercased() {
+                switch order_status.lowercased() {
                 case "cancel":
                     transCell.shippingLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-cancel", comment: "")
                     transCell.shippingLabel.textColor = Constant.Colors.PRIMARY_COLOR

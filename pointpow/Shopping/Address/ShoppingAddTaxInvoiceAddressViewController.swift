@@ -55,8 +55,7 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
                 let mobile = data["mobile"]as? String ?? ""
                 let pid = data["pid"]as? String ?? ""
                 
-                let newText = String((pid).filter({ $0 != "-" }).prefix(13))
-                self.personalTextField.text = newText.chunkFormattedPersonalID()
+                
                 
                 
                 if self.modelAddress != nil  {
@@ -66,6 +65,8 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
                 }else{
                     self.nameTextField.text = "\(first_name) \(last_name)"
                     self.numberPhoneTextField.text = mobile
+                    let newText = String((pid).filter({ $0 != "-" }).prefix(13))
+                    self.personalTextField.text = newText.chunkFormattedPersonalID()
                 }
                 
                
@@ -197,6 +198,7 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
             self.subDistrictId = idSubdistrict.intValue
             
             self.id = id.intValue
+            
             
             getDistrict(idProvince.intValue) {
                 self.districtPickerView = UIPickerView()
@@ -726,6 +728,11 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
             }else{
                 self.clearImageView?.isHidden = false
             }
+            
+            if string.trimmingCharacters(in: .whitespaces).isEmpty {
+                return true
+            }
+            
             if isValidName(string) {
                 return true
             }else{
@@ -911,7 +918,7 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
         if errorMobile > 0 {
             
             self.showMessagePrompt(errorMessage)
-            self.errorPersonalIDLabel =  self.personalTextField.addBottomLabelErrorMessage(errorMessage , marginLeft: 15)
+            self.errorPersonalIDLabel =  self.personalTextField.addBottomLabelErrorMessage(errorMessage , marginLeft: 0)
             return false
         }
         return true

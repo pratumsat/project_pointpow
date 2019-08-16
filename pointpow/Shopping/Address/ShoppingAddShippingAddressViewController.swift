@@ -382,6 +382,7 @@ class ShoppingAddShippingAddressViewController:BaseViewController ,UIPickerViewD
     override func textFieldDidBeginEditing(_ textField: UITextField) {    //delegate method
         super.textFieldDidBeginEditing(textField)
         
+        
         if textField  == self.provinceTextField {
             if textField.text!.isEmpty {
                 if let first = self.provinces?.first {
@@ -591,7 +592,16 @@ class ShoppingAddShippingAddressViewController:BaseViewController ,UIPickerViewD
             }else{
                 self.clearImageView?.isHidden = false
             }
+            if string.trimmingCharacters(in: .whitespaces).isEmpty {
+                return true
+            }
+            if isValidName(string) {
+                return true
+            }else{
+                return false
+            }
         }
+        
         if textField  == self.numberPhoneTextField {
             let startingLength = textField.text?.count ?? 0
             let lengthToAdd = string.count

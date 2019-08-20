@@ -332,9 +332,10 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
     
     
     
-    func showTaxInvoiceAddressPage(_ animated:Bool){
+    func showTaxInvoiceAddressPage(_ animated:Bool ,_ lateShippingModel:AnyObject?){
         if let vc:ShoppingTaxInvoiceAddressViewController = self.storyboard?.instantiateViewController(withIdentifier: "ShoppingTaxInvoiceAddressViewController") as? ShoppingTaxInvoiceAddressViewController {
             
+            vc.lateShippingModel = lateShippingModel
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }

@@ -38,9 +38,9 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(จำนวน 2 ชิ้น)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6J-JC-sDh">
-                        <rect key="frame" x="107" y="41.5" width="75.5" height="23.5"/>
-                        <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="18"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="(จำนวน 2 ชิ้น)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6J-JC-sDh">
+                        <rect key="frame" x="104" y="43" width="150" height="21"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="16"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -55,7 +55,7 @@
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="16"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JRB-6D-H3E">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="JRB-6D-H3E">
                         <rect key="frame" x="259" y="100" width="48.5" height="32.5"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="25"/>
                         <nil key="highlightedColor"/>
@@ -85,7 +85,7 @@
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="16"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Inq-18-hbg">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Inq-18-hbg">
                         <rect key="frame" x="259" y="68.5" width="48.5" height="32.5"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="25"/>
                         <nil key="highlightedColor"/>
@@ -95,7 +95,7 @@
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="16"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VR8-0k-V0m">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VR8-0k-V0m">
                         <rect key="frame" x="259" y="37" width="48.5" height="32.5"/>
                         <fontDescription key="fontDescription" name="ThaiSansNeue-Bold" family="ThaiSans Neue" pointSize="25"/>
                         <nil key="highlightedColor"/>
@@ -108,7 +108,7 @@
                 <constraint firstItem="P3j-9K-Ecu" firstAttribute="centerY" secondItem="nOF-kT-X1z" secondAttribute="centerY" id="0S1-K9-JvT"/>
                 <constraint firstItem="P3j-9K-Ecu" firstAttribute="top" secondItem="Fen-TQ-ky2" secondAttribute="bottom" constant="8" id="0Zg-Wh-ke6"/>
                 <constraint firstItem="Z3N-TA-GUo" firstAttribute="top" secondItem="rrc-ph-lkr" secondAttribute="top" constant="10" id="12k-6s-Tcy"/>
-                <constraint firstItem="s6J-JC-sDh" firstAttribute="leading" secondItem="Fen-TQ-ky2" secondAttribute="trailing" constant="5" id="2JR-Hz-7bH"/>
+                <constraint firstItem="s6J-JC-sDh" firstAttribute="leading" secondItem="Fen-TQ-ky2" secondAttribute="trailing" constant="2" id="2JR-Hz-7bH"/>
                 <constraint firstItem="VR8-0k-V0m" firstAttribute="centerY" secondItem="DQa-jI-dnn" secondAttribute="centerY" id="8a3-Ty-Rur"/>
                 <constraint firstItem="ixs-pf-41B" firstAttribute="top" secondItem="rrc-ph-lkr" secondAttribute="top" constant="10" id="Am7-oB-KlB"/>
                 <constraint firstAttribute="bottom" secondItem="Bbd-nL-KGS" secondAttribute="bottom" id="DnF-Sj-tLS"/>
@@ -118,6 +118,7 @@
                 <constraint firstItem="P3j-9K-Ecu" firstAttribute="leading" secondItem="Z3N-TA-GUo" secondAttribute="leading" id="HrU-AZ-1zr"/>
                 <constraint firstItem="KsA-uc-E1j" firstAttribute="top" secondItem="P3j-9K-Ecu" secondAttribute="bottom" constant="8" id="L5L-BD-xk8"/>
                 <constraint firstItem="DQa-jI-dnn" firstAttribute="leading" secondItem="VR8-0k-V0m" secondAttribute="trailing" constant="5" id="Ndz-Mi-qmN"/>
+                <constraint firstItem="VR8-0k-V0m" firstAttribute="leading" secondItem="s6J-JC-sDh" secondAttribute="trailing" constant="5" id="Q1Q-VB-OnF"/>
                 <constraint firstItem="nOF-kT-X1z" firstAttribute="leading" secondItem="Inq-18-hbg" secondAttribute="trailing" constant="5" id="UpM-ca-TJ2"/>
                 <constraint firstItem="Fen-TQ-ky2" firstAttribute="top" secondItem="Z3N-TA-GUo" secondAttribute="bottom" constant="8" id="WnP-Jd-Aty"/>
                 <constraint firstItem="ixs-pf-41B" firstAttribute="leading" secondItem="rrc-ph-lkr" secondAttribute="leading" constant="5" id="bRZ-ne-WJl"/>

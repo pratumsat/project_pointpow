@@ -184,33 +184,25 @@ extension ShoppingHistoryViewController {
                 transCell.amountLabel.text = numberFormatter.string(from: total_point)
                 transCell.dateLabel.text = created_at
                 
-//                if order_status.lowercased() != "complete" {
-//                    transCell.shippingLabel.textColor = Constant.Colors.ORANGE
-//                }else{
-//                    transCell.shippingLabel.textColor = Constant.Colors.GREEN
-//                }
+                
                 
                 switch order_status.lowercased() {
                 case "cancel":
-                    transCell.shippingLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-cancel", comment: "")
+                    transCell.shippingLabel.text = NSLocalizedString("string-dailog-shopping-order-status-cancel", comment: "")
                     transCell.shippingLabel.textColor = Constant.Colors.PRIMARY_COLOR
                     transCell.followProductView.isHidden = true
                     break
                 case "complete":
-                    transCell.shippingLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-success", comment: "")
+                    transCell.shippingLabel.text = NSLocalizedString("string-dailog-shopping-order-status-complete", comment: "")
                     transCell.shippingLabel.textColor = Constant.Colors.GREEN
                     transCell.followProductView.isHidden = false
                     break
                 case "waiting":
-                    transCell.shippingLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-waiting", comment: "")
+                    transCell.shippingLabel.text = NSLocalizedString("string-dailog-shopping-order-status-waiting", comment: "")
                     transCell.shippingLabel.textColor = Constant.Colors.ORANGE
                     transCell.followProductView.isHidden = false
                     break
-                case "shipping":
-                    transCell.shippingLabel.text = NSLocalizedString("string-dailog-shopping-shipping-status-shipping", comment: "")
-                    transCell.shippingLabel.textColor = Constant.Colors.GREEN
-                    transCell.followProductView.isHidden = false
-                    break
+            
                     
                 default:
                     transCell.followProductView.isHidden = true
@@ -220,7 +212,7 @@ extension ShoppingHistoryViewController {
                 
                 switch payment_status.lowercased() {
                 case "success":
-                    transCell.statusLabel.text = NSLocalizedString("string-status-transection-history-success", comment: "")
+                    transCell.statusLabel.text = NSLocalizedString("string-status-transection-shopping-history-success", comment: "")
                     break
                 case "waiting":
                     transCell.statusLabel.text = NSLocalizedString("string-status-transection-history-pending", comment: "")

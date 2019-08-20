@@ -1239,6 +1239,19 @@ func heightForView(text:String, font:UIFont, width:CGFloat, lineHeight:Bool = fa
     
     return label.frame.height
 }
+func heightForView2Line(text:String, font:UIFont, width:CGFloat, lineHeight:Bool = false) -> CGFloat{
+    let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
+    label.numberOfLines = 2
+    label.lineBreakMode = NSLineBreakMode.byWordWrapping
+    label.font = font
+    label.text = text
+    if lineHeight {
+        label.setLineSpacing(lineSpacing: 0, lineHeightMultiple: 0.7)
+    }
+    label.sizeToFit()
+    
+    return label.frame.height
+}
 
 func widthForView(text:String, font:UIFont) -> CGFloat{
     let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude))

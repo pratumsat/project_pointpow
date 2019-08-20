@@ -984,9 +984,11 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                     numberFormatter.numberStyle = .decimal
                     
                     productCell.productNameLabel.text = itemTuple.title
-                    if let url = URL(string: itemTuple.brand) {
-                        productCell.brandImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
-                    }
+//                    if let url = URL(string: itemTuple.brand) {
+//                        productCell.brandImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
+//                    }
+                    productCell.brandImageView.isHidden = true
+                    
                     if let url = URL(string: itemTuple.cover) {
                         productCell.productImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
                     }
@@ -1108,13 +1110,13 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                 }
                
                 
-                
             }
             
         case "nextbutton":
             if let nextCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CartNextButtonCell", for: indexPath) as? CartNextButtonCell {
                 cell = nextCell
                 nextCell.nextCallback = {
+                    nextCell.nextButton.isEnabled = false
                     
                     if self.checkOut() {
                         self.getStock() { (tupleProduct) in
@@ -1122,9 +1124,13 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                                 
                                 self.reloadCheckOutItemData()
                                 
+                                nextCell.nextButton.isEnabled = true
+                                
                             }, updateWithChangeSuccess: { () in
                                 
                                 self.reloadCheckOutItemData()
+                                
+                                nextCell.nextButton.isEnabled = true
                             })
                         }
                         
@@ -1176,7 +1182,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             self.updateCart(ignoreDelete: 1){
                 if !self.fullAddressTaxInvoice.rawAddress.trimmingCharacters(in: .whitespaces).isEmpty {
                     //isAddress
-                    self.showTaxInvoiceAddressPage(true)
+                    self.showTaxInvoiceAddressPage(true, self.lateShippingModel)
                 }else{
                     //no address
                     self.showTaxInvoiceAddDuplicateAddressPage(true, self.lateShippingModel )

@@ -21,6 +21,7 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
     var statusMemberGold = ""
     var point_balance = NSNumber(value: 0.00)
     
+    
     var isRegistered  = false {
         didSet{
             if isRegistered {

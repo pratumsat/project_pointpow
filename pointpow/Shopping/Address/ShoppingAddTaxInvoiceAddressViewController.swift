@@ -11,6 +11,7 @@ import Alamofire
 
 class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerViewDelegate , UIPickerViewDataSource {
     
+   
     @IBOutlet weak var personalTextField: UITextField!
     @IBOutlet weak var shippingProductImageView: UIImageView!
     @IBOutlet weak var shippingTaxImageView: UIImageView!
@@ -49,32 +50,180 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
     var subDistricts:[[String:AnyObject]]?
     var userData:AnyObject? {
         didSet{
-            if let data  = self.userData as? [String:AnyObject] {
-                let first_name = data["first_name"] as? String ?? ""
-                let last_name = data["last_name"]as? String ?? ""
-                let mobile = data["mobile"]as? String ?? ""
-                let pid = data["pid"]as? String ?? ""
+            self.updateDataIdle()
+        }
+    }
+    
+    func updateDataWithShippingAddress(){
+        if let data = self.modelDuplicateAddress as? [String: AnyObject] {
+            let id = data["id"] as? NSNumber ?? 0
+            let address = data["address"] as? String ?? ""
+            let districtName = data["district"]?["name_in_thai"] as? String ?? ""
+            let subdistrictName = data["subdistrict"]?["name_in_thai"] as? String ?? ""
+            let provinceName = data["province"]?["name_in_thai"] as? String ?? ""
+            let zip_code = data["subdistrict"]?["zip_code"] as? NSNumber ?? 0
+            
+            let idDistrict = data["district"]?["id"] as? NSNumber ?? 0
+            let idSubdistrict = data["subdistrict"]?["id"] as? NSNumber ?? 0
+            let idProvince = data["province"]?["id"] as? NSNumber ?? 0
+            
+            let name = data["name"] as? String ?? ""
+            let mobile = data["mobile"]as? String ?? ""
+            let tax_invoice = data["tax_invoice"]as? String ?? ""
+            
+            
+            let newText = String((tax_invoice).filter({ $0 != "-" }).prefix(13))
+            
+            
+            
+            self.personalTextField.text = newText.chunkFormattedPersonalID()
+            self.nameTextField.text = name
+            self.numberPhoneTextField.text = mobile
+            self.addressTextField.text = address
+            self.districtTextField.text = districtName
+            self.subDistrictTextField.text = subdistrictName
+            self.provinceTextField.text = provinceName
+            self.postCodeTextField.text = "\(zip_code)"
+            
+            self.provinceId = idProvince.intValue
+            self.districtId = idDistrict.intValue
+            self.subDistrictId = idSubdistrict.intValue
+            
+            self.id = id.intValue
+            
+            
+            
+            getDistrict(idProvince.intValue) {
+                self.districtPickerView = UIPickerView()
+                self.districtPickerView!.delegate = self
+                self.districtPickerView!.dataSource = self
                 
-                
-                
-                
-                if self.modelAddress != nil  {
-                   // is address
-                }else if self.modelDuplicateAddress != nil {
-                    // is duplicate
-                }else{
-                    self.nameTextField.text = "\(first_name) \(last_name)"
-                    self.numberPhoneTextField.text = mobile
-                    let newText = String((pid).filter({ $0 != "-" }).prefix(13))
-                    self.personalTextField.text = newText.chunkFormattedPersonalID()
-                }
-                
-               
+                self.districtTextField.isEnabled = true
+                self.districtTextField.tintColor = UIColor.clear
+                self.districtTextField.isUserInteractionEnabled = true
+                self.districtTextField.inputView = self.districtPickerView
                 
                 
             }
+            
+            getSubDistrict(idDistrict.intValue) {
+                self.subDistrictPickerView = UIPickerView()
+                self.subDistrictPickerView!.delegate = self
+                self.subDistrictPickerView!.dataSource = self
+                
+                self.subDistrictTextField.isEnabled = true
+                self.subDistrictTextField.tintColor = UIColor.clear
+                self.subDistrictTextField.isUserInteractionEnabled = true
+                self.subDistrictTextField.inputView = self.subDistrictPickerView
+                
+            }
+            
         }
     }
+    func updateDataWithTaxAddress(){
+        if let data = self.modelAddress as? [String: AnyObject] {
+            let id = data["id"] as? NSNumber ?? 0
+            let address = data["address"] as? String ?? ""
+            let districtName = data["district"]?["name_in_thai"] as? String ?? ""
+            let subdistrictName = data["subdistrict"]?["name_in_thai"] as? String ?? ""
+            let provinceName = data["province"]?["name_in_thai"] as? String ?? ""
+            let zip_code = data["subdistrict"]?["zip_code"] as? NSNumber ?? 0
+            
+            let idDistrict = data["district"]?["id"] as? NSNumber ?? 0
+            let idSubdistrict = data["subdistrict"]?["id"] as? NSNumber ?? 0
+            let idProvince = data["province"]?["id"] as? NSNumber ?? 0
+            
+            let name = data["name"] as? String ?? ""
+            let mobile = data["mobile"]as? String ?? ""
+            let tax_invoice = data["tax_invoice"]as? String ?? ""
+            let invoice_shipping = data["invoice_shipping"]as? String ?? ""
+            
+            let newText = String((tax_invoice).filter({ $0 != "-" }).prefix(13))
+            
+            self.invoice_shipping = invoice_shipping
+            
+            self.personalTextField.text = newText.chunkFormattedPersonalID()
+            self.nameTextField.text = name
+            self.numberPhoneTextField.text = mobile
+            self.addressTextField.text = address
+            self.districtTextField.text = districtName
+            self.subDistrictTextField.text = subdistrictName
+            self.provinceTextField.text = provinceName
+            self.postCodeTextField.text = "\(zip_code)"
+            
+            self.provinceId = idProvince.intValue
+            self.districtId = idDistrict.intValue
+            self.subDistrictId = idSubdistrict.intValue
+            
+            self.id = id.intValue
+            
+            
+            getDistrict(idProvince.intValue) {
+                self.districtPickerView = UIPickerView()
+                self.districtPickerView!.delegate = self
+                self.districtPickerView!.dataSource = self
+                
+                self.districtTextField.isEnabled = true
+                self.districtTextField.tintColor = UIColor.clear
+                self.districtTextField.isUserInteractionEnabled = true
+                self.districtTextField.inputView = self.districtPickerView
+                
+                
+            }
+            
+            getSubDistrict(idDistrict.intValue) {
+                self.subDistrictPickerView = UIPickerView()
+                self.subDistrictPickerView!.delegate = self
+                self.subDistrictPickerView!.dataSource = self
+                
+                self.subDistrictTextField.isEnabled = true
+                self.subDistrictTextField.tintColor = UIColor.clear
+                self.subDistrictTextField.isUserInteractionEnabled = true
+                self.subDistrictTextField.inputView = self.subDistrictPickerView
+                
+            }
+            
+        }
+    }
+    func updateDataIdle(){
+        if let data  = self.userData as? [String:AnyObject] {
+            let first_name = data["first_name"] as? String ?? ""
+            let last_name = data["last_name"]as? String ?? ""
+            let mobile = data["mobile"]as? String ?? ""
+            let pid = data["pid"]as? String ?? ""
+            
+            if self.modelAddress != nil  {
+                // is address
+            }else if self.modelDuplicateAddress != nil {
+                // is duplicate
+            }else{
+                // idle
+                self.nameTextField.text = "\(first_name) \(last_name)"
+                self.numberPhoneTextField.text = mobile
+                let newText = String((pid).filter({ $0 != "-" }).prefix(13))
+                self.personalTextField.text = newText.chunkFormattedPersonalID()
+                
+                
+                self.addressTextField.text = ""
+                self.districtTextField.text = ""
+                self.subDistrictTextField.text = ""
+                self.provinceTextField.text = ""
+                self.postCodeTextField.text = ""
+                
+                self.provinceId = 0
+                self.districtId = 0
+                self.subDistrictId = 0
+                self.selectedProvinceId = 0
+                self.selectedDistrictId = 0
+                self.selectedSubDistrictId = 0
+            }
+            
+            
+            
+        }
+    }
+    
+    
     var language = "th"
     
     var modelAddress:AnyObject?
@@ -136,9 +285,43 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
             if invoice_shipping.lowercased() == "yes" {
                 self.shippingProductImageView?.image = UIImage(named: "ic-choose-1")
                 self.shippingTaxImageView?.image = UIImage(named: "ic-choose-2")
+                
+                if modelAddress == nil {
+                    if let data  = self.userData as? [String:AnyObject] {
+                        let first_name = data["first_name"] as? String ?? ""
+                        let last_name = data["last_name"]as? String ?? ""
+                        let mobile = data["mobile"]as? String ?? ""
+                        let pid = data["pid"]as? String ?? ""
+                        
+                        self.nameTextField.text = "\(first_name) \(last_name)"
+                        self.numberPhoneTextField.text = mobile
+                        let newText = String((pid).filter({ $0 != "-" }).prefix(13))
+                        self.personalTextField.text = newText.chunkFormattedPersonalID()
+                        
+                        
+                        self.addressTextField.text = ""
+                        self.districtTextField.text = ""
+                        self.subDistrictTextField.text = ""
+                        self.provinceTextField.text = ""
+                        self.postCodeTextField.text = ""
+                        
+                        self.provinceId = 0
+                        self.districtId = 0
+                        self.subDistrictId = 0
+                        self.selectedProvinceId = 0
+                        self.selectedDistrictId = 0
+                        self.selectedSubDistrictId = 0
+                    }
+                    
+                }
+                
+                
             }else{
                 self.shippingProductImageView?.image = UIImage(named: "ic-choose-2")
                 self.shippingTaxImageView?.image = UIImage(named: "ic-choose-1")
+                
+                self.updateDataWithShippingAddress()
+                
             }
         }
     }
@@ -163,135 +346,20 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
         
         
         
-        if let data = self.modelAddress as? [String: AnyObject] {
-            let id = data["id"] as? NSNumber ?? 0
-            let address = data["address"] as? String ?? ""
-            let districtName = data["district"]?["name_in_thai"] as? String ?? ""
-            let subdistrictName = data["subdistrict"]?["name_in_thai"] as? String ?? ""
-            let provinceName = data["province"]?["name_in_thai"] as? String ?? ""
-            let zip_code = data["subdistrict"]?["zip_code"] as? NSNumber ?? 0
-            
-            let idDistrict = data["district"]?["id"] as? NSNumber ?? 0
-            let idSubdistrict = data["subdistrict"]?["id"] as? NSNumber ?? 0
-            let idProvince = data["province"]?["id"] as? NSNumber ?? 0
-            
-            let name = data["name"] as? String ?? ""
-            let mobile = data["mobile"]as? String ?? ""
-            let tax_invoice = data["tax_invoice"]as? String ?? ""
-            let invoice_shipping = data["invoice_shipping"]as? String ?? ""
-            
-            let newText = String((tax_invoice).filter({ $0 != "-" }).prefix(13))
-
-            self.invoice_shipping = invoice_shipping
-            
-            self.personalTextField.text = newText.chunkFormattedPersonalID()
-            self.nameTextField.text = name
-            self.numberPhoneTextField.text = mobile
-            self.addressTextField.text = address
-            self.districtTextField.text = districtName
-            self.subDistrictTextField.text = subdistrictName
-            self.provinceTextField.text = provinceName
-            self.postCodeTextField.text = "\(zip_code)"
-            
-            self.provinceId = idProvince.intValue
-            self.districtId = idDistrict.intValue
-            self.subDistrictId = idSubdistrict.intValue
-            
-            self.id = id.intValue
-            
-            
-            getDistrict(idProvince.intValue) {
-                self.districtPickerView = UIPickerView()
-                self.districtPickerView!.delegate = self
-                self.districtPickerView!.dataSource = self
-                
-                self.districtTextField.isEnabled = true
-                self.districtTextField.tintColor = UIColor.clear
-                self.districtTextField.isUserInteractionEnabled = true
-                self.districtTextField.inputView = self.districtPickerView
-                
-                
-            }
-            
-            getSubDistrict(idDistrict.intValue) {
-                self.subDistrictPickerView = UIPickerView()
-                self.subDistrictPickerView!.delegate = self
-                self.subDistrictPickerView!.dataSource = self
-                
-                self.subDistrictTextField.isEnabled = true
-                self.subDistrictTextField.tintColor = UIColor.clear
-                self.subDistrictTextField.isUserInteractionEnabled = true
-                self.subDistrictTextField.inputView = self.subDistrictPickerView
-                
-            }
-            
-        }else  if let data = self.modelDuplicateAddress as? [String: AnyObject] {
-            let id = data["id"] as? NSNumber ?? 0
-            let address = data["address"] as? String ?? ""
-            let districtName = data["district"]?["name_in_thai"] as? String ?? ""
-            let subdistrictName = data["subdistrict"]?["name_in_thai"] as? String ?? ""
-            let provinceName = data["province"]?["name_in_thai"] as? String ?? ""
-            let zip_code = data["subdistrict"]?["zip_code"] as? NSNumber ?? 0
-            
-            let idDistrict = data["district"]?["id"] as? NSNumber ?? 0
-            let idSubdistrict = data["subdistrict"]?["id"] as? NSNumber ?? 0
-            let idProvince = data["province"]?["id"] as? NSNumber ?? 0
-            
-            let name = data["name"] as? String ?? ""
-            let mobile = data["mobile"]as? String ?? ""
-            let tax_invoice = data["tax_invoice"]as? String ?? ""
-            let invoice_shipping = data["invoice_shipping"]as? String ?? ""
-            
-            let newText = String((tax_invoice).filter({ $0 != "-" }).prefix(13))
-            
-            self.invoice_shipping = invoice_shipping
-            
-            self.personalTextField.text = newText.chunkFormattedPersonalID()
-            self.nameTextField.text = name
-            self.numberPhoneTextField.text = mobile
-            self.addressTextField.text = address
-            self.districtTextField.text = districtName
-            self.subDistrictTextField.text = subdistrictName
-            self.provinceTextField.text = provinceName
-            self.postCodeTextField.text = "\(zip_code)"
-            
-            self.provinceId = idProvince.intValue
-            self.districtId = idDistrict.intValue
-            self.subDistrictId = idSubdistrict.intValue
-            
-            self.id = id.intValue
-            
-            getDistrict(idProvince.intValue) {
-                self.districtPickerView = UIPickerView()
-                self.districtPickerView!.delegate = self
-                self.districtPickerView!.dataSource = self
-                
-                self.districtTextField.isEnabled = true
-                self.districtTextField.tintColor = UIColor.clear
-                self.districtTextField.isUserInteractionEnabled = true
-                self.districtTextField.inputView = self.districtPickerView
-                
-                
-            }
-            
-            getSubDistrict(idDistrict.intValue) {
-                self.subDistrictPickerView = UIPickerView()
-                self.subDistrictPickerView!.delegate = self
-                self.subDistrictPickerView!.dataSource = self
-                
-                self.subDistrictTextField.isEnabled = true
-                self.subDistrictTextField.tintColor = UIColor.clear
-                self.subDistrictTextField.isUserInteractionEnabled = true
-                self.subDistrictTextField.inputView = self.subDistrictPickerView
-                
-            }
-            
+        if let _ = self.modelAddress as? [String: AnyObject] {
+            self.updateDataWithTaxAddress()
+           // self.showFormView()
+           
+        }else  if let _ = self.modelDuplicateAddress as? [String: AnyObject] {
+            self.updateDataWithShippingAddress()
+          //  self.hiddenFormView()
         }
         getUserInfo(){
-            
             //success
         }
+        
     }
+   
     
     func setUp(){
         self.backgroundImage?.image = nil
@@ -833,10 +901,11 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
         })
     }
     
-    
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        if let _ = self.modelDuplicateAddress {
+            self.personalTextField.becomeFirstResponder()
+        }
         
     }
     

@@ -824,7 +824,7 @@ extension ProductShoppingViewController {
             guard let count = self.productItems?.count, count > 0 else {
                 return CGSize.zero
             }
-            let height = CGFloat(50.0)
+            let height = CGFloat(60.0)
             return CGSize(width: width, height: height)
             
         case "product":
@@ -898,6 +898,7 @@ extension ProductShoppingViewController {
                     }
                 }
             }
+        
             
             /*
              

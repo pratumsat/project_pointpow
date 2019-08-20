@@ -61,8 +61,8 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="(จำนวน 2 ชิ้น)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIC-o7-w3c">
-                        <rect key="frame" x="87" y="95" width="110" height="23.5"/>
-                        <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="18"/>
+                        <rect key="frame" x="84" y="96" width="113" height="21"/>
+                        <fontDescription key="fontDescription" name="ThaiSansNeue-Regular" family="ThaiSans Neue" pointSize="16"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -171,6 +171,7 @@
                 <constraint firstItem="Ajc-S7-d2P" firstAttribute="leading" secondItem="Gq2-fs-Pc4" secondAttribute="trailing" constant="5" id="0vz-2n-n2D"/>
                 <constraint firstAttribute="trailing" secondItem="syU-yb-gvT" secondAttribute="trailing" constant="5" id="1wz-mK-u8L"/>
                 <constraint firstItem="oR3-am-lE3" firstAttribute="centerY" secondItem="5Zc-Qn-J1Z" secondAttribute="centerY" id="2YM-Dg-bGA"/>
+                <constraint firstItem="6OO-eh-K5A" firstAttribute="leading" secondItem="eIC-o7-w3c" secondAttribute="trailing" constant="5" id="5zM-6Y-TRr"/>
                 <constraint firstItem="W46-dV-Ea1" firstAttribute="leading" secondItem="ecT-0n-w4T" secondAttribute="leading" id="6Kk-Te-zWL"/>
                 <constraint firstItem="5hw-In-46m" firstAttribute="leading" secondItem="wlh-i9-btU" secondAttribute="leading" id="6ct-QO-0d0"/>
                 <constraint firstItem="kNi-9Q-Lvd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="79T-ay-vFb"/>
@@ -209,7 +210,6 @@
                 <constraint firstItem="5Zc-Qn-J1Z" firstAttribute="leading" secondItem="kNi-9Q-Lvd" secondAttribute="trailing" constant="10" id="gRC-KB-roU"/>
                 <constraint firstItem="z3D-8y-xQP" firstAttribute="leading" secondItem="6OO-eh-K5A" secondAttribute="trailing" constant="5" id="guI-wQ-OzP"/>
                 <constraint firstItem="6OO-eh-K5A" firstAttribute="centerY" secondItem="5hw-In-46m" secondAttribute="centerY" id="gwe-UD-1jN"/>
-                <constraint firstItem="6OO-eh-K5A" firstAttribute="leading" secondItem="eIC-o7-w3c" secondAttribute="trailing" constant="5" id="ijh-Qt-zZ7"/>
                 <constraint firstItem="RuK-ig-KX6" firstAttribute="centerY" secondItem="jJC-6g-1ld" secondAttribute="centerY" id="kbh-j6-ims"/>
                 <constraint firstItem="Gq2-fs-Pc4" firstAttribute="centerY" secondItem="Ajc-S7-d2P" secondAttribute="centerY" id="kds-dT-NGj"/>
                 <constraint firstItem="SV0-pm-oed" firstAttribute="leading" secondItem="wlh-i9-btU" secondAttribute="leading" id="ltk-jP-ctG"/>
@@ -224,7 +224,7 @@
                 <constraint firstItem="oR3-am-lE3" firstAttribute="leading" secondItem="5Zc-Qn-J1Z" secondAttribute="trailing" constant="5" id="wfE-KZ-CuI"/>
                 <constraint firstItem="Yp4-gU-rbc" firstAttribute="leading" secondItem="W46-dV-Ea1" secondAttribute="trailing" id="wjI-pa-iqW"/>
                 <constraint firstItem="qgp-GK-gsv" firstAttribute="top" secondItem="84q-Gw-wsV" secondAttribute="bottom" constant="-5" id="xSX-tT-Z69"/>
-                <constraint firstItem="eIC-o7-w3c" firstAttribute="leading" secondItem="5hw-In-46m" secondAttribute="trailing" constant="5" id="xdX-2E-4mW"/>
+                <constraint firstItem="eIC-o7-w3c" firstAttribute="leading" secondItem="5hw-In-46m" secondAttribute="trailing" constant="2" id="xdX-2E-4mW"/>
                 <constraint firstAttribute="trailing" secondItem="oR3-am-lE3" secondAttribute="trailing" constant="10" id="xkH-Wd-Gk3"/>
                 <constraint firstItem="gbE-Rf-Acy" firstAttribute="centerY" secondItem="whN-D3-u25" secondAttribute="centerY" id="z9r-Bz-af0"/>
             </constraints>

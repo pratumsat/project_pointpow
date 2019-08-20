@@ -12,7 +12,7 @@ class OrderItemCell: UICollectionViewCell {
 
     @IBOutlet weak var productShippingStatusLabel: UILabel!
     @IBOutlet weak var followProductView: UIView!
-    @IBOutlet weak var nameBrandLabel: UILabel!
+    
     @IBOutlet weak var shippingPriceLabel: UILabel!
     @IBOutlet weak var brandImageView: UIImageView!
     @IBOutlet weak var productImageView: UIImageView!

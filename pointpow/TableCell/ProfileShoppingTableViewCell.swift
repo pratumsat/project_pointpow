@@ -32,7 +32,7 @@ class ProfileShoppingTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.profileImageView.ovalColorClearProperties()
+        self.profileImageView.ovalColorWhiteProperties(borderWidth: 2.0)
         
         
         

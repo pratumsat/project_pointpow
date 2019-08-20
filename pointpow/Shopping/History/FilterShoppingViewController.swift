@@ -19,6 +19,10 @@ class FilterShoppingViewController: BaseViewController {
     @IBOutlet weak var statusContainView: UIView!
     @IBOutlet weak var serviceContainView: UIView!
     
+    @IBOutlet weak var completeOrderImageView: UIImageView!
+    @IBOutlet weak var waitingOrderImageView: UIImageView!
+    @IBOutlet weak var orderContainView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,6 +35,7 @@ class FilterShoppingViewController: BaseViewController {
         super.viewWillLayoutSubviews()
         self.statusContainView.borderDarkGrayColorProperties(borderWidth: 1, radius: 10)
         self.serviceContainView.borderDarkGrayColorProperties(borderWidth: 1, radius: 10)
+        self.orderContainView.borderDarkGrayColorProperties(borderWidth: 1, radius: 10)
     }
     
     
@@ -55,6 +60,24 @@ class FilterShoppingViewController: BaseViewController {
         self.pointCreditImageView.isUserInteractionEnabled = true
         self.pointCreditImageView.addGestureRecognizer(pointCredit)
         
+        let orderComplete = UITapGestureRecognizer(target: self, action: #selector(orderCompleteTapped))
+        self.completeOrderImageView.isUserInteractionEnabled = true
+        self.completeOrderImageView.addGestureRecognizer(orderComplete)
+        
+        let orderWaiting = UITapGestureRecognizer(target: self, action: #selector(orderWaitingTapped))
+        self.waitingOrderImageView.isUserInteractionEnabled = true
+        self.waitingOrderImageView.addGestureRecognizer(orderWaiting)
+        
+    }
+    @objc func orderWaitingTapped(){
+        let title = NSLocalizedString("string-dailog-shopping-shipping-status-waiting", comment: "")
+        let params:Parameters = ["order_status" : "waiting"]
+        self.showShoppingFilterResultPage(true, title, params: params)
+    }
+    @objc func orderCompleteTapped(){
+        let title = NSLocalizedString("string-dailog-shopping-shipping-status-shipping", comment: "")
+        let params:Parameters = ["order_status" : "complete"]
+        self.showShoppingFilterResultPage(true, title, params: params)
     }
     
     @objc func waitingTapped(){

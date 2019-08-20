@@ -287,15 +287,16 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
                     let numberFormatter = NumberFormatter()
                     numberFormatter.numberStyle = .decimal
                     
-                    orderCell.nameBrandLabel.text = brand_name
                     orderCell.productNameLabel.text = product_name
                     orderCell.amountLabel.text = numberFormatter.string(from: amount)
                     orderCell.priceLabel.text = numberFormatter.string(from: point)
                    
                     
-                    if let url = URL(string: brand_image) {
-                        orderCell.brandImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
-                    }
+//                    if let url = URL(string: brand_image) {
+//                        orderCell.brandImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
+//                    }
+                    orderCell.brandImageView.isHidden = true
+                    
                     if let url = URL(string: full_path_image) {
                         orderCell.productImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
                     }
@@ -476,7 +477,7 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
             if let items = self.transferResult?["item"] as? [[String:AnyObject]]  {
                 let product_detail = items[indexPath.row]["product_detail"] as? [String:AnyObject] ?? [:]
                 let product_name = product_detail["product_name"] as? String ?? ""
-                height += heightForView(text: product_name, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 16)!, width: width - 110)
+                height += heightForView2Line(text: product_name, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 16)!, width: width - 110)
             }
             return CGSize(width: width, height: height)
         case 2:

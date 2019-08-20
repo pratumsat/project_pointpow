@@ -758,6 +758,7 @@ extension HomeShoppingViewController {
             }
             
             
+            
             return header
         case 2,3:
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ShoppingHeaderCell", for: indexPath) as! ShoppingHeaderCell

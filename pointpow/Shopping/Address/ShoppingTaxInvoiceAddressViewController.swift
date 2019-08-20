@@ -10,6 +10,8 @@ import UIKit
 
 class ShoppingTaxInvoiceAddressViewController: ShoppingAddressViewController {
 
+    var lateShippingModel:AnyObject?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -90,7 +92,8 @@ class ShoppingTaxInvoiceAddressViewController: ShoppingAddressViewController {
     
     @objc func addAddressTaxInvoiceTapped(){
         print("addAddressTaxInvoiceTapped")
-        self.showTaxInvoiceAddAddressPage(true)
+        //self.showTaxInvoiceAddAddressPage(true)
+        self.showTaxInvoiceAddDuplicateAddressPage(true, self.lateShippingModel )
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

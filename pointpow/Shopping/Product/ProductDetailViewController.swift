@@ -40,7 +40,15 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
     @IBOutlet weak var shareImageView: UIImageView!
     @IBOutlet weak var imageCollectionView: UICollectionView!
     
-    var maxAmount = 1
+    var maxAmount = 1 {
+        didSet{
+            if maxAmount == 1 {
+                disableImageView(lessImageView)
+                disableImageView(moreImageView)
+                
+            }
+        }
+    }
     var expend = true
     let active = UIImage(named: "ic-shopping-more")
     let inactive = UIImage(named: "ic-shopping-less")
@@ -811,17 +819,31 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
         image.backgroundColor = Constant.Colors.PRIMARY_COLOR
         image.isUserInteractionEnabled = true
     }
-    
+   
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if textField == self.amountTextField {
+            if let amount = Int(textField.text!.replace(target: ",", withString: "")){
+                if amount == 0 {
+                    textField.text = "1"
+                    self.disableImageView(self.lessImageView)
+                }
+            }else{
+                textField.text = "1"
+                 self.disableImageView(self.lessImageView)
+            }
+        }
+        return true
+    }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         if textField == self.amountTextField {
             guard let textRange = Range(range, in: textField.text!) else { return true}
-            var updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
+            let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
             
-            
-            if updatedText.isEmpty || updatedText == "0" {
-                updatedText = "1"
+            if updatedText.hasPrefix("0"){
+                return false
             }
+            
             if let iPoint = Int(updatedText.replace(target: ",", withString: "")){
                 let amount = Double(iPoint)
                 if amount <= 1 {
@@ -830,25 +852,18 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
                     enableImageView(self.lessImageView)
                 }
                 
-                if let iPoint = Int(updatedText.replace(target: ",", withString: "")){
-                    let numberFormatter = NumberFormatter()
-                    numberFormatter.numberStyle = .none
-                    
-                    if iPoint > self.maxAmount {
-                        textField.text = numberFormatter.string(from: NSNumber(value: self.maxAmount))
+                if iPoint > self.maxAmount {
+                    if maxAmount == 1 {
                         disableImageView(self.moreImageView)
-                        return false
-                    }else{
-                        textField.text = numberFormatter.string(from: NSNumber(value: iPoint))
-                        enableImageView(self.moreImageView)
+                        disableImageView(self.lessImageView)
                     }
-                    
                     return false
+                }else if iPoint == self.maxAmount {
+                    disableImageView(self.moreImageView)
+                }else{
+                    enableImageView(self.moreImageView)
                 }
-            }else{
-                return false
             }
-            
             
         }
         return true

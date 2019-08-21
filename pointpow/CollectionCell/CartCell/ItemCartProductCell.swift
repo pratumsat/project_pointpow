@@ -25,19 +25,11 @@ class ItemCartProductCell: UICollectionViewCell ,UITextFieldDelegate{
     var callBackTotalPrice:((_ amount:Int, _ totalPrice:Double)->Void)?
     var priceOfProduct:Double?
     
-    var maxAmount = 1
-    var stock:Int = 0 {
+    var maxAmount = 1 {
         didSet{
-            if stock == 0 {
-                self.amountTextField.isEnabled = false
-                self.amountTextField.textColor = UIColor.lightGray
+            if maxAmount == 1 {
                 disableImageView(lessImageView)
                 disableImageView(moreImageView)
-                self.amountTextField.borderLightGrayColorProperties(borderWidth: 1)
-            }else{
-                self.amountTextField.isEnabled = true
-                self.amountTextField.textColor = UIColor.black
-                self.amountTextField.borderRedColorProperties(borderWidth: 1)
             }
         }
     }
@@ -96,7 +88,7 @@ class ItemCartProductCell: UICollectionViewCell ,UITextFieldDelegate{
     }
     override func layoutSubviews() {
         super.layoutSubviews()
-        //self.amountTextField.borderRedColorProperties(borderWidth: 1)
+        self.amountTextField.borderRedColorProperties(borderWidth: 1)
         self.lessImageView.ovalColorClearProperties()
         self.moreImageView.ovalColorClearProperties()
     }
@@ -148,10 +140,14 @@ class ItemCartProductCell: UICollectionViewCell ,UITextFieldDelegate{
         
         
         if Int(amount) > maxAmount {
-            amount -= 1
+            //amount -= 1
             disableImageView(self.moreImageView)
+        }else if Int(amount) == maxAmount {
+            disableImageView(self.moreImageView)
+        }else{
+            enableImageView(self.lessImageView)
         }
-        enableImageView(self.lessImageView)
+       
         
         
         let numberFormatter = NumberFormatter()
@@ -161,6 +157,7 @@ class ItemCartProductCell: UICollectionViewCell ,UITextFieldDelegate{
         self.amountTextField.text = numberFormatter.string(from: NSNumber(value: amount))
        
         if let price = self.priceOfProduct {
+            
             self.callBackTotalPrice?(Int(amount), Double(amount * price))
         }
         
@@ -177,16 +174,36 @@ class ItemCartProductCell: UICollectionViewCell ,UITextFieldDelegate{
         image.isUserInteractionEnabled = true
     }
     
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if textField == self.amountTextField {
+            if let amount = Int(textField.text!.replace(target: ",", withString: "")){
+                if amount == 0 {
+                    textField.text = "1"
+                    if let price  = self.priceOfProduct {
+                        self.callBackTotalPrice?(1, price)
+                        self.disableImageView(self.lessImageView)
+                    }
+                }
+            }else{
+                textField.text = "1"
+                if let price  = self.priceOfProduct {
+                    self.callBackTotalPrice?(1, price)
+                    self.disableImageView(self.lessImageView)
+                }
+            }
+        }
+        return true
+    }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         if textField == self.amountTextField {
             guard let textRange = Range(range, in: textField.text!) else { return true}
-            var updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
+            let updatedText = textField.text!.replacingCharacters(in: textRange, with: string)
             
-            
-            if updatedText.isEmpty || updatedText == "0" {
-                updatedText = "1"
+            if updatedText.hasPrefix("0"){
+                return false
             }
+            
             if let iPoint = Int(updatedText.replace(target: ",", withString: "")){
                 let amount = Double(iPoint)
                 if amount <= 1 {
@@ -195,53 +212,34 @@ class ItemCartProductCell: UICollectionViewCell ,UITextFieldDelegate{
                     enableImageView(self.lessImageView)
                 }
                 
-                
-                
-                if let iPoint = Int(updatedText.replace(target: ",", withString: "")){
-                    let numberFormatter = NumberFormatter()
-                    numberFormatter.numberStyle = .none
-                    
-                   
-                    
-                    if iPoint > self.maxAmount {
-                        
-                        if let price  = self.priceOfProduct {
-                            self.callBackTotalPrice?(maxAmount, Double(maxAmount) * price)
-                        }
-                        textField.text = numberFormatter.string(from: NSNumber(value: self.maxAmount))
-                        
-                        
+                if iPoint > self.maxAmount {
+                    if maxAmount == 1 {
                         disableImageView(self.moreImageView)
-                        
-                        if maxAmount == 1 {
-                            disableImageView(self.moreImageView)
-                            disableImageView(self.lessImageView)
-                        }
-                        
-                        return false
-                   
-                    }else{
-                        if let price  = self.priceOfProduct {
-                            self.callBackTotalPrice?(Int(amount), Double(amount * price))
-                        }
-                        textField.text = numberFormatter.string(from: NSNumber(value: iPoint))
-                       
-                        enableImageView(self.moreImageView)
-                        
-                        if maxAmount == 1 {
-                            disableImageView(self.moreImageView)
-                            disableImageView(self.lessImageView)
-                        }
+                        disableImageView(self.lessImageView)
                     }
-
-                    
                     return false
+                }else if iPoint == self.maxAmount {
+                    if let price = self.priceOfProduct {
+                        self.callBackTotalPrice?(maxAmount, Double(maxAmount) * price)
+                    }
+                    disableImageView(self.moreImageView)
+                    
+                    if maxAmount == 1 {
+                        disableImageView(self.moreImageView)
+                        disableImageView(self.lessImageView)
+                    }
+                }else{
+                    if let price  = self.priceOfProduct {
+                        self.callBackTotalPrice?(Int(amount), Double(amount * price))
+                    }
+                    enableImageView(self.moreImageView)
+                    
+                    if maxAmount == 1 {
+                        disableImageView(self.moreImageView)
+                        disableImageView(self.lessImageView)
+                    }
                 }
-            }else{
-                return false
             }
-            
-            
         }
         return true
     }

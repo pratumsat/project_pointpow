@@ -968,11 +968,13 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                 pointCell.disableRedeemView = disableRedeemView
                 pointCell.redeemCallback = {
                     //redeem
-                    if let data  = self.userData as? [String:AnyObject] {
-                        let is_profile = data["is_profile"] as? NSNumber ?? 0
-                        
-                        self.showPointTransferView(true, isProfile: is_profile.boolValue)
+                    self.updateCart(ignoreDelete: 1){
+                        if let data  = self.userData as? [String:AnyObject] {
+                            let is_profile = data["is_profile"] as? NSNumber ?? 0
+                            self.showPointTransferView(true, isProfile: is_profile.boolValue)
+                        }
                     }
+                   
                 }
             }
         case "selectall":
@@ -1031,7 +1033,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                     productCell.amount = itemTuple.amount
                     productCell.checkBox.isChecked = itemTuple.select
                     productCell.isCheck = itemTuple.select
-                    productCell.stock = itemTuple.stock
+                    
                     
                      productCell.callBackTotalPrice  = { (amount, totalPrice) in
                         print("amount= \(amount)")

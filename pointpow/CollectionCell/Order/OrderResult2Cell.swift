@@ -19,6 +19,9 @@ class OrderResult2Cell: UICollectionViewCell {
     @IBOutlet weak var bgsuccessImageView: UIImageView!
     @IBOutlet weak var mView: UIView!
     
+    @IBOutlet weak var invoiceLineView: UIView!
+    @IBOutlet weak var invoiceTitleLabel: UILabel!
+    @IBOutlet weak var invoiceAddressLabel: UILabel!
     
     @IBOutlet weak var totalAmountLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!

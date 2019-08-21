@@ -14,6 +14,7 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
     
     var addSlipSuccess = false
     
+    
     func  addSlipImageView() {
         
         if let snap = self.snapView {
@@ -94,7 +95,6 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
         }
     }
     var transferResult:AnyObject?
-    
     var margintop = CGFloat(58)
     
     override func viewDidLoad() {
@@ -138,6 +138,7 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
             
             if let data = self.transferResult {
                 let pay_by = data["pay_by"] as? NSNumber ?? 0
+                
                 if pay_by == 1 {
                     self.margintop = CGFloat(8)
                 }else{
@@ -199,7 +200,6 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         guard (self.transferResult != nil) else { return 0 }
-        
         return 3
     }
     
@@ -377,6 +377,31 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
                     let mobile = shipping_address["mobile"] as? String ?? ""
                     let name = shipping_address["name"] as? String ?? ""
                     
+                    
+                    let billing_address = data["billing_address"] as? [String:AnyObject] ?? nil
+                    var b_rawAddress = ""
+                    if billing_address != nil {
+                        let b_address = billing_address!["address"] as? String ?? ""
+                        let b_mobile = billing_address!["mobile"] as? String ?? ""
+                        let b_name = billing_address!["name"] as? String ?? ""
+                        let b_tax_invoice = billing_address!["tax_invoice"] as? String ?? ""
+                        
+                        let b_newText = String((b_tax_invoice).filter({ $0 != "-" }).prefix(13))
+                        let b_newMText = String((b_mobile).filter({ $0 != "-" }).prefix(10))
+                        b_rawAddress = "\(b_name) \(b_newText.chunkFormattedPersonalID())"
+                        b_rawAddress += "\n\(b_newMText.chunkFormatted()) \(b_address)"
+                    }
+                    if !b_rawAddress.isEmpty {
+                        orderCell.invoiceLineView.isHidden = false
+                        orderCell.invoiceTitleLabel.isHidden = false
+                        orderCell.invoiceAddressLabel.isHidden = false
+                        orderCell.invoiceAddressLabel.text = b_rawAddress
+                    }else{
+                        orderCell.invoiceLineView.isHidden = true
+                        orderCell.invoiceTitleLabel.isHidden = true
+                        orderCell.invoiceAddressLabel.isHidden = true
+                    }
+                    
                     let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
                     var fulladdress = "\(name) \(newMText.chunkFormatted())"
                     fulladdress += "\n\(address)"
@@ -466,7 +491,7 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
        
         switch indexPath.section {
         case 0:
-           return CGSize(width: width, height: CGFloat(180))
+           return CGSize(width: width, height: CGFloat(190))
         case 1:
             var height = CGFloat(145)
             if hideFinishButton {
@@ -495,7 +520,27 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
                 
                 let heightAddress = heightForView(text: fulladdress, font: UIFont(name: Constant.Fonts.THAI_SANS_REGULAR, size: 18)!, width: width - 20)
                 height += heightAddress
+                
+                let billing_address = data["billing_address"] as? [String:AnyObject] ?? nil
+                var b_rawAddress = ""
+                if billing_address != nil {
+                    let b_address = billing_address!["address"] as? String ?? ""
+                    let b_mobile = billing_address!["mobile"] as? String ?? ""
+                    let b_name = billing_address!["name"] as? String ?? ""
+                    let b_tax_invoice = billing_address!["tax_invoice"] as? String ?? ""
+                    
+                    let b_newText = String((b_tax_invoice).filter({ $0 != "-" }).prefix(13))
+                    let b_newMText = String((b_mobile).filter({ $0 != "-" }).prefix(10))
+                    b_rawAddress = "\(b_name) \(b_newText.chunkFormattedPersonalID())"
+                    b_rawAddress += "\n\(b_newMText.chunkFormatted()) \(b_address)"
+                    
+                    let heightAddress = heightForView(text: b_rawAddress, font: UIFont(name: Constant.Fonts.THAI_SANS_REGULAR, size: 18)!, width: width - 20)
+                    height += heightAddress
+                    height += 40
+                }
+                
             }
+            
             
             return CGSize(width: width, height: height)
         default:

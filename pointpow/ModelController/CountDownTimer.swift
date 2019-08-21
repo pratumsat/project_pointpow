@@ -62,7 +62,6 @@ public class DateCountDownTimer{
             }
         }
         
-        
     }
     
     func numberOfDaysInMonth(month:Int) -> Int{

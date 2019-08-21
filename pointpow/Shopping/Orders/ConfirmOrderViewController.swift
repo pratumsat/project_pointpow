@@ -236,10 +236,10 @@ class ConfirmOrderViewController: BaseViewController , UICollectionViewDelegate 
             let pointbalance = DataController.sharedInstance.getCurrentPointBalance()
             let total = self.totalOrder?.totalPrice ?? 0
             if pointbalance.doubleValue < total {
-                let height = CGFloat(350.0)
+                let height = CGFloat(360.0)
                 return CGSize(width: collectionView.frame.width - 40, height: height)
             }else{
-                let height = CGFloat(300.0)
+                let height = CGFloat(310.0)
                 return CGSize(width: collectionView.frame.width - 40, height: height)
             }
         }else{

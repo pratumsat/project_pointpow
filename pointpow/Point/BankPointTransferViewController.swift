@@ -79,6 +79,19 @@ class BankPointTransferViewController: BaseViewController  {
                     case "success", "fail" :
                         
                         self.showRefillPointTransferView(true, transection_ref_id , finish:  {
+                            
+                            if let vcs = self.navigationController?.viewControllers {
+                                var i = 0
+                                for item in vcs {
+                                    if item is CartViewController {
+                                        self.navigationController?.popToViewController((self.navigationController?.viewControllers[i])!, animated: true)
+                                        
+                                        return
+                                    }
+                                    i += 1
+                                }
+                            }
+                            
                             self.navigationController?.popToRootViewController(animated: false)
                         })
                         

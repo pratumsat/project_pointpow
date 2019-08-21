@@ -190,7 +190,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         if is_profile.boolValue {
             self.showPointFriendTransferView(true, modelFriend)
         }else{
-            self.showMessagePrompt2(NSLocalizedString("string-error-friendข-account-not-activated", comment: "")) {
+            self.showMessagePrompt2(NSLocalizedString("string-error-friend-account-not-activated", comment: "")) {
                 //callback click ok
             }
         }

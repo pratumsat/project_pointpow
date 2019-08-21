@@ -132,6 +132,15 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
     var totalOrder:(amount:Int, totalPrice:Double)? {
         didSet{
             print(itemSection.count)
+            
+            if let index = itemSection.firstIndex(of: "pointbalance"){
+                let indexSet = IndexSet(integer: index)
+      
+                UIView.performWithoutAnimation {
+                    self.cartCollectionView.reloadSections(indexSet)
+                }
+            }
+            
             if let index = itemSection.firstIndex(of: "summary"){
                 let indexSet = IndexSet(integer: index)
                 
@@ -872,8 +881,8 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         
         let total = self.totalOrder?.totalPrice ?? 0
         let pointLimitOrder = DataController.sharedInstance.getLimitPerDay()
-        var pointpow_spend = total
-        var credit_spend = total
+        var pointpow_spend = 0.0
+        var credit_spend = 0.0
         
         if pointBalance.doubleValue < total {
             credit_spend = total - pointBalance.doubleValue
@@ -941,6 +950,30 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                     pointCell.pointBalanceLabel.text = "\(current)"
                 }
                 
+                let total = self.totalOrder?.totalPrice ?? 0
+                let pointBalance = DataController.sharedInstance.getCurrentPointBalance()
+                var pointpow_spend = 0.0
+                var credit_spend = 0.0
+                var disableRedeemView = true
+                
+                if pointBalance.doubleValue < total {
+                    credit_spend = total - pointBalance.doubleValue
+                    pointpow_spend  = pointBalance.doubleValue
+                    disableRedeemView = false
+                }else{
+                    pointpow_spend  = total
+                    disableRedeemView = true
+                }
+                
+                pointCell.disableRedeemView = disableRedeemView
+                pointCell.redeemCallback = {
+                    //redeem
+                    if let data  = self.userData as? [String:AnyObject] {
+                        let is_profile = data["is_profile"] as? NSNumber ?? 0
+                        
+                        self.showPointTransferView(true, isProfile: is_profile.boolValue)
+                    }
+                }
             }
         case "selectall":
             if let selectCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItenCartProductSelectAllCell", for: indexPath) as? ItenCartProductSelectAllCell {
@@ -1264,7 +1297,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         
         switch self.itemSection[indexPath.section] {
         case "pointbalance":
-            let height = CGFloat(50.0)
+            let height = CGFloat(80.0)
             return CGSize(width: collectionView.frame.width, height: height)
             
         case "selectall":

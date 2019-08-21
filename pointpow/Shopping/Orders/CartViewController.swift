@@ -1336,7 +1336,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             let width = collectionView.frame.width
             var heightAddress = CGFloat(0)
             if !self.fullAddressShopping.rawAddress.trimmingCharacters(in: .whitespaces).isEmpty {
-                heightAddress += heightForView(text: self.fullAddressShopping.rawAddress, font: UIFont(name:   Constant.Fonts.THAI_SANS_BOLD, size: 18)!, width: width - 60)
+                heightAddress += heightForView(text: self.fullAddressShopping.rawAddress, font: UIFont(name:   Constant.Fonts.THAI_SANS_REGULAR, size: 18)!, width: width - 60)
                 heightAddress += CGFloat(90)
             }else{
                 heightAddress = CGFloat(150)
@@ -1350,7 +1350,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             let width = collectionView.frame.width
             var heightAddress = CGFloat(0)
             if !self.fullAddressTaxInvoice.rawAddress.trimmingCharacters(in: .whitespaces).isEmpty {
-                heightAddress += heightForView(text: self.fullAddressTaxInvoice.rawAddress, font: UIFont(name:   Constant.Fonts.THAI_SANS_BOLD, size: 18)!, width: width - 60)
+                heightAddress += heightForView(text: self.fullAddressTaxInvoice.rawAddress, font: UIFont(name:   Constant.Fonts.THAI_SANS_REGULAR, size: 18)!, width: width - 60)
                 heightAddress += CGFloat(90)
             }else{
                 heightAddress = CGFloat(150)

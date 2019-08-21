@@ -149,15 +149,15 @@ class MainTabbarShoppingViewController: UITabBarController , UITabBarControllerD
             
             let count = userInfo["count"] as? String ?? "0"
             if count != "0" {
-                badgeView = CustomBadgeView()
+                badgeView = CustomBadgeView(radius: 12.0)
                 badgeView?.translatesAutoresizingMaskIntoConstraints = false
                 self.view.addSubview(badgeView!)
                 
                 
                 badgeView?.centerXAnchor.constraint(equalTo: image!.centerXAnchor, constant: 25).isActive = true
                 badgeView?.centerYAnchor.constraint(equalTo: image!.centerYAnchor, constant: -30).isActive = true
-                badgeView?.widthAnchor.constraint(equalToConstant: 30.0).isActive = true
-                badgeView?.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
+                badgeView?.widthAnchor.constraint(equalToConstant: 24.0).isActive = true
+                badgeView?.heightAnchor.constraint(equalToConstant: 24.0).isActive = true
                 
                 let countLabel = UILabel()
                 countLabel.textColor = Constant.Colors.PRIMARY_COLOR

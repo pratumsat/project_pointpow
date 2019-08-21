@@ -945,7 +945,8 @@ extension ProductShoppingViewController {
             guard let _ = itemSection.firstIndex(of: "recommend") else {
                 return (self.searchProduct) ?  CGSize(width: width, height: CGFloat(15.0)) : CGSize.zero
             }
-            return  CGSize(width: width, height: CGFloat(10.0))
+            return  CGSize(width: width, height: CGFloat(0.0))
+            //return  CGSize(width: width, height: CGFloat(10.0))
             
         case "product":
             guard let count = self.productItems?.count, count > 0 else {

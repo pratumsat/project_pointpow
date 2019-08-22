@@ -161,9 +161,7 @@ class AccountViewController: BaseViewController , UICollectionViewDelegate , UIC
                             profileCell.backgroundImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.BACKGROUND_PROFILE_PLACEHOLDER))
                         }else{
                             profileCell.backgroundImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.BACKGROUND_PROFILE_PLACEHOLDER)
-                        }
-                        
-                        
+                        }                        
                     }
                     
                     let numberFormatter = NumberFormatter()

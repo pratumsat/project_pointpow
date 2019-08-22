@@ -84,12 +84,25 @@ class MainTabbarShoppingViewController: UITabBarController , UITabBarControllerD
         self.delegate = self
         
         let shadowViewLeft = UIView()
-        shadowViewLeft.backgroundColor = UIColor.groupTableViewBackground
+        shadowViewLeft.backgroundColor = UIColor.white
         shadowViewLeft.translatesAutoresizingMaskIntoConstraints = false
         
+       
         let shadowViewRight = UIView()
-        shadowViewRight.backgroundColor = UIColor.groupTableViewBackground
+        shadowViewRight.backgroundColor = UIColor.white
         shadowViewRight.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        let shadowViewLeft2 = UIView()
+        shadowViewLeft2.backgroundColor = UIColor.groupTableViewBackground
+        shadowViewLeft2.translatesAutoresizingMaskIntoConstraints = false
+        shadowViewLeft2.alpha = 0.9
+        
+        let shadowViewRight2 = UIView()
+        shadowViewRight2.backgroundColor = UIColor.groupTableViewBackground
+        shadowViewRight2.translatesAutoresizingMaskIntoConstraints = false
+        shadowViewRight2.alpha = 0.9
+        
         
         image = UIImageView()
         image!.image = UIImage(named: "ic-shopping-logo-cart")
@@ -104,12 +117,15 @@ class MainTabbarShoppingViewController: UITabBarController , UITabBarControllerD
         self.view.addSubview(clickView)
         self.view.addSubview(shadowViewLeft)
         self.view.addSubview(shadowViewRight)
+        self.view.addSubview(shadowViewLeft2)
+        self.view.addSubview(shadowViewRight2)
         
         
         self.tabBar.sendSubviewToBack(image!)
         
         tabBar.centerXAnchor.constraint(equalTo: image!.centerXAnchor).isActive = true
-        tabBar.topAnchor.constraint(equalTo: image!.centerYAnchor, constant: 2).isActive = true
+        tabBar.topAnchor.constraint(equalTo: image!.centerYAnchor, constant: 4).isActive = true
+        //tabBar.topAnchor.constraint(equalTo: image!.centerYAnchor, constant: 2).isActive = true
         
         tabBar.centerXAnchor.constraint(equalTo: clickView.centerXAnchor).isActive = true
         tabBar.topAnchor.constraint(equalTo: clickView.centerYAnchor).isActive = true
@@ -128,7 +144,7 @@ class MainTabbarShoppingViewController: UITabBarController , UITabBarControllerD
         
         
         
-        tabBar.topAnchor.constraint(equalTo: shadowViewLeft.bottomAnchor, constant: 0).isActive = true
+      /*  tabBar.topAnchor.constraint(equalTo: shadowViewLeft.bottomAnchor, constant: 0).isActive = true
         shadowViewLeft.heightAnchor.constraint(equalToConstant: 1).isActive = true
         shadowViewLeft.leadingAnchor.constraint(equalTo: tabBar.leadingAnchor, constant: 0).isActive = true
         shadowViewLeft.trailingAnchor.constraint(equalTo: image!.leadingAnchor, constant: 8).isActive = true
@@ -136,7 +152,27 @@ class MainTabbarShoppingViewController: UITabBarController , UITabBarControllerD
         tabBar.topAnchor.constraint(equalTo: shadowViewRight.bottomAnchor, constant: 0).isActive = true
         shadowViewRight.heightAnchor.constraint(equalToConstant: 1).isActive = true
         shadowViewRight.trailingAnchor.constraint(equalTo: tabBar.trailingAnchor, constant: 0).isActive = true
-        shadowViewRight.leadingAnchor.constraint(equalTo: image!.trailingAnchor, constant: -8).isActive = true
+        shadowViewRight.leadingAnchor.constraint(equalTo: image!.trailingAnchor, constant: -8).isActive = true */
+        
+        tabBar.topAnchor.constraint(equalTo: shadowViewLeft.topAnchor, constant: 2).isActive = true
+        shadowViewLeft.heightAnchor.constraint(equalToConstant: 2).isActive = true
+        shadowViewLeft.leadingAnchor.constraint(equalTo: tabBar.leadingAnchor, constant: 0).isActive = true
+        shadowViewLeft.trailingAnchor.constraint(equalTo: image!.leadingAnchor, constant: 10).isActive = true
+        
+        tabBar.topAnchor.constraint(equalTo: shadowViewRight.topAnchor, constant: 2).isActive = true
+        shadowViewRight.heightAnchor.constraint(equalToConstant: 2).isActive = true
+        shadowViewRight.trailingAnchor.constraint(equalTo: tabBar.trailingAnchor, constant: 0).isActive = true
+        shadowViewRight.leadingAnchor.constraint(equalTo: image!.trailingAnchor, constant: -10).isActive = true
+        
+        shadowViewLeft.topAnchor.constraint(equalTo: shadowViewLeft2.centerYAnchor, constant: 0).isActive = true
+        shadowViewLeft2.heightAnchor.constraint(equalToConstant: 2).isActive = true
+        shadowViewLeft2.leadingAnchor.constraint(equalTo: tabBar.leadingAnchor, constant: 0).isActive = true
+        shadowViewLeft2.trailingAnchor.constraint(equalTo: image!.leadingAnchor, constant: 10).isActive = true
+        
+        shadowViewRight.topAnchor.constraint(equalTo: shadowViewRight2.centerYAnchor, constant: 0).isActive = true
+        shadowViewRight2.heightAnchor.constraint(equalToConstant: 2).isActive = true
+        shadowViewRight2.trailingAnchor.constraint(equalTo: tabBar.trailingAnchor, constant: 0).isActive = true
+        shadowViewRight2.leadingAnchor.constraint(equalTo: image!.trailingAnchor, constant: -10).isActive = true
     }
     
     var badgeView:CustomBadgeView?

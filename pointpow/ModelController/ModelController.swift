@@ -7236,7 +7236,7 @@ class ModelController {
         })
     }
     
-    func loadImage(_ pathImage:String,_ defaultImage:String, result:( (_ image:UIImage?) ->Void)? = nil){
+    func loadImage(_ pathImage:String,_ defaultImage:String, result:( (_ image:UIImage) ->Void)? = nil){
         
         let token = DataController.sharedInstance.getToken()
         let header: HTTPHeaders = ["Authorization":"Bearer \(token)"]
@@ -7247,13 +7247,13 @@ class ModelController {
             if data.result.value != nil {
                 let img = UIImage(data: data.result.value!)
                 if img != nil {
-                    result?(img)
+                    result?(img!)
                 }else{
-                    result?(UIImage(named: defaultImage))
+                    result?(UIImage(named: defaultImage)!)
                 }
                 
             }else{
-                result?(UIImage(named: defaultImage))
+                result?(UIImage(named: defaultImage)!)
             }
         }
     }

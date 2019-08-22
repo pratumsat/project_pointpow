@@ -10572,7 +10572,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NcP-q1-qBZ">
-                                        <rect key="frame" x="0.0" y="59" width="414" height="1"/>
+                                        <rect key="frame" x="0.0" y="60" width="414" height="1"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="TOX-K0-WRz"/>
@@ -10588,7 +10588,7 @@
                                     <constraint firstAttribute="bottom" secondItem="VyV-pl-qbR" secondAttribute="bottom" id="FIB-JU-jjt"/>
                                     <constraint firstItem="jtN-Uw-wsM" firstAttribute="leading" secondItem="aNj-OE-l1d" secondAttribute="trailing" constant="5" id="IlR-of-Wm6"/>
                                     <constraint firstItem="aNj-OE-l1d" firstAttribute="centerY" secondItem="Mqt-fB-aho" secondAttribute="centerY" id="J7N-IX-Uen"/>
-                                    <constraint firstAttribute="bottom" secondItem="NcP-q1-qBZ" secondAttribute="bottom" id="K8F-zY-gAs"/>
+                                    <constraint firstAttribute="bottom" secondItem="NcP-q1-qBZ" secondAttribute="top" id="K8F-zY-gAs"/>
                                     <constraint firstItem="zLm-Xb-1kl" firstAttribute="height" secondItem="au5-ZM-Sux" secondAttribute="height" id="Khl-6n-TYG"/>
                                     <constraint firstItem="NcP-q1-qBZ" firstAttribute="leading" secondItem="Mqt-fB-aho" secondAttribute="leading" id="Kzk-eb-G2K"/>
                                     <constraint firstAttribute="height" constant="60" id="Q7e-cx-VlC"/>

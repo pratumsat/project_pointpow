@@ -298,7 +298,7 @@ extension UIView {
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = self.bounds
-        blurEffectView.alpha = 0.85
+        //blurEffectView.alpha = 0.9
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight] // for supporting device rotation
         self.addSubview(blurEffectView)
      
@@ -1684,3 +1684,22 @@ func getFullPathImageView(_ model:[String:AnyObject]) ->String{
     return full_location
 }
 
+func blurBgImage(image: UIImage) -> UIImage? {
+    
+    let radius: CGFloat = 20;
+    let context = CIContext(options: nil);
+    let inputImage = CIImage(cgImage: image.cgImage!);
+    let filter = CIFilter(name: "CIGaussianBlur");
+    filter?.setValue(inputImage, forKey: kCIInputImageKey);
+    filter?.setValue("\(radius)", forKey:kCIInputRadiusKey);
+    
+    if let result = filter?.value(forKey: kCIOutputImageKey) as? CIImage{
+        
+        let rect = CGRect(origin: CGPoint(x: radius * 2,y :radius * 2), size: CGSize(width: image.size.width - radius * 4, height: image.size.height - radius * 4))
+        
+        if let cgImage = context.createCGImage(result, from: rect){
+            return UIImage(cgImage: cgImage);
+        }
+    }
+    return nil;
+}

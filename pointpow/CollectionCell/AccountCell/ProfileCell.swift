@@ -42,6 +42,7 @@ class ProfileCell: UICollectionViewCell {
         
         
         self.backgroundImageView.blurImage()
+        
     }
     
     @objc func changeProfileTapped(){

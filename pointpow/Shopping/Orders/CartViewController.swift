@@ -377,9 +377,18 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         
         var errorMessage = ""
         guard let tuple = self.tupleProduct ,tuple.count > 0 else {  return }
+        let txt_soldout = NSLocalizedString("string-status-shopping-cart-popup-sold-out", comment: "")
+        let txt_less_stock1 = NSLocalizedString("string-status-shopping-cart-popup-less-input-1", comment: "")
+        let txt_less_stock2 = NSLocalizedString("string-status-shopping-cart-popup-less-input-2", comment: "")
+        let txt_update_cart = NSLocalizedString("string-status-shopping-cart-popup-update", comment: "")
+//        "string-status-shopping-cart-popup-sold-out" = "\nสินค้าหมด\n";
+//        "string-status-shopping-cart-popup-less-input-1" = "\nเหลือจำนวน ";
+//        "string-status-shopping-cart-popup-less-input-2" = " รายการ\n";
+//        "string-status-shopping-cart-popup-update" = "คุณต้องการอัพเดต ตะกร้าสินค้าหรือไม่";
         
         
         if product != nil {
+            
             guard tuple.count == product!.count else {  return }
             print("tuple product count  = \(tuple.count)")
             print("product count = \(product!.count)")
@@ -392,9 +401,9 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                 let title = item.title
                 
                 if stock <= 0 {
-                    errorMessage += "\(title)\nสินค้าหมด\n"
+                    errorMessage += "\(title)\(txt_soldout)"
                 }else  if stock < inputAmount {
-                    errorMessage += "\(title)\nเหลือจำนวน \(stock) รายการ\n"
+                    errorMessage += "\(title)\(txt_less_stock1)\(stock)\(txt_less_stock2)"
                 }
                 
                 i += 1
@@ -406,15 +415,15 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                 let title = item.title
                 
                 if stock <= 0 {
-                    errorMessage += "\(title)\nสินค้าหมด\n"
+                    errorMessage += "\(title)\(txt_soldout)"
                 }else  if stock < amount {
-                    errorMessage += "\(title)\nเหลือจำนวน \(stock) รายการ\n"
+                    errorMessage += "\(title)\(txt_less_stock1)\(stock)\(txt_less_stock2)"
                 }
             }
         }
        
         if !errorMessage.trimmingCharacters(in: .whitespaces).isEmpty {
-            errorMessage += "คุณต้องการอัพเดตตะกร้าสินค้าหรือไม่"
+            errorMessage += txt_update_cart
             let alert = UIAlertController(title: "", message: errorMessage, preferredStyle: .alert)
             
             let confirm = UIAlertAction(title: NSLocalizedString("string-dailog-gold-button-confirm", comment: ""), style: .default, handler: {

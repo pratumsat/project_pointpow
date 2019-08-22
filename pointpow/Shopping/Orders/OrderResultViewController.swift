@@ -500,8 +500,17 @@ class OrderResultViewController: BaseViewController  , UICollectionViewDelegate 
                height = CGFloat(115)
             }
             if let items = self.transferResult?["item"] as? [[String:AnyObject]]  {
+                let shipping_status = items[indexPath.row]["shipping_status"] as? String ?? ""
                 let product_detail = items[indexPath.row]["product_detail"] as? [String:AnyObject] ?? [:]
                 let product_name = product_detail["product_name"] as? String ?? ""
+                
+                switch shipping_status.lowercased() {
+                case "cancel":
+                    height = CGFloat(115)
+                    break
+                default:
+                    break
+                }
                 height += heightForView2Line(text: product_name, font: UIFont(name: Constant.Fonts.THAI_SANS_BOLD, size: 16)!, width: width - 110)
             }
             return CGSize(width: width, height: height)

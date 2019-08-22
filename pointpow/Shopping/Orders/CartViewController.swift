@@ -372,7 +372,8 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         }
         
     }
-    func checkStock(_ product: [(title:String, id:Int, amount:Int, price:Double, select:Bool, brand:String, cover:String, stock:Int)]? = nil, updateSuccess:(()->Void)? = nil, updateWithChangeSuccess:(()->Void)? = nil){
+    func checkStock(_ product: [(title:String, id:Int, amount:Int, price:Double, select:Bool, brand:String, cover:String, stock:Int)]? = nil, updateSuccess:(()->Void)? = nil, updateWithChangeSuccess:(()->Void)? = nil,
+                    cancel:(()->Void)? = nil){
         
         var errorMessage = ""
         guard let tuple = self.tupleProduct ,tuple.count > 0 else {  return }
@@ -425,7 +426,11 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                 }
                 
             })
-            let cancel = UIAlertAction(title: NSLocalizedString("string-dailog-gold-button-cancel", comment: ""), style: .default, handler: nil)
+            let cancel = UIAlertAction(title: NSLocalizedString("string-dailog-gold-button-cancel", comment: ""), style: .default, handler: { (alert) in
+                
+                cancel?()
+                
+            })
             
             
             alert.addAction(cancel)
@@ -1164,6 +1169,10 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                             }, updateWithChangeSuccess: { () in
                                 
                                 self.reloadCheckOutItemData()
+                                
+                                nextCell.nextButton.isEnabled = true
+                            
+                            }, cancel: { () in
                                 
                                 nextCell.nextButton.isEnabled = true
                             })

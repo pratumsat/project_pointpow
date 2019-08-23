@@ -237,7 +237,13 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
     
     var selectedProvinceId:Int = 0 {
         didSet{
-            //will nexstep load district
+            if selectedProvinceId == 0 {
+                self.districtTextField.isEnabled = false
+                return
+            }
+            
+            self.districtTextField.isEnabled = true
+            
             getDistrict(selectedProvinceId) {
                 self.districtPickerView = UIPickerView()
                 self.districtPickerView!.delegate = self
@@ -256,6 +262,12 @@ class ShoppingAddTaxInvoiceAddressViewController:BaseViewController ,UIPickerVie
     }
     var selectedDistrictId:Int = 0 {
         didSet{
+            if selectedDistrictId == 0 {
+                self.subDistrictTextField.isEnabled = false
+                return
+            }
+            
+            self.subDistrictTextField.isEnabled = true
             
             getSubDistrict(selectedDistrictId) {
                 self.subDistrictPickerView = UIPickerView()

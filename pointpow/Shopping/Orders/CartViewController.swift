@@ -1170,19 +1170,14 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                     if self.checkOut() {
                         self.getStock() { (tupleProduct) in
                             self.checkStock(tupleProduct, updateSuccess: {
-                                
-                                self.reloadCheckOutItemData()
-                                
                                 nextCell.nextButton.isEnabled = true
+                                self.reloadCheckOutItemData()
                                 
                             }, updateWithChangeSuccess: { () in
-                                
+                                nextCell.nextButton.isEnabled = true
                                 self.reloadCheckOutItemData()
                                 
-                                nextCell.nextButton.isEnabled = true
-                            
                             }, cancel: { () in
-                                
                                 nextCell.nextButton.isEnabled = true
                             })
                         }

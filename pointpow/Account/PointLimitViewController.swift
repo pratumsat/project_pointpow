@@ -45,7 +45,26 @@ class PointLimitViewController: BaseViewController {
         }
     }
    
-    
+    func getMemberSetting(_ avaliable:(()->Void)?  = nil){
+        modelCtrl.getMemberSetting(params: nil, false, succeeded: { (result) in
+            //success
+            avaliable?()
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                self.showMessagePrompt(message)
+            }
+            self.refreshControl?.endRefreshing()
+            avaliable?()
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            self.refreshControl?.endRefreshing()
+            avaliable?()
+        }
+    }
     @IBAction func saveTapped(_ sender: Any) {
         let point = self.pointlimitTextField.text!
         
@@ -62,16 +81,17 @@ class PointLimitViewController: BaseViewController {
         self.modelCtrl.memberSetting(params: params, true, succeeded: { (result) in
             print(result)
             
-            self.showMessagePrompt2(NSLocalizedString("string-message-success-change-point-limit", comment: "")) {
-                //ok callback
-                
-                DataController.sharedInstance.setLimitPerDay(NSNumber(value: Double(point)!))
-                
-                if let security = self.navigationController?.viewControllers[1] as? SecuritySettingViewController {
-                    self.navigationController?.popToViewController(security, animated: false)
+            self.getMemberSetting(){
+                self.showMessagePrompt2(NSLocalizedString("string-message-success-change-point-limit", comment: "")) {
+                    //ok callback
+                    
+                    if let security = self.navigationController?.viewControllers[1] as? SecuritySettingViewController {
+                        self.navigationController?.popToViewController(security, animated: false)
+                    }
+                    
                 }
-                
             }
+           
             
         }, error: { (error) in
             if let mError = error as? [String:AnyObject]{

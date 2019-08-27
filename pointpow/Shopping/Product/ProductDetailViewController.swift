@@ -337,8 +337,9 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
             newdes = newdes.replace(target: "face=", withString: "")
             newdes = newdes.replace(target: "font-family", withString: "")
             
-            htmlCode += "<font face=\"\(Constant.Fonts.THAI_SANS_BOLD)\">"
+            htmlCode += "<font face=\"\(Constant.Fonts.THAI_SANS_REGULAR)\"; size: \(Constant.Fonts.Size.CONTENT_HTML);>"
             htmlCode += newdes
+            htmlCode += "</font>"
             
             htmlCode += "</body></html>"
             self.detailWebview.loadHTMLString(htmlCode, baseURL: nil)

@@ -454,6 +454,7 @@ class ProductShoppingViewController: ShoppingBaseViewController ,UIPickerViewDel
         }
        
         
+        
         modelCtrl.getProductByCate(cateId: self.subCateId, skip: self.skipItem, type: self.sortBySelected, false , succeeded: { (result) in
             
             if let data = result as? [String:AnyObject]  {

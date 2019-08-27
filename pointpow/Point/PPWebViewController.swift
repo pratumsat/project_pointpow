@@ -38,6 +38,7 @@ class PPWebViewController: BaseViewController , UIWebViewDelegate{
         if let html = self.htmlString {
             var htmlCode = "<html><head><style> body { font-family:\"\(Constant.Fonts.THAI_SANS_BOLD)\"; font-size: \(Constant.Fonts.Size.CONTENT_HTML);} </style></head><body>"
             
+            
             htmlCode += html
             
             htmlCode += "</body></html>"

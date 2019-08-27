@@ -762,9 +762,9 @@ class BaseViewController: UIViewController , UITextFieldDelegate, PAPasscodeView
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }
-    func showPointLimitView(_ animated:Bool, _ amount:String){
+    func showPointLimitView(_ animated:Bool){
         if let vc:PointLimitViewController  = self.storyboard?.instantiateViewController(withIdentifier: "PointLimitViewController") as? PointLimitViewController {
-            vc.pointlimit = amount
+            vc.pointlimit = DataController.sharedInstance.getLimitPay().stringValue
             self.navigationController?.pushViewController(vc, animated: animated)
         }
     }

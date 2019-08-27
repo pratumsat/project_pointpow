@@ -108,8 +108,7 @@ class PointFriendTransferViewController: BaseViewController {
             
             switch self.statePage {
             case .LIMITPAY:
-                let limit_pay = DataController.sharedInstance.getLimitPerDay()
-                self.showPointLimitView(true, limit_pay.stringValue)
+                self.showPointLimitView(true)
                 break
             case .NONE:
                 break
@@ -194,7 +193,7 @@ class PointFriendTransferViewController: BaseViewController {
             let pointpow_id = modelFriend["pointpow_id"] as? String ?? ""
             let mobile = modelFriend["mobile"] as? String ?? ""
             let picture_data = modelFriend["picture_data"] as? String ?? ""
-            
+           
     
             
             if let url = URL(string: picture_data) {

@@ -134,10 +134,15 @@ class DataController {
     func setLimitPerDay(_ value:NSNumber){
         data["limit-pay-left"] = value
     }
-    func getLimitPerDay()-> NSNumber{
+    func getLimitPerDay() -> NSNumber{
         return data["limit-pay-left"] as? NSNumber ?? 0
     }
-    
+    func getLimitPay() -> NSNumber{
+        return data["limit-pay"] as? NSNumber ?? 0
+    }
+    func setLimitPay(_ value:NSNumber){
+        data["limit-pay"] = value
+    }
     func setFaceID(_ faceID:Bool){
         UserDefaults.standard.set(faceID, forKey: Constant.CacheNotification.USER_FACE_ID_CACHE)
         UserDefaults.standard.synchronize()

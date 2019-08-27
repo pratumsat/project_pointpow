@@ -140,10 +140,7 @@ class SecuritySettingViewController: BaseViewController, UICollectionViewDelegat
                     
                     break
                 case .POINT_LIMIT:
-                    if let data = self.dataSetting as? [String:AnyObject] {
-                        let limit_pay = data["limit_pay"] as? NSNumber ?? 0
-                        self.showPointLimitView(true, limit_pay.stringValue)
-                    }
+                    self.showPointLimitView(true)
                     break
                 case .POINTPOW_ID:
                     self.showPointPowIDView(true)

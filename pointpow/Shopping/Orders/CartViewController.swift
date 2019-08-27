@@ -206,8 +206,7 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
             
             switch self.statePage {
             case .LIMITPAY:
-                let limit_pay = DataController.sharedInstance.getLimitPerDay()
-                self.showPointLimitView(true, limit_pay.stringValue)
+                self.showPointLimitView(true)
                 break
             case .NONE:
                 break

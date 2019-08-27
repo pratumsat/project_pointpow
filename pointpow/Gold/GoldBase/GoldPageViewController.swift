@@ -94,8 +94,7 @@ class GoldPageViewController: BaseViewController, UICollectionViewDelegate , UIC
             
             switch self.statePage {
             case .LIMITPAY:
-                let limit_pay = DataController.sharedInstance.getLimitPerDay()
-                self.showPointLimitView(true, limit_pay.stringValue)
+                self.showPointLimitView(true)
                 break
             case .PROFILE:
                 if let profile = self.storyboard?.instantiateViewController(withIdentifier: "NavProfile") as? NavProfile {

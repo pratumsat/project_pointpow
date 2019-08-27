@@ -21,6 +21,10 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
     var cart_id:Int = 0
     var lateShippingModel:AnyObject?
     
+    enum StatePage {
+        case LIMITPAY, NONE
+    }
+    var statePage = StatePage.LIMITPAY;
     
     var isTaxInvoice = false {
         didSet{
@@ -197,9 +201,20 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         numberFormatter.minimumFractionDigits = 2
         self.currentPointBalance = numberFormatter.string(from: DataController.sharedInstance.getCurrentPointBalance() )
         
-      
         
+        self.handlerEnterSuccess  = {(pin) in
+            
+            switch self.statePage {
+            case .LIMITPAY:
+                let limit_pay = DataController.sharedInstance.getLimitPerDay()
+                self.showPointLimitView(true, limit_pay.stringValue)
+                break
+            case .NONE:
+                break
+            }
+        }
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -909,7 +924,26 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
         print("credit_spend \(credit_spend)")
         
         if pointLimitOrder.doubleValue  < pointpow_spend {
-            self.showMessagePrompt(NSLocalizedString("string-dailog-point-over-limit-order", comment: ""))
+          
+            let title = NSLocalizedString("string-dailog-point-over-limit-order", comment: "")
+            let alert = UIAlertController(title: "", message: title, preferredStyle: .alert)
+            let confirm = UIAlertAction(title: NSLocalizedString("string-dailog-gold-button-confirm", comment: ""), style: .default, handler: {
+                (alert) in
+                //confirm
+                self.statePage = .LIMITPAY
+                self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
+                
+            })
+            let cancel = UIAlertAction(title: NSLocalizedString("string-dailog-gold-button-cancel", comment: ""), style: .default, handler: { (alert) in
+                
+            })
+            
+            alert.addAction(cancel)
+            alert.addAction(confirm)
+            
+            self.present(alert, animated: true, completion: nil)
+            
+            //self.showMessagePrompt(NSLocalizedString("string-dailog-point-over-limit-order", comment: ""))
             return false
         }
         return true
@@ -1182,6 +1216,8 @@ class CartViewController: BaseViewController  , UICollectionViewDelegate , UICol
                             })
                         }
                         
+                    }else{
+                         nextCell.nextButton.isEnabled = true
                     }
                     
                    

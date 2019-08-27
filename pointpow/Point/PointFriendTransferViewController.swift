@@ -42,11 +42,79 @@ class PointFriendTransferViewController: BaseViewController {
     
     var pointLimitOrder = 0.0
     
+    enum StatePage {
+        case LIMITPAY, NONE
+    }
+    var statePage = StatePage.NONE
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = NSLocalizedString("string-title-freind-transfer", comment: "")
         self.setUp()
+        
+        
+        self.callAPI {
+            //success
+            if let userData = self.userData as? [String:AnyObject] {
+                let pointpow_id = userData["pointpow_id"] as? String ?? ""
+                let pointBalance = userData["member_point"]?["total"] as? NSNumber ?? 0
+                let picture_data = userData["picture_data"] as? String ?? ""
+                let display_name = userData["display_name"] as? String ?? ""
+                let first_name = userData["first_name"] as? String ?? ""
+                let last_name = userData["last_name"] as? String ?? ""
+                let mobile = userData["mobile"] as? String ?? ""
+                
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                numberFormatter.minimumFractionDigits = 2
+                
+                
+                if DataController.sharedInstance.getProfilPath().isEmpty {
+                    if let url = URL(string: picture_data) {
+                        self.myProfileImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
+                        
+                    }else{
+                        self.myProfileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
+                    }
+                }
+                
+                
+                self.pointBalanceLabel.text = "\(numberFormatter.string(from: pointBalance ) ?? "") Point Pow"
+                
+                
+                //            let fullname = "\(( (first_name.isEmpty) ? "" : first_name)) \(( (last_name.isEmpty) ? "" : last_name))"
+                
+                let fullname = "\(( (first_name.isEmpty) ? "-" : first_name))"
+                
+                if !display_name.isEmpty {
+                    self.nameLabel.text = display_name
+                }else{
+                    self.nameLabel.text = fullname
+                }
+                
+                if !pointpow_id.isEmpty {
+                    self.ppIdLabel.text = pointpow_id
+                }else{
+                    let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
+                    self.ppIdLabel.text = newMText.chunkFormatted()
+                }
+                
+            }
+        }
+        
+        
+        self.handlerEnterSuccess  = {(pin) in
+            
+            switch self.statePage {
+            case .LIMITPAY:
+                let limit_pay = DataController.sharedInstance.getLimitPerDay()
+                self.showPointLimitView(true, limit_pay.stringValue)
+                break
+            case .NONE:
+                break
+            }
+        }
     }
     
     
@@ -117,6 +185,8 @@ class PointFriendTransferViewController: BaseViewController {
         }
         
         
+        self.updateLimitPerDayLabel()
+        
         if let modelFriend = self.friendModel {
             let display_name = modelFriend["display_name"] as? String ?? ""
             let first_name = modelFriend["first_name"] as? String ?? ""
@@ -124,21 +194,8 @@ class PointFriendTransferViewController: BaseViewController {
             let pointpow_id = modelFriend["pointpow_id"] as? String ?? ""
             let mobile = modelFriend["mobile"] as? String ?? ""
             let picture_data = modelFriend["picture_data"] as? String ?? ""
-            let limit_pay = modelFriend["limit_pay"] as? NSNumber ?? 0
-       
             
-        
-            self.pointLimitOrder = limit_pay.doubleValue
-        
-            //min transfer
-            let numberFormatter = NumberFormatter()
-            numberFormatter.numberStyle = .decimal
-            numberFormatter.minimumFractionDigits = 0
-            let limitp = numberFormatter.string(from: limit_pay)
-            
-            var prefixlimit = NSLocalizedString("string-point-transfer-point-limit-today", comment: "")
-            prefixlimit += " \(limitp ?? "")"
-            self.limitLabel.text = "\(prefixlimit)"
+    
             
             if let url = URL(string: picture_data) {
                 self.friendImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
@@ -167,6 +224,20 @@ class PointFriendTransferViewController: BaseViewController {
         
         
     }
+    
+    func updateLimitPerDayLabel(){
+        let limit_pay = DataController.sharedInstance.getLimitPerDay()
+        //min transfer
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.minimumFractionDigits = 0
+        let limitp = numberFormatter.string(from: limit_pay)
+        
+        var prefixlimit = NSLocalizedString("string-point-transfer-point-limit-today", comment: "")
+        prefixlimit += " \(limitp ?? "")"
+        self.limitLabel.text = "\(prefixlimit)"
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -174,10 +245,51 @@ class PointFriendTransferViewController: BaseViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.getUserInfo()
-       
+        self.updateLimitPerDayLabel()
+    }
+    private func callAPI(_ loadSuccess:(()->Void)? = nil){
+        var success = 0
+        self.loadingView?.showLoading()
+        getUserInfo(){
+            success += 1
+            if success == 2 {
+                loadSuccess?()
+                self.loadingView?.hideLoading()
+                self.refreshControl?.endRefreshing()
+            }
+        }
+        getMemberSetting(){
+            success += 1
+            if success == 2 {
+                loadSuccess?()
+                self.loadingView?.hideLoading()
+                self.refreshControl?.endRefreshing()
+            }
+        }
+        
+        
     }
     
+    func getMemberSetting(_ avaliable:(()->Void)?  = nil){
+        modelCtrl.getMemberSetting(params: nil, false, succeeded: { (result) in
+            //success
+            avaliable?()
+        }, error: { (error) in
+            if let mError = error as? [String:AnyObject]{
+                let message = mError["message"] as? String ?? ""
+                print(message)
+                self.showMessagePrompt(message)
+            }
+            self.refreshControl?.endRefreshing()
+            avaliable?()
+            print(error)
+        }) { (messageError) in
+            print("messageError")
+            self.handlerMessageError(messageError)
+            self.refreshControl?.endRefreshing()
+            avaliable?()
+        }
+    }
     func getUserInfo(_ avaliable:(()->Void)?  = nil){
         var isLoading:Bool = true
         if self.userData != nil {
@@ -188,51 +300,7 @@ class PointFriendTransferViewController: BaseViewController {
         modelCtrl.getUserData(params: nil , isLoading , succeeded: { (result) in
             self.userData = result
             avaliable?()
-            if let userData = self.userData as? [String:AnyObject] {
-                let pointpow_id = userData["pointpow_id"] as? String ?? ""
-                let pointBalance = userData["member_point"]?["total"] as? NSNumber ?? 0
-                let picture_data = userData["picture_data"] as? String ?? ""
-                let display_name = userData["display_name"] as? String ?? ""
-                let first_name = userData["first_name"] as? String ?? ""
-                let last_name = userData["last_name"] as? String ?? ""
-                let mobile = userData["mobile"] as? String ?? ""
-                
-                let numberFormatter = NumberFormatter()
-                numberFormatter.numberStyle = .decimal
-                numberFormatter.minimumFractionDigits = 2
-                
-                
-                if DataController.sharedInstance.getProfilPath().isEmpty {
-                    if let url = URL(string: picture_data) {
-                        self.myProfileImageView.sd_setImage(with: url, placeholderImage: UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER))
-                        
-                    }else{
-                        self.myProfileImageView.image = UIImage(named: Constant.DefaultConstansts.DefaultImaege.RECT_PLACEHOLDER)
-                    }
-                }
-                
-               
-                self.pointBalanceLabel.text = "\(numberFormatter.string(from: pointBalance ) ?? "") Point Pow"
-               
-                
-                //            let fullname = "\(( (first_name.isEmpty) ? "" : first_name)) \(( (last_name.isEmpty) ? "" : last_name))"
-                
-                let fullname = "\(( (first_name.isEmpty) ? "-" : first_name))"
-              
-                if !display_name.isEmpty {
-                    self.nameLabel.text = display_name
-                }else{
-                    self.nameLabel.text = fullname
-                }
-                
-                if !pointpow_id.isEmpty {
-                    self.ppIdLabel.text = pointpow_id
-                }else{
-                    let newMText = String((mobile).filter({ $0 != "-" }).prefix(10))
-                    self.ppIdLabel.text = newMText.chunkFormatted()
-                }
-                
-            }
+            
             self.refreshControl?.endRefreshing()
         }, error: { (error) in
             if let mError = error as? [String:AnyObject]{
@@ -404,8 +472,26 @@ class PointFriendTransferViewController: BaseViewController {
                 self.showMessagePrompt(NSLocalizedString("string-dailog-saving-point-not-enough", comment: ""))
                 return
             }
-            if self.pointLimitOrder  < amount {
-                self.showMessagePrompt(NSLocalizedString("string-dailog-point-over-limit-order", comment: ""))
+            let limit_pay = DataController.sharedInstance.getLimitPerDay()
+            if  limit_pay.doubleValue < amount {
+                let title = NSLocalizedString("string-dailog-point-over-limit-order", comment: "")
+                let alert = UIAlertController(title: "", message: title, preferredStyle: .alert)
+                let confirm = UIAlertAction(title: NSLocalizedString("string-dailog-gold-button-confirm", comment: ""), style: .default, handler: {
+                    (alert) in
+                    //confirm
+                    self.statePage = .LIMITPAY
+                    self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
+                })
+                let cancel = UIAlertAction(title: NSLocalizedString("string-dailog-gold-button-cancel", comment: ""), style: .default, handler: { (alert) in
+                    
+                })
+                
+                alert.addAction(cancel)
+                alert.addAction(confirm)
+                
+                self.present(alert, animated: true, completion: nil)
+
+                //self.showMessagePrompt(NSLocalizedString("string-dailog-point-over-limit-order", comment: ""))
                 return
             }
             if amount < minPointTransfer {

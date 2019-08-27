@@ -65,6 +65,8 @@ class PointLimitViewController: BaseViewController {
             self.showMessagePrompt2(NSLocalizedString("string-message-success-change-point-limit", comment: "")) {
                 //ok callback
                 
+                DataController.sharedInstance.setLimitPerDay(NSNumber(value: Double(point)!))
+                
                 if let security = self.navigationController?.viewControllers[1] as? SecuritySettingViewController {
                     self.navigationController?.popToViewController(security, animated: false)
                 }

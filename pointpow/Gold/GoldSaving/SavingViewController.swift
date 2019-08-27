@@ -40,6 +40,10 @@ class SavingViewController: BaseViewController, UICollectionViewDelegate , UICol
     var userData:AnyObject?
     var goldPrice:AnyObject?
    
+    enum StatePage {
+        case LIMITPAY, NONE, PROFILE
+    }
+    var statePage = StatePage.NONE
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,13 +63,22 @@ class SavingViewController: BaseViewController, UICollectionViewDelegate , UICol
             
         }
         self.handlerEnterSuccess  = {(pin) in
-            // "Profile"
-            if let profile = self.storyboard?.instantiateViewController(withIdentifier: "NavProfile") as? NavProfile {
-                
-                self.revealViewController()?.pushFrontViewController(profile, animated: true)
-                
+            
+            switch self.statePage {
+            case .LIMITPAY:
+                let limit_pay = DataController.sharedInstance.getLimitPerDay()
+                self.showPointLimitView(true, limit_pay.stringValue)
+                break
+            case .PROFILE:
+                if let profile = self.storyboard?.instantiateViewController(withIdentifier: "NavProfile") as? NavProfile {
+                    self.revealViewController()?.pushFrontViewController(profile, animated: true)
+                }
+                break;
+            case .NONE:
+                break
             }
         }
+     
     }
     
     @IBAction func bViewTapped(_ sender: Any) {
@@ -104,6 +117,7 @@ class SavingViewController: BaseViewController, UICollectionViewDelegate , UICol
                 }
             }
             if !profile.isEmpty{
+                self.statePage = .PROFILE
                 self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
             }
         }
@@ -474,7 +488,24 @@ class SavingViewController: BaseViewController, UICollectionViewDelegate , UICol
                                 self.showMessagePrompt(NSLocalizedString("string-dailog-saving-point-not-enough", comment: ""))
                                 
                             }else if (pointLimitOrder.doubleValue)  < (pointSpend.doubleValue) {
-                                self.showMessagePrompt(NSLocalizedString("string-dailog-point-over-limit-order", comment: ""))
+                                let title = NSLocalizedString("string-dailog-point-over-limit-order", comment: "")
+                                let alert = UIAlertController(title: "", message: title, preferredStyle: .alert)
+                                let confirm = UIAlertAction(title: NSLocalizedString("string-dailog-gold-button-confirm", comment: ""), style: .default, handler: {
+                                    (alert) in
+                                    //confirm
+                                    self.statePage = .LIMITPAY
+                                    self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""))
+                                })
+                                let cancel = UIAlertAction(title: NSLocalizedString("string-dailog-gold-button-cancel", comment: ""), style: .default, handler: { (alert) in
+                                    
+                                })
+                                
+                                alert.addAction(cancel)
+                                alert.addAction(confirm)
+                                
+                                self.present(alert, animated: true, completion: nil)
+
+                                //self.showMessagePrompt(NSLocalizedString("string-dailog-point-over-limit-order", comment: ""))
                             }else{
                                 self.confirmGoldSavingPage(true, modelSaving: modelSaving)
                             }

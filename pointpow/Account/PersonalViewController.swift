@@ -290,6 +290,7 @@ class PersonalViewController: BaseViewController  {
             self.parsonalTextField.isUserInteractionEnabled = false
             self.birthdateTextField.isUserInteractionEnabled = false
             
+            self.nextButton.isHidden = true
             
             self.firstNameTextField.isEnabled = false
             self.lastNameTextField.isEnabled = false

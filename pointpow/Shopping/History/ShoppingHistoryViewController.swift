@@ -184,8 +184,18 @@ extension ShoppingHistoryViewController {
                 transCell.amountLabel.text = numberFormatter.string(from: total_point)
                 transCell.dateLabel.text = created_at
                 
+                if order_status.lowercased() != "cancel" {
+                    transCell.trackCallback = {
+                        if let items = self.shoppingHistory?[indexPath.section].items?[indexPath.row]["item"] as? [[String:AnyObject]]  {
+                            let shipping_status = items.first?["shipping_status"] as? String ?? "waiting"
+                            self.showOrderShippingResultView(true , items: items  ,shipping_status: shipping_status)
+                        }
+                        
+                    }
+                }
                 
                 
+                //self.showOrderShippingResultView(true , items: items ,shipping_status: "waiting")
                 switch order_status.lowercased() {
                 case "cancel":
                     transCell.shippingLabel.text = NSLocalizedString("string-dailog-shopping-order-status-cancel", comment: "")

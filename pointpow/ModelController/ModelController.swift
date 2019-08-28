@@ -3113,10 +3113,12 @@ class ModelController {
                                             
                                             if success.intValue == 0 {
                                                 let messageError = data["message"] as? String  ??  ""
+                                                let action = data["action"] as? String  ??  ""
                                                 let field = data["field"] as? String  ??  ""
                                                 var errorObject:[String:AnyObject] = [:]
                                                 errorObject["message"] = messageError as AnyObject
                                                 errorObject["field"] = field as AnyObject
+                                                errorObject["action"] = action as AnyObject
                                                 error?(errorObject as AnyObject)
                                             }else{
                                                 if let result = data["result"] as? [[String:AnyObject]] {

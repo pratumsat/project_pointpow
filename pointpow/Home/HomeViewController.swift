@@ -132,8 +132,11 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
         self.scanImageVIew.addGestureRecognizer(scan)
         
         
+        DataController.sharedInstance.setResetPinToken("")
+        
         
         if DataController.sharedInstance.isLogin() {
+            
             self.getUserInfo({
                 self.showEnterPassCodeModalView(NSLocalizedString("string-title-passcode-enter", comment: ""), lockscreen: true, startApp : true, animated : false)
 
@@ -159,7 +162,6 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate , UIColle
             
             self.showIntroduce(false,  require_login : require_login ) {
                 //success
-                DataController.sharedInstance.setResetPinToken("")
                 self.startLoadAPI()
             }
         }

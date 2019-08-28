@@ -95,8 +95,15 @@ class ConfirmOrderViewController: BaseViewController , UICollectionViewDelegate 
                 }, error: { (error) in
                     if let mError = error as? [String:AnyObject]{
                         let message = mError["message"] as? String ?? ""
-                        print(message)
-                        self.showMessagePrompt(message)
+                        let action = mError["action"] as? String ?? ""
+                        if action.lowercased() == "back_to_cart" {
+                            self.showMessagePrompt2(message) {
+                                self.navigationController?.popViewController(animated: true)
+                            }
+                        }else{
+                            self.showMessagePrompt(message)
+                        }
+                        
                     }
                     print(error)
                 }) { (messageError) in

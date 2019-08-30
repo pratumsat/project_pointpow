@@ -855,6 +855,11 @@ class ProductDetailViewController: BaseViewController  , UICollectionViewDelegat
             
             if let iPoint = Int(updatedText.replace(target: ",", withString: "")){
                 let amount = Double(iPoint)
+                
+                if iPoint > self.maxAmount {
+                    return false
+                }
+                
                 if amount <= 1 {
                     disableImageView(self.lessImageView)
                 }else{
